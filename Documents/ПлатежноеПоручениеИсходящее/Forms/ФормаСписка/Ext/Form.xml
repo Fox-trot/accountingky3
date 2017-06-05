@@ -38,20 +38,6 @@
 						</v8:item>
 					</ToolTip>
 					<ExtendedTooltip name="ГруппаВажныеКомандыРасширеннаяПодсказка" id="23"/>
-					<ChildItems>
-						<Button name="ФормаОбработкаСозданиеРКОиППИНаОснованииВедомостиЗПОткрытьОбработкуСозданияДокументовВыплаты" id="151">
-							<Type>CommandBarButton</Type>
-							<CommandName>DataProcessor.СозданиеРКОиППИНаОснованииВедомостиЗП.Command.ОткрытьОбработкуСозданияДокументовВыплаты</CommandName>
-							<DataPath>Items.Список.CurrentData.Ref</DataPath>
-							<Title>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Выплата ЗП</v8:content>
-								</v8:item>
-							</Title>
-							<ExtendedTooltip name="ФормаОбработкаСозданиеРКОиППИНаОснованииВедомостиЗПОткрытьОбработкуСозданияДокументовВыплатыРасширеннаяПодсказка" id="152"/>
-						</Button>
-					</ChildItems>
 				</ButtonGroup>
 				<ButtonGroup name="ГруппаГлобальныеКоманды" id="24">
 					<Title>
@@ -136,7 +122,15 @@
 					<AllowRootChoice>false</AllowRootChoice>
 					<UpdateOnDataChange>Auto</UpdateOnDataChange>
 					<UserSettingsGroup>1:02023637-7868-4a5f-8576-835a76e0c9ba</UserSettingsGroup>
-					<ContextMenu name="СписокКонтекстноеМеню" id="4"/>
+					<ContextMenu name="СписокКонтекстноеМеню" id="4">
+						<ChildItems>
+							<Button name="СписокКонтекстноеМенюИзменитьВыделенные" id="151">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.ИзменитьВыделенные</CommandName>
+								<ExtendedTooltip name="СписокКонтекстноеМенюИзменитьВыделенныеРасширеннаяПодсказка" id="152"/>
+							</Button>
+						</ChildItems>
+					</ContextMenu>
 					<AutoCommandBar name="СписокКоманднаяПанель" id="5">
 						<Autofill>false</Autofill>
 					</AutoCommandBar>
@@ -165,15 +159,22 @@
 						<ContextMenu name="СписокУправлениеПоискомКонтекстноеМеню" id="14"/>
 						<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="15"/>
 					</SearchControlAddition>
+					<Events>
+						<Event name="OnActivateRow">СписокПриАктивизацииСтроки</Event>
+					</Events>
 					<ChildItems>
 						<LabelField name="Дата" id="16">
 							<DataPath>Список.Date</DataPath>
 							<DefaultItem>true</DefaultItem>
+							<Width>10</Width>
+							<HorizontalStretch>false</HorizontalStretch>
 							<ContextMenu name="ДатаКонтекстноеМеню" id="17"/>
 							<ExtendedTooltip name="ДатаРасширеннаяПодсказка" id="18"/>
 						</LabelField>
 						<LabelField name="Номер" id="19">
 							<DataPath>Список.Number</DataPath>
+							<Width>11</Width>
+							<HorizontalStretch>false</HorizontalStretch>
 							<ContextMenu name="НомерКонтекстноеМеню" id="20"/>
 							<ExtendedTooltip name="НомерРасширеннаяПодсказка" id="21"/>
 						</LabelField>
@@ -194,6 +195,12 @@
 						</LabelField>
 						<LabelField name="Контрагент" id="128">
 							<DataPath>Список.КонтрагентФизЛицо</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Контрагент (физлицо)</v8:content>
+								</v8:item>
+							</Title>
 							<ContextMenu name="КонтрагентКонтекстноеМеню" id="129"/>
 							<ExtendedTooltip name="КонтрагентРасширеннаяПодсказка" id="130"/>
 						</LabelField>
@@ -221,6 +228,8 @@
 											<v8:content>Сумма</v8:content>
 										</v8:item>
 									</Title>
+									<Width>10</Width>
+									<HorizontalStretch>false</HorizontalStretch>
 									<ContextMenu name="СуммаДокументаКонтекстноеМеню" id="117"/>
 									<ExtendedTooltip name="СуммаДокументаРасширеннаяПодсказка" id="118"/>
 								</LabelField>
@@ -859,5 +868,31 @@
 				<Field>ОтборОперация</Field>
 			</Save>
 		</Attribute>
+		<Attribute name="ПараметрыПодключаемыхКоманд" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Параметры подключаемых команд</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
 	</Attributes>
+	<Commands>
+		<Command name="ИзменитьВыделенные" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Изменить выделенные...</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Изменить выделенные объекты</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ИзменитьВыделенные</Action>
+		</Command>
+	</Commands>
 </Form>

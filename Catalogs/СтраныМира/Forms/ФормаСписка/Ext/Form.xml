@@ -1,7 +1,9 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.4">
-	<Width>110</Width>
 	<CommandBarLocation>None</CommandBarLocation>
+	<CommandSet>
+		<ExcludedCommand>Create</ExcludedCommand>
+	</CommandSet>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
 	<Events>
 		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
@@ -16,12 +18,6 @@
 					<v8:content>Группа пользовательских настроек</v8:content>
 				</v8:item>
 			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Группа пользовательских настроек</v8:content>
-				</v8:item>
-			</ToolTip>
 			<Group>Vertical</Group>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
@@ -35,9 +31,12 @@
 			<EnableStartDrag>true</EnableStartDrag>
 			<DataPath>Список</DataPath>
 			<RowPictureDataPath>Список.DefaultPicture</RowPictureDataPath>
-			<SearchStringLocation>None</SearchStringLocation>
-			<ViewStatusLocation>None</ViewStatusLocation>
-			<SearchControlLocation>None</SearchControlLocation>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Список</v8:content>
+				</v8:item>
+			</Title>
 			<AutoRefresh>false</AutoRefresh>
 			<AutoRefreshPeriod>60</AutoRefreshPeriod>
 			<Period>
@@ -61,6 +60,33 @@
 						<CommandName>Form.Item.Список.StandardCommand.Choose</CommandName>
 						<ExtendedTooltip name="СписокВыбратьExtendedTooltip" id="21"/>
 					</Button>
+					<Popup name="Создать" id="47">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Создать</v8:content>
+							</v8:item>
+						</Title>
+						<ExtendedTooltip name="СоздатьРасширеннаяПодсказка" id="48"/>
+						<ChildItems>
+							<Button name="СписокВыбратьИзКлассификатора" id="53">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.ВыбратьИзКлассификатора</CommandName>
+								<ExtendedTooltip name="СписокВыбратьИзКлассификатораРасширеннаяПодсказка" id="54"/>
+							</Button>
+							<Button name="СписокСоздать" id="55">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Item.Список.StandardCommand.Create</CommandName>
+								<Title>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Новую...</v8:content>
+									</v8:item>
+								</Title>
+								<ExtendedTooltip name="СписокСоздатьРасширеннаяПодсказка" id="56"/>
+							</Button>
+						</ChildItems>
+					</Popup>
 					<ButtonGroup name="СписокКоманды" id="15">
 						<Title>
 							<v8:item>
@@ -68,24 +94,14 @@
 								<v8:content>Команды списка</v8:content>
 							</v8:item>
 						</Title>
-						<ToolTip>
-							<v8:item>
-								<v8:lang>ru</v8:lang>
-								<v8:content>Список команды</v8:content>
-							</v8:item>
-						</ToolTip>
 						<CommandSource>Item.Список</CommandSource>
 						<ExtendedTooltip name="СписокКомандыExtendedTooltip" id="22"/>
 					</ButtonGroup>
 					<Button name="СписокКлассификатор" id="17">
 						<Type>CommandBarButton</Type>
+						<OnlyInAllActions>false</OnlyInAllActions>
 						<CommandName>Form.Command.ОткрытьКлассификатор</CommandName>
 						<ExtendedTooltip name="СписокКлассификаторExtendedTooltip" id="23"/>
-					</Button>
-					<Button name="СписокВыбратьИзКлассификатора" id="18">
-						<Type>CommandBarButton</Type>
-						<CommandName>Form.Command.ВыбратьИзКлассификатора</CommandName>
-						<ExtendedTooltip name="СписокВыбратьИзКлассификатораExtendedTooltip" id="24"/>
 					</Button>
 					<Button name="СписокИзменитьФорму" id="19">
 						<Type>CommandBarButton</Type>
@@ -125,7 +141,6 @@
 				<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="46"/>
 			</SearchControlAddition>
 			<Events>
-				<Event name="BeforeAddRow">СписокПередНачаломДобавления</Event>
 				<Event name="ChoiceProcessing">СписокОбработкаВыбора</Event>
 				<Event name="NewWriteProcessing">СписокОбработкаЗаписиНового</Event>
 			</Events>
@@ -263,13 +278,13 @@
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Выбрать из классификатора</v8:content>
+					<v8:content>Из классификатора...</v8:content>
 				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Выбрать из классификатора</v8:content>
+					<v8:content>Создать страну выбрав из классификатора стран</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Picture>

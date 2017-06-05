@@ -82,10 +82,55 @@
 			<ShowTitle>false</ShowTitle>
 			<ExtendedTooltip name="НаименованиеКодРасширеннаяПодсказка" id="66"/>
 			<ChildItems>
-				<InputField name="Наименование" id="203">
-					<DataPath>Объект.Description</DataPath>
-					<ContextMenu name="НаименованиеКонтекстноеМеню" id="204"/>
-					<ExtendedTooltip name="НаименованиеРасширеннаяПодсказка" id="205"/>
+				<InputField name="ВидДоговора" id="47">
+					<DataPath>Объект.ВидДоговора</DataPath>
+					<ListChoiceMode>true</ListChoiceMode>
+					<ChoiceList>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>С поставщиком</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xr:DesignTimeRef">Enum.ВидыДоговоровКонтрагентов.EnumValue.СПоставщиком</Value>
+							</xr:Value>
+						</xr:Item>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>С покупателем</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xr:DesignTimeRef">Enum.ВидыДоговоровКонтрагентов.EnumValue.СПокупателем</Value>
+							</xr:Value>
+						</xr:Item>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Прочее</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xr:DesignTimeRef">Enum.ВидыДоговоровКонтрагентов.EnumValue.Прочее</Value>
+							</xr:Value>
+						</xr:Item>
+					</ChoiceList>
+					<ContextMenu name="ВидДоговораКонтекстноеМеню" id="48"/>
+					<ExtendedTooltip name="ВидДоговораExtendedTooltip" id="87"/>
+					<Events>
+						<Event name="OnChange">ВидДоговораПриИзменении</Event>
+					</Events>
 				</InputField>
 				<InputField name="Код" id="206">
 					<DataPath>Объект.Code</DataPath>
@@ -141,9 +186,6 @@
 							<Wrap>false</Wrap>
 							<ContextMenu name="ОрганизацияКонтекстноеМеню" id="16"/>
 							<ExtendedTooltip name="ОрганизацияExtendedTooltip" id="86"/>
-							<Events>
-								<Event name="OnChange">ОрганизацияПриИзменении</Event>
-							</Events>
 						</InputField>
 						<InputField name="ТипЦен" id="160">
 							<DataPath>Объект.ТипЦен</DataPath>
@@ -176,59 +218,13 @@
 						<InputField name="ВалютаРасчетов" id="9">
 							<DataPath>Объект.ВалютаРасчетов</DataPath>
 							<EditMode>EnterOnInput</EditMode>
+							<Width>10</Width>
 							<HorizontalStretch>false</HorizontalStretch>
 							<Wrap>false</Wrap>
 							<ContextMenu name="ВалютаРасчетовКонтекстноеМеню" id="10"/>
 							<ExtendedTooltip name="ВалютаРасчетовExtendedTooltip" id="71"/>
-						</InputField>
-						<InputField name="ВидДоговора" id="47">
-							<DataPath>Объект.ВидДоговора</DataPath>
-							<ListChoiceMode>true</ListChoiceMode>
-							<ChoiceList>
-								<xr:Item>
-									<xr:Presentation/>
-									<xr:CheckState>0</xr:CheckState>
-									<xr:Value xsi:type="FormChoiceListDesTimeValue">
-										<Presentation>
-											<v8:item>
-												<v8:lang>ru</v8:lang>
-												<v8:content>С поставщиком</v8:content>
-											</v8:item>
-										</Presentation>
-										<Value xsi:type="xr:DesignTimeRef">Enum.ВидыДоговоровКонтрагентов.EnumValue.СПоставщиком</Value>
-									</xr:Value>
-								</xr:Item>
-								<xr:Item>
-									<xr:Presentation/>
-									<xr:CheckState>0</xr:CheckState>
-									<xr:Value xsi:type="FormChoiceListDesTimeValue">
-										<Presentation>
-											<v8:item>
-												<v8:lang>ru</v8:lang>
-												<v8:content>С покупателем</v8:content>
-											</v8:item>
-										</Presentation>
-										<Value xsi:type="xr:DesignTimeRef">Enum.ВидыДоговоровКонтрагентов.EnumValue.СПокупателем</Value>
-									</xr:Value>
-								</xr:Item>
-								<xr:Item>
-									<xr:Presentation/>
-									<xr:CheckState>0</xr:CheckState>
-									<xr:Value xsi:type="FormChoiceListDesTimeValue">
-										<Presentation>
-											<v8:item>
-												<v8:lang>ru</v8:lang>
-												<v8:content>Прочее</v8:content>
-											</v8:item>
-										</Presentation>
-										<Value xsi:type="xr:DesignTimeRef">Enum.ВидыДоговоровКонтрагентов.EnumValue.Прочее</Value>
-									</xr:Value>
-								</xr:Item>
-							</ChoiceList>
-							<ContextMenu name="ВидДоговораКонтекстноеМеню" id="48"/>
-							<ExtendedTooltip name="ВидДоговораExtendedTooltip" id="87"/>
 							<Events>
-								<Event name="OnChange">ВидДоговораПриИзменении</Event>
+								<Event name="OnChange">ВалютаРасчетовПриИзменении</Event>
 							</Events>
 						</InputField>
 					</ChildItems>
@@ -271,15 +267,24 @@
 					<ChildItems>
 						<InputField name="СтавкаНДС" id="163">
 							<DataPath>Объект.СтавкаНДС</DataPath>
+							<Width>15</Width>
 							<HorizontalStretch>false</HorizontalStretch>
 							<ContextMenu name="СтавкаНДСКонтекстноеМеню" id="164"/>
 							<ExtendedTooltip name="СтавкаНДСРасширеннаяПодсказка" id="165"/>
 						</InputField>
 						<InputField name="СтавкаНСП" id="193">
 							<DataPath>Объект.СтавкаНСП</DataPath>
+							<Width>15</Width>
 							<HorizontalStretch>false</HorizontalStretch>
 							<ContextMenu name="СтавкаНСПКонтекстноеМеню" id="194"/>
 							<ExtendedTooltip name="СтавкаНСПРасширеннаяПодсказка" id="195"/>
+						</InputField>
+						<InputField name="СтавкаНСПУслуги" id="214">
+							<DataPath>Объект.СтавкаНСПУслуги</DataPath>
+							<Width>15</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ContextMenu name="СтавкаНСПУслугиКонтекстноеМеню" id="215"/>
+							<ExtendedTooltip name="СтавкаНСПУслугиРасширеннаяПодсказка" id="216"/>
 						</InputField>
 						<CheckBoxField name="СуммаВключаетНалоги" id="169">
 							<DataPath>Объект.СуммаВключаетНалоги</DataPath>
@@ -329,6 +334,40 @@
 				</UsualGroup>
 			</ChildItems>
 		</UsualGroup>
+		<UsualGroup name="ГруппаНомерДата" id="212">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа номер дата</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа номер дата</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаНомерДатаРасширеннаяПодсказка" id="213"/>
+			<ChildItems>
+				<InputField name="НомерДоговора" id="209">
+					<DataPath>Объект.НомерДоговора</DataPath>
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<MaxWidth>10</MaxWidth>
+					<ContextMenu name="НомерДоговораКонтекстноеМеню" id="210"/>
+					<ExtendedTooltip name="НомерДоговораРасширеннаяПодсказка" id="211"/>
+					<Events>
+						<Event name="OnChange">НомерДоговораПриИзменении</Event>
+					</Events>
+				</InputField>
+				<InputField name="Наименование" id="203">
+					<DataPath>Объект.Description</DataPath>
+					<ContextMenu name="НаименованиеКонтекстноеМеню" id="204"/>
+					<ExtendedTooltip name="НаименованиеРасширеннаяПодсказка" id="205"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
 	</ChildItems>
 	<Attributes>
 		<Attribute name="Объект" id="1">
@@ -349,14 +388,17 @@
 				<v8:Type>cfg:CatalogRef.Валюты</v8:Type>
 			</Type>
 		</Attribute>
-		<Attribute name="ДанныеУчетнойПолитики" id="12">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Данные учетной политики</v8:content>
-				</v8:item>
-			</Title>
-			<Type/>
-		</Attribute>
 	</Attributes>
+	<CommandInterface>
+		<NavigationPanel>
+			<Item>
+				<Command>0:e7d51ada-f286-4519-bfae-ece95dd4d7b0</Command>
+				<Type>Auto</Type>
+				<CommandGroup>FormNavigationPanelImportant</CommandGroup>
+				<Visible>
+					<xr:Common>false</xr:Common>
+				</Visible>
+			</Item>
+		</NavigationPanel>
+	</CommandInterface>
 </Form>

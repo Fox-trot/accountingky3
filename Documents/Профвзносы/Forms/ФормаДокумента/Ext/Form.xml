@@ -3,9 +3,51 @@
 	<AutoTime>CurrentOrLast</AutoTime>
 	<UsePostingMode>Auto</UsePostingMode>
 	<RepostOnWrite>true</RepostOnWrite>
-	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<ButtonGroup name="ГруппаВажныеКоманды" id="151">
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Группа важные команды</v8:content>
+					</v8:item>
+				</Title>
+				<ToolTip>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Группа важные команды</v8:content>
+					</v8:item>
+				</ToolTip>
+				<ExtendedTooltip name="ГруппаВажныеКомандыРасширеннаяПодсказка" id="152"/>
+			</ButtonGroup>
+			<ButtonGroup name="ГруппаГлобальныеКоманды" id="153">
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Группа глобальные команды</v8:content>
+					</v8:item>
+				</Title>
+				<ToolTip>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Группа глобальные команды</v8:content>
+					</v8:item>
+				</ToolTip>
+				<ExtendedTooltip name="ГруппаГлобальныеКомандыРасширеннаяПодсказка" id="154"/>
+				<ChildItems>
+					<Button name="ФормаОбщаяКомандаОтчетПоДвижениям" id="155">
+						<Type>CommandBarButton</Type>
+						<CommandName>CommonCommand.ОтчетПоДвижениям</CommandName>
+						<DataPath>Объект.Ref</DataPath>
+						<ExtendedTooltip name="ФормаОбщаяКомандаОтчетПоДвижениямРасширеннаяПодсказка" id="156"/>
+					</Button>
+				</ChildItems>
+			</ButtonGroup>
+		</ChildItems>
+	</AutoCommandBar>
 	<Events>
 		<Event name="OnReadAtServer">ПриЧтенииНаСервере</Event>
+		<Event name="OnOpen">ПриОткрытии</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 	</Events>
 	<ChildItems>
@@ -215,18 +257,6 @@
 									<ContextMenu name="СотрудникиФизЛицоКонтекстноеМеню" id="135"/>
 									<ExtendedTooltip name="СотрудникиФизЛицоРасширеннаяПодсказка" id="136"/>
 								</InputField>
-								<InputField name="СотрудникиПрофсоюз" id="151">
-									<DataPath>Объект.Сотрудники.Профсоюз</DataPath>
-									<EditMode>EnterOnInput</EditMode>
-									<ContextMenu name="СотрудникиПрофсоюзКонтекстноеМеню" id="152"/>
-									<ExtendedTooltip name="СотрудникиПрофсоюзРасширеннаяПодсказка" id="153"/>
-								</InputField>
-								<InputField name="СотрудникиКонтрагент" id="137">
-									<DataPath>Объект.Сотрудники.Контрагент</DataPath>
-									<EditMode>EnterOnInput</EditMode>
-									<ContextMenu name="СотрудникиКонтрагентКонтекстноеМеню" id="138"/>
-									<ExtendedTooltip name="СотрудникиКонтрагентРасширеннаяПодсказка" id="139"/>
-								</InputField>
 								<InputField name="СотрудникиВидДвижения" id="140">
 									<DataPath>Объект.Сотрудники.ВидДвижения</DataPath>
 									<EditMode>EnterOnInput</EditMode>
@@ -351,6 +381,15 @@
 				</v8:StringQualifiers>
 			</Type>
 			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="ПараметрыПодключаемыхКоманд" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Параметры подключаемых команд</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
 		</Attribute>
 	</Attributes>
 </Form>

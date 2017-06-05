@@ -1,36 +1,43 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.4">
-	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<ButtonGroup name="ГруппаВажныеКоманды" id="115">
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Группа важные команды</v8:content>
+					</v8:item>
+				</Title>
+				<ToolTip>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Группа важные команды</v8:content>
+					</v8:item>
+				</ToolTip>
+				<ExtendedTooltip name="ГруппаВажныеКомандыРасширеннаяПодсказка" id="116"/>
+			</ButtonGroup>
+			<ButtonGroup name="ГруппаГлобальныеКоманды" id="117">
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Группа глобальные команды</v8:content>
+					</v8:item>
+				</Title>
+				<ToolTip>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Группа глобальные команды</v8:content>
+					</v8:item>
+				</ToolTip>
+				<ExtendedTooltip name="ГруппаГлобальныеКомандыРасширеннаяПодсказка" id="118"/>
+			</ButtonGroup>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
 	<ChildItems>
-		<UsualGroup name="ГруппаВажныеКоманды" id="71">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Группа важные команды</v8:content>
-				</v8:item>
-			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Группа важные команды</v8:content>
-				</v8:item>
-			</ToolTip>
-			<Group>Vertical</Group>
-			<ShowTitle>false</ShowTitle>
-			<ExtendedTooltip name="ГруппаВажныеКомандыРасширеннаяПодсказка" id="72"/>
-		</UsualGroup>
-		<UsualGroup name="СписокКомпоновщикНастроекПользовательскиеНастройки" id="1">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Группа пользовательских настроек</v8:content>
-				</v8:item>
-			</Title>
-			<VerticalStretch>false</VerticalStretch>
-			<Group>Vertical</Group>
-			<ShowTitle>false</ShowTitle>
-			<ExtendedTooltip name="СписокКомпоновщикНастроекПользовательскиеНастройкиРасширеннаяПодсказка" id="2"/>
-		</UsualGroup>
 		<UsualGroup name="ПанельСписок" id="22">
 			<Title>
 				<v8:item>
@@ -90,8 +97,16 @@
 							<ShowRoot>true</ShowRoot>
 							<AllowRootChoice>false</AllowRootChoice>
 							<UpdateOnDataChange>Auto</UpdateOnDataChange>
-							<UserSettingsGroup>СписокКомпоновщикНастроекПользовательскиеНастройки</UserSettingsGroup>
-							<ContextMenu name="СписокКонтекстноеМеню" id="4"/>
+							<UserSettingsGroup>1:02023637-7868-4a5f-8576-835a76e0c9ba</UserSettingsGroup>
+							<ContextMenu name="СписокКонтекстноеМеню" id="4">
+								<ChildItems>
+									<Button name="СписокКонтекстноеМенюИзменитьВыделенные" id="122">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.ИзменитьВыделенные</CommandName>
+										<ExtendedTooltip name="СписокКонтекстноеМенюИзменитьВыделенныеРасширеннаяПодсказка" id="123"/>
+									</Button>
+								</ChildItems>
+							</ContextMenu>
 							<AutoCommandBar name="СписокКоманднаяПанель" id="5">
 								<Autofill>false</Autofill>
 							</AutoCommandBar>
@@ -134,6 +149,12 @@
 									<DataPath>Список.Code</DataPath>
 									<ContextMenu name="КодКонтекстноеМеню" id="20"/>
 									<ExtendedTooltip name="КодРасширеннаяПодсказка" id="21"/>
+								</LabelField>
+								<LabelField name="Ссылка" id="119">
+									<DataPath>Список.Ref</DataPath>
+									<Visible>false</Visible>
+									<ContextMenu name="СсылкаКонтекстноеМеню" id="120"/>
+									<ExtendedTooltip name="СсылкаРасширеннаяПодсказка" id="121"/>
 								</LabelField>
 							</ChildItems>
 						</Table>
@@ -252,21 +273,21 @@
 												<xr:Value name="Role.БазовыеПраваВнешнегоПользователя">false</xr:Value>
 												<xr:Value name="Role.БазовыеПраваПользователяБП">false</xr:Value>
 												<xr:Value name="Role.ВыводНаПринтерФайлБуферОбмена">false</xr:Value>
-												<xr:Value name="Role.ГлавныйИнженер">false</xr:Value>
+												<xr:Value name="f46e587b-acb2-49fb-83a1-70c7560a4901">false</xr:Value>
 												<xr:Value name="Role.ДобавлениеИзменениеВариантовОтчетов">false</xr:Value>
 												<xr:Value name="Role.ДобавлениеИзменениеВидовКонтактнойИнформации">false</xr:Value>
 												<xr:Value name="Role.ДобавлениеИзменениеВнешнихПользователей">false</xr:Value>
 												<xr:Value name="Role.ДобавлениеИзменениеДатЗапретаИзменения">false</xr:Value>
 												<xr:Value name="d9b6f3da-bfbf-4ab4-a747-2b4c6f84c5c0">false</xr:Value>
 												<xr:Value name="be45b2a4-dd49-4f55-b08a-d8a0bad16bac">false</xr:Value>
-												<xr:Value name="Role.ДобавлениеИзменениеДокументаНачислениеПоТабелю">false</xr:Value>
+												<xr:Value name="66445512-efee-4306-bee3-1fb85a5a92bc">false</xr:Value>
 												<xr:Value name="Role.ДобавлениеИзменениеКурсовВалют">false</xr:Value>
-												<xr:Value name="Role.ДобавлениеИзменениеПодсистемыАренда">false</xr:Value>
+												<xr:Value name="18bdd37c-ff90-4c5c-aa0e-c21943a72b23">false</xr:Value>
 												<xr:Value name="Role.ДобавлениеИзменениеПодсистемыДенежныеСредства">false</xr:Value>
 												<xr:Value name="Role.ДобавлениеИзменениеПодсистемыЗапасы">false</xr:Value>
-												<xr:Value name="Role.ДобавлениеИзменениеПодсистемыЗарплата">false</xr:Value>
-												<xr:Value name="Role.ДобавлениеИзменениеПодсистемыМБП">false</xr:Value>
-												<xr:Value name="Role.ДобавлениеИзменениеПодсистемыОсновныеСредства">false</xr:Value>
+												<xr:Value name="320e53e0-4c98-4b1f-8675-60fe9f3f9007">false</xr:Value>
+												<xr:Value name="29e84ff9-dc07-4485-9ff7-429af764f280">false</xr:Value>
+												<xr:Value name="0ad10875-af80-4a19-8d4b-96931c2c063b">false</xr:Value>
 												<xr:Value name="f170bc30-8042-45c6-8eac-7b80079213e9">false</xr:Value>
 												<xr:Value name="0eceedec-28a7-45f3-bb31-5fae6f88d5a3">false</xr:Value>
 												<xr:Value name="Role.ДобавлениеИзменениеПользователей">false</xr:Value>
@@ -277,7 +298,7 @@
 												<xr:Value name="Role.ЗапускТонкогоКлиента">false</xr:Value>
 												<xr:Value name="Role.ИзменениеМакетовПечатныхФорм">false</xr:Value>
 												<xr:Value name="Role.ИзменениеУчастниковГруппДоступа">false</xr:Value>
-												<xr:Value name="Role.Интеграция1СБухфон">false</xr:Value>
+												<xr:Value name="Role.ВызовОнлайнПоддержки">false</xr:Value>
 												<xr:Value name="Role.ИнтерактивноеОткрытиеВнешнихОтчетовИОбработок">false</xr:Value>
 												<xr:Value name="Role.ДобавлениеИзменениеЛичныхВариантовОтчетов">false</xr:Value>
 												<xr:Value name="Role.ДобавлениеИзменениеЗаметок">false</xr:Value>
@@ -285,15 +306,15 @@
 												<xr:Value name="Role.ПросмотрСвязанныеДокументы">false</xr:Value>
 												<xr:Value name="Role.ИспользованиеОбработкиТекущиеДела">false</xr:Value>
 												<xr:Value name="Role.ИспользованиеУниверсальногоОтчета">false</xr:Value>
-												<xr:Value name="Role.ЧтениеУчетныхЗаписейЭлектроннойПочты">false</xr:Value>
+												<xr:Value name="Role.ДобавлениеИзменениеУчетныхЗаписейЭлектроннойПочты">false</xr:Value>
 												<xr:Value name="Role.ОбновлениеКонфигурацииБазыДанных">false</xr:Value>
 												<xr:Value name="Role.ПолныеПрава">true</xr:Value>
 												<xr:Value name="40a52f83-f0e2-470d-9c17-7fdc8cc646b7">false</xr:Value>
 												<xr:Value name="Role.ПросмотрЖурналаРегистрации">false</xr:Value>
 												<xr:Value name="Role.ПросмотрОписанияИзмененийПрограммы">false</xr:Value>
-												<xr:Value name="Role.ПрофильИнженер">false</xr:Value>
-												<xr:Value name="Role.ПрофильЭкономист">false</xr:Value>
-												<xr:Value name="Role.ПрофильЮрист">false</xr:Value>
+												<xr:Value name="b7a5403f-5c0c-4499-a1a9-63525befdf96">false</xr:Value>
+												<xr:Value name="f0979721-647a-43fa-9bc0-cd728e7eb214">false</xr:Value>
+												<xr:Value name="9d90f5c5-fff6-48b4-8bfd-235004431088">false</xr:Value>
 												<xr:Value name="Role.РедактированиеРеквизитовОбъектов">false</xr:Value>
 												<xr:Value name="Role.РежимВсеФункции">false</xr:Value>
 												<xr:Value name="Role.СохранениеДанныхПользователя">false</xr:Value>
@@ -329,17 +350,6 @@
 													<DataPath>ИнформацияФизлицоТелефон</DataPath>
 													<ContextMenu name="ИнформацияФизлицоТелефонКонтекстноеМеню" id="74"/>
 													<ExtendedTooltip name="ИнформацияФизлицоТелефонРасширеннаяПодсказка" id="75"/>
-												</InputField>
-												<InputField name="ТабельныйНомер" id="36">
-													<DataPath>Items.Список.CurrentData.Code</DataPath>
-													<Title>
-														<v8:item>
-															<v8:lang>ru</v8:lang>
-															<v8:content>Табельный номер</v8:content>
-														</v8:item>
-													</Title>
-													<ContextMenu name="ТабельныйНомерКонтекстноеМеню" id="37"/>
-													<ExtendedTooltip name="ТабельныйНомерРасширеннаяПодсказка" id="38"/>
 												</InputField>
 												<InputField name="ИНН" id="28">
 													<DataPath>Items.Список.CurrentData.ИНН</DataPath>
@@ -417,12 +427,43 @@
 			</Type>
 			<MainAttribute>true</MainAttribute>
 			<UseAlways>
+				<Field>Список.Уволен</Field>
 				<Field>Список.Ref</Field>
 				<Field>Список.IsFolder</Field>
 			</UseAlways>
 			<Settings xsi:type="DynamicList">
-				<ManualQuery>false</ManualQuery>
+				<ManualQuery>true</ManualQuery>
 				<DynamicDataRead>true</DynamicDataRead>
+				<QueryText>ВЫБРАТЬ
+	СправочникФизическиеЛица.Ссылка,
+	СправочникФизическиеЛица.ПометкаУдаления,
+	СправочникФизическиеЛица.Родитель,
+	СправочникФизическиеЛица.ЭтоГруппа,
+	СправочникФизическиеЛица.Код,
+	СправочникФизическиеЛица.Наименование,
+	СправочникФизическиеЛица.ДатаРождения,
+	СправочникФизическиеЛица.Пол,
+	СправочникФизическиеЛица.ИНН,
+	СправочникФизическиеЛица.ФИОВРодительномПадеже,
+	СправочникФизическиеЛица.ФИОВВинительномПадеже,
+	СправочникФизическиеЛица.ФИОВДательномПадеже,
+	СправочникФизическиеЛица.ФИО,
+	СправочникФизическиеЛица.МестоРождения,
+	СправочникФизическиеЛица.МестоПрописки,
+	СправочникФизическиеЛица.МестоЖительства,
+	СправочникФизическиеЛица.Национальность,
+	СправочникФизическиеЛица.ОсновнойБанковскийСчет,
+	СправочникФизическиеЛица.Предопределенный,
+	СправочникФизическиеЛица.ИмяПредопределенныхДанных,
+	ВЫБОР
+		КОГДА СотрудникиСрезПоследних.ВидСобытия = ЗНАЧЕНИЕ(Перечисление.ВидыКадровыхСобытий.Увольнение)
+			ТОГДА ИСТИНА
+		ИНАЧЕ ЛОЖЬ
+	КОНЕЦ КАК Уволен
+ИЗ
+	Справочник.ФизическиеЛица КАК СправочникФизическиеЛица
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.Сотрудники.СрезПоследних(, Организация = &amp;Организация) КАК СотрудникиСрезПоследних
+		ПО СправочникФизическиеЛица.Ссылка = СотрудникиСрезПоследних.ФизЛицо</QueryText>
 				<MainTable>Catalog.ФизическиеЛица</MainTable>
 				<ListSettings>
 					<dcsset:filter>
@@ -434,6 +475,22 @@
 						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
 					</dcsset:order>
 					<dcsset:conditionalAppearance>
+						<dcsset:item>
+							<dcsset:selection/>
+							<dcsset:filter>
+								<dcsset:item xsi:type="dcsset:FilterItemComparison">
+									<dcsset:left xsi:type="dcscor:Field">Уволен</dcsset:left>
+									<dcsset:comparisonType>Equal</dcsset:comparisonType>
+									<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
+								</dcsset:item>
+							</dcsset:filter>
+							<dcsset:appearance>
+								<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+									<dcscor:parameter>ЦветТекста</dcscor:parameter>
+									<dcscor:value xsi:type="v8ui:Color">style:НедоступныеДанныеЦвет</dcscor:value>
+								</dcscor:item>
+							</dcsset:appearance>
+						</dcsset:item>
 						<dcsset:viewMode>Normal</dcsset:viewMode>
 						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
 					</dcsset:conditionalAppearance>
@@ -530,5 +587,30 @@
 				</v8:StringQualifiers>
 			</Type>
 		</Attribute>
+		<Attribute name="ОтборОрганизация" id="8">
+			<Type>
+				<v8:Type>cfg:CatalogRef.Организации</v8:Type>
+			</Type>
+			<FunctionalOptions>
+				<Item>FunctionalOption.УчетПоНесколькимОрганизациям</Item>
+			</FunctionalOptions>
+		</Attribute>
 	</Attributes>
+	<Commands>
+		<Command name="ИзменитьВыделенные" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Изменить выделенные...</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Изменить выделенные объекты</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ИзменитьВыделенные</Action>
+		</Command>
+	</Commands>
 </Form>

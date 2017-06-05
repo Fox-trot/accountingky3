@@ -21,16 +21,6 @@
 			</title>
 		</field>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>Статья</dataPath>
-			<field>Статья</field>
-			<title xsi:type="v8:LocalStringType">
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Статья</v8:content>
-				</v8:item>
-			</title>
-		</field>
-		<field xsi:type="DataSetFieldField">
 			<dataPath>Субконто2</dataPath>
 			<field>Субконто2</field>
 		</field>
@@ -87,15 +77,13 @@
 		<query>ВЫБРАТЬ
 	ХозрасчетныйОбороты.Счет,
 	СУММА(ХозрасчетныйОбороты.СуммаОборот) КАК Сумма,
-	ХозрасчетныйОбороты.Субконто1.ВидСтатьиЗатрат КАК ВидСтатьи,
-	ХозрасчетныйОбороты.Субконто1.НаименованиеАналитика КАК Статья
+	ХозрасчетныйОбороты.Субконто1.ВидЗатрат КАК ВидСтатьи
 ИЗ
-	РегистрБухгалтерии.Хозрасчетный.Обороты(, , , Счет В ИЕРАРХИИ (&amp;СписокСчетов), ЗНАЧЕНИЕ(ПланВидовХарактеристик.ВидыСубконтоХозрасчетные.СтатьиЗатратИДоходов), Организация = &amp;Организация, , ) КАК ХозрасчетныйОбороты
+	РегистрБухгалтерии.Хозрасчетный.Обороты(, , , Счет В ИЕРАРХИИ (&amp;СписокСчетов), ЗНАЧЕНИЕ(ПланВидовХарактеристик.ВидыСубконтоХозрасчетные.СтатьиЗатрат), Организация = &amp;Организация, , ) КАК ХозрасчетныйОбороты
 
 СГРУППИРОВАТЬ ПО
 	ХозрасчетныйОбороты.Счет,
-	ХозрасчетныйОбороты.Субконто1.ВидСтатьиЗатрат,
-	ХозрасчетныйОбороты.Субконто1.НаименованиеАналитика</query>
+	ХозрасчетныйОбороты.Субконто1.ВидЗатрат</query>
 	</dataSet>
 	<totalField>
 		<dataPath>Сумма</dataPath>
@@ -154,21 +142,6 @@
 			<v8:variant xsi:type="v8:StandardPeriodVariant">ThisMonth</v8:variant>
 		</value>
 		<useRestriction>false</useRestriction>
-	</parameter>
-	<parameter>
-		<name>ВыводитьЗаголовок</name>
-		<title xsi:type="v8:LocalStringType">
-			<v8:item>
-				<v8:lang>ru</v8:lang>
-				<v8:content>Выводить заголовок</v8:content>
-			</v8:item>
-		</title>
-		<valueType>
-			<v8:Type>xs:boolean</v8:Type>
-		</valueType>
-		<value xsi:type="xs:boolean">true</value>
-		<useRestriction>false</useRestriction>
-		<availableAsField>false</availableAsField>
 	</parameter>
 	<parameter>
 		<name>ВыводитьПодписи</name>
@@ -278,13 +251,6 @@
 						<dcsset:item xsi:type="dcsset:GroupItemField">
 							<dcsset:field>Счет</dcsset:field>
 							<dcsset:groupType>Hierarchy</dcsset:groupType>
-							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
-							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
-							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
-						</dcsset:item>
-						<dcsset:item xsi:type="dcsset:GroupItemField">
-							<dcsset:field>Статья</dcsset:field>
-							<dcsset:groupType>Items</dcsset:groupType>
 							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
 							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
 							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>

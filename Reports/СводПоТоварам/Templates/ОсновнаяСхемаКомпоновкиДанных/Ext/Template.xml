@@ -604,10 +604,6 @@
 			</valueType>
 		</field>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>ДокументПоступления</dataPath>
-			<field>ДокументПоступления</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
 			<dataPath>СубконтоДт3</dataPath>
 			<field>СубконтоДт3</field>
 		</field>
@@ -675,8 +671,8 @@
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ
 	ПоступленияОбороты.Организация КАК ПоступлениеОрганизация,
-	ПоступленияОбороты.ДокументПоступления.Номер КАК ПоступлениеНомер,
-	ПоступленияОбороты.ДокументПоступления.Дата КАК ПоступлениеДата,
+	ПоступленияОбороты.Регистратор.Номер КАК ПоступлениеНомер,
+	ПоступленияОбороты.Регистратор.Дата КАК ПоступлениеДата,
 	ХозрасчетныйОборотыДтКт.СчетДт КАК ПоступлениеСчет,
 	ПоступленияОбороты.Контрагент КАК ПоступлениеКонтрагент,
 	ХозрасчетныйОборотыДтКт.СубконтоДт1 КАК ПоступлениеНоменклатура,
@@ -688,7 +684,7 @@
 	ПоступленияОбороты.СуммаСебестоимостиОборот + ПоступленияОбороты.СуммаНеоблагаемаяОборот + ПоступленияОбороты.СуммаНДСОборот КАК ПоступлениеВсего
 ИЗ
 	РегистрБухгалтерии.Хозрасчетный.ОборотыДтКт(, , Авто, , &amp;ВидыСубконто, , , ) КАК ХозрасчетныйОборотыДтКт
-		ВНУТРЕННЕЕ СОЕДИНЕНИЕ РегистрНакопления.Поступления.Обороты(, , Авто, ) КАК ПоступленияОбороты
+		ВНУТРЕННЕЕ СОЕДИНЕНИЕ РегистрНакопления.ПоступлениеТоваров.Обороты(, , Авто, ) КАК ПоступленияОбороты
 		ПО ХозрасчетныйОборотыДтКт.Регистратор = ПоступленияОбороты.Регистратор
 			И ХозрасчетныйОборотыДтКт.СубконтоДт1 = ПоступленияОбороты.Номенклатура
 			И ХозрасчетныйОборотыДтКт.СуммаОборот = ПоступленияОбороты.СуммаСебестоимостиОборот
@@ -700,8 +696,8 @@
 
 ВЫБРАТЬ
 	ПоступленияОбороты.Организация,
-	ПоступленияОбороты.ДокументПоступления.Номер,
-	ПоступленияОбороты.ДокументПоступления.Дата,
+	ПоступленияОбороты.Регистратор.Номер,
+	ПоступленияОбороты.Регистратор.Дата,
 	ХозрасчетныйОборотыДтКт.СчетДт,
 	ПоступленияОбороты.Контрагент,
 	ХозрасчетныйОборотыДтКт.СубконтоДт1,
@@ -713,7 +709,7 @@
 	ПоступленияОбороты.СуммаСебестоимостиОборот + ПоступленияОбороты.СуммаНеоблагаемаяОборот + ПоступленияОбороты.СуммаНДСОборот
 ИЗ
 	РегистрБухгалтерии.Хозрасчетный.ОборотыДтКт(, , Авто, , &amp;ВидыСубконтоМБП, , , ) КАК ХозрасчетныйОборотыДтКт
-		ВНУТРЕННЕЕ СОЕДИНЕНИЕ РегистрНакопления.Поступления.Обороты(, , Авто, ) КАК ПоступленияОбороты
+		ВНУТРЕННЕЕ СОЕДИНЕНИЕ РегистрНакопления.ПоступлениеТоваров.Обороты(, , Авто, ) КАК ПоступленияОбороты
 		ПО ХозрасчетныйОборотыДтКт.Регистратор = ПоступленияОбороты.Регистратор
 			И ХозрасчетныйОборотыДтКт.СубконтоДт1 = ПоступленияОбороты.Номенклатура
 			И ХозрасчетныйОборотыДтКт.СуммаОборот = ПоступленияОбороты.СуммаСебестоимостиОборот
@@ -926,12 +922,16 @@
 			<dataPath>Договор</dataPath>
 			<field>Договор</field>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>БезналичныйРасчет</dataPath>
+			<field>БезналичныйРасчет</field>
+		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ
 	РеализацияОбороты.Организация КАК РеализацияОрганизация,
 	РеализацияИтоги.Контрагент КАК РеализацияКонтрагент,
 	РеализацияОбороты.Номенклатура КАК РеализацияНоменклатура,
-	РеализацияИтоги.Склад КАК РеализацияСклад,
+	"" КАК РеализацияСклад,
 	ВЫРАЗИТЬ(РеализацияИтоги.ДокументРеализации КАК Документ.РеализацияТоваровУслуг) КАК РеализацияРегистратор,
 	РеализацияОбороты.СебестоимостьОборот КАК РеализацияСебестоимость,
 	РеализацияОбороты.ДоходОборот КАК РеализацияБезНДС,
@@ -942,7 +942,7 @@
 	ВЫРАЗИТЬ(РеализацияОбороты.ДокументРеализации КАК Документ.РеализацияТоваровУслуг).Дата КАК РеализацияДата,
 	ВЫРАЗИТЬ(РеализацияОбороты.ДокументРеализации КАК Документ.РеализацияТоваровУслуг).Номер КАК РеализацияНомер
 ИЗ
-	РегистрНакопления.Реализация.Обороты(, , Авто, ) КАК РеализацияОбороты
+	РегистрНакопления.РеализацияТоваров.Обороты(, , Авто, ) КАК РеализацияОбороты
 		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.РеализацияИтоги КАК РеализацияИтоги
 		ПО РеализацияОбороты.ДокументРеализации = РеализацияИтоги.ДокументРеализации</query>
 	</dataSet>
@@ -2412,22 +2412,6 @@
 		<useRestriction>true</useRestriction>
 		<expression>&amp;СтПериод.ДатаОкончания</expression>
 		<availableAsField>false</availableAsField>
-	</parameter>
-	<parameter>
-		<name>ВыводитьЗаголовок</name>
-		<title xsi:type="v8:LocalStringType">
-			<v8:item>
-				<v8:lang>ru</v8:lang>
-				<v8:content>Выводить заголовок</v8:content>
-			</v8:item>
-		</title>
-		<valueType>
-			<v8:Type>xs:boolean</v8:Type>
-		</valueType>
-		<value xsi:type="xs:boolean">true</value>
-		<useRestriction>false</useRestriction>
-		<availableAsField>false</availableAsField>
-		<use>Always</use>
 	</parameter>
 	<parameter>
 		<name>ВыводитьПодписи</name>
@@ -4961,27 +4945,6 @@
 				<dcsset:viewMode>Normal</dcsset:viewMode>
 				<dcsset:userSettingID>017a4694-dba6-4163-9dd4-536dc83f85b9</dcsset:userSettingID>
 			</dcsset:filter>
-			<dcsset:dataParameters>
-				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-					<dcscor:parameter>ВыводитьЗаголовок</dcscor:parameter>
-					<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
-					<dcsset:viewMode>Normal</dcsset:viewMode>
-					<dcsset:userSettingID>8b0ad169-40e5-4465-b96f-a9e99e28cc0d</dcsset:userSettingID>
-				</dcscor:item>
-				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-					<dcscor:parameter>ВыводитьПодписи</dcscor:parameter>
-					<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
-					<dcsset:viewMode>Normal</dcsset:viewMode>
-					<dcsset:userSettingID>032fcf55-46e4-4eb6-b4db-3d36c2e26214</dcsset:userSettingID>
-				</dcscor:item>
-				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-					<dcscor:parameter>СтПериод</dcscor:parameter>
-					<dcscor:value xsi:type="v8:StandardPeriod">
-						<v8:variant xsi:type="v8:StandardPeriodVariant">ThisMonth</v8:variant>
-					</dcscor:value>
-					<dcsset:userSettingID>bf9399eb-2cd6-4f1a-82ad-7cf70b5df3c6</dcsset:userSettingID>
-				</dcscor:item>
-			</dcsset:dataParameters>
 			<dcsset:order>
 				<dcsset:viewMode>Normal</dcsset:viewMode>
 				<dcsset:userSettingID>1ebc0613-43b6-46c1-a3c4-b264f7b965a5</dcsset:userSettingID>
@@ -5394,27 +5357,6 @@
 				<dcsset:viewMode>Normal</dcsset:viewMode>
 				<dcsset:userSettingID>e4f011cc-16a8-4c9b-9e9b-fa144cb61d32</dcsset:userSettingID>
 			</dcsset:filter>
-			<dcsset:dataParameters>
-				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-					<dcscor:parameter>ВыводитьЗаголовок</dcscor:parameter>
-					<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
-					<dcsset:viewMode>Normal</dcsset:viewMode>
-					<dcsset:userSettingID>b523edc4-fa53-412e-8576-a9df8f28cc27</dcsset:userSettingID>
-				</dcscor:item>
-				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-					<dcscor:parameter>ВыводитьПодписи</dcscor:parameter>
-					<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
-					<dcsset:viewMode>Normal</dcsset:viewMode>
-					<dcsset:userSettingID>185de65a-4dd2-4b8e-92c4-73bb3481029a</dcsset:userSettingID>
-				</dcscor:item>
-				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-					<dcscor:parameter>СтПериод</dcscor:parameter>
-					<dcscor:value xsi:type="v8:StandardPeriod">
-						<v8:variant xsi:type="v8:StandardPeriodVariant">ThisMonth</v8:variant>
-					</dcscor:value>
-					<dcsset:userSettingID>96947e35-824d-4cc5-83d3-94766859f51d</dcsset:userSettingID>
-				</dcscor:item>
-			</dcsset:dataParameters>
 			<dcsset:order>
 				<dcsset:viewMode>Normal</dcsset:viewMode>
 				<dcsset:userSettingID>08f989e5-5243-4563-b489-02727dca19da</dcsset:userSettingID>
@@ -5654,27 +5596,6 @@
 					</dcsset:userSettingPresentation>
 				</dcsset:item>
 			</dcsset:filter>
-			<dcsset:dataParameters>
-				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-					<dcscor:parameter>ВыводитьЗаголовок</dcscor:parameter>
-					<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
-					<dcsset:viewMode>Normal</dcsset:viewMode>
-					<dcsset:userSettingID>51dac03d-fb4c-4cc3-bcfc-66466ad734b6</dcsset:userSettingID>
-				</dcscor:item>
-				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-					<dcscor:parameter>ВыводитьПодписи</dcscor:parameter>
-					<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
-					<dcsset:viewMode>Normal</dcsset:viewMode>
-					<dcsset:userSettingID>537a9752-a5a5-4fa1-8374-aff40d4d1da3</dcsset:userSettingID>
-				</dcscor:item>
-				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-					<dcscor:parameter>СтПериод</dcscor:parameter>
-					<dcscor:value xsi:type="v8:StandardPeriod">
-						<v8:variant xsi:type="v8:StandardPeriodVariant">ThisMonth</v8:variant>
-					</dcscor:value>
-					<dcsset:userSettingID>25b8c706-2f6e-45e0-b2fb-a3d5cee08508</dcsset:userSettingID>
-				</dcscor:item>
-			</dcsset:dataParameters>
 			<dcsset:outputParameters>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 					<dcscor:parameter>Заголовок</dcscor:parameter>
@@ -5875,27 +5796,6 @@
 					</dcsset:userSettingPresentation>
 				</dcsset:item>
 			</dcsset:filter>
-			<dcsset:dataParameters>
-				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-					<dcscor:parameter>ВыводитьЗаголовок</dcscor:parameter>
-					<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
-					<dcsset:viewMode>Normal</dcsset:viewMode>
-					<dcsset:userSettingID>1525901c-c9af-40aa-9523-02017208b0c0</dcsset:userSettingID>
-				</dcscor:item>
-				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-					<dcscor:parameter>ВыводитьПодписи</dcscor:parameter>
-					<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
-					<dcsset:viewMode>Normal</dcsset:viewMode>
-					<dcsset:userSettingID>537a9752-a5a5-4fa1-8374-aff40d4d1da3</dcsset:userSettingID>
-				</dcscor:item>
-				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-					<dcscor:parameter>СтПериод</dcscor:parameter>
-					<dcscor:value xsi:type="v8:StandardPeriod">
-						<v8:variant xsi:type="v8:StandardPeriodVariant">ThisMonth</v8:variant>
-					</dcscor:value>
-					<dcsset:userSettingID>25b8c706-2f6e-45e0-b2fb-a3d5cee08508</dcsset:userSettingID>
-				</dcscor:item>
-			</dcsset:dataParameters>
 			<dcsset:outputParameters>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 					<dcscor:parameter>Заголовок</dcscor:parameter>
@@ -6079,27 +5979,6 @@
 					<dcsset:userSettingID>070844f4-df17-4e65-9b0a-369e78a86456</dcsset:userSettingID>
 				</dcsset:item>
 			</dcsset:filter>
-			<dcsset:dataParameters>
-				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-					<dcscor:parameter>ВыводитьЗаголовок</dcscor:parameter>
-					<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
-					<dcsset:viewMode>Normal</dcsset:viewMode>
-					<dcsset:userSettingID>fdd80196-10a9-4b86-89f2-fdb1cfbfe50a</dcsset:userSettingID>
-				</dcscor:item>
-				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-					<dcscor:parameter>ВыводитьПодписи</dcscor:parameter>
-					<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
-					<dcsset:viewMode>Normal</dcsset:viewMode>
-					<dcsset:userSettingID>032fcf55-46e4-4eb6-b4db-3d36c2e26214</dcsset:userSettingID>
-				</dcscor:item>
-				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-					<dcscor:parameter>СтПериод</dcscor:parameter>
-					<dcscor:value xsi:type="v8:StandardPeriod">
-						<v8:variant xsi:type="v8:StandardPeriodVariant">ThisMonth</v8:variant>
-					</dcscor:value>
-					<dcsset:userSettingID>bf9399eb-2cd6-4f1a-82ad-7cf70b5df3c6</dcsset:userSettingID>
-				</dcscor:item>
-			</dcsset:dataParameters>
 			<dcsset:order>
 				<dcsset:item xsi:type="dcsset:OrderItemField">
 					<dcsset:field>КарточкаТМЗДатаДокумента</dcsset:field>
@@ -6511,27 +6390,6 @@
 					</dcsset:userSettingPresentation>
 				</dcsset:item>
 			</dcsset:filter>
-			<dcsset:dataParameters>
-				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-					<dcscor:parameter>ВыводитьЗаголовок</dcscor:parameter>
-					<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
-					<dcsset:viewMode>Normal</dcsset:viewMode>
-					<dcsset:userSettingID>c1496d12-7fac-4d15-afc5-7e58060b2388</dcsset:userSettingID>
-				</dcscor:item>
-				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-					<dcscor:parameter>ВыводитьПодписи</dcscor:parameter>
-					<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
-					<dcsset:viewMode>Normal</dcsset:viewMode>
-					<dcsset:userSettingID>032fcf55-46e4-4eb6-b4db-3d36c2e26214</dcsset:userSettingID>
-				</dcscor:item>
-				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-					<dcscor:parameter>СтПериод</dcscor:parameter>
-					<dcscor:value xsi:type="v8:StandardPeriod">
-						<v8:variant xsi:type="v8:StandardPeriodVariant">ThisMonth</v8:variant>
-					</dcscor:value>
-					<dcsset:userSettingID>bf9399eb-2cd6-4f1a-82ad-7cf70b5df3c6</dcsset:userSettingID>
-				</dcscor:item>
-			</dcsset:dataParameters>
 			<dcsset:order>
 				<dcsset:item xsi:type="dcsset:OrderItemField">
 					<dcsset:field>ВедомостьРасходаКодНоменклатуры</dcsset:field>

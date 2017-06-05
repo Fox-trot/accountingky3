@@ -7,6 +7,8 @@
 		</v8:item>
 	</Title>
 	<AutoTitle>false</AutoTitle>
+	<Customizable>false</Customizable>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
 		<Autofill>false</Autofill>
 	</AutoCommandBar>
@@ -21,12 +23,6 @@
 					<v8:content>Другие отчеты</v8:content>
 				</v8:item>
 			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Страница другие отчеты</v8:content>
-				</v8:item>
-			</ToolTip>
 			<Group>Vertical</Group>
 			<ShowTitle>false</ShowTitle>
 			<ExtendedTooltip name="СтраницаДругиеОтчетыРасширеннаяПодсказка" id="2"/>
@@ -47,13 +43,20 @@
 			</ChildItems>
 		</UsualGroup>
 		<UsualGroup name="ГруппаПодвал" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подвал</v8:content>
+				</v8:item>
+			</Title>
+			<VerticalStretch>false</VerticalStretch>
 			<Group>Horizontal</Group>
 			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
 			<ExtendedTooltip name="ГруппаПодвалРасширеннаяПодсказка" id="6"/>
 			<ChildItems>
 				<CheckBoxField name="ЗакрыватьПослеВыбора" id="7">
 					<DataPath>ЗакрыватьПослеВыбора</DataPath>
-					<Visible>false</Visible>
 					<TitleLocation>Right</TitleLocation>
 					<CheckBoxType>Auto</CheckBoxType>
 					<ContextMenu name="ЗакрыватьПослеВыбораКонтекстноеМеню" id="8"/>
@@ -62,14 +65,28 @@
 						<Event name="OnChange">ЗакрыватьЭтоОкноПослеПереходаКОтчетуПриИзменении</Event>
 					</Events>
 				</CheckBoxField>
-				<CommandBar name="Группа1" id="10">
+				<CommandBar name="ГруппаКоманднаяПанель" id="10">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Командная панель</v8:content>
+						</v8:item>
+					</Title>
 					<HorizontalLocation>Right</HorizontalLocation>
-					<ExtendedTooltip name="Группа1РасширеннаяПодсказка" id="11"/>
+					<CommandSource>Form</CommandSource>
+					<ExtendedTooltip name="ГруппаКоманднаяПанельРасширеннаяПодсказка" id="11"/>
 					<ChildItems>
 						<Button name="Закрыть" id="12">
 							<Type>CommandBarButton</Type>
+							<DefaultButton>true</DefaultButton>
 							<CommandName>Form.StandardCommand.Close</CommandName>
 							<ExtendedTooltip name="ЗакрытьРасширеннаяПодсказка" id="13"/>
+						</Button>
+						<Button name="ФормаСправка" id="14">
+							<Type>CommandBarButton</Type>
+							<OnlyInAllActions>true</OnlyInAllActions>
+							<CommandName>Form.StandardCommand.Help</CommandName>
+							<ExtendedTooltip name="ФормаСправкаРасширеннаяПодсказка" id="15"/>
 						</Button>
 					</ChildItems>
 				</CommandBar>

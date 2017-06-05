@@ -7,56 +7,12 @@
 	<dataSet xsi:type="DataSetQuery">
 		<name>НаборДанных1</name>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>СчетДт</dataPath>
-			<field>СчетДт</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>СчетКт</dataPath>
-			<field>СчетКт</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
 			<dataPath>ОсновноеСредство</dataPath>
 			<field>ОсновноеСредство</field>
 		</field>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>Организация</dataPath>
-			<field>Организация</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
 			<dataPath>ИнвентарныйНомер</dataPath>
 			<field>ИнвентарныйНомер</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>ВалютаКт</dataPath>
-			<field>ВалютаКт</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>СубконтоКт3</dataPath>
-			<field>СубконтоКт3</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>СубконтоКт2</dataPath>
-			<field>СубконтоКт2</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>СубконтоКт1</dataPath>
-			<field>СубконтоКт1</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>ВалютаДт</dataPath>
-			<field>ВалютаДт</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>СубконтоДт3</dataPath>
-			<field>СубконтоДт3</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>СубконтоДт2</dataPath>
-			<field>СубконтоДт2</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>СубконтоДт1</dataPath>
-			<field>СубконтоДт1</field>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>Сумма</dataPath>
@@ -86,9 +42,12 @@
 		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ
-	СостоянияОССрезПоследних.ОсновноеСредство,
+	СостоянияОССрезПоследних.ОсновноеСредство КАК ОсновноеСредство,
 	СостоянияОССрезПоследних.Период КАК ДатаСписания
 ПОМЕСТИТЬ ВТ_СписанныеОС
+{ВЫБРАТЬ
+	ОсновноеСредство.*,
+	ДатаСписания}
 ИЗ
 	РегистрСведений.СостоянияОС.СрезПоследних(, ) КАК СостоянияОССрезПоследних
 ГДЕ
@@ -97,12 +56,18 @@
 
 ////////////////////////////////////////////////////////////////////////////////
 ВЫБРАТЬ
-	СписанныеОС.ОсновноеСредство,
-	ПараметрыУчетаОССрезПоследних.ИнвентарныйНомер,
-	СписанныеОС.ДатаСписания,
+	СписанныеОС.ОсновноеСредство КАК ОсновноеСредство,
+	ПараметрыУчетаОССрезПоследних.ИнвентарныйНомер КАК ИнвентарныйНомер,
+	СписанныеОС.ДатаСписания КАК ДатаСписания,
 	ПараметрыУчетаОССрезПоследних.СчетУчета КАК СчетУчета,
 	ПараметрыУчетаОССрезПоследних.СчетУчета.ПарныйСчет КАК СчетАмортизации
 ПОМЕСТИТЬ ВТ_УскоренненыеОС
+{ВЫБРАТЬ
+	ОсновноеСредство.*,
+	ИнвентарныйНомер,
+	ДатаСписания,
+	СчетУчета.*,
+	СчетАмортизации.*}
 ИЗ
 	ВТ_СписанныеОС КАК СписанныеОС
 		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.СостоянияОС.СрезПоследних(, Состояние = ЗНАЧЕНИЕ(Перечисление.ВидыСостоянийОС.ПринятоКУчету)) КАК СостоянияОССрезПоследних
@@ -115,16 +80,22 @@
 
 ////////////////////////////////////////////////////////////////////////////////
 ВЫБРАТЬ
-	ВТ_УскоренненыеОС.ИнвентарныйНомер,
-	ВТ_УскоренненыеОС.ОсновноеСредство,
+	ВТ_УскоренненыеОС.ИнвентарныйНомер КАК ИнвентарныйНомер,
+	ВТ_УскоренненыеОС.ОсновноеСредство КАК ОсновноеСредство,
 	Расходы.СуммаОборот КАК Сумма,
 	ВТ_УскоренненыеОС.ДатаСписания КАК Дата
+{ВЫБРАТЬ
+	ИнвентарныйНомер,
+	ОсновноеСредство.*,
+	Сумма,
+	Дата}
 ИЗ
 	ВТ_УскоренненыеОС КАК ВТ_УскоренненыеОС
 		ЛЕВОЕ СОЕДИНЕНИЕ РегистрБухгалтерии.Хозрасчетный.ОборотыДтКт(, , , , , , , ) КАК Расходы
 		ПО ВТ_УскоренненыеОС.СчетУчета = Расходы.СчетКт
 			И ВТ_УскоренненыеОС.СчетУчета.ПарныйСчет &lt;&gt; Расходы.СчетДт
 			И ВТ_УскоренненыеОС.СчетУчета &lt;&gt; Расходы.СчетДт</query>
+		<autoFillFields>false</autoFillFields>
 	</dataSet>
 	<dataSet xsi:type="DataSetQuery">
 		<name>МестонахождениеОС</name>
@@ -148,12 +119,24 @@
 				</dcscor:item>
 			</inputParameters>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Организация</dataPath>
+			<field>Организация</field>
+		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ
-	МестонахождениеОССрезПоследних.ОсновноеСредство,
-	МестонахождениеОССрезПоследних.Подразделение
+	МестонахождениеОССрезПоследних.ОсновноеСредство КАК ОсновноеСредство,
+	МестонахождениеОССрезПоследних.Подразделение КАК Подразделение
+{ВЫБРАТЬ
+	ОсновноеСредство.*,
+	Подразделение.*}
 ИЗ
-	РегистрСведений.МестонахождениеОС.СрезПоследних(, ) КАК МестонахождениеОССрезПоследних</query>
+	РегистрСведений.МестонахождениеОС.СрезПоследних(, ) КАК МестонахождениеОССрезПоследних
+{ГДЕ
+	МестонахождениеОССрезПоследних.Подразделение.*,
+	МестонахождениеОССрезПоследних.Организация.*,
+	МестонахождениеОССрезПоследних.ОсновноеСредство.*}</query>
+		<autoFillFields>false</autoFillFields>
 	</dataSet>
 	<dataSetLink>
 		<sourceDataSet>НаборДанных1</sourceDataSet>
@@ -167,63 +150,6 @@
 		<dataPath>Сумма</dataPath>
 		<expression>Сумма(Сумма)</expression>
 	</totalField>
-	<parameter>
-		<name>НачалоПериода</name>
-		<title xsi:type="v8:LocalStringType">
-			<v8:item>
-				<v8:lang>ru</v8:lang>
-				<v8:content>Начало периода</v8:content>
-			</v8:item>
-		</title>
-		<valueType>
-			<v8:Type>xs:dateTime</v8:Type>
-			<v8:DateQualifiers>
-				<v8:DateFractions>DateTime</v8:DateFractions>
-			</v8:DateQualifiers>
-		</valueType>
-		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
-		<useRestriction>true</useRestriction>
-		<expression>&amp;СтПериод.ДатаНачала</expression>
-		<availableAsField>false</availableAsField>
-	</parameter>
-	<parameter>
-		<name>КонецПериода</name>
-		<title xsi:type="v8:LocalStringType">
-			<v8:item>
-				<v8:lang>ru</v8:lang>
-				<v8:content>Конец периода</v8:content>
-			</v8:item>
-		</title>
-		<valueType>
-			<v8:Type>xs:dateTime</v8:Type>
-			<v8:DateQualifiers>
-				<v8:DateFractions>DateTime</v8:DateFractions>
-			</v8:DateQualifiers>
-		</valueType>
-		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
-		<useRestriction>true</useRestriction>
-		<expression>&amp;СтПериод.ДатаОкончания</expression>
-		<availableAsField>false</availableAsField>
-	</parameter>
-	<parameter>
-		<name>Период</name>
-		<title xsi:type="v8:LocalStringType">
-			<v8:item>
-				<v8:lang>ru</v8:lang>
-				<v8:content>Период</v8:content>
-			</v8:item>
-		</title>
-		<valueType>
-			<v8:Type>xs:dateTime</v8:Type>
-			<v8:DateQualifiers>
-				<v8:DateFractions>DateTime</v8:DateFractions>
-			</v8:DateQualifiers>
-		</valueType>
-		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
-		<useRestriction>true</useRestriction>
-		<expression>&amp;СтПериод.ДатаОкончания</expression>
-		<availableAsField>false</availableAsField>
-	</parameter>
 	<parameter>
 		<name>СтПериод</name>
 		<title xsi:type="v8:LocalStringType">
@@ -241,22 +167,6 @@
 			<v8:endDate>0001-01-01T00:00:00</v8:endDate>
 		</value>
 		<useRestriction>false</useRestriction>
-	</parameter>
-	<parameter>
-		<name>ВыводитьЗаголовок</name>
-		<title xsi:type="v8:LocalStringType">
-			<v8:item>
-				<v8:lang>ru</v8:lang>
-				<v8:content>Выводить заголовок</v8:content>
-			</v8:item>
-		</title>
-		<valueType>
-			<v8:Type>xs:boolean</v8:Type>
-		</valueType>
-		<value xsi:type="xs:boolean">true</value>
-		<useRestriction>false</useRestriction>
-		<availableAsField>false</availableAsField>
-		<use>Always</use>
 	</parameter>
 	<parameter>
 		<name>ВыводитьПодписи</name>
@@ -325,23 +235,17 @@
 			</dcsset:filter>
 			<dcsset:dataParameters>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-					<dcscor:parameter>ВыводитьЗаголовок</dcscor:parameter>
-					<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
-					<dcsset:viewMode>Normal</dcsset:viewMode>
-					<dcsset:userSettingID>058a15bf-74dc-434f-b8fd-88424df1b224</dcsset:userSettingID>
+					<dcscor:parameter>СтПериод</dcscor:parameter>
+					<dcscor:value xsi:type="v8:StandardPeriod">
+						<v8:variant xsi:type="v8:StandardPeriodVariant">ThisMonth</v8:variant>
+					</dcscor:value>
+					<dcsset:userSettingID>a36b3fac-8073-48a5-919f-58ad591bae8b</dcsset:userSettingID>
 				</dcscor:item>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 					<dcscor:parameter>ВыводитьПодписи</dcscor:parameter>
 					<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
 					<dcsset:viewMode>Normal</dcsset:viewMode>
 					<dcsset:userSettingID>b6d47368-24b0-47e5-9415-9b1882d777e1</dcsset:userSettingID>
-				</dcscor:item>
-				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-					<dcscor:parameter>СтПериод</dcscor:parameter>
-					<dcscor:value xsi:type="v8:StandardPeriod">
-						<v8:variant xsi:type="v8:StandardPeriodVariant">ThisMonth</v8:variant>
-					</dcscor:value>
-					<dcsset:userSettingID>a36b3fac-8073-48a5-919f-58ad591bae8b</dcsset:userSettingID>
 				</dcscor:item>
 			</dcsset:dataParameters>
 			<dcsset:order>

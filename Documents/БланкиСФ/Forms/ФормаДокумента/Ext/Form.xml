@@ -34,6 +34,14 @@
 					</v8:item>
 				</ToolTip>
 				<ExtendedTooltip name="ГруппаГлобальныеКомандыРасширеннаяПодсказка" id="283"/>
+				<ChildItems>
+					<Button name="ФормаОбщаяКомандаОтчетПоДвижениям" id="449">
+						<Type>CommandBarButton</Type>
+						<CommandName>CommonCommand.ОтчетПоДвижениям</CommandName>
+						<DataPath>Объект.Ref</DataPath>
+						<ExtendedTooltip name="ФормаОбщаяКомандаОтчетПоДвижениямРасширеннаяПодсказка" id="450"/>
+					</Button>
+				</ChildItems>
 			</ButtonGroup>
 		</ChildItems>
 	</AutoCommandBar>
@@ -68,8 +76,8 @@
 					<ShowTitle>false</ShowTitle>
 					<ExtendedTooltip name="ЛеваяКолонкаExtendedTooltip" id="4"/>
 					<ChildItems>
-						<InputField name="Операция" id="391">
-							<DataPath>Объект.Операция</DataPath>
+						<InputField name="ВидОперации" id="391">
+							<DataPath>Объект.ВидОперации</DataPath>
 							<ListChoiceMode>true</ListChoiceMode>
 							<ChoiceList>
 								<xr:Item>
@@ -122,11 +130,23 @@
 								</xr:Item>
 							</ChoiceList>
 							<BackColor>style:ФонУправляющегоПоля</BackColor>
-							<ContextMenu name="ОперацияКонтекстноеМеню" id="392"/>
-							<ExtendedTooltip name="ОперацияРасширеннаяПодсказка" id="393"/>
+							<ContextMenu name="ВидОперацииКонтекстноеМеню" id="392"/>
+							<ExtendedTooltip name="ВидОперацииРасширеннаяПодсказка" id="393"/>
 							<Events>
-								<Event name="OnChange">ОперацияПриИзменении</Event>
+								<Event name="OnChange">ВидОперацииПриИзменении</Event>
 							</Events>
+						</InputField>
+						<InputField name="Контрагент" id="438">
+							<DataPath>Объект.Контрагент</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Контрагент (выдает)</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTipRepresentation>Button</ToolTipRepresentation>
+							<ContextMenu name="КонтрагентКонтекстноеМеню" id="439"/>
+							<ExtendedTooltip name="КонтрагентРасширеннаяПодсказка" id="440"/>
 						</InputField>
 					</ChildItems>
 				</UsualGroup>
@@ -205,11 +225,6 @@
 								<Event name="OnChange">ОрганизацияПриИзменении</Event>
 							</Events>
 						</InputField>
-						<InputField name="Выдает" id="438">
-							<DataPath>Объект.Выдает</DataPath>
-							<ContextMenu name="ВыдаетКонтекстноеМеню" id="439"/>
-							<ExtendedTooltip name="ВыдаетРасширеннаяПодсказка" id="440"/>
-						</InputField>
 					</ChildItems>
 				</UsualGroup>
 			</ChildItems>
@@ -233,7 +248,7 @@
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Страница спецификация</v8:content>
+							<v8:content>Спецификация бланков</v8:content>
 						</v8:item>
 					</Title>
 					<ToolTip>
@@ -242,6 +257,7 @@
 							<v8:content>Страница спецификация</v8:content>
 						</v8:item>
 					</ToolTip>
+					<TitleDataPath>Объект.Спецификация.RowsCount</TitleDataPath>
 					<ExtendedTooltip name="СтраницаСпецификацияРасширеннаяПодсказка" id="397"/>
 					<ChildItems>
 						<Table name="Спецификация" id="398">
@@ -294,7 +310,14 @@
 								</InputField>
 								<InputField name="СпецификацияПервыйНомер" id="414">
 									<DataPath>Объект.Спецификация.ПервыйНомер</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>№ от</v8:content>
+										</v8:item>
+									</Title>
 									<EditMode>EnterOnInput</EditMode>
+									<Width>10</Width>
 									<ContextMenu name="СпецификацияПервыйНомерКонтекстноеМеню" id="415"/>
 									<ExtendedTooltip name="СпецификацияПервыйНомерРасширеннаяПодсказка" id="416"/>
 									<Events>
@@ -303,7 +326,14 @@
 								</InputField>
 								<InputField name="СпецификацияПоследнийНомер" id="417">
 									<DataPath>Объект.Спецификация.ПоследнийНомер</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>№ по</v8:content>
+										</v8:item>
+									</Title>
 									<EditMode>EnterOnInput</EditMode>
+									<Width>10</Width>
 									<ContextMenu name="СпецификацияПоследнийНомерКонтекстноеМеню" id="418"/>
 									<ExtendedTooltip name="СпецификацияПоследнийНомерРасширеннаяПодсказка" id="419"/>
 									<Events>
@@ -317,24 +347,12 @@
 									<ContextMenu name="СпецификацияКоличествоКонтекстноеМеню" id="430"/>
 									<ExtendedTooltip name="СпецификацияКоличествоРасширеннаяПодсказка" id="431"/>
 								</InputField>
-								<InputField name="СпецификацияФормат" id="423">
-									<DataPath>Объект.Спецификация.Формат</DataPath>
-									<EditMode>EnterOnInput</EditMode>
-									<ContextMenu name="СпецификацияФорматКонтекстноеМеню" id="424"/>
-									<ExtendedTooltip name="СпецификацияФорматРасширеннаяПодсказка" id="425"/>
-								</InputField>
-								<CheckBoxField name="СпецификацияРучные" id="426">
-									<DataPath>Объект.Спецификация.Ручные</DataPath>
-									<EditMode>EnterOnInput</EditMode>
-									<CheckBoxType>Auto</CheckBoxType>
-									<ContextMenu name="СпецификацияРучныеКонтекстноеМеню" id="427"/>
-									<ExtendedTooltip name="СпецификацияРучныеРасширеннаяПодсказка" id="428"/>
-								</CheckBoxField>
-								<InputField name="СпецификацияПримечание" id="432">
+								<InputField name="СпецификацияПримечание" id="451">
 									<DataPath>Объект.Спецификация.Примечание</DataPath>
 									<EditMode>EnterOnInput</EditMode>
-									<ContextMenu name="СпецификацияПримечаниеКонтекстноеМеню" id="433"/>
-									<ExtendedTooltip name="СпецификацияПримечаниеРасширеннаяПодсказка" id="434"/>
+									<Width>15</Width>
+									<ContextMenu name="СпецификацияПримечаниеКонтекстноеМеню" id="452"/>
+									<ExtendedTooltip name="СпецификацияПримечаниеРасширеннаяПодсказка" id="453"/>
 								</InputField>
 							</ChildItems>
 						</Table>
@@ -413,6 +431,66 @@
 				</Page>
 			</ChildItems>
 		</Pages>
+		<UsualGroup name="Подвал" id="454">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подвал</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подвал</v8:content>
+				</v8:item>
+			</ToolTip>
+			<HorizontalStretch>true</HorizontalStretch>
+			<VerticalStretch>false</VerticalStretch>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ПодвалРасширеннаяПодсказка" id="455"/>
+			<ChildItems>
+				<UsualGroup name="ГруппаИтоги" id="456">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Итоги</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа итоги</v8:content>
+						</v8:item>
+					</ToolTip>
+					<GroupHorizontalAlign>Right</GroupHorizontalAlign>
+					<Group>Horizontal</Group>
+					<HorizontalAlign>Right</HorizontalAlign>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<BackColor>style:ИтогиФонГруппы</BackColor>
+					<ExtendedTooltip name="ГруппаИтогиРасширеннаяПодсказка" id="457"/>
+					<ChildItems>
+						<InputField name="СпецификацияИтогКоличество" id="458">
+							<DataPath>Объект.Спецификация.TotalКоличество</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Количество</v8:content>
+								</v8:item>
+							</Title>
+							<Width>9</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ChoiceButton>false</ChoiceButton>
+							<ContextMenu name="СпецификацияИтогКоличествоКонтекстноеМеню" id="459"/>
+							<ExtendedTooltip name="СпецификацияИтогКоличествоРасширеннаяПодсказка" id="460"/>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
 	</ChildItems>
 	<Attributes>
 		<Attribute name="Объект" id="1">
@@ -439,87 +517,14 @@
 				</v8:DateQualifiers>
 			</Type>
 		</Attribute>
-		<Attribute name="Операция" id="8">
+		<Attribute name="ПараметрыПодключаемыхКоманд" id="3">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Операция</v8:content>
-				</v8:item>
-			</Title>
-			<Type>
-				<v8:Type>cfg:EnumRef.ВидыОперацийСФ</v8:Type>
-			</Type>
-		</Attribute>
-		<Attribute name="УПП" id="9">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>УПП</v8:content>
+					<v8:content>Параметры подключаемых команд</v8:content>
 				</v8:item>
 			</Title>
 			<Type/>
 		</Attribute>
-		<ConditionalAppearance>
-			<dcsset:item>
-				<dcsset:selection>
-					<dcsset:item>
-						<dcsset:field>ТаблицаЗначенийСубконто1</dcsset:field>
-					</dcsset:item>
-				</dcsset:selection>
-				<dcsset:filter>
-					<dcsset:item xsi:type="dcsset:FilterItemComparison">
-						<dcsset:left xsi:type="dcscor:Field">ТаблицаЗначений.СубконтоМоё1Доступность</dcsset:left>
-						<dcsset:comparisonType>Equal</dcsset:comparisonType>
-						<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
-					</dcsset:item>
-				</dcsset:filter>
-				<dcsset:appearance>
-					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-						<dcscor:parameter>ТолькоПросмотр</dcscor:parameter>
-						<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
-					</dcscor:item>
-				</dcsset:appearance>
-			</dcsset:item>
-			<dcsset:item>
-				<dcsset:selection>
-					<dcsset:item>
-						<dcsset:field>ТаблицаЗначенийСубконто2</dcsset:field>
-					</dcsset:item>
-				</dcsset:selection>
-				<dcsset:filter>
-					<dcsset:item xsi:type="dcsset:FilterItemComparison">
-						<dcsset:left xsi:type="dcscor:Field">ТаблицаЗначений.СубконтоМоё2Доступность</dcsset:left>
-						<dcsset:comparisonType>Equal</dcsset:comparisonType>
-						<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
-					</dcsset:item>
-				</dcsset:filter>
-				<dcsset:appearance>
-					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-						<dcscor:parameter>ТолькоПросмотр</dcscor:parameter>
-						<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
-					</dcscor:item>
-				</dcsset:appearance>
-			</dcsset:item>
-			<dcsset:item>
-				<dcsset:selection>
-					<dcsset:item>
-						<dcsset:field>ТаблицаЗначенийСубконто3</dcsset:field>
-					</dcsset:item>
-				</dcsset:selection>
-				<dcsset:filter>
-					<dcsset:item xsi:type="dcsset:FilterItemComparison">
-						<dcsset:left xsi:type="dcscor:Field">ТаблицаЗначений.СубконтоМоё3Доступность</dcsset:left>
-						<dcsset:comparisonType>Equal</dcsset:comparisonType>
-						<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
-					</dcsset:item>
-				</dcsset:filter>
-				<dcsset:appearance>
-					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-						<dcscor:parameter>ТолькоПросмотр</dcscor:parameter>
-						<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
-					</dcscor:item>
-				</dcsset:appearance>
-			</dcsset:item>
-		</ConditionalAppearance>
 	</Attributes>
 </Form>

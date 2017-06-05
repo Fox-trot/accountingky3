@@ -7,28 +7,8 @@
 	<dataSet xsi:type="DataSetQuery">
 		<name>НаборДанных1</name>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>Субконто2</dataPath>
-			<field>Субконто2</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
 			<dataPath>Организация</dataPath>
 			<field>Организация</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>Субконто3</dataPath>
-			<field>Субконто3</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>Валюта</dataPath>
-			<field>Валюта</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>Счет</dataPath>
-			<field>Счет</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>Субконто1</dataPath>
-			<field>Субконто1</field>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>СуммаОборотДт</dataPath>
@@ -163,38 +143,48 @@
 		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ
-	ХозрасчетныйОстаткиИОбороты.Счет,
-	ХозрасчетныйОстаткиИОбороты.Счет.ПарныйСчет
+	ХозрасчетныйОстаткиИОбороты.Счет КАК Счет,
+	ХозрасчетныйОстаткиИОбороты.Счет.ПарныйСчет КАК СчетПарныйСчет
 ПОМЕСТИТЬ ВТ_Счета
+{ВЫБРАТЬ
+	Счет.*,
+	СчетПарныйСчет.*}
 ИЗ
 	РегистрБухгалтерии.Хозрасчетный.ОстаткиИОбороты(
 			,
 			,
 			,
 			,
-			НЕ СЧЕТ В
+			НЕ Счет В
 					(ВЫБРАТЬ
 						ХозрасчетныйОстаткиИОбороты.Счет.ПарныйСчет
 					ИЗ
 						РегистрБухгалтерии.Хозрасчетный.ОстаткиИОбороты(&amp;НачалоПериода, &amp;КонецПериода, , , , ЗНАЧЕНИЕ(ПланВидовХарактеристик.ВидыСубконтоХозрасчетные.ОсновныеСредства), ) КАК ХозрасчетныйОстаткиИОбороты),
 			ЗНАЧЕНИЕ(ПланВидовХарактеристик.ВидыСубконтоХозрасчетные.ОсновныеСредства),
 			) КАК ХозрасчетныйОстаткиИОбороты
+{ГДЕ
+	ХозрасчетныйОстаткиИОбороты.Организация.*}
 ;
 
 ////////////////////////////////////////////////////////////////////////////////
 ВЫБРАТЬ
 	ХозрасчетныйОстаткиИОбороты.Субконто1 КАК ОсновноеСредство,
-	ХозрасчетныйОстаткиИОбороты.СуммаОборотДт,
-	ХозрасчетныйОстаткиИОбороты.СуммаОборотКт,
+	ХозрасчетныйОстаткиИОбороты.СуммаОборотДт КАК СуммаОборотДт,
+	ХозрасчетныйОстаткиИОбороты.СуммаОборотКт КАК СуммаОборотКт,
 	ХозрасчетныйОстаткиИОбороты.СуммаКонечныйОстатокКт КАК НакопленнаяАмортизация
 ПОМЕСТИТЬ ВТ_Амортизация
+{ВЫБРАТЬ
+	ОсновноеСредство.*,
+	СуммаОборотДт,
+	СуммаОборотКт,
+	НакопленнаяАмортизация}
 ИЗ
 	РегистрБухгалтерии.Хозрасчетный.ОстаткиИОбороты(
 			,
 			,
 			,
 			,
-			СЧЕТ В
+			Счет В
 				(ВЫБРАТЬ
 					ВТ_Счета.СчетПарныйСчет
 				ИЗ
@@ -206,20 +196,29 @@
 ////////////////////////////////////////////////////////////////////////////////
 ВЫБРАТЬ
 	ХозрасчетныйОстаткиИОбороты.Субконто1 КАК ОсновноеСредство,
-	ХозрасчетныйОстаткиИОбороты.СуммаОборотДт,
-	ХозрасчетныйОстаткиИОбороты.СуммаОборотКт,
+	ХозрасчетныйОстаткиИОбороты.СуммаОборотДт КАК СуммаОборотДт,
+	ХозрасчетныйОстаткиИОбороты.СуммаОборотКт КАК СуммаОборотКт,
 	ВТ_ОборотыПоАмортизации.СуммаОборотДт КАК АмортизацияДт,
 	ВТ_ОборотыПоАмортизации.СуммаОборотКт КАК АмортизацияКт,
 	ХозрасчетныйОстаткиИОбороты.СуммаКонечныйОстаток КАК ОстаточнаяСтоимость,
-	ХозрасчетныйОстаткиИОбороты.СуммаКонечныйОстаток-ВТ_ОборотыПоАмортизации.НакопленнаяАмортизация КАК БалансоваяСтоимость,
-	ВТ_ОборотыПоАмортизации.НакопленнаяАмортизация
+	ХозрасчетныйОстаткиИОбороты.СуммаКонечныйОстаток - ВТ_ОборотыПоАмортизации.НакопленнаяАмортизация КАК БалансоваяСтоимость,
+	ВТ_ОборотыПоАмортизации.НакопленнаяАмортизация КАК НакопленнаяАмортизация
+{ВЫБРАТЬ
+	ОсновноеСредство.*,
+	СуммаОборотДт,
+	СуммаОборотКт,
+	АмортизацияДт,
+	АмортизацияКт,
+	ОстаточнаяСтоимость,
+	БалансоваяСтоимость,
+	НакопленнаяАмортизация}
 ИЗ
 	РегистрБухгалтерии.Хозрасчетный.ОстаткиИОбороты(
 			,
 			,
 			,
 			,
-			НЕ СЧЕТ В
+			НЕ Счет В
 					(ВЫБРАТЬ
 						ВТ_Счета.СчетПарныйСчет
 					ИЗ
@@ -228,6 +227,7 @@
 			) КАК ХозрасчетныйОстаткиИОбороты
 		ЛЕВОЕ СОЕДИНЕНИЕ ВТ_Амортизация КАК ВТ_ОборотыПоАмортизации
 		ПО ХозрасчетныйОстаткиИОбороты.Субконто1 = ВТ_ОборотыПоАмортизации.ОсновноеСредство</query>
+		<autoFillFields>false</autoFillFields>
 	</dataSet>
 	<dataSet xsi:type="DataSetQuery">
 		<name>МестонахождениеОС</name>
@@ -253,10 +253,16 @@
 		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ
-	МестонахождениеОССрезПоследних.ОсновноеСредство,
-	МестонахождениеОССрезПоследних.Подразделение
+	МестонахождениеОССрезПоследних.ОсновноеСредство КАК ОсновноеСредство,
+	МестонахождениеОССрезПоследних.Подразделение КАК Подразделение
+{ВЫБРАТЬ
+	ОсновноеСредство.*,
+	Подразделение.*}
 ИЗ
-	РегистрСведений.МестонахождениеОС.СрезПоследних(, ) КАК МестонахождениеОССрезПоследних</query>
+	РегистрСведений.МестонахождениеОС.СрезПоследних(, ) КАК МестонахождениеОССрезПоследних
+{ГДЕ
+	МестонахождениеОССрезПоследних.Подразделение.*}</query>
+		<autoFillFields>false</autoFillFields>
 	</dataSet>
 	<dataSetLink>
 		<sourceDataSet>НаборДанных1</sourceDataSet>
@@ -345,25 +351,6 @@
 		<availableAsField>false</availableAsField>
 	</parameter>
 	<parameter>
-		<name>Период</name>
-		<title xsi:type="v8:LocalStringType">
-			<v8:item>
-				<v8:lang>ru</v8:lang>
-				<v8:content>Период</v8:content>
-			</v8:item>
-		</title>
-		<valueType>
-			<v8:Type>xs:dateTime</v8:Type>
-			<v8:DateQualifiers>
-				<v8:DateFractions>DateTime</v8:DateFractions>
-			</v8:DateQualifiers>
-		</valueType>
-		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
-		<useRestriction>true</useRestriction>
-		<expression>&amp;СтПериод.ДатаОкончания</expression>
-		<availableAsField>false</availableAsField>
-	</parameter>
-	<parameter>
 		<name>СтПериод</name>
 		<title xsi:type="v8:LocalStringType">
 			<v8:item>
@@ -378,22 +365,6 @@
 			<v8:variant xsi:type="v8:StandardPeriodVariant">ThisMonth</v8:variant>
 		</value>
 		<useRestriction>false</useRestriction>
-	</parameter>
-	<parameter>
-		<name>ВыводитьЗаголовок</name>
-		<title xsi:type="v8:LocalStringType">
-			<v8:item>
-				<v8:lang>ru</v8:lang>
-				<v8:content>Выводить заголовок</v8:content>
-			</v8:item>
-		</title>
-		<valueType>
-			<v8:Type>xs:boolean</v8:Type>
-		</valueType>
-		<value xsi:type="xs:boolean">true</value>
-		<useRestriction>false</useRestriction>
-		<availableAsField>false</availableAsField>
-		<use>Always</use>
 	</parameter>
 	<parameter>
 		<name>ВыводитьПодписи</name>
@@ -490,12 +461,6 @@
 						<v8:variant xsi:type="v8:StandardPeriodVariant">ThisMonth</v8:variant>
 					</dcscor:value>
 					<dcsset:userSettingID>85a86176-4db5-4bde-997f-ed77123fb2df</dcsset:userSettingID>
-				</dcscor:item>
-				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-					<dcscor:parameter>ВыводитьЗаголовок</dcscor:parameter>
-					<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
-					<dcsset:viewMode>Normal</dcsset:viewMode>
-					<dcsset:userSettingID>9734335d-e9e2-49d5-aef8-dafb5a871934</dcsset:userSettingID>
 				</dcscor:item>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 					<dcscor:parameter>ВыводитьПодписи</dcscor:parameter>

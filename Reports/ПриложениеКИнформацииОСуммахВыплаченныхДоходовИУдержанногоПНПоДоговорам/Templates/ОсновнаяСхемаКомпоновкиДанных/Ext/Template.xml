@@ -66,17 +66,28 @@
 		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ
-	СотрудникиПоТрудовымСоглашениямСрезПоследних.Организация,
+	СотрудникиПоТрудовымСоглашениямСрезПоследних.Организация КАК Организация,
 	СотрудникиПоТрудовымСоглашениямСрезПоследних.ФизЛицо КАК ФизЛицо,
 	ПодоходныйНалогОбороты.Физлицо.ИНН КАК ИНН,
 	ПодоходныйНалогОбороты.ВсегоНачисленоОборот КАК ВсегоНачислено,
 	ПодоходныйНалогОбороты.ПНОборот КАК СуммаПН,
 	0 КАК ВсегоМатВыгода,
 	0 КАК СуммаПНМатВыгода
+{ВЫБРАТЬ
+	Организация.*,
+	ФизЛицо.*,
+	ИНН,
+	ВсегоНачислено,
+	СуммаПН,
+	ВсегоМатВыгода,
+	СуммаПНМатВыгода}
 ИЗ
 	РегистрСведений.СотрудникиПоТрудовымСоглашениям.СрезПоследних(, ) КАК СотрудникиПоТрудовымСоглашениямСрезПоследних
 		ВНУТРЕННЕЕ СОЕДИНЕНИЕ РегистрНакопления.ПодоходныйНалог.Обороты КАК ПодоходныйНалогОбороты
-		ПО СотрудникиПоТрудовымСоглашениямСрезПоследних.ФизЛицо = ПодоходныйНалогОбороты.Физлицо</query>
+		ПО СотрудникиПоТрудовымСоглашениямСрезПоследних.ФизЛицо = ПодоходныйНалогОбороты.Физлицо
+{ГДЕ
+	СотрудникиПоТрудовымСоглашениямСрезПоследних.Организация.*}</query>
+		<autoFillFields>false</autoFillFields>
 	</dataSet>
 	<totalField>
 		<dataPath>ВсегоМатВыгода</dataPath>
@@ -94,44 +105,6 @@
 		<dataPath>СуммаПНМатВыгода</dataPath>
 		<expression>Сумма(СуммаПНМатВыгода)</expression>
 	</totalField>
-	<parameter>
-		<name>КонецПериода</name>
-		<title xsi:type="v8:LocalStringType">
-			<v8:item>
-				<v8:lang>ru</v8:lang>
-				<v8:content>Конец периода</v8:content>
-			</v8:item>
-		</title>
-		<valueType>
-			<v8:Type>xs:dateTime</v8:Type>
-			<v8:DateQualifiers>
-				<v8:DateFractions>DateTime</v8:DateFractions>
-			</v8:DateQualifiers>
-		</valueType>
-		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
-		<useRestriction>true</useRestriction>
-		<expression>&amp;СтПериод.ДатаОкончания</expression>
-		<availableAsField>false</availableAsField>
-	</parameter>
-	<parameter>
-		<name>НачалоПериода</name>
-		<title xsi:type="v8:LocalStringType">
-			<v8:item>
-				<v8:lang>ru</v8:lang>
-				<v8:content>Начало периода</v8:content>
-			</v8:item>
-		</title>
-		<valueType>
-			<v8:Type>xs:dateTime</v8:Type>
-			<v8:DateQualifiers>
-				<v8:DateFractions>Date</v8:DateFractions>
-			</v8:DateQualifiers>
-		</valueType>
-		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
-		<useRestriction>true</useRestriction>
-		<expression>&amp;СтПериод.ДатаНачала</expression>
-		<availableAsField>false</availableAsField>
-	</parameter>
 	<parameter>
 		<name>СтПериод</name>
 		<title xsi:type="v8:LocalStringType">
@@ -163,41 +136,6 @@
 		<useRestriction>false</useRestriction>
 		<availableAsField>false</availableAsField>
 		<use>Always</use>
-	</parameter>
-	<parameter>
-		<name>ВыводитьЗаголовок</name>
-		<title xsi:type="v8:LocalStringType">
-			<v8:item>
-				<v8:lang>ru</v8:lang>
-				<v8:content>Выводить заголовок</v8:content>
-			</v8:item>
-		</title>
-		<valueType>
-			<v8:Type>xs:boolean</v8:Type>
-		</valueType>
-		<value xsi:type="xs:boolean">true</value>
-		<useRestriction>false</useRestriction>
-		<availableAsField>false</availableAsField>
-		<use>Always</use>
-	</parameter>
-	<parameter>
-		<name>Период</name>
-		<title xsi:type="v8:LocalStringType">
-			<v8:item>
-				<v8:lang>ru</v8:lang>
-				<v8:content>Период</v8:content>
-			</v8:item>
-		</title>
-		<valueType>
-			<v8:Type>xs:dateTime</v8:Type>
-			<v8:DateQualifiers>
-				<v8:DateFractions>DateTime</v8:DateFractions>
-			</v8:DateQualifiers>
-		</valueType>
-		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
-		<useRestriction>true</useRestriction>
-		<expression>&amp;СтПериод.ДатаОкончания</expression>
-		<availableAsField>false</availableAsField>
 	</parameter>
 	<settingsVariant>
 		<dcsset:name>Основной</dcsset:name>
@@ -304,13 +242,6 @@
 					<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
 					<dcsset:viewMode>Normal</dcsset:viewMode>
 					<dcsset:userSettingID>481bc6ad-d05e-4cd2-a3ef-05ce88918535</dcsset:userSettingID>
-				</dcscor:item>
-				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-					<dcscor:use>false</dcscor:use>
-					<dcscor:parameter>ВыводитьЗаголовок</dcscor:parameter>
-					<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
-					<dcsset:viewMode>Normal</dcsset:viewMode>
-					<dcsset:userSettingID>eea129b8-1161-4b42-bc8c-5c662356bc78</dcsset:userSettingID>
 				</dcscor:item>
 			</dcsset:dataParameters>
 			<dcsset:order>

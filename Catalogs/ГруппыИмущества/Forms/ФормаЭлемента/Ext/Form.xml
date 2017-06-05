@@ -2,37 +2,64 @@
 <Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.4">
 	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
 	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
-	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<ButtonGroup name="ГруппаГлобальныеКоманды" id="43">
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Группа глобальные команды</v8:content>
+					</v8:item>
+				</Title>
+				<ToolTip>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Группа глобальные команды</v8:content>
+					</v8:item>
+				</ToolTip>
+				<ExtendedTooltip name="ГруппаГлобальныеКомандыРасширеннаяПодсказка" id="44"/>
+			</ButtonGroup>
+			<ButtonGroup name="ГруппаВажныеКоманды" id="45">
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Группа важные команды</v8:content>
+					</v8:item>
+				</Title>
+				<ToolTip>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Группа важные команды</v8:content>
+					</v8:item>
+				</ToolTip>
+				<ExtendedTooltip name="ГруппаВажныеКомандыРасширеннаяПодсказка" id="46"/>
+			</ButtonGroup>
+		</ChildItems>
+	</AutoCommandBar>
 	<Events>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 		<Event name="OnWriteAtServer">ПриЗаписиНаСервере</Event>
 	</Events>
 	<ChildItems>
-		<UsualGroup name="ГруппаШапка" id="10">
+		<UsualGroup name="ГруппаНаименованиеКод" id="10">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Группа шапка</v8:content>
+					<v8:content>Группа наименование код</v8:content>
 				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Группа шапка</v8:content>
+					<v8:content>Группа наименование код</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Group>Horizontal</Group>
 			<ShowTitle>false</ShowTitle>
-			<ExtendedTooltip name="ГруппаШапкаРасширеннаяПодсказка" id="11"/>
+			<ExtendedTooltip name="ГруппаНаименованиеКодРасширеннаяПодсказка" id="11"/>
 			<ChildItems>
 				<InputField name="Наименование" id="4">
 					<DataPath>Объект.Description</DataPath>
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Группа</v8:content>
-						</v8:item>
-					</Title>
 					<EditMode>EnterOnInput</EditMode>
 					<ContextMenu name="НаименованиеКонтекстноеМеню" id="5"/>
 					<ExtendedTooltip name="НаименованиеРасширеннаяПодсказка" id="6"/>
@@ -45,14 +72,10 @@
 				</InputField>
 			</ChildItems>
 		</UsualGroup>
-		<InputField name="ПолноеНаименование" id="7">
+		<InputField name="НаименованиеПолное" id="47">
 			<DataPath>Объект.НаименованиеПолное</DataPath>
-			<TitleLocation>None</TitleLocation>
-			<EditMode>EnterOnInput</EditMode>
-			<Height>3</Height>
-			<MultiLine>true</MultiLine>
-			<ContextMenu name="ПолноеНаименованиеКонтекстноеМеню" id="8"/>
-			<ExtendedTooltip name="ПолноеНаименованиеРасширеннаяПодсказка" id="9"/>
+			<ContextMenu name="НаименованиеПолноеКонтекстноеМеню" id="48"/>
+			<ExtendedTooltip name="НаименованиеПолноеРасширеннаяПодсказка" id="49"/>
 		</InputField>
 		<Table name="СтавкиНалогаНаИмуществоНаборЗаписей" id="12">
 			<AutoInsertNewRow>true</AutoInsertNewRow>
@@ -96,13 +119,6 @@
 					<EditMode>EnterOnInput</EditMode>
 					<ContextMenu name="СтавкиНалогаНаИмуществоНаборЗаписейПериодКонтекстноеМеню" id="32"/>
 					<ExtendedTooltip name="СтавкиНалогаНаИмуществоНаборЗаписейПериодРасширеннаяПодсказка" id="33"/>
-				</InputField>
-				<InputField name="СтавкиНалогаНаИмуществоНаборЗаписейГруппаНалогаНаИмущество" id="34">
-					<DataPath>СтавкиНалогаНаИмуществоНаборЗаписей.ГруппаНалогаНаИмущество</DataPath>
-					<Visible>false</Visible>
-					<EditMode>EnterOnInput</EditMode>
-					<ContextMenu name="СтавкиНалогаНаИмуществоНаборЗаписейГруппаНалогаНаИмуществоКонтекстноеМеню" id="35"/>
-					<ExtendedTooltip name="СтавкиНалогаНаИмуществоНаборЗаписейГруппаНалогаНаИмуществоРасширеннаяПодсказка" id="36"/>
 				</InputField>
 				<InputField name="СтавкиНалогаНаИмуществоНаборЗаписейСтавка" id="37">
 					<DataPath>СтавкиНалогаНаИмуществоНаборЗаписей.Ставка</DataPath>

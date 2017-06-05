@@ -6,13 +6,13 @@
 			<v8:content>История контактной информации</v8:content>
 		</v8:item>
 	</Title>
+	<Width>60</Width>
 	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
 	<AutoTitle>false</AutoTitle>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
 		<Autofill>false</Autofill>
 	</AutoCommandBar>
 	<Events>
-		<Event name="BeforeClose">ПередЗакрытием</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 	</Events>
 	<ChildItems>
@@ -35,6 +35,12 @@
 					<EnableStartDrag>true</EnableStartDrag>
 					<EnableDrag>true</EnableDrag>
 					<DataPath>История</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>История</v8:content>
+						</v8:item>
+					</Title>
 					<CommandSet>
 						<ExcludedCommand>Copy</ExcludedCommand>
 						<ExcludedCommand>SortListAsc</ExcludedCommand>
@@ -68,9 +74,15 @@
 					</ContextMenu>
 					<AutoCommandBar name="ИсторияКоманднаяПанель" id="3">
 						<ChildItems>
+							<Button name="ИсторияВыбрать" id="50">
+								<Type>CommandBarButton</Type>
+								<Visible>false</Visible>
+								<CommandName>Form.Command.Выбрать</CommandName>
+								<ExtendedTooltip name="ИсторияВыбратьРасширеннаяПодсказка" id="51"/>
+							</Button>
 							<Button name="ИсторияДобавить" id="22">
 								<Type>CommandBarButton</Type>
-								<OnlyInAllActions>false</OnlyInAllActions>
+								<OnlyInAllActions>true</OnlyInAllActions>
 								<CommandName>Form.Item.История.StandardCommand.Add</CommandName>
 								<ExtendedTooltip name="ИсторияДобавитьРасширеннаяПодсказка" id="23"/>
 							</Button>
@@ -86,6 +98,12 @@
 								<ExtendedTooltip name="ИсторияУдалитьРасширеннаяПодсказка" id="25"/>
 							</Button>
 							<ButtonGroup name="ИсторияГруппаДействия" id="32">
+								<Title>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>История группа действия</v8:content>
+									</v8:item>
+								</Title>
 								<ExtendedTooltip name="ИсторияГруппаДействияРасширеннаяПодсказка" id="33"/>
 								<ChildItems>
 									<Button name="ИсторияИзменитьФорму" id="28">
@@ -107,12 +125,6 @@
 										<v8:content>История группа справка</v8:content>
 									</v8:item>
 								</Title>
-								<ToolTip>
-									<v8:item>
-										<v8:lang>ru</v8:lang>
-										<v8:content>История группа справка</v8:content>
-									</v8:item>
-								</ToolTip>
 								<ExtendedTooltip name="ИсторияГруппаСправкаРасширеннаяПодсказка" id="35"/>
 								<ChildItems>
 									<Button name="ФормаСправка" id="26">
@@ -164,11 +176,15 @@
 							<EditMode>EnterOnInput</EditMode>
 							<ContextMenu name="ИсторияДействуетСКонтекстноеМеню" id="15"/>
 							<ExtendedTooltip name="ИсторияДействуетСРасширеннаяПодсказка" id="16"/>
+							<Events>
+								<Event name="OnChange">ИсторияДействуетСПриИзменении</Event>
+							</Events>
 						</InputField>
 						<InputField name="ИсторияПредставление" id="17">
 							<DataPath>История.Представление</DataPath>
 							<EditMode>EnterOnInput</EditMode>
 							<ChoiceButton>true</ChoiceButton>
+							<TextEdit>false</TextEdit>
 							<ContextMenu name="ИсторияПредставлениеКонтекстноеМеню" id="18"/>
 							<ExtendedTooltip name="ИсторияПредставлениеРасширеннаяПодсказка" id="19"/>
 							<Events>
@@ -182,15 +198,9 @@
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Группа командная панель</v8:content>
+							<v8:content>Командная панель</v8:content>
 						</v8:item>
 					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Группа командная панель</v8:content>
-						</v8:item>
-					</ToolTip>
 					<HorizontalLocation>Right</HorizontalLocation>
 					<ExtendedTooltip name="ГруппаКоманднаяПанельРасширеннаяПодсказка" id="37"/>
 					<ChildItems>
@@ -433,6 +443,17 @@
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>
 		</Attribute>
+		<Attribute name="РежимВыбора" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Режим выбора</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
 	</Attributes>
 	<Commands>
 		<Command name="ОК" id="1">
@@ -464,6 +485,21 @@
 				</v8:item>
 			</ToolTip>
 			<Action>Отмена</Action>
+		</Command>
+		<Command name="Выбрать" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выбрать</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выбрать</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Выбрать</Action>
 		</Command>
 	</Commands>
 	<Parameters>

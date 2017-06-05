@@ -1,16 +1,11 @@
-﻿////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Подсистема "Контактная информация".
-// 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-#Область СлужебныеПроцедурыИФункции
+﻿#Область СлужебныеПроцедурыИФункции
 
 // Определяет наличие доступности подсистемы АдресныйКлассификатор и наличие записей о регионах в регистре сведений
 // АдресныеОбъекты.
 //
 Функция АдресныйКлассификаторДоступен() Экспорт
 	ЕстьКлассификатор = ОбщегоНазначения.ПодсистемаСуществует("СтандартныеПодсистемы.АдресныйКлассификатор");
-	Если ЕстьКлассификатор И НЕ ОбщегоНазначенияПовтИсп.РазделениеВключено() Тогда
+	Если ЕстьКлассификатор И НЕ ОбщегоНазначения.РазделениеВключено() Тогда
 		МодульАдресныйКлассификаторСлужебный = ОбщегоНазначения.ОбщийМодуль("АдресныйКлассификаторСлужебный");
 		ЕстьКлассификатор = МодульАдресныйКлассификаторСлужебный.ПроверитьНачальноеЗаполнение();
 	КонецЕсли;
@@ -27,7 +22,7 @@
 	Преобразователь = Новый ПреобразованиеXSL;
 	
 	// Пространство имен должно быть пустым!
-	Преобразователь.ЗагрузитьИзСтроки("
+	Преобразователь.ЗагрузитьТаблицуСтилейXSLИзСтроки("
 		|<xsl:stylesheet version=""1.0""
 		|  xmlns:xsl=""http://www.w3.org/1999/XSL/Transform""
 		|  xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance""
@@ -211,7 +206,7 @@
 //
 Функция XSLT_СтрокаКлючЗначениеВСтруктуру() Экспорт
 	Преобразователь = Новый ПреобразованиеXSL;
-	Преобразователь.ЗагрузитьИзСтроки("
+	Преобразователь.ЗагрузитьТаблицуСтилейXSLИзСтроки("
 		|<xsl:stylesheet version=""1.0""
 		|  xmlns:xsl=""http://www.w3.org/1999/XSL/Transform""
 		|  xmlns:str=""http://exslt.org/strings""
@@ -272,7 +267,7 @@
 //
 Функция XSLT_СписокЗначенийВСтруктуру() Экспорт
 	Преобразователь = Новый ПреобразованиеXSL;
-	Преобразователь.ЗагрузитьИзСтроки("
+	Преобразователь.ЗагрузитьТаблицуСтилейXSL("
 		|<xsl:stylesheet version=""1.0"" xmlns:xsl=""http://www.w3.org/1999/XSL/Transform""
 		|  xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance""
 		|  xmlns:tns=""http://v8.1c.ru/8.1/data/core""
@@ -317,7 +312,7 @@
 //
 Функция XSLT_СоответствиеВСтруктуру() Экспорт
 	Преобразователь = Новый ПреобразованиеXSL;
-	Преобразователь.ЗагрузитьИзСтроки("
+	Преобразователь.ЗагрузитьТаблицуСтилейXSL("
 		|<xsl:stylesheet version=""1.0"" xmlns:xsl=""http://www.w3.org/1999/XSL/Transform""
 		|  xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance""
 		|  xmlns:tns=""http://v8.1c.ru/8.1/data/core""
@@ -362,7 +357,7 @@
 //
 Функция XSLT_УдалитьОписаниеXML() Экспорт
 	Преобразователь = Новый ПреобразованиеXSL;
-	Преобразователь.ЗагрузитьИзСтроки("
+	Преобразователь.ЗагрузитьТаблицуСтилейXSLИзСтроки("
 		|<xsl:stylesheet version=""1.0"" xmlns:xsl=""http://www.w3.org/1999/XSL/Transform"">
 		|<xsl:output method=""xml"" omit-xml-declaration=""yes"" indent=""yes"" encoding=""utf-8""/>
 		|  <xsl:template match=""node() | @*"">
@@ -383,7 +378,7 @@
 //
 Функция XSLT_ТипКонтактнойИнформацииПоСтрокеXML() Экспорт
 	Преобразователь = Новый ПреобразованиеXSL;
-	Преобразователь.ЗагрузитьИзСтроки("
+	Преобразователь.ЗагрузитьТаблицуСтилейXSLИзСтроки("
 		|<xsl:stylesheet version=""1.0"" xmlns:xsl=""http://www.w3.org/1999/XSL/Transform""
 		|  xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance""
 		|  xmlns:ci=""http://www.v8.1c.ru/ssl/contactinfo""
@@ -442,7 +437,7 @@
 	КонецЕсли;
 	
 	Преобразователь = Новый ПреобразованиеXSL;
-	Преобразователь.ЗагрузитьИзСтроки("
+	Преобразователь.ЗагрузитьТаблицуСтилейXSLИзСтроки("
 		|<xsl:stylesheet version=""1.0"" xmlns:xsl=""http://www.w3.org/1999/XSL/Transform""
 		|  xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance""
 		|  xmlns:ci=""http://www.v8.1c.ru/ssl/contactinfo""
@@ -485,22 +480,13 @@
 //
 Функция XSLT_ПреобразованиеXSL() Экспорт
 	
-	КодыДополнительныхАдресныхЭлементов = Новый ТекстовыйДокумент;
-	Для Каждого ДополнительныйАдресныйЭлемент Из УправлениеКонтактнойИнформациейКлиентСервер.ТипыОбъектовАдресацииАдресаРФ() Цикл
-		КодыДополнительныхАдресныхЭлементов.ДобавитьСтроку("<data:item data:title=""" + ДополнительныйАдресныйЭлемент.Наименование + """>" + ДополнительныйАдресныйЭлемент.Код + "</data:item>");
-	КонецЦикла;
-	
-	КодыРегионов = Новый ТекстовыйДокумент;
-	ВсеРегионы = УправлениеКонтактнойИнформациейСлужебный.ВсеРегионы();
-	Если ВсеРегионы <> Неопределено Тогда
-		Для Каждого Строка Из ВсеРегионы Цикл
-			КодыРегионов.ДобавитьСтроку("<data:item data:code=""" + Формат(Строка.КодСубъектаРФ, "ЧН=; ЧГ=") + """>" 
-				+ Строка.Представление + "</data:item>");
-		КонецЦикла;
+	Если Метаданные.ОбщиеМодули.Найти("РаботаСАдресами") <> Неопределено Тогда
+		МодульРаботаСАдресами = ОбщегоНазначения.ОбщийМодуль("РаботаСАдресами");
+		ДополнительныеПравилаПреобразования = МодульРаботаСАдресами.ДополнительныеПравилаПреобразования();
 	КонецЕсли;
 	
 	Преобразователь = Новый ПреобразованиеXSL;
-	Преобразователь.ЗагрузитьИзСтроки("
+	Преобразователь.ЗагрузитьТаблицуСтилейXSLИзСтроки("
 		|<xsl:stylesheet version=""1.0"" xmlns:xsl=""http://www.w3.org/1999/XSL/Transform""
 		|  xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance""
 		|  xmlns:xs=""http://www.w3.org/2001/XMLSchema""
@@ -582,131 +568,9 @@
 		|    
 		|    </xsl:element>
 		|  </xsl:template>
-		|  
-		|  <xsl:template match=""/"" mode=""domestic"">
-		|    <xsl:element name=""Состав"">
-		|      <xsl:attribute name=""xsi:type"">АдресРФ</xsl:attribute>
-		|    
-		|      <xsl:element name=""СубъектРФ"">
-		|        <xsl:variable name=""value"" select=""tns:Structure/tns:Property[@name='Регион']/tns:Value/text()"" />
-		|
-		|        <xsl:choose>
-		|          <xsl:when test=""0=count($value)"">
-		|            <xsl:variable name=""regioncode"" select=""tns:Structure/tns:Property[@name='КодРегиона']/tns:Value/text()""/>
-		|            <xsl:variable name=""regiontitle"" select=""$enum-regioncode-nodes/data:item[@data:code=number($regioncode)]"" />
-		|              <xsl:if test=""0!=count($regiontitle)"">
-		|                <xsl:value-of select=""$regiontitle""/>
-		|              </xsl:if>
-		|          </xsl:when>
-		|          <xsl:otherwise>
-		|            <xsl:value-of select=""$value"" />
-		|          </xsl:otherwise> 
-		|        </xsl:choose>
-		|
-		|      </xsl:element>
-		|   
-		|      <xsl:element name=""Округ"">
-		|        <xsl:value-of select=""tns:Structure/tns:Property[@name='Округ']/tns:Value/text()""/>
-		|      </xsl:element>
-		|
-		|      <xsl:element name=""СвРайМО"">
-		|        <xsl:element name=""Район"">
-		|          <xsl:value-of select=""tns:Structure/tns:Property[@name='Район']/tns:Value/text()""/>
-		|        </xsl:element>
-		|      </xsl:element>
-		|  
-		|      <xsl:element name=""Город"">
-		|        <xsl:value-of select=""tns:Structure/tns:Property[@name='Город']/tns:Value/text()""/>
-		|      </xsl:element>
-		|    
-		|      <xsl:element name=""ВнутригРайон"">
-		|        <xsl:value-of select=""tns:Structure/tns:Property[@name='ВнутригРайон']/tns:Value/text()""/>
-		|      </xsl:element>
-		|
-		|      <xsl:element name=""НаселПункт"">
-		|        <xsl:value-of select=""tns:Structure/tns:Property[@name='НаселенныйПункт']/tns:Value/text()""/>
-		|      </xsl:element>
-		|
-		|      <xsl:element name=""Улица"">
-		|        <xsl:value-of select=""tns:Structure/tns:Property[@name='Улица']/tns:Value/text()""/>
-		|      </xsl:element>
-		|
-		|      <xsl:variable name=""index"" select=""tns:Structure/tns:Property[@name='Индекс']/tns:Value/text()"" />
-		|      <xsl:if test=""0!=count($index)"">
-		|        <xsl:element name=""ДопАдрЭл"">
-		|          <xsl:attribute name=""ТипАдрЭл"">" + УправлениеКонтактнойИнформациейКлиентСервер.КодСериализацииПочтовогоИндекса() + "</xsl:attribute>
-		|          <xsl:attribute name=""Значение""><xsl:value-of select=""$index""/></xsl:attribute>
-		|        </xsl:element>
-		|      </xsl:if>
-		|
-		|      <xsl:call-template name=""add-elem-number"">
-		|        <xsl:with-param name=""source"" select=""tns:Structure/tns:Property[@name='ТипДома']/tns:Value/text()"" />
-		|        <xsl:with-param name=""defsrc"" select=""'Дом'"" />
-		|        <xsl:with-param name=""value""  select=""tns:Structure/tns:Property[@name='Дом']/tns:Value/text()"" />
-		|      </xsl:call-template>
-		|
-		|      <xsl:call-template name=""add-elem-number"">
-		|        <xsl:with-param name=""source"" select=""tns:Structure/tns:Property[@name='ТипКорпуса']/tns:Value/text()"" />
-		|        <xsl:with-param name=""defsrc"" select=""'Корпус'"" />
-		|        <xsl:with-param name=""value""  select=""tns:Structure/tns:Property[@name='Корпус']/tns:Value/text()"" />
-		|      </xsl:call-template>
-		|
-		|      <xsl:call-template name=""add-elem-number"">
-		|        <xsl:with-param name=""source"" select=""tns:Structure/tns:Property[@name='ТипКвартиры']/tns:Value/text()"" />
-		|        <xsl:with-param name=""defsrc"" select=""'Квартира'"" />
-		|        <xsl:with-param name=""value""  select=""tns:Structure/tns:Property[@name='Квартира']/tns:Value/text()"" />
-		|      </xsl:call-template>
-		|    
-		|    </xsl:element>
-		|  </xsl:template>
-		|
-		|  <xsl:param name=""enum-codevalue"">
-		|" + КодыДополнительныхАдресныхЭлементов.ПолучитьТекст() + "
-		|  </xsl:param>
-		|  <xsl:variable name=""enum-codevalue-nodes"" select=""exsl:node-set($enum-codevalue)"" />
-		|
-		|  <xsl:param name=""enum-regioncode"">
-		|" + КодыРегионов.ПолучитьТекст() + "
-		|  </xsl:param>
-		|  <xsl:variable name=""enum-regioncode-nodes"" select=""exsl:node-set($enum-regioncode)"" />
-		|  
-		|  <xsl:template name=""add-elem-number"">
-		|    <xsl:param name=""source"" />
-		|    <xsl:param name=""defsrc"" />
-		|    <xsl:param name=""value"" />
-		|
-		|    <xsl:if test=""0!=count($value)"">
-		|
-		|      <xsl:choose>
-		|        <xsl:when test=""0!=count($source)"">
-		|          <xsl:variable name=""type-code"" select=""$enum-codevalue-nodes/data:item[@data:title=$source]"" />
-		|          <xsl:element name=""ДопАдрЭл"">
-		|            <xsl:element name=""Номер"">
-		|              <xsl:attribute name=""Тип""><xsl:value-of select=""$type-code"" /></xsl:attribute>
-		|              <xsl:attribute name=""Значение""><xsl:value-of select=""$value""/></xsl:attribute>
-		|            </xsl:element>
-		|          </xsl:element>
-		|
-		|        </xsl:when>
-		|        <xsl:otherwise>
-		|          <xsl:variable name=""type-code"" select=""$enum-codevalue-nodes/data:item[@data:title=$defsrc]"" />
-		|          <xsl:element name=""ДопАдрЭл"">
-		|            <xsl:element name=""Номер"">
-		|              <xsl:attribute name=""Тип""><xsl:value-of select=""$type-code"" /></xsl:attribute>
-		|              <xsl:attribute name=""Значение""><xsl:value-of select=""$value""/></xsl:attribute>
-		|            </xsl:element>
-		|          </xsl:element>
-		|
-		|        </xsl:otherwise>
-		|      </xsl:choose>
-		|
-		|    </xsl:if>
-		|  
-		|  </xsl:template>
-		|  
-		|</xsl:stylesheet>
-		|");
-	Возврат Преобразователь;
+		|" + ДополнительныеПравилаПреобразования);
+		
+		Возврат Преобразователь;
 КонецФункции
 
 // Преобразует сериализованную структуру в контактную информацию в виде XML.
@@ -758,7 +622,7 @@
 //
 Функция XSLT_СтруктураВСтроковыйСостав(Знач ИмяXDTOТипа)
 	Преобразователь = Новый ПреобразованиеXSL;
-	Преобразователь.ЗагрузитьИзСтроки("
+	Преобразователь.ЗагрузитьТаблицуСтилейXSLИзСтроки("
 		|<xsl:stylesheet version=""1.0"" xmlns:xsl=""http://www.w3.org/1999/XSL/Transform""
 		|  xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance""
 		|  xmlns:tns=""http://v8.1c.ru/8.1/data/core""
@@ -806,7 +670,7 @@
 //
 Функция XSLT_СтруктураВТелефонФакс(Знач ИмяXDTOТипа)
 	Преобразователь = Новый ПреобразованиеXSL;
-	Преобразователь.ЗагрузитьИзСтроки("
+	Преобразователь.ЗагрузитьТаблицуСтилейXSLИзСтроки("
 		|<xsl:stylesheet version=""1.0"" xmlns:xsl=""http://www.w3.org/1999/XSL/Transform""
 		|  xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance""
 		|  xmlns:tns=""http://v8.1c.ru/8.1/data/core""

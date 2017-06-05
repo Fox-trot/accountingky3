@@ -5,56 +5,47 @@
 	<RepostOnWrite>true</RepostOnWrite>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
 		<ChildItems>
-			<Button name="ФормаОбщаяКомандаЗапуститьМонитор" id="180">
-				<Type>CommandBarButton</Type>
-				<CommandName>CommonCommand.ЗапуститьМонитор</CommandName>
-				<ExtendedTooltip name="ФормаОбщаяКомандаЗапуститьМониторРасширеннаяПодсказка" id="181"/>
-			</Button>
-			<ButtonGroup name="ГруппаКнопкиКоманднойПанели" id="123">
+			<ButtonGroup name="ГруппаВажныеКоманды" id="125">
 				<Title>
 					<v8:item>
 						<v8:lang>ru</v8:lang>
-						<v8:content>Кнопки командной панели</v8:content>
+						<v8:content>Важные команды</v8:content>
 					</v8:item>
 				</Title>
 				<ToolTip>
 					<v8:item>
 						<v8:lang>ru</v8:lang>
-						<v8:content>Кнопки командной панели</v8:content>
+						<v8:content>Важные команды</v8:content>
 					</v8:item>
 				</ToolTip>
-				<ExtendedTooltip name="ГруппаКнопкиКоманднойПанелиРасширеннаяПодсказка" id="124"/>
+				<ExtendedTooltip name="ГруппаВажныеКомандыРасширеннаяПодсказка" id="126"/>
+			</ButtonGroup>
+			<ButtonGroup name="ГруппаГлобальныеКоманды" id="127">
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Глобальные команды</v8:content>
+					</v8:item>
+				</Title>
+				<ToolTip>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Глобальные команды</v8:content>
+					</v8:item>
+				</ToolTip>
+				<ExtendedTooltip name="ГруппаГлобальныеКомандыРасширеннаяПодсказка" id="128"/>
 				<ChildItems>
-					<ButtonGroup name="ГруппаВажныеКоманды" id="125">
-						<Title>
-							<v8:item>
-								<v8:lang>ru</v8:lang>
-								<v8:content>Важные команды</v8:content>
-							</v8:item>
-						</Title>
-						<ToolTip>
-							<v8:item>
-								<v8:lang>ru</v8:lang>
-								<v8:content>Важные команды</v8:content>
-							</v8:item>
-						</ToolTip>
-						<ExtendedTooltip name="ГруппаВажныеКомандыРасширеннаяПодсказка" id="126"/>
-					</ButtonGroup>
-					<ButtonGroup name="ГруппаГлобальныеКоманды" id="127">
-						<Title>
-							<v8:item>
-								<v8:lang>ru</v8:lang>
-								<v8:content>Глобальные команды</v8:content>
-							</v8:item>
-						</Title>
-						<ToolTip>
-							<v8:item>
-								<v8:lang>ru</v8:lang>
-								<v8:content>Глобальные команды</v8:content>
-							</v8:item>
-						</ToolTip>
-						<ExtendedTooltip name="ГруппаГлобальныеКомандыРасширеннаяПодсказка" id="128"/>
-					</ButtonGroup>
+					<Button name="ФормаОбщаяКомандаЗапуститьМонитор" id="180">
+						<Type>CommandBarButton</Type>
+						<CommandName>CommonCommand.ЗапуститьМонитор</CommandName>
+						<ExtendedTooltip name="ФормаОбщаяКомандаЗапуститьМониторРасширеннаяПодсказка" id="181"/>
+					</Button>
+					<Button name="ФормаОбщаяКомандаОтчетПоДвижениям" id="268">
+						<Type>CommandBarButton</Type>
+						<CommandName>CommonCommand.ОтчетПоДвижениям</CommandName>
+						<DataPath>Объект.Ref</DataPath>
+						<ExtendedTooltip name="ФормаОбщаяКомандаОтчетПоДвижениямРасширеннаяПодсказка" id="269"/>
+					</Button>
 				</ChildItems>
 			</ButtonGroup>
 		</ChildItems>
@@ -62,6 +53,7 @@
 	<Events>
 		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
 		<Event name="OnReadAtServer">ПриЧтенииНаСервере</Event>
+		<Event name="OnOpen">ПриОткрытии</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 	</Events>
 	<ChildItems>
@@ -289,6 +281,51 @@
 												<CommandName>Form.Command.ЗаполнитьПоНаименованию</CommandName>
 												<ExtendedTooltip name="ОСЗаполнитьПоНаименованиюРасширеннаяПодсказка" id="240"/>
 											</Button>
+											<ButtonGroup name="ПодменюЗаполнитьВажное" id="277">
+												<Title>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Заполнить (Важное)</v8:content>
+													</v8:item>
+												</Title>
+												<ToolTip>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Заполнить (Важное)</v8:content>
+													</v8:item>
+												</ToolTip>
+												<ExtendedTooltip name="ПодменюЗаполнитьВажноеРасширеннаяПодсказка" id="278"/>
+											</ButtonGroup>
+											<ButtonGroup name="ПодменюЗаполнитьОбычное" id="279">
+												<Title>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Заполнить (Обычное)</v8:content>
+													</v8:item>
+												</Title>
+												<ToolTip>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Заполнить (Обычное)</v8:content>
+													</v8:item>
+												</ToolTip>
+												<ExtendedTooltip name="ПодменюЗаполнитьОбычноеРасширеннаяПодсказка" id="280"/>
+											</ButtonGroup>
+											<ButtonGroup name="ПодменюЗаполнитьСмТакже" id="281">
+												<Title>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Заполнить (См. также)</v8:content>
+													</v8:item>
+												</Title>
+												<ToolTip>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Заполнить (См. также)</v8:content>
+													</v8:item>
+												</ToolTip>
+												<ExtendedTooltip name="ПодменюЗаполнитьСмТакжеРасширеннаяПодсказка" id="282"/>
+											</ButtonGroup>
 										</ChildItems>
 									</Popup>
 								</ChildItems>
@@ -369,13 +406,6 @@
 									<Width>10</Width>
 									<ContextMenu name="ОСПервоначальнаяСтоимостьКонтекстноеМеню" id="121"/>
 									<ExtendedTooltip name="ОСПервоначальнаяСтоимостьРасширеннаяПодсказка" id="122"/>
-								</InputField>
-								<InputField name="ОСНормаАмортизации" id="177">
-									<DataPath>Объект.ОС.НормаАмортизации</DataPath>
-									<EditMode>EnterOnInput</EditMode>
-									<Width>10</Width>
-									<ContextMenu name="ОСНормаАмортизацииКонтекстноеМеню" id="178"/>
-									<ExtendedTooltip name="ОСНормаАмортизацииРасширеннаяПодсказка" id="179"/>
 								</InputField>
 								<InputField name="ОССчетУчета" id="132">
 									<DataPath>Объект.ОС.СчетУчета</DataPath>
@@ -626,12 +656,71 @@
 				</Page>
 			</ChildItems>
 		</Pages>
-		<InputField name="Ответственный" id="13">
-			<DataPath>Объект.Ответственный</DataPath>
-			<EditMode>EnterOnInput</EditMode>
-			<ContextMenu name="ОтветственныйКонтекстноеМеню" id="14"/>
-			<ExtendedTooltip name="ОтветственныйРасширеннаяПодсказка" id="15"/>
-		</InputField>
+		<UsualGroup name="Подвал" id="270">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подвал</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подвал</v8:content>
+				</v8:item>
+			</ToolTip>
+			<HorizontalStretch>true</HorizontalStretch>
+			<VerticalStretch>false</VerticalStretch>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ПодвалРасширеннаяПодсказка" id="271"/>
+			<ChildItems>
+				<InputField name="Ответственный" id="13">
+					<DataPath>Объект.Ответственный</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ОтветственныйКонтекстноеМеню" id="14"/>
+					<ExtendedTooltip name="ОтветственныйРасширеннаяПодсказка" id="15"/>
+				</InputField>
+				<UsualGroup name="ГруппаИтоги" id="272">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Итоги</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа итоги</v8:content>
+						</v8:item>
+					</ToolTip>
+					<GroupHorizontalAlign>Right</GroupHorizontalAlign>
+					<Group>Horizontal</Group>
+					<HorizontalAlign>Right</HorizontalAlign>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<BackColor>style:ИтогиФонГруппы</BackColor>
+					<ExtendedTooltip name="ГруппаИтогиРасширеннаяПодсказка" id="273"/>
+					<ChildItems>
+						<InputField name="ОСИтогПервоначальнаяСтоимость" id="274">
+							<DataPath>Объект.ОС.TotalПервоначальнаяСтоимость</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Первоначальная стоимость</v8:content>
+								</v8:item>
+							</Title>
+							<Width>9</Width>
+							<ChoiceButton>false</ChoiceButton>
+							<ContextMenu name="ОСИтогПервоначальнаяСтоимостьКонтекстноеМеню" id="275"/>
+							<ExtendedTooltip name="ОСИтогПервоначальнаяСтоимостьРасширеннаяПодсказка" id="276"/>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
 	</ChildItems>
 	<Attributes>
 		<Attribute name="Объект" id="1">
@@ -682,6 +771,15 @@
 			<Type>
 				<v8:Type>cfg:CatalogRef.ПодразделенияОрганизаций</v8:Type>
 			</Type>
+		</Attribute>
+		<Attribute name="ПараметрыПодключаемыхКоманд" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Параметры подключаемых команд</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
 		</Attribute>
 	</Attributes>
 	<Commands>

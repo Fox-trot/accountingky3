@@ -46,6 +46,24 @@
 				<dcscom:periodType>Main</dcscom:periodType>
 			</role>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ФизЛицо</dataPath>
+			<field>ФизЛицо</field>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ВидВыплаты</dataPath>
+			<field>ВидВыплаты</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Организация</dataPath>
+			<field>Организация</field>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+			</role>
+		</field>
 		<item xsi:type="DataSetQuery">
 			<name>Начисления</name>
 			<field xsi:type="DataSetFieldField">
@@ -191,28 +209,32 @@
 				</role>
 			</field>
 			<field xsi:type="DataSetFieldField">
-				<dataPath>Период</dataPath>
-				<field>Период</field>
+				<dataPath>ФизЛицо</dataPath>
+				<field>ФизЛицо</field>
 				<role>
-					<dcscom:periodNumber>2</dcscom:periodNumber>
-					<dcscom:periodType>Main</dcscom:periodType>
+					<dcscom:dimension>true</dcscom:dimension>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ВидВыплаты</dataPath>
+				<field>ВидВыплаты</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Организация</dataPath>
+				<field>Организация</field>
+				<role>
+					<dcscom:dimension>true</dcscom:dimension>
 				</role>
 			</field>
 			<dataSource>ИсточникДанных1</dataSource>
 			<query>ВЫБРАТЬ
 	"3.Выплаченные суммы" КАК ВидОперации,
-	СУММА(ВзаиморасчетыССотрудниками.Сумма) КАК Результат,
-	ВзаиморасчетыССотрудниками.Период КАК Период,
-	ВзаиморасчетыССотрудниками.Регистратор КАК ВидРасчета
+	ВыплаченнаяЗарплатаОбороты.Организация,
+	ВыплаченнаяЗарплатаОбороты.ФизЛицо,
+	ВыплаченнаяЗарплатаОбороты.ВидВыплаты КАК ВидРасчета,
+	ВыплаченнаяЗарплатаОбороты.СуммаОборот КАК Результат
 ИЗ
-	РегистрНакопления.ВзаиморасчетыССотрудниками КАК ВзаиморасчетыССотрудниками
-ГДЕ
-	ВзаиморасчетыССотрудниками.Период МЕЖДУ &amp;НачалоПериода И &amp;КонецПериода
-	И ВзаиморасчетыССотрудниками.Сумма &lt;&gt; 0
-	
-СГРУППИРОВАТЬ ПО
-	ВзаиморасчетыССотрудниками.Регистратор,
-	ВзаиморасчетыССотрудниками.Период</query>
+	РегистрНакопления.ВыплаченнаяЗарплата.Обороты КАК ВыплаченнаяЗарплатаОбороты</query>
 		</item>
 	</dataSet>
 	<totalField>
@@ -256,22 +278,6 @@
 		<useRestriction>true</useRestriction>
 		<expression>&amp;СтПериод.ДатаОкончания</expression>
 		<availableAsField>false</availableAsField>
-	</parameter>
-	<parameter>
-		<name>ВыводитьЗаголовок</name>
-		<title xsi:type="v8:LocalStringType">
-			<v8:item>
-				<v8:lang>ru</v8:lang>
-				<v8:content>Выводить заголовок</v8:content>
-			</v8:item>
-		</title>
-		<valueType>
-			<v8:Type>xs:boolean</v8:Type>
-		</valueType>
-		<value xsi:type="xs:boolean">true</value>
-		<useRestriction>false</useRestriction>
-		<availableAsField>false</availableAsField>
-		<use>Always</use>
 	</parameter>
 	<parameter>
 		<name>ВыводитьПодписи</name>
@@ -338,12 +344,6 @@
 				<dcsset:userSettingID>ae276ac2-5a99-4a92-9252-2ef5ac95620d</dcsset:userSettingID>
 			</dcsset:filter>
 			<dcsset:dataParameters>
-				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-					<dcscor:parameter>ВыводитьЗаголовок</dcscor:parameter>
-					<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
-					<dcsset:viewMode>Normal</dcsset:viewMode>
-					<dcsset:userSettingID>b56e2c07-f73d-4230-a5c7-82c801c068c5</dcsset:userSettingID>
-				</dcscor:item>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 					<dcscor:parameter>ВыводитьПодписи</dcscor:parameter>
 					<dcscor:value xsi:type="xs:boolean">true</dcscor:value>

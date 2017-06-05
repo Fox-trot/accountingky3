@@ -34,11 +34,21 @@
 					</v8:item>
 				</ToolTip>
 				<ExtendedTooltip name="ГруппаГлобальныеКомандыРасширеннаяПодсказка" id="283"/>
+				<ChildItems>
+					<Button name="ФормаОбщаяКомандаСтруктураПодчиненности" id="456">
+						<Type>CommandBarButton</Type>
+						<CommandName>CommonCommand.СтруктураПодчиненности</CommandName>
+						<DataPath>Объект.Ref</DataPath>
+						<ExtendedTooltip name="ФормаОбщаяКомандаСтруктураПодчиненностиРасширеннаяПодсказка" id="457"/>
+					</Button>
+				</ChildItems>
 			</ButtonGroup>
 		</ChildItems>
 	</AutoCommandBar>
 	<Events>
+		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
 		<Event name="OnReadAtServer">ПриЧтенииНаСервере</Event>
+		<Event name="OnOpen">ПриОткрытии</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 		<Event name="OnWriteAtServer">ПриЗаписиНаСервере</Event>
 	</Events>
@@ -134,7 +144,15 @@
 											<DataPath>Объект.Товары</DataPath>
 											<RowFilter xsi:nil="true"/>
 											<ContextMenu name="ТоварыКонтекстноеМеню" id="366"/>
-											<AutoCommandBar name="ТоварыКоманднаяПанель" id="367"/>
+											<AutoCommandBar name="ТоварыКоманднаяПанель" id="367">
+												<ChildItems>
+													<Button name="ТоварыПодборНоменклатуры" id="458">
+														<Type>CommandBarButton</Type>
+														<CommandName>Form.Command.ПодборНоменклатуры</CommandName>
+														<ExtendedTooltip name="ТоварыПодборНоменклатурыРасширеннаяПодсказка" id="459"/>
+													</Button>
+												</ChildItems>
+											</AutoCommandBar>
 											<ExtendedTooltip name="ТоварыРасширеннаяПодсказка" id="368"/>
 											<SearchStringAddition name="ТоварыСтрокаПоиска" id="369">
 												<AdditionSource>
@@ -491,7 +509,7 @@
 						<UsualGroup name="ГруппаДокументыФизическихЛиц" id="409">
 							<UserVisible>
 								<xr:Common>true</xr:Common>
-								<xr:Value name="Role.ВидимостьПаспортныхДанных">true</xr:Value>
+								<xr:Value name="e106554d-cdbe-4ff9-bace-50535d7fa4c4">true</xr:Value>
 								<xr:Value name="Role.ПолныеПрава">true</xr:Value>
 							</UserVisible>
 							<Title>
@@ -623,12 +641,12 @@
 			</Type>
 			<View>
 				<xr:Common>false</xr:Common>
-				<xr:Value name="Role.ВидимостьПаспортныхДанных">true</xr:Value>
+				<xr:Value name="e106554d-cdbe-4ff9-bace-50535d7fa4c4">true</xr:Value>
 				<xr:Value name="Role.ПолныеПрава">true</xr:Value>
 			</View>
 			<Edit>
 				<xr:Common>false</xr:Common>
-				<xr:Value name="Role.ВидимостьПаспортныхДанных">true</xr:Value>
+				<xr:Value name="e106554d-cdbe-4ff9-bace-50535d7fa4c4">true</xr:Value>
 				<xr:Value name="Role.ПолныеПрава">true</xr:Value>
 			</Edit>
 			<SavedData>true</SavedData>
@@ -653,67 +671,31 @@
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>
 		</Attribute>
-		<ConditionalAppearance>
-			<dcsset:item>
-				<dcsset:selection>
-					<dcsset:item>
-						<dcsset:field>ТаблицаЗначенийСубконто1</dcsset:field>
-					</dcsset:item>
-				</dcsset:selection>
-				<dcsset:filter>
-					<dcsset:item xsi:type="dcsset:FilterItemComparison">
-						<dcsset:left xsi:type="dcscor:Field">ТаблицаЗначений.СубконтоМоё1Доступность</dcsset:left>
-						<dcsset:comparisonType>Equal</dcsset:comparisonType>
-						<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
-					</dcsset:item>
-				</dcsset:filter>
-				<dcsset:appearance>
-					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-						<dcscor:parameter>ТолькоПросмотр</dcscor:parameter>
-						<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
-					</dcscor:item>
-				</dcsset:appearance>
-			</dcsset:item>
-			<dcsset:item>
-				<dcsset:selection>
-					<dcsset:item>
-						<dcsset:field>ТаблицаЗначенийСубконто2</dcsset:field>
-					</dcsset:item>
-				</dcsset:selection>
-				<dcsset:filter>
-					<dcsset:item xsi:type="dcsset:FilterItemComparison">
-						<dcsset:left xsi:type="dcscor:Field">ТаблицаЗначений.СубконтоМоё2Доступность</dcsset:left>
-						<dcsset:comparisonType>Equal</dcsset:comparisonType>
-						<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
-					</dcsset:item>
-				</dcsset:filter>
-				<dcsset:appearance>
-					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-						<dcscor:parameter>ТолькоПросмотр</dcscor:parameter>
-						<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
-					</dcscor:item>
-				</dcsset:appearance>
-			</dcsset:item>
-			<dcsset:item>
-				<dcsset:selection>
-					<dcsset:item>
-						<dcsset:field>ТаблицаЗначенийСубконто3</dcsset:field>
-					</dcsset:item>
-				</dcsset:selection>
-				<dcsset:filter>
-					<dcsset:item xsi:type="dcsset:FilterItemComparison">
-						<dcsset:left xsi:type="dcscor:Field">ТаблицаЗначений.СубконтоМоё3Доступность</dcsset:left>
-						<dcsset:comparisonType>Equal</dcsset:comparisonType>
-						<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
-					</dcsset:item>
-				</dcsset:filter>
-				<dcsset:appearance>
-					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-						<dcscor:parameter>ТолькоПросмотр</dcscor:parameter>
-						<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
-					</dcscor:item>
-				</dcsset:appearance>
-			</dcsset:item>
-		</ConditionalAppearance>
+		<Attribute name="ПараметрыПодключаемыхКоманд" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Параметры подключаемых команд</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
 	</Attributes>
+	<Commands>
+		<Command name="ПодборНоменклатуры" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подбор</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подбор номенклатуры</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ПодборНоменклатуры</Action>
+		</Command>
+	</Commands>
 </Form>

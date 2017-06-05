@@ -3,7 +3,48 @@
 	<AutoTime>CurrentOrLast</AutoTime>
 	<UsePostingMode>Auto</UsePostingMode>
 	<RepostOnWrite>true</RepostOnWrite>
-	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<ButtonGroup name="ГруппаВажныеКоманды" id="373">
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Группа важные команды</v8:content>
+					</v8:item>
+				</Title>
+				<ToolTip>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Группа важные команды</v8:content>
+					</v8:item>
+				</ToolTip>
+				<ExtendedTooltip name="ГруппаВажныеКомандыРасширеннаяПодсказка" id="374"/>
+			</ButtonGroup>
+			<ButtonGroup name="ГруппаГлобальныеКоманды" id="375">
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Группа глобальные команды</v8:content>
+					</v8:item>
+				</Title>
+				<ToolTip>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Группа глобальные команды</v8:content>
+					</v8:item>
+				</ToolTip>
+				<ExtendedTooltip name="ГруппаГлобальныеКомандыРасширеннаяПодсказка" id="376"/>
+				<ChildItems>
+					<Button name="ФормаОбщаяКомандаОтчетПоДвижениям" id="377">
+						<Type>CommandBarButton</Type>
+						<CommandName>CommonCommand.ОтчетПоДвижениям</CommandName>
+						<DataPath>Объект.Ref</DataPath>
+						<ExtendedTooltip name="ФормаОбщаяКомандаОтчетПоДвижениямРасширеннаяПодсказка" id="378"/>
+					</Button>
+				</ChildItems>
+			</ButtonGroup>
+		</ChildItems>
+	</AutoCommandBar>
 	<Events>
 		<Event name="OnReadAtServer">ПриЧтенииНаСервере</Event>
 		<Event name="OnOpen">ПриОткрытии</Event>
@@ -407,9 +448,6 @@
 								<ContextMenu name="СреднийЗаработокУправлениеПоискомКонтекстноеМеню" id="223"/>
 								<ExtendedTooltip name="СреднийЗаработокУправлениеПоискомРасширеннаяПодсказка" id="224"/>
 							</SearchControlAddition>
-							<Events>
-								<Event name="OnChange">СреднийЗаработокПриИзменении</Event>
-							</Events>
 							<ChildItems>
 								<LabelField name="СреднийЗаработокНомерСтроки" id="225">
 									<DataPath>Объект.СреднийЗаработок.LineNumber</DataPath>
@@ -597,12 +635,6 @@
 									<ContextMenu name="НачисленияРезультатКонтекстноеМеню" id="311"/>
 									<ExtendedTooltip name="НачисленияРезультатРасширеннаяПодсказка" id="312"/>
 								</InputField>
-								<InputField name="НачисленияКомментарий" id="356">
-									<DataPath>Объект.Начисления.Комментарий</DataPath>
-									<EditMode>EnterOnInput</EditMode>
-									<ContextMenu name="НачисленияКомментарийКонтекстноеМеню" id="357"/>
-									<ExtendedTooltip name="НачисленияКомментарийРасширеннаяПодсказка" id="358"/>
-								</InputField>
 							</ChildItems>
 						</Table>
 					</ChildItems>
@@ -680,7 +712,7 @@
 				</Page>
 			</ChildItems>
 		</Pages>
-		<UsualGroup name="Подвал" id="134">
+		<UsualGroup name="Подвал" id="379">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -693,17 +725,14 @@
 					<v8:content>Подвал</v8:content>
 				</v8:item>
 			</ToolTip>
+			<HorizontalStretch>true</HorizontalStretch>
+			<VerticalStretch>false</VerticalStretch>
 			<Group>Horizontal</Group>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
-			<ExtendedTooltip name="ПодвалРасширеннаяПодсказка" id="135"/>
+			<ExtendedTooltip name="ПодвалРасширеннаяПодсказка" id="380"/>
 			<ChildItems>
-				<LabelDecoration name="Декорация1" id="136">
-					<HorizontalStretch>true</HorizontalStretch>
-					<ContextMenu name="Декорация1КонтекстноеМеню" id="137"/>
-					<ExtendedTooltip name="Декорация1РасширеннаяПодсказка" id="138"/>
-				</LabelDecoration>
-				<UsualGroup name="Итоги" id="139">
+				<UsualGroup name="ГруппаИтоги" id="381">
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -713,24 +742,40 @@
 					<ToolTip>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Итоги</v8:content>
+							<v8:content>Группа итоги</v8:content>
 						</v8:item>
 					</ToolTip>
+					<GroupHorizontalAlign>Right</GroupHorizontalAlign>
 					<Group>Horizontal</Group>
+					<HorizontalAlign>Right</HorizontalAlign>
 					<Representation>None</Representation>
 					<ShowTitle>false</ShowTitle>
 					<BackColor>style:ИтогиФонГруппы</BackColor>
-					<ExtendedTooltip name="ИтогиРасширеннаяПодсказка" id="140"/>
+					<ExtendedTooltip name="ГруппаИтогиРасширеннаяПодсказка" id="382"/>
 					<ChildItems>
 						<InputField name="СреднийЗаработокИтогОтработаноДней" id="316">
 							<DataPath>Объект.СреднийЗаработок.TotalОтработаноДней</DataPath>
 							<ReadOnly>true</ReadOnly>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Отработано дней</v8:content>
+								</v8:item>
+							</Title>
+							<Width>9</Width>
 							<ContextMenu name="СреднийЗаработокИтогОтработаноДнейКонтекстноеМеню" id="317"/>
 							<ExtendedTooltip name="СреднийЗаработокИтогОтработаноДнейРасширеннаяПодсказка" id="318"/>
 						</InputField>
 						<InputField name="СреднийЗаработокИтогРезультат" id="319">
 							<DataPath>Объект.СреднийЗаработок.TotalРезультат</DataPath>
 							<ReadOnly>true</ReadOnly>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Базовая сумма</v8:content>
+								</v8:item>
+							</Title>
+							<Width>9</Width>
 							<ContextMenu name="СреднийЗаработокИтогРезультатКонтекстноеМеню" id="320"/>
 							<ExtendedTooltip name="СреднийЗаработокИтогРезультатРасширеннаяПодсказка" id="321"/>
 						</InputField>
@@ -743,6 +788,7 @@
 									<v8:content>Начислено</v8:content>
 								</v8:item>
 							</Title>
+							<Width>9</Width>
 							<ContextMenu name="НачисленияИтогРезультатКонтекстноеМеню" id="142"/>
 							<ExtendedTooltip name="НачисленияИтогРезультатРасширеннаяПодсказка" id="143"/>
 						</InputField>

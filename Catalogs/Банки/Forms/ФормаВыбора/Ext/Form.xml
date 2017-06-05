@@ -3,11 +3,43 @@
 	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
 		<ChildItems>
-			<Button name="ФормаПодобратьИзКлассификатора" id="46">
-				<Type>CommandBarButton</Type>
-				<CommandName>Form.Command.ПодобратьИзКлассификатора</CommandName>
-				<ExtendedTooltip name="ФормаПодобратьИзКлассификатораExtendedTooltip" id="47"/>
-			</Button>
+			<ButtonGroup name="ГруппаВажныеКоманды" id="48">
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Группа важные команды</v8:content>
+					</v8:item>
+				</Title>
+				<ToolTip>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Группа важные команды</v8:content>
+					</v8:item>
+				</ToolTip>
+				<ExtendedTooltip name="ГруппаВажныеКомандыРасширеннаяПодсказка" id="49"/>
+				<ChildItems>
+					<Button name="ФормаПодобратьИзКлассификатора" id="46">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.ПодобратьИзКлассификатора</CommandName>
+						<ExtendedTooltip name="ФормаПодобратьИзКлассификатораExtendedTooltip" id="47"/>
+					</Button>
+				</ChildItems>
+			</ButtonGroup>
+			<ButtonGroup name="ГруппаГлобальныеКоманды" id="52">
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Группа глобальные команды</v8:content>
+					</v8:item>
+				</Title>
+				<ToolTip>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Группа глобальные команды</v8:content>
+					</v8:item>
+				</ToolTip>
+				<ExtendedTooltip name="ГруппаГлобальныеКомандыРасширеннаяПодсказка" id="53"/>
+			</ButtonGroup>
 		</ChildItems>
 	</AutoCommandBar>
 	<Events>
@@ -15,18 +47,6 @@
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 	</Events>
 	<ChildItems>
-		<UsualGroup name="СписокКомпоновщикНастроекПользовательскиеНастройки" id="1">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Группа пользовательских настроек</v8:content>
-				</v8:item>
-			</Title>
-			<VerticalStretch>false</VerticalStretch>
-			<Group>Vertical</Group>
-			<ShowTitle>false</ShowTitle>
-			<ExtendedTooltip name="СписокКомпоновщикНастроекПользовательскиеНастройкиРасширеннаяПодсказка" id="2"/>
-		</UsualGroup>
 		<Table name="Список" id="3">
 			<CommandBarLocation>None</CommandBarLocation>
 			<DefaultItem>true</DefaultItem>
@@ -50,7 +70,7 @@
 			<ShowRoot>true</ShowRoot>
 			<AllowRootChoice>false</AllowRootChoice>
 			<UpdateOnDataChange>Auto</UpdateOnDataChange>
-			<UserSettingsGroup>СписокКомпоновщикНастроекПользовательскиеНастройки</UserSettingsGroup>
+			<UserSettingsGroup>1:02023637-7868-4a5f-8576-835a76e0c9ba</UserSettingsGroup>
 			<ContextMenu name="СписокКонтекстноеМеню" id="4"/>
 			<AutoCommandBar name="СписокКоманднаяПанель" id="5">
 				<Autofill>false</Autofill>
@@ -84,39 +104,47 @@
 				<Event name="BeforeAddRow">СписокПередНачаломДобавления</Event>
 			</Events>
 			<ChildItems>
-				<LabelField name="Наименование" id="22">
-					<DataPath>Список.Description</DataPath>
-					<DefaultItem>true</DefaultItem>
-					<ContextMenu name="НаименованиеКонтекстноеМеню" id="23"/>
-					<ExtendedTooltip name="НаименованиеРасширеннаяПодсказка" id="24"/>
-				</LabelField>
 				<LabelField name="Код" id="25">
 					<DataPath>Список.Code</DataPath>
+					<Width>12</Width>
+					<HorizontalStretch>false</HorizontalStretch>
 					<ContextMenu name="КодКонтекстноеМеню" id="26"/>
 					<ExtendedTooltip name="КодРасширеннаяПодсказка" id="27"/>
 				</LabelField>
+				<LabelField name="Наименование" id="22">
+					<DataPath>Список.Description</DataPath>
+					<DefaultItem>true</DefaultItem>
+					<Width>40</Width>
+					<ContextMenu name="НаименованиеКонтекстноеМеню" id="23"/>
+					<ExtendedTooltip name="НаименованиеРасширеннаяПодсказка" id="24"/>
+				</LabelField>
 				<LabelField name="КоррСчет" id="28">
 					<DataPath>Список.КоррСчет</DataPath>
+					<Width>20</Width>
 					<ContextMenu name="КоррСчетКонтекстноеМеню" id="29"/>
 					<ExtendedTooltip name="КоррСчетРасширеннаяПодсказка" id="30"/>
 				</LabelField>
 				<LabelField name="Город" id="31">
 					<DataPath>Список.Город</DataPath>
+					<Width>20</Width>
 					<ContextMenu name="ГородКонтекстноеМеню" id="32"/>
 					<ExtendedTooltip name="ГородРасширеннаяПодсказка" id="33"/>
 				</LabelField>
 				<LabelField name="Адрес" id="34">
 					<DataPath>Список.Адрес</DataPath>
+					<Width>20</Width>
 					<ContextMenu name="АдресКонтекстноеМеню" id="35"/>
 					<ExtendedTooltip name="АдресРасширеннаяПодсказка" id="36"/>
 				</LabelField>
 				<LabelField name="Телефоны" id="37">
 					<DataPath>Список.Телефоны</DataPath>
+					<Width>20</Width>
 					<ContextMenu name="ТелефоныКонтекстноеМеню" id="38"/>
 					<ExtendedTooltip name="ТелефоныРасширеннаяПодсказка" id="39"/>
 				</LabelField>
 				<LabelField name="SWIFT" id="40">
 					<DataPath>Список.SWIFT</DataPath>
+					<Width>20</Width>
 					<ContextMenu name="SWIFTКонтекстноеМеню" id="41"/>
 					<ExtendedTooltip name="SWIFTРасширеннаяПодсказка" id="42"/>
 				</LabelField>

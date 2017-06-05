@@ -41,6 +41,7 @@ var errorMarker = "{ERR}";
 var successMarker = "{OK }";
 
 var FileSize = 0;
+var CheckCount = 0;
 
 // Переменные состояния
 var backupCreated = false;
@@ -197,6 +198,7 @@ function log1CInternal(connection, text, failed)
 function initialize()
 {
     clearLogFile();
+    appendLog();
     log(format("Файл скрипта: {0}", thisFileName));
     log(format("Файл резервной копии: {0}", backupFileName));
      return 0; 
@@ -232,26 +234,40 @@ function finalize(success)
     ComConnection = null;
 }
 
-function createConnection()
+function createConnection() 
 {
     if (!useComConnector)
-    	return null;
-    
-    if (!ComConnection == null)	
-    	return ComConnection;
-    		
-    try
-    {
+        return null;
+
+    if (ComConnection != null)
+        return ComConnection;
+
+
+    try {
+        log("Начат сеанс внешнего соединения с ИБ", false);
+        logstep = "new ActiveXObject COMConnector";
         var ComConnector = new ActiveXObject(comConnectorName);
+        logstep = "comConnector.Connect";
         ComConnection = ComConnector.Connect(connectionString);
+        logstep = "new SystemInfo";
+        systemInfo = ComConnection.NewObject("SystemInfo");
+        logstep = "SystemInfo.AppVersion";
+        appVersion = systemInfo.AppVersion;
+        logstep = "SystemInfo.PlatformType";
+        platformType = systemInfo.PlatformType;
+        logstep = "Проверка ComConnection.PlatformType";
+        platformTypeString = "<Неопределена>";
+        if (platformType === ComConnection.PlatformType.Windows_x86)
+            platformTypeString = "32 bit";
+        if (platformType === ComConnection.PlatformType.Windows_x86_64)
+            platformTypeString = "64 bit";
+        log(format("Версия comcntr: {0} {1}", appVersion, platformTypeString), false);
         return ComConnection;
     }
-    catch(e)
-    {
-        log(format("Исключение в createConnection: {0}, {1}", e.name, e.message), true);
+    catch (e) {
+        log(format("Исключение в createConnection на шаге: {0}, {1}, {2}", logstep, e.name, e.message), true);
         return null;
     }
-    
 }
 
 // Записать весь log-файл в журнал регистрации
@@ -340,7 +356,7 @@ function writeEventLog(success)
 
 // Создание резервной копии информационной базы
 function backupDB()
-{   
+{
 	try
 	{
 		var NewTextFile = oFileSystemObject.CreateTextFile(backupFileName,false);
@@ -362,7 +378,7 @@ function backupDB()
 		dFolder.CopyHere(file);
 		
 		ret = 0;
-	   	log(format("Попытка создания резервной копии", ret), ret != 0);
+		log(format("Попытка создания резервной копии", ret), ret != 0);
 	}
 	catch(e)
 	{
@@ -372,7 +388,7 @@ function backupDB()
 		ret = -1;
 	}
 	if (ret == 0)
-	    backupCreated = true;  
+		backupCreated = true;
 	
 	return ret;
 }
@@ -392,11 +408,16 @@ function WaitUntilFinish()
 	}
 	var nowSize = FileArchive.size;
 	
-	// файл все еще не начал создаваться, возможно выполняется интерактивное действие, ожидаем далее
+	// Файл все еще не начал создаваться, возможно выполняется интерактивное действие, ожидаем далее.
 	if (nowSize/1024 < 5){
 		FileSize = nowSize;
-		return -1;}
 		
+		// Если за 5 минут файл все еще не начал создаваться, то отменяем резервное копирование.
+		if (CheckCount > 60){return 1;}
+		
+		CheckCount = CheckCount + 1;
+		return -1;}
+	
 	if (FileSize != nowSize){
 		FileSize = nowSize;
 		return -1;}

@@ -26,12 +26,6 @@
 						<v8:content>Форма стандартные команды</v8:content>
 					</v8:item>
 				</Title>
-				<ToolTip>
-					<v8:item>
-						<v8:lang>ru</v8:lang>
-						<v8:content>Форма стандартные команды</v8:content>
-					</v8:item>
-				</ToolTip>
 				<CommandSource>Form</CommandSource>
 				<ExtendedTooltip name="ФормаСтандартныеКомандыРасширеннаяПодсказка" id="211"/>
 			</ButtonGroup>
@@ -60,7 +54,9 @@
 		<Event name="BeforeClose">ПередЗакрытием</Event>
 		<Event name="BeforeWrite">ПередЗаписью</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+		<Event name="BeforeWriteAtServer">ПередЗаписьюНаСервере</Event>
 		<Event name="OnWriteAtServer">ПриЗаписиНаСервере</Event>
+		<Event name="FillCheckProcessingAtServer">ОбработкаПроверкиЗаполненияНаСервере</Event>
 	</Events>
 	<ChildItems>
 		<UsualGroup name="Шапка" id="86">
@@ -70,12 +66,6 @@
 					<v8:content>Шапка</v8:content>
 				</v8:item>
 			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Шапка</v8:content>
-				</v8:item>
-			</ToolTip>
 			<Group>Vertical</Group>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
@@ -185,12 +175,6 @@
 							<v8:content>Отправка писем</v8:content>
 						</v8:item>
 					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Отправка писем</v8:content>
-						</v8:item>
-					</ToolTip>
 					<ExtendedTooltip name="ОтправкаПисемРасширеннаяПодсказка" id="101"/>
 					<ChildItems>
 						<UsualGroup name="АвторизацияПриОтправкеПисем" id="192">
@@ -200,12 +184,6 @@
 									<v8:content>Авторизация при отправке писем</v8:content>
 								</v8:item>
 							</Title>
-							<ToolTip>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Авторизация при отправке писем</v8:content>
-								</v8:item>
-							</ToolTip>
 							<Group>Vertical</Group>
 							<Representation>NormalSeparation</Representation>
 							<ShowTitle>false</ShowTitle>
@@ -263,12 +241,6 @@
 									<v8:content>Настройки сервера входящей почты</v8:content>
 								</v8:item>
 							</Title>
-							<ToolTip>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Настройки сервера входящей почты</v8:content>
-								</v8:item>
-							</ToolTip>
 							<Group>Horizontal</Group>
 							<Representation>None</Representation>
 							<ShowTitle>false</ShowTitle>
@@ -310,12 +282,6 @@
 									<v8:content>Тип соединения и длительность ожидания при отправке</v8:content>
 								</v8:item>
 							</Title>
-							<ToolTip>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Тип соединения и длительность ожидания при отправке</v8:content>
-								</v8:item>
-							</ToolTip>
 							<Group>Vertical</Group>
 							<Representation>None</Representation>
 							<ShowTitle>false</ShowTitle>
@@ -346,12 +312,6 @@
 									<v8:content>POP перед SMTP</v8:content>
 								</v8:item>
 							</Title>
-							<ToolTip>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>POPПеред SMTP</v8:content>
-								</v8:item>
-							</ToolTip>
 							<Group>Vertical</Group>
 							<Representation>NormalSeparation</Representation>
 							<ShowTitle>false</ShowTitle>
@@ -369,9 +329,29 @@
 									<CheckBoxType>Auto</CheckBoxType>
 									<ContextMenu name="ТребуетсяВходНаСерверПередОтправкойКонтекстноеМеню" id="190"/>
 									<ExtendedTooltip name="ТребуетсяВходНаСерверПередОтправкойРасширеннаяПодсказка" id="191"/>
+									<Events>
+										<Event name="OnChange">ТребуетсяВходНаСерверПередОтправкойПриИзменении</Event>
+									</Events>
 								</CheckBoxField>
 							</ChildItems>
 						</UsualGroup>
+						<CheckBoxField name="ОтправлятьСкрытыеКопииПисемНаЭтотАдрес" id="219">
+							<DataPath>Объект.ОтправлятьСкрытыеКопииПисемНаЭтотАдрес</DataPath>
+							<TitleLocation>Right</TitleLocation>
+							<ToolTipRepresentation>Button</ToolTipRepresentation>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="ОтправлятьСкрытыеКопииПисемНаЭтотАдресКонтекстноеМеню" id="220"/>
+							<ExtendedTooltip name="ОтправлятьСкрытыеКопииПисемНаЭтотАдресРасширеннаяПодсказка" id="221">
+								<Title formatted="false">
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Рекомендуется включать при отсутствии штатных возможностей для хранения отправленных писем на почтовом сервере.
+После включения флажка, чтобы не путать скрытые копии отправленных писем с обычными входящими письмами,
+также рекомендуется настроить правило обработки (фильтрации) входящих писем в настройках ящика на почтовом сервере.</v8:content>
+									</v8:item>
+								</Title>
+							</ExtendedTooltip>
+						</CheckBoxField>
 					</ChildItems>
 				</Page>
 				<Page name="ПолучениеПисем" id="98">
@@ -381,12 +361,6 @@
 							<v8:content>Получение писем</v8:content>
 						</v8:item>
 					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Получение писем</v8:content>
-						</v8:item>
-					</ToolTip>
 					<ExtendedTooltip name="ПолучениеПисемРасширеннаяПодсказка" id="99"/>
 					<ChildItems>
 						<InputField name="ИмяПользователяДляПолученияПисем" id="102">
@@ -433,12 +407,6 @@
 									<v8:content>Настройки сервера входящей почты</v8:content>
 								</v8:item>
 							</Title>
-							<ToolTip>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Настройки сервера входящей почты</v8:content>
-								</v8:item>
-							</ToolTip>
 							<Group>Vertical</Group>
 							<Representation>NormalSeparation</Representation>
 							<ShowTitle>false</ShowTitle>
@@ -468,12 +436,6 @@
 											<v8:content>Протокол и порт сервера входящей почты</v8:content>
 										</v8:item>
 									</Title>
-									<ToolTip>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Протокол и порт сервера входящей почты</v8:content>
-										</v8:item>
-									</ToolTip>
 									<Group>Horizontal</Group>
 									<Representation>None</Representation>
 									<ShowTitle>false</ShowTitle>
@@ -537,12 +499,6 @@
 											<v8:content>Тип соединения и длительность ожидания</v8:content>
 										</v8:item>
 									</Title>
-									<ToolTip>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Тип соединения и длительность ожидания</v8:content>
-										</v8:item>
-									</ToolTip>
 									<Group>Vertical</Group>
 									<Representation>None</Representation>
 									<ShowTitle>false</ShowTitle>
@@ -575,12 +531,6 @@
 									<v8:content>Оставлять письма на сервере</v8:content>
 								</v8:item>
 							</Title>
-							<ToolTip>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Оставлять письма на сервере</v8:content>
-								</v8:item>
-							</ToolTip>
 							<Group>Vertical</Group>
 							<Representation>None</Representation>
 							<ShowTitle>false</ShowTitle>
@@ -609,12 +559,6 @@
 											<v8:content>Настройка периода хранения писем</v8:content>
 										</v8:item>
 									</Title>
-									<ToolTip>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Настройка периода хранения писем</v8:content>
-										</v8:item>
-									</ToolTip>
 									<Group>Horizontal</Group>
 									<Representation>None</Representation>
 									<ShowTitle>false</ShowTitle>
@@ -662,12 +606,6 @@
 							<v8:content>Прочие настройки</v8:content>
 						</v8:item>
 					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Прочие настройки</v8:content>
-						</v8:item>
-					</ToolTip>
 					<ExtendedTooltip name="ПрочиеНастройкиРасширеннаяПодсказка" id="207"/>
 					<ChildItems>
 						<UsualGroup name="ДлительностьОжидания" id="136">
@@ -677,12 +615,6 @@
 									<v8:content>Длительность ожидания</v8:content>
 								</v8:item>
 							</Title>
-							<ToolTip>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Длительность ожидания</v8:content>
-								</v8:item>
-							</ToolTip>
 							<Group>Horizontal</Group>
 							<Representation>None</Representation>
 							<ShowTitle>false</ShowTitle>
@@ -718,6 +650,80 @@
 				</Page>
 			</ChildItems>
 		</Pages>
+		<UsualGroup name="ГруппаДляКогоУчетнаяЗапись" id="222">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Для кого учетная запись</v8:content>
+				</v8:item>
+			</Title>
+			<Width>46</Width>
+			<HorizontalStretch>false</HorizontalStretch>
+			<Group>Horizontal</Group>
+			<Representation>NormalSeparation</Representation>
+			<ExtendedTooltip name="ГруппаДляКогоУчетнаяЗаписьРасширеннаяПодсказка" id="223"/>
+			<ChildItems>
+				<RadioButtonField name="ДляКогоУчетнаяЗапись" id="224">
+					<DataPath>ВидУчетнойЗаписи</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Для кого учетная запись</v8:content>
+						</v8:item>
+					</Title>
+					<TitleLocation>None</TitleLocation>
+					<RadioButtonType>Auto</RadioButtonType>
+					<ChoiceList>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Для всех</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xs:string">Общая</Value>
+							</xr:Value>
+						</xr:Item>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Только для:</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xs:string">Персональная</Value>
+							</xr:Value>
+						</xr:Item>
+					</ChoiceList>
+					<ContextMenu name="ДляКогоУчетнаяЗаписьКонтекстноеМеню" id="225"/>
+					<ExtendedTooltip name="ДляКогоУчетнаяЗаписьРасширеннаяПодсказка" id="226"/>
+					<Events>
+						<Event name="OnChange">ДляКогоУчетнаяЗаписьПриИзменении</Event>
+					</Events>
+				</RadioButtonField>
+				<InputField name="ПользовательУчетнойЗаписи" id="227">
+					<DataPath>Объект.ВладелецУчетнойЗаписи</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Владелец учетной записи</v8:content>
+						</v8:item>
+					</Title>
+					<TitleLocation>None</TitleLocation>
+					<ContextMenu name="ПользовательУчетнойЗаписиКонтекстноеМеню" id="228"/>
+					<ExtendedTooltip name="ПользовательУчетнойЗаписиРасширеннаяПодсказка" id="229"/>
+					<Events>
+						<Event name="OnChange">ПользовательУчетнойЗаписиПриИзменении</Event>
+					</Events>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
 	</ChildItems>
 	<Attributes>
 		<Attribute name="Объект" id="1">
@@ -787,6 +793,59 @@
 				<v8:item>
 					<v8:lang>ru</v8:lang>
 					<v8:content>Пароль изменен</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ВидУчетнойЗаписи" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вид учетной записи</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="ВладелецУчетнойЗаписи" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Владелец учетной записи</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Пользователи</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ПроверкаПароля" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Проверка пароля</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ДоступноПолучениеПисем" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Доступно получение писем</v8:content>
 				</v8:item>
 			</Title>
 			<Type>

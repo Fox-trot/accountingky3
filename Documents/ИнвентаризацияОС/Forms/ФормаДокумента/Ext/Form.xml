@@ -5,15 +5,61 @@
 	<RepostOnWrite>true</RepostOnWrite>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
 		<ChildItems>
-			<Button name="ФормаОбщаяКомандаЗапуститьМонитор" id="312">
-				<Type>CommandBarButton</Type>
-				<CommandName>CommonCommand.ЗапуститьМонитор</CommandName>
-				<ExtendedTooltip name="ФормаОбщаяКомандаЗапуститьМониторРасширеннаяПодсказка" id="313"/>
-			</Button>
+			<ButtonGroup name="ГруппаВажныеКоманды" id="364">
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Группа важные команды</v8:content>
+					</v8:item>
+				</Title>
+				<ToolTip>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Группа важные команды</v8:content>
+					</v8:item>
+				</ToolTip>
+				<ExtendedTooltip name="ГруппаВажныеКомандыРасширеннаяПодсказка" id="365"/>
+			</ButtonGroup>
+			<ButtonGroup name="ГруппаГлобальныеКоманды" id="366">
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Группа глобальные команды</v8:content>
+					</v8:item>
+				</Title>
+				<ToolTip>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Группа глобальные команды</v8:content>
+					</v8:item>
+				</ToolTip>
+				<ExtendedTooltip name="ГруппаГлобальныеКомандыРасширеннаяПодсказка" id="367"/>
+				<ChildItems>
+					<Button name="ФормаОбщаяКомандаОтчетПоДвижениям" id="370">
+						<Type>CommandBarButton</Type>
+						<CommandName>CommonCommand.ОтчетПоДвижениям</CommandName>
+						<DataPath>Объект.Ref</DataPath>
+						<ExtendedTooltip name="ФормаОбщаяКомандаОтчетПоДвижениямРасширеннаяПодсказка" id="371"/>
+					</Button>
+					<Button name="ФормаОбщаяКомандаСтруктураПодчиненности" id="368">
+						<Type>CommandBarButton</Type>
+						<CommandName>CommonCommand.СтруктураПодчиненности</CommandName>
+						<DataPath>Объект.Ref</DataPath>
+						<ExtendedTooltip name="ФормаОбщаяКомандаСтруктураПодчиненностиРасширеннаяПодсказка" id="369"/>
+					</Button>
+					<Button name="ФормаОбщаяКомандаЗапуститьМонитор" id="312">
+						<Type>CommandBarButton</Type>
+						<CommandName>CommonCommand.ЗапуститьМонитор</CommandName>
+						<ExtendedTooltip name="ФормаОбщаяКомандаЗапуститьМониторРасширеннаяПодсказка" id="313"/>
+					</Button>
+				</ChildItems>
+			</ButtonGroup>
 		</ChildItems>
 	</AutoCommandBar>
 	<Events>
+		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
 		<Event name="OnReadAtServer">ПриЧтенииНаСервере</Event>
+		<Event name="OnOpen">ПриОткрытии</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 	</Events>
 	<ChildItems>
@@ -53,25 +99,22 @@
 					<ShowTitle>false</ShowTitle>
 					<ExtendedTooltip name="ГруппаЛеваяШапкаРасширеннаяПодсказка" id="22"/>
 					<ChildItems>
-						<InputField name="Склад" id="16">
-							<DataPath>1/0:77519d1a-3992-4644-8786-a1cd382aa368</DataPath>
-							<EditMode>EnterOnInput</EditMode>
-							<ContextMenu name="СкладКонтекстноеМеню" id="17"/>
-							<ExtendedTooltip name="СкладРасширеннаяПодсказка" id="18"/>
-						</InputField>
-						<InputField name="ПодразделениеОрганизации" id="187">
-							<DataPath>Объект.ПодразделениеОрганизации</DataPath>
+						<InputField name="Подразделение" id="187">
+							<DataPath>Объект.Подразделение</DataPath>
 							<Title>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
 									<v8:content>Подразделение</v8:content>
 								</v8:item>
 							</Title>
-							<ContextMenu name="ПодразделениеОрганизацииКонтекстноеМеню" id="188"/>
-							<ExtendedTooltip name="ПодразделениеОрганизацииРасширеннаяПодсказка" id="189"/>
+							<ContextMenu name="ПодразделениеКонтекстноеМеню" id="188"/>
+							<ExtendedTooltip name="ПодразделениеРасширеннаяПодсказка" id="189"/>
+							<Events>
+								<Event name="OnChange">ПодразделениеПриИзменении</Event>
+							</Events>
 						</InputField>
-						<InputField name="МОЛОрганизации" id="10">
-							<DataPath>Объект.МОЛОрганизации</DataPath>
+						<InputField name="МОЛ" id="10">
+							<DataPath>Объект.МОЛ</DataPath>
 							<Title>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
@@ -79,8 +122,11 @@
 								</v8:item>
 							</Title>
 							<EditMode>EnterOnInput</EditMode>
-							<ContextMenu name="МОЛОрганизацииКонтекстноеМеню" id="11"/>
-							<ExtendedTooltip name="МОЛОрганизацииРасширеннаяПодсказка" id="12"/>
+							<ContextMenu name="МОЛКонтекстноеМеню" id="11"/>
+							<ExtendedTooltip name="МОЛРасширеннаяПодсказка" id="12"/>
+							<Events>
+								<Event name="OnChange">МОЛПриИзменении</Event>
+							</Events>
 						</InputField>
 					</ChildItems>
 				</UsualGroup>
@@ -207,10 +253,10 @@
 							<ContextMenu name="ОСКонтекстноеМеню" id="32"/>
 							<AutoCommandBar name="ОСКоманднаяПанель" id="33">
 								<ChildItems>
-									<Button name="ОСПодбор" id="317">
+									<Button name="ОСПодборОС" id="362">
 										<Type>CommandBarButton</Type>
-										<CommandName>Form.Command.Подбор</CommandName>
-										<ExtendedTooltip name="ОСПодборРасширеннаяПодсказка" id="318"/>
+										<CommandName>Form.Command.ПодборОС</CommandName>
+										<ExtendedTooltip name="ОСПодборОСРасширеннаяПодсказка" id="363"/>
 									</Button>
 									<Popup name="ОСПодменю" id="250">
 										<Title>
@@ -227,49 +273,18 @@
 										</ToolTip>
 										<ExtendedTooltip name="ОСПодменюРасширеннаяПодсказка" id="251"/>
 										<ChildItems>
-											<Button name="ОСЗаполнитьПоОстаткам" id="252">
+											<Button name="ОСЗаполнитьПоОстаткамОС" id="252">
 												<Type>CommandBarButton</Type>
 												<CommandName>Form.Command.ЗаполнитьПоОстаткамОС</CommandName>
-												<ExtendedTooltip name="ОСЗаполнитьПоОстаткамРасширеннаяПодсказка" id="253"/>
+												<ExtendedTooltip name="ОСЗаполнитьПоОстаткамОСРасширеннаяПодсказка" id="253"/>
 											</Button>
-											<Button name="ОСЗаполнитьДанныеУчета" id="254">
-												<Type>CommandBarButton</Type>
-												<CommandName>Form.Command.ЗаполнитьДанныеУчетаОС</CommandName>
-												<Title>
-													<v8:item>
-														<v8:lang>ru</v8:lang>
-														<v8:content>Данные учета</v8:content>
-													</v8:item>
-												</Title>
-												<ExtendedTooltip name="ОСЗаполнитьДанныеУчетаРасширеннаяПодсказка" id="255"/>
-											</Button>
-											<Button name="ОСЗаполнитьФактическиеДанные" id="256">
+											<Button name="ОСЗаполнитьФактическиеДанныеОС" id="256">
 												<Type>CommandBarButton</Type>
 												<CommandName>Form.Command.ЗаполнитьФактическиеДанныеОС</CommandName>
-												<ExtendedTooltip name="ОСЗаполнитьФактическиеДанныеРасширеннаяПодсказка" id="257"/>
+												<ExtendedTooltip name="ОСЗаполнитьФактическиеДанныеОСРасширеннаяПодсказка" id="257"/>
 											</Button>
 										</ChildItems>
 									</Popup>
-									<Button name="ОСНайти" id="308">
-										<Type>CommandBarButton</Type>
-										<Representation>PictureAndText</Representation>
-										<CommandName>Form.Item.ОС.StandardCommand.Find</CommandName>
-										<Picture>
-											<xr:Ref>StdPicture.Find</xr:Ref>
-											<xr:LoadTransparent>true</xr:LoadTransparent>
-										</Picture>
-										<ExtendedTooltip name="ОСНайтиРасширеннаяПодсказка" id="309"/>
-									</Button>
-									<Button name="ОСОтменитьПоиск" id="310">
-										<Type>CommandBarButton</Type>
-										<Representation>Picture</Representation>
-										<CommandName>Form.Item.ОС.StandardCommand.CancelSearch</CommandName>
-										<Picture>
-											<xr:Ref>StdPicture.CancelSearch</xr:Ref>
-											<xr:LoadTransparent>true</xr:LoadTransparent>
-										</Picture>
-										<ExtendedTooltip name="ОСОтменитьПоискРасширеннаяПодсказка" id="311"/>
-									</Button>
 								</ChildItems>
 							</AutoCommandBar>
 							<ExtendedTooltip name="ОСРасширеннаяПодсказка" id="34"/>
@@ -297,9 +312,6 @@
 								<ContextMenu name="ОСУправлениеПоискомКонтекстноеМеню" id="48"/>
 								<ExtendedTooltip name="ОСУправлениеПоискомРасширеннаяПодсказка" id="49"/>
 							</SearchControlAddition>
-							<Events>
-								<Event name="ChoiceProcessing">ОСОбработкаВыбора</Event>
-							</Events>
 							<ChildItems>
 								<LabelField name="ОСНомерСтроки" id="50">
 									<DataPath>Объект.ОС.LineNumber</DataPath>
@@ -327,34 +339,8 @@
 										<InputField name="ОСОсновноеСредство" id="53">
 											<DataPath>Объект.ОС.ОсновноеСредство</DataPath>
 											<EditMode>EnterOnInput</EditMode>
-											<ChoiceParameterLinks>
-												<xr:Link>
-													<xr:Name>Отбор.ДатаПримененияОтбора</xr:Name>
-													<xr:DataPath xsi:type="xs:string">ДатаДокумента</xr:DataPath>
-													<xr:ValueChange>Clear</xr:ValueChange>
-												</xr:Link>
-												<xr:Link>
-													<xr:Name>Отбор.МОЛ</xr:Name>
-													<xr:DataPath xsi:type="xs:string">Объект.МОЛОрганизации</xr:DataPath>
-													<xr:ValueChange>Clear</xr:ValueChange>
-												</xr:Link>
-												<xr:Link>
-													<xr:Name>Отбор.Организация</xr:Name>
-													<xr:DataPath xsi:type="xs:string">Объект.Организация</xr:DataPath>
-													<xr:ValueChange>Clear</xr:ValueChange>
-												</xr:Link>
-												<xr:Link>
-													<xr:Name>Отбор.Подразделение</xr:Name>
-													<xr:DataPath xsi:type="xs:string">Объект.ПодразделениеОрганизации</xr:DataPath>
-													<xr:ValueChange>Clear</xr:ValueChange>
-												</xr:Link>
-											</ChoiceParameterLinks>
 											<ContextMenu name="ОСОсновноеСредствоКонтекстноеМеню" id="54"/>
 											<ExtendedTooltip name="ОСОсновноеСредствоРасширеннаяПодсказка" id="55"/>
-											<Events>
-												<Event name="OnChange">ОСОсновноеСредствоПриИзменении</Event>
-												<Event name="ChoiceProcessing">ОСОсновноеСредствоОбработкаВыбора</Event>
-											</Events>
 										</InputField>
 										<InputField name="ИнвентарныйНомер" id="85">
 											<DataPath>Объект.ОС.ИнвентарныйНомер</DataPath>
@@ -370,18 +356,35 @@
 										</InputField>
 									</ChildItems>
 								</ColumnGroup>
-								<InputField name="ОСМОЛ" id="88">
-									<DataPath>Объект.ОС.МОЛ</DataPath>
-									<EditMode>EnterOnInput</EditMode>
-									<ContextMenu name="ОСМОЛКонтекстноеМеню" id="89"/>
-									<ExtendedTooltip name="ОСМОЛРасширеннаяПодсказка" id="90"/>
-								</InputField>
-								<InputField name="ОСМестонахождение" id="91">
-									<DataPath>Объект.ОС.Местонахождение</DataPath>
-									<EditMode>EnterOnInput</EditMode>
-									<ContextMenu name="ОСМестонахождениеКонтекстноеМеню" id="92"/>
-									<ExtendedTooltip name="ОСМестонахождениеРасширеннаяПодсказка" id="93"/>
-								</InputField>
+								<ColumnGroup name="ОСГруппаМестонахождение" id="360">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>ОСГруппа местонахождение</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>ОСГруппа местонахождение</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ExtendedTooltip name="ОСГруппаМестонахождениеРасширеннаяПодсказка" id="361"/>
+									<ChildItems>
+										<InputField name="ОСМОЛ" id="88">
+											<DataPath>Объект.ОС.МОЛ</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<ContextMenu name="ОСМОЛКонтекстноеМеню" id="89"/>
+											<ExtendedTooltip name="ОСМОЛРасширеннаяПодсказка" id="90"/>
+										</InputField>
+										<InputField name="ОСМестонахождение" id="91">
+											<DataPath>Объект.ОС.Подразделение</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<ContextMenu name="ОСМестонахождениеКонтекстноеМеню" id="92"/>
+											<ExtendedTooltip name="ОСМестонахождениеРасширеннаяПодсказка" id="93"/>
+										</InputField>
+									</ChildItems>
+								</ColumnGroup>
 								<ColumnGroup name="ОСГруппа5" id="94">
 									<Title>
 										<v8:item>
@@ -557,7 +560,7 @@
 											<ExtendedTooltip name="ОСНакопленнаяАмортизацияРасширеннаяПодсказка" id="70"/>
 										</InputField>
 										<InputField name="ОСБалансоваяСтоимость" id="71">
-											<DataPath>Объект.ОС.БалансоваяСтоимость</DataPath>
+											<DataPath>Объект.ОС.ПервоначальнаяСтоимость</DataPath>
 											<EditMode>EnterOnInput</EditMode>
 											<Width>10</Width>
 											<ContextMenu name="ОСБалансоваяСтоимостьКонтекстноеМеню" id="72"/>
@@ -593,279 +596,6 @@
 											<Width>10</Width>
 											<ContextMenu name="ОСОстаточныйСрокСлужбыКонтекстноеМеню" id="78"/>
 											<ExtendedTooltip name="ОСОстаточныйСрокСлужбыРасширеннаяПодсказка" id="79"/>
-										</InputField>
-									</ChildItems>
-								</ColumnGroup>
-								<InputField name="ОСКомплект" id="80">
-									<DataPath>Объект.ОС.Комплект</DataPath>
-									<EditMode>EnterOnInput</EditMode>
-									<ContextMenu name="ОСКомплектКонтекстноеМеню" id="81"/>
-									<ExtendedTooltip name="ОСКомплектРасширеннаяПодсказка" id="82"/>
-								</InputField>
-							</ChildItems>
-						</Table>
-					</ChildItems>
-				</Page>
-				<Page name="СтраницаМБП" id="118">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>МБП</v8:content>
-						</v8:item>
-					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Страница МБП</v8:content>
-						</v8:item>
-					</ToolTip>
-					<ExtendedTooltip name="СтраницаМБПРасширеннаяПодсказка" id="119"/>
-					<ChildItems>
-						<Table name="МБП" id="120">
-							<AutoInsertNewRow>true</AutoInsertNewRow>
-							<EnableStartDrag>true</EnableStartDrag>
-							<EnableDrag>true</EnableDrag>
-							<DataPath>Объект.МБП</DataPath>
-							<RowFilter xsi:nil="true"/>
-							<ContextMenu name="МБПКонтекстноеМеню" id="121"/>
-							<AutoCommandBar name="МБПКоманднаяПанель" id="122">
-								<ChildItems>
-									<Popup name="МБПГруппаПодменю" id="260">
-										<Title>
-											<v8:item>
-												<v8:lang>ru</v8:lang>
-												<v8:content>Заполнить</v8:content>
-											</v8:item>
-										</Title>
-										<ToolTip>
-											<v8:item>
-												<v8:lang>ru</v8:lang>
-												<v8:content>МБПГруппа подменю</v8:content>
-											</v8:item>
-										</ToolTip>
-										<ExtendedTooltip name="МБПГруппаПодменюРасширеннаяПодсказка" id="261"/>
-										<ChildItems>
-											<Button name="МБПЗаполнитьПоОстаткамМБП" id="262">
-												<Type>CommandBarButton</Type>
-												<CommandName>Form.Command.ЗаполнитьПоОстаткамМБП</CommandName>
-												<ExtendedTooltip name="МБПЗаполнитьПоОстаткамМБПРасширеннаяПодсказка" id="263"/>
-											</Button>
-											<Button name="МБПЗаполнитьДанныеУчетаМБП" id="264">
-												<Type>CommandBarButton</Type>
-												<CommandName>Form.Command.ЗаполнитьДанныеУчетаМБП</CommandName>
-												<ExtendedTooltip name="МБПЗаполнитьДанныеУчетаМБПРасширеннаяПодсказка" id="265"/>
-											</Button>
-											<Button name="МБПЗаполнитьФактическиеДанныеМБП" id="266">
-												<Type>CommandBarButton</Type>
-												<CommandName>Form.Command.ЗаполнитьФактическиеДанныеМБП</CommandName>
-												<ExtendedTooltip name="МБПЗаполнитьФактическиеДанныеМБПРасширеннаяПодсказка" id="267"/>
-											</Button>
-										</ChildItems>
-									</Popup>
-								</ChildItems>
-							</AutoCommandBar>
-							<ExtendedTooltip name="МБПРасширеннаяПодсказка" id="123"/>
-							<SearchStringAddition name="МБПСтрокаПоиска" id="124">
-								<AdditionSource>
-									<Item>МБП</Item>
-									<Type>SearchStringRepresentation</Type>
-								</AdditionSource>
-								<ContextMenu name="МБПСтрокаПоискаКонтекстноеМеню" id="127"/>
-								<ExtendedTooltip name="МБПСтрокаПоискаРасширеннаяПодсказка" id="128"/>
-							</SearchStringAddition>
-							<ViewStatusAddition name="МБПСостояниеПросмотра" id="129">
-								<AdditionSource>
-									<Item>МБП</Item>
-									<Type>ViewStatusRepresentation</Type>
-								</AdditionSource>
-								<ContextMenu name="МБПСостояниеПросмотраКонтекстноеМеню" id="132"/>
-								<ExtendedTooltip name="МБПСостояниеПросмотраРасширеннаяПодсказка" id="133"/>
-							</ViewStatusAddition>
-							<SearchControlAddition name="МБПУправлениеПоиском" id="134">
-								<AdditionSource>
-									<Item>МБП</Item>
-									<Type>SearchControl</Type>
-								</AdditionSource>
-								<ContextMenu name="МБПУправлениеПоискомКонтекстноеМеню" id="137"/>
-								<ExtendedTooltip name="МБПУправлениеПоискомРасширеннаяПодсказка" id="138"/>
-							</SearchControlAddition>
-							<ChildItems>
-								<LabelField name="МБПНомерСтроки" id="139">
-									<DataPath>Объект.МБП.LineNumber</DataPath>
-									<EditMode>EnterOnInput</EditMode>
-									<Width>4</Width>
-									<HorizontalStretch>false</HorizontalStretch>
-									<ContextMenu name="МБПНомерСтрокиКонтекстноеМеню" id="140"/>
-									<ExtendedTooltip name="МБПНомерСтрокиРасширеннаяПодсказка" id="141"/>
-								</LabelField>
-								<ColumnGroup name="МБПГруппа2" id="157">
-									<Title>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>МБПГруппа2</v8:content>
-										</v8:item>
-									</Title>
-									<ToolTip>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>МБПГруппа2</v8:content>
-										</v8:item>
-									</ToolTip>
-									<ExtendedTooltip name="МБПГруппа2РасширеннаяПодсказка" id="158"/>
-									<ChildItems>
-										<InputField name="МБПНоменклатура" id="142">
-											<DataPath>Объект.МБП.Номенклатура</DataPath>
-											<EditMode>EnterOnInput</EditMode>
-											<ContextMenu name="МБПНоменклатураКонтекстноеМеню" id="143"/>
-											<ExtendedTooltip name="МБПНоменклатураРасширеннаяПодсказка" id="144"/>
-										</InputField>
-									</ChildItems>
-								</ColumnGroup>
-								<InputField name="МБПМОЛ" id="290">
-									<DataPath>Объект.МБП.МОЛ</DataPath>
-									<EditMode>EnterOnInput</EditMode>
-									<ContextMenu name="МБПМОЛКонтекстноеМеню" id="291"/>
-									<ExtendedTooltip name="МБПМОЛРасширеннаяПодсказка" id="292"/>
-								</InputField>
-								<InputField name="МБПМестонахождение" id="293">
-									<DataPath>Объект.МБП.Местонахождение</DataPath>
-									<EditMode>EnterOnInput</EditMode>
-									<ContextMenu name="МБПМестонахождениеКонтекстноеМеню" id="294"/>
-									<ExtendedTooltip name="МБПМестонахождениеРасширеннаяПодсказка" id="295"/>
-								</InputField>
-								<ColumnGroup name="МБПГруппа4" id="165">
-									<Title>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>МБПГруппа4</v8:content>
-										</v8:item>
-									</Title>
-									<ToolTip>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>МБПГруппа4</v8:content>
-										</v8:item>
-									</ToolTip>
-									<ExtendedTooltip name="МБПГруппа4РасширеннаяПодсказка" id="166"/>
-									<ChildItems>
-										<InputField name="МБПСтоимостьПоДаннымУчета" id="148">
-											<DataPath>Объект.МБП.СтоимостьПоДаннымУчета</DataPath>
-											<EditMode>EnterOnInput</EditMode>
-											<Width>10</Width>
-											<ContextMenu name="МБПСтоимостьПоДаннымУчетаКонтекстноеМеню" id="149"/>
-											<ExtendedTooltip name="МБПСтоимостьПоДаннымУчетаРасширеннаяПодсказка" id="150"/>
-										</InputField>
-										<CheckBoxField name="МБПНаличиеПоДаннымУчета" id="145">
-											<DataPath>Объект.МБП.НаличиеПоДаннымУчета</DataPath>
-											<EditMode>EnterOnInput</EditMode>
-											<CheckBoxType>Auto</CheckBoxType>
-											<ContextMenu name="МБПНаличиеПоДаннымУчетаКонтекстноеМеню" id="146"/>
-											<ExtendedTooltip name="МБПНаличиеПоДаннымУчетаРасширеннаяПодсказка" id="147"/>
-										</CheckBoxField>
-									</ChildItems>
-								</ColumnGroup>
-								<ColumnGroup name="МБПГруппа5" id="167">
-									<Title>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>МБПГруппа5</v8:content>
-										</v8:item>
-									</Title>
-									<ToolTip>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>МБПГруппа5</v8:content>
-										</v8:item>
-									</ToolTip>
-									<ExtendedTooltip name="МБПГруппа5РасширеннаяПодсказка" id="168"/>
-									<ChildItems>
-										<InputField name="МБПСтоимостьФактическая" id="154">
-											<DataPath>Объект.МБП.СтоимостьФактическая</DataPath>
-											<Title>
-												<v8:item>
-													<v8:lang>ru</v8:lang>
-													<v8:content>Фактическая стоимость</v8:content>
-												</v8:item>
-											</Title>
-											<EditMode>EnterOnInput</EditMode>
-											<Width>10</Width>
-											<ContextMenu name="МБПСтоимостьФактическаяКонтекстноеМеню" id="155"/>
-											<ExtendedTooltip name="МБПСтоимостьФактическаяРасширеннаяПодсказка" id="156"/>
-										</InputField>
-										<CheckBoxField name="МБПНаличиеФактическое" id="151">
-											<DataPath>Объект.МБП.НаличиеФактическое</DataPath>
-											<Title>
-												<v8:item>
-													<v8:lang>ru</v8:lang>
-													<v8:content>Фактическое наличие </v8:content>
-												</v8:item>
-											</Title>
-											<EditMode>EnterOnInput</EditMode>
-											<CheckBoxType>Auto</CheckBoxType>
-											<ContextMenu name="МБПНаличиеФактическоеКонтекстноеМеню" id="152"/>
-											<ExtendedTooltip name="МБПНаличиеФактическоеРасширеннаяПодсказка" id="153"/>
-										</CheckBoxField>
-									</ChildItems>
-								</ColumnGroup>
-								<ColumnGroup name="МБПГруппа6" id="169">
-									<Title>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>МБПГруппа6</v8:content>
-										</v8:item>
-									</Title>
-									<ToolTip>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>МБПГруппа6</v8:content>
-										</v8:item>
-									</ToolTip>
-									<ExtendedTooltip name="МБПГруппа6РасширеннаяПодсказка" id="170"/>
-									<ChildItems>
-										<InputField name="МБПИзлишекСумма" id="296">
-											<DataPath>Объект.МБП.ИзлишекСумма</DataPath>
-											<EditMode>EnterOnInput</EditMode>
-											<Width>10</Width>
-											<ContextMenu name="МБПИзлишекСуммаКонтекстноеМеню" id="297"/>
-											<ExtendedTooltip name="МБПИзлишекСуммаРасширеннаяПодсказка" id="298"/>
-										</InputField>
-										<InputField name="МБПИзлишекКоличество" id="299">
-											<DataPath>Объект.МБП.ИзлишекКоличество</DataPath>
-											<EditMode>EnterOnInput</EditMode>
-											<Width>10</Width>
-											<ContextMenu name="МБПИзлишекКоличествоКонтекстноеМеню" id="300"/>
-											<ExtendedTooltip name="МБПИзлишекКоличествоРасширеннаяПодсказка" id="301"/>
-										</InputField>
-									</ChildItems>
-								</ColumnGroup>
-								<ColumnGroup name="МБПГруппа7" id="177">
-									<Title>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>МБПГруппа7</v8:content>
-										</v8:item>
-									</Title>
-									<ToolTip>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>МБПГруппа7</v8:content>
-										</v8:item>
-									</ToolTip>
-									<ExtendedTooltip name="МБПГруппа7РасширеннаяПодсказка" id="178"/>
-									<ChildItems>
-										<InputField name="МБПНедостачаСумма" id="302">
-											<DataPath>Объект.МБП.НедостачаСумма</DataPath>
-											<EditMode>EnterOnInput</EditMode>
-											<Width>10</Width>
-											<ContextMenu name="МБПНедостачаСуммаКонтекстноеМеню" id="303"/>
-											<ExtendedTooltip name="МБПНедостачаСуммаРасширеннаяПодсказка" id="304"/>
-										</InputField>
-										<InputField name="МБПНедостачаКоличество" id="305">
-											<DataPath>Объект.МБП.НедостачаКоличество</DataPath>
-											<EditMode>EnterOnInput</EditMode>
-											<Width>10</Width>
-											<ContextMenu name="МБПНедостачаКоличествоКонтекстноеМеню" id="306"/>
-											<ExtendedTooltip name="МБПНедостачаКоличествоРасширеннаяПодсказка" id="307"/>
 										</InputField>
 									</ChildItems>
 								</ColumnGroup>
@@ -1249,6 +979,85 @@
 				</Page>
 			</ChildItems>
 		</Pages>
+		<UsualGroup name="Подвал" id="372">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подвал</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подвал</v8:content>
+				</v8:item>
+			</ToolTip>
+			<HorizontalStretch>true</HorizontalStretch>
+			<VerticalStretch>false</VerticalStretch>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ПодвалРасширеннаяПодсказка" id="373"/>
+			<ChildItems>
+				<UsualGroup name="ГруппаИтоги" id="374">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Итоги</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа итоги</v8:content>
+						</v8:item>
+					</ToolTip>
+					<GroupHorizontalAlign>Right</GroupHorizontalAlign>
+					<Group>Horizontal</Group>
+					<HorizontalAlign>Right</HorizontalAlign>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<BackColor>style:ИтогиФонГруппы</BackColor>
+					<ExtendedTooltip name="ГруппаИтогиРасширеннаяПодсказка" id="375"/>
+					<ChildItems>
+						<InputField name="ОСИтогИзлишекСумма" id="382">
+							<DataPath>Объект.ОС.TotalИзлишекСумма</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Излишек</v8:content>
+								</v8:item>
+							</Title>
+							<Width>9</Width>
+							<ChoiceButton>false</ChoiceButton>
+							<ClearButton>false</ClearButton>
+							<SpinButton>false</SpinButton>
+							<OpenButton>false</OpenButton>
+							<ContextMenu name="ОСИтогИзлишекСуммаКонтекстноеМеню" id="383"/>
+							<ExtendedTooltip name="ОСИтогИзлишекСуммаРасширеннаяПодсказка" id="384"/>
+						</InputField>
+						<InputField name="ОСИтогНедостачаСумма" id="385">
+							<DataPath>Объект.ОС.TotalНедостачаСумма</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Недостача</v8:content>
+								</v8:item>
+							</Title>
+							<Width>9</Width>
+							<ChoiceButton>false</ChoiceButton>
+							<ClearButton>false</ClearButton>
+							<SpinButton>false</SpinButton>
+							<OpenButton>false</OpenButton>
+							<ContextMenu name="ОСИтогНедостачаСуммаКонтекстноеМеню" id="386"/>
+							<ExtendedTooltip name="ОСИтогНедостачаСуммаРасширеннаяПодсказка" id="387"/>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
 	</ChildItems>
 	<Attributes>
 		<Attribute name="Объект" id="1">
@@ -1262,7 +1071,6 @@
 			</UseAlways>
 			<Columns>
 				<AdditionalColumns table="Объект.ОС"/>
-				<AdditionalColumns table="Объект.МБП"/>
 			</Columns>
 		</Attribute>
 		<Attribute name="ДатаДокумента" id="2">
@@ -1278,6 +1086,37 @@
 					<v8:DateFractions>DateTime</v8:DateFractions>
 				</v8:DateQualifiers>
 			</Type>
+		</Attribute>
+		<Attribute name="Подразделение" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подразделение</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.ПодразделенияОрганизаций</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="МОЛ" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>МОЛ</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.ФизическиеЛица</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ПараметрыПодключаемыхКоманд" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Параметры подключаемых команд</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
 		</Attribute>
 	</Attributes>
 	<Commands>
@@ -1296,21 +1135,6 @@
 			</ToolTip>
 			<Action>ЗаполнитьПоОстаткамОС</Action>
 		</Command>
-		<Command name="ЗаполнитьДанныеУчетаОС" id="2">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Заполнить данные учета ОС</v8:content>
-				</v8:item>
-			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Заполнить данные учета ОС</v8:content>
-				</v8:item>
-			</ToolTip>
-			<Action>ЗаполнитьДанныеУчетаОС</Action>
-		</Command>
 		<Command name="ЗаполнитьФактическиеДанныеОС" id="3">
 			<Title>
 				<v8:item>
@@ -1326,65 +1150,20 @@
 			</ToolTip>
 			<Action>ЗаполнитьФактическиеДанныеОС</Action>
 		</Command>
-		<Command name="ЗаполнитьПоОстаткамМБП" id="4">
+		<Command name="ПодборОС" id="7">
 			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>По остаткам</v8:content>
-				</v8:item>
-			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Заполнить по остаткам МБП</v8:content>
-				</v8:item>
-			</ToolTip>
-			<Action>ЗаполнитьПоОстаткамМБП</Action>
-		</Command>
-		<Command name="ЗаполнитьДанныеУчетаМБП" id="5">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Данные учета</v8:content>
-				</v8:item>
-			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Заполнить данные учета МБП</v8:content>
-				</v8:item>
-			</ToolTip>
-			<Action>ЗаполнитьДанныеУчетаМБП</Action>
-		</Command>
-		<Command name="ЗаполнитьФактическиеДанныеМБП" id="6">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Фактические данные</v8:content>
-				</v8:item>
-			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Заполнить фактические данные МБП</v8:content>
-				</v8:item>
-			</ToolTip>
-			<Action>ЗаполнитьФактическиеДанныеМБП</Action>
-		</Command>
-		<Command name="Подбор" id="7">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Подбор ОС</v8:content>
-				</v8:item>
-			</Title>
-			<ToolTip>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
 					<v8:content>Подбор</v8:content>
 				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подбор ОС</v8:content>
+				</v8:item>
 			</ToolTip>
-			<Action>Подбор</Action>
+			<Action>ПодборОС</Action>
 		</Command>
 		<Command name="ПодборФизическихЛиц" id="8">
 			<Title>

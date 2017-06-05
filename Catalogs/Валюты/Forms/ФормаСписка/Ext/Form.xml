@@ -16,12 +16,6 @@
 					<v8:content>Группа пользовательских настроек</v8:content>
 				</v8:item>
 			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Группа пользовательских настроек</v8:content>
-				</v8:item>
-			</ToolTip>
 			<Group>Vertical</Group>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
@@ -34,12 +28,6 @@
 					<v8:content>Командная панель</v8:content>
 				</v8:item>
 			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Командная панель</v8:content>
-				</v8:item>
-			</ToolTip>
 			<ExtendedTooltip name="КоманднаяПанельРасширеннаяПодсказка" id="65"/>
 			<ChildItems>
 				<Popup name="Создать" id="77">
@@ -49,18 +37,12 @@
 							<v8:content>Создать</v8:content>
 						</v8:item>
 					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Создать</v8:content>
-						</v8:item>
-					</ToolTip>
 					<ExtendedTooltip name="СоздатьРасширеннаяПодсказка" id="78"/>
 					<ChildItems>
-						<Button name="ФормаПодборИзОКВ" id="44">
+						<Button name="ФормаПодборИзКлассификатора" id="44">
 							<Type>CommandBarButton</Type>
-							<CommandName>Form.Command.ПодборИзОКВ</CommandName>
-							<ExtendedTooltip name="ФормаПодборИзОКВExtendedTooltip" id="51"/>
+							<CommandName>Form.Command.ПодборИзКлассификатора</CommandName>
+							<ExtendedTooltip name="ФормаПодборИзКлассификатораРасширеннаяПодсказка" id="51"/>
 						</Button>
 						<Button name="СоздатьВалюту" id="85">
 							<Type>CommandBarButton</Type>
@@ -82,12 +64,6 @@
 							<v8:content>Команды формы</v8:content>
 						</v8:item>
 					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Команды формы</v8:content>
-						</v8:item>
-					</ToolTip>
 					<CommandSource>Form</CommandSource>
 					<ExtendedTooltip name="КомандыФормыРасширеннаяПодсказка" id="80"/>
 				</ButtonGroup>
@@ -109,9 +85,12 @@
 			<UseAlternationRowColor>true</UseAlternationRowColor>
 			<DataPath>Список</DataPath>
 			<RowPictureDataPath>Список.DefaultPicture</RowPictureDataPath>
-			<SearchStringLocation>None</SearchStringLocation>
-			<ViewStatusLocation>None</ViewStatusLocation>
-			<SearchControlLocation>None</SearchControlLocation>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Валюты</v8:content>
+				</v8:item>
+			</Title>
 			<AutoRefresh>false</AutoRefresh>
 			<AutoRefreshPeriod>60</AutoRefreshPeriod>
 			<Period>
@@ -153,6 +132,9 @@
 				<ContextMenu name="ВалютыУправлениеПоискомКонтекстноеМеню" id="75"/>
 				<ExtendedTooltip name="ВалютыУправлениеПоискомРасширеннаяПодсказка" id="76"/>
 			</SearchControlAddition>
+			<Events>
+				<Event name="OnGetDataAtServer">ВалютыПриПолученииДанныхНаСервере</Event>
+			</Events>
 			<ChildItems>
 				<InputField name="НаименованиеПолное" id="40">
 					<DataPath>Список.НаименованиеПолное</DataPath>
@@ -162,7 +144,7 @@
 					<ExtendedTooltip name="НаименованиеПолноеExtendedTooltip" id="55"/>
 				</InputField>
 				<InputField name="Код" id="28">
-					<DataPath>Список.Code</DataPath>
+					<DataPath>Список.Код</DataPath>
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -175,7 +157,7 @@
 					<ExtendedTooltip name="КодExtendedTooltip" id="53"/>
 				</InputField>
 				<InputField name="Наименование" id="32">
-					<DataPath>Список.Description</DataPath>
+					<DataPath>Список.Наименование</DataPath>
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -189,11 +171,18 @@
 				</InputField>
 				<LabelField name="Курс" id="38">
 					<DataPath>Список.Курс</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Курс</v8:content>
+						</v8:item>
+					</Title>
 					<Width>7</Width>
 					<ContextMenu name="КурсКонтекстноеМеню" id="39"/>
 					<ExtendedTooltip name="КурсExtendedTooltip" id="56"/>
 				</LabelField>
-				<ColumnGroup name="ПредставлениеКратности" id="49">
+				<LabelField name="Кратность" id="36">
+					<DataPath>Список.Кратность</DataPath>
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -203,47 +192,15 @@
 					<ToolTip>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Кратность валюты. Отображается, если не равна 1.</v8:content>
+							<v8:content>Кратность равная единице не отображается</v8:content>
 						</v8:item>
 					</ToolTip>
-					<Group>Horizontal</Group>
-					<ShowInHeader>true</ShowInHeader>
-					<ExtendedTooltip name="ПредставлениеКратностиExtendedTooltip" id="57"/>
-					<ChildItems>
-						<LabelField name="РубЗа" id="45">
-							<DataPath>Список.РубЗа</DataPath>
-							<TitleLocation>None</TitleLocation>
-							<ShowInHeader>false</ShowInHeader>
-							<Width>7</Width>
-							<ContextMenu name="РубЗаКонтекстноеМеню" id="46"/>
-							<ExtendedTooltip name="РубЗаExtendedTooltip" id="58"/>
-						</LabelField>
-						<LabelField name="Кратность" id="36">
-							<DataPath>Список.Кратность</DataPath>
-							<TitleLocation>None</TitleLocation>
-							<ToolTip>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>кратность равная единице не отображается</v8:content>
-								</v8:item>
-							</ToolTip>
-							<ShowInHeader>false</ShowInHeader>
-							<Width>7</Width>
-							<ContextMenu name="КратностьКонтекстноеМеню" id="37"/>
-							<ExtendedTooltip name="КратностьExtendedTooltip" id="59"/>
-						</LabelField>
-						<LabelField name="КраткоеНаименование" id="47">
-							<DataPath>Список.КраткоеНаименование</DataPath>
-							<TitleLocation>None</TitleLocation>
-							<ShowInHeader>false</ShowInHeader>
-							<Width>7</Width>
-							<ContextMenu name="КраткоеНаименованиеКонтекстноеМеню" id="48"/>
-							<ExtendedTooltip name="КраткоеНаименованиеExtendedTooltip" id="60"/>
-						</LabelField>
-					</ChildItems>
-				</ColumnGroup>
+					<Width>7</Width>
+					<ContextMenu name="КратностьКонтекстноеМеню" id="37"/>
+					<ExtendedTooltip name="КратностьРасширеннаяПодсказка" id="59"/>
+				</LabelField>
 				<LabelField name="Ссылка" id="61">
-					<DataPath>Список.Ref</DataPath>
+					<DataPath>Список.Ссылка</DataPath>
 					<UserVisible>
 						<xr:Common>false</xr:Common>
 					</UserVisible>
@@ -260,38 +217,19 @@
 				<v8:Type>cfg:DynamicList</v8:Type>
 			</Type>
 			<MainAttribute>true</MainAttribute>
-			<UseAlways>
-				<Field>Список.Ref</Field>
-			</UseAlways>
 			<Settings xsi:type="DynamicList">
 				<ManualQuery>true</ManualQuery>
 				<DynamicDataRead>true</DynamicDataRead>
 				<QueryText>ВЫБРАТЬ
-	Валюты.ПометкаУдаления,
-	Валюты.Код,
-	Валюты.Наименование,
-	Валюты.НаименованиеПолное,
-	КурсыВалют.Курс,
-	ВЫБОР
-		КОГДА КурсыВалют.Кратность = 1
-			ТОГДА " "
-		ИНАЧЕ ВЫРАЗИТЬ(&amp;ПояснениеКратности КАК СТРОКА(50))
-	КОНЕЦ КАК РубЗа,
-	ВЫБОР
-		КОГДА КурсыВалют.Кратность = 1
-			ТОГДА " "
-		ИНАЧЕ КурсыВалют.Кратность
-	КОНЕЦ КАК Кратность,
-	ВЫБОР
-		КОГДА КурсыВалют.Кратность = 1
-			ТОГДА " "
-		ИНАЧЕ Валюты.Наименование
-	КОНЕЦ КАК КраткоеНаименование,
-	Валюты.Ссылка
+	Валюты.ПометкаУдаления КАК ПометкаУдаления,
+	Валюты.Код КАК Код,
+	Валюты.Наименование КАК Наименование,
+	Валюты.НаименованиеПолное КАК НаименованиеПолное,
+	ВЫРАЗИТЬ(NULL КАК ЧИСЛО(10, 2)) КАК Курс,
+	ВЫРАЗИТЬ(NULL КАК СТРОКА(50)) КАК Кратность,
+	Валюты.Ссылка КАК Ссылка
 ИЗ
-	Справочник.Валюты КАК Валюты
-		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.КурсыВалют.СрезПоследних(&amp;КонецПериода, ) КАК КурсыВалют
-		ПО Валюты.Ссылка = КурсыВалют.Валюта</QueryText>
+	Справочник.Валюты КАК Валюты</QueryText>
 				<MainTable>Catalog.Валюты</MainTable>
 				<ListSettings>
 					<dcsset:filter>
@@ -317,7 +255,7 @@
 		</Attribute>
 	</Attributes>
 	<Commands>
-		<Command name="ПодборИзОКВ" id="1">
+		<Command name="ПодборИзКлассификатора" id="1">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -330,7 +268,7 @@
 					<v8:content>Подобрать валюты из Общероссийского классификатора валют</v8:content>
 				</v8:item>
 			</ToolTip>
-			<Action>ПодборИзОКВ</Action>
+			<Action>ПодборИзКлассификатора</Action>
 		</Command>
 		<Command name="ЗагрузитьКурсыВалют" id="2">
 			<Title>

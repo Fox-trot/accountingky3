@@ -116,7 +116,15 @@
 					<AllowRootChoice>false</AllowRootChoice>
 					<UpdateOnDataChange>Auto</UpdateOnDataChange>
 					<UserSettingsGroup>1:02023637-7868-4a5f-8576-835a76e0c9ba</UserSettingsGroup>
-					<ContextMenu name="СписокКонтекстноеМеню" id="4"/>
+					<ContextMenu name="СписокКонтекстноеМеню" id="4">
+						<ChildItems>
+							<Button name="СписокКонтекстноеМенюИзменитьВыделенные" id="123">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.ИзменитьВыделенные</CommandName>
+								<ExtendedTooltip name="СписокКонтекстноеМенюИзменитьВыделенныеРасширеннаяПодсказка" id="124"/>
+							</Button>
+						</ChildItems>
+					</ContextMenu>
 					<AutoCommandBar name="СписокКоманднаяПанель" id="5">
 						<Autofill>false</Autofill>
 					</AutoCommandBar>
@@ -145,15 +153,22 @@
 						<ContextMenu name="СписокУправлениеПоискомКонтекстноеМеню" id="14"/>
 						<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="15"/>
 					</SearchControlAddition>
+					<Events>
+						<Event name="OnActivateRow">СписокПриАктивизацииСтроки</Event>
+					</Events>
 					<ChildItems>
 						<LabelField name="Дата" id="16">
 							<DataPath>Список.Date</DataPath>
 							<DefaultItem>true</DefaultItem>
+							<Width>10</Width>
+							<HorizontalStretch>false</HorizontalStretch>
 							<ContextMenu name="ДатаКонтекстноеМеню" id="17"/>
 							<ExtendedTooltip name="ДатаРасширеннаяПодсказка" id="18"/>
 						</LabelField>
 						<LabelField name="Номер" id="19">
 							<DataPath>Список.Number</DataPath>
+							<Width>11</Width>
+							<HorizontalStretch>false</HorizontalStretch>
 							<ContextMenu name="НомерКонтекстноеМеню" id="20"/>
 							<ExtendedTooltip name="НомерРасширеннаяПодсказка" id="21"/>
 						</LabelField>
@@ -162,10 +177,10 @@
 							<ContextMenu name="ОрганизацияКонтекстноеМеню" id="27"/>
 							<ExtendedTooltip name="ОрганизацияРасширеннаяПодсказка" id="28"/>
 						</LabelField>
-						<LabelField name="Операция" id="114">
-							<DataPath>Список.Операция</DataPath>
-							<ContextMenu name="ОперацияКонтекстноеМеню" id="115"/>
-							<ExtendedTooltip name="ОперацияРасширеннаяПодсказка" id="116"/>
+						<LabelField name="ВидОперации" id="114">
+							<DataPath>Список.ВидОперации</DataPath>
+							<ContextMenu name="ВидОперацииКонтекстноеМеню" id="115"/>
+							<ExtendedTooltip name="ВидОперацииРасширеннаяПодсказка" id="116"/>
 						</LabelField>
 						<LabelField name="Комментарий" id="29">
 							<DataPath>Список.Комментарий</DataPath>
@@ -176,11 +191,6 @@
 							<DataPath>Список.Автор</DataPath>
 							<ContextMenu name="АвторКонтекстноеМеню" id="33"/>
 							<ExtendedTooltip name="АвторРасширеннаяПодсказка" id="34"/>
-						</LabelField>
-						<LabelField name="СерияНомер" id="117">
-							<DataPath>Список.СерияНомер</DataPath>
-							<ContextMenu name="СерияНомерКонтекстноеМеню" id="118"/>
-							<ExtendedTooltip name="СерияНомерРасширеннаяПодсказка" id="119"/>
 						</LabelField>
 					</ChildItems>
 				</Table>
@@ -312,25 +322,25 @@
 												<Event name="Click">ПредставлениеПериодаНажатие</Event>
 											</Events>
 										</LabelField>
-										<UsualGroup name="ГруппаОтборОперация" id="88">
+										<UsualGroup name="ГруппаОтборВидОперации" id="88">
 											<Title>
 												<v8:item>
 													<v8:lang>ru</v8:lang>
-													<v8:content>Группа отбор операция</v8:content>
+													<v8:content>Группа отбор вид операции</v8:content>
 												</v8:item>
 											</Title>
 											<ToolTip>
 												<v8:item>
 													<v8:lang>ru</v8:lang>
-													<v8:content>Группа отбор операция</v8:content>
+													<v8:content>Группа отбор вид операции</v8:content>
 												</v8:item>
 											</ToolTip>
 											<Group>Vertical</Group>
 											<Representation>None</Representation>
 											<ShowTitle>false</ShowTitle>
-											<ExtendedTooltip name="ГруппаОтборОперацияРасширеннаяПодсказка" id="89"/>
+											<ExtendedTooltip name="ГруппаОтборВидОперацииРасширеннаяПодсказка" id="89"/>
 											<ChildItems>
-												<InputField name="ОтборОперация" id="90">
+												<InputField name="ОтборВидОперации" id="90">
 													<DataPath>ОтборОперация</DataPath>
 													<TitleLocation>None</TitleLocation>
 													<OpenButton>false</OpenButton>
@@ -339,13 +349,13 @@
 													<InputHint>
 														<v8:item>
 															<v8:lang>ru</v8:lang>
-															<v8:content>Операция</v8:content>
+															<v8:content>Вид операции</v8:content>
 														</v8:item>
 													</InputHint>
-													<ContextMenu name="ОтборОперацияКонтекстноеМеню" id="91"/>
-													<ExtendedTooltip name="ОтборОперацияРасширеннаяПодсказка" id="92"/>
+													<ContextMenu name="ОтборВидОперацииКонтекстноеМеню" id="91"/>
+													<ExtendedTooltip name="ОтборВидОперацииРасширеннаяПодсказка" id="92"/>
 													<Events>
-														<Event name="ChoiceProcessing">ОтборОперацияОбработкаВыбора</Event>
+														<Event name="ChoiceProcessing">ОтборВидОперацииОбработкаВыбора</Event>
 													</Events>
 												</InputField>
 											</ChildItems>
@@ -438,28 +448,8 @@
 				<Field>Список.Ref</Field>
 			</UseAlways>
 			<Settings xsi:type="DynamicList">
-				<ManualQuery>true</ManualQuery>
+				<ManualQuery>false</ManualQuery>
 				<DynamicDataRead>true</DynamicDataRead>
-				<QueryText>ВЫБРАТЬ
-	ДокументБланкиСФ.Ссылка,
-	ДокументБланкиСФ.ПометкаУдаления,
-	ДокументБланкиСФ.Номер,
-	ДокументБланкиСФ.Дата,
-	ДокументБланкиСФ.Проведен,
-	ДокументБланкиСФ.Организация,
-	ДокументБланкиСФ.Операция,
-	ДокументБланкиСФ.Выдает,
-	ДокументБланкиСФ.СуммаДокумента,
-	ДокументБланкиСФ.Комментарий,
-	ДокументБланкиСФ.Автор,
-	ДокументБланкиСФ.МоментВремени,
-	"Серия " + БланкиСФСпецификация.Серия + " с №" + БланкиСФСпецификация.ПервыйНомер + " по №" + БланкиСФСпецификация.ПоследнийНомер КАК СерияНомер
-ИЗ
-	Документ.БланкиСФ.Спецификация КАК БланкиСФСпецификация
-		ЛЕВОЕ СОЕДИНЕНИЕ Документ.БланкиСФ КАК ДокументБланкиСФ
-		ПО БланкиСФСпецификация.Ссылка = ДокументБланкиСФ.Ссылка
-ГДЕ
-	БланкиСФСпецификация.НомерСтроки = 1</QueryText>
 				<MainTable>Document.БланкиСФ</MainTable>
 				<ListSettings>
 					<dcsset:filter>
@@ -614,5 +604,31 @@
 				<Field>ОтборОперация</Field>
 			</Save>
 		</Attribute>
+		<Attribute name="ПараметрыПодключаемыхКоманд" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Параметры подключаемых команд</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
 	</Attributes>
+	<Commands>
+		<Command name="ИзменитьВыделенные" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Изменить выделенные...</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Изменить выделенные объекты</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ИзменитьВыделенные</Action>
+		</Command>
+	</Commands>
 </Form>

@@ -199,6 +199,7 @@ function log1CInternal(connection, text, failed) {
 // Инициализация
 function initialize() {
     clearLogFile();
+    appendLog();
     log(format("Файл скрипта: {0}", thisFileName));
     log(format("Количество файлов обновления: {0}", cfgFileNames.length));
     for (var i = 0; i < cfgFileNames.length; i++) {
@@ -336,6 +337,7 @@ function backupDB() {
     catch (e) {
         CollectGarbage();   // предотвращает исключение out of memory
         log(format("Исключение при создании резервной копии базы: {0}, {1}.", e.name, e.message), true);
+        log(format("Трассировка:\nКопировали из: {0}\nКопировали в:{1}", BaseFileName, backupFileName), true);
         ret = 1;
     }
     if (ret == 0)

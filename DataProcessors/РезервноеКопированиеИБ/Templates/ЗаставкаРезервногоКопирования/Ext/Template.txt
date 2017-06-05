@@ -108,7 +108,7 @@
             doStep(step);
 
             // Передача управления IE и повторный вызов main через 1 секунду (достаточно для завершения COM-соединения).
-            // Если еще не все сеансы завершены, то ret = -1 и ждем 18 секунд до следующей проверки.
+            // Если еще не все сеансы завершены, то ret = -1 и ждем 5 секунд до следующей проверки.
             if (!finish)
                 setTimeout("main()", ret != -1 ? 1000 : 5 * 1000);
         }
@@ -128,6 +128,7 @@
                 oFileSystemObject.DeleteFile(thisFileDir + '\\splash.ico');
                 oFileSystemObject.DeleteFile(thisFileDir + '\\progress.gif');
                 oFileSystemObject.DeleteFile(thisFileDir + '\\splash.hta');
+                oFileSystemObject.DeleteFile(thisFileDir + '\\templog.txt');
             }
             catch (e) { }
         }

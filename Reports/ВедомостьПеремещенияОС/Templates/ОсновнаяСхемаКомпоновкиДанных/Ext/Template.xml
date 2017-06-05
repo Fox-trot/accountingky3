@@ -61,10 +61,6 @@
 			</title>
 		</field>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>Субконто2</dataPath>
-			<field>Субконто2</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
 			<dataPath>Количество</dataPath>
 			<field>Количество</field>
 			<title xsi:type="v8:LocalStringType">
@@ -85,10 +81,6 @@
 			</title>
 		</field>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>Валюта</dataPath>
-			<field>Валюта</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
 			<dataPath>Подразделение</dataPath>
 			<field>Подразделение</field>
 			<inputParameters>
@@ -103,14 +95,6 @@
 					</dcscor:value>
 				</dcscor:item>
 			</inputParameters>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>Организация</dataPath>
-			<field>Организация</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>Субконто1</dataPath>
-			<field>Субконто1</field>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>ПервоначальнаяСтоимость</dataPath>
@@ -131,14 +115,6 @@
 					<dcscor:value xsi:type="xs:string">ДФ=yyyy</dcscor:value>
 				</dcscor:item>
 			</appearance>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>Счет</dataPath>
-			<field>Счет</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>Субконто3</dataPath>
-			<field>Субконто3</field>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>СпособНачисленияАмортизации</dataPath>
@@ -165,10 +141,6 @@
 			</title>
 		</field>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>НормаАмортизации</dataPath>
-			<field>НормаАмортизации</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
 			<dataPath>Отдел</dataPath>
 			<field>Отдел</field>
 			<title xsi:type="v8:LocalStringType">
@@ -177,26 +149,6 @@
 					<v8:content>Отдел</v8:content>
 				</v8:item>
 			</title>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>КорСубконто2</dataPath>
-			<field>КорСубконто2</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>КорСубконто1</dataPath>
-			<field>КорСубконто1</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>КорСубконто3</dataPath>
-			<field>КорСубконто3</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>КорСчет</dataPath>
-			<field>КорСчет</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>ВалютаКор</dataPath>
-			<field>ВалютаКор</field>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>СуммаАмортизации</dataPath>
@@ -208,16 +160,22 @@
 				</v8:item>
 			</title>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Организация</dataPath>
+			<field>Организация</field>
+		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ
 	СобытияОССрезПоследних.Период КАК Период,
 	СобытияОССрезПоследних.ОсновноеСредство КАК ОсновноеСредство
 ПОМЕСТИТЬ ВременнаяТаблицаСобытияОС
+{ВЫБРАТЬ
+	Период,
+	ОсновноеСредство.*}
 ИЗ
-	РегистрСведений.СобытияОС.СрезПоследних(
-			,
-			Событие.ВидСобытияОС = ЗНАЧЕНИЕ(Перечисление.ВидыСобытийОС.Перемещение)
-				И (Период МЕЖДУ &amp;НачалоПериода И &amp;КонецПериода)) КАК СобытияОССрезПоследних
+	РегистрСведений.СобытияОС.СрезПоследних(, Событие.ВидСобытияОС = ЗНАЧЕНИЕ(Перечисление.ВидыСобытийОС.Перемещение) {(Период МЕЖДУ &amp;НачалоПериода И &amp;КонецПериода)}) КАК СобытияОССрезПоследних
+{ГДЕ
+	СобытияОССрезПоследних.Организация.*}
 
 ИНДЕКСИРОВАТЬ ПО
 	ОсновноеСредство
@@ -229,9 +187,14 @@
 	ПараметрыУчетаОССрезПоследних.ИнвентарныйНомер КАК ИнвентарныйНомер,
 	ПараметрыУчетаОССрезПоследних.ПервоначальнаяСтоимость КАК ПервоначальнаяСтоимость,
 	ПараметрыУчетаОССрезПоследних.СпособНачисленияАмортизации КАК СпособНачисленияАмортизации,
-	ПараметрыУчетаОССрезПоследних.СчетУчета.ПарныйСчет КАК СчетУчетаАмортизации,
-	ПараметрыУчетаОССрезПоследних.НормаАмортизации
+	ПараметрыУчетаОССрезПоследних.СчетУчета.ПарныйСчет КАК СчетУчетаАмортизации
 ПОМЕСТИТЬ ВременнаяТаблицаПараметрыУчетаОС
+{ВЫБРАТЬ
+	ОсновноеСредство.*,
+	ИнвентарныйНомер,
+	ПервоначальнаяСтоимость,
+	СпособНачисленияАмортизации.*,
+	СчетУчетаАмортизации.*}
 ИЗ
 	РегистрСведений.ПараметрыУчетаОС.СрезПоследних(
 			,
@@ -254,7 +217,6 @@
 	ВременнаяТаблицаПараметрыУчетаОС.ИнвентарныйНомер КАК ИнвентарныйНомер,
 	ВременнаяТаблицаПараметрыУчетаОС.ПервоначальнаяСтоимость КАК ПервоначальнаяСтоимость,
 	ВременнаяТаблицаПараметрыУчетаОС.СпособНачисленияАмортизации КАК СпособНачисленияАмортизации,
-	ВременнаяТаблицаПараметрыУчетаОС.НормаАмортизации,
 	МестонахождениеОССрезПоследних.Подразделение КАК Подразделение,
 	МестонахождениеОССрезПоследних.МОЛ КАК Кому,
 	МестонахождениеОССрезПоследних.МОЛДо КАК ОтКого,
@@ -262,8 +224,25 @@
 	ЕСТЬNULL(ХозрасчетныйОстатки.СуммаОстатокКт, 0) КАК НакопленныйИзнос,
 	ЕСТЬNULL(ВременнаяТаблицаПараметрыУчетаОС.ПервоначальнаяСтоимость, 0) - ЕСТЬNULL(ХозрасчетныйОстатки.СуммаОстатокКт, 0) КАК БалансоваяСтомость,
 	ЕСТЬNULL(ВременнаяТаблицаПараметрыУчетаОС.ПервоначальнаяСтоимость, 0) - ЕСТЬNULL(ХозрасчетныйОстатки.СуммаОстатокКт, 0) КАК ОстаточнаяСтоимость,
-	МестонахождениеОССрезПоследних.Подразделение КАК Отдел, 
+	МестонахождениеОССрезПоследних.Подразделение КАК Отдел,
 	ХозрасчетныйОбороты.СуммаОборотКт КАК СуммаАмортизации
+{ВЫБРАТЬ
+	ОсновноеСредство.*,
+	ГодВыпускаОС,
+	ДатаПеремещения,
+	Количество,
+	ИнвентарныйНомер,
+	ПервоначальнаяСтоимость,
+	СпособНачисленияАмортизации.*,
+	Подразделение.*,
+	Кому.*,
+	ОтКого.*,
+	ДатаПринятияКУчету,
+	НакопленныйИзнос,
+	БалансоваяСтомость,
+	ОстаточнаяСтоимость,
+	Отдел.*,
+	СуммаАмортизации}
 ИЗ
 	ВременнаяТаблицаСобытияОС КАК ВременнаяТаблицаСобытияОС
 		ЛЕВОЕ СОЕДИНЕНИЕ ВременнаяТаблицаПараметрыУчетаОС КАК ВременнаяТаблицаПараметрыУчетаОС
@@ -300,24 +279,26 @@
 						ВременнаяТаблицаСобытияОС КАК ВременнаяТаблицаСобытияОС)) КАК МестонахождениеОССрезПоследних
 		ПО ВременнаяТаблицаСобытияОС.ОсновноеСредство = МестонахождениеОССрезПоследних.ОсновноеСредство
 		ЛЕВОЕ СОЕДИНЕНИЕ РегистрБухгалтерии.Хозрасчетный.Обороты(
-				&amp;НачалоПериода,
-				КонецПериода(&amp;КонецПериода, день),
+				{(&amp;НачалоПериода)},
+				{(КОНЕЦПЕРИОДА(&amp;КонецПериода, ДЕНЬ))},
 				,
 				Счет В
-									(ВЫБРАТЬ РАЗЛИЧНЫЕ
-										ВременнаяТаблицаПараметрыУчетаОС.СчетУчетаАмортизации
-									ИЗ
-										ВременнаяТаблицаПараметрыУчетаОС КАК ВременнаяТаблицаПараметрыУчетаОС),
+					(ВЫБРАТЬ РАЗЛИЧНЫЕ
+						ВременнаяТаблицаПараметрыУчетаОС.СчетУчетаАмортизации
+					ИЗ
+						ВременнаяТаблицаПараметрыУчетаОС КАК ВременнаяТаблицаПараметрыУчетаОС),
 				ЗНАЧЕНИЕ(ПланВидовХарактеристик.ВидыСубконтоХозрасчетные.ОсновныеСредства),
 				Субконто1 В
-									(ВЫБРАТЬ
-										ВременнаяТаблицаСобытияОС.ОсновноеСредство
-									ИЗ
-										ВременнаяТаблицаСобытияОС КАК ВременнаяТаблицаСобытияОС)
-				,
+					(ВЫБРАТЬ
+						ВременнаяТаблицаСобытияОС.ОсновноеСредство
+					ИЗ
+						ВременнаяТаблицаСобытияОС КАК ВременнаяТаблицаСобытияОС),
 				,
 				) КАК ХозрасчетныйОбороты
-		ПО (ВременнаяТаблицаСобытияОС.ОсновноеСредство = ХозрасчетныйОбороты.Субконто1)</query>
+		ПО ВременнаяТаблицаСобытияОС.ОсновноеСредство = ХозрасчетныйОбороты.Субконто1
+{ГДЕ
+	МестонахождениеОССрезПоследних.Подразделение.*}</query>
+		<autoFillFields>false</autoFillFields>
 	</dataSet>
 	<totalField>
 		<dataPath>Количество</dataPath>
@@ -338,10 +319,6 @@
 	<totalField>
 		<dataPath>БалансоваяСтомость</dataPath>
 		<expression>Сумма(БалансоваяСтомость)</expression>
-	</totalField>
-	<totalField>
-		<dataPath>НормаАмортизации</dataPath>
-		<expression>Сумма(НормаАмортизации)</expression>
 	</totalField>
 	<totalField>
 		<dataPath>СуммаАмортизации</dataPath>
@@ -386,25 +363,6 @@
 		<availableAsField>false</availableAsField>
 	</parameter>
 	<parameter>
-		<name>Период</name>
-		<title xsi:type="v8:LocalStringType">
-			<v8:item>
-				<v8:lang>ru</v8:lang>
-				<v8:content>Период</v8:content>
-			</v8:item>
-		</title>
-		<valueType>
-			<v8:Type>xs:dateTime</v8:Type>
-			<v8:DateQualifiers>
-				<v8:DateFractions>DateTime</v8:DateFractions>
-			</v8:DateQualifiers>
-		</valueType>
-		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
-		<useRestriction>true</useRestriction>
-		<expression>&amp;СтПериод.ДатаОкончания</expression>
-		<availableAsField>false</availableAsField>
-	</parameter>
-	<parameter>
 		<name>СтПериод</name>
 		<title xsi:type="v8:LocalStringType">
 			<v8:item>
@@ -419,22 +377,6 @@
 			<v8:variant xsi:type="v8:StandardPeriodVariant">ThisMonth</v8:variant>
 		</value>
 		<useRestriction>false</useRestriction>
-	</parameter>
-	<parameter>
-		<name>ВыводитьЗаголовок</name>
-		<title xsi:type="v8:LocalStringType">
-			<v8:item>
-				<v8:lang>ru</v8:lang>
-				<v8:content>Выводить заголовок</v8:content>
-			</v8:item>
-		</title>
-		<valueType>
-			<v8:Type>xs:boolean</v8:Type>
-		</valueType>
-		<value xsi:type="xs:boolean">true</value>
-		<useRestriction>false</useRestriction>
-		<availableAsField>false</availableAsField>
-		<use>Always</use>
 	</parameter>
 	<parameter>
 		<name>ВыводитьПодписи</name>
@@ -921,9 +863,6 @@
 					<dcsset:field>СпособНачисленияАмортизации</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>НормаАмортизации</dcsset:field>
-				</dcsset:item>
-				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>СуммаАмортизации</dcsset:field>
 					<dcsset:lwsTitle>
 						<v8:item>
@@ -985,12 +924,6 @@
 						<v8:variant xsi:type="v8:StandardPeriodVariant">ThisMonth</v8:variant>
 					</dcscor:value>
 					<dcsset:userSettingID>f4533094-577f-41b6-96d7-e873cd091ace</dcsset:userSettingID>
-				</dcscor:item>
-				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-					<dcscor:parameter>ВыводитьЗаголовок</dcscor:parameter>
-					<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
-					<dcsset:viewMode>Normal</dcsset:viewMode>
-					<dcsset:userSettingID>bb2d377f-d4ac-4bd9-8717-8a26dd8bf9e1</dcsset:userSettingID>
 				</dcscor:item>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 					<dcscor:parameter>ВыводитьПодписи</dcscor:parameter>

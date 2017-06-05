@@ -41,16 +41,16 @@
 					<v8:content>Страницы</v8:content>
 				</v8:item>
 			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Страницы</v8:content>
-				</v8:item>
-			</ToolTip>
 			<PagesRepresentation>None</PagesRepresentation>
 			<ExtendedTooltip name="СтраницыРасширеннаяПодсказка" id="81"/>
 			<ChildItems>
 				<Page name="СтраницаВыборРежимаУдаления" id="6">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница выбор режима удаления</v8:content>
+						</v8:item>
+					</Title>
 					<ExtendedTooltip name="СтраницаВыборРежимаУдаленияРасширеннаяПодсказка" id="82"/>
 					<ChildItems>
 						<RadioButtonField name="РежимУдаления" id="15">
@@ -104,6 +104,12 @@
 							<ExtendedTooltip name="Декорация1РасширеннаяПодсказка" id="132"/>
 						</LabelDecoration>
 						<UsualGroup name="ГруппаАктивныеПользователи" id="169">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Активные пользователи</v8:content>
+								</v8:item>
+							</Title>
 							<Group>Horizontal</Group>
 							<Representation>None</Representation>
 							<ShowTitle>false</ShowTitle>
@@ -163,9 +169,79 @@
 								</Title>
 							</ExtendedTooltip>
 						</CheckBoxField>
+						<UsualGroup name="ГруппаУдалениеПомеченныхОбъектовПоРасписанию" id="478">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Удаление помеченных объектов по расписанию</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Horizontal</Group>
+							<Collapsed>true</Collapsed>
+							<ControlRepresentation>Picture</ControlRepresentation>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаУдалениеПомеченныхОбъектовПоРасписаниюРасширеннаяПодсказка" id="479"/>
+							<ChildItems>
+								<UsualGroup name="ГруппаУдалениеПомеченныхИспользование" id="482">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Удаление помеченных использование</v8:content>
+										</v8:item>
+									</Title>
+									<Width>43</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<Group>Vertical</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="ГруппаУдалениеПомеченныхИспользованиеРасширеннаяПодсказка" id="483"/>
+									<ChildItems>
+										<CheckBoxField name="УдалениеПомеченныхИспользование" id="484">
+											<DataPath>УдалениеПомеченныхИспользование</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Автоматически удалять помеченные объекты по расписанию</v8:content>
+												</v8:item>
+											</Title>
+											<TitleLocation>Right</TitleLocation>
+											<CheckBoxType>Auto</CheckBoxType>
+											<ContextMenu name="УдалениеПомеченныхИспользованиеКонтекстноеМеню" id="485"/>
+											<ExtendedTooltip name="УдалениеПомеченныхИспользованиеРасширеннаяПодсказка" id="486"/>
+											<Events>
+												<Event name="OnChange">УдалениеПомеченныхИспользованиеПриИзменении</Event>
+											</Events>
+										</CheckBoxField>
+										<LabelDecoration name="УдалениеПомеченныхПредставлениеРасписания" id="487">
+											<TextColor>style:ПоясняющийТекст</TextColor>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Удаление помеченных представление расписания</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="УдалениеПомеченныхПредставлениеРасписанияКонтекстноеМеню" id="488"/>
+											<ExtendedTooltip name="УдалениеПомеченныхПредставлениеРасписанияРасширеннаяПодсказка" id="489"/>
+										</LabelDecoration>
+									</ChildItems>
+								</UsualGroup>
+								<Button name="УдалениеПомеченныхНастроитьРасписание" id="490">
+									<Type>Hyperlink</Type>
+									<CommandName>Form.Command.УдалениеПомеченныхНастроитьРасписание</CommandName>
+									<ExtendedTooltip name="УдалениеПомеченныхНастроитьРасписаниеРасширеннаяПодсказка" id="491"/>
+								</Button>
+							</ChildItems>
+						</UsualGroup>
 					</ChildItems>
 				</Page>
 				<Page name="СтраницаПомеченныеНаУдаление" id="25">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница помеченные на удаление</v8:content>
+						</v8:item>
+					</Title>
 					<ExtendedTooltip name="СтраницаПомеченныеНаУдалениеРасширеннаяПодсказка" id="84"/>
 					<ChildItems>
 						<Table name="ДеревоПомеченныхНаУдаление" id="26">
@@ -206,9 +282,6 @@
 								<ExcludedCommand>Change</ExcludedCommand>
 								<ExcludedCommand>MoveDown</ExcludedCommand>
 							</CommandSet>
-							<SearchStringLocation>None</SearchStringLocation>
-							<ViewStatusLocation>None</ViewStatusLocation>
-							<SearchControlLocation>None</SearchControlLocation>
 							<ContextMenu name="ДеревоПомеченныхНаУдалениеКонтекстноеМеню" id="27">
 								<ChildItems>
 									<ButtonGroup name="КомандыВыбораИзМеню" id="363">
@@ -218,12 +291,6 @@
 												<v8:content>Команды выбора</v8:content>
 											</v8:item>
 										</Title>
-										<ToolTip>
-											<v8:item>
-												<v8:lang>ru</v8:lang>
-												<v8:content>Команды выбора</v8:content>
-											</v8:item>
-										</ToolTip>
 										<ExtendedTooltip name="КомандыВыбораИзМенюРасширеннаяПодсказка" id="364"/>
 										<ChildItems>
 											<Button name="КомандаСписокПомеченныхУстановитьВсеИзМеню" id="365">
@@ -258,12 +325,6 @@
 												<v8:content>Дерево помеченных на удаление вспомогательные кнопки</v8:content>
 											</v8:item>
 										</Title>
-										<ToolTip>
-											<v8:item>
-												<v8:lang>ru</v8:lang>
-												<v8:content>Дерево помеченных на удаление вспомогательные кнопки</v8:content>
-											</v8:item>
-										</ToolTip>
 										<ExtendedTooltip name="ДеревоПомеченныхНаУдалениеВспомогательныеКнопкиИзМенюРасширеннаяПодсказка" id="372"/>
 										<ChildItems>
 											<Button name="ДеревоПомеченныхНаУдалениеОбновитьИзМеню" id="373">
@@ -291,12 +352,6 @@
 												<v8:content>Команды выбора</v8:content>
 											</v8:item>
 										</Title>
-										<ToolTip>
-											<v8:item>
-												<v8:lang>ru</v8:lang>
-												<v8:content>Команды выбора</v8:content>
-											</v8:item>
-										</ToolTip>
 										<ExtendedTooltip name="КомандыВыбораExtendedTooltip" id="91"/>
 										<ChildItems>
 											<Button name="КомандаСписокПомеченныхУстановитьВсе" id="37">
@@ -331,12 +386,6 @@
 												<v8:content>Дерево помеченных на удаление вспомогательные кнопки</v8:content>
 											</v8:item>
 										</Title>
-										<ToolTip>
-											<v8:item>
-												<v8:lang>ru</v8:lang>
-												<v8:content>Дерево помеченных на удаление вспомогательные кнопки</v8:content>
-											</v8:item>
-										</ToolTip>
 										<ExtendedTooltip name="ДеревоПомеченныхНаУдалениеВспомогательныеКнопкиРасширеннаяПодсказка" id="302"/>
 										<ChildItems>
 											<Button name="ДеревоПомеченныхНаУдалениеОбновить" id="70">
@@ -421,134 +470,14 @@
 						</Table>
 					</ChildItems>
 				</Page>
-				<Page name="СтраницаДлительнаяОперация" id="59">
-					<VerticalStretch>true</VerticalStretch>
-					<Group>Horizontal</Group>
-					<VerticalAlign>Center</VerticalAlign>
-					<ExtendedTooltip name="СтраницаДлительнаяОперацияРасширеннаяПодсказка" id="110"/>
-					<ChildItems>
-						<PictureDecoration name="ФоновоеЗаданиеАнимация" id="446">
-							<Title formatted="false">
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Фоновое задание анимация</v8:content>
-								</v8:item>
-							</Title>
-							<GroupVerticalAlign>Center</GroupVerticalAlign>
-							<Picture>
-								<xr:Ref>CommonPicture.ДлительнаяОперация48</xr:Ref>
-								<xr:LoadTransparent>true</xr:LoadTransparent>
-							</Picture>
-							<ContextMenu name="ФоновоеЗаданиеАнимацияКонтекстноеМеню" id="447"/>
-							<ExtendedTooltip name="ФоновоеЗаданиеАнимацияРасширеннаяПодсказка" id="448"/>
-						</PictureDecoration>
-						<UsualGroup name="Группа2" id="444">
-							<GroupVerticalAlign>Center</GroupVerticalAlign>
-							<Group>Vertical</Group>
-							<VerticalAlign>Center</VerticalAlign>
-							<Representation>None</Representation>
-							<ShowTitle>false</ShowTitle>
-							<ExtendedTooltip name="Группа2РасширеннаяПодсказка" id="445"/>
-							<ChildItems>
-								<LabelDecoration name="НадписьДлительнаяОперация" id="202">
-									<AutoMaxWidth>false</AutoMaxWidth>
-									<Height>1</Height>
-									<Title formatted="false">
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Надпись длительная операция</v8:content>
-										</v8:item>
-									</Title>
-									<GroupHorizontalAlign>Center</GroupHorizontalAlign>
-									<HorizontalAlign>Center</HorizontalAlign>
-									<ContextMenu name="НадписьДлительнаяОперацияКонтекстноеМеню" id="203"/>
-									<ExtendedTooltip name="НадписьДлительнаяОперацияРасширеннаяПодсказка" id="204"/>
-								</LabelDecoration>
-								<ProgressBarField name="ФоновоеЗаданиеПроцент" id="469">
-									<DataPath>ФоновоеЗаданиеПроцент</DataPath>
-									<TitleLocation>None</TitleLocation>
-									<GroupVerticalAlign>Center</GroupVerticalAlign>
-									<ShowPercent>true</ShowPercent>
-									<ContextMenu name="ФоновоеЗаданиеПроцентКонтекстноеМеню" id="470"/>
-									<ExtendedTooltip name="ФоновоеЗаданиеПроцентРасширеннаяПодсказка" id="471"/>
-								</ProgressBarField>
-								<LabelField name="ФоновоеЗаданиеСостояние" id="472">
-									<DataPath>ФоновоеЗаданиеСостояние</DataPath>
-									<TitleLocation>None</TitleLocation>
-									<HorizontalAlign>Center</HorizontalAlign>
-									<GroupHorizontalAlign>Center</GroupHorizontalAlign>
-									<GroupVerticalAlign>Center</GroupVerticalAlign>
-									<AutoMaxWidth>false</AutoMaxWidth>
-									<ContextMenu name="ФоновоеЗаданиеСостояниеКонтекстноеМеню" id="473"/>
-									<ExtendedTooltip name="ФоновоеЗаданиеСостояниеРасширеннаяПодсказка" id="474"/>
-								</LabelField>
-							</ChildItems>
-						</UsualGroup>
-					</ChildItems>
-				</Page>
-				<Page name="СтраницаУдалениеНеТребуется" id="174">
-					<Group>Horizontal</Group>
-					<ExtendedTooltip name="СтраницаУдалениеНеТребуетсяРасширеннаяПодсказка" id="175"/>
-					<ChildItems>
-						<PictureDecoration name="КартинкаУдалениеНеТребуется" id="178">
-							<GroupVerticalAlign>Center</GroupVerticalAlign>
-							<Picture>
-								<xr:Ref>CommonPicture.Информация32</xr:Ref>
-								<xr:LoadTransparent>false</xr:LoadTransparent>
-							</Picture>
-							<ContextMenu name="КартинкаУдалениеНеТребуетсяКонтекстноеМеню" id="179"/>
-							<ExtendedTooltip name="КартинкаУдалениеНеТребуетсяРасширеннаяПодсказка" id="180"/>
-						</PictureDecoration>
-						<LabelDecoration name="НадписьУдалениеНеТребуется" id="181">
-							<AutoMaxWidth>false</AutoMaxWidth>
-							<Height>5</Height>
-							<Title formatted="false">
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Удаление не требуется.
-Нет объектов, помеченных на удаление.</v8:content>
-								</v8:item>
-							</Title>
-							<GroupVerticalAlign>Center</GroupVerticalAlign>
-							<VerticalAlign>Center</VerticalAlign>
-							<ContextMenu name="НадписьУдалениеНеТребуетсяКонтекстноеМеню" id="182"/>
-							<ExtendedTooltip name="НадписьУдалениеНеТребуетсяРасширеннаяПодсказка" id="183"/>
-						</LabelDecoration>
-					</ChildItems>
-				</Page>
-				<Page name="СтраницаУспешноЗавершено" id="142">
-					<VerticalStretch>true</VerticalStretch>
-					<Group>Horizontal</Group>
-					<ExtendedTooltip name="СтраницаУспешноЗавершеноРасширеннаяПодсказка" id="143"/>
-					<ChildItems>
-						<PictureDecoration name="КартинкаУспешноЗавершено" id="146">
-							<GroupVerticalAlign>Center</GroupVerticalAlign>
-							<Picture>
-								<xr:Ref>CommonPicture.Успешно32</xr:Ref>
-								<xr:LoadTransparent>false</xr:LoadTransparent>
-							</Picture>
-							<ContextMenu name="КартинкаУспешноЗавершеноКонтекстноеМеню" id="147"/>
-							<ExtendedTooltip name="КартинкаУспешноЗавершеноРасширеннаяПодсказка" id="148"/>
-						</PictureDecoration>
-						<LabelDecoration name="НадписьУспешноЗавершено" id="149">
-							<AutoMaxWidth>false</AutoMaxWidth>
-							<Height>5</Height>
-							<Title formatted="false">
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Удаление помеченных объектов успешно завершено.
-Удалено объектов: 47.</v8:content>
-								</v8:item>
-							</Title>
-							<GroupVerticalAlign>Center</GroupVerticalAlign>
-							<VerticalAlign>Center</VerticalAlign>
-							<ContextMenu name="НадписьУспешноЗавершеноКонтекстноеМеню" id="150"/>
-							<ExtendedTooltip name="НадписьУспешноЗавершеноРасширеннаяПодсказка" id="151"/>
-						</LabelDecoration>
-					</ChildItems>
-				</Page>
 				<Page name="СтраницаПричиныНевозможностиУдаления" id="39">
 					<EnableContentChange>true</EnableContentChange>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница причины невозможности удаления</v8:content>
+						</v8:item>
+					</Title>
 					<ExtendedTooltip name="СтраницаПричиныНевозможностиУдаленияРасширеннаяПодсказка" id="101"/>
 					<ChildItems>
 						<UsualGroup name="ГруппаНеУдаленные" id="229">
@@ -568,7 +497,7 @@
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>Группа не удаленные таблица</v8:content>
+											<v8:content>Не удаленные таблица</v8:content>
 										</v8:item>
 									</Title>
 									<Group>Vertical</Group>
@@ -609,6 +538,12 @@
 												<xr:Ref>CommonPicture.ПиктограммыЭлементов</xr:Ref>
 												<xr:LoadTransparent>true</xr:LoadTransparent>
 											</RowsPicture>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Не удаленные</v8:content>
+												</v8:item>
+											</Title>
 											<CommandSet>
 												<ExcludedCommand>HierarchicalList</ExcludedCommand>
 												<ExcludedCommand>Tree</ExcludedCommand>
@@ -623,9 +558,6 @@
 												<ExcludedCommand>MoveDown</ExcludedCommand>
 											</CommandSet>
 											<ToolTipRepresentation>None</ToolTipRepresentation>
-											<SearchStringLocation>None</SearchStringLocation>
-											<ViewStatusLocation>None</ViewStatusLocation>
-											<SearchControlLocation>None</SearchControlLocation>
 											<ContextMenu name="НеУдаленныеКонтекстноеМеню" id="221">
 												<ChildItems>
 													<Button name="НеУдаленныеИзменитьИзМеню" id="348">
@@ -734,7 +666,7 @@
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>Группа причины</v8:content>
+											<v8:content>Причины</v8:content>
 										</v8:item>
 									</Title>
 									<Group>Vertical</Group>
@@ -758,6 +690,12 @@
 											<ExtendedTooltip name="НеУдаленныеПодсказкаРасширеннаяПодсказка" id="438"/>
 										</LabelField>
 										<Pages name="СтраницыВариантовОтображенияПричин" id="255">
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Страницы вариантов отображения причин</v8:content>
+												</v8:item>
+											</Title>
 											<PagesRepresentation>None</PagesRepresentation>
 											<ExtendedTooltip name="СтраницыВариантовОтображенияПричинРасширеннаяПодсказка" id="256"/>
 											<ChildItems>
@@ -768,12 +706,6 @@
 															<v8:content>Страница текст ошибки</v8:content>
 														</v8:item>
 													</Title>
-													<ToolTip>
-														<v8:item>
-															<v8:lang>ru</v8:lang>
-															<v8:content>Страница текст ошибки</v8:content>
-														</v8:item>
-													</ToolTip>
 													<ExtendedTooltip name="СтраницаТекстОшибкиРасширеннаяПодсказка" id="260"/>
 													<ChildItems>
 														<LabelDecoration name="ТекстОшибки" id="475">
@@ -805,6 +737,12 @@
 													</ChildItems>
 												</Page>
 												<Page name="СтраницаПричиныНеУдаления" id="257">
+													<Title>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Страница причины не удаления</v8:content>
+														</v8:item>
+													</Title>
 													<ExtendedTooltip name="СтраницаПричиныНеУдаленияРасширеннаяПодсказка" id="258"/>
 													<ChildItems>
 														<Table name="СвязиНеУдаленных" id="235">
@@ -821,6 +759,12 @@
 																<xr:Ref>CommonPicture.ПиктограммыЭлементов</xr:Ref>
 																<xr:LoadTransparent>true</xr:LoadTransparent>
 															</RowsPicture>
+															<Title>
+																<v8:item>
+																	<v8:lang>ru</v8:lang>
+																	<v8:content>Связи не удаленных</v8:content>
+																</v8:item>
+															</Title>
 															<CommandSet>
 																<ExcludedCommand>Copy</ExcludedCommand>
 																<ExcludedCommand>SortListAsc</ExcludedCommand>
@@ -836,9 +780,6 @@
 																<ExcludedCommand>Find</ExcludedCommand>
 																<ExcludedCommand>MoveDown</ExcludedCommand>
 															</CommandSet>
-															<SearchStringLocation>None</SearchStringLocation>
-															<ViewStatusLocation>None</ViewStatusLocation>
-															<SearchControlLocation>None</SearchControlLocation>
 															<RowFilter xsi:nil="true"/>
 															<ContextMenu name="СвязиНеУдаленныхКонтекстноеМеню" id="236">
 																<ChildItems>
@@ -951,6 +892,205 @@
 						</LabelDecoration>
 					</ChildItems>
 				</Page>
+				<Page name="СтраницаДлительнаяОперация" id="59">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница длительная операция</v8:content>
+						</v8:item>
+					</Title>
+					<VerticalStretch>true</VerticalStretch>
+					<VerticalAlign>Center</VerticalAlign>
+					<ExtendedTooltip name="СтраницаДлительнаяОперацияРасширеннаяПодсказка" id="110"/>
+					<ChildItems>
+						<UsualGroup name="ГоризонтальнаяГруппа1" id="492">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Горизонтальная группа 1</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГоризонтальнаяГруппа1РасширеннаяПодсказка" id="493"/>
+							<ChildItems>
+								<PictureDecoration name="ФоновоеЗаданиеАнимация" id="446">
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Фоновое задание анимация</v8:content>
+										</v8:item>
+									</Title>
+									<GroupVerticalAlign>Center</GroupVerticalAlign>
+									<Picture>
+										<xr:Ref>CommonPicture.ДлительнаяОперация48</xr:Ref>
+										<xr:LoadTransparent>true</xr:LoadTransparent>
+									</Picture>
+									<ContextMenu name="ФоновоеЗаданиеАнимацияКонтекстноеМеню" id="447"/>
+									<ExtendedTooltip name="ФоновоеЗаданиеАнимацияРасширеннаяПодсказка" id="448"/>
+								</PictureDecoration>
+								<UsualGroup name="Группа2" id="444">
+									<GroupVerticalAlign>Center</GroupVerticalAlign>
+									<Group>Vertical</Group>
+									<VerticalAlign>Center</VerticalAlign>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="Группа2РасширеннаяПодсказка" id="445"/>
+									<ChildItems>
+										<LabelDecoration name="НадписьДлительнаяОперация" id="202">
+											<AutoMaxWidth>false</AutoMaxWidth>
+											<Height>1</Height>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Надпись длительная операция</v8:content>
+												</v8:item>
+											</Title>
+											<GroupHorizontalAlign>Center</GroupHorizontalAlign>
+											<HorizontalAlign>Center</HorizontalAlign>
+											<ContextMenu name="НадписьДлительнаяОперацияКонтекстноеМеню" id="203"/>
+											<ExtendedTooltip name="НадписьДлительнаяОперацияРасширеннаяПодсказка" id="204"/>
+										</LabelDecoration>
+										<ProgressBarField name="ФоновоеЗаданиеПроцент" id="469">
+											<DataPath>ФоновоеЗаданиеПроцент</DataPath>
+											<TitleLocation>None</TitleLocation>
+											<GroupVerticalAlign>Center</GroupVerticalAlign>
+											<ShowPercent>true</ShowPercent>
+											<ContextMenu name="ФоновоеЗаданиеПроцентКонтекстноеМеню" id="470"/>
+											<ExtendedTooltip name="ФоновоеЗаданиеПроцентРасширеннаяПодсказка" id="471"/>
+										</ProgressBarField>
+										<LabelField name="ФоновоеЗаданиеСостояние" id="472">
+											<DataPath>ФоновоеЗаданиеСостояние</DataPath>
+											<TitleLocation>None</TitleLocation>
+											<HorizontalAlign>Center</HorizontalAlign>
+											<GroupHorizontalAlign>Center</GroupHorizontalAlign>
+											<GroupVerticalAlign>Center</GroupVerticalAlign>
+											<AutoMaxWidth>false</AutoMaxWidth>
+											<ContextMenu name="ФоновоеЗаданиеСостояниеКонтекстноеМеню" id="473"/>
+											<ExtendedTooltip name="ФоновоеЗаданиеСостояниеРасширеннаяПодсказка" id="474"/>
+										</LabelField>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+						<LabelDecoration name="НебольшойОтступСнизу1" id="494">
+							<VerticalStretch>false</VerticalStretch>
+							<ContextMenu name="НебольшойОтступСнизу1КонтекстноеМеню" id="495"/>
+							<ExtendedTooltip name="НебольшойОтступСнизу1РасширеннаяПодсказка" id="496"/>
+						</LabelDecoration>
+					</ChildItems>
+				</Page>
+				<Page name="СтраницаУдалениеНеТребуется" id="174">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница удаление не требуется</v8:content>
+						</v8:item>
+					</Title>
+					<VerticalStretch>true</VerticalStretch>
+					<VerticalAlign>Center</VerticalAlign>
+					<ExtendedTooltip name="СтраницаУдалениеНеТребуетсяРасширеннаяПодсказка" id="175"/>
+					<ChildItems>
+						<UsualGroup name="ГоризонтальнаяГруппа2" id="507">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Горизонтальная группа 2</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГоризонтальнаяГруппа2РасширеннаяПодсказка" id="508"/>
+							<ChildItems>
+								<PictureDecoration name="КартинкаУдалениеНеТребуется" id="178">
+									<GroupVerticalAlign>Center</GroupVerticalAlign>
+									<Picture>
+										<xr:Ref>CommonPicture.Информация32</xr:Ref>
+										<xr:LoadTransparent>false</xr:LoadTransparent>
+									</Picture>
+									<ContextMenu name="КартинкаУдалениеНеТребуетсяКонтекстноеМеню" id="179"/>
+									<ExtendedTooltip name="КартинкаУдалениеНеТребуетсяРасширеннаяПодсказка" id="180"/>
+								</PictureDecoration>
+								<LabelDecoration name="НадписьУдалениеНеТребуется" id="181">
+									<AutoMaxWidth>false</AutoMaxWidth>
+									<Height>5</Height>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Удаление не требуется.
+Нет объектов, помеченных на удаление.</v8:content>
+										</v8:item>
+									</Title>
+									<GroupVerticalAlign>Center</GroupVerticalAlign>
+									<VerticalAlign>Center</VerticalAlign>
+									<ContextMenu name="НадписьУдалениеНеТребуетсяКонтекстноеМеню" id="182"/>
+									<ExtendedTooltip name="НадписьУдалениеНеТребуетсяРасширеннаяПодсказка" id="183"/>
+								</LabelDecoration>
+							</ChildItems>
+						</UsualGroup>
+						<LabelDecoration name="НебольшойОтступСнизу2" id="499">
+							<ContextMenu name="НебольшойОтступСнизу2КонтекстноеМеню" id="500"/>
+							<ExtendedTooltip name="НебольшойОтступСнизу2РасширеннаяПодсказка" id="501"/>
+						</LabelDecoration>
+					</ChildItems>
+				</Page>
+				<Page name="СтраницаУспешноЗавершено" id="142">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница успешно завершено</v8:content>
+						</v8:item>
+					</Title>
+					<VerticalStretch>true</VerticalStretch>
+					<VerticalAlign>Center</VerticalAlign>
+					<ExtendedTooltip name="СтраницаУспешноЗавершеноРасширеннаяПодсказка" id="143"/>
+					<ChildItems>
+						<UsualGroup name="ГоризонтальнаяГруппа3" id="497">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Горизонтальная группа 3</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГоризонтальнаяГруппа3РасширеннаяПодсказка" id="498"/>
+							<ChildItems>
+								<PictureDecoration name="КартинкаУспешноЗавершено" id="146">
+									<GroupVerticalAlign>Center</GroupVerticalAlign>
+									<Picture>
+										<xr:Ref>CommonPicture.Успешно32</xr:Ref>
+										<xr:LoadTransparent>false</xr:LoadTransparent>
+									</Picture>
+									<ContextMenu name="КартинкаУспешноЗавершеноКонтекстноеМеню" id="147"/>
+									<ExtendedTooltip name="КартинкаУспешноЗавершеноРасширеннаяПодсказка" id="148"/>
+								</PictureDecoration>
+								<LabelDecoration name="НадписьУспешноЗавершено" id="149">
+									<AutoMaxWidth>false</AutoMaxWidth>
+									<Height>5</Height>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Удаление помеченных объектов успешно завершено.
+Удалено объектов: 47.</v8:content>
+										</v8:item>
+									</Title>
+									<GroupVerticalAlign>Center</GroupVerticalAlign>
+									<VerticalAlign>Center</VerticalAlign>
+									<ContextMenu name="НадписьУспешноЗавершеноКонтекстноеМеню" id="150"/>
+									<ExtendedTooltip name="НадписьУспешноЗавершеноРасширеннаяПодсказка" id="151"/>
+								</LabelDecoration>
+							</ChildItems>
+						</UsualGroup>
+						<LabelDecoration name="НебольшойОтступСнизу3" id="504">
+							<ContextMenu name="НебольшойОтступСнизу3КонтекстноеМеню" id="505"/>
+							<ExtendedTooltip name="НебольшойОтступСнизу3РасширеннаяПодсказка" id="506"/>
+						</LabelDecoration>
+					</ChildItems>
+				</Page>
 				<Page name="СтраницаВозниклаОшибка" id="458">
 					<Title>
 						<v8:item>
@@ -958,67 +1098,86 @@
 							<v8:content>Возникла ошибка</v8:content>
 						</v8:item>
 					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Страница возникла ошибка</v8:content>
-						</v8:item>
-					</ToolTip>
-					<Group>Horizontal</Group>
+					<VerticalStretch>true</VerticalStretch>
+					<VerticalAlign>Center</VerticalAlign>
 					<ExtendedTooltip name="СтраницаВозниклаОшибкаРасширеннаяПодсказка" id="459"/>
 					<ChildItems>
-						<PictureDecoration name="КартинкаПредупреждение32" id="460">
-							<Title formatted="false">
+						<UsualGroup name="ГоризонтальнаяГруппа4" id="502">
+							<Title>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Картинка предупреждение32</v8:content>
+									<v8:content>Горизонтальная группа 4</v8:content>
 								</v8:item>
 							</Title>
-							<GroupVerticalAlign>Center</GroupVerticalAlign>
-							<Picture>
-								<xr:Ref>CommonPicture.Предупреждение32</xr:Ref>
-								<xr:LoadTransparent>false</xr:LoadTransparent>
-							</Picture>
-							<ContextMenu name="КартинкаПредупреждение32КонтекстноеМеню" id="461"/>
-							<ExtendedTooltip name="КартинкаПредупреждение32РасширеннаяПодсказка" id="462"/>
-						</PictureDecoration>
-						<LabelDecoration name="НадписьТекстОшибки" id="463">
-							<AutoMaxWidth>false</AutoMaxWidth>
-							<Height>5</Height>
-							<HorizontalStretch>true</HorizontalStretch>
-							<Title formatted="false">
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Надпись текст ошибки</v8:content>
-								</v8:item>
-							</Title>
-							<GroupVerticalAlign>Center</GroupVerticalAlign>
-							<VerticalAlign>Center</VerticalAlign>
-							<ContextMenu name="НадписьТекстОшибкиКонтекстноеМеню" id="464"/>
-							<ExtendedTooltip name="НадписьТекстОшибкиРасширеннаяПодсказка" id="465"/>
-						</LabelDecoration>
-						<LabelDecoration name="СсылкаПодробнее1" id="466">
-							<AutoMaxWidth>false</AutoMaxWidth>
-							<Title formatted="false">
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Подробнее</v8:content>
-								</v8:item>
-							</Title>
-							<GroupVerticalAlign>Center</GroupVerticalAlign>
-							<Hyperlink>true</Hyperlink>
-							<VerticalAlign>Center</VerticalAlign>
-							<ContextMenu name="СсылкаПодробнее1КонтекстноеМеню" id="467"/>
-							<ExtendedTooltip name="СсылкаПодробнее1РасширеннаяПодсказка" id="468"/>
-							<Events>
-								<Event name="Click">СсылкаПодробнееНажатие</Event>
-							</Events>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГоризонтальнаяГруппа4РасширеннаяПодсказка" id="503"/>
+							<ChildItems>
+								<PictureDecoration name="КартинкаПредупреждение32" id="460">
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Картинка предупреждение32</v8:content>
+										</v8:item>
+									</Title>
+									<GroupVerticalAlign>Center</GroupVerticalAlign>
+									<Picture>
+										<xr:Ref>CommonPicture.Предупреждение32</xr:Ref>
+										<xr:LoadTransparent>false</xr:LoadTransparent>
+									</Picture>
+									<ContextMenu name="КартинкаПредупреждение32КонтекстноеМеню" id="461"/>
+									<ExtendedTooltip name="КартинкаПредупреждение32РасширеннаяПодсказка" id="462"/>
+								</PictureDecoration>
+								<LabelDecoration name="НадписьТекстОшибки" id="463">
+									<AutoMaxWidth>false</AutoMaxWidth>
+									<Height>5</Height>
+									<HorizontalStretch>true</HorizontalStretch>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Надпись текст ошибки</v8:content>
+										</v8:item>
+									</Title>
+									<GroupVerticalAlign>Center</GroupVerticalAlign>
+									<VerticalAlign>Center</VerticalAlign>
+									<ContextMenu name="НадписьТекстОшибкиКонтекстноеМеню" id="464"/>
+									<ExtendedTooltip name="НадписьТекстОшибкиРасширеннаяПодсказка" id="465"/>
+								</LabelDecoration>
+								<LabelDecoration name="СсылкаПодробнее1" id="466">
+									<AutoMaxWidth>false</AutoMaxWidth>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Подробнее</v8:content>
+										</v8:item>
+									</Title>
+									<GroupVerticalAlign>Center</GroupVerticalAlign>
+									<Hyperlink>true</Hyperlink>
+									<VerticalAlign>Center</VerticalAlign>
+									<ContextMenu name="СсылкаПодробнее1КонтекстноеМеню" id="467"/>
+									<ExtendedTooltip name="СсылкаПодробнее1РасширеннаяПодсказка" id="468"/>
+									<Events>
+										<Event name="Click">СсылкаПодробнееНажатие</Event>
+									</Events>
+								</LabelDecoration>
+							</ChildItems>
+						</UsualGroup>
+						<LabelDecoration name="НебольшойОтступСнизу4" id="509">
+							<ContextMenu name="НебольшойОтступСнизу4КонтекстноеМеню" id="510"/>
+							<ExtendedTooltip name="НебольшойОтступСнизу4РасширеннаяПодсказка" id="511"/>
 						</LabelDecoration>
 					</ChildItems>
 				</Page>
 			</ChildItems>
 		</Pages>
 		<UsualGroup name="КомандныеПанели" id="164">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Командные панели</v8:content>
+				</v8:item>
+			</Title>
 			<Group>Horizontal</Group>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
@@ -1026,6 +1185,12 @@
 			<ChildItems>
 				<CommandBar name="ЛеваяКоманднаяПанель" id="152">
 					<EnableContentChange>true</EnableContentChange>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Левая командная панель</v8:content>
+						</v8:item>
+					</Title>
 					<ExtendedTooltip name="ЛеваяКоманднаяПанельРасширеннаяПодсказка" id="153"/>
 					<ChildItems>
 						<Button name="КнопкаНазад" id="52">
@@ -1038,6 +1203,12 @@
 				</CommandBar>
 				<CommandBar name="ПраваяКоманднаяПанель" id="2">
 					<EnableContentChange>true</EnableContentChange>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Правая командная панель</v8:content>
+						</v8:item>
+					</Title>
 					<HorizontalLocation>Right</HorizontalLocation>
 					<ExtendedTooltip name="ПраваяКоманднаяПанельРасширеннаяПодсказка" id="114"/>
 					<ChildItems>
@@ -1501,6 +1672,35 @@
 				</v8:StringQualifiers>
 			</Type>
 		</Attribute>
+		<Attribute name="УдалениеПомеченныхИдентификатор" id="29">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Удаление помеченных идентификатор</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="УдалениеПомеченныхИспользование" id="30">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Удаление помеченных использование</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="УдалениеПомеченныхРасписание" id="31">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Удаление помеченных расписание</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
 	</Attributes>
 	<Commands>
 		<Command name="КомандаДалее" id="1">
@@ -1652,6 +1852,21 @@
 				<xr:LoadTransparent>true</xr:LoadTransparent>
 			</Picture>
 			<Action>НеУдаленныеУдалить</Action>
+		</Command>
+		<Command name="УдалениеПомеченныхНастроитьРасписание" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Настроить расписание</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Настроить расписание для автоматического удаления помеченных объектов в регламентном задании.</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>УдалениеПомеченныхНастроитьРасписание</Action>
 		</Command>
 	</Commands>
 </Form>

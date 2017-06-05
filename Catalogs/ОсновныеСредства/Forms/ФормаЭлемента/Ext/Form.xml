@@ -4,14 +4,47 @@
 	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
 		<ChildItems>
-			<Button name="ФормаОбщаяКомандаЗапуститьМонитор" id="367">
-				<Type>CommandBarButton</Type>
-				<CommandName>CommonCommand.ЗапуститьМонитор</CommandName>
-				<ExtendedTooltip name="ФормаОбщаяКомандаЗапуститьМониторРасширеннаяПодсказка" id="368"/>
-			</Button>
+			<ButtonGroup name="ГруппаВажныеКоманды" id="369">
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Группа важные команды</v8:content>
+					</v8:item>
+				</Title>
+				<ToolTip>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Группа важные команды</v8:content>
+					</v8:item>
+				</ToolTip>
+				<ExtendedTooltip name="ГруппаВажныеКомандыРасширеннаяПодсказка" id="370"/>
+				<ChildItems>
+					<Button name="ФормаОбщаяКомандаЗапуститьМонитор" id="367">
+						<Type>CommandBarButton</Type>
+						<CommandName>CommonCommand.ЗапуститьМонитор</CommandName>
+						<ExtendedTooltip name="ФормаОбщаяКомандаЗапуститьМониторРасширеннаяПодсказка" id="368"/>
+					</Button>
+				</ChildItems>
+			</ButtonGroup>
+			<ButtonGroup name="ГруппаГлобальныеКоманды" id="371">
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Группа глобальные команды</v8:content>
+					</v8:item>
+				</Title>
+				<ToolTip>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Группа глобальные команды</v8:content>
+					</v8:item>
+				</ToolTip>
+				<ExtendedTooltip name="ГруппаГлобальныеКомандыРасширеннаяПодсказка" id="372"/>
+			</ButtonGroup>
 		</ChildItems>
 	</AutoCommandBar>
 	<Events>
+		<Event name="OnReadAtServer">ПриЧтенииНаСервере</Event>
 		<Event name="OnOpen">ПриОткрытии</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 	</Events>
@@ -321,7 +354,6 @@
 							<ExtendedTooltip name="ГруппаСведенияОГоссобственностиРасширеннаяПодсказка" id="44"/>
 							<ChildItems>
 								<InputField name="КатегорияГС" id="273">
-									<DataPath>1/0:f94ec0fa-044b-492f-a352-005a5b34f943</DataPath>
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
@@ -335,7 +367,6 @@
 									</Events>
 								</InputField>
 								<InputField name="ПодразделениеДляГоссобственности" id="364">
-									<DataPath>1/0:b4c80c32-9349-45c2-8608-c266d8d58be2</DataPath>
 									<ContextMenu name="ПодразделениеДляГоссобственностиКонтекстноеМеню" id="365"/>
 									<ExtendedTooltip name="ПодразделениеДляГоссобственностиРасширеннаяПодсказка" id="366"/>
 								</InputField>
@@ -1637,7 +1668,7 @@
 						</v8:item>
 					</Title>
 					<Type>
-						<v8:Type>cfg:DocumentRef.ПередачаОС</v8:Type>
+						<v8:Type>cfg:DocumentRef.удалитьПередачаОС</v8:Type>
 						<v8:Type>cfg:DocumentRef.СписаниеОС</v8:Type>
 						<v8:Type>cfg:DocumentRef.ВводНачальныхОстатков</v8:Type>
 					</Type>
@@ -1719,7 +1750,7 @@
 				</v8:item>
 			</Title>
 			<Type>
-				<v8:Type>cfg:CatalogRef.РегиональныеКоэффициентыНИ</v8:Type>
+				<v8:Type>cfg:CatalogRef.РегиональныеКоэффициентыНалогаНаИмущество</v8:Type>
 			</Type>
 		</Attribute>
 		<Attribute name="ЗональныйКоэффициент" id="40">
@@ -1730,7 +1761,7 @@
 				</v8:item>
 			</Title>
 			<Type>
-				<v8:Type>cfg:CatalogRef.ЗональныеКоэффициентыНИ</v8:Type>
+				<v8:Type>cfg:CatalogRef.ЗональныеКоэффициентыНалогаНаИмущество</v8:Type>
 			</Type>
 		</Attribute>
 		<Attribute name="ОтраслевойКоэффициент" id="41">
@@ -1786,6 +1817,15 @@
 					<v8:AllowedSign>Any</v8:AllowedSign>
 				</v8:NumberQualifiers>
 			</Type>
+		</Attribute>
+		<Attribute name="ПараметрыПодключаемыхКоманд" id="45">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Параметры подключаемых команд</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
 		</Attribute>
 	</Attributes>
 	<CommandInterface>
