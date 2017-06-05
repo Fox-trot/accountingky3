@@ -1,0 +1,240 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.4">
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<Button name="ПереформироватьРКО" id="26">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.ПереформироватьРКО</CommandName>
+				<ExtendedTooltip name="ПереформироватьРКОРасширеннаяПодсказка" id="27"/>
+			</Button>
+			<Button name="СформироватьРКО" id="28">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.СформироватьРКО</CommandName>
+				<ExtendedTooltip name="СформироватьРКОРасширеннаяПодсказка" id="29"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<InputField name="Ведомость" id="4">
+			<DataPath>Объект.Ведомость</DataPath>
+			<ContextMenu name="ВедомостьКонтекстноеМеню" id="5"/>
+			<ExtendedTooltip name="ВедомостьРасширеннаяПодсказка" id="6"/>
+			<Events>
+				<Event name="OnChange">ВедомостьПриИзменении</Event>
+			</Events>
+		</InputField>
+		<RadioButtonField name="Переключатель" id="1">
+			<DataPath>Переключатель</DataPath>
+			<TitleLocation>None</TitleLocation>
+			<RadioButtonType>Auto</RadioButtonType>
+			<ChoiceList>
+				<xr:Item>
+					<xr:Presentation/>
+					<xr:CheckState>0</xr:CheckState>
+					<xr:Value xsi:type="FormChoiceListDesTimeValue">
+						<Presentation>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Общий</v8:content>
+							</v8:item>
+						</Presentation>
+						<Value xsi:type="xs:decimal">1</Value>
+					</xr:Value>
+				</xr:Item>
+				<xr:Item>
+					<xr:Presentation/>
+					<xr:CheckState>0</xr:CheckState>
+					<xr:Value xsi:type="FormChoiceListDesTimeValue">
+						<Presentation>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Индивидуальный</v8:content>
+							</v8:item>
+						</Presentation>
+						<Value xsi:type="xs:decimal">2</Value>
+					</xr:Value>
+				</xr:Item>
+			</ChoiceList>
+			<ContextMenu name="ПереключательКонтекстноеМеню" id="2"/>
+			<ExtendedTooltip name="ПереключательРасширеннаяПодсказка" id="3"/>
+		</RadioButtonField>
+		<Table name="СписокРКОиППИ" id="7">
+			<UseAlternationRowColor>true</UseAlternationRowColor>
+			<EnableStartDrag>true</EnableStartDrag>
+			<DataPath>СписокРКОиППИ</DataPath>
+			<RowPictureDataPath>СписокРКОиППИ.DefaultPicture</RowPictureDataPath>
+			<AutoRefresh>false</AutoRefresh>
+			<AutoRefreshPeriod>60</AutoRefreshPeriod>
+			<Period>
+				<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+				<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+				<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+			</Period>
+			<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+			<RestoreCurrentRow>false</RestoreCurrentRow>
+			<TopLevelParent xsi:nil="true"/>
+			<ShowRoot>true</ShowRoot>
+			<AllowRootChoice>false</AllowRootChoice>
+			<UpdateOnDataChange>Auto</UpdateOnDataChange>
+			<ContextMenu name="СписокРКОиППИКонтекстноеМеню" id="8"/>
+			<AutoCommandBar name="СписокРКОиППИКоманднаяПанель" id="9"/>
+			<ExtendedTooltip name="СписокРКОиППИРасширеннаяПодсказка" id="10"/>
+			<SearchStringAddition name="СписокРКОиППИСтрокаПоиска" id="11">
+				<AdditionSource>
+					<Item>СписокРКОиППИ</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="СписокРКОиППИСтрокаПоискаКонтекстноеМеню" id="12"/>
+				<ExtendedTooltip name="СписокРКОиППИСтрокаПоискаРасширеннаяПодсказка" id="13"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="СписокРКОиППИСостояниеПросмотра" id="14">
+				<AdditionSource>
+					<Item>СписокРКОиППИ</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="СписокРКОиППИСостояниеПросмотраКонтекстноеМеню" id="15"/>
+				<ExtendedTooltip name="СписокРКОиППИСостояниеПросмотраРасширеннаяПодсказка" id="16"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="СписокРКОиППИУправлениеПоиском" id="17">
+				<AdditionSource>
+					<Item>СписокРКОиППИ</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="СписокРКОиППИУправлениеПоискомКонтекстноеМеню" id="18"/>
+				<ExtendedTooltip name="СписокРКОиППИУправлениеПоискомРасширеннаяПодсказка" id="19"/>
+			</SearchControlAddition>
+			<ChildItems>
+				<LabelField name="СписокРКОиППИСсылка" id="30">
+					<DataPath>СписокРКОиППИ.Ссылка</DataPath>
+					<ContextMenu name="СписокРКОиППИСсылкаКонтекстноеМеню" id="31"/>
+					<ExtendedTooltip name="СписокРКОиППИСсылкаРасширеннаяПодсказка" id="32"/>
+				</LabelField>
+				<LabelField name="СписокРКОиППИСуммаДокумента" id="33">
+					<DataPath>СписокРКОиППИ.СуммаДокумента</DataPath>
+					<Width>10</Width>
+					<ContextMenu name="СписокРКОиППИСуммаДокументаКонтекстноеМеню" id="34"/>
+					<ExtendedTooltip name="СписокРКОиППИСуммаДокументаРасширеннаяПодсказка" id="35"/>
+				</LabelField>
+			</ChildItems>
+		</Table>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:DataProcessorObject.СозданиеРКОиППИНаОснованииВедомостиЗП</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<UseAlways>
+				<Field>Объект.Ведомость</Field>
+			</UseAlways>
+		</Attribute>
+		<Attribute name="Переключатель" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Переключатель</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>1</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="СписокРКОиППИ" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Список РКОи ППИ</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>true</ManualQuery>
+				<DynamicDataRead>false</DynamicDataRead>
+				<QueryText>ВЫБРАТЬ
+	ВложенныйЗапрос.Ссылка,
+	ВложенныйЗапрос.СуммаДокумента
+ИЗ	 
+(ВЫБРАТЬ
+	ПлатежноеПоручениеИсходящее.Ссылка КАК Ссылка,
+	ПлатежноеПоручениеИсходящее.СуммаДокумента КАК СуммаДокумента
+ИЗ
+	Документ.ПлатежноеПоручениеИсходящее КАК ПлатежноеПоручениеИсходящее
+ГДЕ
+	ПлатежноеПоручениеИсходящее.ДокументОснование = &amp;Ведомость
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	РасходныйКассовыйОрдер.Ссылка,
+	РасходныйКассовыйОрдер.СуммаДокумента
+ИЗ
+	Документ.РасходныйКассовыйОрдер КАК РасходныйКассовыйОрдер
+ГДЕ
+	РасходныйКассовыйОрдер.ДокументОснование = &amp;Ведомость) КАК ВложенныйЗапрос
+</QueryText>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemField">
+							<dcsset:field>Ссылка</dcsset:field>
+							<dcsset:orderType>Asc</dcsset:orderType>
+						</dcsset:item>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="СформироватьРКО" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сформировать РКО</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сформировать РКО</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>СформироватьРКО</Action>
+		</Command>
+		<Command name="ПереформироватьРКО" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Переформировать РКО</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Переформировать РКО</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ПереформироватьРКО</Action>
+		</Command>
+	</Commands>
+</Form>

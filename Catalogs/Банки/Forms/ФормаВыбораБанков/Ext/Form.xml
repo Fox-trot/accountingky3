@@ -1,0 +1,626 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.4">
+	<Title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Добавление банков из классификатора</v8:content>
+		</v8:item>
+	</Title>
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<AutoSaveDataInSettings>Use</AutoSaveDataInSettings>
+	<SaveDataInSettings>UseList</SaveDataInSettings>
+	<AutoTitle>false</AutoTitle>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<Button name="ДобавитьВСправочник" id="33">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<SkipOnInput>false</SkipOnInput>
+				<CommandName>Form.Command.ДобавитьВСправочник</CommandName>
+				<ExtendedTooltip name="ДобавитьВСправочникExtendedTooltip" id="46"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnOpen">ПриОткрытии</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ГруппаПараметры" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отбор банков по БИК, кор. счету, наименованию или городу банка</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа параметры</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<ExtendedTooltip name="ГруппаПараметрыExtendedTooltip" id="47"/>
+			<ChildItems>
+				<InputField name="БИК" id="1">
+					<DataPath>БИК</DataPath>
+					<Wrap>false</Wrap>
+					<Mask>999999999</Mask>
+					<ContextMenu name="БИККонтекстноеМеню" id="2"/>
+					<ExtendedTooltip name="БИКExtendedTooltip" id="48"/>
+				</InputField>
+				<InputField name="КоррСчет" id="3">
+					<DataPath>КоррСчет</DataPath>
+					<Visible>false</Visible>
+					<Wrap>false</Wrap>
+					<Mask>99999999999999999999</Mask>
+					<ContextMenu name="КоррСчетКонтекстноеМеню" id="4"/>
+					<ExtendedTooltip name="КоррСчетExtendedTooltip" id="49"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<InputField name="Наименование" id="6">
+			<DataPath>Наименование</DataPath>
+			<Wrap>false</Wrap>
+			<ContextMenu name="НаименованиеКонтекстноеМеню" id="7"/>
+			<ExtendedTooltip name="НаименованиеExtendedTooltip" id="50"/>
+		</InputField>
+		<InputField name="Адрес" id="25">
+			<DataPath>Адрес</DataPath>
+			<Wrap>false</Wrap>
+			<ContextMenu name="АдресКонтекстноеМеню" id="26"/>
+			<ExtendedTooltip name="АдресExtendedTooltip" id="51"/>
+		</InputField>
+		<Button name="ПодобратьБанкиВЛокальном" id="20">
+			<Type>UsualButton</Type>
+			<SkipOnInput>false</SkipOnInput>
+			<CommandName>Form.Command.ПодобратьБанки</CommandName>
+			<ExtendedTooltip name="ПодобратьБанкиВЛокальномExtendedTooltip" id="52"/>
+		</Button>
+		<UsualGroup name="ГруппаКлассификатор" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Банки для добавления в справочник</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа классификатор</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<ExtendedTooltip name="ГруппаКлассификаторExtendedTooltip" id="53"/>
+			<ChildItems>
+				<Table name="СписокБанков" id="9">
+					<Representation>List</Representation>
+					<SkipOnInput>false</SkipOnInput>
+					<ChangeRowSet>false</ChangeRowSet>
+					<ChangeRowOrder>false</ChangeRowOrder>
+					<AutoInsertNewRow>true</AutoInsertNewRow>
+					<DataPath>СписокБанков</DataPath>
+					<CommandSet>
+						<ExcludedCommand>Change</ExcludedCommand>
+					</CommandSet>
+					<SearchStringLocation>None</SearchStringLocation>
+					<ViewStatusLocation>None</ViewStatusLocation>
+					<SearchControlLocation>None</SearchControlLocation>
+					<RowFilter xsi:nil="true"/>
+					<ContextMenu name="СписокБанковКонтекстноеМеню" id="10">
+						<ChildItems>
+							<Button name="КонтекстноеМенюСписокБанковВыбратьБанки" id="38">
+								<Type>CommandBarButton</Type>
+								<SkipOnInput>false</SkipOnInput>
+								<CommandName>Form.Command.ВыбратьБанки</CommandName>
+								<ExtendedTooltip name="КонтекстноеМенюСписокБанковВыбратьБанкиExtendedTooltip" id="54"/>
+							</Button>
+							<Button name="КонтекстноеМенюСписокБанковИсключитьБанки" id="39">
+								<Type>CommandBarButton</Type>
+								<SkipOnInput>false</SkipOnInput>
+								<CommandName>Form.Command.ИсключитьБанки</CommandName>
+								<ExtendedTooltip name="КонтекстноеМенюСписокБанковИсключитьБанкиExtendedTooltip" id="55"/>
+							</Button>
+							<Button name="КонтекстноеМенюСписокБанковВыбратьВыделенныеБанки" id="40">
+								<Type>CommandBarButton</Type>
+								<SkipOnInput>false</SkipOnInput>
+								<CommandName>Form.Command.ВыбратьВыделенныеБанки</CommandName>
+								<ExtendedTooltip name="КонтекстноеМенюСписокБанковВыбратьВыделенныеБанкиExtendedTooltip" id="56"/>
+							</Button>
+							<Button name="КонтекстноеМенюСписокБанковИсключитьВыделенныеБанки" id="41">
+								<Type>CommandBarButton</Type>
+								<SkipOnInput>false</SkipOnInput>
+								<CommandName>Form.Command.ИсключитьВыделенныеБанки</CommandName>
+								<ExtendedTooltip name="КонтекстноеМенюСписокБанковИсключитьВыделенныеБанкиExtendedTooltip" id="57"/>
+							</Button>
+						</ChildItems>
+					</ContextMenu>
+					<AutoCommandBar name="СписокБанковКоманднаяПанель" id="11">
+						<ChildItems>
+							<Button name="Найти" id="27">
+								<Type>CommandBarButton</Type>
+								<SkipOnInput>false</SkipOnInput>
+								<CommandName>Form.Item.СписокБанков.StandardCommand.Find</CommandName>
+								<ExtendedTooltip name="НайтиExtendedTooltip" id="58"/>
+							</Button>
+							<Button name="ОтменитьПоиск" id="28">
+								<Type>CommandBarButton</Type>
+								<SkipOnInput>false</SkipOnInput>
+								<CommandName>Form.Item.СписокБанков.StandardCommand.CancelSearch</CommandName>
+								<ExtendedTooltip name="ОтменитьПоискExtendedTooltip" id="59"/>
+							</Button>
+							<Button name="СписокБанковВыбратьБанки" id="34">
+								<Type>CommandBarButton</Type>
+								<SkipOnInput>false</SkipOnInput>
+								<CommandName>Form.Command.ВыбратьБанки</CommandName>
+								<ExtendedTooltip name="СписокБанковВыбратьБанкиExtendedTooltip" id="60"/>
+							</Button>
+							<Button name="СписокБанковИсключитьБанки" id="35">
+								<Type>CommandBarButton</Type>
+								<SkipOnInput>false</SkipOnInput>
+								<CommandName>Form.Command.ИсключитьБанки</CommandName>
+								<ExtendedTooltip name="СписокБанковИсключитьБанкиExtendedTooltip" id="61"/>
+							</Button>
+							<Button name="СписокБанковВыбратьВыделенныеБанки" id="36">
+								<Type>CommandBarButton</Type>
+								<SkipOnInput>false</SkipOnInput>
+								<CommandName>Form.Command.ВыбратьВыделенныеБанки</CommandName>
+								<ExtendedTooltip name="СписокБанковВыбратьВыделенныеБанкиExtendedTooltip" id="62"/>
+							</Button>
+							<Button name="СписокБанковИсключитьВыделенныеБанки" id="37">
+								<Type>CommandBarButton</Type>
+								<SkipOnInput>false</SkipOnInput>
+								<CommandName>Form.Command.ИсключитьВыделенныеБанки</CommandName>
+								<ExtendedTooltip name="СписокБанковИсключитьВыделенныеБанкиExtendedTooltip" id="63"/>
+							</Button>
+						</ChildItems>
+					</AutoCommandBar>
+					<ExtendedTooltip name="СписокБанковExtendedTooltip" id="64"/>
+					<SearchStringAddition name="СписокБанковSearchString" id="71">
+						<AdditionSource>
+							<Item>СписокБанков</Item>
+							<Type>SearchStringRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="СписокБанковSearchStringContextMenu" id="72"/>
+						<ExtendedTooltip name="СписокБанковSearchStringExtendedTooltip" id="73"/>
+					</SearchStringAddition>
+					<ViewStatusAddition name="СписокБанковViewStatus" id="74">
+						<AdditionSource>
+							<Item>СписокБанков</Item>
+							<Type>ViewStatusRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="СписокБанковViewStatusContextMenu" id="75"/>
+						<ExtendedTooltip name="СписокБанковViewStatusExtendedTooltip" id="76"/>
+					</ViewStatusAddition>
+					<SearchControlAddition name="СписокБанковSearchControl" id="77">
+						<AdditionSource>
+							<Item>СписокБанков</Item>
+							<Type>SearchControl</Type>
+						</AdditionSource>
+						<ContextMenu name="СписокБанковSearchControlContextMenu" id="78"/>
+						<ExtendedTooltip name="СписокБанковSearchControlExtendedTooltip" id="79"/>
+					</SearchControlAddition>
+					<Events>
+						<Event name="Selection">СписокБанковВыбор</Event>
+					</Events>
+					<ChildItems>
+						<CheckBoxField name="СписокБанковВыбран" id="31">
+							<DataPath>СписокБанков.Выбран</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="СписокБанковВыбранКонтекстноеМеню" id="32"/>
+							<ExtendedTooltip name="СписокБанковВыбранExtendedTooltip" id="65"/>
+						</CheckBoxField>
+						<InputField name="НаименованиеБанка" id="12">
+							<DataPath>СписокБанков.Наименование</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<Width>40</Width>
+							<Wrap>false</Wrap>
+							<ContextMenu name="НаименованиеБанкаКонтекстноеМеню" id="13"/>
+							<ExtendedTooltip name="НаименованиеБанкаExtendedTooltip" id="66"/>
+						</InputField>
+						<InputField name="БИКБанка" id="14">
+							<DataPath>СписокБанков.БИК</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<Wrap>false</Wrap>
+							<ContextMenu name="БИКБанкаКонтекстноеМеню" id="15"/>
+							<ExtendedTooltip name="БИКБанкаExtendedTooltip" id="67"/>
+						</InputField>
+						<InputField name="АдресБанка" id="18">
+							<DataPath>СписокБанков.Адрес</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<Wrap>false</Wrap>
+							<ContextMenu name="АдресБанкаКонтекстноеМеню" id="19"/>
+							<ExtendedTooltip name="АдресБанкаExtendedTooltip" id="68"/>
+						</InputField>
+						<InputField name="СписокБанковSWIFT" id="42">
+							<DataPath>СписокБанков.SWIFT</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="СписокБанковSWIFTКонтекстноеМеню" id="43"/>
+							<ExtendedTooltip name="СписокБанковSWIFTExtendedTooltip" id="69"/>
+						</InputField>
+						<InputField name="СписокБанковИндекс" id="44">
+							<DataPath>СписокБанков.Индекс</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="СписокБанковИндексКонтекстноеМеню" id="45"/>
+							<ExtendedTooltip name="СписокБанковИндексExtendedTooltip" id="70"/>
+						</InputField>
+					</ChildItems>
+				</Table>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="БИК" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>БИК</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>9</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<Save>
+				<Field>БИК</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="КоррСчет" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Корреспондентский счет</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>20</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<Save>
+				<Field>КоррСчет</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="Наименование" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Наименование</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<Save>
+				<Field>Наименование</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="СписокБанков" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Список банков</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Наименование" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Наименование</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="БИК" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>БИК</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>9</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="КоррСчет" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Кор. счет</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>20</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Адрес" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Адрес</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Регион" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Регион</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="КодРегиона" id="6">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Код региона</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Выбран" id="7">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Выбран</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Ссылка" id="8">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ссылка</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="SWIFT" id="9">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>SWIFT</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Индекс" id="10">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Индекс</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Область" id="11">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Область</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="Адрес" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Адрес</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<Save>
+				<Field>Адрес</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="ТекстКомментария" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Текст комментария</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ПодобратьБанки" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подобрать банки</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подобрать банки</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ПодобратьБанки</Action>
+		</Command>
+		<Command name="ДобавитьВСправочник" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Добавить в справочник</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Добавить в справочник</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ДобавитьВСправочник</Action>
+		</Command>
+		<Command name="ВыбратьБанки" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выбрать все</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выбрать все банки</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.CheckAll</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ВыбратьБанки</Action>
+		</Command>
+		<Command name="ИсключитьБанки" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Исключить все</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Исключить все банки</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.UncheckAll</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ИсключитьБанки</Action>
+		</Command>
+		<Command name="ВыбратьВыделенныеБанки" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выбрать выделенные</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выбрать выделенные банки</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.CheckAll</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ВыбратьВыделенныеБанки</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="ИсключитьВыделенныеБанки" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Исключить выделенные</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Исключить выделенные банки</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.UncheckAll</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ИсключитьВыделенныеБанки</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+	</Commands>
+</Form>

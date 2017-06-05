@@ -1,0 +1,4403 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.4">
+	<Width>95</Width>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<Autofill>false</Autofill>
+		<ChildItems>
+			<Button name="КомандаЗаписатьИЗакрыть" id="477">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.Command.КомандаЗаписатьИЗакрыть</CommandName>
+				<ExtendedTooltip name="КомандаЗаписатьИЗакрытьРасширеннаяПодсказка" id="478"/>
+			</Button>
+			<Button name="ФормаЗаписатьИЗакрыть" id="481">
+				<Type>CommandBarButton</Type>
+				<Visible>false</Visible>
+				<CommandName>Form.StandardCommand.WriteAndClose</CommandName>
+				<ExtendedTooltip name="ФормаЗаписатьИЗакрытьРасширеннаяПодсказка" id="482"/>
+			</Button>
+			<Button name="КомандаЗаписать" id="479">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.КомандаЗаписать</CommandName>
+				<ExtendedTooltip name="КомандаЗаписатьРасширеннаяПодсказка" id="480"/>
+			</Button>
+			<Button name="ФормаЗаписать" id="483">
+				<Type>CommandBarButton</Type>
+				<Visible>false</Visible>
+				<CommandName>Form.StandardCommand.Write</CommandName>
+				<ExtendedTooltip name="ФормаЗаписатьРасширеннаяПодсказка" id="484"/>
+			</Button>
+			<ButtonGroup name="ФормаГруппаКомандФормы" id="485">
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Форма группа команд формы</v8:content>
+					</v8:item>
+				</Title>
+				<CommandSource>Form</CommandSource>
+				<ExtendedTooltip name="ФормаГруппаКомандФормыРасширеннаяПодсказка" id="486"/>
+			</ButtonGroup>
+			<Popup name="ГруппаВажныеКоманды" id="1424">
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Группа важные команды</v8:content>
+					</v8:item>
+				</Title>
+				<ToolTip>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Группа важные команды</v8:content>
+					</v8:item>
+				</ToolTip>
+				<ExtendedTooltip name="ГруппаВажныеКомандыРасширеннаяПодсказка" id="1425"/>
+			</Popup>
+			<Button name="ФормаСправка" id="487">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.StandardCommand.Help</CommandName>
+				<ExtendedTooltip name="ФормаСправкаРасширеннаяПодсказка" id="488"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="AfterWrite">ПослеЗаписи</Event>
+		<Event name="AfterWriteAtServer">ПослеЗаписиНаСервере</Event>
+		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
+		<Event name="OnReadAtServer">ПриЧтенииНаСервере</Event>
+		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="BeforeClose">ПередЗакрытием</Event>
+		<Event name="BeforeWrite">ПередЗаписью</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+		<Event name="BeforeWriteAtServer">ПередЗаписьюНаСервере</Event>
+		<Event name="OnWriteAtServer">ПриЗаписиНаСервере</Event>
+		<Event name="FillCheckProcessingAtServer">ОбработкаПроверкиЗаполненияНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ФИОНомер" id="250">
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ФИОНомерExtendedTooltip" id="397"/>
+			<ChildItems>
+				<UsualGroup name="ГруппаФИО" id="251">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа ФИО</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаФИОExtendedTooltip" id="398"/>
+					<ChildItems>
+						<UsualGroup name="ГруппаНаименование" id="1439">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа наименование</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа наименование</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаНаименованиеРасширеннаяПодсказка" id="1440"/>
+							<ChildItems>
+								<InputField name="ФИО" id="252">
+									<DataPath>ФизЛицо.ФИО</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>ФИО</v8:content>
+										</v8:item>
+									</Title>
+									<AutoMarkIncomplete>true</AutoMarkIncomplete>
+									<ChooseType>false</ChooseType>
+									<ContextMenu name="ФИОКонтекстноеМеню" id="253"/>
+									<ExtendedTooltip name="ФИОExtendedTooltip" id="399"/>
+									<Events>
+										<Event name="OnChange">ФИОПриИзменении</Event>
+									</Events>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+						<Pages name="ГруппаСтраницыПолноеИмя" id="355">
+							<PagesRepresentation>None</PagesRepresentation>
+							<ExtendedTooltip name="ГруппаСтраницыПолноеИмяExtendedTooltip" id="400"/>
+							<ChildItems>
+								<Page name="ГруппаСтраницаПолноеИмяСкрытое" id="356">
+									<ExtendedTooltip name="ГруппаСтраницаПолноеИмяСкрытоеExtendedTooltip" id="401"/>
+									<ChildItems>
+										<LabelDecoration name="ДекорацияПолноеИмя" id="357">
+											<ContextMenu name="ДекорацияПолноеИмяКонтекстноеМеню" id="358"/>
+											<ExtendedTooltip name="ДекорацияПолноеИмяExtendedTooltip" id="402"/>
+										</LabelDecoration>
+									</ChildItems>
+								</Page>
+								<Page name="ГруппаСтраницаПолноеИмя" id="359">
+									<Group>Horizontal</Group>
+									<ExtendedTooltip name="ГруппаСтраницаПолноеИмяExtendedTooltip" id="403"/>
+									<ChildItems>
+										<LabelField name="Фамилия" id="255">
+											<DataPath>ФИОФизическихЛиц.Фамилия</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<BackColor>style:FormBackColor</BackColor>
+											<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+											<ContextMenu name="ФамилияКонтекстноеМеню" id="256"/>
+											<ExtendedTooltip name="ФамилияExtendedTooltip" id="404"/>
+										</LabelField>
+										<LabelField name="Имя" id="257">
+											<DataPath>ФИОФизическихЛиц.Имя</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<TitleLocation>Left</TitleLocation>
+											<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+											<ContextMenu name="ИмяКонтекстноеМеню" id="258"/>
+											<ExtendedTooltip name="ИмяExtendedTooltip" id="405"/>
+										</LabelField>
+										<LabelField name="Отчество" id="259">
+											<DataPath>ФИОФизическихЛиц.Отчество</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<TitleLocation>Left</TitleLocation>
+											<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+											<ContextMenu name="ОтчествоКонтекстноеМеню" id="260"/>
+											<ExtendedTooltip name="ОтчествоExtendedTooltip" id="406"/>
+										</LabelField>
+									</ChildItems>
+								</Page>
+							</ChildItems>
+						</Pages>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="КомандыФИО" id="261">
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="КомандыФИОExtendedTooltip" id="407"/>
+					<ChildItems>
+						<LabelDecoration name="СотрудникИзменилФИО" id="262">
+							<UserVisible>
+								<xr:Common>false</xr:Common>
+								<xr:Value name="Role.ПолныеПрава">true</xr:Value>
+							</UserVisible>
+							<Width>12</Width>
+							<Height>1</Height>
+							<VerticalStretch>false</VerticalStretch>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Изменить ФИО</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Человек изменил ФИО</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Hyperlink>true</Hyperlink>
+							<VerticalAlign>Top</VerticalAlign>
+							<ContextMenu name="СотрудникИзменилФИОКонтекстноеМеню" id="263"/>
+							<ExtendedTooltip name="СотрудникИзменилФИОExtendedTooltip" id="408"/>
+							<Events>
+								<Event name="Click">СотрудникИзменилФИОНажатие</Event>
+							</Events>
+						</LabelDecoration>
+						<Button name="ФИОФизическихЛицИстория" id="264">
+							<Type>Hyperlink</Type>
+							<CommandName>Form.Command.ФИОФизическихЛицИстория</CommandName>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>История ФИО</v8:content>
+								</v8:item>
+							</Title>
+							<ExtendedTooltip name="ФИОФизическихЛицИсторияExtendedTooltip" id="409"/>
+						</Button>
+					</ChildItems>
+				</UsualGroup>
+				<InputField name="Код" id="265">
+					<DataPath>ФизЛицо.Code</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Таб.№</v8:content>
+						</v8:item>
+					</Title>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="КодКонтекстноеМеню" id="266"/>
+					<ExtendedTooltip name="КодExtendedTooltip" id="410"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<Pages name="Закладки" id="489">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Закладки</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Закладки</v8:content>
+				</v8:item>
+			</ToolTip>
+			<ExtendedTooltip name="ЗакладкиРасширеннаяПодсказка" id="490"/>
+			<ChildItems>
+				<Page name="Общее" id="491">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Общее</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Общее</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Horizontal</Group>
+					<ExtendedTooltip name="ОбщееРасширеннаяПодсказка" id="492"/>
+					<ChildItems>
+						<UsualGroup name="Левая" id="1059">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Левая</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Левая</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Vertical</Group>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ЛеваяРасширеннаяПодсказка" id="1060"/>
+							<ChildItems>
+								<UsualGroup name="ГруппаДатаПол" id="1324">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа дата пол</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа дата пол</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Horizontal</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="ГруппаДатаПолРасширеннаяПодсказка" id="1325"/>
+									<ChildItems>
+										<InputField name="ФизлицоДатаРождения" id="185">
+											<DataPath>ФизЛицо.ДатаРождения</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Дата рождения</v8:content>
+												</v8:item>
+											</Title>
+											<ChoiceButton>false</ChoiceButton>
+											<ContextMenu name="ФизлицоДатаРожденияКонтекстноеМеню" id="186"/>
+											<ExtendedTooltip name="ФизлицоДатаРожденияExtendedTooltip" id="419"/>
+											<Events>
+												<Event name="OnChange">ФизлицоДатаРожденияПриИзменении</Event>
+											</Events>
+										</InputField>
+										<InputField name="ФизлицоПол" id="187">
+											<DataPath>ФизЛицо.Пол</DataPath>
+											<Width>8</Width>
+											<HorizontalStretch>false</HorizontalStretch>
+											<ContextMenu name="ФизлицоПолКонтекстноеМеню" id="188"/>
+											<ExtendedTooltip name="ФизлицоПолExtendedTooltip" id="420"/>
+										</InputField>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="ГруппаИНН" id="1118">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа ИНН</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа ИНН</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Horizontal</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="ГруппаИННРасширеннаяПодсказка" id="1119"/>
+									<ChildItems>
+										<InputField name="ИНН" id="1120">
+											<DataPath>ФизЛицо.ИНН</DataPath>
+											<TitleLocation>Left</TitleLocation>
+											<Width>15</Width>
+											<HorizontalStretch>false</HorizontalStretch>
+											<InputHint>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Введите ИНН 14 цифр</v8:content>
+												</v8:item>
+											</InputHint>
+											<ContextMenu name="ИННКонтекстноеМеню" id="1121"/>
+											<ExtendedTooltip name="ИННРасширеннаяПодсказка" id="1122"/>
+											<Events>
+												<Event name="OnChange">ИННПриИзменении</Event>
+											</Events>
+										</InputField>
+										<LabelDecoration name="ПоказатьДубли" id="1379">
+											<TextColor>style:ПоясняющийОшибкуТекст</TextColor>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Показать дубли</v8:content>
+												</v8:item>
+											</Title>
+											<Hyperlink>true</Hyperlink>
+											<ContextMenu name="ПоказатьДублиКонтекстноеМеню" id="1380"/>
+											<ExtendedTooltip name="ПоказатьДублиРасширеннаяПодсказка" id="1381"/>
+											<Events>
+												<Event name="Click">ПоказатьДублиНажатие</Event>
+											</Events>
+										</LabelDecoration>
+										<LabelField name="НадписьПоясненияНекорректногоИНН" id="1376">
+											<DataPath>НадписьПоясненияНекорректногоИНН</DataPath>
+											<TitleLocation>None</TitleLocation>
+											<Hiperlink>true</Hiperlink>
+											<TextColor>style:SpecialTextColor</TextColor>
+											<ContextMenu name="НадписьПоясненияНекорректногоИННКонтекстноеМеню" id="1377"/>
+											<ExtendedTooltip name="НадписьПоясненияНекорректногоИННРасширеннаяПодсказка" id="1378"/>
+										</LabelField>
+									</ChildItems>
+								</UsualGroup>
+								<InputField name="ФизическоеЛицоНациональность" id="1135">
+									<DataPath>ФизЛицо.Национальность</DataPath>
+									<Width>30</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="ФизическоеЛицоНациональностьКонтекстноеМеню" id="1136"/>
+									<ExtendedTooltip name="ФизическоеЛицоНациональностьРасширеннаяПодсказка" id="1137"/>
+								</InputField>
+								<InputField name="ФизическоеЛицоМестоРождения" id="190">
+									<DataPath>ФизическоеЛицоМестоРождения</DataPath>
+									<Width>30</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ChoiceButton>true</ChoiceButton>
+									<TextEdit>false</TextEdit>
+									<BackColor>style:FormBackColor</BackColor>
+									<ContextMenu name="ФизическоеЛицоМестоРожденияКонтекстноеМеню" id="191"/>
+									<ExtendedTooltip name="ФизическоеЛицоМестоРожденияРасширеннаяПодсказка" id="425"/>
+									<Events>
+										<Event name="StartChoice">ФизическоеЛицоМестоРожденияНачалоВыбора</Event>
+									</Events>
+								</InputField>
+								<UsualGroup name="ГруппаГражданствоФизлиц" id="1322">
+									<UserVisible>
+										<xr:Common>false</xr:Common>
+										<xr:Value name="Role.ДобавлениеИзменениеПодсистемыПерсонал">true</xr:Value>
+										<xr:Value name="Role.ПолныеПрава">true</xr:Value>
+									</UserVisible>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Гражданство</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа гражданство физлиц</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Vertical</Group>
+									<Representation>StrongSeparation</Representation>
+									<ExtendedTooltip name="ГруппаГражданствоФизлицРасширеннаяПодсказка" id="1323"/>
+									<ChildItems>
+										<InputField name="ГражданствоФизическихЛицСтрана" id="350">
+											<DataPath>ГражданствоФизическихЛиц.Страна</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Гражданство</v8:content>
+												</v8:item>
+											</Title>
+											<TitleLocation>Left</TitleLocation>
+											<ToolTipRepresentation>ShowLeft</ToolTipRepresentation>
+											<Width>30</Width>
+											<HorizontalStretch>false</HorizontalStretch>
+											<ContextMenu name="ГражданствоФизическихЛицСтранаКонтекстноеМеню" id="351"/>
+											<ExtendedTooltip name="ГражданствоФизическихЛицСтранаExtendedTooltip" id="430"/>
+											<Events>
+												<Event name="OnChange">ГражданствоФизическихЛицСтранаПриИзменении</Event>
+											</Events>
+										</InputField>
+										<InputField name="ГражданствоФизическихЛицПериод" id="203">
+											<DataPath>ГражданствоФизическихЛиц.Period</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Сведения о гражданстве действуют с</v8:content>
+												</v8:item>
+											</Title>
+											<TitleLocation>Left</TitleLocation>
+											<ContextMenu name="ГражданствоФизическихЛицПериодКонтекстноеМеню" id="204"/>
+											<ExtendedTooltip name="ГражданствоФизическихЛицПериодExtendedTooltip" id="431"/>
+										</InputField>
+										<Button name="ГражданствоФизическихЛицИстория" id="352">
+											<Type>Hyperlink</Type>
+											<CommandName>Form.Command.ГражданствоФизическихЛицИстория</CommandName>
+											<ExtendedTooltip name="ГражданствоФизическихЛицИсторияExtendedTooltip" id="432"/>
+										</Button>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="Правая" id="1061">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Правая</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Правая</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Vertical</Group>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ПраваяРасширеннаяПодсказка" id="1062"/>
+							<ChildItems>
+								<UsualGroup name="ГруппаУдостоверениеЛичности" id="226">
+									<UserVisible>
+										<xr:Common>false</xr:Common>
+										<xr:Value name="Role.АдминистраторСистемы">false</xr:Value>
+										<xr:Value name="Role.Администрирование">false</xr:Value>
+										<xr:Value name="Role.БазовыеПрава">false</xr:Value>
+										<xr:Value name="Role.БазовыеПраваВнешнегоПользователя">false</xr:Value>
+										<xr:Value name="Role.БазовыеПраваПользователяБП">false</xr:Value>
+										<xr:Value name="Role.ВыводНаПринтерФайлБуферОбмена">false</xr:Value>
+										<xr:Value name="Role.ГлавныйИнженер">false</xr:Value>
+										<xr:Value name="Role.ДобавлениеИзменениеВариантовОтчетов">false</xr:Value>
+										<xr:Value name="Role.ДобавлениеИзменениеВидовКонтактнойИнформации">false</xr:Value>
+										<xr:Value name="Role.ДобавлениеИзменениеВнешнихПользователей">false</xr:Value>
+										<xr:Value name="Role.ДобавлениеИзменениеДатЗапретаИзменения">false</xr:Value>
+										<xr:Value name="d9b6f3da-bfbf-4ab4-a747-2b4c6f84c5c0">false</xr:Value>
+										<xr:Value name="be45b2a4-dd49-4f55-b08a-d8a0bad16bac">false</xr:Value>
+										<xr:Value name="Role.ДобавлениеИзменениеДокументаНачислениеПоТабелю">false</xr:Value>
+										<xr:Value name="Role.ДобавлениеИзменениеКурсовВалют">false</xr:Value>
+										<xr:Value name="d83af5b1-85d2-4d2f-9f7e-fbdd2cf7a3db">false</xr:Value>
+										<xr:Value name="Role.ДобавлениеИзменениеПодсистемыАренда">false</xr:Value>
+										<xr:Value name="f9c1b725-46b1-49f7-ab53-fb82f77e8efd">false</xr:Value>
+										<xr:Value name="Role.ДобавлениеИзменениеПодсистемыДенежныеСредства">false</xr:Value>
+										<xr:Value name="0cdaac7d-16d8-4a39-b186-bf0324308a3c">false</xr:Value>
+										<xr:Value name="Role.ДобавлениеИзменениеПодсистемыЗапасы">false</xr:Value>
+										<xr:Value name="Role.ДобавлениеИзменениеПодсистемыЗарплата">false</xr:Value>
+										<xr:Value name="Role.ДобавлениеИзменениеПодсистемыМБП">false</xr:Value>
+										<xr:Value name="Role.ДобавлениеИзменениеПодсистемыНДС">false</xr:Value>
+										<xr:Value name="Role.ДобавлениеИзменениеПодсистемыОсновныеСредства">false</xr:Value>
+										<xr:Value name="Role.ДобавлениеИзменениеПодсистемыПерсонал">true</xr:Value>
+										<xr:Value name="f170bc30-8042-45c6-8eac-7b80079213e9">false</xr:Value>
+										<xr:Value name="f6106142-c01e-4092-add8-771fbd8c34c3">false</xr:Value>
+										<xr:Value name="0eceedec-28a7-45f3-bb31-5fae6f88d5a3">false</xr:Value>
+										<xr:Value name="Role.ДобавлениеИзменениеПользователей">false</xr:Value>
+										<xr:Value name="Role.ЗапускAutomation">false</xr:Value>
+										<xr:Value name="Role.ЗапускВебКлиента">false</xr:Value>
+										<xr:Value name="Role.ЗапускВнешнегоСоединения">false</xr:Value>
+										<xr:Value name="Role.ЗапускТолстогоКлиента">false</xr:Value>
+										<xr:Value name="Role.ЗапускТонкогоКлиента">false</xr:Value>
+										<xr:Value name="Role.ИзменениеМакетовПечатныхФорм">false</xr:Value>
+										<xr:Value name="Role.ИзменениеУчастниковГруппДоступа">false</xr:Value>
+										<xr:Value name="Role.Интеграция1СБухфон">false</xr:Value>
+										<xr:Value name="Role.ИнтерактивноеОткрытиеВнешнихОтчетовИОбработок">false</xr:Value>
+										<xr:Value name="Role.ДобавлениеИзменениеЛичныхВариантовОтчетов">false</xr:Value>
+										<xr:Value name="Role.ДобавлениеИзменениеЗаметок">false</xr:Value>
+										<xr:Value name="Role.ДобавлениеИзменениеНапоминаний">false</xr:Value>
+										<xr:Value name="Role.ПросмотрСвязанныеДокументы">false</xr:Value>
+										<xr:Value name="Role.ИспользованиеОбработкиТекущиеДела">false</xr:Value>
+										<xr:Value name="Role.ИспользованиеУниверсальногоОтчета">false</xr:Value>
+										<xr:Value name="Role.ЧтениеУчетныхЗаписейЭлектроннойПочты">false</xr:Value>
+										<xr:Value name="Role.ОбновлениеКонфигурацииБазыДанных">false</xr:Value>
+										<xr:Value name="Role.ПолныеПрава">true</xr:Value>
+										<xr:Value name="40a52f83-f0e2-470d-9c17-7fdc8cc646b7">false</xr:Value>
+										<xr:Value name="Role.ПросмотрЖурналаРегистрации">false</xr:Value>
+										<xr:Value name="Role.ПросмотрОписанияИзмененийПрограммы">false</xr:Value>
+										<xr:Value name="Role.ПрофильИнженер">false</xr:Value>
+										<xr:Value name="Role.ПрофильЭкономист">false</xr:Value>
+										<xr:Value name="Role.ПрофильЮрист">false</xr:Value>
+										<xr:Value name="Role.РедактированиеРеквизитовОбъектов">false</xr:Value>
+										<xr:Value name="Role.РежимВсеФункции">false</xr:Value>
+										<xr:Value name="Role.СохранениеДанныхПользователя">false</xr:Value>
+										<xr:Value name="Role.УдаленныйДоступБазоваяФункциональность">false</xr:Value>
+										<xr:Value name="Role.ЧтениеВерсийОбъектов">false</xr:Value>
+										<xr:Value name="Role.ЧтениеВнешнихПользователей">false</xr:Value>
+										<xr:Value name="Role.ЧтениеИнформацииОВерсияхОбъектов">false</xr:Value>
+										<xr:Value name="Role.ЧтениеКурсовВалют">false</xr:Value>
+									</UserVisible>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Документ, удостоверяющий личность</v8:content>
+										</v8:item>
+									</Title>
+									<Group>Vertical</Group>
+									<Representation>StrongSeparation</Representation>
+									<ExtendedTooltip name="ГруппаУдостоверениеЛичностиExtendedTooltip" id="445"/>
+									<ChildItems>
+										<InputField name="ДокументыФизическихЛицВидДокумента" id="232">
+											<DataPath>ДокументыФизическихЛиц.ВидДокумента</DataPath>
+											<AutoMarkIncomplete>false</AutoMarkIncomplete>
+											<ContextMenu name="ДокументыФизическихЛицВидДокументаКонтекстноеМеню" id="233"/>
+											<ExtendedTooltip name="ДокументыФизическихЛицВидДокументаExtendedTooltip" id="446"/>
+											<Events>
+												<Event name="OnChange">ДокументыФизическихЛицВидДокументаПриИзменении</Event>
+												<Event name="StartChoice">ДокументыФизическихЛицВидДокументаНачалоВыбора</Event>
+											</Events>
+										</InputField>
+										<InputField name="ДокументыФизическихЛицСерия" id="228">
+											<DataPath>ДокументыФизическихЛиц.Серия</DataPath>
+											<ContextMenu name="ДокументыФизическихЛицСерияКонтекстноеМеню" id="229"/>
+											<ExtendedTooltip name="ДокументыФизическихЛицСерияExtendedTooltip" id="448"/>
+										</InputField>
+										<InputField name="ДокументыФизическихЛицНомер" id="230">
+											<DataPath>ДокументыФизическихЛиц.Номер</DataPath>
+											<ContextMenu name="ДокументыФизическихЛицНомерКонтекстноеМеню" id="231"/>
+											<ExtendedTooltip name="ДокументыФизическихЛицНомерExtendedTooltip" id="452"/>
+										</InputField>
+										<InputField name="ДокументыФизическихЛицКемВыдан" id="238">
+											<DataPath>ДокументыФизическихЛиц.КемВыдан</DataPath>
+											<Width>1</Width>
+											<HorizontalStretch>true</HorizontalStretch>
+											<ContextMenu name="ДокументыФизическихЛицКемВыданКонтекстноеМеню" id="239"/>
+											<ExtendedTooltip name="ДокументыФизическихЛицКемВыданExtendedTooltip" id="455"/>
+										</InputField>
+										<InputField name="ДокументыФизическихЛицДатаВыдачи" id="234">
+											<DataPath>ДокументыФизическихЛиц.ДатаВыдачи</DataPath>
+											<ContextMenu name="ДокументыФизическихЛицДатаВыдачиКонтекстноеМеню" id="235"/>
+											<ExtendedTooltip name="ДокументыФизическихЛицДатаВыдачиExtendedTooltip" id="457"/>
+											<Events>
+												<Event name="OnChange">ДокументыФизическихЛицДатаВыдачиПриИзменении</Event>
+											</Events>
+										</InputField>
+										<InputField name="ДокументыФизическихЛицСрокДействия" id="360">
+											<DataPath>ДокументыФизическихЛиц.СрокДействия</DataPath>
+											<ContextMenu name="ДокументыФизическихЛицСрокДействияКонтекстноеМеню" id="361"/>
+											<ExtendedTooltip name="ДокументыФизическихЛицСрокДействияExtendedTooltip" id="459"/>
+											<Events>
+												<Event name="OnChange">ДокументыФизическихЛицСрокДействияПриИзменении</Event>
+											</Events>
+										</InputField>
+										<InputField name="ДокументыФизическихЛицПериод" id="236">
+											<DataPath>ДокументыФизическихЛиц.Period</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Сведения о документе действуют с</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="ДокументыФизическихЛицПериодКонтекстноеМеню" id="237"/>
+											<ExtendedTooltip name="ДокументыФизическихЛицПериодExtendedTooltip" id="461"/>
+										</InputField>
+										<UsualGroup name="ГруппаИсторияДокументовВсеДокументы" id="364">
+											<UserVisible>
+												<xr:Common>false</xr:Common>
+												<xr:Value name="Role.ДобавлениеИзменениеПодсистемыПерсонал">true</xr:Value>
+												<xr:Value name="Role.ПолныеПрава">true</xr:Value>
+											</UserVisible>
+											<Group>Horizontal</Group>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="ГруппаИсторияДокументовВсеДокументыExtendedTooltip" id="462"/>
+											<ChildItems>
+												<Button name="УдостоверениеИстория" id="242">
+													<Type>Hyperlink</Type>
+													<Height>3</Height>
+													<CommandName>Form.Command.ДокументыФизическихЛицИстория</CommandName>
+													<ExtendedTooltip name="УдостоверениеИсторияExtendedTooltip" id="463"/>
+												</Button>
+												<Button name="ВсеДокументыЭтогоЧеловека" id="363">
+													<Type>Hyperlink</Type>
+													<Height>3</Height>
+													<CommandName>Form.Command.ВсеДокументыЭтогоЧеловека</CommandName>
+													<ExtendedTooltip name="ВсеДокументыЭтогоЧеловекаExtendedTooltip" id="464"/>
+												</Button>
+											</ChildItems>
+										</UsualGroup>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</Page>
+				<Page name="ГруппаКонтактнаяИнформация" id="1314">
+					<UserVisible>
+						<xr:Common>true</xr:Common>
+						<xr:Value name="Role.АдминистраторСистемы">false</xr:Value>
+						<xr:Value name="Role.Администрирование">false</xr:Value>
+						<xr:Value name="Role.БазовыеПрава">false</xr:Value>
+						<xr:Value name="Role.БазовыеПраваВнешнегоПользователя">false</xr:Value>
+						<xr:Value name="Role.БазовыеПраваПользователяБП">false</xr:Value>
+						<xr:Value name="Role.ВыводНаПринтерФайлБуферОбмена">false</xr:Value>
+						<xr:Value name="Role.ГлавныйИнженер">false</xr:Value>
+						<xr:Value name="Role.ДобавлениеИзменениеВариантовОтчетов">false</xr:Value>
+						<xr:Value name="Role.ДобавлениеИзменениеВидовКонтактнойИнформации">false</xr:Value>
+						<xr:Value name="Role.ДобавлениеИзменениеВнешнихПользователей">false</xr:Value>
+						<xr:Value name="Role.ДобавлениеИзменениеДатЗапретаИзменения">false</xr:Value>
+						<xr:Value name="d9b6f3da-bfbf-4ab4-a747-2b4c6f84c5c0">false</xr:Value>
+						<xr:Value name="be45b2a4-dd49-4f55-b08a-d8a0bad16bac">false</xr:Value>
+						<xr:Value name="Role.ДобавлениеИзменениеДокументаНачислениеПоТабелю">false</xr:Value>
+						<xr:Value name="Role.ДобавлениеИзменениеКурсовВалют">false</xr:Value>
+						<xr:Value name="Role.ДобавлениеИзменениеПодсистемыАренда">false</xr:Value>
+						<xr:Value name="Role.ДобавлениеИзменениеПодсистемыДенежныеСредства">false</xr:Value>
+						<xr:Value name="Role.ДобавлениеИзменениеПодсистемыЗапасы">false</xr:Value>
+						<xr:Value name="Role.ДобавлениеИзменениеПодсистемыЗарплата">false</xr:Value>
+						<xr:Value name="Role.ДобавлениеИзменениеПодсистемыМБП">false</xr:Value>
+						<xr:Value name="Role.ДобавлениеИзменениеПодсистемыОсновныеСредства">false</xr:Value>
+						<xr:Value name="f170bc30-8042-45c6-8eac-7b80079213e9">false</xr:Value>
+						<xr:Value name="0eceedec-28a7-45f3-bb31-5fae6f88d5a3">false</xr:Value>
+						<xr:Value name="Role.ДобавлениеИзменениеПользователей">false</xr:Value>
+						<xr:Value name="Role.ЗапускAutomation">false</xr:Value>
+						<xr:Value name="Role.ЗапускВебКлиента">false</xr:Value>
+						<xr:Value name="Role.ЗапускВнешнегоСоединения">false</xr:Value>
+						<xr:Value name="Role.ЗапускТолстогоКлиента">false</xr:Value>
+						<xr:Value name="Role.ЗапускТонкогоКлиента">false</xr:Value>
+						<xr:Value name="Role.ИзменениеМакетовПечатныхФорм">false</xr:Value>
+						<xr:Value name="Role.ИзменениеУчастниковГруппДоступа">false</xr:Value>
+						<xr:Value name="Role.Интеграция1СБухфон">false</xr:Value>
+						<xr:Value name="Role.ИнтерактивноеОткрытиеВнешнихОтчетовИОбработок">false</xr:Value>
+						<xr:Value name="Role.ДобавлениеИзменениеЛичныхВариантовОтчетов">false</xr:Value>
+						<xr:Value name="Role.ДобавлениеИзменениеЗаметок">false</xr:Value>
+						<xr:Value name="Role.ДобавлениеИзменениеНапоминаний">false</xr:Value>
+						<xr:Value name="Role.ПросмотрСвязанныеДокументы">false</xr:Value>
+						<xr:Value name="Role.ИспользованиеОбработкиТекущиеДела">false</xr:Value>
+						<xr:Value name="Role.ИспользованиеУниверсальногоОтчета">false</xr:Value>
+						<xr:Value name="Role.ЧтениеУчетныхЗаписейЭлектроннойПочты">false</xr:Value>
+						<xr:Value name="Role.ОбновлениеКонфигурацииБазыДанных">false</xr:Value>
+						<xr:Value name="Role.ПолныеПрава">true</xr:Value>
+						<xr:Value name="40a52f83-f0e2-470d-9c17-7fdc8cc646b7">false</xr:Value>
+						<xr:Value name="Role.ПросмотрЖурналаРегистрации">false</xr:Value>
+						<xr:Value name="Role.ПросмотрОписанияИзмененийПрограммы">false</xr:Value>
+						<xr:Value name="Role.ПрофильИнженер">false</xr:Value>
+						<xr:Value name="Role.ПрофильЭкономист">false</xr:Value>
+						<xr:Value name="Role.ПрофильЮрист">false</xr:Value>
+						<xr:Value name="Role.РедактированиеРеквизитовОбъектов">false</xr:Value>
+						<xr:Value name="Role.РежимВсеФункции">false</xr:Value>
+						<xr:Value name="Role.СохранениеДанныхПользователя">false</xr:Value>
+						<xr:Value name="Role.УдаленныйДоступБазоваяФункциональность">false</xr:Value>
+						<xr:Value name="Role.ЧтениеВерсийОбъектов">false</xr:Value>
+						<xr:Value name="Role.ЧтениеВнешнихПользователей">false</xr:Value>
+						<xr:Value name="Role.ЧтениеИнформацииОВерсияхОбъектов">false</xr:Value>
+						<xr:Value name="Role.ЧтениеКурсовВалют">false</xr:Value>
+						<xr:Value name="f9c1b725-46b1-49f7-ab53-fb82f77e8efd">false</xr:Value>
+						<xr:Value name="d83af5b1-85d2-4d2f-9f7e-fbdd2cf7a3db">false</xr:Value>
+						<xr:Value name="0cdaac7d-16d8-4a39-b186-bf0324308a3c">false</xr:Value>
+						<xr:Value name="Role.ДобавлениеИзменениеПодсистемыНДС">false</xr:Value>
+						<xr:Value name="f6106142-c01e-4092-add8-771fbd8c34c3">false</xr:Value>
+					</UserVisible>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Адреса, телефоны</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа контактная информация</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="ГруппаКонтактнаяИнформацияРасширеннаяПодсказка" id="1315"/>
+				</Page>
+				<Page name="Картсчета" id="493">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Карт. счета</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Картсчета</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="КартсчетаРасширеннаяПодсказка" id="494"/>
+					<ChildItems>
+						<Table name="КартСчетаСотрудниковНаборЗаписей" id="495">
+							<Height>1</Height>
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<DataPath>КартСчетаСотрудниковНаборЗаписей</DataPath>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="КартСчетаСотрудниковНаборЗаписейКонтекстноеМеню" id="496"/>
+							<AutoCommandBar name="КартСчетаСотрудниковНаборЗаписейКоманднаяПанель" id="497"/>
+							<ExtendedTooltip name="КартСчетаСотрудниковНаборЗаписейРасширеннаяПодсказка" id="498"/>
+							<SearchStringAddition name="КартСчетаСотрудниковНаборЗаписейСтрокаПоиска" id="499">
+								<AdditionSource>
+									<Item>КартСчетаСотрудниковНаборЗаписей</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="КартСчетаСотрудниковНаборЗаписейСтрокаПоискаКонтекстноеМеню" id="502"/>
+								<ExtendedTooltip name="КартСчетаСотрудниковНаборЗаписейСтрокаПоискаРасширеннаяПодсказка" id="503"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="КартСчетаСотрудниковНаборЗаписейСостояниеПросмотра" id="504">
+								<AdditionSource>
+									<Item>КартСчетаСотрудниковНаборЗаписей</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="КартСчетаСотрудниковНаборЗаписейСостояниеПросмотраКонтекстноеМеню" id="507"/>
+								<ExtendedTooltip name="КартСчетаСотрудниковНаборЗаписейСостояниеПросмотраРасширеннаяПодсказка" id="508"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="КартСчетаСотрудниковНаборЗаписейУправлениеПоиском" id="509">
+								<AdditionSource>
+									<Item>КартСчетаСотрудниковНаборЗаписей</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="КартСчетаСотрудниковНаборЗаписейУправлениеПоискомКонтекстноеМеню" id="512"/>
+								<ExtendedTooltip name="КартСчетаСотрудниковНаборЗаписейУправлениеПоискомРасширеннаяПодсказка" id="513"/>
+							</SearchControlAddition>
+							<Events>
+								<Event name="BeforeEditEnd">КартСчетаСотрудниковНаборЗаписейПередОкончаниемРедактирования</Event>
+							</Events>
+							<ChildItems>
+								<InputField name="КартСчетаСотрудниковНаборЗаписейПериод" id="1489">
+									<DataPath>КартСчетаСотрудниковНаборЗаписей.Period</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="КартСчетаСотрудниковНаборЗаписейПериодКонтекстноеМеню" id="1490"/>
+									<ExtendedTooltip name="КартСчетаСотрудниковНаборЗаписейПериодРасширеннаяПодсказка" id="1491"/>
+								</InputField>
+								<InputField name="КартСчетаСотрудниковНаборЗаписейФизЛицо" id="514">
+									<DataPath>КартСчетаСотрудниковНаборЗаписей.ФизЛицо</DataPath>
+									<Visible>false</Visible>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="КартСчетаСотрудниковНаборЗаписейФизЛицоКонтекстноеМеню" id="515"/>
+									<ExtendedTooltip name="КартСчетаСотрудниковНаборЗаписейФизЛицоРасширеннаяПодсказка" id="516"/>
+								</InputField>
+								<InputField name="КартСчетаСотрудниковНаборЗаписейБанк" id="517">
+									<DataPath>КартСчетаСотрудниковНаборЗаписей.Банк</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="КартСчетаСотрудниковНаборЗаписейБанкКонтекстноеМеню" id="518"/>
+									<ExtendedTooltip name="КартСчетаСотрудниковНаборЗаписейБанкРасширеннаяПодсказка" id="519"/>
+								</InputField>
+								<InputField name="КартСчетаСотрудниковНаборЗаписейНомерСчета" id="520">
+									<DataPath>КартСчетаСотрудниковНаборЗаписей.НомерСчета</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="КартСчетаСотрудниковНаборЗаписейНомерСчетаКонтекстноеМеню" id="521"/>
+									<ExtendedTooltip name="КартСчетаСотрудниковНаборЗаписейНомерСчетаРасширеннаяПодсказка" id="522"/>
+								</InputField>
+								<InputField name="КартСчетаСотрудниковНаборЗаписейIDНомер" id="1480">
+									<DataPath>КартСчетаСотрудниковНаборЗаписей.IDНомер</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="КартСчетаСотрудниковНаборЗаписейIDНомерКонтекстноеМеню" id="1481"/>
+									<ExtendedTooltip name="КартСчетаСотрудниковНаборЗаписейIDНомерРасширеннаяПодсказка" id="1482"/>
+								</InputField>
+								<InputField name="КартСчетаСотрудниковНаборЗаписейНомерКарты" id="1483">
+									<DataPath>КартСчетаСотрудниковНаборЗаписей.НомерКарты</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="КартСчетаСотрудниковНаборЗаписейНомерКартыКонтекстноеМеню" id="1484"/>
+									<ExtendedTooltip name="КартСчетаСотрудниковНаборЗаписейНомерКартыРасширеннаяПодсказка" id="1485"/>
+								</InputField>
+								<InputField name="КартСчетаСотрудниковНаборЗаписейДатаОткрытияКарты" id="1486">
+									<DataPath>КартСчетаСотрудниковНаборЗаписей.ДатаОткрытияКарты</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="КартСчетаСотрудниковНаборЗаписейДатаОткрытияКартыКонтекстноеМеню" id="1487"/>
+									<ExtendedTooltip name="КартСчетаСотрудниковНаборЗаписейДатаОткрытияКартыРасширеннаяПодсказка" id="1488"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
+				<Page name="Анкета" id="540">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Анкета</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Анкета</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="АнкетаРасширеннаяПодсказка" id="541"/>
+					<ChildItems>
+						<Pages name="ЗакладкиАнкеты" id="542">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Закладки анкеты</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Закладки анкеты</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ExtendedTooltip name="ЗакладкиАнкетыРасширеннаяПодсказка" id="543"/>
+							<ChildItems>
+								<Page name="Семья" id="544">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Семья</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Семья</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ExtendedTooltip name="СемьяРасширеннаяПодсказка" id="545"/>
+									<ChildItems>
+										<UsualGroup name="СостояниеВБраке" id="601">
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Состояние в браке</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Состояние в браке</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Group>Horizontal</Group>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="СостояниеВБракеРасширеннаяПодсказка" id="602"/>
+											<ChildItems>
+												<InputField name="СостоянияВБракеФизическихЛицПериод" id="598">
+													<DataPath>СостоянияВБракеФизическихЛиц.Period</DataPath>
+													<ContextMenu name="СостоянияВБракеФизическихЛицПериодКонтекстноеМеню" id="599"/>
+													<ExtendedTooltip name="СостоянияВБракеФизическихЛицПериодРасширеннаяПодсказка" id="600"/>
+												</InputField>
+												<InputField name="СостоянияВБракеФизическихЛицСостояниеВБраке" id="595">
+													<DataPath>СостоянияВБракеФизическихЛиц.СостояниеВБраке</DataPath>
+													<Title>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Семейное положение</v8:content>
+														</v8:item>
+													</Title>
+													<DropListButton>true</DropListButton>
+													<ChoiceButton>true</ChoiceButton>
+													<ContextMenu name="СостоянияВБракеФизическихЛицСостояниеВБракеКонтекстноеМеню" id="596"/>
+													<ExtendedTooltip name="СостоянияВБракеФизическихЛицСостояниеВБракеРасширеннаяПодсказка" id="597"/>
+													<Events>
+														<Event name="OnChange">СостоянияВБракеФизическихЛицСостояниеВБракеПриИзменении</Event>
+													</Events>
+												</InputField>
+												<Button name="СостояниеВБракеФизическихЛицИстория" id="1343">
+													<Type>Hyperlink</Type>
+													<CommandName>Form.Command.СостояниеВБракеФизическихЛицИстория</CommandName>
+													<Title>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Состояние в браке история</v8:content>
+														</v8:item>
+													</Title>
+													<ExtendedTooltip name="СостояниеВБракеФизическихЛицИсторияРасширеннаяПодсказка" id="1344"/>
+												</Button>
+											</ChildItems>
+										</UsualGroup>
+										<Table name="СоставыСемейФизическихЛицНаборЗаписей" id="603">
+											<Height>1</Height>
+											<AutoInsertNewRow>true</AutoInsertNewRow>
+											<EnableStartDrag>true</EnableStartDrag>
+											<EnableDrag>true</EnableDrag>
+											<DataPath>СоставыСемейФизическихЛицНаборЗаписей</DataPath>
+											<RowFilter xsi:nil="true"/>
+											<ContextMenu name="СоставыСемейФизическихЛицНаборЗаписейКонтекстноеМеню" id="604"/>
+											<AutoCommandBar name="СоставыСемейФизическихЛицНаборЗаписейКоманднаяПанель" id="605"/>
+											<ExtendedTooltip name="СоставыСемейФизическихЛицНаборЗаписейРасширеннаяПодсказка" id="606"/>
+											<SearchStringAddition name="СоставыСемейФизическихЛицНаборЗаписейСтрокаПоиска" id="607">
+												<AdditionSource>
+													<Item>СоставыСемейФизическихЛицНаборЗаписей</Item>
+													<Type>SearchStringRepresentation</Type>
+												</AdditionSource>
+												<ContextMenu name="СоставыСемейФизическихЛицНаборЗаписейСтрокаПоискаКонтекстноеМеню" id="610"/>
+												<ExtendedTooltip name="СоставыСемейФизическихЛицНаборЗаписейСтрокаПоискаРасширеннаяПодсказка" id="611"/>
+											</SearchStringAddition>
+											<ViewStatusAddition name="СоставыСемейФизическихЛицНаборЗаписейСостояниеПросмотра" id="612">
+												<AdditionSource>
+													<Item>СоставыСемейФизическихЛицНаборЗаписей</Item>
+													<Type>ViewStatusRepresentation</Type>
+												</AdditionSource>
+												<ContextMenu name="СоставыСемейФизическихЛицНаборЗаписейСостояниеПросмотраКонтекстноеМеню" id="615"/>
+												<ExtendedTooltip name="СоставыСемейФизическихЛицНаборЗаписейСостояниеПросмотраРасширеннаяПодсказка" id="616"/>
+											</ViewStatusAddition>
+											<SearchControlAddition name="СоставыСемейФизическихЛицНаборЗаписейУправлениеПоиском" id="617">
+												<AdditionSource>
+													<Item>СоставыСемейФизическихЛицНаборЗаписей</Item>
+													<Type>SearchControl</Type>
+												</AdditionSource>
+												<ContextMenu name="СоставыСемейФизическихЛицНаборЗаписейУправлениеПоискомКонтекстноеМеню" id="620"/>
+												<ExtendedTooltip name="СоставыСемейФизическихЛицНаборЗаписейУправлениеПоискомРасширеннаяПодсказка" id="621"/>
+											</SearchControlAddition>
+											<Events>
+												<Event name="BeforeEditEnd">СоставыСемейФизическихЛицНаборЗаписейПередОкончаниемРедактирования</Event>
+												<Event name="OnChange">СоставыСемейФизическихЛицНаборЗаписейПриИзменении</Event>
+											</Events>
+											<ChildItems>
+												<InputField name="СоставыСемейФизическихЛицНаборЗаписейФизическоеЛицо" id="622">
+													<DataPath>СоставыСемейФизическихЛицНаборЗаписей.ФизЛицо</DataPath>
+													<Visible>false</Visible>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="СоставыСемейФизическихЛицНаборЗаписейФизическоеЛицоКонтекстноеМеню" id="623"/>
+													<ExtendedTooltip name="СоставыСемейФизическихЛицНаборЗаписейФизическоеЛицоРасширеннаяПодсказка" id="624"/>
+												</InputField>
+												<ColumnGroup name="СоставыСемейФизическихЛицНаборЗаписейГруппаПериод" id="1335">
+													<Title>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Составы семей физических лиц набор записей группа период</v8:content>
+														</v8:item>
+													</Title>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Составы семей физических лиц набор записей группа период</v8:content>
+														</v8:item>
+													</ToolTip>
+													<ExtendedTooltip name="СоставыСемейФизическихЛицНаборЗаписейГруппаПериодРасширеннаяПодсказка" id="1336"/>
+													<ChildItems>
+														<InputField name="СоставыСемейФизическихЛицНаборЗаписейДата" id="1144">
+															<DataPath>СоставыСемейФизическихЛицНаборЗаписей.Дата</DataPath>
+															<EditMode>EnterOnInput</EditMode>
+															<ContextMenu name="СоставыСемейФизическихЛицНаборЗаписейДатаКонтекстноеМеню" id="1145"/>
+															<ExtendedTooltip name="СоставыСемейФизическихЛицНаборЗаписейДатаРасширеннаяПодсказка" id="1146"/>
+														</InputField>
+														<InputField name="СоставыСемейФизическихЛицНаборЗаписейСтепеньРодства" id="628">
+															<DataPath>СоставыСемейФизическихЛицНаборЗаписей.СтепеньРодства</DataPath>
+															<EditMode>EnterOnInput</EditMode>
+															<AutoMarkIncomplete>true</AutoMarkIncomplete>
+															<ContextMenu name="СоставыСемейФизическихЛицНаборЗаписейСтепеньРодстваКонтекстноеМеню" id="629"/>
+															<ExtendedTooltip name="СоставыСемейФизическихЛицНаборЗаписейСтепеньРодстваРасширеннаяПодсказка" id="630"/>
+														</InputField>
+													</ChildItems>
+												</ColumnGroup>
+												<ColumnGroup name="СоставыСемейФизическихЛицНаборЗаписейГруппаФИО" id="1337">
+													<Title>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Составы семей физических лиц набор записей группа ФИО</v8:content>
+														</v8:item>
+													</Title>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Составы семей физических лиц набор записей группа ФИО</v8:content>
+														</v8:item>
+													</ToolTip>
+													<ExtendedTooltip name="СоставыСемейФизическихЛицНаборЗаписейГруппаФИОРасширеннаяПодсказка" id="1338"/>
+													<ChildItems>
+														<InputField name="СоставыСемейФизическихЛицНаборЗаписейФИО" id="631">
+															<DataPath>СоставыСемейФизическихЛицНаборЗаписей.ФИО</DataPath>
+															<EditMode>EnterOnInput</EditMode>
+															<ContextMenu name="СоставыСемейФизическихЛицНаборЗаписейФИОКонтекстноеМеню" id="632"/>
+															<ExtendedTooltip name="СоставыСемейФизическихЛицНаборЗаписейФИОРасширеннаяПодсказка" id="633"/>
+														</InputField>
+														<InputField name="СоставыСемейФизическихЛицНаборЗаписейГражданство" id="1153">
+															<DataPath>СоставыСемейФизическихЛицНаборЗаписей.Гражданство</DataPath>
+															<EditMode>EnterOnInput</EditMode>
+															<ContextMenu name="СоставыСемейФизическихЛицНаборЗаписейГражданствоКонтекстноеМеню" id="1154"/>
+															<ExtendedTooltip name="СоставыСемейФизическихЛицНаборЗаписейГражданствоРасширеннаяПодсказка" id="1155"/>
+														</InputField>
+													</ChildItems>
+												</ColumnGroup>
+												<InputField name="СоставыСемейФизическихЛицНаборЗаписейТелефон" id="1156">
+													<DataPath>СоставыСемейФизическихЛицНаборЗаписей.Телефон</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="СоставыСемейФизическихЛицНаборЗаписейТелефонКонтекстноеМеню" id="1157"/>
+													<ExtendedTooltip name="СоставыСемейФизическихЛицНаборЗаписейТелефонРасширеннаяПодсказка" id="1158"/>
+												</InputField>
+												<ColumnGroup name="СоставыСемейФизическихЛицНаборЗаписейГруппаРождение" id="1339">
+													<Title>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Составы семей физических лиц набор записей группа рождение</v8:content>
+														</v8:item>
+													</Title>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Составы семей физических лиц набор записей группа рождение</v8:content>
+														</v8:item>
+													</ToolTip>
+													<ExtendedTooltip name="СоставыСемейФизическихЛицНаборЗаписейГруппаРождениеРасширеннаяПодсказка" id="1340"/>
+													<ChildItems>
+														<InputField name="СоставыСемейФизическихЛицНаборЗаписейДатаРождения" id="634">
+															<DataPath>СоставыСемейФизическихЛицНаборЗаписей.ДатаРождения</DataPath>
+															<EditMode>EnterOnInput</EditMode>
+															<ContextMenu name="СоставыСемейФизическихЛицНаборЗаписейДатаРожденияКонтекстноеМеню" id="635"/>
+															<ExtendedTooltip name="СоставыСемейФизическихЛицНаборЗаписейДатаРожденияРасширеннаяПодсказка" id="636"/>
+														</InputField>
+														<InputField name="СоставыСемейФизическихЛицНаборЗаписейМестоРождения" id="1159">
+															<DataPath>СоставыСемейФизическихЛицНаборЗаписей.МестоРождения</DataPath>
+															<EditMode>EnterOnInput</EditMode>
+															<ContextMenu name="СоставыСемейФизическихЛицНаборЗаписейМестоРожденияКонтекстноеМеню" id="1160"/>
+															<ExtendedTooltip name="СоставыСемейФизическихЛицНаборЗаписейМестоРожденияРасширеннаяПодсказка" id="1161"/>
+														</InputField>
+													</ChildItems>
+												</ColumnGroup>
+											</ChildItems>
+										</Table>
+									</ChildItems>
+								</Page>
+								<Page name="ЗнаниеЯзыков" id="637">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Языки</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Знание языков</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ExtendedTooltip name="ЗнаниеЯзыковРасширеннаяПодсказка" id="638"/>
+									<ChildItems>
+										<Table name="ЗнаниеЯзыковФизическихЛицНаборЗаписей" id="639">
+											<Height>1</Height>
+											<AutoInsertNewRow>true</AutoInsertNewRow>
+											<EnableStartDrag>true</EnableStartDrag>
+											<EnableDrag>true</EnableDrag>
+											<DataPath>ЗнаниеЯзыковФизическихЛицНаборЗаписей</DataPath>
+											<RowFilter xsi:nil="true"/>
+											<ContextMenu name="ЗнаниеЯзыковФизическихЛицНаборЗаписейКонтекстноеМеню" id="640"/>
+											<AutoCommandBar name="ЗнаниеЯзыковФизическихЛицНаборЗаписейКоманднаяПанель" id="641"/>
+											<ExtendedTooltip name="ЗнаниеЯзыковФизическихЛицНаборЗаписейРасширеннаяПодсказка" id="642"/>
+											<SearchStringAddition name="ЗнаниеЯзыковФизическихЛицНаборЗаписейСтрокаПоиска" id="643">
+												<AdditionSource>
+													<Item>ЗнаниеЯзыковФизическихЛицНаборЗаписей</Item>
+													<Type>SearchStringRepresentation</Type>
+												</AdditionSource>
+												<ContextMenu name="ЗнаниеЯзыковФизическихЛицНаборЗаписейСтрокаПоискаКонтекстноеМеню" id="646"/>
+												<ExtendedTooltip name="ЗнаниеЯзыковФизическихЛицНаборЗаписейСтрокаПоискаРасширеннаяПодсказка" id="647"/>
+											</SearchStringAddition>
+											<ViewStatusAddition name="ЗнаниеЯзыковФизическихЛицНаборЗаписейСостояниеПросмотра" id="648">
+												<AdditionSource>
+													<Item>ЗнаниеЯзыковФизическихЛицНаборЗаписей</Item>
+													<Type>ViewStatusRepresentation</Type>
+												</AdditionSource>
+												<ContextMenu name="ЗнаниеЯзыковФизическихЛицНаборЗаписейСостояниеПросмотраКонтекстноеМеню" id="651"/>
+												<ExtendedTooltip name="ЗнаниеЯзыковФизическихЛицНаборЗаписейСостояниеПросмотраРасширеннаяПодсказка" id="652"/>
+											</ViewStatusAddition>
+											<SearchControlAddition name="ЗнаниеЯзыковФизическихЛицНаборЗаписейУправлениеПоиском" id="653">
+												<AdditionSource>
+													<Item>ЗнаниеЯзыковФизическихЛицНаборЗаписей</Item>
+													<Type>SearchControl</Type>
+												</AdditionSource>
+												<ContextMenu name="ЗнаниеЯзыковФизическихЛицНаборЗаписейУправлениеПоискомКонтекстноеМеню" id="656"/>
+												<ExtendedTooltip name="ЗнаниеЯзыковФизическихЛицНаборЗаписейУправлениеПоискомРасширеннаяПодсказка" id="657"/>
+											</SearchControlAddition>
+											<Events>
+												<Event name="BeforeEditEnd">ЗнаниеЯзыковФизическихЛицНаборЗаписейПередОкончаниемРедактирования</Event>
+												<Event name="OnChange">ЗнаниеЯзыковФизическихЛицНаборЗаписейПриИзменении</Event>
+											</Events>
+											<ChildItems>
+												<InputField name="ЗнаниеЯзыковФизическихЛицНаборЗаписейФизическоеЛицо" id="658">
+													<DataPath>ЗнаниеЯзыковФизическихЛицНаборЗаписей.ФизЛицо</DataPath>
+													<Visible>false</Visible>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="ЗнаниеЯзыковФизическихЛицНаборЗаписейФизическоеЛицоКонтекстноеМеню" id="659"/>
+													<ExtendedTooltip name="ЗнаниеЯзыковФизическихЛицНаборЗаписейФизическоеЛицоРасширеннаяПодсказка" id="660"/>
+												</InputField>
+												<InputField name="ЗнаниеЯзыковФизическихЛицНаборЗаписейЯзык" id="661">
+													<DataPath>ЗнаниеЯзыковФизическихЛицНаборЗаписей.Язык</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="ЗнаниеЯзыковФизическихЛицНаборЗаписейЯзыкКонтекстноеМеню" id="662"/>
+													<ExtendedTooltip name="ЗнаниеЯзыковФизическихЛицНаборЗаписейЯзыкРасширеннаяПодсказка" id="663"/>
+												</InputField>
+												<InputField name="ЗнаниеЯзыковФизическихЛицНаборЗаписейСтепеньЗнанияЯзыка" id="664">
+													<DataPath>ЗнаниеЯзыковФизическихЛицНаборЗаписей.СтепеньЗнанияЯзыка</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="ЗнаниеЯзыковФизическихЛицНаборЗаписейСтепеньЗнанияЯзыкаКонтекстноеМеню" id="665"/>
+													<ExtendedTooltip name="ЗнаниеЯзыковФизическихЛицНаборЗаписейСтепеньЗнанияЯзыкаРасширеннаяПодсказка" id="666"/>
+												</InputField>
+											</ChildItems>
+										</Table>
+									</ChildItems>
+								</Page>
+								<Page name="Образование" id="667">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Образование</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Образование</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ExtendedTooltip name="ОбразованиеРасширеннаяПодсказка" id="668"/>
+									<ChildItems>
+										<Table name="ОбразованиеФизическихЛицНаборЗаписей" id="669">
+											<Height>1</Height>
+											<AutoInsertNewRow>true</AutoInsertNewRow>
+											<EnableStartDrag>true</EnableStartDrag>
+											<EnableDrag>true</EnableDrag>
+											<DataPath>ОбразованиеФизическихЛицНаборЗаписей</DataPath>
+											<RowFilter xsi:nil="true"/>
+											<ContextMenu name="ОбразованиеФизическихЛицНаборЗаписейКонтекстноеМеню" id="670"/>
+											<AutoCommandBar name="ОбразованиеФизическихЛицНаборЗаписейКоманднаяПанель" id="671"/>
+											<ExtendedTooltip name="ОбразованиеФизическихЛицНаборЗаписейРасширеннаяПодсказка" id="672"/>
+											<SearchStringAddition name="ОбразованиеФизическихЛицНаборЗаписейСтрокаПоиска" id="673">
+												<AdditionSource>
+													<Item>ОбразованиеФизическихЛицНаборЗаписей</Item>
+													<Type>SearchStringRepresentation</Type>
+												</AdditionSource>
+												<ContextMenu name="ОбразованиеФизическихЛицНаборЗаписейСтрокаПоискаКонтекстноеМеню" id="676"/>
+												<ExtendedTooltip name="ОбразованиеФизическихЛицНаборЗаписейСтрокаПоискаРасширеннаяПодсказка" id="677"/>
+											</SearchStringAddition>
+											<ViewStatusAddition name="ОбразованиеФизическихЛицНаборЗаписейСостояниеПросмотра" id="678">
+												<AdditionSource>
+													<Item>ОбразованиеФизическихЛицНаборЗаписей</Item>
+													<Type>ViewStatusRepresentation</Type>
+												</AdditionSource>
+												<ContextMenu name="ОбразованиеФизическихЛицНаборЗаписейСостояниеПросмотраКонтекстноеМеню" id="681"/>
+												<ExtendedTooltip name="ОбразованиеФизическихЛицНаборЗаписейСостояниеПросмотраРасширеннаяПодсказка" id="682"/>
+											</ViewStatusAddition>
+											<SearchControlAddition name="ОбразованиеФизическихЛицНаборЗаписейУправлениеПоиском" id="683">
+												<AdditionSource>
+													<Item>ОбразованиеФизическихЛицНаборЗаписей</Item>
+													<Type>SearchControl</Type>
+												</AdditionSource>
+												<ContextMenu name="ОбразованиеФизическихЛицНаборЗаписейУправлениеПоискомКонтекстноеМеню" id="686"/>
+												<ExtendedTooltip name="ОбразованиеФизическихЛицНаборЗаписейУправлениеПоискомРасширеннаяПодсказка" id="687"/>
+											</SearchControlAddition>
+											<Events>
+												<Event name="BeforeEditEnd">ОбразованиеФизическихЛицНаборЗаписейПередОкончаниемРедактирования</Event>
+												<Event name="OnChange">ОбразованиеФизическихЛицНаборЗаписейПриИзменении</Event>
+											</Events>
+											<ChildItems>
+												<InputField name="ОбразованиеФизическихЛицНаборЗаписейФизическоеЛицо" id="688">
+													<DataPath>ОбразованиеФизическихЛицНаборЗаписей.ФизЛицо</DataPath>
+													<Visible>false</Visible>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="ОбразованиеФизическихЛицНаборЗаписейФизическоеЛицоКонтекстноеМеню" id="689"/>
+													<ExtendedTooltip name="ОбразованиеФизическихЛицНаборЗаписейФизическоеЛицоРасширеннаяПодсказка" id="690"/>
+												</InputField>
+												<InputField name="ОбразованиеФизическихЛицНаборЗаписейВидОбразования" id="694">
+													<DataPath>ОбразованиеФизическихЛицНаборЗаписей.ВидОбразования</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="ОбразованиеФизическихЛицНаборЗаписейВидОбразованияКонтекстноеМеню" id="695"/>
+													<ExtendedTooltip name="ОбразованиеФизическихЛицНаборЗаписейВидОбразованияРасширеннаяПодсказка" id="696"/>
+												</InputField>
+												<InputField name="ОбразованиеФизическихЛицНаборЗаписейУчебноеЗаведение" id="697">
+													<DataPath>ОбразованиеФизическихЛицНаборЗаписей.УчебноеЗаведение</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="ОбразованиеФизическихЛицНаборЗаписейУчебноеЗаведениеКонтекстноеМеню" id="698"/>
+													<ExtendedTooltip name="ОбразованиеФизическихЛицНаборЗаписейУчебноеЗаведениеРасширеннаяПодсказка" id="699"/>
+												</InputField>
+												<InputField name="ОбразованиеФизическихЛицНаборЗаписейФормаОбучения" id="700">
+													<DataPath>ОбразованиеФизическихЛицНаборЗаписей.ФормаОбучения</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="ОбразованиеФизическихЛицНаборЗаписейФормаОбученияКонтекстноеМеню" id="701"/>
+													<ExtendedTooltip name="ОбразованиеФизическихЛицНаборЗаписейФормаОбученияРасширеннаяПодсказка" id="702"/>
+												</InputField>
+												<InputField name="ОбразованиеФизическихЛицНаборЗаписейДиплом" id="703">
+													<DataPath>ОбразованиеФизическихЛицНаборЗаписей.Диплом</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="ОбразованиеФизическихЛицНаборЗаписейДипломКонтекстноеМеню" id="704"/>
+													<ExtendedTooltip name="ОбразованиеФизическихЛицНаборЗаписейДипломРасширеннаяПодсказка" id="705"/>
+												</InputField>
+												<InputField name="ОбразованиеФизическихЛицНаборЗаписейДатаВыдачиДиплома" id="1385">
+													<DataPath>ОбразованиеФизическихЛицНаборЗаписей.ДатаВыдачиДиплома</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="ОбразованиеФизическихЛицНаборЗаписейДатаВыдачиДипломаКонтекстноеМеню" id="1386"/>
+													<ExtendedTooltip name="ОбразованиеФизическихЛицНаборЗаписейДатаВыдачиДипломаРасширеннаяПодсказка" id="1387"/>
+												</InputField>
+												<InputField name="ОбразованиеФизическихЛицНаборЗаписейГодНачалаУчебы" id="1382">
+													<DataPath>ОбразованиеФизическихЛицНаборЗаписей.ГодПоступления</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="ОбразованиеФизическихЛицНаборЗаписейГодНачалаУчебыКонтекстноеМеню" id="1383"/>
+													<ExtendedTooltip name="ОбразованиеФизическихЛицНаборЗаписейГодНачалаУчебыРасширеннаяПодсказка" id="1384"/>
+												</InputField>
+												<InputField name="ОбразованиеФизическихЛицНаборЗаписейГодОкончания" id="706">
+													<DataPath>ОбразованиеФизическихЛицНаборЗаписей.ГодОкончания</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="ОбразованиеФизическихЛицНаборЗаписейГодОкончанияКонтекстноеМеню" id="707"/>
+													<ExtendedTooltip name="ОбразованиеФизическихЛицНаборЗаписейГодОкончанияРасширеннаяПодсказка" id="708"/>
+												</InputField>
+												<InputField name="ОбразованиеФизическихЛицНаборЗаписейСпециальность" id="1388">
+													<DataPath>ОбразованиеФизическихЛицНаборЗаписей.Специальность</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="ОбразованиеФизическихЛицНаборЗаписейСпециальностьКонтекстноеМеню" id="1389"/>
+													<ExtendedTooltip name="ОбразованиеФизическихЛицНаборЗаписейСпециальностьРасширеннаяПодсказка" id="1390"/>
+												</InputField>
+												<InputField name="ОбразованиеФизическихЛицНаборЗаписейКвалификация" id="709">
+													<DataPath>ОбразованиеФизическихЛицНаборЗаписей.Квалификация</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="ОбразованиеФизическихЛицНаборЗаписейКвалификацияКонтекстноеМеню" id="710"/>
+													<ExtendedTooltip name="ОбразованиеФизическихЛицНаборЗаписейКвалификацияРасширеннаяПодсказка" id="711"/>
+												</InputField>
+											</ChildItems>
+										</Table>
+									</ChildItems>
+								</Page>
+								<Page name="СведенияОбИнвалидности" id="748">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Инвалидность</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Сведения об инвалидности</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ExtendedTooltip name="СведенияОбИнвалидностиРасширеннаяПодсказка" id="749"/>
+									<ChildItems>
+										<Table name="СведенияОбИнвалидностиФизическихЛицНаборЗаписей" id="750">
+											<Height>1</Height>
+											<AutoInsertNewRow>true</AutoInsertNewRow>
+											<EnableStartDrag>true</EnableStartDrag>
+											<EnableDrag>true</EnableDrag>
+											<DataPath>СведенияОбИнвалидностиФизическихЛицНаборЗаписей</DataPath>
+											<RowFilter xsi:nil="true"/>
+											<ContextMenu name="СведенияОбИнвалидностиФизическихЛицНаборЗаписейКонтекстноеМеню" id="751"/>
+											<AutoCommandBar name="СведенияОбИнвалидностиФизическихЛицНаборЗаписейКоманднаяПанель" id="752"/>
+											<ExtendedTooltip name="СведенияОбИнвалидностиФизическихЛицНаборЗаписейРасширеннаяПодсказка" id="753"/>
+											<SearchStringAddition name="СведенияОбИнвалидностиФизическихЛицНаборЗаписейСтрокаПоиска" id="754">
+												<AdditionSource>
+													<Item>СведенияОбИнвалидностиФизическихЛицНаборЗаписей</Item>
+													<Type>SearchStringRepresentation</Type>
+												</AdditionSource>
+												<ContextMenu name="СведенияОбИнвалидностиФизическихЛицНаборЗаписейСтрокаПоискаКонтекстноеМеню" id="757"/>
+												<ExtendedTooltip name="СведенияОбИнвалидностиФизическихЛицНаборЗаписейСтрокаПоискаРасширеннаяПодсказка" id="758"/>
+											</SearchStringAddition>
+											<ViewStatusAddition name="СведенияОбИнвалидностиФизическихЛицНаборЗаписейСостояниеПросмотра" id="759">
+												<AdditionSource>
+													<Item>СведенияОбИнвалидностиФизическихЛицНаборЗаписей</Item>
+													<Type>ViewStatusRepresentation</Type>
+												</AdditionSource>
+												<ContextMenu name="СведенияОбИнвалидностиФизическихЛицНаборЗаписейСостояниеПросмотраКонтекстноеМеню" id="762"/>
+												<ExtendedTooltip name="СведенияОбИнвалидностиФизическихЛицНаборЗаписейСостояниеПросмотраРасширеннаяПодсказка" id="763"/>
+											</ViewStatusAddition>
+											<SearchControlAddition name="СведенияОбИнвалидностиФизическихЛицНаборЗаписейУправлениеПоиском" id="764">
+												<AdditionSource>
+													<Item>СведенияОбИнвалидностиФизическихЛицНаборЗаписей</Item>
+													<Type>SearchControl</Type>
+												</AdditionSource>
+												<ContextMenu name="СведенияОбИнвалидностиФизическихЛицНаборЗаписейУправлениеПоискомКонтекстноеМеню" id="767"/>
+												<ExtendedTooltip name="СведенияОбИнвалидностиФизическихЛицНаборЗаписейУправлениеПоискомРасширеннаяПодсказка" id="768"/>
+											</SearchControlAddition>
+											<Events>
+												<Event name="4d88756d-bad4-4fde-92e1-c1f1402ac6b2">СведенияОбИнвалидностиФизическихЛицНаборЗаписейПередОкончаниемРедактирования</Event>
+												<Event name="OnChange">СведенияОбИнвалидностиФизическихЛицНаборЗаписейПриИзменении</Event>
+											</Events>
+											<ChildItems>
+												<InputField name="СведенияОбИнвалидностиФизическихЛицНаборЗаписейПериод" id="1164">
+													<DataPath>47/-2</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="СведенияОбИнвалидностиФизическихЛицНаборЗаписейПериодКонтекстноеМеню" id="1165"/>
+													<ExtendedTooltip name="СведенияОбИнвалидностиФизическихЛицНаборЗаписейПериодРасширеннаяПодсказка" id="1166"/>
+												</InputField>
+												<InputField name="СведенияОбИнвалидностиФизическихЛицНаборЗаписейФизическоеЛицо" id="1167">
+													<DataPath>47/0:2fb5bc7d-a172-43df-9a6d-d26314dcfb11</DataPath>
+													<Visible>false</Visible>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="СведенияОбИнвалидностиФизическихЛицНаборЗаписейФизическоеЛицоКонтекстноеМеню" id="1168"/>
+													<ExtendedTooltip name="СведенияОбИнвалидностиФизическихЛицНаборЗаписейФизическоеЛицоРасширеннаяПодсказка" id="1169"/>
+												</InputField>
+												<ColumnGroup name="ВидыИнвалиности" id="1200">
+													<Title>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Виды инвалиности</v8:content>
+														</v8:item>
+													</Title>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Виды инвалиности</v8:content>
+														</v8:item>
+													</ToolTip>
+													<ExtendedTooltip name="ВидыИнвалиностиРасширеннаяПодсказка" id="1201"/>
+													<ChildItems>
+														<InputField name="СведенияОбИнвалидностиФизическихЛицНаборЗаписейГруппаИнвалидности" id="1191">
+															<DataPath>47/0:3b809a4c-681e-4d3c-80b3-963cf855bcc8</DataPath>
+															<EditMode>EnterOnInput</EditMode>
+															<ContextMenu name="СведенияОбИнвалидностиФизическихЛицНаборЗаписейГруппаИнвалидностиКонтекстноеМеню" id="1192"/>
+															<ExtendedTooltip name="СведенияОбИнвалидностиФизическихЛицНаборЗаписейГруппаИнвалидностиРасширеннаяПодсказка" id="1193"/>
+														</InputField>
+													</ChildItems>
+												</ColumnGroup>
+												<ColumnGroup name="ИнвалидностьПериодСправки" id="1204">
+													<Title>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Инвалидность период справки</v8:content>
+														</v8:item>
+													</Title>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Инвалидность период справки</v8:content>
+														</v8:item>
+													</ToolTip>
+													<ExtendedTooltip name="ИнвалидностьПериодСправкиРасширеннаяПодсказка" id="1205"/>
+													<ChildItems>
+														<InputField name="СведенияОбИнвалидностиФизическихЛицНаборЗаписейДатаВыдачи" id="1188">
+															<DataPath>47/0:1bf8087e-9a77-44d0-a21d-81b68d802879</DataPath>
+															<EditMode>EnterOnInput</EditMode>
+															<ContextMenu name="СведенияОбИнвалидностиФизическихЛицНаборЗаписейДатаВыдачиКонтекстноеМеню" id="1189"/>
+															<ExtendedTooltip name="СведенияОбИнвалидностиФизическихЛицНаборЗаписейДатаВыдачиРасширеннаяПодсказка" id="1190"/>
+														</InputField>
+														<InputField name="СведенияОбИнвалидностиФизическихЛицНаборЗаписейСрокДействияСправки" id="1197">
+															<DataPath>47/0:10c0f8aa-c991-4577-aa92-d71de1c207f9</DataPath>
+															<EditMode>EnterOnInput</EditMode>
+															<ContextMenu name="СведенияОбИнвалидностиФизическихЛицНаборЗаписейСрокДействияСправкиКонтекстноеМеню" id="1198"/>
+															<ExtendedTooltip name="СведенияОбИнвалидностиФизическихЛицНаборЗаписейСрокДействияСправкиРасширеннаяПодсказка" id="1199"/>
+														</InputField>
+													</ChildItems>
+												</ColumnGroup>
+												<ColumnGroup name="ИвалидностьСправки" id="1202">
+													<Title>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Ивалидность справки</v8:content>
+														</v8:item>
+													</Title>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Ивалидность справки</v8:content>
+														</v8:item>
+													</ToolTip>
+													<ExtendedTooltip name="ИвалидностьСправкиРасширеннаяПодсказка" id="1203"/>
+													<ChildItems>
+														<InputField name="СведенияОбИнвалидностиФизическихЛицНаборЗаписейСерияСрпавки" id="1185">
+															<DataPath>47/0:cf149619-dd84-4515-8fe3-738d337c25a8</DataPath>
+															<EditMode>EnterOnInput</EditMode>
+															<ContextMenu name="СведенияОбИнвалидностиФизическихЛицНаборЗаписейСерияСрпавкиКонтекстноеМеню" id="1186"/>
+															<ExtendedTooltip name="СведенияОбИнвалидностиФизическихЛицНаборЗаписейСерияСрпавкиРасширеннаяПодсказка" id="1187"/>
+														</InputField>
+														<InputField name="СведенияОбИнвалидностиФизическихЛицНаборЗаписейНомерСправки" id="1182">
+															<DataPath>47/0:024d8ef4-de52-439b-883a-b1ed5738cb63</DataPath>
+															<EditMode>EnterOnInput</EditMode>
+															<ContextMenu name="СведенияОбИнвалидностиФизическихЛицНаборЗаписейНомерСправкиКонтекстноеМеню" id="1183"/>
+															<ExtendedTooltip name="СведенияОбИнвалидностиФизическихЛицНаборЗаписейНомерСправкиРасширеннаяПодсказка" id="1184"/>
+														</InputField>
+													</ChildItems>
+												</ColumnGroup>
+												<InputField name="СведенияОбИнвалидностиФизическихЛицНаборЗаписейРодительИнвалидаСРождения" id="1179">
+													<DataPath>47/0:48d4966a-0d03-4b50-a7b9-ec8e7c03f7de</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="СведенияОбИнвалидностиФизическихЛицНаборЗаписейРодительИнвалидаСРожденияКонтекстноеМеню" id="1180"/>
+													<ExtendedTooltip name="СведенияОбИнвалидностиФизическихЛицНаборЗаписейРодительИнвалидаСРожденияРасширеннаяПодсказка" id="1181"/>
+												</InputField>
+											</ChildItems>
+										</Table>
+									</ChildItems>
+								</Page>
+								<Page name="ТрудоваяДеятельность" id="859">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Трудовая деятельность</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Трудовая деятельность</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ExtendedTooltip name="ТрудоваяДеятельностьРасширеннаяПодсказка" id="860"/>
+									<ChildItems>
+										<Table name="ТрудоваяДеятельностьФизическихЛицНаборЗаписей" id="861">
+											<Height>1</Height>
+											<AutoInsertNewRow>true</AutoInsertNewRow>
+											<EnableStartDrag>true</EnableStartDrag>
+											<EnableDrag>true</EnableDrag>
+											<DataPath>ТрудоваяДеятельностьФизическихЛицНаборЗаписей</DataPath>
+											<RowFilter xsi:nil="true"/>
+											<ContextMenu name="ТрудоваяДеятельностьФизическихЛицНаборЗаписейКонтекстноеМеню" id="862"/>
+											<AutoCommandBar name="ТрудоваяДеятельностьФизическихЛицНаборЗаписейКоманднаяПанель" id="863"/>
+											<ExtendedTooltip name="ТрудоваяДеятельностьФизическихЛицНаборЗаписейРасширеннаяПодсказка" id="864"/>
+											<SearchStringAddition name="ТрудоваяДеятельностьФизическихЛицНаборЗаписейСтрокаПоиска" id="865">
+												<AdditionSource>
+													<Item>ТрудоваяДеятельностьФизическихЛицНаборЗаписей</Item>
+													<Type>SearchStringRepresentation</Type>
+												</AdditionSource>
+												<ContextMenu name="ТрудоваяДеятельностьФизическихЛицНаборЗаписейСтрокаПоискаКонтекстноеМеню" id="868"/>
+												<ExtendedTooltip name="ТрудоваяДеятельностьФизическихЛицНаборЗаписейСтрокаПоискаРасширеннаяПодсказка" id="869"/>
+											</SearchStringAddition>
+											<ViewStatusAddition name="ТрудоваяДеятельностьФизическихЛицНаборЗаписейСостояниеПросмотра" id="870">
+												<AdditionSource>
+													<Item>ТрудоваяДеятельностьФизическихЛицНаборЗаписей</Item>
+													<Type>ViewStatusRepresentation</Type>
+												</AdditionSource>
+												<ContextMenu name="ТрудоваяДеятельностьФизическихЛицНаборЗаписейСостояниеПросмотраКонтекстноеМеню" id="873"/>
+												<ExtendedTooltip name="ТрудоваяДеятельностьФизическихЛицНаборЗаписейСостояниеПросмотраРасширеннаяПодсказка" id="874"/>
+											</ViewStatusAddition>
+											<SearchControlAddition name="ТрудоваяДеятельностьФизическихЛицНаборЗаписейУправлениеПоиском" id="875">
+												<AdditionSource>
+													<Item>ТрудоваяДеятельностьФизическихЛицНаборЗаписей</Item>
+													<Type>SearchControl</Type>
+												</AdditionSource>
+												<ContextMenu name="ТрудоваяДеятельностьФизическихЛицНаборЗаписейУправлениеПоискомКонтекстноеМеню" id="878"/>
+												<ExtendedTooltip name="ТрудоваяДеятельностьФизическихЛицНаборЗаписейУправлениеПоискомРасширеннаяПодсказка" id="879"/>
+											</SearchControlAddition>
+											<Events>
+												<Event name="BeforeEditEnd">ТрудоваяДеятельностьФизическихЛицНаборЗаписейПередОкончаниемРедактирования</Event>
+												<Event name="OnChange">ТрудоваяДеятельностьФизическихЛицНаборЗаписейПриИзменении</Event>
+											</Events>
+											<ChildItems>
+												<InputField name="ТрудоваяДеятельностьФизическихЛицНаборЗаписейФизическоеЛицо" id="880">
+													<DataPath>ТрудоваяДеятельностьФизическихЛицНаборЗаписей.ФизЛицо</DataPath>
+													<Visible>false</Visible>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="ТрудоваяДеятельностьФизическихЛицНаборЗаписейФизическоеЛицоКонтекстноеМеню" id="881"/>
+													<ExtendedTooltip name="ТрудоваяДеятельностьФизическихЛицНаборЗаписейФизическоеЛицоРасширеннаяПодсказка" id="882"/>
+												</InputField>
+												<InputField name="ТрудоваяДеятельностьФизическихЛицНаборЗаписейОрганизация" id="886">
+													<DataPath>ТрудоваяДеятельностьФизическихЛицНаборЗаписей.Организация</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="ТрудоваяДеятельностьФизическихЛицНаборЗаписейОрганизацияКонтекстноеМеню" id="887"/>
+													<ExtendedTooltip name="ТрудоваяДеятельностьФизическихЛицНаборЗаписейОрганизацияРасширеннаяПодсказка" id="888"/>
+												</InputField>
+												<InputField name="ТрудоваяДеятельностьФизическихЛицНаборЗаписейДатаНачала" id="889">
+													<DataPath>ТрудоваяДеятельностьФизическихЛицНаборЗаписей.ДатаНачала</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="ТрудоваяДеятельностьФизическихЛицНаборЗаписейДатаНачалаКонтекстноеМеню" id="890"/>
+													<ExtendedTooltip name="ТрудоваяДеятельностьФизическихЛицНаборЗаписейДатаНачалаРасширеннаяПодсказка" id="891"/>
+												</InputField>
+												<InputField name="ТрудоваяДеятельностьФизическихЛицНаборЗаписейДатаОкончания" id="892">
+													<DataPath>ТрудоваяДеятельностьФизическихЛицНаборЗаписей.ДатаОкончания</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="ТрудоваяДеятельностьФизическихЛицНаборЗаписейДатаОкончанияКонтекстноеМеню" id="893"/>
+													<ExtendedTooltip name="ТрудоваяДеятельностьФизическихЛицНаборЗаписейДатаОкончанияРасширеннаяПодсказка" id="894"/>
+												</InputField>
+												<InputField name="ТрудоваяДеятельностьФизическихЛицНаборЗаписейДолжность" id="895">
+													<DataPath>ТрудоваяДеятельностьФизическихЛицНаборЗаписей.Должность</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="ТрудоваяДеятельностьФизическихЛицНаборЗаписейДолжностьКонтекстноеМеню" id="896"/>
+													<ExtendedTooltip name="ТрудоваяДеятельностьФизическихЛицНаборЗаписейДолжностьРасширеннаяПодсказка" id="897"/>
+												</InputField>
+												<InputField name="ТрудоваяДеятельностьФизическихЛицНаборЗаписейПричинаУвольнения" id="1415">
+													<DataPath>ТрудоваяДеятельностьФизическихЛицНаборЗаписей.ПричинаУвольнения</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="ТрудоваяДеятельностьФизическихЛицНаборЗаписейПричинаУвольненияКонтекстноеМеню" id="1416"/>
+													<ExtendedTooltip name="ТрудоваяДеятельностьФизическихЛицНаборЗаписейПричинаУвольненияРасширеннаяПодсказка" id="1417"/>
+												</InputField>
+											</ChildItems>
+										</Table>
+									</ChildItems>
+								</Page>
+								<Page name="ВоинскийУчет" id="898">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Воинский учет</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Воинский учет</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ExtendedTooltip name="ВоинскийУчетРасширеннаяПодсказка" id="899"/>
+									<ChildItems>
+										<Table name="ВоинскийУчетФизическихЛицНаборЗаписей" id="1063">
+											<Height>1</Height>
+											<AutoInsertNewRow>true</AutoInsertNewRow>
+											<EnableStartDrag>true</EnableStartDrag>
+											<EnableDrag>true</EnableDrag>
+											<DataPath>ВоинскийУчетФизическихЛицНаборЗаписей</DataPath>
+											<RowFilter xsi:nil="true"/>
+											<ContextMenu name="ВоинскийУчетФизическихЛицНаборЗаписейКонтекстноеМеню" id="1064"/>
+											<AutoCommandBar name="ВоинскийУчетФизическихЛицНаборЗаписейКоманднаяПанель" id="1065"/>
+											<ExtendedTooltip name="ВоинскийУчетФизическихЛицНаборЗаписейРасширеннаяПодсказка" id="1066"/>
+											<SearchStringAddition name="ВоинскийУчетФизическихЛицНаборЗаписейСтрокаПоиска" id="1067">
+												<AdditionSource>
+													<Item>ВоинскийУчетФизическихЛицНаборЗаписей</Item>
+													<Type>SearchStringRepresentation</Type>
+												</AdditionSource>
+												<ContextMenu name="ВоинскийУчетФизическихЛицНаборЗаписейСтрокаПоискаКонтекстноеМеню" id="1070"/>
+												<ExtendedTooltip name="ВоинскийУчетФизическихЛицНаборЗаписейСтрокаПоискаРасширеннаяПодсказка" id="1071"/>
+											</SearchStringAddition>
+											<ViewStatusAddition name="ВоинскийУчетФизическихЛицНаборЗаписейСостояниеПросмотра" id="1072">
+												<AdditionSource>
+													<Item>ВоинскийУчетФизическихЛицНаборЗаписей</Item>
+													<Type>ViewStatusRepresentation</Type>
+												</AdditionSource>
+												<ContextMenu name="ВоинскийУчетФизическихЛицНаборЗаписейСостояниеПросмотраКонтекстноеМеню" id="1075"/>
+												<ExtendedTooltip name="ВоинскийУчетФизическихЛицНаборЗаписейСостояниеПросмотраРасширеннаяПодсказка" id="1076"/>
+											</ViewStatusAddition>
+											<SearchControlAddition name="ВоинскийУчетФизическихЛицНаборЗаписейУправлениеПоиском" id="1077">
+												<AdditionSource>
+													<Item>ВоинскийУчетФизическихЛицНаборЗаписей</Item>
+													<Type>SearchControl</Type>
+												</AdditionSource>
+												<ContextMenu name="ВоинскийУчетФизическихЛицНаборЗаписейУправлениеПоискомКонтекстноеМеню" id="1080"/>
+												<ExtendedTooltip name="ВоинскийУчетФизическихЛицНаборЗаписейУправлениеПоискомРасширеннаяПодсказка" id="1081"/>
+											</SearchControlAddition>
+											<Events>
+												<Event name="BeforeEditEnd">ВоинскийУчетФизическихЛицНаборЗаписейПередОкончаниемРедактирования</Event>
+												<Event name="OnChange">ВоинскийУчетФизическихЛицНаборЗаписейПриИзменении</Event>
+											</Events>
+											<ChildItems>
+												<InputField name="ВоинскийУчетФизическихЛицНаборЗаписейФизическоеЛицо" id="1085">
+													<DataPath>ВоинскийУчетФизическихЛицНаборЗаписей.Физлицо</DataPath>
+													<Visible>false</Visible>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="ВоинскийУчетФизическихЛицНаборЗаписейФизическоеЛицоКонтекстноеМеню" id="1086"/>
+													<ExtendedTooltip name="ВоинскийУчетФизическихЛицНаборЗаписейФизическоеЛицоРасширеннаяПодсказка" id="1087"/>
+												</InputField>
+												<InputField name="ВоинскийУчетФизическихЛицНаборЗаписейПериод" id="1082">
+													<DataPath>ВоинскийУчетФизическихЛицНаборЗаписей.Period</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="ВоинскийУчетФизическихЛицНаборЗаписейПериодКонтекстноеМеню" id="1083"/>
+													<ExtendedTooltip name="ВоинскийУчетФизическихЛицНаборЗаписейПериодРасширеннаяПодсказка" id="1084"/>
+												</InputField>
+												<InputField name="ВоинскийУчетФизическихЛицНаборЗаписейОтношениеКВоинскойОбязанности" id="1088">
+													<DataPath>ВоинскийУчетФизическихЛицНаборЗаписей.ОтношениеКВоинскойОбязанности</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="ВоинскийУчетФизическихЛицНаборЗаписейОтношениеКВоинскойОбязанностиКонтекстноеМеню" id="1089"/>
+													<ExtendedTooltip name="ВоинскийУчетФизическихЛицНаборЗаписейОтношениеКВоинскойОбязанностиРасширеннаяПодсказка" id="1090"/>
+												</InputField>
+												<InputField name="ВоинскийУчетФизическихЛицНаборЗаписейВоенныйБилет" id="1115">
+													<DataPath>ВоинскийУчетФизическихЛицНаборЗаписей.ВоенныйБилет</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="ВоинскийУчетФизическихЛицНаборЗаписейВоенныйБилетКонтекстноеМеню" id="1116"/>
+													<ExtendedTooltip name="ВоинскийУчетФизическихЛицНаборЗаписейВоенныйБилетРасширеннаяПодсказка" id="1117"/>
+												</InputField>
+												<InputField name="ВоинскийУчетФизическихЛицНаборЗаписейОтношениеКВоинскомуУчету" id="1091">
+													<DataPath>ВоинскийУчетФизическихЛицНаборЗаписей.ОтношениеКВоинскомуУчету</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="ВоинскийУчетФизическихЛицНаборЗаписейОтношениеКВоинскомуУчетуКонтекстноеМеню" id="1092"/>
+													<ExtendedTooltip name="ВоинскийУчетФизическихЛицНаборЗаписейОтношениеКВоинскомуУчетуРасширеннаяПодсказка" id="1093"/>
+												</InputField>
+												<InputField name="ВоинскийУчетФизическихЛицНаборЗаписейЗвание" id="1094">
+													<DataPath>ВоинскийУчетФизическихЛицНаборЗаписей.Звание</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="ВоинскийУчетФизическихЛицНаборЗаписейЗваниеКонтекстноеМеню" id="1095"/>
+													<ExtendedTooltip name="ВоинскийУчетФизическихЛицНаборЗаписейЗваниеРасширеннаяПодсказка" id="1096"/>
+												</InputField>
+												<InputField name="ВоинскийУчетФизическихЛицНаборЗаписейСостав" id="1097">
+													<DataPath>ВоинскийУчетФизическихЛицНаборЗаписей.Состав</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="ВоинскийУчетФизическихЛицНаборЗаписейСоставКонтекстноеМеню" id="1098"/>
+													<ExtendedTooltip name="ВоинскийУчетФизическихЛицНаборЗаписейСоставРасширеннаяПодсказка" id="1099"/>
+												</InputField>
+												<InputField name="ВоинскийУчетФизическихЛицНаборЗаписейВУС" id="1100">
+													<DataPath>ВоинскийУчетФизическихЛицНаборЗаписей.ВУС</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="ВоинскийУчетФизическихЛицНаборЗаписейВУСКонтекстноеМеню" id="1101"/>
+													<ExtendedTooltip name="ВоинскийУчетФизическихЛицНаборЗаписейВУСРасширеннаяПодсказка" id="1102"/>
+												</InputField>
+												<InputField name="ВоинскийУчетФизическихЛицНаборЗаписейГодность" id="1103">
+													<DataPath>ВоинскийУчетФизическихЛицНаборЗаписей.Годность</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="ВоинскийУчетФизическихЛицНаборЗаписейГодностьКонтекстноеМеню" id="1104"/>
+													<ExtendedTooltip name="ВоинскийУчетФизическихЛицНаборЗаписейГодностьРасширеннаяПодсказка" id="1105"/>
+												</InputField>
+												<InputField name="ВоинскийУчетФизическихЛицНаборЗаписейВоенкомат" id="1106">
+													<DataPath>ВоинскийУчетФизическихЛицНаборЗаписей.Военкомат</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="ВоинскийУчетФизическихЛицНаборЗаписейВоенкоматКонтекстноеМеню" id="1107"/>
+													<ExtendedTooltip name="ВоинскийУчетФизическихЛицНаборЗаписейВоенкоматРасширеннаяПодсказка" id="1108"/>
+												</InputField>
+												<InputField name="ВоинскийУчетФизическихЛицНаборЗаписейЗабронированОрганизацией" id="1109">
+													<DataPath>ВоинскийУчетФизическихЛицНаборЗаписей.ЗабронированОрганизацией</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="ВоинскийУчетФизическихЛицНаборЗаписейЗабронированОрганизациейКонтекстноеМеню" id="1110"/>
+													<ExtendedTooltip name="ВоинскийУчетФизическихЛицНаборЗаписейЗабронированОрганизациейРасширеннаяПодсказка" id="1111"/>
+												</InputField>
+												<InputField name="ВоинскийУчетФизическихЛицНаборЗаписейГруппаУчета" id="1326">
+													<DataPath>ВоинскийУчетФизическихЛицНаборЗаписей.ГруппаУчета</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="ВоинскийУчетФизическихЛицНаборЗаписейГруппаУчетаКонтекстноеМеню" id="1327"/>
+													<ExtendedTooltip name="ВоинскийУчетФизическихЛицНаборЗаписейГруппаУчетаРасширеннаяПодсказка" id="1328"/>
+												</InputField>
+												<InputField name="ВоинскийУчетФизическихЛицНаборЗаписейКатегорияУчета" id="1329">
+													<DataPath>ВоинскийУчетФизическихЛицНаборЗаписей.КатегорияУчета</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="ВоинскийУчетФизическихЛицНаборЗаписейКатегорияУчетаКонтекстноеМеню" id="1330"/>
+													<ExtendedTooltip name="ВоинскийУчетФизическихЛицНаборЗаписейКатегорияУчетаРасширеннаяПодсказка" id="1331"/>
+												</InputField>
+												<CheckBoxField name="ВоинскийУчетФизическихЛицНаборЗаписейСпецучет" id="1112">
+													<DataPath>ВоинскийУчетФизическихЛицНаборЗаписей.Спецучет</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<CheckBoxType>Auto</CheckBoxType>
+													<ContextMenu name="ВоинскийУчетФизическихЛицНаборЗаписейСпецучетКонтекстноеМеню" id="1113"/>
+													<ExtendedTooltip name="ВоинскийУчетФизическихЛицНаборЗаписейСпецучетРасширеннаяПодсказка" id="1114"/>
+												</CheckBoxField>
+												<InputField name="ВоинскийУчетФизическихЛицНаборЗаписейНомерСпецУчета" id="1418">
+													<DataPath>ВоинскийУчетФизическихЛицНаборЗаписей.НомерСпецУчета</DataPath>
+													<Title>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Номер спецучета</v8:content>
+														</v8:item>
+													</Title>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="ВоинскийУчетФизическихЛицНаборЗаписейНомерСпецУчетаКонтекстноеМеню" id="1419"/>
+													<ExtendedTooltip name="ВоинскийУчетФизическихЛицНаборЗаписейНомерСпецУчетаРасширеннаяПодсказка" id="1420"/>
+												</InputField>
+											</ChildItems>
+										</Table>
+									</ChildItems>
+								</Page>
+								<Page name="УченыеЗвания" id="958">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Ученые звания</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Ученые звания</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ExtendedTooltip name="УченыеЗванияРасширеннаяПодсказка" id="959"/>
+									<ChildItems>
+										<Table name="УченыеЗванияФизическихЛицНаборЗаписей" id="960">
+											<Height>1</Height>
+											<AutoInsertNewRow>true</AutoInsertNewRow>
+											<EnableStartDrag>true</EnableStartDrag>
+											<EnableDrag>true</EnableDrag>
+											<DataPath>УченыеЗванияФизическихЛицНаборЗаписей</DataPath>
+											<RowFilter xsi:nil="true"/>
+											<ContextMenu name="УченыеЗванияФизическихЛицНаборЗаписейКонтекстноеМеню" id="961"/>
+											<AutoCommandBar name="УченыеЗванияФизическихЛицНаборЗаписейКоманднаяПанель" id="962"/>
+											<ExtendedTooltip name="УченыеЗванияФизическихЛицНаборЗаписейРасширеннаяПодсказка" id="963"/>
+											<SearchStringAddition name="УченыеЗванияФизическихЛицНаборЗаписейСтрокаПоиска" id="964">
+												<AdditionSource>
+													<Item>УченыеЗванияФизическихЛицНаборЗаписей</Item>
+													<Type>SearchStringRepresentation</Type>
+												</AdditionSource>
+												<ContextMenu name="УченыеЗванияФизическихЛицНаборЗаписейСтрокаПоискаКонтекстноеМеню" id="967"/>
+												<ExtendedTooltip name="УченыеЗванияФизическихЛицНаборЗаписейСтрокаПоискаРасширеннаяПодсказка" id="968"/>
+											</SearchStringAddition>
+											<ViewStatusAddition name="УченыеЗванияФизическихЛицНаборЗаписейСостояниеПросмотра" id="969">
+												<AdditionSource>
+													<Item>УченыеЗванияФизическихЛицНаборЗаписей</Item>
+													<Type>ViewStatusRepresentation</Type>
+												</AdditionSource>
+												<ContextMenu name="УченыеЗванияФизическихЛицНаборЗаписейСостояниеПросмотраКонтекстноеМеню" id="972"/>
+												<ExtendedTooltip name="УченыеЗванияФизическихЛицНаборЗаписейСостояниеПросмотраРасширеннаяПодсказка" id="973"/>
+											</ViewStatusAddition>
+											<SearchControlAddition name="УченыеЗванияФизическихЛицНаборЗаписейУправлениеПоиском" id="974">
+												<AdditionSource>
+													<Item>УченыеЗванияФизическихЛицНаборЗаписей</Item>
+													<Type>SearchControl</Type>
+												</AdditionSource>
+												<ContextMenu name="УченыеЗванияФизическихЛицНаборЗаписейУправлениеПоискомКонтекстноеМеню" id="977"/>
+												<ExtendedTooltip name="УченыеЗванияФизическихЛицНаборЗаписейУправлениеПоискомРасширеннаяПодсказка" id="978"/>
+											</SearchControlAddition>
+											<Events>
+												<Event name="BeforeEditEnd">УченыеЗванияФизическихЛицНаборЗаписейПередОкончаниемРедактирования</Event>
+												<Event name="OnChange">УченыеЗванияФизическихЛицНаборЗаписейПриИзменении</Event>
+											</Events>
+											<ChildItems>
+												<InputField name="УченыеЗванияФизическихЛицНаборЗаписейФизическоеЛицо" id="979">
+													<DataPath>УченыеЗванияФизическихЛицНаборЗаписей.Физлицо</DataPath>
+													<Visible>false</Visible>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="УченыеЗванияФизическихЛицНаборЗаписейФизическоеЛицоКонтекстноеМеню" id="980"/>
+													<ExtendedTooltip name="УченыеЗванияФизическихЛицНаборЗаписейФизическоеЛицоРасширеннаяПодсказка" id="981"/>
+												</InputField>
+												<InputField name="УченыеЗванияФизическихЛицНаборЗаписейУченоеЗвание" id="985">
+													<DataPath>УченыеЗванияФизическихЛицНаборЗаписей.УченоеЗвание</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="УченыеЗванияФизическихЛицНаборЗаписейУченоеЗваниеКонтекстноеМеню" id="986"/>
+													<ExtendedTooltip name="УченыеЗванияФизическихЛицНаборЗаписейУченоеЗваниеРасширеннаяПодсказка" id="987"/>
+												</InputField>
+												<InputField name="УченыеЗванияФизическихЛицНаборЗаписейДатаПрисвоенияУченогоЗвания" id="988">
+													<DataPath>УченыеЗванияФизическихЛицНаборЗаписей.ДатаПрисвоенияУченогоЗвания</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="УченыеЗванияФизическихЛицНаборЗаписейДатаПрисвоенияУченогоЗванияКонтекстноеМеню" id="989"/>
+													<ExtendedTooltip name="УченыеЗванияФизическихЛицНаборЗаписейДатаПрисвоенияУченогоЗванияРасширеннаяПодсказка" id="990"/>
+												</InputField>
+												<InputField name="УченыеЗванияФизическихЛицНаборЗаписейАттестатСерия" id="991">
+													<DataPath>УченыеЗванияФизическихЛицНаборЗаписей.АттестатСерия</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="УченыеЗванияФизическихЛицНаборЗаписейАттестатСерияКонтекстноеМеню" id="992"/>
+													<ExtendedTooltip name="УченыеЗванияФизическихЛицНаборЗаписейАттестатСерияРасширеннаяПодсказка" id="993"/>
+												</InputField>
+												<InputField name="УченыеЗванияФизическихЛицНаборЗаписейАттестатНомер" id="994">
+													<DataPath>УченыеЗванияФизическихЛицНаборЗаписей.АттестатНомер</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="УченыеЗванияФизическихЛицНаборЗаписейАттестатНомерКонтекстноеМеню" id="995"/>
+													<ExtendedTooltip name="УченыеЗванияФизическихЛицНаборЗаписейАттестатНомерРасширеннаяПодсказка" id="996"/>
+												</InputField>
+												<InputField name="УченыеЗванияФизическихЛицНаборЗаписейАттестатВыданОрганизация" id="997">
+													<DataPath>УченыеЗванияФизическихЛицНаборЗаписей.АттестатВыданОрганизация</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="УченыеЗванияФизическихЛицНаборЗаписейАттестатВыданОрганизацияКонтекстноеМеню" id="998"/>
+													<ExtendedTooltip name="УченыеЗванияФизическихЛицНаборЗаписейАттестатВыданОрганизацияРасширеннаяПодсказка" id="999"/>
+												</InputField>
+												<InputField name="УченыеЗванияФизическихЛицНаборЗаписейНаучнаяСпециальность" id="1000">
+													<DataPath>УченыеЗванияФизическихЛицНаборЗаписей.НаучнаяСпециальность</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="УченыеЗванияФизическихЛицНаборЗаписейНаучнаяСпециальностьКонтекстноеМеню" id="1001"/>
+													<ExtendedTooltip name="УченыеЗванияФизическихЛицНаборЗаписейНаучнаяСпециальностьРасширеннаяПодсказка" id="1002"/>
+												</InputField>
+											</ChildItems>
+										</Table>
+									</ChildItems>
+								</Page>
+								<Page name="УченыеСтепени" id="1003">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Ученые степени</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Ученые степени</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ExtendedTooltip name="УченыеСтепениРасширеннаяПодсказка" id="1004"/>
+									<ChildItems>
+										<Table name="УченыеСтепениФизическихЛицНаборЗаписей" id="1005">
+											<Height>1</Height>
+											<AutoInsertNewRow>true</AutoInsertNewRow>
+											<EnableStartDrag>true</EnableStartDrag>
+											<EnableDrag>true</EnableDrag>
+											<DataPath>УченыеСтепениФизическихЛицНаборЗаписей</DataPath>
+											<RowFilter xsi:nil="true"/>
+											<ContextMenu name="УченыеСтепениФизическихЛицНаборЗаписейКонтекстноеМеню" id="1006"/>
+											<AutoCommandBar name="УченыеСтепениФизическихЛицНаборЗаписейКоманднаяПанель" id="1007"/>
+											<ExtendedTooltip name="УченыеСтепениФизическихЛицНаборЗаписейРасширеннаяПодсказка" id="1008"/>
+											<SearchStringAddition name="УченыеСтепениФизическихЛицНаборЗаписейСтрокаПоиска" id="1009">
+												<AdditionSource>
+													<Item>УченыеСтепениФизическихЛицНаборЗаписей</Item>
+													<Type>SearchStringRepresentation</Type>
+												</AdditionSource>
+												<ContextMenu name="УченыеСтепениФизическихЛицНаборЗаписейСтрокаПоискаКонтекстноеМеню" id="1012"/>
+												<ExtendedTooltip name="УченыеСтепениФизическихЛицНаборЗаписейСтрокаПоискаРасширеннаяПодсказка" id="1013"/>
+											</SearchStringAddition>
+											<ViewStatusAddition name="УченыеСтепениФизическихЛицНаборЗаписейСостояниеПросмотра" id="1014">
+												<AdditionSource>
+													<Item>УченыеСтепениФизическихЛицНаборЗаписей</Item>
+													<Type>ViewStatusRepresentation</Type>
+												</AdditionSource>
+												<ContextMenu name="УченыеСтепениФизическихЛицНаборЗаписейСостояниеПросмотраКонтекстноеМеню" id="1017"/>
+												<ExtendedTooltip name="УченыеСтепениФизическихЛицНаборЗаписейСостояниеПросмотраРасширеннаяПодсказка" id="1018"/>
+											</ViewStatusAddition>
+											<SearchControlAddition name="УченыеСтепениФизическихЛицНаборЗаписейУправлениеПоиском" id="1019">
+												<AdditionSource>
+													<Item>УченыеСтепениФизическихЛицНаборЗаписей</Item>
+													<Type>SearchControl</Type>
+												</AdditionSource>
+												<ContextMenu name="УченыеСтепениФизическихЛицНаборЗаписейУправлениеПоискомКонтекстноеМеню" id="1022"/>
+												<ExtendedTooltip name="УченыеСтепениФизическихЛицНаборЗаписейУправлениеПоискомРасширеннаяПодсказка" id="1023"/>
+											</SearchControlAddition>
+											<Events>
+												<Event name="BeforeEditEnd">УченыеСтепениФизическихЛицНаборЗаписейПередОкончаниемРедактирования</Event>
+												<Event name="OnChange">УченыеСтепениФизическихЛицНаборЗаписейПриИзменении</Event>
+											</Events>
+											<ChildItems>
+												<InputField name="УченыеСтепениФизическихЛицНаборЗаписейФизическоеЛицо" id="1024">
+													<DataPath>УченыеСтепениФизическихЛицНаборЗаписей.Физлицо</DataPath>
+													<Visible>false</Visible>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="УченыеСтепениФизическихЛицНаборЗаписейФизическоеЛицоКонтекстноеМеню" id="1025"/>
+													<ExtendedTooltip name="УченыеСтепениФизическихЛицНаборЗаписейФизическоеЛицоРасширеннаяПодсказка" id="1026"/>
+												</InputField>
+												<InputField name="УченыеСтепениФизическихЛицНаборЗаписейУченаяСтепень" id="1030">
+													<DataPath>УченыеСтепениФизическихЛицНаборЗаписей.УченаяСтепень</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="УченыеСтепениФизическихЛицНаборЗаписейУченаяСтепеньКонтекстноеМеню" id="1031"/>
+													<ExtendedTooltip name="УченыеСтепениФизическихЛицНаборЗаписейУченаяСтепеньРасширеннаяПодсказка" id="1032"/>
+												</InputField>
+												<InputField name="УченыеСтепениФизическихЛицНаборЗаписейДатаПрисужденияУченойСтепени" id="1033">
+													<DataPath>УченыеСтепениФизическихЛицНаборЗаписей.ДатаПрисужденияУченойСтепени</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="УченыеСтепениФизическихЛицНаборЗаписейДатаПрисужденияУченойСтепениКонтекстноеМеню" id="1034"/>
+													<ExtendedTooltip name="УченыеСтепениФизическихЛицНаборЗаписейДатаПрисужденияУченойСтепениРасширеннаяПодсказка" id="1035"/>
+												</InputField>
+												<InputField name="УченыеСтепениФизическихЛицНаборЗаписейОтрасльНауки" id="1036">
+													<DataPath>УченыеСтепениФизическихЛицНаборЗаписей.ОтрасльНауки</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="УченыеСтепениФизическихЛицНаборЗаписейОтрасльНаукиКонтекстноеМеню" id="1037"/>
+													<ExtendedTooltip name="УченыеСтепениФизическихЛицНаборЗаписейОтрасльНаукиРасширеннаяПодсказка" id="1038"/>
+												</InputField>
+												<InputField name="УченыеСтепениФизическихЛицНаборЗаписейДиссертационныйСовет" id="1039">
+													<DataPath>УченыеСтепениФизическихЛицНаборЗаписей.ДиссертационныйСовет</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="УченыеСтепениФизическихЛицНаборЗаписейДиссертационныйСоветКонтекстноеМеню" id="1040"/>
+													<ExtendedTooltip name="УченыеСтепениФизическихЛицНаборЗаписейДиссертационныйСоветРасширеннаяПодсказка" id="1041"/>
+												</InputField>
+												<InputField name="УченыеСтепениФизическихЛицНаборЗаписейДипломСерияНомер" id="1042">
+													<DataPath>УченыеСтепениФизическихЛицНаборЗаписей.ДипломСерияНомер</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="УченыеСтепениФизическихЛицНаборЗаписейДипломСерияНомерКонтекстноеМеню" id="1043"/>
+													<ExtendedTooltip name="УченыеСтепениФизическихЛицНаборЗаписейДипломСерияНомерРасширеннаяПодсказка" id="1044"/>
+												</InputField>
+												<InputField name="УченыеСтепениФизическихЛицНаборЗаписейДипломВыданОрганизация" id="1045">
+													<DataPath>УченыеСтепениФизическихЛицНаборЗаписей.ДипломВыданОрганизация</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="УченыеСтепениФизическихЛицНаборЗаписейДипломВыданОрганизацияКонтекстноеМеню" id="1046"/>
+													<ExtendedTooltip name="УченыеСтепениФизическихЛицНаборЗаписейДипломВыданОрганизацияРасширеннаяПодсказка" id="1047"/>
+												</InputField>
+											</ChildItems>
+										</Table>
+									</ChildItems>
+								</Page>
+							</ChildItems>
+						</Pages>
+					</ChildItems>
+				</Page>
+				<Page name="ГруппаПриказыКадровые" id="790">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Приказы</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа приказы кадровые</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="ГруппаПриказыКадровыеРасширеннаяПодсказка" id="791"/>
+					<ChildItems>
+						<Table name="ПриказыКадровые" id="792">
+							<Height>1</Height>
+							<UseAlternationRowColor>true</UseAlternationRowColor>
+							<EnableStartDrag>true</EnableStartDrag>
+							<DataPath>ПриказыКадровые</DataPath>
+							<RowPictureDataPath>ПриказыКадровые.DefaultPicture</RowPictureDataPath>
+							<AutoRefresh>false</AutoRefresh>
+							<AutoRefreshPeriod>60</AutoRefreshPeriod>
+							<Period>
+								<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+								<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+								<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+							</Period>
+							<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+							<RestoreCurrentRow>false</RestoreCurrentRow>
+							<TopLevelParent xsi:nil="true"/>
+							<ShowRoot>true</ShowRoot>
+							<AllowRootChoice>false</AllowRootChoice>
+							<UpdateOnDataChange>Auto</UpdateOnDataChange>
+							<ContextMenu name="ПриказыКадровыеКонтекстноеМеню" id="793"/>
+							<AutoCommandBar name="ПриказыКадровыеКоманднаяПанель" id="794"/>
+							<ExtendedTooltip name="ПриказыКадровыеРасширеннаяПодсказка" id="795"/>
+							<SearchStringAddition name="ПриказыКадровыеСтрокаПоиска" id="796">
+								<AdditionSource>
+									<Item>ПриказыКадровые</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ПриказыКадровыеСтрокаПоискаКонтекстноеМеню" id="799"/>
+								<ExtendedTooltip name="ПриказыКадровыеСтрокаПоискаРасширеннаяПодсказка" id="800"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="ПриказыКадровыеСостояниеПросмотра" id="801">
+								<AdditionSource>
+									<Item>ПриказыКадровые</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ПриказыКадровыеСостояниеПросмотраКонтекстноеМеню" id="804"/>
+								<ExtendedTooltip name="ПриказыКадровыеСостояниеПросмотраРасширеннаяПодсказка" id="805"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="ПриказыКадровыеУправлениеПоиском" id="806">
+								<AdditionSource>
+									<Item>ПриказыКадровые</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="ПриказыКадровыеУправлениеПоискомКонтекстноеМеню" id="809"/>
+								<ExtendedTooltip name="ПриказыКадровыеУправлениеПоискомРасширеннаяПодсказка" id="810"/>
+							</SearchControlAddition>
+							<ChildItems>
+								<LabelField name="ПриказыКадровыеДата" id="811">
+									<DataPath>ПриказыКадровые.Date</DataPath>
+									<ContextMenu name="ПриказыКадровыеДатаКонтекстноеМеню" id="812"/>
+									<ExtendedTooltip name="ПриказыКадровыеДатаРасширеннаяПодсказка" id="813"/>
+								</LabelField>
+								<LabelField name="ПриказыКадровыеДатаДействияПриказа" id="1477">
+									<DataPath>ПриказыКадровые.ДатаДействияПриказа</DataPath>
+									<ContextMenu name="ПриказыКадровыеДатаДействияПриказаКонтекстноеМеню" id="1478"/>
+									<ExtendedTooltip name="ПриказыКадровыеДатаДействияПриказаРасширеннаяПодсказка" id="1479"/>
+								</LabelField>
+								<LabelField name="ПриказыКадровыеНомер" id="814">
+									<DataPath>ПриказыКадровые.Number</DataPath>
+									<ContextMenu name="ПриказыКадровыеНомерКонтекстноеМеню" id="815"/>
+									<ExtendedTooltip name="ПриказыКадровыеНомерРасширеннаяПодсказка" id="816"/>
+								</LabelField>
+								<LabelField name="ПриказыКадровыеТип" id="817">
+									<DataPath>ПриказыКадровые.Type</DataPath>
+									<ContextMenu name="ПриказыКадровыеТипКонтекстноеМеню" id="818"/>
+									<ExtendedTooltip name="ПриказыКадровыеТипРасширеннаяПодсказка" id="819"/>
+								</LabelField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
+				<Page name="ГруппаИсполнительныйЛист" id="1441">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Исполнительные листы</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа исполнительный лист</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="ГруппаИсполнительныйЛистРасширеннаяПодсказка" id="1442"/>
+					<ChildItems>
+						<Table name="ИсполнительныйЛист" id="1443">
+							<UseAlternationRowColor>true</UseAlternationRowColor>
+							<EnableStartDrag>true</EnableStartDrag>
+							<DataPath>ИсполнительныйЛист</DataPath>
+							<RowPictureDataPath>ИсполнительныйЛист.DefaultPicture</RowPictureDataPath>
+							<AutoRefresh>false</AutoRefresh>
+							<AutoRefreshPeriod>60</AutoRefreshPeriod>
+							<Period>
+								<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+								<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+								<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+							</Period>
+							<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+							<RestoreCurrentRow>false</RestoreCurrentRow>
+							<TopLevelParent xsi:nil="true"/>
+							<ShowRoot>true</ShowRoot>
+							<AllowRootChoice>false</AllowRootChoice>
+							<UpdateOnDataChange>Auto</UpdateOnDataChange>
+							<ContextMenu name="ИсполнительныйЛистКонтекстноеМеню" id="1444"/>
+							<AutoCommandBar name="ИсполнительныйЛистКоманднаяПанель" id="1445"/>
+							<ExtendedTooltip name="ИсполнительныйЛистРасширеннаяПодсказка" id="1446"/>
+							<SearchStringAddition name="ИсполнительныйЛистСтрокаПоиска" id="1447">
+								<AdditionSource>
+									<Item>ИсполнительныйЛист</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ИсполнительныйЛистСтрокаПоискаКонтекстноеМеню" id="1448"/>
+								<ExtendedTooltip name="ИсполнительныйЛистСтрокаПоискаРасширеннаяПодсказка" id="1449"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="ИсполнительныйЛистСостояниеПросмотра" id="1450">
+								<AdditionSource>
+									<Item>ИсполнительныйЛист</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ИсполнительныйЛистСостояниеПросмотраКонтекстноеМеню" id="1451"/>
+								<ExtendedTooltip name="ИсполнительныйЛистСостояниеПросмотраРасширеннаяПодсказка" id="1452"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="ИсполнительныйЛистУправлениеПоиском" id="1453">
+								<AdditionSource>
+									<Item>ИсполнительныйЛист</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="ИсполнительныйЛистУправлениеПоискомКонтекстноеМеню" id="1454"/>
+								<ExtendedTooltip name="ИсполнительныйЛистУправлениеПоискомРасширеннаяПодсказка" id="1455"/>
+							</SearchControlAddition>
+							<ChildItems>
+								<LabelField name="ИсполнительныйЛистДата" id="1456">
+									<DataPath>ИсполнительныйЛист.Date</DataPath>
+									<ContextMenu name="ИсполнительныйЛистДатаКонтекстноеМеню" id="1457"/>
+									<ExtendedTooltip name="ИсполнительныйЛистДатаРасширеннаяПодсказка" id="1458"/>
+								</LabelField>
+								<LabelField name="ИсполнительныйЛистНомер" id="1462">
+									<DataPath>ИсполнительныйЛист.Number</DataPath>
+									<ContextMenu name="ИсполнительныйЛистНомерКонтекстноеМеню" id="1463"/>
+									<ExtendedTooltip name="ИсполнительныйЛистНомерРасширеннаяПодсказка" id="1464"/>
+								</LabelField>
+								<LabelField name="ИсполнительныйЛистСсылка" id="1468">
+									<DataPath>ИсполнительныйЛист.Ref</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Документ</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="ИсполнительныйЛистСсылкаКонтекстноеМеню" id="1469"/>
+									<ExtendedTooltip name="ИсполнительныйЛистСсылкаРасширеннаяПодсказка" id="1470"/>
+								</LabelField>
+								<LabelField name="ИсполнительныйЛистДатаНачала" id="1471">
+									<DataPath>ИсполнительныйЛист.ДатаНачала</DataPath>
+									<ContextMenu name="ИсполнительныйЛистДатаНачалаКонтекстноеМеню" id="1472"/>
+									<ExtendedTooltip name="ИсполнительныйЛистДатаНачалаРасширеннаяПодсказка" id="1473"/>
+								</LabelField>
+								<LabelField name="ИсполнительныйЛистДатаОкончания" id="1474">
+									<DataPath>ИсполнительныйЛист.ДатаОкончания</DataPath>
+									<ContextMenu name="ИсполнительныйЛистДатаОкончанияКонтекстноеМеню" id="1475"/>
+									<ExtendedTooltip name="ИсполнительныйЛистДатаОкончанияРасширеннаяПодсказка" id="1476"/>
+								</LabelField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
+				<Page name="ПоощренияИВзыскания" id="820">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Поощрения и взыскания</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Поощрения и взыскания</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="ПоощренияИВзысканияРасширеннаяПодсказка" id="821"/>
+					<ChildItems>
+						<Table name="ПоощренияИВзысканияНаборЗаписей" id="822">
+							<Height>1</Height>
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<DataPath>ПоощренияИВзысканияНаборЗаписей</DataPath>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="ПоощренияИВзысканияНаборЗаписейКонтекстноеМеню" id="823"/>
+							<AutoCommandBar name="ПоощренияИВзысканияНаборЗаписейКоманднаяПанель" id="824"/>
+							<ExtendedTooltip name="ПоощренияИВзысканияНаборЗаписейРасширеннаяПодсказка" id="825"/>
+							<SearchStringAddition name="ПоощренияИВзысканияНаборЗаписейСтрокаПоиска" id="826">
+								<AdditionSource>
+									<Item>ПоощренияИВзысканияНаборЗаписей</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ПоощренияИВзысканияНаборЗаписейСтрокаПоискаКонтекстноеМеню" id="829"/>
+								<ExtendedTooltip name="ПоощренияИВзысканияНаборЗаписейСтрокаПоискаРасширеннаяПодсказка" id="830"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="ПоощренияИВзысканияНаборЗаписейСостояниеПросмотра" id="831">
+								<AdditionSource>
+									<Item>ПоощренияИВзысканияНаборЗаписей</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ПоощренияИВзысканияНаборЗаписейСостояниеПросмотраКонтекстноеМеню" id="834"/>
+								<ExtendedTooltip name="ПоощренияИВзысканияНаборЗаписейСостояниеПросмотраРасширеннаяПодсказка" id="835"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="ПоощренияИВзысканияНаборЗаписейУправлениеПоиском" id="836">
+								<AdditionSource>
+									<Item>ПоощренияИВзысканияНаборЗаписей</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="ПоощренияИВзысканияНаборЗаписейУправлениеПоискомКонтекстноеМеню" id="839"/>
+								<ExtendedTooltip name="ПоощренияИВзысканияНаборЗаписейУправлениеПоискомРасширеннаяПодсказка" id="840"/>
+							</SearchControlAddition>
+							<Events>
+								<Event name="BeforeEditEnd">НаградыФизическихЛицНаборЗаписейПередОкончаниемРедактирования</Event>
+							</Events>
+							<ChildItems>
+								<InputField name="ПоощренияИВзысканияНаборЗаписейФизическоеЛицо" id="841">
+									<DataPath>ПоощренияИВзысканияНаборЗаписей.ФизЛицо</DataPath>
+									<Visible>false</Visible>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ПоощренияИВзысканияНаборЗаписейФизическоеЛицоКонтекстноеМеню" id="842"/>
+									<ExtendedTooltip name="ПоощренияИВзысканияНаборЗаписейФизическоеЛицоРасширеннаяПодсказка" id="843"/>
+								</InputField>
+								<InputField name="ПоощренияИВзысканияНаборЗаписейДатаПриказа" id="853">
+									<DataPath>ПоощренияИВзысканияНаборЗаписей.ДатаПриказа</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ПоощренияИВзысканияНаборЗаписейДатаПриказаКонтекстноеМеню" id="854"/>
+									<ExtendedTooltip name="ПоощренияИВзысканияНаборЗаписейДатаПриказаРасширеннаяПодсказка" id="855"/>
+								</InputField>
+								<InputField name="ПоощренияИВзысканияНаборЗаписейНаграда" id="847">
+									<DataPath>ПоощренияИВзысканияНаборЗаписей.Награда</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Наименование</v8:content>
+										</v8:item>
+									</Title>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ПоощренияИВзысканияНаборЗаписейНаградаКонтекстноеМеню" id="848"/>
+									<ExtendedTooltip name="ПоощренияИВзысканияНаборЗаписейНаградаРасширеннаяПодсказка" id="849"/>
+								</InputField>
+								<LabelField name="ПоощренияИВзысканияНаборЗаписейНаградаВид" id="1421">
+									<DataPath>ПоощренияИВзысканияНаборЗаписей.Награда.Вид</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ПоощренияИВзысканияНаборЗаписейНаградаВидКонтекстноеМеню" id="1422"/>
+									<ExtendedTooltip name="ПоощренияИВзысканияНаборЗаписейНаградаВидРасширеннаяПодсказка" id="1423"/>
+								</LabelField>
+								<InputField name="ПоощренияИВзысканияНаборЗаписейНомерПриказа" id="850">
+									<DataPath>ПоощренияИВзысканияНаборЗаписей.НомерПриказа</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ПоощренияИВзысканияНаборЗаписейНомерПриказаКонтекстноеМеню" id="851"/>
+									<ExtendedTooltip name="ПоощренияИВзысканияНаборЗаписейНомерПриказаРасширеннаяПодсказка" id="852"/>
+								</InputField>
+								<InputField name="ПоощренияИВзысканияНаборЗаписейНаименованиеПриказа" id="856">
+									<DataPath>ПоощренияИВзысканияНаборЗаписей.НаименованиеПриказа</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ПоощренияИВзысканияНаборЗаписейНаименованиеПриказаКонтекстноеМеню" id="857"/>
+									<ExtendedTooltip name="ПоощренияИВзысканияНаборЗаписейНаименованиеПриказаРасширеннаяПодсказка" id="858"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
+				<Page name="Квалификация" id="1206">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Квалификация</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Квалификация</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="КвалификацияРасширеннаяПодсказка" id="1207"/>
+					<ChildItems>
+						<Table name="КвалификацияФизическихЛицНаборЗаписей" id="1208">
+							<Height>1</Height>
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<DataPath>КвалификацияФизическихЛицНаборЗаписей</DataPath>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="КвалификацияФизическихЛицНаборЗаписейКонтекстноеМеню" id="1209"/>
+							<AutoCommandBar name="КвалификацияФизическихЛицНаборЗаписейКоманднаяПанель" id="1210"/>
+							<ExtendedTooltip name="КвалификацияФизическихЛицНаборЗаписейРасширеннаяПодсказка" id="1211"/>
+							<SearchStringAddition name="КвалификацияФизическихЛицНаборЗаписейСтрокаПоиска" id="1212">
+								<AdditionSource>
+									<Item>КвалификацияФизическихЛицНаборЗаписей</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="КвалификацияФизическихЛицНаборЗаписейСтрокаПоискаКонтекстноеМеню" id="1215"/>
+								<ExtendedTooltip name="КвалификацияФизическихЛицНаборЗаписейСтрокаПоискаРасширеннаяПодсказка" id="1216"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="КвалификацияФизическихЛицНаборЗаписейСостояниеПросмотра" id="1217">
+								<AdditionSource>
+									<Item>КвалификацияФизическихЛицНаборЗаписей</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="КвалификацияФизическихЛицНаборЗаписейСостояниеПросмотраКонтекстноеМеню" id="1220"/>
+								<ExtendedTooltip name="КвалификацияФизическихЛицНаборЗаписейСостояниеПросмотраРасширеннаяПодсказка" id="1221"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="КвалификацияФизическихЛицНаборЗаписейУправлениеПоиском" id="1222">
+								<AdditionSource>
+									<Item>КвалификацияФизическихЛицНаборЗаписей</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="КвалификацияФизическихЛицНаборЗаписейУправлениеПоискомКонтекстноеМеню" id="1225"/>
+								<ExtendedTooltip name="КвалификацияФизическихЛицНаборЗаписейУправлениеПоискомРасширеннаяПодсказка" id="1226"/>
+							</SearchControlAddition>
+							<ChildItems>
+								<InputField name="КвалификацияФизическихЛицНаборЗаписейОрганизация" id="1227">
+									<DataPath>КвалификацияФизическихЛицНаборЗаписей.Организация</DataPath>
+									<Visible>false</Visible>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="КвалификацияФизическихЛицНаборЗаписейОрганизацияКонтекстноеМеню" id="1228"/>
+									<ExtendedTooltip name="КвалификацияФизическихЛицНаборЗаписейОрганизацияРасширеннаяПодсказка" id="1229"/>
+								</InputField>
+								<InputField name="КвалификацияФизическихЛицНаборЗаписейФизическоеЛицо" id="1230">
+									<DataPath>КвалификацияФизическихЛицНаборЗаписей.ФизЛицо</DataPath>
+									<Visible>false</Visible>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="КвалификацияФизическихЛицНаборЗаписейФизическоеЛицоКонтекстноеМеню" id="1231"/>
+									<ExtendedTooltip name="КвалификацияФизическихЛицНаборЗаписейФизическоеЛицоРасширеннаяПодсказка" id="1232"/>
+								</InputField>
+								<InputField name="КвалификацияФизическихЛицНаборЗаписейПодразделение" id="1233">
+									<DataPath>КвалификацияФизическихЛицНаборЗаписей.Подразделение</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="КвалификацияФизическихЛицНаборЗаписейПодразделениеКонтекстноеМеню" id="1234"/>
+									<ExtendedTooltip name="КвалификацияФизическихЛицНаборЗаписейПодразделениеРасширеннаяПодсказка" id="1235"/>
+								</InputField>
+								<InputField name="КвалификацияФизическихЛицНаборЗаписейЭкзамен" id="1236">
+									<DataPath>КвалификацияФизическихЛицНаборЗаписей.Экзамен</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="КвалификацияФизическихЛицНаборЗаписейЭкзаменКонтекстноеМеню" id="1237"/>
+									<ExtendedTooltip name="КвалификацияФизическихЛицНаборЗаписейЭкзаменРасширеннаяПодсказка" id="1238"/>
+								</InputField>
+								<InputField name="КвалификацияФизическихЛицНаборЗаписейКвалификация" id="1239">
+									<DataPath>КвалификацияФизическихЛицНаборЗаписей.Квалификация</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="КвалификацияФизическихЛицНаборЗаписейКвалификацияКонтекстноеМеню" id="1240"/>
+									<ExtendedTooltip name="КвалификацияФизическихЛицНаборЗаписейКвалификацияРасширеннаяПодсказка" id="1241"/>
+								</InputField>
+								<InputField name="КвалификацияФизическихЛицНаборЗаписейДатаС" id="1316">
+									<DataPath>КвалификацияФизическихЛицНаборЗаписей.ДатаС</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="КвалификацияФизическихЛицНаборЗаписейДатаСКонтекстноеМеню" id="1317"/>
+									<ExtendedTooltip name="КвалификацияФизическихЛицНаборЗаписейДатаСРасширеннаяПодсказка" id="1318"/>
+								</InputField>
+								<InputField name="КвалификацияФизическихЛицНаборЗаписейДатаПо" id="1319">
+									<DataPath>КвалификацияФизическихЛицНаборЗаписей.ДатаПо</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="КвалификацияФизическихЛицНаборЗаписейДатаПоКонтекстноеМеню" id="1320"/>
+									<ExtendedTooltip name="КвалификацияФизическихЛицНаборЗаписейДатаПоРасширеннаяПодсказка" id="1321"/>
+								</InputField>
+								<InputField name="КвалификацияФизическихЛицНаборЗаписейКомментарий" id="1242">
+									<DataPath>КвалификацияФизическихЛицНаборЗаписей.Комментарий</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="КвалификацияФизическихЛицНаборЗаписейКомментарийКонтекстноеМеню" id="1243"/>
+									<ExtendedTooltip name="КвалификацияФизическихЛицНаборЗаписейКомментарийРасширеннаяПодсказка" id="1244"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
+				<Page name="ГруппаДополнительныеРеквизиты" id="1495">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дополнительные данные</v8:content>
+						</v8:item>
+					</Title>
+					<TitleTextColor>style:ПоясняющийТекст</TitleTextColor>
+					<TitleFont ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+					<ExtendedTooltip name="ГруппаДополнительныеРеквизитыExtendedTooltip" id="1496"/>
+				</Page>
+			</ChildItems>
+		</Pages>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="ФизЛицо" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Физ лицо</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogObject.ФизическиеЛица</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="ГражданствоФизическихЛиц" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Гражданство физических лиц</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:InformationRegisterRecordManager.ГражданствоФизическихЛиц</v8:Type>
+			</Type>
+			<View>
+				<xr:Common>true</xr:Common>
+				<xr:Value name="Role.ПолныеПрава">true</xr:Value>
+			</View>
+			<Edit>
+				<xr:Common>true</xr:Common>
+				<xr:Value name="Role.ПолныеПрава">true</xr:Value>
+			</Edit>
+			<SavedData>true</SavedData>
+			<FunctionalOptions>
+				<Item/>
+				<Item/>
+			</FunctionalOptions>
+		</Attribute>
+		<Attribute name="ГражданствоФизическихЛицНоваяЗапись" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Гражданство физических лиц новая запись</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ГражданствоФизическихЛицПрежняя" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Гражданство физических лиц прежняя</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="ФизическоеЛицоМестоРождения" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Место рождения</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>240</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<SavedData>true</SavedData>
+			<FunctionalOptions>
+				<Item/>
+				<Item/>
+			</FunctionalOptions>
+		</Attribute>
+		<Attribute name="ФИОФизическихЛиц" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>ФИОФизических лиц</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:InformationRegisterRecordManager.ФИОФизическихЛиц</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="ФИОФизическихЛицНоваяЗапись" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>ФИОФизических лиц новая запись</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ФИОФизическихЛицПрежняя" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>ФИОФизических лиц прежняя</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="ДокументыФизическихЛиц" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Документы физических лиц</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:InformationRegisterRecordManager.ДокументыФизическихЛиц</v8:Type>
+			</Type>
+			<View>
+				<xr:Common>true</xr:Common>
+				<xr:Value name="Role.ПолныеПрава">true</xr:Value>
+			</View>
+			<Edit>
+				<xr:Common>true</xr:Common>
+				<xr:Value name="Role.ПолныеПрава">true</xr:Value>
+			</Edit>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="ДокументыФизическихЛицНоваяЗапись" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Документы физических лиц новая запись</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ДокументыФизическихЛицПрежняя" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Документы физических лиц прежняя</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="ФизическоеЛицоСсылка" id="15">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Физическое лицо ссылка</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.ФизическиеЛица</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ЦветСтиляЦветТекстаПоля" id="22">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Цвет стиля цвет текста поля</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8ui:Color</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ЦветСтиляПоясняющийОшибкуТекст" id="23">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Цвет стиля поясняющий ошибку текст</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8ui:Color</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ГражданствоФизическихЛицЛицоБезГражданства" id="24">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Лицо без гражданства</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>1</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+			<View>
+				<xr:Common>true</xr:Common>
+				<xr:Value name="Role.ПолныеПрава">true</xr:Value>
+			</View>
+			<Edit>
+				<xr:Common>true</xr:Common>
+				<xr:Value name="Role.ПолныеПрава">true</xr:Value>
+			</Edit>
+			<SavedData>true</SavedData>
+			<FunctionalOptions>
+				<Item/>
+				<Item/>
+			</FunctionalOptions>
+		</Attribute>
+		<Attribute name="ЦветСтиляПоясняющийТекст" id="27">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Цвет стиля поясняющий текст</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8ui:Color</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ГруппаДоступаИнфо" id="28">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа доступа инфо</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<FunctionalOptions>
+				<Item/>
+			</FunctionalOptions>
+		</Attribute>
+		<Attribute name="ГруппаДоступаКартинка" id="29">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа доступа картинка</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8ui:Picture</v8:Type>
+			</Type>
+			<FunctionalOptions>
+				<Item/>
+			</FunctionalOptions>
+		</Attribute>
+		<Attribute name="ФизическоеЛицоИННКартинка" id="30">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Физическое лицо ИННКартинка</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8ui:Picture</v8:Type>
+			</Type>
+			<FunctionalOptions>
+				<Item/>
+				<Item/>
+			</FunctionalOptions>
+		</Attribute>
+		<Attribute name="ФизическоеЛицоИНННадпись" id="31">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Физическое лицо ИНННадпись</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<FunctionalOptions>
+				<Item/>
+				<Item/>
+			</FunctionalOptions>
+		</Attribute>
+		<Attribute name="ФизическоеЛицоСНИЛСКартинка" id="32">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Физическое лицо СНИЛСКартинка</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8ui:Picture</v8:Type>
+			</Type>
+			<FunctionalOptions>
+				<Item/>
+				<Item/>
+			</FunctionalOptions>
+		</Attribute>
+		<Attribute name="ФизическоеЛицоСНИЛСНадпись" id="33">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Физическое лицо СНИЛСНадпись</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<FunctionalOptions>
+				<Item/>
+				<Item/>
+			</FunctionalOptions>
+		</Attribute>
+		<Attribute name="ДокументыФизическихЛицНомерИнфоКартинка" id="36">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Документы физических лиц номер инфо картинка</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8ui:Picture</v8:Type>
+			</Type>
+			<View>
+				<xr:Common>false</xr:Common>
+				<xr:Value name="Role.ПолныеПрава">true</xr:Value>
+			</View>
+		</Attribute>
+		<Attribute name="ДокументыФизическихЛицНомерИнфоТекст" id="37">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Документы физических лиц номер инфо текст</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>15</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<View>
+				<xr:Common>false</xr:Common>
+				<xr:Value name="Role.ПолныеПрава">true</xr:Value>
+			</View>
+		</Attribute>
+		<Attribute name="ВыполненаКомандаСменыФИО" id="21">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выполнена команда смены ФИО</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ГражданствоФизическихЛицНаборЗаписей" id="38">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Гражданство физических лиц набор записей</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:InformationRegisterRecordSet.ГражданствоФизическихЛиц</v8:Type>
+			</Type>
+			<View>
+				<xr:Common>false</xr:Common>
+				<xr:Value name="Role.ПолныеПрава">true</xr:Value>
+			</View>
+			<Edit>
+				<xr:Common>true</xr:Common>
+				<xr:Value name="Role.ПолныеПрава">true</xr:Value>
+			</Edit>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="ГражданствоФизическихЛицНаборЗаписейПрочитан" id="39">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Гражданство физических лиц набор записей прочитан</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ФИОФизическихЛицНаборЗаписей" id="40">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>ФИОФизических лиц набор записей</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:InformationRegisterRecordSet.ФИОФизическихЛиц</v8:Type>
+			</Type>
+			<View>
+				<xr:Common>false</xr:Common>
+				<xr:Value name="Role.ПолныеПрава">true</xr:Value>
+			</View>
+			<Edit>
+				<xr:Common>true</xr:Common>
+				<xr:Value name="Role.ПолныеПрава">true</xr:Value>
+			</Edit>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="ФИОФизическихЛицНаборЗаписейПрочитан" id="41">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>ФИОФизических лиц набор записей прочитан</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ДокументыФизическихЛицНаборЗаписей" id="45">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Документы физических лиц набор записей</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:InformationRegisterRecordSet.ДокументыФизическихЛиц</v8:Type>
+			</Type>
+			<View>
+				<xr:Common>false</xr:Common>
+				<xr:Value name="Role.ПолныеПрава">true</xr:Value>
+			</View>
+			<Edit>
+				<xr:Common>true</xr:Common>
+				<xr:Value name="Role.ПолныеПрава">true</xr:Value>
+			</Edit>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="ДокументыФизическихЛицНаборЗаписейПрочитан" id="46">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Документы физических лиц набор записей прочитан</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ДоступенПросмотрДанныхФизическихЛиц" id="19">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Доступен просмотр данных физических лиц</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ДополнятьПредставление" id="20">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дополнять представление</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="ИзмененПол" id="48">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Изменен пол</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ИзмененаДатаРождения" id="49">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Изменена дата рождения</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ИзмененоМестоРождения" id="50">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Изменено место рождения</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ИзмененаГруппаДоступа" id="51">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Изменена группа доступа</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ИзмененыЛичныеДанные" id="53">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Изменены личные данные</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ИННУказанПравильно" id="17">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>ИННУказан правильно</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="СНИЛСУказанПравильно" id="58">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>СНИЛСУказан правильно</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ИННИзменен" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>ИННИзменен</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="СНИЛСИзменен" id="13">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>СНИЛСИзменен</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ИзмененаДатаРегистрации" id="14">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Изменена дата регистрации</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="СозданиеНового" id="25">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Создание нового</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ГражданствоФизическихЛицПериод" id="26">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Гражданство физических лиц период</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>Date</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+			<Edit>
+				<xr:Common>false</xr:Common>
+				<xr:Value name="Role.ПолныеПрава">true</xr:Value>
+			</Edit>
+			<FunctionalOptions>
+				<Item/>
+				<Item/>
+			</FunctionalOptions>
+		</Attribute>
+		<Attribute name="НаборЗаписейВременноПребывающиеПринятыеПоДолгосрочнымДоговорам" id="42">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Набор записей временно пребывающие принятые по долгосрочным договорам</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<SavedData>true</SavedData>
+			<Columns>
+				<AdditionalColumns table="НаборЗаписейВременноПребывающиеПринятыеПоДолгосрочнымДоговорам">
+					<Column name="ПериодСтрокой" id="1">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Период строкой</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:string</v8:Type>
+							<v8:StringQualifiers>
+								<v8:Length>15</v8:Length>
+								<v8:AllowedLength>Variable</v8:AllowedLength>
+							</v8:StringQualifiers>
+						</Type>
+					</Column>
+					<Column name="ДействуетДоСтрокой" id="2">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Действует до строкой</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:string</v8:Type>
+							<v8:StringQualifiers>
+								<v8:Length>15</v8:Length>
+								<v8:AllowedLength>Variable</v8:AllowedLength>
+							</v8:StringQualifiers>
+						</Type>
+					</Column>
+				</AdditionalColumns>
+			</Columns>
+		</Attribute>
+		<Attribute name="НаборЗаписейВременноПребывающиеПринятыеПоДолгосрочнымДоговорамПрочитан" id="43">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Набор записей временно пребывающие принятые по долгосрочным договорам прочитан</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="СведенияОбИнвалидностиФизическихЛиц" id="44">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сведения об инвалидности физических лиц</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:TypeId>07d94f9d-4e9d-46e3-b93d-f73c3485e780</v8:TypeId>
+			</Type>
+			<View>
+				<xr:Common>false</xr:Common>
+				<xr:Value name="Role.ПолныеПрава">true</xr:Value>
+			</View>
+			<Edit>
+				<xr:Common>false</xr:Common>
+				<xr:Value name="Role.ПолныеПрава">true</xr:Value>
+			</Edit>
+			<SavedData>true</SavedData>
+			<FunctionalOptions>
+				<Item/>
+			</FunctionalOptions>
+		</Attribute>
+		<Attribute name="СведенияОбИнвалидностиФизическихЛицНаборЗаписей" id="47">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сведения об инвалидности физических лиц набор записей</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:TypeId>05eeca79-5a39-4084-a200-cf8f90caa026</v8:TypeId>
+			</Type>
+			<View>
+				<xr:Common>false</xr:Common>
+				<xr:Value name="Role.ПолныеПрава">true</xr:Value>
+			</View>
+			<Edit>
+				<xr:Common>true</xr:Common>
+				<xr:Value name="Role.ПолныеПрава">true</xr:Value>
+			</Edit>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="СведенияОбИнвалидностиФизическихЛицНаборЗаписейПрочитан" id="54">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сведения об инвалидности физических лиц набор записей прочитан</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="СведенияОбИнвалидностиФизическихЛицНоваяЗапись" id="55">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сведения об инвалидности физических лиц новая запись</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+			<FunctionalOptions>
+				<Item/>
+			</FunctionalOptions>
+		</Attribute>
+		<Attribute name="СведенияОбИнвалидностиФизическихЛицПрежняя" id="56">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сведения об инвалидности физических лиц прежняя</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+			<FunctionalOptions>
+				<Item/>
+			</FunctionalOptions>
+		</Attribute>
+		<Attribute name="СтатусыЗастрахованныхФизическихЛиц" id="57">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Статусы застрахованных физических лиц</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<View>
+				<xr:Common>false</xr:Common>
+				<xr:Value name="Role.ПолныеПрава">true</xr:Value>
+			</View>
+			<Edit>
+				<xr:Common>false</xr:Common>
+				<xr:Value name="Role.ПолныеПрава">true</xr:Value>
+			</Edit>
+			<SavedData>true</SavedData>
+			<FunctionalOptions>
+				<Item/>
+			</FunctionalOptions>
+		</Attribute>
+		<Attribute name="СтатусыЗастрахованныхФизическихЛицНаборЗаписей" id="59">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Статусы застрахованных физических лиц набор записей</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<View>
+				<xr:Common>false</xr:Common>
+				<xr:Value name="Role.ПолныеПрава">true</xr:Value>
+			</View>
+			<Edit>
+				<xr:Common>true</xr:Common>
+				<xr:Value name="Role.ПолныеПрава">true</xr:Value>
+			</Edit>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="СтатусыЗастрахованныхФизическихЛицНаборЗаписейПрочитан" id="60">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Статусы застрахованных физических лиц набор записей прочитан</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="СтатусыЗастрахованныхФизическихЛицНоваяЗапись" id="61">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Статусы застрахованных физических лиц новая запись</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+			<FunctionalOptions>
+				<Item/>
+			</FunctionalOptions>
+		</Attribute>
+		<Attribute name="СтатусыЗастрахованныхФизическихЛицПрежняя" id="62">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Статусы застрахованных физических лиц прежняя</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+			<FunctionalOptions>
+				<Item/>
+			</FunctionalOptions>
+		</Attribute>
+		<Attribute name="ПрочитанныеДанныеФорм" id="63">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Прочитанные данные форм</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="ДоступноДобавлениеИзменениеДанныхФизическихЛиц" id="64">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Доступно добавление изменение данных физических лиц</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="КартСчетаСотрудников" id="16">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Карт счета сотрудников</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:InformationRegisterRecordManager.КартСчетаСотрудников</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="КартСчетаСотрудниковНаборЗаписей" id="18">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Карт счета сотрудников набор записей</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:InformationRegisterRecordSet.КартСчетаСотрудников</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="КартСчетаСотрудниковПрочитан" id="65">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Карт счета сотрудников прочитан</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="КартСчетаСотрудниковНоваяЗапись" id="66">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Карт счета сотрудников новая запись</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="КартСчетаСотрудниковПрежняя" id="67">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Карт счета сотрудников прежняя</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="СоставыСемейФизическихЛиц" id="68">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Составы семей физических лиц</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:InformationRegisterRecordManager.СоставыСемейФизическихЛиц</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="СоставыСемейФизическихЛицНаборЗаписей" id="69">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Составы семей физических лиц набор записей</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:InformationRegisterRecordSet.СоставыСемейФизическихЛиц</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="СоставыСемейФизическихЛицПрочитан" id="70">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Составы семей физических лиц прочитан</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="СоставыСемейФизическихЛицПрежняя" id="71">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Составы семей физических лиц прежняя</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="СоставыСемейФизическихЛицНоваяЗапись" id="72">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Составы семей физических лиц новая запись</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="СостоянияВБракеФизическихЛиц" id="73">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Состояния в браке физических лиц</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:InformationRegisterRecordManager.СостоянияВБракеФизическихЛиц</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="СостоянияВБракеФизическихЛицНаборЗаписей" id="74">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Состояния в браке физических лиц набор записей</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:InformationRegisterRecordSet.СостоянияВБракеФизическихЛиц</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="СостоянияВБракеФизическихЛицНоваяЗапись" id="75">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Состояния в браке физических лиц новая запись</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="СостоянияВБракеФизическихЛицПрежняя" id="76">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Состояния в браке физических лиц прежняя</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="СостоянияВБракеФизическихЛицНаборЗаписейПрочитан" id="77">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Состояния в браке физических лиц набор записей прочитан</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ЗнаниеЯзыковФизическихЛиц" id="78">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Знание языков физических лиц</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:InformationRegisterRecordManager.ЗнаниеЯзыковФизическихЛиц</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ЗнаниеЯзыковФизическихЛицНаборЗаписей" id="79">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Знание языков физических лиц набор записей</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:InformationRegisterRecordSet.ЗнаниеЯзыковФизическихЛиц</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ЗнаниеЯзыковФизическихЛицПрочитан" id="80">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Знание языков физических лиц прочитан</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ЗнаниеЯзыковФизическихЛицПрежняя" id="81">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Знание языков физических лиц прежняя</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="ЗнаниеЯзыковФизическихЛицНоваяЗапись" id="82">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Знание языков физических лиц новая запись</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ОбразованиеФизическихЛиц" id="83">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Образование физических лиц</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:InformationRegisterRecordManager.ОбразованиеФизическихЛиц</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ОбразованиеФизическихЛицНаборЗаписей" id="84">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Образование физических лиц набор записей</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:InformationRegisterRecordSet.ОбразованиеФизическихЛиц</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ОбразованиеФизическихЛицПрежняя" id="85">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Образование физических лиц прежняя</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="ОбразованиеФизическихЛицНоваяЗапись" id="86">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Образование физических лиц новая запись</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ОбразованиеФизическихЛицПрочитан" id="87">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Образование физических лиц прочитан</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="КартСчетаСотрудниковНаборЗаписейПрочитан" id="93">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Карт счета сотрудников набор записей прочитан</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="СоставыСемейФизическихЛицНаборЗаписейПрочитан" id="94">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Составы семей физических лиц набор записей прочитан</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ОбразованиеФизическихЛицНаборЗаписейПрочитан" id="95">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Образование физических лиц набор записей прочитан</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ЗнаниеЯзыковФизическихЛицНаборЗаписейПрочитан" id="96">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Знание языков физических лиц набор записей прочитан</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ПриказыКадровые" id="99">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Приказы кадровые</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>true</ManualQuery>
+				<DynamicDataRead>true</DynamicDataRead>
+				<QueryText>ВЫБРАТЬ
+	ЖурналДокументовПриказыКадровые.Ссылка,
+	ЖурналДокументовПриказыКадровые.Дата,
+	ЖурналДокументовПриказыКадровые.ПометкаУдаления,
+	ЖурналДокументовПриказыКадровые.Номер,
+	ЖурналДокументовПриказыКадровые.Проведен,
+	ЖурналДокументовПриказыКадровые.Тип,
+	ЖурналДокументовПриказыКадровые.Физлицо,
+	ЖурналДокументовПриказыКадровые.ДатаДействияПриказа
+	
+ИЗ
+	ЖурналДокументов.ПриказыКадровые КАК ЖурналДокументовПриказыКадровые
+ГДЕ
+	ЖурналДокументовПриказыКадровые.Физлицо = &amp;Физлицо
+	И ЖурналДокументовПриказыКадровые.Проведен</QueryText>
+				<MainTable>DocumentJournal.ПриказыКадровые</MainTable>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
+		</Attribute>
+		<Attribute name="ПоощренияИВзыскания" id="100">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Поощрения и взыскания</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:InformationRegisterRecordManager.ПоощренияИВзыскания</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ПоощренияИВзысканияНаборЗаписей" id="101">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Поощрения и взыскания набор записей</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:InformationRegisterRecordSet.ПоощренияИВзыскания</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ПоощренияИВзысканияНоваяЗапись" id="102">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Поощрения и взыскания новая запись</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ПоощренияИВзысканияПрежняя" id="103">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Поощрения и взыскания прежняя</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="ПоощренияИВзысканияНаборЗаписейПрочитан" id="104">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Поощрения и взыскания набор записей прочитан</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ТрудоваяДеятельностьФизическихЛиц" id="105">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Трудовая деятельность физических лиц</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:InformationRegisterRecordManager.ТрудоваяДеятельностьФизическихЛиц</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ТрудоваяДеятельностьФизическихЛицНаборЗаписей" id="106">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Трудовая деятельность физических лиц набор записей</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:InformationRegisterRecordSet.ТрудоваяДеятельностьФизическихЛиц</v8:Type>
+			</Type>
+			<Columns>
+				<AdditionalColumns table="ТрудоваяДеятельностьФизическихЛицНаборЗаписей"/>
+			</Columns>
+		</Attribute>
+		<Attribute name="ТрудоваяДеятельностьФизическихЛицНоваяЗапись" id="107">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Трудовая деятельность физических лиц новая запись</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ТрудоваяДеятельностьФизическихЛицПрежняя" id="108">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Трудовая деятельность физических лиц прежняя</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="ТрудоваяДеятельностьФизическихЛицНаборЗаписейПрочитан" id="109">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Трудовая деятельность физических лиц набор записей прочитан</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ВоинскийУчетФизическихЛиц" id="110">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Воинский учет физических лиц</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:InformationRegisterRecordManager.ВоинскийУчетФизическихЛиц</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ВоинскийУчетФизическихЛицНаборЗаписей" id="111">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Воинский учет физических лиц набор записей</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:InformationRegisterRecordSet.ВоинскийУчетФизическихЛиц</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ВоинскийУчетФизическихЛицНоваяЗапись" id="112">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Воинский учет физических лиц новая запись</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ВоинскийУчетФизическихЛицПрежняя" id="113">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Воинский учет физических лиц прежняя</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="ВоинскийУчетФизическихЛицНаборЗаписейПрочитан" id="114">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Воинский учет физических лиц набор записей прочитан</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="УченыеЗванияФизическихЛиц" id="115">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ученые звания физических лиц</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:InformationRegisterRecordManager.УченыеЗванияФизическихЛиц</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="УченыеЗванияФизическихЛицНаборЗаписей" id="116">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ученые звания физических лиц набор записей</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:InformationRegisterRecordSet.УченыеЗванияФизическихЛиц</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="УченыеЗванияФизическихЛицПрежняя" id="117">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ученые звания физических лиц прежняя</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="УченыеЗванияФизическихЛицНоваяЗапись" id="118">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ученые звания физических лиц новая запись</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="УченыеЗванияФизическихЛицНаборЗаписейПрочитан" id="119">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ученые звания физических лиц набор записей прочитан</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="УченыеСтепениФизическихЛиц" id="120">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ученые степени физических лиц</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:InformationRegisterRecordManager.УченыеСтепениФизическихЛиц</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="УченыеСтепениФизическихЛицНаборЗаписей" id="121">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ученые степени физических лиц набор записей</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:InformationRegisterRecordSet.УченыеСтепениФизическихЛиц</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="УченыеСтепениФизическихЛицПрежняя" id="122">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ученые степени физических лиц прежняя</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="УченыеСтепениФизическихЛицНоваяЗапись" id="123">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ученые степени физических лиц новая запись</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="УченыеСтепениФизическихЛицНаборЗаписейПрочитан" id="124">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ученые степени физических лиц набор записей прочитан</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="НадписьПоясненияНекорректногоИНН" id="125">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Надпись пояснения некорректного ИНН</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>100</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="СтруктураДляПроверкиИНН" id="126">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Структура для проверки ИНН</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="КвалификацияФизическихЛиц" id="88">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Квалификация физических лиц</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:InformationRegisterRecordManager.КвалификацияФизическихЛиц</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="КвалификацияФизическихЛицНаборЗаписей" id="89">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Квалификация физических лиц набор записей</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:InformationRegisterRecordSet.КвалификацияФизическихЛиц</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="КвалификацияФизическихЛицНаборЗаписейПрочитан" id="90">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Квалификация физических лиц набор записей прочитан</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="КвалификацияФизическихЛицНоваяЗапись" id="91">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Квалификация физических лиц новая запись</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="КвалификацияФизическихЛицПрежняя" id="92">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Квалификация физических лиц прежняя</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="СостоянияВБракеФизическихЛицПериод" id="127">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Состояния в браке физических лиц период</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>Date</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="СтажОбщийКолЛет" id="34">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Общий стаж, лет</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>2</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="СтажОбщийКолДней" id="35">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>дней</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>2</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="СтажОбщийКолМес" id="98">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>месяцев</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>2</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="СтажОтраслевойКолЛет" id="128">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отрасл.стаж, лет</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>2</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="СтажОтраслевойКолМес" id="129">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>месяцев</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>2</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="СтажОтраслевойКолДней" id="130">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>дней</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>2</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="СтажСуммированныйКолЛет" id="131">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Суммир.стаж, лет</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>2</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="СтажСуммированныйКолМес" id="132">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>месяцев</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>2</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="СтажСуммированныйКолДней" id="133">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>дней</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>2</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ДатаУвольнения" id="134">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дата увольнения</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>Date</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ИсполнительныйЛист" id="135">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Исполнительный лист</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>true</ManualQuery>
+				<DynamicDataRead>true</DynamicDataRead>
+				<QueryText>ВЫБРАТЬ
+	ИсполнительныйЛист.Ссылка,
+	ИсполнительныйЛист.Дата,
+	ИсполнительныйЛист.Номер,
+	ИсполнительныйЛист.Проведен,
+	ИсполнительныйЛист.ФизЛицо,
+	ИсполнительныйЛист.ДатаНачала,
+	ИсполнительныйЛист.ДатаОкончания
+ИЗ
+	Документ.ИсполнительныйЛист КАК ИсполнительныйЛист
+ГДЕ
+	ИсполнительныйЛист.ФизЛицо = &amp;Физлицо
+	И ИсполнительныйЛист.Проведен</QueryText>
+				<MainTable>Document.ИсполнительныйЛист</MainTable>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ФИОФизическихЛицИстория" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>История изменения имени физического лица</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>История изменения имени физического лица</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Use>
+				<xr:Common>false</xr:Common>
+				<xr:Value name="Role.ПолныеПрава">true</xr:Value>
+			</Use>
+			<Action>ФИОФизическихЛицИстория</Action>
+		</Command>
+		<Command name="ДокументыФизическихЛицИстория" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>История изменения документа, удостоверяющего личность</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Документы физических лиц история</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Use>
+				<xr:Common>false</xr:Common>
+				<xr:Value name="Role.ПолныеПрава">true</xr:Value>
+			</Use>
+			<Action>ДокументыФизическихЛицИстория</Action>
+		</Command>
+		<Command name="ГражданствоФизическихЛицИстория" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>История изменения сведений о гражданстве</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Гражданство физических лиц история</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Use>
+				<xr:Common>false</xr:Common>
+				<xr:Value name="Role.ПолныеПрава">true</xr:Value>
+			</Use>
+			<Action>ГражданствоФизическихЛицИстория</Action>
+			<FunctionalOptions>
+				<Item/>
+			</FunctionalOptions>
+		</Command>
+		<Command name="ВсеДокументыЭтогоЧеловека" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Все документы этого человека</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Все документы этого человека</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ВсеДокументыЭтогоЧеловека</Action>
+		</Command>
+		<Command name="Страхование" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Страхование</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Страхование</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Use>
+				<xr:Common>false</xr:Common>
+				<xr:Value name="Role.ПолныеПрава">true</xr:Value>
+			</Use>
+			<Action>Страхование</Action>
+			<FunctionalOptions>
+				<Item/>
+				<Item/>
+			</FunctionalOptions>
+		</Command>
+		<Command name="КомандаЗаписать" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Записать</v8:content>
+				</v8:item>
+			</Title>
+			<Shortcut>Ctrl+S</Shortcut>
+			<Picture>
+				<xr:Ref>StdPicture.Write</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>КомандаЗаписать</Action>
+			<Representation>Text</Representation>
+		</Command>
+		<Command name="КомандаЗаписатьИЗакрыть" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Записать и закрыть</v8:content>
+				</v8:item>
+			</Title>
+			<Picture>
+				<xr:Ref>StdPicture.WriteAndClose</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>КомандаЗаписатьИЗакрыть</Action>
+			<Representation>Text</Representation>
+		</Command>
+		<Command name="СостояниеВБракеФизическихЛицИстория" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Состояние в браке физических лиц история</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Состояние в браке физических лиц история</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>СостояниеВБракеФизическихЛицИстория</Action>
+		</Command>
+	</Commands>
+	<Parameters>
+		<Parameter name="АктивнаяСтраница">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>30</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Parameter>
+		<Parameter name="ФизЛицо">
+			<Type>
+				<v8:Type>cfg:CatalogRef.ФизическиеЛица</v8:Type>
+			</Type>
+		</Parameter>
+	</Parameters>
+	<CommandInterface>
+		<NavigationPanel>
+			<Item>
+				<Command>InformationRegister.ДокументыФизическихЛиц.Command.ДокументыФизическогоЛица</Command>
+				<Type>Auto</Type>
+				<DefaultVisible>false</DefaultVisible>
+				<Visible>
+					<xr:Common>false</xr:Common>
+				</Visible>
+			</Item>
+			<Item>
+				<Command>0</Command>
+				<Type>Auto</Type>
+				<Index>1</Index>
+				<Visible>
+					<xr:Common>false</xr:Common>
+				</Visible>
+			</Item>
+			<Item>
+				<Command>0</Command>
+				<Type>Auto</Type>
+				<Visible>
+					<xr:Common>false</xr:Common>
+				</Visible>
+			</Item>
+			<Item>
+				<Command>3</Command>
+				<Type>Auto</Type>
+				<DefaultVisible>false</DefaultVisible>
+				<Visible>
+					<xr:Common>false</xr:Common>
+				</Visible>
+			</Item>
+			<Item>
+				<Command>3</Command>
+				<Type>Auto</Type>
+				<DefaultVisible>false</DefaultVisible>
+				<Visible>
+					<xr:Common>false</xr:Common>
+				</Visible>
+			</Item>
+			<Item>
+				<Command>0</Command>
+				<Type>Auto</Type>
+				<DefaultVisible>false</DefaultVisible>
+				<Visible>
+					<xr:Common>false</xr:Common>
+				</Visible>
+			</Item>
+			<Item>
+				<Command>0</Command>
+				<Type>Auto</Type>
+				<DefaultVisible>false</DefaultVisible>
+				<Visible>
+					<xr:Common>false</xr:Common>
+				</Visible>
+			</Item>
+			<Item>
+				<Command>InformationRegister.ГражданствоФизическихЛиц.StandardCommand.OpenByValue.Физлицо</Command>
+				<Type>Auto</Type>
+				<DefaultVisible>false</DefaultVisible>
+				<Visible>
+					<xr:Common>false</xr:Common>
+				</Visible>
+			</Item>
+			<Item>
+				<Command>CommonCommand.МоиЗаметкиПоПредмету</Command>
+				<Type>Auto</Type>
+				<DefaultVisible>false</DefaultVisible>
+				<Visible>
+					<xr:Common>false</xr:Common>
+				</Visible>
+			</Item>
+			<Item>
+				<Command>InformationRegister.ОбразованиеФизическихЛиц.StandardCommand.OpenByValue.ФизЛицо</Command>
+				<Type>Auto</Type>
+				<DefaultVisible>false</DefaultVisible>
+				<Visible>
+					<xr:Common>false</xr:Common>
+				</Visible>
+			</Item>
+			<Item>
+				<Command>4:984b3f4a-123b-4543-a4b8-df78ae9223de</Command>
+				<Type>Auto</Type>
+				<DefaultVisible>false</DefaultVisible>
+				<Visible>
+					<xr:Common>false</xr:Common>
+				</Visible>
+			</Item>
+			<Item>
+				<Command>InformationRegister.ПлановыеУдержания.StandardCommand.OpenByValue.ФизЛицо</Command>
+				<Type>Auto</Type>
+				<DefaultVisible>false</DefaultVisible>
+				<Visible>
+					<xr:Common>false</xr:Common>
+				</Visible>
+			</Item>
+			<Item>
+				<Command>InformationRegister.Сотрудники.StandardCommand.OpenByValue.ФизЛицо</Command>
+				<Type>Auto</Type>
+				<DefaultVisible>false</DefaultVisible>
+				<Visible>
+					<xr:Common>false</xr:Common>
+				</Visible>
+			</Item>
+			<Item>
+				<Command>InformationRegister.СтатусыСотрудников.StandardCommand.OpenByValue.Физлицо</Command>
+				<Type>Auto</Type>
+				<DefaultVisible>false</DefaultVisible>
+				<Visible>
+					<xr:Common>false</xr:Common>
+				</Visible>
+			</Item>
+			<Item>
+				<Command>0</Command>
+				<Type>Auto</Type>
+				<DefaultVisible>false</DefaultVisible>
+				<Visible>
+					<xr:Common>false</xr:Common>
+				</Visible>
+			</Item>
+			<Item>
+				<Command>InformationRegister.КартСчетаСотрудников.StandardCommand.OpenByValue.ФизЛицо</Command>
+				<Type>Auto</Type>
+				<DefaultVisible>false</DefaultVisible>
+				<Visible>
+					<xr:Common>false</xr:Common>
+				</Visible>
+			</Item>
+			<Item>
+				<Command>InformationRegister.СтажиФизическихЛиц.StandardCommand.OpenByValue.ФизЛицо</Command>
+				<Type>Auto</Type>
+				<DefaultVisible>false</DefaultVisible>
+				<Visible>
+					<xr:Common>false</xr:Common>
+				</Visible>
+			</Item>
+			<Item>
+				<Command>4:81f62ae2-f508-46b1-800c-ffd278a22717</Command>
+				<Type>Auto</Type>
+				<DefaultVisible>false</DefaultVisible>
+				<Visible>
+					<xr:Common>false</xr:Common>
+				</Visible>
+			</Item>
+		</NavigationPanel>
+		<CommandBar>
+			<Item>
+				<Command>0</Command>
+				<Type>Auto</Type>
+				<DefaultVisible>false</DefaultVisible>
+				<Visible>
+					<xr:Common>false</xr:Common>
+				</Visible>
+			</Item>
+			<Item>
+				<Command>0</Command>
+				<Type>Auto</Type>
+				<DefaultVisible>false</DefaultVisible>
+				<Visible>
+					<xr:Common>false</xr:Common>
+				</Visible>
+			</Item>
+		</CommandBar>
+	</CommandInterface>
+</Form>
