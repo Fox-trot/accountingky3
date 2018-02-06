@@ -17,11 +17,10 @@
 				</ToolTip>
 				<ExtendedTooltip name="ГруппаВажныеКомандыРасширеннаяПодсказка" id="46"/>
 				<ChildItems>
-					<Button name="КомандаКомандаУстановитьОсновнойЭлемент" id="43">
+					<Button name="ИспользоватьКакОсновную" id="43">
 						<Type>CommandBarButton</Type>
-						<DefaultButton>true</DefaultButton>
-						<CommandName>Form.Command.КомандаУстановитьОсновнойЭлемент</CommandName>
-						<ExtendedTooltip name="КомандаКомандаУстановитьОсновнойЭлементExtendedTooltip" id="44"/>
+						<CommandName>Form.Command.ИспользоватьКакОсновную</CommandName>
+						<ExtendedTooltip name="ИспользоватьКакОсновнуюРасширеннаяПодсказка" id="44"/>
 					</Button>
 				</ChildItems>
 			</ButtonGroup>
@@ -106,7 +105,33 @@
 				<ContextMenu name="СписокУправлениеПоискомКонтекстноеМеню" id="20"/>
 				<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="21"/>
 			</SearchControlAddition>
+			<Events>
+				<Event name="OnActivateRow">СписокПриАктивизацииСтроки</Event>
+			</Events>
 			<ChildItems>
+				<PictureField name="ЭтоОсновнаяОрганизация" id="51">
+					<DataPath>Список.ЭтоОсновнаяОрганизация</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Основная организация</v8:content>
+						</v8:item>
+					</ToolTip>
+					<FixingInTable>Left</FixingInTable>
+					<HeaderPicture>
+						<xr:Ref>CommonPicture.ПолностьюИсправлено16</xr:Ref>
+						<xr:LoadTransparent>true</xr:LoadTransparent>
+					</HeaderPicture>
+					<Width>2</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ValuesPicture>
+						<xr:Ref>CommonPicture.ПолностьюИсправлено16</xr:Ref>
+						<xr:LoadTransparent>true</xr:LoadTransparent>
+					</ValuesPicture>
+					<ContextMenu name="ЭтоОсновнаяОрганизацияКонтекстноеМеню" id="52"/>
+					<ExtendedTooltip name="ЭтоОсновнаяОрганизацияРасширеннаяПодсказка" id="53"/>
+				</PictureField>
 				<LabelField name="Наименование" id="22">
 					<DataPath>Список.Description</DataPath>
 					<DefaultItem>true</DefaultItem>
@@ -146,8 +171,38 @@
 				<Field>Список.Ref</Field>
 			</UseAlways>
 			<Settings xsi:type="DynamicList">
-				<ManualQuery>false</ManualQuery>
+				<ManualQuery>true</ManualQuery>
 				<DynamicDataRead>true</DynamicDataRead>
+				<QueryText>ВЫБРАТЬ
+	СправочникОрганизации.Ссылка,
+	СправочникОрганизации.ПометкаУдаления,
+	СправочникОрганизации.Код,
+	СправочникОрганизации.Наименование,
+	СправочникОрганизации.Префикс,
+	СправочникОрганизации.НаименованиеПолное,
+	СправочникОрганизации.ИНН,
+	СправочникОрганизации.ОсновнойБанковскийСчет,
+	СправочникОрганизации.ОсновнаяКасса,
+	СправочникОрганизации.КодПоОКПО,
+	СправочникОрганизации.ГНС,
+	СправочникОрганизации.РегНомерСоцФонда,
+	СправочникОрганизации.КодГКЭД,
+	СправочникОрганизации.НаименованиеГКЭД,
+	СправочникОрганизации.ОрганУправления,
+	СправочникОрганизации.КодПравовойФормы,
+	СправочникОрганизации.ДатаРегистрации,
+	СправочникОрганизации.ДатаРегистрацииНДС,
+	СправочникОрганизации.НомерДокументаРегистрацииНДС,
+	СправочникОрганизации.СерияДокументаРегистрацииНДС,
+	СправочникОрганизации.ФайлЛоготип,
+	СправочникОрганизации.ФайлФаксимильнаяПечать,
+	СправочникОрганизации.КонтактнаяИнформация,
+	СправочникОрганизации.Предопределенный,
+	СправочникОрганизации.ИмяПредопределенныхДанных,
+		СправочникОрганизации.Ссылка = &amp;ОсновнаяОрганизация КАК ЭтоОсновнаяОрганизация
+
+ИЗ
+	Справочник.Организации КАК СправочникОрганизации</QueryText>
 				<MainTable>Catalog.Организации</MainTable>
 				<ListSettings>
 					<dcsset:filter>
@@ -169,20 +224,24 @@
 		</Attribute>
 	</Attributes>
 	<Commands>
-		<Command name="КомандаУстановитьОсновнойЭлемент" id="1">
+		<Command name="ИспользоватьКакОсновную" id="1">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Установить основную организацию</v8:content>
+					<v8:content>Использовать как основную</v8:content>
 				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Выбранный элемент будет по умолчанию подставляться в документы пользователя</v8:content>
+					<v8:content>Использовать как основную организацию для автоматической подстановки в документах.</v8:content>
 				</v8:item>
 			</ToolTip>
-			<Action>КомандаУстановитьОсновнойЭлемент</Action>
+			<Picture>
+				<xr:Ref>CommonPicture.ПолностьюИсправлено16</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ИспользоватьКакОсновную</Action>
 			<Representation>TextPicture</Representation>
 		</Command>
 		<Command name="ИзменитьВыделенные" id="2">

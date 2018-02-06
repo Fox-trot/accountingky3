@@ -9,6 +9,12 @@
 				<CommandName>Form.Command.ВыполнитьПроверку</CommandName>
 				<ExtendedTooltip name="ФормаВыполнитьПроверкуРасширеннаяПодсказка" id="18"/>
 			</Button>
+			<Button name="ФормаУстановитьСтандартныеНастройки" id="208">
+				<Type>CommandBarButton</Type>
+				<OnlyInAllActions>false</OnlyInAllActions>
+				<CommandName>Form.Command.УстановитьСтандартныеНастройки</CommandName>
+				<ExtendedTooltip name="ФормаУстановитьСтандартныеНастройкиРасширеннаяПодсказка" id="209"/>
+			</Button>
 		</ChildItems>
 	</AutoCommandBar>
 	<Events>
@@ -33,7 +39,6 @@
 				<InputField name="Наименование" id="1">
 					<DataPath>Объект.Description</DataPath>
 					<EditMode>EnterOnInput</EditMode>
-					<AutoMaxWidth>false</AutoMaxWidth>
 					<ContextMenu name="НаименованиеКонтекстноеМеню" id="2"/>
 					<ExtendedTooltip name="НаименованиеExtendedTooltip" id="11"/>
 				</InputField>
@@ -105,19 +110,6 @@
 									<ContextMenu name="РекомендацииКонтекстноеМеню" id="161"/>
 									<ExtendedTooltip name="РекомендацииРасширеннаяПодсказка" id="162"/>
 								</InputField>
-							</ChildItems>
-						</UsualGroup>
-						<UsualGroup name="ГруппаВажностьРасписание" id="170">
-							<Title>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Важность расписание</v8:content>
-								</v8:item>
-							</Title>
-							<Group>Horizontal</Group>
-							<ShowTitle>false</ShowTitle>
-							<ExtendedTooltip name="ГруппаВажностьРасписаниеРасширеннаяПодсказка" id="171"/>
-							<ChildItems>
 								<InputField name="ВажностьПроблемы" id="49">
 									<DataPath>Объект.ВажностьПроблемы</DataPath>
 									<Title>
@@ -127,17 +119,161 @@
 										</v8:item>
 									</Title>
 									<TitleLocation>Left</TitleLocation>
-									<HorizontalStretch>false</HorizontalStretch>
+									<AutoMaxWidth>false</AutoMaxWidth>
+									<MaxWidth>16</MaxWidth>
 									<ContextMenu name="ВажностьПроблемыКонтекстноеМеню" id="50"/>
 									<ExtendedTooltip name="ВажностьПроблемыРасширеннаяПодсказка" id="51"/>
 								</InputField>
-								<InputField name="СпособВыполнения" id="175">
-									<DataPath>Объект.СпособВыполнения</DataPath>
-									<ContextMenu name="СпособВыполненияКонтекстноеМеню" id="176"/>
-									<ExtendedTooltip name="СпособВыполненияРасширеннаяПодсказка" id="177"/>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="ГруппаРасписание" id="212">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Расписание проверки</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Vertical</Group>
+							<Collapsed>true</Collapsed>
+							<ControlRepresentation>Picture</ControlRepresentation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаРасписаниеРасширеннаяПодсказка" id="213"/>
+							<ChildItems>
+								<CheckBoxField name="ВыполняетсяВФонеПоРасписанию" id="217">
+									<DataPath>ВыполняетсяВФонеПоРасписанию</DataPath>
+									<TitleLocation>Right</TitleLocation>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="ВыполняетсяВФонеПоРасписаниюКонтекстноеМеню" id="218"/>
+									<ExtendedTooltip name="ВыполняетсяВФонеПоРасписаниюРасширеннаяПодсказка" id="219"/>
 									<Events>
-										<Event name="OnChange">СпособВыполненияПриИзменении</Event>
+										<Event name="OnChange">ВыполняетсяВФонеПоРасписаниюПриИзменении</Event>
 									</Events>
+								</CheckBoxField>
+								<UsualGroup name="ГруппаНастройкиРасписания" id="220">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Настройки расписания</v8:content>
+										</v8:item>
+									</Title>
+									<Group>Horizontal</Group>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="ГруппаНастройкиРасписанияРасширеннаяПодсказка" id="221"/>
+									<ChildItems>
+										<RadioButtonField name="СелекторРасписания" id="222">
+											<DataPath>СелекторРасписания</DataPath>
+											<TitleLocation>None</TitleLocation>
+											<RadioButtonType>Auto</RadioButtonType>
+											<ColumnsCount>1</ColumnsCount>
+											<ChoiceList>
+												<xr:Item>
+													<xr:Presentation/>
+													<xr:CheckState>0</xr:CheckState>
+													<xr:Value xsi:type="FormChoiceListDesTimeValue">
+														<Presentation>
+															<v8:item>
+																<v8:lang>ru</v8:lang>
+																<v8:content>по общему расписанию</v8:content>
+															</v8:item>
+														</Presentation>
+														<Value xsi:type="xs:decimal">1</Value>
+													</xr:Value>
+												</xr:Item>
+												<xr:Item>
+													<xr:Presentation/>
+													<xr:CheckState>0</xr:CheckState>
+													<xr:Value xsi:type="FormChoiceListDesTimeValue">
+														<Presentation>
+															<v8:item>
+																<v8:lang>ru</v8:lang>
+																<v8:content>по индивидуальному расписанию</v8:content>
+															</v8:item>
+														</Presentation>
+														<Value xsi:type="xs:decimal">2</Value>
+													</xr:Value>
+												</xr:Item>
+											</ChoiceList>
+											<ContextMenu name="СелекторРасписанияКонтекстноеМеню" id="223"/>
+											<ExtendedTooltip name="СелекторРасписанияРасширеннаяПодсказка" id="224"/>
+											<Events>
+												<Event name="OnChange">СелекторРасписанияПриИзменении</Event>
+											</Events>
+										</RadioButtonField>
+										<UsualGroup name="ГруппаПредставленийРасписаний" id="225">
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Представлений расписаний</v8:content>
+												</v8:item>
+											</Title>
+											<Group>Vertical</Group>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="ГруппаПредставленийРасписанийРасширеннаяПодсказка" id="226"/>
+											<ChildItems>
+												<LabelDecoration name="ПредставлениеОбщегоРасписания" id="214">
+													<AutoMaxWidth>false</AutoMaxWidth>
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>&lt;Представление общего расписания&gt;</v8:content>
+														</v8:item>
+													</Title>
+													<VerticalAlign>Center</VerticalAlign>
+													<ContextMenu name="ПредставлениеОбщегоРасписанияКонтекстноеМеню" id="215"/>
+													<ExtendedTooltip name="ПредставлениеОбщегоРасписанияРасширеннаяПодсказка" id="216"/>
+												</LabelDecoration>
+												<LabelDecoration name="ПредставлениеИндивидуальногоРасписания" id="172">
+													<AutoMaxWidth>false</AutoMaxWidth>
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>&lt;Представление индивидуального расписания&gt;</v8:content>
+														</v8:item>
+													</Title>
+													<VerticalAlign>Center</VerticalAlign>
+													<ContextMenu name="ПредставлениеИндивидуальногоРасписанияКонтекстноеМеню" id="173"/>
+													<ExtendedTooltip name="ПредставлениеИндивидуальногоРасписанияРасширеннаяПодсказка" id="174"/>
+													<Events>
+														<Event name="URLProcessing">ПредставлениеИндивидуальногоРасписанияОбработкаНавигационнойСсылки</Event>
+													</Events>
+												</LabelDecoration>
+											</ChildItems>
+										</UsualGroup>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</Page>
+				<Page name="Дополнительно" id="185">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дополнительно</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="ДополнительноРасширеннаяПодсказка" id="186"/>
+					<ChildItems>
+						<UsualGroup name="ГруппаДатаНачалаЛимитПроблем" id="190">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Дата начала лимит проблем</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Horizontal</Group>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаДатаНачалаЛимитПроблемРасширеннаяПодсказка" id="191"/>
+							<ChildItems>
+								<InputField name="ДатаНачалаПроверки" id="178">
+									<DataPath>Объект.ДатаНачалаПроверки</DataPath>
+									<ContextMenu name="ДатаНачалаПроверкиКонтекстноеМеню" id="179"/>
+									<ExtendedTooltip name="ДатаНачалаПроверкиРасширеннаяПодсказка" id="180"/>
+								</InputField>
+								<InputField name="ЛимитПроблем" id="192">
+									<DataPath>Объект.ЛимитПроблем</DataPath>
+									<ContextMenu name="ЛимитПроблемКонтекстноеМеню" id="193"/>
+									<ExtendedTooltip name="ЛимитПроблемРасширеннаяПодсказка" id="194"/>
 								</InputField>
 							</ChildItems>
 						</UsualGroup>
@@ -182,60 +318,10 @@
 						</UsualGroup>
 					</ChildItems>
 				</Page>
-				<Page name="Дополнительно" id="185">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Дополнительно</v8:content>
-						</v8:item>
-					</Title>
-					<ExtendedTooltip name="ДополнительноРасширеннаяПодсказка" id="186"/>
-					<ChildItems>
-						<UsualGroup name="ГруппаДатаНачалаЛимитПроблем" id="190">
-							<Title>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Дата начала лимит проблем</v8:content>
-								</v8:item>
-							</Title>
-							<Group>Horizontal</Group>
-							<ShowTitle>false</ShowTitle>
-							<ExtendedTooltip name="ГруппаДатаНачалаЛимитПроблемРасширеннаяПодсказка" id="191"/>
-							<ChildItems>
-								<InputField name="ДатаНачалаПроверки" id="178">
-									<DataPath>Объект.ДатаНачалаПроверки</DataPath>
-									<ContextMenu name="ДатаНачалаПроверкиКонтекстноеМеню" id="179"/>
-									<ExtendedTooltip name="ДатаНачалаПроверкиРасширеннаяПодсказка" id="180"/>
-								</InputField>
-								<InputField name="ЛимитПроблем" id="192">
-									<DataPath>Объект.ЛимитПроблем</DataPath>
-									<ContextMenu name="ЛимитПроблемКонтекстноеМеню" id="193"/>
-									<ExtendedTooltip name="ЛимитПроблемРасширеннаяПодсказка" id="194"/>
-								</InputField>
-							</ChildItems>
-						</UsualGroup>
-						<LabelDecoration name="ПредставлениеРасписания" id="172">
-							<AutoMaxWidth>false</AutoMaxWidth>
-							<Title formatted="false">
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>&lt;Представление расписания&gt;</v8:content>
-								</v8:item>
-							</Title>
-							<VerticalAlign>Center</VerticalAlign>
-							<ContextMenu name="ПредставлениеРасписанияКонтекстноеМеню" id="173"/>
-							<ExtendedTooltip name="ПредставлениеРасписанияРасширеннаяПодсказка" id="174"/>
-							<Events>
-								<Event name="URLProcessing">ПредставлениеИндивидуальногоРасписанияОбработкаНавигационнойСсылки</Event>
-							</Events>
-						</LabelDecoration>
-					</ChildItems>
-				</Page>
 			</ChildItems>
 		</Pages>
 		<InputField name="Комментарий" id="195">
 			<DataPath>Объект.Комментарий</DataPath>
-			<AutoMaxWidth>false</AutoMaxWidth>
 			<ContextMenu name="КомментарийКонтекстноеМеню" id="196"/>
 			<ExtendedTooltip name="КомментарийРасширеннаяПодсказка" id="197"/>
 		</InputField>
@@ -287,6 +373,33 @@
 				</v8:StringQualifiers>
 			</Type>
 		</Attribute>
+		<Attribute name="ВыполняетсяВФонеПоРасписанию" id="19">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выполняется в фоне по расписанию</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="СелекторРасписания" id="20">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Селектор расписания</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>1</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
 	</Attributes>
 	<Commands>
 		<Command name="ВыполнитьПроверку" id="1">
@@ -308,6 +421,25 @@
 			</Picture>
 			<Action>ВыполнитьПроверку</Action>
 			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="УстановитьСтандартныеНастройки" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Установить стандартные настройки</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Установить стандартные настройки</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.СинхронизацияДанныхКоллизия</xr:Ref>
+				<xr:LoadTransparent>false</xr:LoadTransparent>
+			</Picture>
+			<Action>УстановитьСтандартныеНастройки</Action>
 		</Command>
 	</Commands>
 	<CommandInterface>

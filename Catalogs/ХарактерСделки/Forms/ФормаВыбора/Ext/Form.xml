@@ -17,6 +17,13 @@
 					</v8:item>
 				</ToolTip>
 				<ExtendedTooltip name="ГруппаВажныеКомандыРасширеннаяПодсказка" id="23"/>
+				<ChildItems>
+					<Button name="ФормаКомандаПодборИзКлассификатора" id="26">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.КомандаПодборИзКлассификатора</CommandName>
+						<ExtendedTooltip name="ФормаКомандаПодборИзКлассификатораРасширеннаяПодсказка" id="27"/>
+					</Button>
+				</ChildItems>
 			</ButtonGroup>
 			<ButtonGroup name="ГруппаГлобальныеКоманды" id="24">
 				<Title>
@@ -89,6 +96,9 @@
 				<ContextMenu name="СписокУправлениеПоискомКонтекстноеМеню" id="14"/>
 				<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="15"/>
 			</SearchControlAddition>
+			<Events>
+				<Event name="BeforeAddRow">СписокПередНачаломДобавления</Event>
+			</Events>
 			<ChildItems>
 				<LabelField name="Код" id="19">
 					<DataPath>Список.Code</DataPath>
@@ -133,4 +143,28 @@
 			</Settings>
 		</Attribute>
 	</Attributes>
+	<Commands>
+		<Command name="КомандаПодборИзКлассификатора" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подбор из классификатора</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подбор информации о сотруднике из фасета "Языки народов РФ и иностранные языки" Общероссийского классификатора информации о населении</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Use>
+				<xr:Common>false</xr:Common>
+				<xr:Value name="Role.ПолныеПрава">true</xr:Value>
+			</Use>
+			<Action>КомандаПодборИзКлассификатора</Action>
+			<FunctionalOptions>
+				<Item>FunctionalOption.РаботаВЛокальномРежиме</Item>
+			</FunctionalOptions>
+		</Command>
+	</Commands>
 </Form>

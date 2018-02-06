@@ -137,12 +137,6 @@
 						</InputField>
 						<InputField name="КодПравовойФормы" id="252">
 							<DataPath>Объект.КодПравовойФормы</DataPath>
-							<ToolTip>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Код правовой формы</v8:content>
-								</v8:item>
-							</ToolTip>
 							<ToolTipRepresentation>Button</ToolTipRepresentation>
 							<Width>10</Width>
 							<HorizontalStretch>false</HorizontalStretch>
@@ -388,6 +382,9 @@
 							<ChildItems>
 								<InputField name="СтранаРезидентства" id="244">
 									<DataPath>Объект.СтранаРезидентства</DataPath>
+									<DropListButton>false</DropListButton>
+									<ChoiceButton>true</ChoiceButton>
+									<ChoiceButtonRepresentation>ShowInInputField</ChoiceButtonRepresentation>
 									<ContextMenu name="СтранаРезидентстваКонтекстноеМеню" id="245"/>
 									<ExtendedTooltip name="СтранаРезидентстваРасширеннаяПодсказка" id="246"/>
 									<Events>
@@ -539,50 +536,19 @@
 								</Page>
 							</ChildItems>
 						</Pages>
-						<UsualGroup name="ЗначенияПоУмолчанию" id="212">
-							<Title>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Используются как основные</v8:content>
-								</v8:item>
-							</Title>
-							<ToolTip>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Значения по умолчанию</v8:content>
-								</v8:item>
-							</ToolTip>
-							<Group>Vertical</Group>
-							<ExtendedTooltip name="ЗначенияПоУмолчаниюExtendedTooltip" id="213"/>
-							<ChildItems>
-								<InputField name="ОсновнойДоговорКонтрагента" id="236">
-									<DataPath>Объект.ОсновнойДоговорКонтрагента</DataPath>
-									<ToolTipRepresentation>Button</ToolTipRepresentation>
-									<Width>35</Width>
-									<HorizontalStretch>false</HorizontalStretch>
-									<ContextMenu name="ОсновнойДоговорКонтрагентаКонтекстноеМеню" id="237"/>
-									<ExtendedTooltip name="ОсновнойДоговорКонтрагентаРасширеннаяПодсказка" id="238"/>
-									<Events>
-										<Event name="OnChange">ОсновнойДоговорКонтрагентаПриИзменении</Event>
-										<Event name="StartChoice">ОсновнойДоговорКонтрагентаНачалоВыбора</Event>
-										<Event name="Clearing">ОсновнойДоговорКонтрагентаОчистка</Event>
-									</Events>
-								</InputField>
-								<InputField name="ОсновнойБанковскийСчет" id="217">
-									<DataPath>Объект.ОсновнойБанковскийСчет</DataPath>
-									<ToolTipRepresentation>Button</ToolTipRepresentation>
-									<EditMode>EnterOnInput</EditMode>
-									<Width>35</Width>
-									<HorizontalStretch>false</HorizontalStretch>
-									<Wrap>false</Wrap>
-									<ContextMenu name="ОсновнойБанковскийСчетКонтекстноеМеню" id="218"/>
-									<ExtendedTooltip name="ОсновнойБанковскийСчетРасширеннаяПодсказка" id="219"/>
-									<Events>
-										<Event name="StartChoice">ОсновнойБанковскийСчетНачалоВыбора</Event>
-									</Events>
-								</InputField>
-							</ChildItems>
-						</UsualGroup>
+						<InputField name="ОсновнойБанковскийСчет" id="217">
+							<DataPath>Объект.ОсновнойБанковскийСчет</DataPath>
+							<ToolTipRepresentation>Button</ToolTipRepresentation>
+							<EditMode>EnterOnInput</EditMode>
+							<Width>35</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Wrap>false</Wrap>
+							<ContextMenu name="ОсновнойБанковскийСчетКонтекстноеМеню" id="218"/>
+							<ExtendedTooltip name="ОсновнойБанковскийСчетРасширеннаяПодсказка" id="219"/>
+							<Events>
+								<Event name="StartChoice">ОсновнойБанковскийСчетНачалоВыбора</Event>
+							</Events>
+						</InputField>
 					</ChildItems>
 				</Page>
 				<Page name="ГруппаКонтактнаяИнформация" id="203">
@@ -814,6 +780,14 @@
 			</Item>
 			<Item>
 				<Command>5:22942b39-edee-4f63-8ea1-15a23168f1c2</Command>
+				<Type>Auto</Type>
+				<DefaultVisible>false</DefaultVisible>
+				<Visible>
+					<xr:Common>false</xr:Common>
+				</Visible>
+			</Item>
+			<Item>
+				<Command>InformationRegister.ОсновныеДоговорыКонтрагента.StandardCommand.OpenByValue.Контрагент</Command>
 				<Type>Auto</Type>
 				<DefaultVisible>false</DefaultVisible>
 				<Visible>

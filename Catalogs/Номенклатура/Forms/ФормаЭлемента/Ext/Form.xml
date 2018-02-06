@@ -45,6 +45,7 @@
 		</ChildItems>
 	</AutoCommandBar>
 	<Events>
+		<Event name="ChoiceProcessing">ОбработкаВыбора</Event>
 		<Event name="AfterWriteAtServer">ПослеЗаписиНаСервере</Event>
 		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
 		<Event name="OnReadAtServer">ПриЧтенииНаСервере</Event>
@@ -285,10 +286,15 @@
 												<CommandName>Form.Command.ИзменитьИзображение</CommandName>
 												<ExtendedTooltip name="АдресКартинкиКонтекстноеМенюИзменитьИзображениеРасширеннаяПодсказка" id="164"/>
 											</Button>
-											<Button name="АдресКартинкиКонтекстноеМенюПросмотретьИзображение" id="165">
+											<Button name="АдресКартинкиКонтекстноеМенюИзПрисоединенныхФайлов" id="165">
 												<Type>CommandBarButton</Type>
-												<CommandName>Form.Command.ПросмотретьИзображение</CommandName>
-												<ExtendedTooltip name="АдресКартинкиКонтекстноеМенюПросмотретьИзображениеРасширеннаяПодсказка" id="166"/>
+												<CommandName>Form.Command.ИзПрисоединенныхФайлов</CommandName>
+												<ExtendedTooltip name="АдресКартинкиКонтекстноеМенюИзПрисоединенныхФайловРасширеннаяПодсказка" id="166"/>
+											</Button>
+											<Button name="АдресКартинкиКонтекстноеМенюОчиститьИзображение" id="167">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.ОчиститьИзображение</CommandName>
+												<ExtendedTooltip name="АдресКартинкиКонтекстноеМенюОчиститьИзображениеРасширеннаяПодсказка" id="168"/>
 											</Button>
 										</ChildItems>
 									</ContextMenu>
@@ -333,7 +339,7 @@
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Добавить</v8:content>
+					<v8:content>Выбрать изображение</v8:content>
 				</v8:item>
 			</Title>
 			<ToolTip>
@@ -353,7 +359,7 @@
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Изменить изображение</v8:content>
+					<v8:content>Открыть карточку файла</v8:content>
 				</v8:item>
 			</Title>
 			<ToolTip>
@@ -369,24 +375,45 @@
 			<Action>ИзменитьИзображение</Action>
 			<ModifiesSavedData>true</ModifiesSavedData>
 		</Command>
-		<Command name="ПросмотретьИзображение" id="3">
+		<Command name="ОчиститьИзображение" id="3">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Просмотреть</v8:content>
+					<v8:content>Очистить изображение</v8:content>
 				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Просмотреть изображение</v8:content>
+					<v8:content>Очистить изображение</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Picture>
-				<xr:Ref>StdPicture.Magnifier</xr:Ref>
+				<xr:Ref>StdPicture.Delete</xr:Ref>
 				<xr:LoadTransparent>true</xr:LoadTransparent>
 			</Picture>
-			<Action>ПросмотретьИзображение</Action>
+			<Action>ОчиститьИзображение</Action>
+			<ModifiesSavedData>true</ModifiesSavedData>
+		</Command>
+		<Command name="ИзПрисоединенныхФайлов" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выбрать из присоединенных</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выбрать логотип из присоединенных файлов</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.ChooseValue</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ИзПрисоединенныхФайлов</Action>
+			<ModifiesSavedData>true</ModifiesSavedData>
 		</Command>
 	</Commands>
 	<Parameters>
@@ -451,6 +478,41 @@
 				<Command>4:22942b39-edee-4f63-8ea1-15a23168f1c2</Command>
 				<Type>Auto</Type>
 				<DefaultVisible>false</DefaultVisible>
+				<Visible>
+					<xr:Common>false</xr:Common>
+				</Visible>
+			</Item>
+			<Item>
+				<Command>InformationRegister.ШтрихкодыНоменклатуры.Command.ШтрихкодыНоменклатуры</Command>
+				<Type>Auto</Type>
+				<CommandGroup>FormNavigationPanelGoTo</CommandGroup>
+				<Index>1</Index>
+				<Visible>
+					<xr:Common>false</xr:Common>
+				</Visible>
+			</Item>
+			<Item>
+				<Command>InformationRegister.ЦеныНоменклатуры.StandardCommand.OpenByValue.Номенклатура</Command>
+				<Type>Auto</Type>
+				<CommandGroup>FormNavigationPanelGoTo</CommandGroup>
+				<Visible>
+					<xr:Common>false</xr:Common>
+				</Visible>
+			</Item>
+			<Item>
+				<Command>CommonCommand.ПрисоединенныеФайлы</Command>
+				<Type>Auto</Type>
+				<CommandGroup>FormNavigationPanelGoTo</CommandGroup>
+				<Index>2</Index>
+				<Visible>
+					<xr:Common>false</xr:Common>
+				</Visible>
+			</Item>
+			<Item>
+				<Command>Catalog.СпецификацияНоменклатуры.StandardCommand.OpenByValue</Command>
+				<Type>Auto</Type>
+				<CommandGroup>FormNavigationPanelGoTo</CommandGroup>
+				<Index>3</Index>
 				<Visible>
 					<xr:Common>false</xr:Common>
 				</Visible>
