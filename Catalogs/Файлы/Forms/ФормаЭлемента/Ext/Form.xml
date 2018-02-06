@@ -3,12 +3,13 @@
 	<AutoTitle>false</AutoTitle>
 	<CommandSet>
 		<ExcludedCommand>WriteAndClose</ExcludedCommand>
+		<ExcludedCommand>ShowInList</ExcludedCommand>
+		<ExcludedCommand>SetDeletionMark</ExcludedCommand>
 		<ExcludedCommand>Delete</ExcludedCommand>
 		<ExcludedCommand>Write</ExcludedCommand>
 	</CommandSet>
 	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
-		<Autofill>false</Autofill>
 		<ChildItems>
 			<Button name="ФормаЗаписатьИЗакрыть" id="178">
 				<Type>CommandBarButton</Type>
@@ -32,6 +33,11 @@
 				<OnlyInAllActions>false</OnlyInAllActions>
 				<CommandName>Form.Command.ПоказатьВСписке</CommandName>
 				<ExtendedTooltip name="ФормаПоказатьВСпискеРасширеннаяПодсказка" id="150"/>
+			</Button>
+			<Button name="ФормаПеречитать" id="221">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.StandardCommand.Reread</CommandName>
+				<ExtendedTooltip name="ФормаПеречитатьРасширеннаяПодсказка" id="222"/>
 			</Button>
 			<Popup name="ПодменюПечать" id="213">
 				<Title>
@@ -173,6 +179,12 @@
 						<CommandName>Form.Command.СохранитьКак</CommandName>
 						<ExtendedTooltip name="ФормаСохранитьКакExtendedTooltip" id="67"/>
 					</Button>
+					<Button name="ФормаЗанять" id="237">
+						<Type>CommandBarButton</Type>
+						<OnlyInAllActions>false</OnlyInAllActions>
+						<CommandName>Form.Command.Занять</CommandName>
+						<ExtendedTooltip name="ФормаЗанятьРасширеннаяПодсказка" id="238"/>
+					</Button>
 					<Button name="ФормаОсвободить" id="16">
 						<Type>CommandBarButton</Type>
 						<OnlyInAllActions>false</OnlyInAllActions>
@@ -207,6 +219,76 @@
 		<Event name="FillCheckProcessingAtServer">ОбработкаПроверкиЗаполненияНаСервере</Event>
 	</Events>
 	<ChildItems>
+		<UsualGroup name="ГруппаПояснениеОблачногоСервиса" id="223">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Пояснение облачного сервиса</v8:content>
+				</v8:item>
+			</Title>
+			<HorizontalStretch>true</HorizontalStretch>
+			<Group>Horizontal</Group>
+			<VerticalAlign>Center</VerticalAlign>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<BackColor>style:ToolTipBackColor</BackColor>
+			<ExtendedTooltip name="ГруппаПояснениеОблачногоСервисаРасширеннаяПодсказка" id="224"/>
+			<ChildItems>
+				<PictureDecoration name="ДекорацияКартинкаОблачногоСервиса" id="225">
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Декорация картинка облачного сервиса</v8:content>
+						</v8:item>
+					</Title>
+					<Picture>
+						<xr:Ref>CommonPicture.ПапкаОблачногоСервиса</xr:Ref>
+						<xr:LoadTransparent>false</xr:LoadTransparent>
+					</Picture>
+					<ContextMenu name="ДекорацияКартинкаОблачногоСервисаКонтекстноеМеню" id="226"/>
+					<ExtendedTooltip name="ДекорацияКартинкаОблачногоСервисаРасширеннаяПодсказка" id="227"/>
+				</PictureDecoration>
+				<LabelDecoration name="ДекорацияПояснение" id="228">
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<Title formatted="true">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Файл доступен только для просмотра, работа с ним ведется в облачном сервисе %1.  </v8:content>
+						</v8:item>
+					</Title>
+					<VerticalAlign>Center</VerticalAlign>
+					<ContextMenu name="ДекорацияПояснениеКонтекстноеМеню" id="229"/>
+					<ExtendedTooltip name="ДекорацияПояснениеРасширеннаяПодсказка" id="230"/>
+				</LabelDecoration>
+				<PictureDecoration name="ДекорацияКартинкаСтатусСинхронизации" id="231">
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Неудачная синхронизация файла</v8:content>
+						</v8:item>
+					</Title>
+					<Picture>
+						<xr:Ref>CommonPicture.Предупреждение</xr:Ref>
+						<xr:LoadTransparent>true</xr:LoadTransparent>
+					</Picture>
+					<ContextMenu name="ДекорацияКартинкаСтатусСинхронизацииКонтекстноеМеню" id="232"/>
+					<ExtendedTooltip name="ДекорацияКартинкаСтатусСинхронизацииРасширеннаяПодсказка" id="233"/>
+				</PictureDecoration>
+				<LabelDecoration name="ДекорацияДатаСинхронизации" id="234">
+					<Title formatted="true">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Синхронизирован: %2</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="ДекорацияДатаСинхронизацииКонтекстноеМеню" id="235"/>
+					<ExtendedTooltip name="ДекорацияДатаСинхронизацииРасширеннаяПодсказка" id="236"/>
+					<Events>
+						<Event name="URLProcessing">ДекорацияДатаСинхронизацииОбработкаНавигационнойСсылки</Event>
+					</Events>
+				</LabelDecoration>
+			</ChildItems>
+		</UsualGroup>
 		<UsualGroup name="ГруппаОбщаяИнформация" id="29">
 			<Title>
 				<v8:item>
@@ -1294,6 +1376,17 @@
 			</Title>
 			<Type/>
 		</Attribute>
+		<Attribute name="УчетнаяЗапись" id="18">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Учетная запись</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.УчетныеЗаписиСинхронизацииФайлов</v8:Type>
+			</Type>
+		</Attribute>
 	</Attributes>
 	<Commands>
 		<Command name="СтандартнаяЗаписатьИЗакрыть" id="1">
@@ -1712,7 +1805,12 @@
 					<v8:content>Отправить</v8:content>
 				</v8:item>
 			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.ОтправитьЭлектронноеПисьмо</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
 			<Action>Отправить</Action>
+			<Representation>TextPicture</Representation>
 		</Command>
 		<Command name="Печать" id="27">
 			<Title>
@@ -1727,7 +1825,12 @@
 					<v8:content>Сразу на принтер</v8:content>
 				</v8:item>
 			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Print</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
 			<Action>Печать</Action>
+			<Representation>TextPicture</Representation>
 		</Command>
 		<Command name="ПечатьСоШтампом" id="28">
 			<Title>
@@ -1743,6 +1846,27 @@
 				</v8:item>
 			</ToolTip>
 			<Action>ПечатьСоШтампом</Action>
+		</Command>
+		<Command name="Занять" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Занять</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Пометить файл как занятый для редактирования</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.ЗанятьФайл</xr:Ref>
+				<xr:LoadTransparent>false</xr:LoadTransparent>
+			</Picture>
+			<Action>Занять</Action>
+			<Representation>TextPicture</Representation>
+			<ModifiesSavedData>true</ModifiesSavedData>
 		</Command>
 	</Commands>
 	<Parameters>

@@ -330,15 +330,16 @@ function backupDB() {
     if (!createBackup)
         return 0;
     try {
-        var newpath = oFileSystemObject.CopyFile(BaseFileName, backupFileName, true);
+        oFileSystemObject.CopyFile(BaseFileName, backupFileName, true);
         ret = 0;
         log(format("Резервная копия базы создана", ret), ret != 0);
     }
     catch (e) {
         CollectGarbage();   // предотвращает исключение out of memory
         log(format("Исключение при создании резервной копии базы: {0}, {1}.", e.name, e.message), true);
-        log(format("Трассировка:\nКопировали из: {0}\nКопировали в:{1}", BaseFileName, backupFileName), true);
+        log(format("Трассировка:\nКопировали из: {0}\nКопировали в: {1}", BaseFileName, backupFileName), true);
         ret = 1;
+        UseRestore = false;
     }
     if (ret == 0)
         backupCreated = true;

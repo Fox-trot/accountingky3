@@ -37,9 +37,14 @@
 				<ChildItems>
 					<Button name="ФормаОбщаяКомандаОтчетПоДвижениям" id="377">
 						<Type>CommandBarButton</Type>
-						<CommandName>CommonCommand.ОтчетПоДвижениям</CommandName>
+						<CommandName>0:8aabb09e-5cb7-4d67-b9e8-c3eabf06a09f</CommandName>
 						<DataPath>Объект.Ref</DataPath>
 						<ExtendedTooltip name="ФормаОбщаяКомандаОтчетПоДвижениямРасширеннаяПодсказка" id="378"/>
+					</Button>
+					<Button name="ФормаОбщаяКомандаЗапуститьМонитор" id="391">
+						<Type>CommandBarButton</Type>
+						<CommandName>CommonCommand.ЗапуститьМонитор</CommandName>
+						<ExtendedTooltip name="ФормаОбщаяКомандаЗапуститьМониторРасширеннаяПодсказка" id="392"/>
 					</Button>
 				</ChildItems>
 			</ButtonGroup>
@@ -129,56 +134,14 @@
 									<ContextMenu name="СтажКонтекстноеМеню" id="331"/>
 									<ExtendedTooltip name="СтажРасширеннаяПодсказка" id="332"/>
 								</InputField>
-								<Button name="ЗаполнитьПоФизЛицу" id="269">
-									<Type>UsualButton</Type>
-									<CommandName>Form.Command.ЗаполнитьПоФизЛицу</CommandName>
-									<ExtendedTooltip name="ЗаполнитьПоФизЛицуРасширеннаяПодсказка" id="270"/>
-								</Button>
 							</ChildItems>
 						</UsualGroup>
-						<UsualGroup name="ГруппаДанныеПоФизЛицу" id="273">
+						<InputField name="ГрафикРаботы" id="275">
+							<DataPath>Объект.ГрафикРаботы</DataPath>
 							<ReadOnly>true</ReadOnly>
-							<Title>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Место работы</v8:content>
-								</v8:item>
-							</Title>
-							<ToolTip>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Данные по физ лицу</v8:content>
-								</v8:item>
-							</ToolTip>
-							<Group>Vertical</Group>
-							<Behavior>Collapsible</Behavior>
-							<CollapsedRepresentationTitle>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Место работы ...</v8:content>
-								</v8:item>
-							</CollapsedRepresentationTitle>
-							<Collapsed>true</Collapsed>
-							<Representation>None</Representation>
-							<ExtendedTooltip name="ГруппаДанныеПоФизЛицуРасширеннаяПодсказка" id="274"/>
-							<ChildItems>
-								<InputField name="Подразделение" id="278">
-									<DataPath>Объект.Подразделение</DataPath>
-									<ContextMenu name="ПодразделениеКонтекстноеМеню" id="279"/>
-									<ExtendedTooltip name="ПодразделениеРасширеннаяПодсказка" id="280"/>
-								</InputField>
-								<InputField name="Должность" id="281">
-									<DataPath>Объект.Должность</DataPath>
-									<ContextMenu name="ДолжностьКонтекстноеМеню" id="282"/>
-									<ExtendedTooltip name="ДолжностьРасширеннаяПодсказка" id="283"/>
-								</InputField>
-								<InputField name="ГрафикРаботы" id="275">
-									<DataPath>Объект.ГрафикРаботы</DataPath>
-									<ContextMenu name="ГрафикРаботыКонтекстноеМеню" id="276"/>
-									<ExtendedTooltip name="ГрафикРаботыРасширеннаяПодсказка" id="277"/>
-								</InputField>
-							</ChildItems>
-						</UsualGroup>
+							<ContextMenu name="ГрафикРаботыКонтекстноеМеню" id="276"/>
+							<ExtendedTooltip name="ГрафикРаботыРасширеннаяПодсказка" id="277"/>
+						</InputField>
 					</ChildItems>
 				</UsualGroup>
 				<UsualGroup name="ПраваяКолонка" id="14">
@@ -355,13 +318,13 @@
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>СЗП</v8:content>
+											<v8:content>СЗПД</v8:content>
 										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>Размер среднего заработка</v8:content>
+											<v8:content>Размер среднемесячной заработной платы за день</v8:content>
 										</v8:item>
 									</ToolTip>
 									<ToolTipRepresentation>Button</ToolTipRepresentation>
@@ -654,7 +617,13 @@
 					</ToolTip>
 					<ExtendedTooltip name="СтраницаДополнительноРасширеннаяПодсказка" id="116"/>
 					<ChildItems>
-						<UsualGroup name="ГруппаИнформация" id="359">
+						<InputField name="Подразделение" id="278">
+							<DataPath>Объект.Подразделение</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<ContextMenu name="ПодразделениеКонтекстноеМеню" id="279"/>
+							<ExtendedTooltip name="ПодразделениеРасширеннаяПодсказка" id="280"/>
+						</InputField>
+						<UsualGroup name="ГруппаИнформация" id="383">
 							<Title>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
@@ -667,44 +636,49 @@
 									<v8:content>Группа информация</v8:content>
 								</v8:item>
 							</ToolTip>
-							<Group>Vertical</Group>
+							<Group>Horizontal</Group>
+							<VerticalAlign>Bottom</VerticalAlign>
 							<Representation>None</Representation>
 							<ShowTitle>false</ShowTitle>
-							<ExtendedTooltip name="ГруппаИнформацияРасширеннаяПодсказка" id="360"/>
+							<ExtendedTooltip name="ГруппаИнформацияРасширеннаяПодсказка" id="384"/>
 							<ChildItems>
-								<InputField name="Комментарий" id="361">
+								<InputField name="Комментарий" id="385">
 									<DataPath>Объект.Комментарий</DataPath>
 									<TitleLocation>None</TitleLocation>
+									<EditMode>EnterOnInput</EditMode>
+									<AutoMaxWidth>false</AutoMaxWidth>
+									<MaxWidth>50</MaxWidth>
 									<MultiLine>true</MultiLine>
+									<ChoiceButton>true</ChoiceButton>
 									<InputHint>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
 											<v8:content>Комментарий</v8:content>
 										</v8:item>
 									</InputHint>
-									<ContextMenu name="КомментарийКонтекстноеМеню" id="362"/>
-									<ExtendedTooltip name="КомментарийExtendedTooltip" id="363"/>
+									<ContextMenu name="КомментарийКонтекстноеМеню" id="386"/>
+									<ExtendedTooltip name="КомментарийРасширеннаяПодсказка" id="387"/>
 									<Events>
 										<Event name="OnChange">КомментарийПриИзменении</Event>
+										<Event name="StartChoice">КомментарийНачалоВыбора</Event>
 									</Events>
 								</InputField>
-								<LabelField name="АвторДокумента" id="364">
+								<LabelField name="АвторДокумента" id="388">
 									<DataPath>Объект.Автор</DataPath>
-									<TitleLocation>Left</TitleLocation>
+									<ReadOnly>true</ReadOnly>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
 											<v8:content>Автор документа</v8:content>
 										</v8:item>
 									</ToolTip>
-									<Width>35</Width>
-									<HorizontalStretch>false</HorizontalStretch>
+									<AutoMaxWidth>false</AutoMaxWidth>
 									<Border width="1">
 										<v8ui:style xsi:type="v8ui:ControlBorderType">Single</v8ui:style>
 									</Border>
 									<TextColor>#993300</TextColor>
-									<ContextMenu name="АвторДокументаКонтекстноеМеню" id="365"/>
-									<ExtendedTooltip name="АвторДокументаExtendedTooltip" id="366"/>
+									<ContextMenu name="АвторДокументаКонтекстноеМеню" id="389"/>
+									<ExtendedTooltip name="АвторДокументаExtendedTooltip" id="390"/>
 								</LabelField>
 							</ChildItems>
 						</UsualGroup>
@@ -886,26 +860,6 @@
 			</ToolTip>
 			<Action>Рассчитать</Action>
 			<ModifiesSavedData>true</ModifiesSavedData>
-		</Command>
-		<Command name="ЗаполнитьПоФизЛицу" id="4">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Заполнить</v8:content>
-				</v8:item>
-			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Заполнить</v8:content>
-				</v8:item>
-			</ToolTip>
-			<Picture>
-				<xr:Ref>CommonPicture.ЗаполнитьФорму</xr:Ref>
-				<xr:LoadTransparent>true</xr:LoadTransparent>
-			</Picture>
-			<Action>ЗаполнитьПоФизЛицу</Action>
-			<Representation>Picture</Representation>
 		</Command>
 	</Commands>
 </Form>

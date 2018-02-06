@@ -37,7 +37,7 @@
 				<ChildItems>
 					<Button name="ФормаОбщаяКомандаОтчетПоДвижениям" id="1045">
 						<Type>CommandBarButton</Type>
-						<CommandName>CommonCommand.ОтчетПоДвижениям</CommandName>
+						<CommandName>0:8aabb09e-5cb7-4d67-b9e8-c3eabf06a09f</CommandName>
 						<DataPath>Объект.Ref</DataPath>
 						<ExtendedTooltip name="ФормаОбщаяКомандаОтчетПоДвижениямРасширеннаяПодсказка" id="1046"/>
 					</Button>
@@ -150,16 +150,14 @@
 						</UsualGroup>
 						<InputField name="ДокументОснование" id="1073">
 							<DataPath>Объект.ДокументОснование</DataPath>
+							<DropListButton>false</DropListButton>
+							<ChoiceButton>true</ChoiceButton>
+							<ChoiceButtonRepresentation>ShowInInputField</ChoiceButtonRepresentation>
 							<ContextMenu name="ДокументОснованиеКонтекстноеМеню" id="1074"/>
 							<ExtendedTooltip name="ДокументОснованиеРасширеннаяПодсказка" id="1075"/>
 							<Events>
 								<Event name="OnChange">ДокументОснованиеПриИзменении</Event>
 							</Events>
-						</InputField>
-						<InputField name="СтастьЗатрат" id="1135">
-							<DataPath>Объект.СтатьяЗатрат</DataPath>
-							<ContextMenu name="СтастьЗатратКонтекстноеМеню" id="1136"/>
-							<ExtendedTooltip name="СтастьЗатратРасширеннаяПодсказка" id="1137"/>
 						</InputField>
 					</ChildItems>
 				</UsualGroup>
@@ -803,21 +801,36 @@
 					<TitleDataPath>Объект.ОС.RowsCount</TitleDataPath>
 					<ExtendedTooltip name="СтраницаОСРасширеннаяПодсказка" id="813"/>
 					<ChildItems>
-						<InputField name="Подразделение" id="1141">
-							<DataPath>Объект.Подразделение</DataPath>
-							<ContextMenu name="ПодразделениеКонтекстноеМеню" id="1142"/>
-							<ExtendedTooltip name="ПодразделениеРасширеннаяПодсказка" id="1143"/>
-						</InputField>
-						<InputField name="ФизЛицо" id="1138">
-							<DataPath>Объект.ФизЛицо</DataPath>
-							<ContextMenu name="ФизЛицоКонтекстноеМеню" id="1139"/>
-							<ExtendedTooltip name="ФизЛицоРасширеннаяПодсказка" id="1140"/>
-						</InputField>
-						<InputField name="СобытиеОС" id="1244">
-							<DataPath>Объект.СобытиеОС</DataPath>
-							<ContextMenu name="СобытиеОСКонтекстноеМеню" id="1245"/>
-							<ExtendedTooltip name="СобытиеОСРасширеннаяПодсказка" id="1246"/>
-						</InputField>
+						<UsualGroup name="ГруппаПодразделения" id="1251">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа подразделения</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа подразделения</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаПодразделенияРасширеннаяПодсказка" id="1252"/>
+							<ChildItems>
+								<InputField name="Подразделение" id="1141">
+									<DataPath>Объект.Подразделение</DataPath>
+									<ContextMenu name="ПодразделениеКонтекстноеМеню" id="1142"/>
+									<ExtendedTooltip name="ПодразделениеРасширеннаяПодсказка" id="1143"/>
+								</InputField>
+								<InputField name="ФизЛицо" id="1138">
+									<DataPath>Объект.ФизЛицо</DataPath>
+									<ContextMenu name="ФизЛицоКонтекстноеМеню" id="1139"/>
+									<ExtendedTooltip name="ФизЛицоРасширеннаяПодсказка" id="1140"/>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
 						<Pages name="СтраницыОС" id="1247">
 							<Title>
 								<v8:item>
@@ -1141,6 +1154,12 @@
 														</InputField>
 													</ChildItems>
 												</ColumnGroup>
+												<InputField name="ОССтатьяЗатрат" id="1253">
+													<DataPath>Объект.ОС.СтатьяЗатрат</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="ОССтатьяЗатратКонтекстноеМеню" id="1254"/>
+													<ExtendedTooltip name="ОССтатьяЗатратРасширеннаяПодсказка" id="1255"/>
+												</InputField>
 											</ChildItems>
 										</Table>
 									</ChildItems>
@@ -2143,6 +2162,17 @@
 					<v8:Length>0</v8:Length>
 					<v8:AllowedLength>Variable</v8:AllowedLength>
 				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="НаличиеЗаказовПоКонтрагенту" id="55">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Наличие заказов по контрагенту</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
 			</Type>
 		</Attribute>
 	</Attributes>

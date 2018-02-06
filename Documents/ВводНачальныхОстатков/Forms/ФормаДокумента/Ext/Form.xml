@@ -37,7 +37,7 @@
 				<ChildItems>
 					<Button name="ФормаОбщаяКомандаОтчетПоДвижениям" id="1227">
 						<Type>CommandBarButton</Type>
-						<CommandName>CommonCommand.ОтчетПоДвижениям</CommandName>
+						<CommandName>0:8aabb09e-5cb7-4d67-b9e8-c3eabf06a09f</CommandName>
 						<DataPath>Объект.Ref</DataPath>
 						<ExtendedTooltip name="ФормаОбщаяКомандаОтчетПоДвижениямРасширеннаяПодсказка" id="1228"/>
 					</Button>
@@ -363,7 +363,6 @@
 							<v8:content>Страница товары</v8:content>
 						</v8:item>
 					</ToolTip>
-					<TitleDataPath>Объект.Транспорт.RowsCount</TitleDataPath>
 					<ExtendedTooltip name="СтраницаТоварыРасширеннаяПодсказка" id="588"/>
 					<ChildItems>
 						<Table name="Товары" id="589">
@@ -569,7 +568,15 @@
 							<DataPath>Объект.РасчетыСПерсоналом</DataPath>
 							<RowFilter xsi:nil="true"/>
 							<ContextMenu name="РасчетыСПерсоналомКонтекстноеМеню" id="500"/>
-							<AutoCommandBar name="РасчетыСПерсоналомКоманднаяПанель" id="501"/>
+							<AutoCommandBar name="РасчетыСПерсоналомКоманднаяПанель" id="501">
+								<ChildItems>
+									<Button name="РасчетыСПерсоналомЗагрузитьРасчеты" id="1409">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.ЗагрузитьРасчетыИзФайла</CommandName>
+										<ExtendedTooltip name="РасчетыСПерсоналомЗагрузитьРасчетыРасширеннаяПодсказка" id="1410"/>
+									</Button>
+								</ChildItems>
+							</AutoCommandBar>
 							<ExtendedTooltip name="РасчетыСПерсоналомРасширеннаяПодсказка" id="502"/>
 							<SearchStringAddition name="РасчетыСПерсоналомСтрокаПоиска" id="503">
 								<AdditionSource>
@@ -771,20 +778,20 @@
 													<ContextMenu name="ОСНомерСтрокиКонтекстноеМеню" id="252"/>
 													<ExtendedTooltip name="ОСНомерСтрокиРасширеннаяПодсказка" id="253"/>
 												</LabelField>
-												<ColumnGroup name="ОСГруппа3" id="254">
+												<ColumnGroup name="ОСГруппаОС" id="254">
 													<Title>
 														<v8:item>
 															<v8:lang>ru</v8:lang>
-															<v8:content>ОСГруппа3</v8:content>
+															<v8:content>ОСГруппа ОС</v8:content>
 														</v8:item>
 													</Title>
 													<ToolTip>
 														<v8:item>
 															<v8:lang>ru</v8:lang>
-															<v8:content>ОСГруппа3</v8:content>
+															<v8:content>ОСГруппа ОС</v8:content>
 														</v8:item>
 													</ToolTip>
-													<ExtendedTooltip name="ОСГруппа3РасширеннаяПодсказка" id="255"/>
+													<ExtendedTooltip name="ОСГруппаОСРасширеннаяПодсказка" id="255"/>
 													<ChildItems>
 														<InputField name="ОСОсновноеСредство" id="259">
 															<DataPath>Объект.ОС.ОсновноеСредство</DataPath>
@@ -809,8 +816,84 @@
 														</InputField>
 													</ChildItems>
 												</ColumnGroup>
-												<ColumnGroup name="ОСГруппа1" id="655">
-													<ExtendedTooltip name="ОСГруппа1РасширеннаяПодсказка" id="656"/>
+												<ColumnGroup name="ОСГруппаСтоимость" id="287">
+													<Title>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>ОСГруппа стоимость</v8:content>
+														</v8:item>
+													</Title>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>ОСГруппа стоимость</v8:content>
+														</v8:item>
+													</ToolTip>
+													<ExtendedTooltip name="ОСГруппаСтоимостьРасширеннаяПодсказка" id="288"/>
+													<ChildItems>
+														<InputField name="ОСПервоначальнаяСтоимость" id="289">
+															<DataPath>Объект.ОС.ПервоначальнаяСтоимость</DataPath>
+															<EditMode>EnterOnInput</EditMode>
+															<FooterDataPath>Объект.ОС.TotalПервоначальнаяСтоимость</FooterDataPath>
+															<Width>10</Width>
+															<ContextMenu name="ОСПервоначальнаяСтоимостьКонтекстноеМеню" id="290"/>
+															<ExtendedTooltip name="ОСПервоначальнаяСтоимостьРасширеннаяПодсказка" id="291"/>
+														</InputField>
+														<InputField name="ОСЛиквидационнаяСтоимость" id="349">
+															<DataPath>Объект.ОС.ЛиквидационнаяСтоимость</DataPath>
+															<EditMode>EnterOnInput</EditMode>
+															<FooterDataPath>Объект.ОС.TotalЛиквидационнаяСтоимость</FooterDataPath>
+															<ContextMenu name="ОСЛиквидационнаяСтоимостьКонтекстноеМеню" id="350"/>
+															<ExtendedTooltip name="ОСЛиквидационнаяСтоимостьРасширеннаяПодсказка" id="351"/>
+														</InputField>
+													</ChildItems>
+												</ColumnGroup>
+												<ColumnGroup name="ОСГруппаИзнос" id="1399">
+													<Title>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>ОСГруппа износ</v8:content>
+														</v8:item>
+													</Title>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>ОСГруппа износ</v8:content>
+														</v8:item>
+													</ToolTip>
+													<ExtendedTooltip name="ОСГруппаИзносРасширеннаяПодсказка" id="1400"/>
+													<ChildItems>
+														<InputField name="ОСНакопленнаяАмортизация" id="295">
+															<DataPath>Объект.ОС.НакопленнаяАмортизация</DataPath>
+															<EditMode>EnterOnInput</EditMode>
+															<FooterDataPath>Объект.ОС.TotalНакопленнаяАмортизация</FooterDataPath>
+															<Width>10</Width>
+															<ContextMenu name="ОСНакопленнаяАмортизацияКонтекстноеМеню" id="296"/>
+															<ExtendedTooltip name="ОСНакопленнаяАмортизацияРасширеннаяПодсказка" id="297"/>
+														</InputField>
+														<InputField name="ОССрокСлужбы" id="657">
+															<DataPath>Объект.ОС.СрокСлужбы</DataPath>
+															<EditMode>EnterOnInput</EditMode>
+															<Width>10</Width>
+															<ContextMenu name="ОССрокСлужбыКонтекстноеМеню" id="658"/>
+															<ExtendedTooltip name="ОССрокСлужбыРасширеннаяПодсказка" id="659"/>
+														</InputField>
+													</ChildItems>
+												</ColumnGroup>
+												<ColumnGroup name="ОСГруппаМетонахождение" id="655">
+													<Title>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>ОСГруппа метонахождение</v8:content>
+														</v8:item>
+													</Title>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>ОСГруппа метонахождение</v8:content>
+														</v8:item>
+													</ToolTip>
+													<ExtendedTooltip name="ОСГруппаМетонахождениеРасширеннаяПодсказка" id="656"/>
 													<ChildItems>
 														<InputField name="ОСПодразделение" id="640">
 															<DataPath>Объект.ОС.Подразделение</DataPath>
@@ -846,18 +929,6 @@
 															<EditMode>EnterOnInput</EditMode>
 															<ContextMenu name="ОСДатаПринятияКУчетуРеглКонтекстноеМеню" id="271"/>
 															<ExtendedTooltip name="ОСДатаПринятияКУчетуРеглРасширеннаяПодсказка" id="272"/>
-														</InputField>
-														<InputField name="ОССостояниеПринятияКУчетуРегл" id="273">
-															<DataPath>Объект.ОС.СобытиеОС</DataPath>
-															<Title>
-																<v8:item>
-																	<v8:lang>ru</v8:lang>
-																	<v8:content>Событие принятия к учету</v8:content>
-																</v8:item>
-															</Title>
-															<EditMode>EnterOnInput</EditMode>
-															<ContextMenu name="ОССостояниеПринятияКУчетуРеглКонтекстноеМеню" id="274"/>
-															<ExtendedTooltip name="ОССостояниеПринятияКУчетуРеглРасширеннаяПодсказка" id="275"/>
 														</InputField>
 														<ColumnGroup name="ОСГруппаВ4" id="276">
 															<Title>
@@ -945,75 +1016,6 @@
 															<ContextMenu name="ОССчетУчетаПарныйСчетКонтекстноеМеню" id="1261"/>
 															<ExtendedTooltip name="ОССчетУчетаПарныйСчетРасширеннаяПодсказка" id="1262"/>
 														</LabelField>
-														<InputField name="ОССрокСлужбы" id="657">
-															<DataPath>Объект.ОС.СрокСлужбы</DataPath>
-															<EditMode>EnterOnInput</EditMode>
-															<Width>10</Width>
-															<ContextMenu name="ОССрокСлужбыКонтекстноеМеню" id="658"/>
-															<ExtendedTooltip name="ОССрокСлужбыРасширеннаяПодсказка" id="659"/>
-														</InputField>
-													</ChildItems>
-												</ColumnGroup>
-												<ColumnGroup name="ОСГруппа6" id="287">
-													<Title>
-														<v8:item>
-															<v8:lang>ru</v8:lang>
-															<v8:content>ОСГруппа6</v8:content>
-														</v8:item>
-													</Title>
-													<ToolTip>
-														<v8:item>
-															<v8:lang>ru</v8:lang>
-															<v8:content>ОСГруппа6</v8:content>
-														</v8:item>
-													</ToolTip>
-													<ExtendedTooltip name="ОСГруппа6РасширеннаяПодсказка" id="288"/>
-													<ChildItems>
-														<InputField name="ОСПервоначальнаяСтоимость" id="289">
-															<DataPath>Объект.ОС.ПервоначальнаяСтоимость</DataPath>
-															<Title>
-																<v8:item>
-																	<v8:lang>ru</v8:lang>
-																	<v8:content>Первоначальная стоимость</v8:content>
-																</v8:item>
-															</Title>
-															<EditMode>EnterOnInput</EditMode>
-															<FooterDataPath>Объект.ОС.TotalПервоначальнаяСтоимость</FooterDataPath>
-															<Width>10</Width>
-															<ContextMenu name="ОСПервоначальнаяСтоимостьКонтекстноеМеню" id="290"/>
-															<ExtendedTooltip name="ОСПервоначальнаяСтоимостьРасширеннаяПодсказка" id="291"/>
-															<Events>
-																<Event name="OnChange">ОСПервоначальнаяСтоимостьПриИзменении</Event>
-															</Events>
-														</InputField>
-														<InputField name="ОССтоимостьДляВычисленияАмортизации" id="292">
-															<DataPath>Объект.ОС.СтоимостьДляВычисленияАмортизации</DataPath>
-															<Title>
-																<v8:item>
-																	<v8:lang>ru</v8:lang>
-																	<v8:content>Стоимость для амортизации</v8:content>
-																</v8:item>
-															</Title>
-															<EditMode>EnterOnInput</EditMode>
-															<FooterDataPath>Объект.ОС.TotalСтоимостьДляВычисленияАмортизации</FooterDataPath>
-															<Width>10</Width>
-															<ContextMenu name="ОССтоимостьДляВычисленияАмортизацииКонтекстноеМеню" id="293"/>
-															<ExtendedTooltip name="ОССтоимостьДляВычисленияАмортизацииРасширеннаяПодсказка" id="294"/>
-														</InputField>
-														<InputField name="ОСНакопленнаяАмортизация" id="295">
-															<DataPath>Объект.ОС.НакопленнаяАмортизация</DataPath>
-															<Title>
-																<v8:item>
-																	<v8:lang>ru</v8:lang>
-																	<v8:content>Накопленная амортизация</v8:content>
-																</v8:item>
-															</Title>
-															<EditMode>EnterOnInput</EditMode>
-															<FooterDataPath>Объект.ОС.TotalНакопленнаяАмортизация</FooterDataPath>
-															<Width>10</Width>
-															<ContextMenu name="ОСНакопленнаяАмортизацияКонтекстноеМеню" id="296"/>
-															<ExtendedTooltip name="ОСНакопленнаяАмортизацияРасширеннаяПодсказка" id="297"/>
-														</InputField>
 													</ChildItems>
 												</ColumnGroup>
 												<ColumnGroup name="ОСГруппа7" id="298">
@@ -1043,19 +1045,6 @@
 															<Width>20</Width>
 															<ContextMenu name="ОССпособПоступленияРеглКонтекстноеМеню" id="285"/>
 															<ExtendedTooltip name="ОССпособПоступленияРеглРасширеннаяПодсказка" id="286"/>
-														</InputField>
-														<InputField name="ОСКоэффициентАмортизации" id="306">
-															<DataPath>Объект.ОС.КоэффициентАмортизации</DataPath>
-															<Title>
-																<v8:item>
-																	<v8:lang>ru</v8:lang>
-																	<v8:content>% годовой амортизации</v8:content>
-																</v8:item>
-															</Title>
-															<EditMode>EnterOnInput</EditMode>
-															<Width>10</Width>
-															<ContextMenu name="ОСКоэффициентАмортизацииКонтекстноеМеню" id="307"/>
-															<ExtendedTooltip name="ОСКоэффициентАмортизацииРасширеннаяПодсказка" id="308"/>
 														</InputField>
 													</ChildItems>
 												</ColumnGroup>
@@ -1087,13 +1076,7 @@
 															<ExtendedTooltip name="ОССпособНачисленияАмортизацииРасширеннаяПодсказка" id="321"/>
 														</InputField>
 														<InputField name="ОССпособыОтраженияРасходовПоАмортизации" id="322">
-															<DataPath>Объект.ОС.СпособыОтраженияРасходовПоАмортизации</DataPath>
-															<Title>
-																<v8:item>
-																	<v8:lang>ru</v8:lang>
-																	<v8:content>Отражение амортизации</v8:content>
-																</v8:item>
-															</Title>
+															<DataPath>Объект.ОС.СпособОтраженияРасходовПоАмортизации</DataPath>
 															<EditMode>EnterOnInput</EditMode>
 															<ContextMenu name="ОССпособыОтраженияРасходовПоАмортизацииКонтекстноеМеню" id="323"/>
 															<ExtendedTooltip name="ОССпособыОтраженияРасходовПоАмортизацииРасширеннаяПодсказка" id="324"/>
@@ -1128,30 +1111,11 @@
 															<ExtendedTooltip name="ОСПараметрВыработкиРасширеннаяПодсказка" id="332"/>
 														</InputField>
 														<InputField name="ОСОбъемПродукцииРаботДляВычисленияАмортизации" id="333">
-															<DataPath>Объект.ОС.ОбъемПродукцииРаботДляВычисленияАмортизации</DataPath>
-															<Title>
-																<v8:item>
-																	<v8:lang>ru</v8:lang>
-																	<v8:content>Объем  для амортизации </v8:content>
-																</v8:item>
-															</Title>
+															<DataPath>Объект.ОС.ОбъемПродукции</DataPath>
 															<EditMode>EnterOnInput</EditMode>
 															<Width>10</Width>
 															<ContextMenu name="ОСОбъемПродукцииРаботДляВычисленияАмортизацииКонтекстноеМеню" id="334"/>
 															<ExtendedTooltip name="ОСОбъемПродукцииРаботДляВычисленияАмортизацииРасширеннаяПодсказка" id="335"/>
-														</InputField>
-														<InputField name="ОСВыработкаКоличество" id="336">
-															<DataPath>Объект.ОС.ВыработкаКоличество</DataPath>
-															<Title>
-																<v8:item>
-																	<v8:lang>ru</v8:lang>
-																	<v8:content>Выработка</v8:content>
-																</v8:item>
-															</Title>
-															<EditMode>EnterOnInput</EditMode>
-															<Width>10</Width>
-															<ContextMenu name="ОСВыработкаКоличествоКонтекстноеМеню" id="337"/>
-															<ExtendedTooltip name="ОСВыработкаКоличествоРасширеннаяПодсказка" id="338"/>
 														</InputField>
 													</ChildItems>
 												</ColumnGroup>
@@ -1211,16 +1175,6 @@
 													</ToolTip>
 													<ExtendedTooltip name="ОСГруппа12РасширеннаяПодсказка" id="348"/>
 													<ChildItems>
-														<InputField name="ОСЛиквидационнаяСтоимость" id="349">
-															<DataPath>Объект.ОС.ЛиквидационнаяСтоимость</DataPath>
-															<EditMode>EnterOnInput</EditMode>
-															<FooterDataPath>Объект.ОС.TotalЛиквидационнаяСтоимость</FooterDataPath>
-															<ContextMenu name="ОСЛиквидационнаяСтоимостьКонтекстноеМеню" id="350"/>
-															<ExtendedTooltip name="ОСЛиквидационнаяСтоимостьРасширеннаяПодсказка" id="351"/>
-															<Events>
-																<Event name="OnChange">ОСЛиквидационнаяСтоимостьПриИзменении</Event>
-															</Events>
-														</InputField>
 														<InputField name="ОСРодительскоеОС" id="352">
 															<DataPath>Объект.ОС.Комплект</DataPath>
 															<EditMode>EnterOnInput</EditMode>
@@ -1305,7 +1259,6 @@
 															<ExtendedTooltip name="ОСИтогПервоначальнаяСтоимостьРасширеннаяПодсказка" id="1043"/>
 														</InputField>
 														<InputField name="ОСИтогСтоимостьДляВычисленияАмортизации" id="1044">
-															<DataPath>Объект.ОС.TotalСтоимостьДляВычисленияАмортизации</DataPath>
 															<ReadOnly>true</ReadOnly>
 															<Title>
 																<v8:item>
@@ -2767,7 +2720,7 @@
 					</ToolTip>
 					<ExtendedTooltip name="СтраницаДополнительноРасширеннаяПодсказка" id="479"/>
 					<ChildItems>
-						<UsualGroup name="ГруппаИнформация" id="975">
+						<UsualGroup name="ГруппаИнформация" id="1401">
 							<Title>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
@@ -2780,44 +2733,49 @@
 									<v8:content>Группа информация</v8:content>
 								</v8:item>
 							</ToolTip>
-							<Group>Vertical</Group>
+							<Group>Horizontal</Group>
+							<VerticalAlign>Bottom</VerticalAlign>
 							<Representation>None</Representation>
 							<ShowTitle>false</ShowTitle>
-							<ExtendedTooltip name="ГруппаИнформацияРасширеннаяПодсказка" id="976"/>
+							<ExtendedTooltip name="ГруппаИнформацияРасширеннаяПодсказка" id="1402"/>
 							<ChildItems>
-								<InputField name="Комментарий" id="977">
+								<InputField name="Комментарий" id="1403">
 									<DataPath>Объект.Комментарий</DataPath>
 									<TitleLocation>None</TitleLocation>
+									<EditMode>EnterOnInput</EditMode>
+									<AutoMaxWidth>false</AutoMaxWidth>
+									<MaxWidth>50</MaxWidth>
 									<MultiLine>true</MultiLine>
+									<ChoiceButton>true</ChoiceButton>
 									<InputHint>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
 											<v8:content>Комментарий</v8:content>
 										</v8:item>
 									</InputHint>
-									<ContextMenu name="КомментарийКонтекстноеМеню" id="978"/>
-									<ExtendedTooltip name="КомментарийExtendedTooltip" id="979"/>
+									<ContextMenu name="КомментарийКонтекстноеМеню" id="1404"/>
+									<ExtendedTooltip name="КомментарийРасширеннаяПодсказка" id="1405"/>
 									<Events>
 										<Event name="OnChange">КомментарийПриИзменении</Event>
+										<Event name="StartChoice">КомментарийНачалоВыбора</Event>
 									</Events>
 								</InputField>
-								<LabelField name="АвторДокумента" id="980">
+								<LabelField name="АвторДокумента" id="1406">
 									<DataPath>Объект.Автор</DataPath>
-									<TitleLocation>Left</TitleLocation>
+									<ReadOnly>true</ReadOnly>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
 											<v8:content>Автор документа</v8:content>
 										</v8:item>
 									</ToolTip>
-									<Width>35</Width>
-									<HorizontalStretch>false</HorizontalStretch>
+									<AutoMaxWidth>false</AutoMaxWidth>
 									<Border width="1">
 										<v8ui:style xsi:type="v8ui:ControlBorderType">Single</v8ui:style>
 									</Border>
 									<TextColor>#993300</TextColor>
-									<ContextMenu name="АвторДокументаКонтекстноеМеню" id="981"/>
-									<ExtendedTooltip name="АвторДокументаExtendedTooltip" id="982"/>
+									<ContextMenu name="АвторДокументаКонтекстноеМеню" id="1407"/>
+									<ExtendedTooltip name="АвторДокументаExtendedTooltip" id="1408"/>
 								</LabelField>
 							</ChildItems>
 						</UsualGroup>
@@ -2936,15 +2894,6 @@
 			<Type>
 				<v8:Type>cfg:CatalogRef.Валюты</v8:Type>
 			</Type>
-		</Attribute>
-		<Attribute name="ПараметрыПодключаемыхКоманд" id="12">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Параметры подключаемых команд</v8:content>
-				</v8:item>
-			</Title>
-			<Type/>
 		</Attribute>
 		<ConditionalAppearance>
 			<dcsset:item>
@@ -3117,6 +3066,22 @@
 				</v8:item>
 			</ToolTip>
 			<Action>ЗагрузитьТоварыИзФайла</Action>
+			<ModifiesSavedData>true</ModifiesSavedData>
+		</Command>
+		<Command name="ЗагрузитьРасчетыИзФайла" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Загрузить из файла...</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Загрузить товары из файла</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ЗагрузитьРасчетыИзФайла</Action>
 			<ModifiesSavedData>true</ModifiesSavedData>
 		</Command>
 	</Commands>

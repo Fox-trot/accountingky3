@@ -37,7 +37,7 @@
 				<ChildItems>
 					<Button name="ФормаОбщаяКомандаОтчетПоДвижениям" id="382">
 						<Type>CommandBarButton</Type>
-						<CommandName>CommonCommand.ОтчетПоДвижениям</CommandName>
+						<CommandName>0:8aabb09e-5cb7-4d67-b9e8-c3eabf06a09f</CommandName>
 						<DataPath>Объект.Ref</DataPath>
 						<ExtendedTooltip name="ФормаОбщаяКомандаОтчетПоДвижениямРасширеннаяПодсказка" id="383"/>
 					</Button>
@@ -156,6 +156,43 @@
 								<Event name="OnChange">ОрганизацияПриИзменении</Event>
 							</Events>
 						</InputField>
+						<InputField name="Событие" id="400">
+							<DataPath>Объект.Событие</DataPath>
+							<ListChoiceMode>true</ListChoiceMode>
+							<ChoiceList>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Модернизация</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xr:DesignTimeRef">Enum.ВидыСобытийОС.EnumValue.Модернизация</Value>
+									</xr:Value>
+								</xr:Item>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Изменение параметров</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xr:DesignTimeRef">Enum.ВидыСобытийОС.EnumValue.ИзменениеПараметров</Value>
+									</xr:Value>
+								</xr:Item>
+							</ChoiceList>
+							<ContextMenu name="СобытиеКонтекстноеМеню" id="401"/>
+							<ExtendedTooltip name="СобытиеРасширеннаяПодсказка" id="402"/>
+							<Events>
+								<Event name="OnChange">СобытиеПриИзменении</Event>
+							</Events>
+						</InputField>
 					</ChildItems>
 				</UsualGroup>
 			</ChildItems>
@@ -237,6 +274,9 @@
 									<EditMode>EnterOnInput</EditMode>
 									<ContextMenu name="СтоимостьМодернизацииБУКонтекстноеМеню" id="23"/>
 									<ExtendedTooltip name="СтоимостьМодернизацииБУРасширеннаяПодсказка" id="24"/>
+									<Events>
+										<Event name="OnChange">СтоимостьМодернизацииБУПриИзменении</Event>
+									</Events>
 								</InputField>
 								<Button name="РассчитатьСтоимостьМодернизации" id="262">
 									<Type>UsualButton</Type>
@@ -284,11 +324,40 @@
 									<ContextMenu name="СуммаАмортизацииКонтекстноеМеню" id="367"/>
 									<ExtendedTooltip name="СуммаАмортизацииРасширеннаяПодсказка" id="368"/>
 								</LabelField>
-								<InputField name="Процент" id="379">
-									<DataPath>Объект.Процент</DataPath>
-									<ContextMenu name="ПроцентКонтекстноеМеню" id="380"/>
-									<ExtendedTooltip name="ПроцентРасширеннаяПодсказка" id="381"/>
-								</InputField>
+							</ChildItems>
+						</UsualGroup>
+						<LabelField name="СпособОтраженияРасходовПоАмортизации" id="403">
+							<DataPath>СпособОтраженияРасходовПоАмортизации</DataPath>
+							<ContextMenu name="СпособОтраженияРасходовПоАмортизацииКонтекстноеМеню" id="404"/>
+							<ExtendedTooltip name="СпособОтраженияРасходовПоАмортизацииРасширеннаяПодсказка" id="405"/>
+						</LabelField>
+						<UsualGroup name="ГруппаОстаточнаяСтоимостьОС" id="392">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа остаточная стоимость ОС</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа остаточная стоимость ОС</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаОстаточнаяСтоимостьОСРасширеннаяПодсказка" id="393"/>
+							<ChildItems>
+								<LabelField name="ОстаточнаяСтоимостьОС" id="394">
+									<DataPath>Объект.ОстаточнаяСтоимостьОС</DataPath>
+									<ContextMenu name="ОстаточнаяСтоимостьОСКонтекстноеМеню" id="395"/>
+									<ExtendedTooltip name="ОстаточнаяСтоимостьОСРасширеннаяПодсказка" id="396"/>
+								</LabelField>
+								<LabelField name="ОстаточнаяСтоимостьОСПослеМодернизации" id="397">
+									<DataPath>Объект.ОстаточнаяСтоимостьОСПослеМодернизации</DataPath>
+									<ContextMenu name="ОстаточнаяСтоимостьОСПослеМодернизацииКонтекстноеМеню" id="398"/>
+									<ExtendedTooltip name="ОстаточнаяСтоимостьОСПослеМодернизацииРасширеннаяПодсказка" id="399"/>
+								</LabelField>
 							</ChildItems>
 						</UsualGroup>
 					</ChildItems>
@@ -309,25 +378,6 @@
 					<Group>Vertical</Group>
 					<ShowTitle>false</ShowTitle>
 					<ExtendedTooltip name="ПраваяГруппаОбъектаМодернизацииРасширеннаяПодсказка" id="209"/>
-					<ChildItems>
-						<InputField name="СчетУчетаМодернизации" id="363">
-							<DataPath>Объект.СчетУчетаМодернизации</DataPath>
-							<ContextMenu name="СчетУчетаМодернизацииКонтекстноеМеню" id="364"/>
-							<ExtendedTooltip name="СчетУчетаМодернизацииРасширеннаяПодсказка" id="365"/>
-						</InputField>
-						<InputField name="СобытиеОС" id="327">
-							<DataPath>Объект.СобытиеОС</DataPath>
-							<Title>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Событие</v8:content>
-								</v8:item>
-							</Title>
-							<ToolTipRepresentation>Button</ToolTipRepresentation>
-							<ContextMenu name="СобытиеОСКонтекстноеМеню" id="328"/>
-							<ExtendedTooltip name="СобытиеОСРасширеннаяПодсказка" id="329"/>
-						</InputField>
-					</ChildItems>
 				</UsualGroup>
 			</ChildItems>
 		</UsualGroup>
@@ -405,21 +455,19 @@
 								<InputField name="ПараметрыПараметр" id="318">
 									<DataPath>Объект.ПараметрыОС.Параметр</DataPath>
 									<EditMode>EnterOnInput</EditMode>
+									<ListChoiceMode>true</ListChoiceMode>
 									<QuickChoice>false</QuickChoice>
 									<ChoiceList>
 										<xr:Item>
 											<xr:Presentation/>
 											<xr:CheckState>0</xr:CheckState>
 											<xr:Value xsi:type="FormChoiceListDesTimeValue">
-												<Presentation/>
-												<Value xsi:type="xr:DesignTimeRef">Enum.ПараметрыМодернизацииОС.EnumValue.НакопленныйИзнос</Value>
-											</xr:Value>
-										</xr:Item>
-										<xr:Item>
-											<xr:Presentation/>
-											<xr:CheckState>0</xr:CheckState>
-											<xr:Value xsi:type="FormChoiceListDesTimeValue">
-												<Presentation/>
+												<Presentation>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Срок службы</v8:content>
+													</v8:item>
+												</Presentation>
 												<Value xsi:type="xr:DesignTimeRef">Enum.ПараметрыМодернизацииОС.EnumValue.СрокСлужбы</Value>
 											</xr:Value>
 										</xr:Item>
@@ -427,7 +475,12 @@
 											<xr:Presentation/>
 											<xr:CheckState>0</xr:CheckState>
 											<xr:Value xsi:type="FormChoiceListDesTimeValue">
-												<Presentation/>
+												<Presentation>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Инвентарный номер</v8:content>
+													</v8:item>
+												</Presentation>
 												<Value xsi:type="xr:DesignTimeRef">Enum.ПараметрыМодернизацииОС.EnumValue.ИнвентарныйНомер</Value>
 											</xr:Value>
 										</xr:Item>
@@ -435,15 +488,12 @@
 											<xr:Presentation/>
 											<xr:CheckState>0</xr:CheckState>
 											<xr:Value xsi:type="FormChoiceListDesTimeValue">
-												<Presentation/>
-												<Value xsi:type="xr:DesignTimeRef">Enum.ПараметрыМодернизацииОС.EnumValue.ОбъемПродукцииРабот</Value>
-											</xr:Value>
-										</xr:Item>
-										<xr:Item>
-											<xr:Presentation/>
-											<xr:CheckState>0</xr:CheckState>
-											<xr:Value xsi:type="FormChoiceListDesTimeValue">
-												<Presentation/>
+												<Presentation>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Способ отражения расходов по амортизации</v8:content>
+													</v8:item>
+												</Presentation>
 												<Value xsi:type="xr:DesignTimeRef">Enum.ПараметрыМодернизацииОС.EnumValue.СпособОтраженияРасходовПоАмортизации</Value>
 											</xr:Value>
 										</xr:Item>
@@ -451,7 +501,12 @@
 											<xr:Presentation/>
 											<xr:CheckState>0</xr:CheckState>
 											<xr:Value xsi:type="FormChoiceListDesTimeValue">
-												<Presentation/>
+												<Presentation>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Счет учета</v8:content>
+													</v8:item>
+												</Presentation>
 												<Value xsi:type="xr:DesignTimeRef">Enum.ПараметрыМодернизацииОС.EnumValue.СчетУчета</Value>
 											</xr:Value>
 										</xr:Item>
@@ -459,7 +514,12 @@
 											<xr:Presentation/>
 											<xr:CheckState>0</xr:CheckState>
 											<xr:Value xsi:type="FormChoiceListDesTimeValue">
-												<Presentation/>
+												<Presentation>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Ликвидационная стоимость</v8:content>
+													</v8:item>
+												</Presentation>
 												<Value xsi:type="xr:DesignTimeRef">Enum.ПараметрыМодернизацииОС.EnumValue.ЛиквидационнаяСтоимость</Value>
 											</xr:Value>
 										</xr:Item>
@@ -467,87 +527,12 @@
 											<xr:Presentation/>
 											<xr:CheckState>0</xr:CheckState>
 											<xr:Value xsi:type="FormChoiceListDesTimeValue">
-												<Presentation/>
-												<Value xsi:type="xr:DesignTimeRef">Enum.ПараметрыМодернизацииОС.EnumValue.МатериалСтен</Value>
-											</xr:Value>
-										</xr:Item>
-										<xr:Item>
-											<xr:Presentation/>
-											<xr:CheckState>0</xr:CheckState>
-											<xr:Value xsi:type="FormChoiceListDesTimeValue">
-												<Presentation/>
-												<Value xsi:type="xr:DesignTimeRef">Enum.ПараметрыМодернизацииОС.EnumValue.ЖилаяПлощадь</Value>
-											</xr:Value>
-										</xr:Item>
-										<xr:Item>
-											<xr:Presentation/>
-											<xr:CheckState>0</xr:CheckState>
-											<xr:Value xsi:type="FormChoiceListDesTimeValue">
-												<Presentation/>
-												<Value xsi:type="xr:DesignTimeRef">Enum.ПараметрыМодернизацииОС.EnumValue.НежилаяПлощадь</Value>
-											</xr:Value>
-										</xr:Item>
-										<xr:Item>
-											<xr:Presentation/>
-											<xr:CheckState>0</xr:CheckState>
-											<xr:Value xsi:type="FormChoiceListDesTimeValue">
-												<Presentation/>
-												<Value xsi:type="xr:DesignTimeRef">Enum.ПараметрыМодернизацииОС.EnumValue.РегиональныйКоэффициент</Value>
-											</xr:Value>
-										</xr:Item>
-										<xr:Item>
-											<xr:Presentation/>
-											<xr:CheckState>0</xr:CheckState>
-											<xr:Value xsi:type="FormChoiceListDesTimeValue">
-												<Presentation/>
-												<Value xsi:type="xr:DesignTimeRef">Enum.ПараметрыМодернизацииОС.EnumValue.ЗональныйКоэффициент</Value>
-											</xr:Value>
-										</xr:Item>
-										<xr:Item>
-											<xr:Presentation/>
-											<xr:CheckState>0</xr:CheckState>
-											<xr:Value xsi:type="FormChoiceListDesTimeValue">
-												<Presentation/>
-												<Value xsi:type="xr:DesignTimeRef">Enum.ПараметрыМодернизацииОС.EnumValue.ОтраслевойКоэффициент</Value>
-											</xr:Value>
-										</xr:Item>
-										<xr:Item>
-											<xr:Presentation/>
-											<xr:CheckState>0</xr:CheckState>
-											<xr:Value xsi:type="FormChoiceListDesTimeValue">
-												<Presentation/>
-												<Value xsi:type="xr:DesignTimeRef">Enum.ПараметрыМодернизацииОС.EnumValue.КодИмущества</Value>
-											</xr:Value>
-										</xr:Item>
-										<xr:Item>
-											<xr:Presentation/>
-											<xr:CheckState>0</xr:CheckState>
-											<xr:Value xsi:type="FormChoiceListDesTimeValue">
-												<Presentation/>
-												<Value xsi:type="xr:DesignTimeRef">Enum.ПараметрыМодернизацииОС.EnumValue.КодНазначенияИмущества</Value>
-											</xr:Value>
-										</xr:Item>
-										<xr:Item>
-											<xr:Presentation/>
-											<xr:CheckState>0</xr:CheckState>
-											<xr:Value xsi:type="FormChoiceListDesTimeValue">
-												<Presentation/>
-												<Value xsi:type="xr:DesignTimeRef">Enum.ПараметрыМодернизацииОС.EnumValue.КодПользователяИмущества</Value>
-											</xr:Value>
-										</xr:Item>
-										<xr:Item>
-											<xr:Presentation/>
-											<xr:CheckState>0</xr:CheckState>
-											<xr:Value xsi:type="FormChoiceListDesTimeValue">
-												<Presentation/>
-												<Value xsi:type="xr:DesignTimeRef">Enum.ПараметрыМодернизацииОС.EnumValue.ГруппаИмущества</Value>
-											</xr:Value>
-										</xr:Item>
-										<xr:Item>
-											<xr:Presentation/>
-											<xr:CheckState>0</xr:CheckState>
-											<xr:Value xsi:type="FormChoiceListDesTimeValue">
-												<Presentation/>
+												<Presentation>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Способ начисления амортизации</v8:content>
+													</v8:item>
+												</Presentation>
 												<Value xsi:type="xr:DesignTimeRef">Enum.ПараметрыМодернизацииОС.EnumValue.СпособНачисленияАмортизации</Value>
 											</xr:Value>
 										</xr:Item>
@@ -555,16 +540,13 @@
 											<xr:Presentation/>
 											<xr:CheckState>0</xr:CheckState>
 											<xr:Value xsi:type="FormChoiceListDesTimeValue">
-												<Presentation/>
+												<Presentation>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Группа НУ</v8:content>
+													</v8:item>
+												</Presentation>
 												<Value xsi:type="xr:DesignTimeRef">Enum.ПараметрыМодернизацииОС.EnumValue.ГруппаНУ</Value>
-											</xr:Value>
-										</xr:Item>
-										<xr:Item>
-											<xr:Presentation/>
-											<xr:CheckState>0</xr:CheckState>
-											<xr:Value xsi:type="FormChoiceListDesTimeValue">
-												<Presentation/>
-												<Value xsi:type="xr:DesignTimeRef">c4948b16-e0a5-4e7f-9875-01f4512e3da3.4efb4bbb-2435-4feb-8827-0ed9f284479d</Value>
 											</xr:Value>
 										</xr:Item>
 									</ChoiceList>
@@ -607,7 +589,14 @@
 					</ToolTip>
 					<ExtendedTooltip name="СтраницаДополнительноРасширеннаяПодсказка" id="275"/>
 					<ChildItems>
-						<UsualGroup name="ГруппаИнформация" id="371">
+						<InputField name="СчетУчетаМодернизации" id="363">
+							<DataPath>Объект.СчетУчетаМодернизации</DataPath>
+							<Width>8</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ContextMenu name="СчетУчетаМодернизацииКонтекстноеМеню" id="364"/>
+							<ExtendedTooltip name="СчетУчетаМодернизацииРасширеннаяПодсказка" id="365"/>
+						</InputField>
+						<UsualGroup name="ГруппаИнформация" id="384">
 							<Title>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
@@ -620,44 +609,49 @@
 									<v8:content>Группа информация</v8:content>
 								</v8:item>
 							</ToolTip>
-							<Group>Vertical</Group>
+							<Group>Horizontal</Group>
+							<VerticalAlign>Bottom</VerticalAlign>
 							<Representation>None</Representation>
 							<ShowTitle>false</ShowTitle>
-							<ExtendedTooltip name="ГруппаИнформацияРасширеннаяПодсказка" id="372"/>
+							<ExtendedTooltip name="ГруппаИнформацияРасширеннаяПодсказка" id="385"/>
 							<ChildItems>
-								<InputField name="Комментарий" id="373">
+								<InputField name="Комментарий" id="386">
 									<DataPath>Объект.Комментарий</DataPath>
 									<TitleLocation>None</TitleLocation>
+									<EditMode>EnterOnInput</EditMode>
+									<AutoMaxWidth>false</AutoMaxWidth>
+									<MaxWidth>50</MaxWidth>
 									<MultiLine>true</MultiLine>
+									<ChoiceButton>true</ChoiceButton>
 									<InputHint>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
 											<v8:content>Комментарий</v8:content>
 										</v8:item>
 									</InputHint>
-									<ContextMenu name="КомментарийКонтекстноеМеню" id="374"/>
-									<ExtendedTooltip name="КомментарийExtendedTooltip" id="375"/>
+									<ContextMenu name="КомментарийКонтекстноеМеню" id="387"/>
+									<ExtendedTooltip name="КомментарийРасширеннаяПодсказка" id="388"/>
 									<Events>
 										<Event name="OnChange">КомментарийПриИзменении</Event>
+										<Event name="StartChoice">КомментарийНачалоВыбора</Event>
 									</Events>
 								</InputField>
-								<LabelField name="АвторДокумента" id="376">
+								<LabelField name="АвторДокумента" id="389">
 									<DataPath>Объект.Автор</DataPath>
-									<TitleLocation>Left</TitleLocation>
+									<ReadOnly>true</ReadOnly>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
 											<v8:content>Автор документа</v8:content>
 										</v8:item>
 									</ToolTip>
-									<Width>35</Width>
-									<HorizontalStretch>false</HorizontalStretch>
+									<AutoMaxWidth>false</AutoMaxWidth>
 									<Border width="1">
 										<v8ui:style xsi:type="v8ui:ControlBorderType">Single</v8ui:style>
 									</Border>
 									<TextColor>#993300</TextColor>
-									<ContextMenu name="АвторДокументаКонтекстноеМеню" id="377"/>
-									<ExtendedTooltip name="АвторДокументаExtendedTooltip" id="378"/>
+									<ContextMenu name="АвторДокументаКонтекстноеМеню" id="390"/>
+									<ExtendedTooltip name="АвторДокументаExtendedTooltip" id="391"/>
 								</LabelField>
 							</ChildItems>
 						</UsualGroup>
@@ -699,7 +693,11 @@
 				</v8:item>
 			</Title>
 			<Type>
-				<v8:Type>cfg:CatalogRef.СобытияОС</v8:Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
 			</Type>
 		</Attribute>
 		<Attribute name="ПараметрыУчетаОС" id="29">
@@ -744,6 +742,17 @@
 				</v8:item>
 			</Title>
 			<Type/>
+		</Attribute>
+		<Attribute name="СпособОтраженияРасходовПоАмортизации" id="33">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Способ отражения расходов по АО</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.СпособыОтраженияРасходовПоАмортизации</v8:Type>
+			</Type>
 		</Attribute>
 	</Attributes>
 	<Commands>

@@ -37,7 +37,7 @@
 				<ChildItems>
 					<Button name="ФормаОбщаяКомандаОтчетПоДвижениям" id="633">
 						<Type>CommandBarButton</Type>
-						<CommandName>CommonCommand.ОтчетПоДвижениям</CommandName>
+						<CommandName>0:8aabb09e-5cb7-4d67-b9e8-c3eabf06a09f</CommandName>
 						<DataPath>Объект.Ref</DataPath>
 						<ExtendedTooltip name="ФормаОбщаяКомандаОтчетПоДвижениямРасширеннаяПодсказка" id="634"/>
 					</Button>
@@ -182,6 +182,7 @@
 							<v8:content>Реквизиты платежа</v8:content>
 						</v8:item>
 					</ToolTip>
+					<HorizontalStretch>true</HorizontalStretch>
 					<ExtendedTooltip name="СтраницаРеквизитыПлатежаРасширеннаяПодсказка" id="53"/>
 					<ChildItems>
 						<UsualGroup name="ГруппаПриходРасходГлавная" id="513">
@@ -338,6 +339,8 @@
 														<LabelField name="ПриходРасчетныйСчетВалютаДенежныхСредств" id="614">
 															<DataPath>Объект.ПриходРасчетныйСчет.ВалютаДенежныхСредств</DataPath>
 															<TitleLocation>None</TitleLocation>
+															<Width>3</Width>
+															<HorizontalStretch>false</HorizontalStretch>
 															<ContextMenu name="ПриходРасчетныйСчетВалютаДенежныхСредствКонтекстноеМеню" id="615"/>
 															<ExtendedTooltip name="ПриходРасчетныйСчетВалютаДенежныхСредствРасширеннаяПодсказка" id="616"/>
 														</LabelField>
@@ -493,6 +496,8 @@
 														<LabelField name="РасходРасчетныйСчетВалютаДенежныхСредств" id="617">
 															<DataPath>Объект.РасходРасчетныйСчет.ВалютаДенежныхСредств</DataPath>
 															<TitleLocation>None</TitleLocation>
+															<Width>3</Width>
+															<HorizontalStretch>false</HorizontalStretch>
 															<ContextMenu name="РасходРасчетныйСчетВалютаДенежныхСредствКонтекстноеМеню" id="618"/>
 															<ExtendedTooltip name="РасходРасчетныйСчетВалютаДенежныхСредствРасширеннаяПодсказка" id="619"/>
 														</LabelField>
@@ -527,6 +532,7 @@
 									<v8:content>Группа курс обмена</v8:content>
 								</v8:item>
 							</ToolTip>
+							<HorizontalStretch>true</HorizontalStretch>
 							<Group>Vertical</Group>
 							<Representation>NormalSeparation</Representation>
 							<ExtendedTooltip name="ГруппаКурсОбменаРасширеннаяПодсказка" id="516"/>
@@ -562,33 +568,64 @@
 													<v8:content>Группа поле курса</v8:content>
 												</v8:item>
 											</ToolTip>
-											<Group>Horizontal</Group>
+											<Group>Vertical</Group>
 											<Representation>None</Representation>
 											<ShowTitle>false</ShowTitle>
 											<ExtendedTooltip name="ГруппаПолеКурсаРасширеннаяПодсказка" id="518"/>
 											<ChildItems>
-												<InputField name="КурсОбмена" id="519">
-													<DataPath>Объект.КурсОбмена</DataPath>
-													<ContextMenu name="КурсОбменаКонтекстноеМеню" id="520"/>
-													<ExtendedTooltip name="КурсОбменаРасширеннаяПодсказка" id="521"/>
-													<Events>
-														<Event name="OnChange">КурсОбменаПриИзменении</Event>
-													</Events>
-												</InputField>
-												<LabelDecoration name="КурсоваяРазница" id="620">
-													<Title formatted="false">
+												<UsualGroup name="ГруппаКурс" id="657">
+													<Title>
 														<v8:item>
 															<v8:lang>ru</v8:lang>
-															<v8:content>Курсовая разница</v8:content>
+															<v8:content>Группа курс</v8:content>
 														</v8:item>
 													</Title>
-													<ContextMenu name="КурсоваяРазницаКонтекстноеМеню" id="621"/>
-													<ExtendedTooltip name="КурсоваяРазницаРасширеннаяПодсказка" id="622"/>
-												</LabelDecoration>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Группа курс</v8:content>
+														</v8:item>
+													</ToolTip>
+													<Group>Horizontal</Group>
+													<Representation>None</Representation>
+													<ShowTitle>false</ShowTitle>
+													<ExtendedTooltip name="ГруппаКурсРасширеннаяПодсказка" id="658"/>
+													<ChildItems>
+														<InputField name="КурсОбмена" id="519">
+															<DataPath>Объект.КурсОбмена</DataPath>
+															<ContextMenu name="КурсОбменаКонтекстноеМеню" id="520"/>
+															<ExtendedTooltip name="КурсОбменаРасширеннаяПодсказка" id="521"/>
+															<Events>
+																<Event name="OnChange">КурсОбменаПриИзменении</Event>
+															</Events>
+														</InputField>
+														<LabelDecoration name="ВалютыКР" id="654">
+															<ContextMenu name="ВалютыКРКонтекстноеМеню" id="655"/>
+															<ExtendedTooltip name="ВалютыКРРасширеннаяПодсказка" id="656"/>
+														</LabelDecoration>
+													</ChildItems>
+												</UsualGroup>
 											</ChildItems>
 										</UsualGroup>
 									</ChildItems>
 								</UsualGroup>
+								<InputField name="СуммаУчетная" id="651">
+									<DataPath>Объект.СуммаУчетная</DataPath>
+									<Width>11</Width>
+									<ContextMenu name="СуммаУчетнаяКонтекстноеМеню" id="652"/>
+									<ExtendedTooltip name="СуммаУчетнаяРасширеннаяПодсказка" id="653"/>
+								</InputField>
+								<LabelDecoration name="КурсоваяРазница" id="620">
+									<Width>60</Width>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Курсовая разница</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="КурсоваяРазницаКонтекстноеМеню" id="621"/>
+									<ExtendedTooltip name="КурсоваяРазницаРасширеннаяПодсказка" id="622"/>
+								</LabelDecoration>
 							</ChildItems>
 						</UsualGroup>
 					</ChildItems>
@@ -608,7 +645,7 @@
 					</ToolTip>
 					<ExtendedTooltip name="СтраницаДополнительноРасширеннаяПодсказка" id="93"/>
 					<ChildItems>
-						<UsualGroup name="ГруппаИнформация" id="625">
+						<UsualGroup name="ГруппаИнформация" id="635">
 							<Title>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
@@ -621,45 +658,70 @@
 									<v8:content>Группа информация</v8:content>
 								</v8:item>
 							</ToolTip>
-							<Group>Vertical</Group>
+							<Group>Horizontal</Group>
+							<VerticalAlign>Bottom</VerticalAlign>
 							<Representation>None</Representation>
 							<ShowTitle>false</ShowTitle>
-							<ExtendedTooltip name="ГруппаИнформацияРасширеннаяПодсказка" id="626"/>
+							<ExtendedTooltip name="ГруппаИнформацияРасширеннаяПодсказка" id="636"/>
 							<ChildItems>
-								<InputField name="Комментарий" id="627">
+								<InputField name="Комментарий" id="637">
 									<DataPath>Объект.Комментарий</DataPath>
 									<TitleLocation>None</TitleLocation>
+									<EditMode>EnterOnInput</EditMode>
+									<AutoMaxWidth>false</AutoMaxWidth>
+									<MaxWidth>50</MaxWidth>
 									<MultiLine>true</MultiLine>
+									<ChoiceButton>true</ChoiceButton>
 									<InputHint>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
 											<v8:content>Комментарий</v8:content>
 										</v8:item>
 									</InputHint>
-									<ContextMenu name="КомментарийКонтекстноеМеню" id="628"/>
-									<ExtendedTooltip name="КомментарийExtendedTooltip" id="629"/>
+									<ContextMenu name="КомментарийКонтекстноеМеню" id="638"/>
+									<ExtendedTooltip name="КомментарийРасширеннаяПодсказка" id="639"/>
 									<Events>
 										<Event name="OnChange">КомментарийПриИзменении</Event>
+										<Event name="StartChoice">КомментарийНачалоВыбора</Event>
 									</Events>
 								</InputField>
-								<LabelField name="АвторДокумента" id="630">
-									<DataPath>Объект.Автор</DataPath>
-									<TitleLocation>Left</TitleLocation>
+								<UsualGroup name="ГруппаАвторСтатья" id="649">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа автор статья</v8:content>
+										</v8:item>
+									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>Автор документа</v8:content>
+											<v8:content>Группа автор статья</v8:content>
 										</v8:item>
 									</ToolTip>
-									<Width>35</Width>
-									<HorizontalStretch>false</HorizontalStretch>
-									<Border width="1">
-										<v8ui:style xsi:type="v8ui:ControlBorderType">Single</v8ui:style>
-									</Border>
-									<TextColor>#993300</TextColor>
-									<ContextMenu name="АвторДокументаКонтекстноеМеню" id="631"/>
-									<ExtendedTooltip name="АвторДокументаExtendedTooltip" id="632"/>
-								</LabelField>
+									<Group>Vertical</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="ГруппаАвторСтатьяРасширеннаяПодсказка" id="650"/>
+									<ChildItems>
+										<LabelField name="АвторДокумента" id="640">
+											<DataPath>Объект.Автор</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Автор документа</v8:content>
+												</v8:item>
+											</ToolTip>
+											<AutoMaxWidth>false</AutoMaxWidth>
+											<Border width="1">
+												<v8ui:style xsi:type="v8ui:ControlBorderType">Single</v8ui:style>
+											</Border>
+											<TextColor>#993300</TextColor>
+											<ContextMenu name="АвторДокументаКонтекстноеМеню" id="641"/>
+											<ExtendedTooltip name="АвторДокументаExtendedTooltip" id="642"/>
+										</LabelField>
+									</ChildItems>
+								</UsualGroup>
 							</ChildItems>
 						</UsualGroup>
 					</ChildItems>

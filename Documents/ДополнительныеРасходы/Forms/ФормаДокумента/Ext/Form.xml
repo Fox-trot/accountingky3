@@ -37,7 +37,7 @@
 				<ChildItems>
 					<Button name="ОбщаяКомандаОтчетПоДвижениям" id="359">
 						<Type>CommandBarButton</Type>
-						<CommandName>CommonCommand.ОтчетПоДвижениям</CommandName>
+						<CommandName>0:8aabb09e-5cb7-4d67-b9e8-c3eabf06a09f</CommandName>
 						<DataPath>Объект.Ref</DataPath>
 						<ExtendedTooltip name="ОбщаяКомандаОтчетПоДвижениямРасширеннаяПодсказка" id="360"/>
 					</Button>
@@ -149,6 +149,17 @@
 					<ShowTitle>false</ShowTitle>
 					<ExtendedTooltip name="ПраваяКолонкаExtendedTooltip" id="26"/>
 					<ChildItems>
+						<CheckBoxField name="БезналичныйРасчет" id="622">
+							<DataPath>Объект.БезналичныйРасчет</DataPath>
+							<TitleLocation>Right</TitleLocation>
+							<ToolTipRepresentation>Button</ToolTipRepresentation>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="БезналичныйРасчетКонтекстноеМеню" id="623"/>
+							<ExtendedTooltip name="БезналичныйРасчетРасширеннаяПодсказка" id="624"/>
+							<Events>
+								<Event name="OnChange">БезналичныйРасчетПриИзменении</Event>
+							</Events>
+						</CheckBoxField>
 						<UsualGroup name="ГруппаНомерДата" id="27">
 							<Title>
 								<v8:item>
@@ -323,6 +334,9 @@
 								<InputField name="ТоварыДокументПоступления" id="304">
 									<DataPath>Объект.Товары.ДокументПоступления</DataPath>
 									<EditMode>EnterOnInput</EditMode>
+									<DropListButton>false</DropListButton>
+									<ChoiceButton>true</ChoiceButton>
+									<ChoiceButtonRepresentation>ShowInInputField</ChoiceButtonRepresentation>
 									<ContextMenu name="ТоварыДокументПоступленияКонтекстноеМеню" id="305"/>
 									<ExtendedTooltip name="ТоварыДокументПоступленияРасширеннаяПодсказка" id="306"/>
 								</InputField>
@@ -466,6 +480,9 @@
 								<InputField name="ОСДокументПоступления" id="435">
 									<DataPath>Объект.ОС.ДокументПоступления</DataPath>
 									<EditMode>EnterOnInput</EditMode>
+									<DropListButton>false</DropListButton>
+									<ChoiceButton>true</ChoiceButton>
+									<ChoiceButtonRepresentation>ShowInInputField</ChoiceButtonRepresentation>
 									<ContextMenu name="ОСДокументПоступленияКонтекстноеМеню" id="436"/>
 									<ExtendedTooltip name="ОСДокументПоступленияРасширеннаяПодсказка" id="437"/>
 								</InputField>
@@ -776,7 +793,7 @@
 								</UsualGroup>
 							</ChildItems>
 						</UsualGroup>
-						<UsualGroup name="ГруппаИнформация" id="516">
+						<UsualGroup name="ГруппаИнформация" id="614">
 							<Title>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
@@ -789,44 +806,49 @@
 									<v8:content>Группа информация</v8:content>
 								</v8:item>
 							</ToolTip>
-							<Group>Vertical</Group>
+							<Group>Horizontal</Group>
+							<VerticalAlign>Bottom</VerticalAlign>
 							<Representation>None</Representation>
 							<ShowTitle>false</ShowTitle>
-							<ExtendedTooltip name="ГруппаИнформацияРасширеннаяПодсказка" id="517"/>
+							<ExtendedTooltip name="ГруппаИнформацияРасширеннаяПодсказка" id="615"/>
 							<ChildItems>
-								<InputField name="Комментарий" id="518">
+								<InputField name="Комментарий" id="616">
 									<DataPath>Объект.Комментарий</DataPath>
 									<TitleLocation>None</TitleLocation>
+									<EditMode>EnterOnInput</EditMode>
+									<AutoMaxWidth>false</AutoMaxWidth>
+									<MaxWidth>50</MaxWidth>
 									<MultiLine>true</MultiLine>
+									<ChoiceButton>true</ChoiceButton>
 									<InputHint>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
 											<v8:content>Комментарий</v8:content>
 										</v8:item>
 									</InputHint>
-									<ContextMenu name="КомментарийКонтекстноеМеню" id="519"/>
-									<ExtendedTooltip name="КомментарийExtendedTooltip" id="520"/>
+									<ContextMenu name="КомментарийКонтекстноеМеню" id="617"/>
+									<ExtendedTooltip name="КомментарийРасширеннаяПодсказка" id="618"/>
 									<Events>
 										<Event name="OnChange">КомментарийПриИзменении</Event>
+										<Event name="StartChoice">КомментарийНачалоВыбора</Event>
 									</Events>
 								</InputField>
-								<LabelField name="АвторДокумента" id="521">
+								<LabelField name="АвторДокумента" id="619">
 									<DataPath>Объект.Автор</DataPath>
-									<TitleLocation>Left</TitleLocation>
+									<ReadOnly>true</ReadOnly>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
 											<v8:content>Автор документа</v8:content>
 										</v8:item>
 									</ToolTip>
-									<Width>35</Width>
-									<HorizontalStretch>false</HorizontalStretch>
+									<AutoMaxWidth>false</AutoMaxWidth>
 									<Border width="1">
 										<v8ui:style xsi:type="v8ui:ControlBorderType">Single</v8ui:style>
 									</Border>
 									<TextColor>#993300</TextColor>
-									<ContextMenu name="АвторДокументаКонтекстноеМеню" id="522"/>
-									<ExtendedTooltip name="АвторДокументаExtendedTooltip" id="523"/>
+									<ContextMenu name="АвторДокументаКонтекстноеМеню" id="620"/>
+									<ExtendedTooltip name="АвторДокументаExtendedTooltip" id="621"/>
 								</LabelField>
 							</ChildItems>
 						</UsualGroup>

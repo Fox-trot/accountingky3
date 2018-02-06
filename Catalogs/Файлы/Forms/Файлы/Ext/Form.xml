@@ -84,6 +84,19 @@
 						</Button>
 					</ChildItems>
 				</Popup>
+				<Button name="ФормаИмпортФайлов" id="347">
+					<Type>CommandBarButton</Type>
+					<SkipOnInput>false</SkipOnInput>
+					<OnlyInAllActions>false</OnlyInAllActions>
+					<CommandName>Form.Command.ИмпортФайлов</CommandName>
+					<ExtendedTooltip name="ФормаИмпортФайловРасширеннаяПодсказка" id="348"/>
+				</Button>
+				<Button name="ФормаИмпортПапки" id="377">
+					<Type>CommandBarButton</Type>
+					<OnlyInAllActions>false</OnlyInAllActions>
+					<CommandName>Form.Command.ИмпортПапки</CommandName>
+					<ExtendedTooltip name="ФормаИмпортПапкиРасширеннаяПодсказка" id="378"/>
+				</Button>
 				<Button name="ФормаСоздатьПапку" id="86">
 					<Type>CommandBarButton</Type>
 					<Representation>Picture</Representation>
@@ -335,18 +348,11 @@
 							<CommandName>Form.Command.ОткрытьКаталогФайла</CommandName>
 							<ExtendedTooltip name="ФормаОткрытьКаталогФайлаРасширеннаяПодсказка" id="155"/>
 						</Button>
-						<Button name="ФормаИмпортФайлов" id="347">
-							<Type>CommandBarButton</Type>
-							<SkipOnInput>false</SkipOnInput>
-							<OnlyInAllActions>false</OnlyInAllActions>
-							<CommandName>Form.Command.ИмпортФайлов</CommandName>
-							<ExtendedTooltip name="ФормаИмпортФайловРасширеннаяПодсказка" id="348"/>
-						</Button>
-						<Button name="ФормаИмпортПапки" id="377">
+						<Button name="Сравнить" id="428">
 							<Type>CommandBarButton</Type>
 							<OnlyInAllActions>false</OnlyInAllActions>
-							<CommandName>Form.Command.ИмпортПапки</CommandName>
-							<ExtendedTooltip name="ФормаИмпортПапкиРасширеннаяПодсказка" id="378"/>
+							<CommandName>Form.Command.Сравнить</CommandName>
+							<ExtendedTooltip name="СравнитьРасширеннаяПодсказка" id="429"/>
 						</Button>
 					</ChildItems>
 				</ButtonGroup>
@@ -488,7 +494,6 @@
 							<v8:content>Папки и файлы</v8:content>
 						</v8:item>
 					</Title>
-					<Height>8</Height>
 					<Group>Horizontal</Group>
 					<Representation>None</Representation>
 					<ShowTitle>false</ShowTitle>
@@ -712,12 +717,13 @@
 									<v8:content>Файлы</v8:content>
 								</v8:item>
 							</Title>
+							<Width>55</Width>
 							<Group>Vertical</Group>
 							<Representation>None</Representation>
 							<ShowTitle>false</ShowTitle>
 							<ExtendedTooltip name="ГруппаФайлыИПоискРасширеннаяПодсказка" id="397"/>
 							<ChildItems>
-								<UsualGroup name="ГруппаПояснениеОблачногоСервиса" id="401">
+								<UsualGroup name="ГруппаПояснениеОблачногоСервиса" id="414">
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
@@ -725,11 +731,13 @@
 										</v8:item>
 									</Title>
 									<Group>Horizontal</Group>
+									<VerticalAlign>Center</VerticalAlign>
 									<Representation>None</Representation>
 									<ShowTitle>false</ShowTitle>
-									<ExtendedTooltip name="ГруппаПояснениеОблачногоСервисаРасширеннаяПодсказка" id="402"/>
+									<ExtendedTooltip name="ГруппаПояснениеОблачногоСервисаРасширеннаяПодсказка" id="415"/>
 									<ChildItems>
-										<PictureDecoration name="ДекорацияКартинкаОблачногоСервиса" id="408">
+										<PictureDecoration name="ДекорацияКартинкаОблачногоСервиса" id="416">
+											<AutoMaxWidth>false</AutoMaxWidth>
 											<Title formatted="false">
 												<v8:item>
 													<v8:lang>ru</v8:lang>
@@ -738,22 +746,57 @@
 											</Title>
 											<Picture>
 												<xr:Ref>CommonPicture.ПапкаОблачногоСервиса</xr:Ref>
-												<xr:LoadTransparent>true</xr:LoadTransparent>
+												<xr:LoadTransparent>false</xr:LoadTransparent>
 											</Picture>
-											<ContextMenu name="ДекорацияКартинкаОблачногоСервисаКонтекстноеМеню" id="409"/>
-											<ExtendedTooltip name="ДекорацияКартинкаОблачногоСервисаРасширеннаяПодсказка" id="410"/>
+											<ContextMenu name="ДекорацияКартинкаОблачногоСервисаКонтекстноеМеню" id="417"/>
+											<ExtendedTooltip name="ДекорацияКартинкаОблачногоСервисаРасширеннаяПодсказка" id="418"/>
 										</PictureDecoration>
-										<LabelDecoration name="ДекорацияПояснение" id="398">
+										<LabelDecoration name="ДекорацияПояснение" id="419">
 											<AutoMaxWidth>false</AutoMaxWidth>
 											<Title formatted="true">
 												<v8:item>
 													<v8:lang>ru</v8:lang>
-													<v8:content>Работа с файлами этой папки ведется в облачном сервисе &lt;link 1&gt;%1&lt;/&gt;</v8:content>
+													<v8:content>Работа с файлами этой папки ведется в облачном сервисе &lt;link 1&gt;%&lt;/&gt;1.
+</v8:content>
 												</v8:item>
 											</Title>
-											<GroupVerticalAlign>Center</GroupVerticalAlign>
-											<ContextMenu name="ДекорацияПояснениеКонтекстноеМеню" id="399"/>
-											<ExtendedTooltip name="ДекорацияПояснениеРасширеннаяПодсказка" id="400"/>
+											<ToolTipRepresentation>Button</ToolTipRepresentation>
+											<ContextMenu name="ДекорацияПояснениеКонтекстноеМеню" id="420"/>
+											<ExtendedTooltip name="ДекорацияПояснениеРасширеннаяПодсказка" id="421"/>
+										</LabelDecoration>
+										<PictureDecoration name="ДекорацияКартинкаОшибкаСинхронизации" id="422">
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Неудачная синхронизация файлов</v8:content>
+												</v8:item>
+											</Title>
+											<Picture>
+												<xr:Ref>CommonPicture.Предупреждение</xr:Ref>
+												<xr:LoadTransparent>true</xr:LoadTransparent>
+											</Picture>
+											<ContextMenu name="ДекорацияКартинкаОшибкаСинхронизацииКонтекстноеМеню" id="423"/>
+											<ExtendedTooltip name="ДекорацияКартинкаОшибкаСинхронизацииРасширеннаяПодсказка" id="424"/>
+										</PictureDecoration>
+										<LabelDecoration name="ДекорацияДатаСинхронизации" id="425">
+											<Title formatted="true">
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Синхронизировано: %2 </v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Последняя синхронизация файлов не удалась из-за возможных проблем с облачным сервисом, подключением к интернету или других проблем. Подробнее см. Журнал регистрации.</v8:content>
+												</v8:item>
+											</ToolTip>
+											<ToolTipRepresentation>Button</ToolTipRepresentation>
+											<ContextMenu name="ДекорацияДатаСинхронизацииКонтекстноеМеню" id="426"/>
+											<ExtendedTooltip name="ДекорацияДатаСинхронизацииРасширеннаяПодсказка" id="427"/>
+											<Events>
+												<Event name="URLProcessing">ДекорацияДатаСинхронизацииОбработкаНавигационнойСсылки</Event>
+											</Events>
 										</LabelDecoration>
 									</ChildItems>
 								</UsualGroup>
@@ -762,7 +805,6 @@
 									<CommandBarLocation>None</CommandBarLocation>
 									<SkipOnInput>false</SkipOnInput>
 									<DefaultItem>true</DefaultItem>
-									<Width>55</Width>
 									<HeightInTableRows>6</HeightInTableRows>
 									<UseAlternationRowColor>true</UseAlternationRowColor>
 									<EnableStartDrag>true</EnableStartDrag>
@@ -781,6 +823,7 @@
 										<ExcludedCommand>OutputList</ExcludedCommand>
 										<ExcludedCommand>Delete</ExcludedCommand>
 									</CommandSet>
+									<ToolTipRepresentation>None</ToolTipRepresentation>
 									<SearchStringLocation>None</SearchStringLocation>
 									<ViewStatusLocation>None</ViewStatusLocation>
 									<SearchControlLocation>None</SearchControlLocation>
@@ -792,7 +835,7 @@
 										<v8:endDate>0001-01-01T00:00:00</v8:endDate>
 									</Period>
 									<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
-									<RestoreCurrentRow>false</RestoreCurrentRow>
+									<RestoreCurrentRow>true</RestoreCurrentRow>
 									<TopLevelParent xsi:nil="true"/>
 									<ShowRoot>false</ShowRoot>
 									<AllowRootChoice>false</AllowRootChoice>
@@ -1033,7 +1076,9 @@
 										</ChildItems>
 									</ContextMenu>
 									<AutoCommandBar name="СписокКоманднаяПанель" id="23"/>
-									<ExtendedTooltip name="СписокExtendedTooltip" id="208"/>
+									<ExtendedTooltip name="СписокExtendedTooltip" id="208">
+										<AutoMaxWidth>false</AutoMaxWidth>
+									</ExtendedTooltip>
 									<SearchStringAddition name="СписокСтрокаПоиска" id="368">
 										<AdditionSource>
 											<Item>Список</Item>
@@ -1065,7 +1110,6 @@
 										<Event name="OnActivateRow">СписокПриАктивизацииСтроки</Event>
 										<Event name="Drag">СписокПеретаскивание</Event>
 										<Event name="BeforeRowChange">СписокПередНачаломИзменения</Event>
-										<Event name="OnChange">СписокПриИзменении</Event>
 									</Events>
 									<ChildItems>
 										<PictureField name="СписокНомерКартинкиПодписанЗашифрован" id="117">
@@ -1263,26 +1307,6 @@
 											<ContextMenu name="СписокРедактируетКонтекстноеМеню" id="273"/>
 											<ExtendedTooltip name="СписокРедактируетРасширеннаяПодсказка" id="274"/>
 										</InputField>
-										<LabelField name="СписокТекущаяВерсияАвтор" id="287">
-											<DataPath>~Список.ТекущаяВерсияАвтор</DataPath>
-											<UserVisible>
-												<xr:Common>false</xr:Common>
-											</UserVisible>
-											<ReadOnly>true</ReadOnly>
-											<ContextMenu name="СписокТекущаяВерсияАвторКонтекстноеМеню" id="288"/>
-											<ExtendedTooltip name="СписокТекущаяВерсияАвторРасширеннаяПодсказка" id="289"/>
-										</LabelField>
-										<LabelField name="СписокТекущаяВерсияДатаСоздания" id="290">
-											<DataPath>~Список.ТекущаяВерсияДатаСоздания</DataPath>
-											<UserVisible>
-												<xr:Common>false</xr:Common>
-											</UserVisible>
-											<ReadOnly>true</ReadOnly>
-											<Width>15</Width>
-											<HorizontalStretch>false</HorizontalStretch>
-											<ContextMenu name="СписокТекущаяВерсияДатаСозданияКонтекстноеМеню" id="291"/>
-											<ExtendedTooltip name="СписокТекущаяВерсияДатаСозданияРасширеннаяПодсказка" id="292"/>
-										</LabelField>
 										<LabelField name="СписокСсылка" id="115">
 											<DataPath>Список.Ref</DataPath>
 											<UserVisible>
@@ -1422,11 +1446,14 @@
 			<UseAlways>
 				<Field>Папки.УчетнаяЗаписьСервис</Field>
 				<Field>Папки.УчетнаяЗаписьDescription</Field>
+				<Field>Папки.УчетнаяЗапись</Field>
+				<Field>Папки.Синхронизирован</Field>
 				<Field>Папки.ПапкаСинхронизируется</Field>
 				<Field>Папки.ИндексКартинки</Field>
 				<Field>Папки.Ref</Field>
 				<Field>Папки.Href</Field>
 				<Field>Папки.Description</Field>
+				<Field>~Папки.ДатаСинхронизации</Field>
 			</UseAlways>
 			<Settings xsi:type="DynamicList">
 				<ManualQuery>true</ManualQuery>
@@ -1456,7 +1483,10 @@
 	КОНЕЦ КАК ПапкаСинхронизируется,
 	СтатусыСинхронизацииФайловСОблачнымСервисом.Href,
 	СтатусыСинхронизацииФайловСОблачнымСервисом.УчетнаяЗапись.Наименование,
-	СтатусыСинхронизацииФайловСОблачнымСервисом.УчетнаяЗапись.Сервис
+	СтатусыСинхронизацииФайловСОблачнымСервисом.УчетнаяЗапись.Сервис,
+	СтатусыСинхронизацииФайловСОблачнымСервисом.ДатаСинхронизацииНачало,
+	СтатусыСинхронизацииФайловСОблачнымСервисом.УчетнаяЗапись КАК УчетнаяЗапись,
+	СтатусыСинхронизацииФайловСОблачнымСервисом.Синхронизирован
 ИЗ
 	Справочник.ПапкиФайлов КАК ПапкиФайлов
 		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.СтатусыСинхронизацииФайловСОблачнымСервисом КАК СтатусыСинхронизацииФайловСОблачнымСервисом
@@ -2115,7 +2145,12 @@
 					<v8:content>Отправить</v8:content>
 				</v8:item>
 			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.ОтправитьЭлектронноеПисьмо</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
 			<Action>Отправить</Action>
+			<Representation>TextPicture</Representation>
 		</Command>
 		<Command name="Печать" id="27">
 			<Title>
@@ -2130,7 +2165,12 @@
 					<v8:content>Печать</v8:content>
 				</v8:item>
 			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Print</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
 			<Action>Печать</Action>
+			<Representation>TextPicture</Representation>
 		</Command>
 		<Command name="Предпросмотр" id="28">
 			<Title>
@@ -2164,6 +2204,21 @@
 			<FunctionalOptions>
 				<Item>FunctionalOption.ИспользоватьСинхронизациюФайлов</Item>
 			</FunctionalOptions>
+		</Command>
+		<Command name="Сравнить" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сравнить файлы...</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сравнить файлы</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Сравнить</Action>
 		</Command>
 	</Commands>
 	<CommandInterface>
