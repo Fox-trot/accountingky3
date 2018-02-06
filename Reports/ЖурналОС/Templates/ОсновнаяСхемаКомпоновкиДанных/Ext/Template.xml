@@ -326,8 +326,8 @@
 	Организация.*}
 ИЗ
 	РегистрБухгалтерии.Хозрасчетный.ОстаткиИОбороты(
-			,
-			,
+			{(&amp;НачалоПериода)},
+			{(&amp;КонецПериода)},
 			,
 			,
 			Счет В
@@ -361,8 +361,8 @@
 	Организация.*}
 ИЗ
 	РегистрБухгалтерии.Хозрасчетный.ОстаткиИОбороты(
-			,
-			,
+			{(&amp;НачалоПериода)},
+			{(&amp;КонецПериода)},
 			,
 			,
 			Счет В
@@ -770,11 +770,11 @@
 		</valueType>
 		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
 		<useRestriction>true</useRestriction>
-		<expression>&amp;СтПериод.ДатаОкончания</expression>
+		<expression>&amp;СтандартныйПериод.ДатаОкончания</expression>
 		<availableAsField>false</availableAsField>
 	</parameter>
 	<parameter>
-		<name>СтПериод</name>
+		<name>СтандартныйПериод</name>
 		<title xsi:type="v8:LocalStringType">
 			<v8:item>
 				<v8:lang>ru</v8:lang>
@@ -804,6 +804,25 @@
 		<useRestriction>false</useRestriction>
 		<availableAsField>false</availableAsField>
 		<use>Always</use>
+	</parameter>
+	<parameter>
+		<name>НачалоПериода</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Начало периода</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<expression>&amp;СтандартныйПериод.ДатаНачала</expression>
+		<availableAsField>false</availableAsField>
 	</parameter>
 	<settingsVariant>
 		<dcsset:name>Основной</dcsset:name>
@@ -939,11 +958,11 @@
 			</dcsset:filter>
 			<dcsset:dataParameters>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-					<dcscor:parameter>СтПериод</dcscor:parameter>
+					<dcscor:parameter>СтандартныйПериод</dcscor:parameter>
 					<dcscor:value xsi:type="v8:StandardPeriod">
 						<v8:variant xsi:type="v8:StandardPeriodVariant">ThisMonth</v8:variant>
 					</dcscor:value>
-					<dcsset:userSettingID>5068d7a4-2e3b-48a3-b630-e4d22224e7e4</dcsset:userSettingID>
+					<dcsset:userSettingID>f4bca02e-647f-40ae-8614-f596501f6344</dcsset:userSettingID>
 				</dcscor:item>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 					<dcscor:parameter>ВыводитьПодписи</dcscor:parameter>

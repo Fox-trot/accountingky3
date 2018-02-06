@@ -246,13 +246,13 @@
 ИЗ
 	РегистрСведений.СостоянияОС.СрезПоследних КАК СостоянияОССрезПоследних
 		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.ПараметрыУчетаОС.СрезПоследних КАК ПараметрыУчетаОССрезПоследних
-			ЛЕВОЕ СОЕДИНЕНИЕ РегистрБухгалтерии.Хозрасчетный.ОстаткиИОбороты(, , , , , ЗНАЧЕНИЕ(ПланВидовХарактеристик.ВидыСубконтоХозрасчетные.ОсновныеСредства), ) КАК ХозрасчетныйОстаткиИОбороты_Амортизация
+			ЛЕВОЕ СОЕДИНЕНИЕ РегистрБухгалтерии.Хозрасчетный.ОстаткиИОбороты({(&amp;НачалоПериода)}, {(&amp;КонецПериода)}, , , , ЗНАЧЕНИЕ(ПланВидовХарактеристик.ВидыСубконтоХозрасчетные.ОсновныеСредства), ) КАК ХозрасчетныйОстаткиИОбороты_Амортизация
 			ПО ПараметрыУчетаОССрезПоследних.ОсновноеСредство = ХозрасчетныйОстаткиИОбороты_Амортизация.Субконто1
 				И ПараметрыУчетаОССрезПоследних.СчетУчета.ПарныйСчет = ХозрасчетныйОстаткиИОбороты_Амортизация.Счет
-			ЛЕВОЕ СОЕДИНЕНИЕ РегистрБухгалтерии.Хозрасчетный.ОстаткиИОбороты(, , , , , ЗНАЧЕНИЕ(ПланВидовХарактеристик.ВидыСубконтоХозрасчетные.ОсновныеСредства), ) КАК ХозрасчетныйОстаткиИОбороты_БалансоваяСтоимость
+			ЛЕВОЕ СОЕДИНЕНИЕ РегистрБухгалтерии.Хозрасчетный.ОстаткиИОбороты({(&amp;НачалоПериода)}, {(&amp;КонецПериода)}, , , , ЗНАЧЕНИЕ(ПланВидовХарактеристик.ВидыСубконтоХозрасчетные.ОсновныеСредства), ) КАК ХозрасчетныйОстаткиИОбороты_БалансоваяСтоимость
 			ПО ПараметрыУчетаОССрезПоследних.ОсновноеСредство = ХозрасчетныйОстаткиИОбороты_БалансоваяСтоимость.Субконто1
 				И ПараметрыУчетаОССрезПоследних.СчетУчета = ХозрасчетныйОстаткиИОбороты_БалансоваяСтоимость.Счет
-			ЛЕВОЕ СОЕДИНЕНИЕ РегистрБухгалтерии.Хозрасчетный.ОборотыДтКт(, , Авто, , ЗНАЧЕНИЕ(ПланВидовХарактеристик.ВидыСубконтоХозрасчетные.ОсновныеСредства), , , ) КАК ХозрасчетныйОборотыДтКт_Модернизация
+			ЛЕВОЕ СОЕДИНЕНИЕ РегистрБухгалтерии.Хозрасчетный.ОборотыДтКт({(&amp;НачалоПериода)}, {(&amp;КонецПериода)}, Авто, , ЗНАЧЕНИЕ(ПланВидовХарактеристик.ВидыСубконтоХозрасчетные.ОсновныеСредства), , , ) КАК ХозрасчетныйОборотыДтКт_Модернизация
 			ПО ПараметрыУчетаОССрезПоследних.ОсновноеСредство = ХозрасчетныйОборотыДтКт_Модернизация.СубконтоДт1
 				И ПараметрыУчетаОССрезПоследних.СчетУчета = ХозрасчетныйОборотыДтКт_Модернизация.СчетДт
 				И (ВЫРАЗИТЬ(ХозрасчетныйОборотыДтКт_Модернизация.Регистратор КАК Документ.МодернизацияОС) ССЫЛКА Документ.МодернизацияОС)
@@ -304,7 +304,7 @@
 		<expression>Сумма(АмортизацияЗаПериод)</expression>
 	</totalField>
 	<parameter>
-		<name>СтПериод</name>
+		<name>СтандартныйПериод</name>
 		<title xsi:type="v8:LocalStringType">
 			<v8:item>
 				<v8:lang>ru</v8:lang>
@@ -350,6 +350,44 @@
 		</valueType>
 		<value xsi:type="xs:boolean">false</value>
 		<useRestriction>false</useRestriction>
+	</parameter>
+	<parameter>
+		<name>КонецПериода</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Конец периода</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<expression>&amp;СтандартныйПериод.ДатаОкончания</expression>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<parameter>
+		<name>НачалоПериода</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Начало периода</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<expression>&amp;СтандартныйПериод.ДатаНачала</expression>
+		<availableAsField>false</availableAsField>
 	</parameter>
 	<settingsVariant>
 		<dcsset:name>Основной</dcsset:name>
@@ -398,10 +436,10 @@
 					<dcsset:field>СтоимостьДляНачисленияАмортизации</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>СтоимостьНаНачалоПериода</dcsset:field>
+					<dcsset:field>АмортизацияНаНачалоПериода</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>АмортизацияНаНачалоПериода</dcsset:field>
+					<dcsset:field>СтоимостьНаНачалоПериода</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>УвеличениеСтоимости</dcsset:field>
@@ -413,10 +451,10 @@
 					<dcsset:field>УменьшениеСтоимости</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>СтоимостьНаКонецПериода</dcsset:field>
+					<dcsset:field>АмортизацияНаКонецПериода</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>АмортизацияНаКонецПериода</dcsset:field>
+					<dcsset:field>СтоимостьНаКонецПериода</dcsset:field>
 				</dcsset:item>
 				<dcsset:viewMode>Normal</dcsset:viewMode>
 				<dcsset:userSettingID>a811a9a9-3093-48ce-b861-ad2377f6f3c3</dcsset:userSettingID>
@@ -447,11 +485,11 @@
 			</dcsset:filter>
 			<dcsset:dataParameters>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-					<dcscor:parameter>СтПериод</dcscor:parameter>
+					<dcscor:parameter>СтандартныйПериод</dcscor:parameter>
 					<dcscor:value xsi:type="v8:StandardPeriod">
 						<v8:variant xsi:type="v8:StandardPeriodVariant">ThisMonth</v8:variant>
 					</dcscor:value>
-					<dcsset:userSettingID>5068d7a4-2e3b-48a3-b630-e4d22224e7e4</dcsset:userSettingID>
+					<dcsset:userSettingID>6a94e7fe-03e8-4250-8854-37b5ef3e3ba7</dcsset:userSettingID>
 				</dcscor:item>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 					<dcscor:parameter>ВыводитьПодписи</dcscor:parameter>
