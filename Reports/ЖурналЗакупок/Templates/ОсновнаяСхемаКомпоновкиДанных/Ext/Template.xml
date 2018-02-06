@@ -124,27 +124,6 @@
 			</appearance>
 		</field>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>СуммаБезНДС</dataPath>
-			<field>СуммаБезНДС</field>
-			<title xsi:type="v8:LocalStringType">
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Сумма без НДС</v8:content>
-				</v8:item>
-			</title>
-			<appearance>
-				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-					<dcscor:parameter>Формат</dcscor:parameter>
-					<dcscor:value xsi:type="v8:LocalStringType">
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>ЧЦ=15; ЧДЦ=2</v8:content>
-						</v8:item>
-					</dcscor:value>
-				</dcscor:item>
-			</appearance>
-		</field>
-		<field xsi:type="DataSetFieldField">
 			<dataPath>Номенклатура</dataPath>
 			<field>Номенклатура</field>
 			<role>
@@ -199,25 +178,24 @@
 			</role>
 		</field>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>НеоблагаемаяСумма</dataPath>
-			<field>НеоблагаемаяСумма</field>
+			<dataPath>Сумма</dataPath>
+			<field>Сумма</field>
 			<title xsi:type="v8:LocalStringType">
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Необлагаемая сумма</v8:content>
+					<v8:content>Сумма</v8:content>
 				</v8:item>
 			</title>
-			<appearance>
-				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-					<dcscor:parameter>Формат</dcscor:parameter>
-					<dcscor:value xsi:type="v8:LocalStringType">
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>ЧЦ=15; ЧДЦ=2</v8:content>
-						</v8:item>
-					</dcscor:value>
-				</dcscor:item>
-			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СуммаНСП</dataPath>
+			<field>СуммаНСП</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сумма НСП</v8:content>
+				</v8:item>
+			</title>
 		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ
@@ -231,18 +209,16 @@
 	ЕСТЬNULL(СчетаФактурыПолученные.НомерБланкаСФ, "") КАК НомерБланкаСФ,
 	ПоступлениеТоваровОбороты.Номенклатура КАК Номенклатура,
 	ПоступлениеТоваровОбороты.Регистратор КАК ДокументПоставки,
-	ПоступлениеТоваровОбороты.СуммаСебестоимостиОборот КАК СуммаБезНДС,
+	ПоступлениеТоваровОбороты.СуммаОборот КАК Сумма,
 	ПоступлениеТоваровОбороты.СуммаНДСОборот КАК СуммаНДС,
-	ПоступлениеТоваровОбороты.СуммаНеоблагаемаяОборот КАК СуммаНеоблагаемая,
-	ПоступлениеТоваровОбороты.СуммаСебестоимостиОборот + ПоступлениеТоваровОбороты.СуммаНДСОборот + ПоступлениеТоваровОбороты.СуммаНеоблагаемаяОборот КАК Всего,
+	ПоступлениеТоваровОбороты.СуммаНСПОборот КАК СуммаНСП,
+	ПоступлениеТоваровОбороты.СуммаОборот + ПоступлениеТоваровОбороты.СуммаНДСОборот + ПоступлениеТоваровОбороты.СуммаНСПОборот КАК Всего,
 	1 КАК Порядок
 ПОМЕСТИТЬ ВременнаяТаблицаОбщая
 ИЗ
 	РегистрНакопления.ПоступлениеТоваров.Обороты(&amp;НачалоПериода, &amp;КонецПериода, Авто, ) КАК ПоступлениеТоваровОбороты
 		ВНУТРЕННЕЕ СОЕДИНЕНИЕ РегистрСведений.СчетаФактурыПолученные КАК СчетаФактурыПолученные
 		ПО ПоступлениеТоваровОбороты.Регистратор = СчетаФактурыПолученные.Документ
-ГДЕ
-	ПоступлениеТоваровОбороты.СтавкаНДС = ЗНАЧЕНИЕ(Справочник.СтавкиНДС.Стандарт)
 ;
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -266,9 +242,9 @@
 		ИНАЧЕ ""
 	КОНЕЦ КАК НаименованиеПоставки,
 	ПРЕДСТАВЛЕНИЕ(ВременнаяТаблицаОбщая.ДокументПоставки) КАК ДокументПоставки,
-	ВременнаяТаблицаОбщая.СуммаБезНДС КАК СуммаБезНДС,
+	ВременнаяТаблицаОбщая.Сумма КАК Сумма,
 	ВременнаяТаблицаОбщая.СуммаНДС КАК СуммаНДС,
-	ВременнаяТаблицаОбщая.СуммаНеоблагаемая КАК НеоблагаемаяСумма,
+	ВременнаяТаблицаОбщая.СуммаНСП КАК СуммаНСП,
 	ВременнаяТаблицаОбщая.Всего КАК Всего,
 	ВременнаяТаблицаОбщая.ДатаСФ КАК ДатаСФ,
 	ВременнаяТаблицаОбщая.ДатаПоставки КАК ДатаПоставки
@@ -281,9 +257,9 @@
 	Номенклатура.*,
 	НаименованиеПоставки,
 	ДокументПоставки,
-	СуммаБезНДС,
+	Сумма,
 	СуммаНДС,
-	НеоблагаемаяСумма,
+	СуммаНСП,
 	Всего,
 	ДатаСФ,
 	ДатаПоставки}
@@ -294,10 +270,6 @@
 		<autoFillFields>false</autoFillFields>
 	</dataSet>
 	<totalField>
-		<dataPath>СуммаБезНДС</dataPath>
-		<expression>Сумма(СуммаБезНДС)</expression>
-	</totalField>
-	<totalField>
 		<dataPath>СуммаНДС</dataPath>
 		<expression>Сумма(СуммаНДС)</expression>
 	</totalField>
@@ -306,8 +278,12 @@
 		<expression>Сумма(Всего)</expression>
 	</totalField>
 	<totalField>
-		<dataPath>НеоблагаемаяСумма</dataPath>
-		<expression>Сумма(НеоблагаемаяСумма)</expression>
+		<dataPath>СуммаНСП</dataPath>
+		<expression>Сумма(СуммаНСП)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>Сумма</dataPath>
+		<expression>Сумма(Сумма)</expression>
 	</totalField>
 	<parameter>
 		<name>НачалоПериода</name>
@@ -426,13 +402,13 @@
 					<dcsset:field>НаименованиеПоставки</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>СуммаБезНДС</dcsset:field>
+					<dcsset:field>Сумма</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>СуммаНДС</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>НеоблагаемаяСумма</dcsset:field>
+					<dcsset:field>СуммаНСП</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>Всего</dcsset:field>

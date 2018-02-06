@@ -59,35 +59,46 @@
 			</Events>
 			<ChildItems>
 				<LabelField name="СписокДокументовСсылка" id="14">
-					<DataPath>СписокДокументов.Ref</DataPath>
+					<DataPath>СписокДокументов.Ссылка</DataPath>
 					<ContextMenu name="СписокДокументовСсылкаКонтекстноеМеню" id="15"/>
 					<ExtendedTooltip name="СписокДокументовСсылкаРасширеннаяПодсказка" id="16"/>
-				</LabelField>
-				<LabelField name="СписокДокументовВалютаДокумента" id="17">
-					<DataPath>СписокДокументов.ВалютаДокумента</DataPath>
-					<ContextMenu name="СписокДокументовВалютаДокументаКонтекстноеМеню" id="18"/>
-					<ExtendedTooltip name="СписокДокументовВалютаДокументаРасширеннаяПодсказка" id="19"/>
-				</LabelField>
-				<LabelField name="СписокДокументовВидОперации" id="20">
-					<DataPath>СписокДокументов.ВидОперации</DataPath>
-					<ContextMenu name="СписокДокументовВидОперацииКонтекстноеМеню" id="21"/>
-					<ExtendedTooltip name="СписокДокументовВидОперацииРасширеннаяПодсказка" id="22"/>
 				</LabelField>
 				<LabelField name="СписокДокументовКонтрагент" id="23">
 					<DataPath>СписокДокументов.Контрагент</DataPath>
 					<ContextMenu name="СписокДокументовКонтрагентКонтекстноеМеню" id="24"/>
 					<ExtendedTooltip name="СписокДокументовКонтрагентРасширеннаяПодсказка" id="25"/>
 				</LabelField>
-				<LabelField name="СписокДокументовСуммаДокумента" id="26">
-					<DataPath>СписокДокументов.СуммаДокумента</DataPath>
-					<ContextMenu name="СписокДокументовСуммаДокументаКонтекстноеМеню" id="27"/>
-					<ExtendedTooltip name="СписокДокументовСуммаДокументаРасширеннаяПодсказка" id="28"/>
-				</LabelField>
-				<LabelField name="СписокДокументовСтандартнаяКартинка" id="29">
-					<DataPath>СписокДокументов.DefaultPicture</DataPath>
-					<ContextMenu name="СписокДокументовСтандартнаяКартинкаКонтекстноеМеню" id="30"/>
-					<ExtendedTooltip name="СписокДокументовСтандартнаяКартинкаРасширеннаяПодсказка" id="31"/>
-				</LabelField>
+				<ColumnGroup name="ГруппаСумма" id="29">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сумма</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа сумма</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>InCell</Group>
+					<ExtendedTooltip name="ГруппаСуммаРасширеннаяПодсказка" id="30"/>
+					<ChildItems>
+						<LabelField name="СписокДокументовСуммаДокумента" id="26">
+							<DataPath>СписокДокументов.СуммаДокумента</DataPath>
+							<Width>10</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ContextMenu name="СписокДокументовСуммаДокументаКонтекстноеМеню" id="27"/>
+							<ExtendedTooltip name="СписокДокументовСуммаДокументаРасширеннаяПодсказка" id="28"/>
+						</LabelField>
+						<LabelField name="СписокДокументовВалютаДокумента" id="17">
+							<DataPath>СписокДокументов.ВалютаДокумента</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<ContextMenu name="СписокДокументовВалютаДокументаКонтекстноеМеню" id="18"/>
+							<ExtendedTooltip name="СписокДокументовВалютаДокументаРасширеннаяПодсказка" id="19"/>
+						</LabelField>
+					</ChildItems>
+				</ColumnGroup>
 			</ChildItems>
 		</Table>
 	</ChildItems>
@@ -104,16 +115,28 @@
 			</Type>
 			<Settings xsi:type="DynamicList">
 				<ManualQuery>true</ManualQuery>
-				<DynamicDataRead>true</DynamicDataRead>
+				<DynamicDataRead>false</DynamicDataRead>
 				<QueryText>ВЫБРАТЬ
-	ПоступлениеТоваровУслуг.Ссылка,
-	ПоступлениеТоваровУслуг.Контрагент,
-	ПоступлениеТоваровУслуг.ВидОперации,
-	ПоступлениеТоваровУслуг.СуммаДокумента,
-	ПоступлениеТоваровУслуг.ВалютаДокумента
+	ПоступлениеТоваровУслуг.Ссылка КАК Ссылка,
+	ПоступлениеТоваровУслуг.Контрагент КАК Контрагент,
+	ПоступлениеТоваровУслуг.СуммаДокумента КАК СуммаДокумента,
+	ПоступлениеТоваровУслуг.ВалютаДокумента КАК ВалютаДокумента
 ИЗ
-	Документ.ПоступлениеТоваровУслуг КАК ПоступлениеТоваровУслуг</QueryText>
-				<MainTable>Document.ПоступлениеТоваровУслуг</MainTable>
+	Документ.ПоступлениеТоваровУслуг КАК ПоступлениеТоваровУслуг
+ГДЕ
+	ПоступлениеТоваровУслуг.Проведен
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	АвансовыйОтчет.Ссылка,
+	NULL,
+	АвансовыйОтчет.СуммаДокумента,
+	АвансовыйОтчет.ВалютаДокумента
+ИЗ
+	Документ.АвансовыйОтчет КАК АвансовыйОтчет
+ГДЕ
+	АвансовыйОтчет.Проведен</QueryText>
 				<ListSettings>
 					<dcsset:filter>
 						<dcsset:viewMode>Normal</dcsset:viewMode>

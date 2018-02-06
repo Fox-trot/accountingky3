@@ -58,6 +58,12 @@
 			<ChildItems>
 				<LabelField name="СписокДокументовСсылка" id="14">
 					<DataPath>СписокДокументов.Ref</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Документ</v8:content>
+						</v8:item>
+					</Title>
 					<ContextMenu name="СписокДокументовСсылкаКонтекстноеМеню" id="15"/>
 					<ExtendedTooltip name="СписокДокументовСсылкаРасширеннаяПодсказка" id="16"/>
 				</LabelField>
@@ -75,11 +81,6 @@
 					<DataPath>СписокДокументов.СуммаДокумента</DataPath>
 					<ContextMenu name="СписокДокументовСуммаДокументаКонтекстноеМеню" id="27"/>
 					<ExtendedTooltip name="СписокДокументовСуммаДокументаРасширеннаяПодсказка" id="28"/>
-				</LabelField>
-				<LabelField name="СписокДокументовСтандартнаяКартинка" id="29">
-					<DataPath>СписокДокументов.DefaultPicture</DataPath>
-					<ContextMenu name="СписокДокументовСтандартнаяКартинкаКонтекстноеМеню" id="30"/>
-					<ExtendedTooltip name="СписокДокументовСтандартнаяКартинкаРасширеннаяПодсказка" id="31"/>
 				</LabelField>
 			</ChildItems>
 		</Table>
@@ -112,6 +113,15 @@
 				ИЗ
 					Документ.ГТДПоИмпорту.Товары КАК ГТДПоИмпортуТовары
 				ГДЕ
+					ГТДПоИмпортуТовары.Ссылка &lt;= &amp;ДатаОтбора
+		
+				ОБЪЕДИНИТЬ
+		
+				ВЫБРАТЬ
+					ГТДПоИмпортуТовары.ДокументПоступления
+				ИЗ
+					Документ.ГТДПоИмпорту.ОС КАК ГТДПоИмпортуТовары
+				ГДЕ
 					ГТДПоИмпортуТовары.Ссылка &lt;= &amp;ДатаОтбора)
 	И ДополнительныеРасходы.Дата &lt;= &amp;ДатаОтбора</QueryText>
 				<MainTable>Document.ДополнительныеРасходы</MainTable>
@@ -136,6 +146,17 @@
 					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
 				</ListSettings>
 			</Settings>
+		</Attribute>
+		<Attribute name="УникальныйИдентификаторФормыВладельца" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Уникальный идентификатор формы владельца</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:UUID</v8:Type>
+			</Type>
 		</Attribute>
 	</Attributes>
 </Form>

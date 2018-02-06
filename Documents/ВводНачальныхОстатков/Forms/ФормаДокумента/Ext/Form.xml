@@ -56,6 +56,7 @@
 		<Event name="OnReadAtServer">ПриЧтенииНаСервере</Event>
 		<Event name="OnOpen">ПриОткрытии</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+		<Event name="OnClose">ПриЗакрытии</Event>
 	</Events>
 	<ChildItems>
 		<UsualGroup name="ГруппаШапка" id="13">
@@ -384,11 +385,28 @@
 							<ContextMenu name="ТоварыКонтекстноеМеню" id="590"/>
 							<AutoCommandBar name="ТоварыКоманднаяПанель" id="591">
 								<ChildItems>
-									<Button name="ТоварыПоискПоШтрихкодуТовары" id="1453">
-										<Type>CommandBarButton</Type>
-										<CommandName>Form.Command.ПоискПоШтрихкодуТовары</CommandName>
-										<ExtendedTooltip name="ТоварыПоискПоШтрихкодуТоварыРасширеннаяПодсказка" id="1454"/>
-									</Button>
+									<ButtonGroup name="ГруппаТорговоеОборудование" id="1459">
+										<ToolTip>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Группа торговое оборудование</v8:content>
+											</v8:item>
+										</ToolTip>
+										<Representation>Compact</Representation>
+										<ExtendedTooltip name="ГруппаТорговоеОборудованиеРасширеннаяПодсказка" id="1460"/>
+										<ChildItems>
+											<Button name="ТоварыПоискПоШтрихкоду" id="1453">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.ПоискПоШтрихкоду</CommandName>
+												<ExtendedTooltip name="ТоварыПоискПоШтрихкодуРасширеннаяПодсказка" id="1454"/>
+											</Button>
+											<Button name="ЗапасыЗагрузитьДанныеИзТСД" id="1457">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.ЗагрузитьДанныеИзТСД</CommandName>
+												<ExtendedTooltip name="ЗапасыЗагрузитьДанныеИзТСДExtendedTooltip" id="1458"/>
+											</Button>
+										</ChildItems>
+									</ButtonGroup>
 									<Button name="ТоварыПодборНоменклатуры" id="1390">
 										<Type>CommandBarButton</Type>
 										<CommandName>Form.Command.ПодборНоменклатуры</CommandName>
@@ -1326,11 +1344,28 @@
 							<ContextMenu name="МБПКонтекстноеМеню" id="1266"/>
 							<AutoCommandBar name="МБПКоманднаяПанель" id="1267">
 								<ChildItems>
-									<Button name="МБППоискПоШтрихкодуМБП" id="1455">
-										<Type>CommandBarButton</Type>
-										<CommandName>Form.Command.ПоискПоШтрихкодуМБП</CommandName>
-										<ExtendedTooltip name="МБППоискПоШтрихкодуМБПРасширеннаяПодсказка" id="1456"/>
-									</Button>
+									<ButtonGroup name="ГруппаТорговоеОборудование1" id="1463">
+										<ToolTip>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Группа торговое оборудование</v8:content>
+											</v8:item>
+										</ToolTip>
+										<Representation>Compact</Representation>
+										<ExtendedTooltip name="ГруппаТорговоеОборудование1РасширеннаяПодсказка" id="1464"/>
+										<ChildItems>
+											<Button name="МБППоискПоШтрихкоду" id="1455">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.ПоискПоШтрихкоду</CommandName>
+												<ExtendedTooltip name="МБППоискПоШтрихкодуРасширеннаяПодсказка" id="1456"/>
+											</Button>
+											<Button name="МБПЗагрузитьДанныеИзТСД" id="1461">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.ЗагрузитьДанныеИзТСД</CommandName>
+												<ExtendedTooltip name="МБПЗагрузитьДанныеИзТСДРасширеннаяПодсказка" id="1462"/>
+											</Button>
+										</ChildItems>
+									</ButtonGroup>
 									<Button name="МБППодборНоменклатуры" id="1394">
 										<Type>CommandBarButton</Type>
 										<CommandName>Form.Command.ПодборНоменклатуры</CommandName>
@@ -1653,9 +1688,6 @@
 										<InputField name="ПрочееСубконто1" id="874">
 											<DataPath>Объект.Прочее.Субконто1</DataPath>
 											<EditMode>EnterOnInput</EditMode>
-											<DropListButton>false</DropListButton>
-											<ChoiceButton>true</ChoiceButton>
-											<ChoiceButtonRepresentation>ShowInInputField</ChoiceButtonRepresentation>
 											<TypeLink>
 												<xr:DataPath>Items.Прочее.CurrentData.СчетУчета</xr:DataPath>
 												<xr:LinkItem>1</xr:LinkItem>
@@ -1669,9 +1701,6 @@
 										<InputField name="ПрочееСубконто2" id="877">
 											<DataPath>Объект.Прочее.Субконто2</DataPath>
 											<EditMode>EnterOnInput</EditMode>
-											<DropListButton>false</DropListButton>
-											<ChoiceButton>true</ChoiceButton>
-											<ChoiceButtonRepresentation>ShowInInputField</ChoiceButtonRepresentation>
 											<TypeLink>
 												<xr:DataPath>Items.Прочее.CurrentData.СчетУчета</xr:DataPath>
 												<xr:LinkItem>2</xr:LinkItem>
@@ -1685,9 +1714,6 @@
 										<InputField name="ПрочееСубконто3" id="880">
 											<DataPath>Объект.Прочее.Субконто3</DataPath>
 											<EditMode>EnterOnInput</EditMode>
-											<DropListButton>false</DropListButton>
-											<ChoiceButton>true</ChoiceButton>
-											<ChoiceButtonRepresentation>ShowInInputField</ChoiceButtonRepresentation>
 											<TypeLink>
 												<xr:DataPath>Items.Прочее.CurrentData.СчетУчета</xr:DataPath>
 												<xr:LinkItem>3</xr:LinkItem>
@@ -2901,6 +2927,32 @@
 				<v8:Type>cfg:CatalogRef.Склады</v8:Type>
 			</Type>
 		</Attribute>
+		<Attribute name="ПоддерживаемыеТипыПодключаемогоОборудования" id="13">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Поддерживаемые типы подключаемого оборудования</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ИспользоватьПодключаемоеОборудование" id="14">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Использовать подключаемое оборудование</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
 		<ConditionalAppearance>
 			<dcsset:item>
 				<dcsset:selection>
@@ -3064,17 +3116,17 @@
 			<Representation>Picture</Representation>
 			<ModifiesSavedData>true</ModifiesSavedData>
 		</Command>
-		<Command name="ПоискПоШтрихкодуТовары" id="6">
+		<Command name="ПоискПоШтрихкоду" id="6">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Поиск по штрихкоду товары</v8:content>
+					<v8:content>Поиск по штрихкоду</v8:content>
 				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Поиск по штрихкоду товары</v8:content>
+					<v8:content>Поиск по штрихкоду</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Shortcut>F7</Shortcut>
@@ -3082,28 +3134,28 @@
 				<xr:Ref>CommonPicture.НовыйПоШтрихкоду</xr:Ref>
 				<xr:LoadTransparent>true</xr:LoadTransparent>
 			</Picture>
-			<Action>ПоискПоШтрихкодуТовары</Action>
+			<Action>ПоискПоШтрихкоду</Action>
 			<ModifiesSavedData>true</ModifiesSavedData>
 		</Command>
-		<Command name="ПоискПоШтрихкодуМБП" id="7">
+		<Command name="ЗагрузитьДанныеИзТСД" id="8">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Поиск по штрихкоду МБП</v8:content>
+					<v8:content>Загрузить данные из ТСД</v8:content>
 				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Поиск по штрихкоду товары</v8:content>
+					<v8:content>Загрузить данные из ТСД</v8:content>
 				</v8:item>
 			</ToolTip>
-			<Shortcut>F7</Shortcut>
 			<Picture>
-				<xr:Ref>CommonPicture.НовыйПоШтрихкоду</xr:Ref>
+				<xr:Ref>CommonPicture.ПодключаемоеОборудованиеЗагрузитьИзТСД</xr:Ref>
 				<xr:LoadTransparent>true</xr:LoadTransparent>
+				<xr:TransparentPixel x="13" y="2"/>
 			</Picture>
-			<Action>ПоискПоШтрихкодуМБП</Action>
+			<Action>ЗагрузитьДанныеИзТСД</Action>
 			<ModifiesSavedData>true</ModifiesSavedData>
 		</Command>
 	</Commands>
