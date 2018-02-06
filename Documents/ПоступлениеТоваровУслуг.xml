@@ -74,6 +74,7 @@
 				<xr:Item xsi:type="xr:MDObjectRef">InformationRegister.СостоянияОС</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">InformationRegister.СобытияОС</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">InformationRegister.СведенияОПоступлении</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">InformationRegister.ЗначенияСтавокНалоговНДСиНСП</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">AccountingRegister.Хозрасчетный</xr:Item>
 			</RegisterRecords>
 			<PostInPrivilegedMode>true</PostInPrivilegedMode>
@@ -219,53 +220,6 @@
 					<FullTextSearch>Use</FullTextSearch>
 				</Properties>
 			</Attribute>
-			<Attribute uuid="97f75e98-fb2d-4433-9a0b-c619cc275768">
-				<Properties>
-					<Name>СобытиеОС</Name>
-					<Synonym>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Событие ОС</v8:content>
-						</v8:item>
-					</Synonym>
-					<Comment/>
-					<Type>
-						<v8:Type>cfg:EnumRef.ВидыСобытийОС</v8:Type>
-					</Type>
-					<PasswordMode>false</PasswordMode>
-					<Format/>
-					<EditFormat/>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Событие с основным средством с видом события "Поступление".</v8:content>
-						</v8:item>
-					</ToolTip>
-					<MarkNegatives>false</MarkNegatives>
-					<Mask/>
-					<MultiLine>false</MultiLine>
-					<ExtendedEdit>false</ExtendedEdit>
-					<MinValue xsi:nil="true"/>
-					<MaxValue xsi:nil="true"/>
-					<FillFromFillingValue>false</FillFromFillingValue>
-					<FillValue xsi:nil="true"/>
-					<FillChecking>ShowError</FillChecking>
-					<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
-					<ChoiceParameterLinks/>
-					<ChoiceParameters>
-						<app:item name="Отбор.ВидСобытияОС">
-							<app:value xsi:type="xr:DesignTimeRef">Enum.ВидыСобытийОС.EnumValue.Поступление</app:value>
-						</app:item>
-					</ChoiceParameters>
-					<QuickChoice>Auto</QuickChoice>
-					<CreateOnInput>Auto</CreateOnInput>
-					<ChoiceForm/>
-					<LinkByType/>
-					<ChoiceHistoryOnInput>Auto</ChoiceHistoryOnInput>
-					<Indexing>DontIndex</Indexing>
-					<FullTextSearch>Use</FullTextSearch>
-				</Properties>
-			</Attribute>
 			<Attribute uuid="32e18eab-8fd7-49de-8ef1-a435446959f7">
 				<Properties>
 					<Name>Склад</Name>
@@ -341,7 +295,13 @@
 					<FillValue xsi:nil="true"/>
 					<FillChecking>ShowError</FillChecking>
 					<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
-					<ChoiceParameterLinks/>
+					<ChoiceParameterLinks>
+						<xr:Link>
+							<xr:Name>Отбор.ДокументВладелец</xr:Name>
+							<xr:DataPath xsi:type="xs:string">Document.ПоступлениеТоваровУслуг.StandardAttribute.Ref</xr:DataPath>
+							<xr:ValueChange>Clear</xr:ValueChange>
+						</xr:Link>
+					</ChoiceParameterLinks>
 					<ChoiceParameters/>
 					<QuickChoice>Auto</QuickChoice>
 					<CreateOnInput>Auto</CreateOnInput>
@@ -644,16 +604,21 @@
 			</Attribute>
 			<Attribute uuid="e79a8826-14b0-4a59-b412-2f98d255fd0d">
 				<Properties>
-					<Name>СтавкаНДС</Name>
+					<Name>ЗначениеСтавкиНДС</Name>
 					<Synonym>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Ставка НДС</v8:content>
+							<v8:content>Значение ставки НДС</v8:content>
 						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
-						<v8:Type>cfg:CatalogRef.СтавкиНДС</v8:Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>5</v8:Digits>
+							<v8:FractionDigits>2</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
 					</Type>
 					<PasswordMode>false</PasswordMode>
 					<Format/>
@@ -661,7 +626,7 @@
 					<ToolTip>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Ставка налога на добавленную стоимость.</v8:content>
+							<v8:content>Числовое значение ставки налога на добавленную стоимость.</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -687,16 +652,21 @@
 			</Attribute>
 			<Attribute uuid="d898bcbf-1481-40b2-a4d4-2e0a5729653b">
 				<Properties>
-					<Name>СтавкаНСП</Name>
+					<Name>ЗначениеСтавкиНСП</Name>
 					<Synonym>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Ставка НСП</v8:content>
+							<v8:content>Значение ставки НСП</v8:content>
 						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
-						<v8:Type>cfg:CatalogRef.СтавкиНСП</v8:Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>5</v8:Digits>
+							<v8:FractionDigits>2</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
 					</Type>
 					<PasswordMode>false</PasswordMode>
 					<Format/>
@@ -704,7 +674,7 @@
 					<ToolTip>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Ставка налога с продаж.</v8:content>
+							<v8:content>Числовое значение ставки налога с продаж.</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -921,12 +891,11 @@
 					</Synonym>
 					<Comment/>
 					<Type>
-						<v8:Type>xs:decimal</v8:Type>
-						<v8:NumberQualifiers>
-							<v8:Digits>8</v8:Digits>
-							<v8:FractionDigits>0</v8:FractionDigits>
-							<v8:AllowedSign>Any</v8:AllowedSign>
-						</v8:NumberQualifiers>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>6</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
 					</Type>
 					<PasswordMode>false</PasswordMode>
 					<Format>
@@ -948,7 +917,7 @@
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
-					<Mask>99999999</Mask>
+					<Mask>999999</Mask>
 					<MultiLine>false</MultiLine>
 					<ExtendedEdit>false</ExtendedEdit>
 					<MinValue xsi:nil="true"/>
@@ -1016,11 +985,11 @@
 			</Attribute>
 			<Attribute uuid="6b5316cf-1893-491c-920b-fc4a8cb41bb2">
 				<Properties>
-					<Name>ИсключитьИзРеестраСФ</Name>
+					<Name>НеВключатьВРеестрСФ</Name>
 					<Synonym>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Исключить из реестра СФ</v8:content>
+							<v8:content>Не включать в реестр СФ</v8:content>
 						</v8:item>
 					</Synonym>
 					<Comment/>
@@ -1054,7 +1023,7 @@
 			</Attribute>
 			<Attribute uuid="a0a40db4-5f73-4a3c-bd19-d6d5474e20af">
 				<Properties>
-					<Name>НДСПодтвержден</Name>
+					<Name>НДСНеПодтвержден</Name>
 					<Synonym>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -1081,7 +1050,7 @@
 					<MinValue xsi:nil="true"/>
 					<MaxValue xsi:nil="true"/>
 					<FillFromFillingValue>false</FillFromFillingValue>
-					<FillValue xsi:type="xs:boolean">true</FillValue>
+					<FillValue xsi:type="xs:boolean">false</FillValue>
 					<FillChecking>DontCheck</FillChecking>
 					<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
 					<ChoiceParameterLinks/>
@@ -1471,7 +1440,7 @@
 					</Synonym>
 					<Comment/>
 					<Type>
-						<v8:Type>cfg:CatalogRef.ВидыТранспорта</v8:Type>
+						<v8:Type>cfg:CatalogRef.ВидыТранспортаПоказателиИмпорт</v8:Type>
 					</Type>
 					<PasswordMode>false</PasswordMode>
 					<Format/>
@@ -2704,11 +2673,11 @@
 					</Attribute>
 					<Attribute uuid="6700b38c-ed8c-46e3-b561-394990cc70de">
 						<Properties>
-							<Name>СчетУчета</Name>
+							<Name>СчетРасхода</Name>
 							<Synonym>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Счет учета</v8:content>
+									<v8:content>Счет расхода</v8:content>
 								</v8:item>
 							</Synonym>
 							<Comment/>
@@ -2786,7 +2755,7 @@
 							<CreateOnInput>Auto</CreateOnInput>
 							<ChoiceForm/>
 							<LinkByType>
-								<xr:DataPath>Document.ПоступлениеТоваровУслуг.TabularSection.Услуги.Attribute.СчетУчета</xr:DataPath>
+								<xr:DataPath>Document.ПоступлениеТоваровУслуг.TabularSection.Услуги.Attribute.СчетРасхода</xr:DataPath>
 								<xr:LinkItem>1</xr:LinkItem>
 							</LinkByType>
 							<ChoiceHistoryOnInput>Auto</ChoiceHistoryOnInput>
@@ -2830,7 +2799,7 @@
 							<CreateOnInput>Auto</CreateOnInput>
 							<ChoiceForm/>
 							<LinkByType>
-								<xr:DataPath>Document.ПоступлениеТоваровУслуг.TabularSection.Услуги.Attribute.СчетУчета</xr:DataPath>
+								<xr:DataPath>Document.ПоступлениеТоваровУслуг.TabularSection.Услуги.Attribute.СчетРасхода</xr:DataPath>
 								<xr:LinkItem>2</xr:LinkItem>
 							</LinkByType>
 							<ChoiceHistoryOnInput>Auto</ChoiceHistoryOnInput>
@@ -2874,7 +2843,7 @@
 							<CreateOnInput>Auto</CreateOnInput>
 							<ChoiceForm/>
 							<LinkByType>
-								<xr:DataPath>Document.ПоступлениеТоваровУслуг.TabularSection.Услуги.Attribute.СчетУчета</xr:DataPath>
+								<xr:DataPath>Document.ПоступлениеТоваровУслуг.TabularSection.Услуги.Attribute.СчетРасхода</xr:DataPath>
 								<xr:LinkItem>3</xr:LinkItem>
 							</LinkByType>
 							<ChoiceHistoryOnInput>Auto</ChoiceHistoryOnInput>

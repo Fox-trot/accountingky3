@@ -192,7 +192,7 @@
 			<RegisterRecordsWritingOnPost>WriteSelected</RegisterRecordsWritingOnPost>
 			<SequenceFilling>AutoFill</SequenceFilling>
 			<RegisterRecords>
-				<xr:Item xsi:type="xr:MDObjectRef">AccumulationRegister.БланкиСФ</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">AccumulationRegister.БланкиСчетовФактур</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">InformationRegister.СчетаФактурыВыписанные</xr:Item>
 			</RegisterRecords>
 			<PostInPrivilegedMode>true</PostInPrivilegedMode>
@@ -299,7 +299,13 @@
 					<FillValue xsi:type="xr:DesignTimeRef">Catalog.Контрагенты.EmptyRef</FillValue>
 					<FillChecking>ShowError</FillChecking>
 					<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
-					<ChoiceParameterLinks/>
+					<ChoiceParameterLinks>
+						<xr:Link>
+							<xr:Name>Отбор.ДокументВладелец</xr:Name>
+							<xr:DataPath xsi:type="xs:string">Document.СчетФактураВыписанный.StandardAttribute.Ref</xr:DataPath>
+							<xr:ValueChange>Clear</xr:ValueChange>
+						</xr:Link>
+					</ChoiceParameterLinks>
 					<ChoiceParameters/>
 					<QuickChoice>Auto</QuickChoice>
 					<CreateOnInput>Auto</CreateOnInput>
@@ -415,102 +421,6 @@
 					<FullTextSearch>Use</FullTextSearch>
 				</Properties>
 			</Attribute>
-			<Attribute uuid="4ad392e6-9db6-4fd7-aaa8-e6fb504389cb">
-				<Properties>
-					<Name>Курс</Name>
-					<Synonym>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Курс документа</v8:content>
-						</v8:item>
-					</Synonym>
-					<Comment/>
-					<Type>
-						<v8:Type>xs:decimal</v8:Type>
-						<v8:NumberQualifiers>
-							<v8:Digits>10</v8:Digits>
-							<v8:FractionDigits>4</v8:FractionDigits>
-							<v8:AllowedSign>Nonnegative</v8:AllowedSign>
-						</v8:NumberQualifiers>
-					</Type>
-					<PasswordMode>false</PasswordMode>
-					<Format/>
-					<EditFormat/>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Курс валюты расчетов по договору с контрагентом.</v8:content>
-						</v8:item>
-					</ToolTip>
-					<MarkNegatives>false</MarkNegatives>
-					<Mask/>
-					<MultiLine>false</MultiLine>
-					<ExtendedEdit>false</ExtendedEdit>
-					<MinValue xsi:nil="true"/>
-					<MaxValue xsi:nil="true"/>
-					<FillFromFillingValue>false</FillFromFillingValue>
-					<FillValue xsi:type="xs:decimal">1</FillValue>
-					<FillChecking>DontCheck</FillChecking>
-					<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
-					<ChoiceParameterLinks/>
-					<ChoiceParameters/>
-					<QuickChoice>Auto</QuickChoice>
-					<CreateOnInput>Auto</CreateOnInput>
-					<ChoiceForm/>
-					<LinkByType/>
-					<ChoiceHistoryOnInput>Auto</ChoiceHistoryOnInput>
-					<Indexing>DontIndex</Indexing>
-					<FullTextSearch>Use</FullTextSearch>
-				</Properties>
-			</Attribute>
-			<Attribute uuid="8e572f46-0a48-4419-a261-66136ec8cf90">
-				<Properties>
-					<Name>Кратность</Name>
-					<Synonym>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Кратность документа</v8:content>
-						</v8:item>
-					</Synonym>
-					<Comment/>
-					<Type>
-						<v8:Type>xs:decimal</v8:Type>
-						<v8:NumberQualifiers>
-							<v8:Digits>10</v8:Digits>
-							<v8:FractionDigits>0</v8:FractionDigits>
-							<v8:AllowedSign>Nonnegative</v8:AllowedSign>
-						</v8:NumberQualifiers>
-					</Type>
-					<PasswordMode>false</PasswordMode>
-					<Format/>
-					<EditFormat/>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Кратность валюты расчетов по договору с контрагентом.</v8:content>
-						</v8:item>
-					</ToolTip>
-					<MarkNegatives>false</MarkNegatives>
-					<Mask/>
-					<MultiLine>false</MultiLine>
-					<ExtendedEdit>false</ExtendedEdit>
-					<MinValue xsi:nil="true"/>
-					<MaxValue xsi:nil="true"/>
-					<FillFromFillingValue>false</FillFromFillingValue>
-					<FillValue xsi:type="xs:decimal">1</FillValue>
-					<FillChecking>DontCheck</FillChecking>
-					<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
-					<ChoiceParameterLinks/>
-					<ChoiceParameters/>
-					<QuickChoice>Auto</QuickChoice>
-					<CreateOnInput>Auto</CreateOnInput>
-					<ChoiceForm/>
-					<LinkByType/>
-					<ChoiceHistoryOnInput>Auto</ChoiceHistoryOnInput>
-					<Indexing>DontIndex</Indexing>
-					<FullTextSearch>Use</FullTextSearch>
-				</Properties>
-			</Attribute>
 			<Attribute uuid="a302a5ae-b6c1-4a85-b608-b483288c63e9">
 				<Properties>
 					<Name>СтавкаНДС</Name>
@@ -564,7 +474,7 @@
 					<Synonym>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Ставка НСП (товары)</v8:content>
+							<v8:content>Ставка НСП</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>en</v8:lang>
@@ -738,57 +648,6 @@
 					<FullTextSearch>Use</FullTextSearch>
 				</Properties>
 			</Attribute>
-			<Attribute uuid="aea8fa1c-765c-415f-bce8-fa5426c9a94b">
-				<Properties>
-					<Name>ДокументОснование</Name>
-					<Synonym>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Основание</v8:content>
-						</v8:item>
-					</Synonym>
-					<Comment/>
-					<Type>
-						<v8:Type>cfg:DocumentRef.РеализацияТоваровУслуг</v8:Type>
-						<v8:Type>cfg:DocumentRef.ВозвратТоваровОтПокупателя</v8:Type>
-						<v8:Type>cfg:DocumentRef.СчетНаОплатуПокупателю</v8:Type>
-					</Type>
-					<PasswordMode>false</PasswordMode>
-					<Format/>
-					<EditFormat/>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Документ-основание.</v8:content>
-						</v8:item>
-					</ToolTip>
-					<MarkNegatives>false</MarkNegatives>
-					<Mask/>
-					<MultiLine>false</MultiLine>
-					<ExtendedEdit>false</ExtendedEdit>
-					<MinValue xsi:nil="true"/>
-					<MaxValue xsi:nil="true"/>
-					<FillFromFillingValue>false</FillFromFillingValue>
-					<FillValue xsi:nil="true"/>
-					<FillChecking>DontCheck</FillChecking>
-					<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
-					<ChoiceParameterLinks>
-						<xr:Link>
-							<xr:Name>Отбор.Организация</xr:Name>
-							<xr:DataPath xsi:type="xs:string">Document.СчетФактураВыписанный.Attribute.Организация</xr:DataPath>
-							<xr:ValueChange>Clear</xr:ValueChange>
-						</xr:Link>
-					</ChoiceParameterLinks>
-					<ChoiceParameters/>
-					<QuickChoice>Auto</QuickChoice>
-					<CreateOnInput>Auto</CreateOnInput>
-					<ChoiceForm/>
-					<LinkByType/>
-					<ChoiceHistoryOnInput>Auto</ChoiceHistoryOnInput>
-					<Indexing>DontIndex</Indexing>
-					<FullTextSearch>Use</FullTextSearch>
-				</Properties>
-			</Attribute>
 			<Attribute uuid="5418c5c5-aa1c-43bf-9f68-b7008e763652">
 				<Properties>
 					<Name>СерияБланкаСФ</Name>
@@ -855,12 +714,11 @@
 					</Synonym>
 					<Comment/>
 					<Type>
-						<v8:Type>xs:decimal</v8:Type>
-						<v8:NumberQualifiers>
-							<v8:Digits>8</v8:Digits>
-							<v8:FractionDigits>0</v8:FractionDigits>
-							<v8:AllowedSign>Any</v8:AllowedSign>
-						</v8:NumberQualifiers>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>6</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
 					</Type>
 					<PasswordMode>false</PasswordMode>
 					<Format>
@@ -878,11 +736,11 @@
 					<ToolTip>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Номер бланка налоговой счет-фактуры </v8:content>
+							<v8:content>Номер бланка счет-фактуры.</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
-					<Mask>99999999</Mask>
+					<Mask>999999</Mask>
 					<MultiLine>false</MultiLine>
 					<ExtendedEdit>false</ExtendedEdit>
 					<MinValue xsi:nil="true"/>
@@ -1185,13 +1043,13 @@
 					<FullTextSearch>Use</FullTextSearch>
 				</Properties>
 			</Attribute>
-			<Attribute uuid="6e4a1ff2-c044-4a60-ab2c-178720eed707">
+			<Attribute uuid="e55dc3d8-c6f0-4125-b162-4e2fca6ee6bc">
 				<Properties>
-					<Name>Общая</Name>
+					<Name>ВозвратТоваров</Name>
 					<Synonym>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Общая</v8:content>
+							<v8:content>Возврат</v8:content>
 						</v8:item>
 					</Synonym>
 					<Comment/>
@@ -1201,12 +1059,7 @@
 					<PasswordMode>false</PasswordMode>
 					<Format/>
 					<EditFormat/>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Признак общей счет фактуры. Отбор для подбора документов устанавливаться не будет. </v8:content>
-						</v8:item>
-					</ToolTip>
+					<ToolTip/>
 					<MarkNegatives>false</MarkNegatives>
 					<Mask/>
 					<MultiLine>false</MultiLine>
@@ -1228,18 +1081,18 @@
 					<FullTextSearch>Use</FullTextSearch>
 				</Properties>
 			</Attribute>
-			<Attribute uuid="e55dc3d8-c6f0-4125-b162-4e2fca6ee6bc">
+			<Attribute uuid="617c0e39-ed69-4b40-ae36-05b9d91aa5f2">
 				<Properties>
-					<Name>ВозвратТоваров</Name>
+					<Name>ДокументОснование</Name>
 					<Synonym>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Возврат товаров</v8:content>
+							<v8:content>Документ основание</v8:content>
 						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
-						<v8:Type>xs:boolean</v8:Type>
+						<v8:Type>cfg:DocumentRef.СчетНаОплатуПокупателю</v8:Type>
 					</Type>
 					<PasswordMode>false</PasswordMode>
 					<Format/>
@@ -1395,7 +1248,6 @@
 							<Type>
 								<v8:Type>cfg:DocumentRef.РеализацияТоваровУслуг</v8:Type>
 								<v8:Type>cfg:DocumentRef.ВозвратТоваровОтПокупателя</v8:Type>
-								<v8:Type>cfg:DocumentRef.СчетНаОплатуПокупателю</v8:Type>
 							</Type>
 							<PasswordMode>false</PasswordMode>
 							<Format/>
@@ -1422,7 +1274,7 @@
 					</Attribute>
 					<Attribute uuid="6a844abb-3155-49b4-ac50-57012565da17">
 						<Properties>
-							<Name>СуммаДокумента</Name>
+							<Name>Сумма</Name>
 							<Synonym>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
@@ -1459,6 +1311,583 @@
 							<ChoiceParameters/>
 							<QuickChoice>DontUse</QuickChoice>
 							<CreateOnInput>Use</CreateOnInput>
+							<ChoiceForm/>
+							<LinkByType/>
+							<ChoiceHistoryOnInput>Auto</ChoiceHistoryOnInput>
+							<Indexing>DontIndex</Indexing>
+							<FullTextSearch>Use</FullTextSearch>
+						</Properties>
+					</Attribute>
+					<Attribute uuid="3a398995-9096-4c27-a9ae-fac4a92e4143">
+						<Properties>
+							<Name>СуммаНДС</Name>
+							<Synonym>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Сумма НДС</v8:content>
+								</v8:item>
+							</Synonym>
+							<Comment/>
+							<Type>
+								<v8:Type>xs:decimal</v8:Type>
+								<v8:NumberQualifiers>
+									<v8:Digits>15</v8:Digits>
+									<v8:FractionDigits>2</v8:FractionDigits>
+									<v8:AllowedSign>Any</v8:AllowedSign>
+								</v8:NumberQualifiers>
+							</Type>
+							<PasswordMode>false</PasswordMode>
+							<Format/>
+							<EditFormat/>
+							<ToolTip/>
+							<MarkNegatives>false</MarkNegatives>
+							<Mask/>
+							<MultiLine>false</MultiLine>
+							<ExtendedEdit>false</ExtendedEdit>
+							<MinValue xsi:nil="true"/>
+							<MaxValue xsi:nil="true"/>
+							<FillChecking>DontCheck</FillChecking>
+							<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+							<ChoiceParameterLinks/>
+							<ChoiceParameters/>
+							<QuickChoice>Auto</QuickChoice>
+							<CreateOnInput>Auto</CreateOnInput>
+							<ChoiceForm/>
+							<LinkByType/>
+							<ChoiceHistoryOnInput>Auto</ChoiceHistoryOnInput>
+							<Indexing>DontIndex</Indexing>
+							<FullTextSearch>Use</FullTextSearch>
+						</Properties>
+					</Attribute>
+					<Attribute uuid="0c82b8be-4fe9-4328-a685-29bd22335c37">
+						<Properties>
+							<Name>СуммаНСП</Name>
+							<Synonym>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Сумма НСП</v8:content>
+								</v8:item>
+							</Synonym>
+							<Comment/>
+							<Type>
+								<v8:Type>xs:decimal</v8:Type>
+								<v8:NumberQualifiers>
+									<v8:Digits>15</v8:Digits>
+									<v8:FractionDigits>2</v8:FractionDigits>
+									<v8:AllowedSign>Any</v8:AllowedSign>
+								</v8:NumberQualifiers>
+							</Type>
+							<PasswordMode>false</PasswordMode>
+							<Format/>
+							<EditFormat/>
+							<ToolTip/>
+							<MarkNegatives>false</MarkNegatives>
+							<Mask/>
+							<MultiLine>false</MultiLine>
+							<ExtendedEdit>false</ExtendedEdit>
+							<MinValue xsi:nil="true"/>
+							<MaxValue xsi:nil="true"/>
+							<FillChecking>DontCheck</FillChecking>
+							<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+							<ChoiceParameterLinks/>
+							<ChoiceParameters/>
+							<QuickChoice>Auto</QuickChoice>
+							<CreateOnInput>Auto</CreateOnInput>
+							<ChoiceForm/>
+							<LinkByType/>
+							<ChoiceHistoryOnInput>Auto</ChoiceHistoryOnInput>
+							<Indexing>DontIndex</Indexing>
+							<FullTextSearch>Use</FullTextSearch>
+						</Properties>
+					</Attribute>
+					<Attribute uuid="833b42d6-d087-4f0f-83a7-55f275053b34">
+						<Properties>
+							<Name>Всего</Name>
+							<Synonym>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Всего</v8:content>
+								</v8:item>
+							</Synonym>
+							<Comment/>
+							<Type>
+								<v8:Type>xs:decimal</v8:Type>
+								<v8:NumberQualifiers>
+									<v8:Digits>15</v8:Digits>
+									<v8:FractionDigits>2</v8:FractionDigits>
+									<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+								</v8:NumberQualifiers>
+							</Type>
+							<PasswordMode>false</PasswordMode>
+							<Format/>
+							<EditFormat/>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Сумма всего</v8:content>
+								</v8:item>
+							</ToolTip>
+							<MarkNegatives>false</MarkNegatives>
+							<Mask/>
+							<MultiLine>false</MultiLine>
+							<ExtendedEdit>false</ExtendedEdit>
+							<MinValue xsi:nil="true"/>
+							<MaxValue xsi:nil="true"/>
+							<FillChecking>DontCheck</FillChecking>
+							<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+							<ChoiceParameterLinks/>
+							<ChoiceParameters/>
+							<QuickChoice>Auto</QuickChoice>
+							<CreateOnInput>Auto</CreateOnInput>
+							<ChoiceForm/>
+							<LinkByType/>
+							<ChoiceHistoryOnInput>Auto</ChoiceHistoryOnInput>
+							<Indexing>DontIndex</Indexing>
+							<FullTextSearch>Use</FullTextSearch>
+						</Properties>
+					</Attribute>
+				</ChildObjects>
+			</TabularSection>
+			<TabularSection uuid="622f7b62-b3ef-4608-9f9a-6d5d387afe38">
+				<InternalInfo>
+					<xr:GeneratedType name="DocumentTabularSection.СчетФактураВыписанный.Товары" category="TabularSection">
+						<xr:TypeId>b7c333e2-d03f-4805-acca-c7fe4b9c6e9f</xr:TypeId>
+						<xr:ValueId>f924c8d5-acac-404c-b5fe-134c7c45a1f0</xr:ValueId>
+					</xr:GeneratedType>
+					<xr:GeneratedType name="DocumentTabularSectionRow.СчетФактураВыписанный.Товары" category="TabularSectionRow">
+						<xr:TypeId>d2e3d279-8bac-436c-93a5-1e25a22843e3</xr:TypeId>
+						<xr:ValueId>7c28c23f-8b19-496e-9cd5-15cb8a6717f2</xr:ValueId>
+					</xr:GeneratedType>
+				</InternalInfo>
+				<Properties>
+					<Name>Товары</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Товары</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment/>
+					<ToolTip/>
+					<FillChecking>DontCheck</FillChecking>
+					<StandardAttributes>
+						<xr:StandardAttribute name="LineNumber">
+							<xr:LinkByType/>
+							<xr:FillChecking>DontCheck</xr:FillChecking>
+							<xr:MultiLine>false</xr:MultiLine>
+							<xr:FillFromFillingValue>false</xr:FillFromFillingValue>
+							<xr:CreateOnInput>Auto</xr:CreateOnInput>
+							<xr:MaxValue xsi:nil="true"/>
+							<xr:ToolTip/>
+							<xr:ExtendedEdit>false</xr:ExtendedEdit>
+							<xr:Format/>
+							<xr:ChoiceForm/>
+							<xr:QuickChoice>Auto</xr:QuickChoice>
+							<xr:ChoiceHistoryOnInput>Auto</xr:ChoiceHistoryOnInput>
+							<xr:EditFormat/>
+							<xr:PasswordMode>false</xr:PasswordMode>
+							<xr:MarkNegatives>false</xr:MarkNegatives>
+							<xr:MinValue xsi:nil="true"/>
+							<xr:Synonym/>
+							<xr:Comment/>
+							<xr:FullTextSearch>Use</xr:FullTextSearch>
+							<xr:ChoiceParameterLinks/>
+							<xr:FillValue xsi:nil="true"/>
+							<xr:Mask/>
+							<xr:ChoiceParameters/>
+						</xr:StandardAttribute>
+					</StandardAttributes>
+				</Properties>
+				<ChildObjects>
+					<Attribute uuid="bfaade99-a753-498e-956b-1e5d8c3738f2">
+						<Properties>
+							<Name>Номенклатура</Name>
+							<Synonym>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Номенклатура</v8:content>
+								</v8:item>
+							</Synonym>
+							<Comment/>
+							<Type>
+								<v8:Type>cfg:CatalogRef.Номенклатура</v8:Type>
+								<v8:Type>cfg:CatalogRef.ОсновныеСредства</v8:Type>
+							</Type>
+							<PasswordMode>false</PasswordMode>
+							<Format/>
+							<EditFormat/>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Поступающая товар (номенклатура)</v8:content>
+								</v8:item>
+							</ToolTip>
+							<MarkNegatives>false</MarkNegatives>
+							<Mask/>
+							<MultiLine>false</MultiLine>
+							<ExtendedEdit>false</ExtendedEdit>
+							<MinValue xsi:nil="true"/>
+							<MaxValue xsi:nil="true"/>
+							<FillChecking>DontCheck</FillChecking>
+							<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+							<ChoiceParameterLinks/>
+							<ChoiceParameters/>
+							<QuickChoice>Auto</QuickChoice>
+							<CreateOnInput>Auto</CreateOnInput>
+							<ChoiceForm/>
+							<LinkByType/>
+							<ChoiceHistoryOnInput>Auto</ChoiceHistoryOnInput>
+							<Indexing>DontIndex</Indexing>
+							<FullTextSearch>Use</FullTextSearch>
+						</Properties>
+					</Attribute>
+					<Attribute uuid="10cf9b18-98ee-47be-aadf-b911f7e52530">
+						<Properties>
+							<Name>ЕдиницаИзмерения</Name>
+							<Synonym>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>ЕИ</v8:content>
+								</v8:item>
+							</Synonym>
+							<Comment/>
+							<Type>
+								<v8:Type>cfg:CatalogRef.КлассификаторЕдиницИзмерения</v8:Type>
+							</Type>
+							<PasswordMode>false</PasswordMode>
+							<Format/>
+							<EditFormat/>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Единица измерения номенклатуры</v8:content>
+								</v8:item>
+							</ToolTip>
+							<MarkNegatives>false</MarkNegatives>
+							<Mask/>
+							<MultiLine>false</MultiLine>
+							<ExtendedEdit>false</ExtendedEdit>
+							<MinValue xsi:nil="true"/>
+							<MaxValue xsi:nil="true"/>
+							<FillChecking>DontCheck</FillChecking>
+							<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+							<ChoiceParameterLinks/>
+							<ChoiceParameters/>
+							<QuickChoice>Auto</QuickChoice>
+							<CreateOnInput>Auto</CreateOnInput>
+							<ChoiceForm/>
+							<LinkByType/>
+							<ChoiceHistoryOnInput>Auto</ChoiceHistoryOnInput>
+							<Indexing>DontIndex</Indexing>
+							<FullTextSearch>Use</FullTextSearch>
+						</Properties>
+					</Attribute>
+					<Attribute uuid="c075f92b-af7d-4919-9cc3-0112417ccb53">
+						<Properties>
+							<Name>Количество</Name>
+							<Synonym>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Количество</v8:content>
+								</v8:item>
+							</Synonym>
+							<Comment/>
+							<Type>
+								<v8:Type>xs:decimal</v8:Type>
+								<v8:NumberQualifiers>
+									<v8:Digits>15</v8:Digits>
+									<v8:FractionDigits>3</v8:FractionDigits>
+									<v8:AllowedSign>Any</v8:AllowedSign>
+								</v8:NumberQualifiers>
+							</Type>
+							<PasswordMode>false</PasswordMode>
+							<Format/>
+							<EditFormat/>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Количество номенклатуры в строке</v8:content>
+								</v8:item>
+							</ToolTip>
+							<MarkNegatives>false</MarkNegatives>
+							<Mask/>
+							<MultiLine>false</MultiLine>
+							<ExtendedEdit>false</ExtendedEdit>
+							<MinValue xsi:nil="true"/>
+							<MaxValue xsi:nil="true"/>
+							<FillChecking>DontCheck</FillChecking>
+							<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+							<ChoiceParameterLinks/>
+							<ChoiceParameters/>
+							<QuickChoice>Auto</QuickChoice>
+							<CreateOnInput>Auto</CreateOnInput>
+							<ChoiceForm/>
+							<LinkByType/>
+							<ChoiceHistoryOnInput>Auto</ChoiceHistoryOnInput>
+							<Indexing>DontIndex</Indexing>
+							<FullTextSearch>Use</FullTextSearch>
+						</Properties>
+					</Attribute>
+					<Attribute uuid="68d3d8a6-30b1-4565-8ee0-d81369b6c92c">
+						<Properties>
+							<Name>Цена</Name>
+							<Synonym>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Цена</v8:content>
+								</v8:item>
+							</Synonym>
+							<Comment/>
+							<Type>
+								<v8:Type>xs:decimal</v8:Type>
+								<v8:NumberQualifiers>
+									<v8:Digits>15</v8:Digits>
+									<v8:FractionDigits>2</v8:FractionDigits>
+									<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+								</v8:NumberQualifiers>
+							</Type>
+							<PasswordMode>false</PasswordMode>
+							<Format/>
+							<EditFormat/>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Цена номенклатуры в строке</v8:content>
+								</v8:item>
+							</ToolTip>
+							<MarkNegatives>false</MarkNegatives>
+							<Mask/>
+							<MultiLine>false</MultiLine>
+							<ExtendedEdit>false</ExtendedEdit>
+							<MinValue xsi:nil="true"/>
+							<MaxValue xsi:nil="true"/>
+							<FillChecking>DontCheck</FillChecking>
+							<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+							<ChoiceParameterLinks/>
+							<ChoiceParameters/>
+							<QuickChoice>Auto</QuickChoice>
+							<CreateOnInput>Auto</CreateOnInput>
+							<ChoiceForm/>
+							<LinkByType/>
+							<ChoiceHistoryOnInput>Auto</ChoiceHistoryOnInput>
+							<Indexing>DontIndex</Indexing>
+							<FullTextSearch>Use</FullTextSearch>
+						</Properties>
+					</Attribute>
+					<Attribute uuid="fb664d95-60b8-4b98-b2f6-4e1abca11d7e">
+						<Properties>
+							<Name>Сумма</Name>
+							<Synonym>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Сумма</v8:content>
+								</v8:item>
+							</Synonym>
+							<Comment/>
+							<Type>
+								<v8:Type>xs:decimal</v8:Type>
+								<v8:NumberQualifiers>
+									<v8:Digits>15</v8:Digits>
+									<v8:FractionDigits>2</v8:FractionDigits>
+									<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+								</v8:NumberQualifiers>
+							</Type>
+							<PasswordMode>false</PasswordMode>
+							<Format/>
+							<EditFormat/>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Сумма (без НДС, с НСП) номенклатуры в строке</v8:content>
+								</v8:item>
+							</ToolTip>
+							<MarkNegatives>false</MarkNegatives>
+							<Mask/>
+							<MultiLine>false</MultiLine>
+							<ExtendedEdit>false</ExtendedEdit>
+							<MinValue xsi:nil="true"/>
+							<MaxValue xsi:nil="true"/>
+							<FillChecking>DontCheck</FillChecking>
+							<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+							<ChoiceParameterLinks/>
+							<ChoiceParameters/>
+							<QuickChoice>Auto</QuickChoice>
+							<CreateOnInput>Auto</CreateOnInput>
+							<ChoiceForm/>
+							<LinkByType/>
+							<ChoiceHistoryOnInput>Auto</ChoiceHistoryOnInput>
+							<Indexing>DontIndex</Indexing>
+							<FullTextSearch>Use</FullTextSearch>
+						</Properties>
+					</Attribute>
+					<Attribute uuid="aaf16b24-fe97-4165-bb28-d8f2f25fc529">
+						<Properties>
+							<Name>СуммаНДС</Name>
+							<Synonym>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Сумма НДС</v8:content>
+								</v8:item>
+							</Synonym>
+							<Comment/>
+							<Type>
+								<v8:Type>xs:decimal</v8:Type>
+								<v8:NumberQualifiers>
+									<v8:Digits>15</v8:Digits>
+									<v8:FractionDigits>2</v8:FractionDigits>
+									<v8:AllowedSign>Any</v8:AllowedSign>
+								</v8:NumberQualifiers>
+							</Type>
+							<PasswordMode>false</PasswordMode>
+							<Format/>
+							<EditFormat/>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Сумма налога на добавленную стоимость по данной строке.</v8:content>
+								</v8:item>
+							</ToolTip>
+							<MarkNegatives>false</MarkNegatives>
+							<Mask/>
+							<MultiLine>false</MultiLine>
+							<ExtendedEdit>false</ExtendedEdit>
+							<MinValue xsi:nil="true"/>
+							<MaxValue xsi:nil="true"/>
+							<FillChecking>DontCheck</FillChecking>
+							<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+							<ChoiceParameterLinks/>
+							<ChoiceParameters/>
+							<QuickChoice>Auto</QuickChoice>
+							<CreateOnInput>Auto</CreateOnInput>
+							<ChoiceForm/>
+							<LinkByType/>
+							<ChoiceHistoryOnInput>Auto</ChoiceHistoryOnInput>
+							<Indexing>DontIndex</Indexing>
+							<FullTextSearch>Use</FullTextSearch>
+						</Properties>
+					</Attribute>
+					<Attribute uuid="21285e82-1887-4215-b980-f6ca51b3679c">
+						<Properties>
+							<Name>СуммаНСП</Name>
+							<Synonym>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Сумма НСП</v8:content>
+								</v8:item>
+							</Synonym>
+							<Comment/>
+							<Type>
+								<v8:Type>xs:decimal</v8:Type>
+								<v8:NumberQualifiers>
+									<v8:Digits>15</v8:Digits>
+									<v8:FractionDigits>2</v8:FractionDigits>
+									<v8:AllowedSign>Any</v8:AllowedSign>
+								</v8:NumberQualifiers>
+							</Type>
+							<PasswordMode>false</PasswordMode>
+							<Format/>
+							<EditFormat/>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Сумма налога с продаж по данной строке.</v8:content>
+								</v8:item>
+							</ToolTip>
+							<MarkNegatives>false</MarkNegatives>
+							<Mask/>
+							<MultiLine>false</MultiLine>
+							<ExtendedEdit>false</ExtendedEdit>
+							<MinValue xsi:nil="true"/>
+							<MaxValue xsi:nil="true"/>
+							<FillChecking>DontCheck</FillChecking>
+							<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+							<ChoiceParameterLinks/>
+							<ChoiceParameters/>
+							<QuickChoice>Auto</QuickChoice>
+							<CreateOnInput>Auto</CreateOnInput>
+							<ChoiceForm/>
+							<LinkByType/>
+							<ChoiceHistoryOnInput>Auto</ChoiceHistoryOnInput>
+							<Indexing>DontIndex</Indexing>
+							<FullTextSearch>Use</FullTextSearch>
+						</Properties>
+					</Attribute>
+					<Attribute uuid="9b415a81-13fd-42dc-a0d5-f9a8d47c10f3">
+						<Properties>
+							<Name>Всего</Name>
+							<Synonym>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Всего</v8:content>
+								</v8:item>
+							</Synonym>
+							<Comment/>
+							<Type>
+								<v8:Type>xs:decimal</v8:Type>
+								<v8:NumberQualifiers>
+									<v8:Digits>15</v8:Digits>
+									<v8:FractionDigits>2</v8:FractionDigits>
+									<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+								</v8:NumberQualifiers>
+							</Type>
+							<PasswordMode>false</PasswordMode>
+							<Format/>
+							<EditFormat/>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Сумма всего</v8:content>
+								</v8:item>
+							</ToolTip>
+							<MarkNegatives>false</MarkNegatives>
+							<Mask/>
+							<MultiLine>false</MultiLine>
+							<ExtendedEdit>false</ExtendedEdit>
+							<MinValue xsi:nil="true"/>
+							<MaxValue xsi:nil="true"/>
+							<FillChecking>DontCheck</FillChecking>
+							<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+							<ChoiceParameterLinks/>
+							<ChoiceParameters/>
+							<QuickChoice>Auto</QuickChoice>
+							<CreateOnInput>Auto</CreateOnInput>
+							<ChoiceForm/>
+							<LinkByType/>
+							<ChoiceHistoryOnInput>Auto</ChoiceHistoryOnInput>
+							<Indexing>DontIndex</Indexing>
+							<FullTextSearch>Use</FullTextSearch>
+						</Properties>
+					</Attribute>
+					<Attribute uuid="7f53f509-dcfe-4ea2-a97d-e09564c66a6b">
+						<Properties>
+							<Name>ДокументОснования</Name>
+							<Synonym>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Документ</v8:content>
+								</v8:item>
+							</Synonym>
+							<Comment/>
+							<Type>
+								<v8:Type>cfg:DocumentRef.РеализацияТоваровУслуг</v8:Type>
+								<v8:Type>cfg:DocumentRef.ВозвратТоваровОтПокупателя</v8:Type>
+							</Type>
+							<PasswordMode>false</PasswordMode>
+							<Format/>
+							<EditFormat/>
+							<ToolTip/>
+							<MarkNegatives>false</MarkNegatives>
+							<Mask/>
+							<MultiLine>false</MultiLine>
+							<ExtendedEdit>false</ExtendedEdit>
+							<MinValue xsi:nil="true"/>
+							<MaxValue xsi:nil="true"/>
+							<FillChecking>DontCheck</FillChecking>
+							<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+							<ChoiceParameterLinks/>
+							<ChoiceParameters/>
+							<QuickChoice>Auto</QuickChoice>
+							<CreateOnInput>Auto</CreateOnInput>
 							<ChoiceForm/>
 							<LinkByType/>
 							<ChoiceHistoryOnInput>Auto</ChoiceHistoryOnInput>

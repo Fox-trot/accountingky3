@@ -246,7 +246,13 @@
 					<FillValue xsi:nil="true"/>
 					<FillChecking>ShowError</FillChecking>
 					<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
-					<ChoiceParameterLinks/>
+					<ChoiceParameterLinks>
+						<xr:Link>
+							<xr:Name>Отбор.ДокументВладелец</xr:Name>
+							<xr:DataPath xsi:type="xs:string">Document.ВозвратТоваровПоставщику.StandardAttribute.Ref</xr:DataPath>
+							<xr:ValueChange>Clear</xr:ValueChange>
+						</xr:Link>
+					</ChoiceParameterLinks>
 					<ChoiceParameters/>
 					<QuickChoice>Auto</QuickChoice>
 					<CreateOnInput>Auto</CreateOnInput>
@@ -506,16 +512,21 @@
 			</Attribute>
 			<Attribute uuid="106b1420-2974-4e9f-8659-35c1866fb016">
 				<Properties>
-					<Name>СтавкаНДС</Name>
+					<Name>ЗначениеСтавкиНДС</Name>
 					<Synonym>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Ставка НДС</v8:content>
+							<v8:content>Значение ставки НДС</v8:content>
 						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
-						<v8:Type>cfg:CatalogRef.СтавкиНДС</v8:Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>5</v8:Digits>
+							<v8:FractionDigits>2</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
 					</Type>
 					<PasswordMode>false</PasswordMode>
 					<Format/>
@@ -523,7 +534,7 @@
 					<ToolTip>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Ставка НДС</v8:content>
+							<v8:content>Числовое значение ставки налога на добавленную стоимость.</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -549,16 +560,21 @@
 			</Attribute>
 			<Attribute uuid="3727752e-19a9-4c15-8077-c774f1bd9679">
 				<Properties>
-					<Name>СтавкаНСП</Name>
+					<Name>ЗначениеСтавкиНСП</Name>
 					<Synonym>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Ставка НСП</v8:content>
+							<v8:content>Значение ставки НСП</v8:content>
 						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
-						<v8:Type>cfg:CatalogRef.СтавкиНСП</v8:Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>5</v8:Digits>
+							<v8:FractionDigits>2</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
 					</Type>
 					<PasswordMode>false</PasswordMode>
 					<Format/>
@@ -566,7 +582,7 @@
 					<ToolTip>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Ставка НСП</v8:content>
+							<v8:content>Числовое значение ставки налога с продаж.</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -783,12 +799,11 @@
 					</Synonym>
 					<Comment/>
 					<Type>
-						<v8:Type>xs:decimal</v8:Type>
-						<v8:NumberQualifiers>
-							<v8:Digits>8</v8:Digits>
-							<v8:FractionDigits>0</v8:FractionDigits>
-							<v8:AllowedSign>Any</v8:AllowedSign>
-						</v8:NumberQualifiers>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>6</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
 					</Type>
 					<PasswordMode>false</PasswordMode>
 					<Format>
@@ -806,11 +821,11 @@
 					<ToolTip>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Номер бланка счет-фактуры</v8:content>
+							<v8:content>Номер бланка счет-фактуры.</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
-					<Mask>99999999</Mask>
+					<Mask>999999</Mask>
 					<MultiLine>false</MultiLine>
 					<ExtendedEdit>false</ExtendedEdit>
 					<MinValue xsi:nil="true"/>
@@ -896,6 +911,49 @@
 						<v8:item>
 							<v8:lang>ru</v8:lang>
 							<v8:content>Признак Использовать дополнительные единицы измерения.</v8:content>
+						</v8:item>
+					</ToolTip>
+					<MarkNegatives>false</MarkNegatives>
+					<Mask/>
+					<MultiLine>false</MultiLine>
+					<ExtendedEdit>false</ExtendedEdit>
+					<MinValue xsi:nil="true"/>
+					<MaxValue xsi:nil="true"/>
+					<FillFromFillingValue>false</FillFromFillingValue>
+					<FillValue xsi:nil="true"/>
+					<FillChecking>DontCheck</FillChecking>
+					<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+					<ChoiceParameterLinks/>
+					<ChoiceParameters/>
+					<QuickChoice>Auto</QuickChoice>
+					<CreateOnInput>Auto</CreateOnInput>
+					<ChoiceForm/>
+					<LinkByType/>
+					<ChoiceHistoryOnInput>Auto</ChoiceHistoryOnInput>
+					<Indexing>DontIndex</Indexing>
+					<FullTextSearch>Use</FullTextSearch>
+				</Properties>
+			</Attribute>
+			<Attribute uuid="dc83c6a8-f808-4c9c-8264-70f81051eb7c">
+				<Properties>
+					<Name>БезналичныйРасчет</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Безналичный расчет</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment/>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+					<PasswordMode>false</PasswordMode>
+					<Format/>
+					<EditFormat/>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Признак безналичного расчета</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -1493,52 +1551,6 @@
 									<app:value xsi:type="xs:boolean">false</app:value>
 								</app:item>
 							</ChoiceParameters>
-							<QuickChoice>Auto</QuickChoice>
-							<CreateOnInput>Auto</CreateOnInput>
-							<ChoiceForm/>
-							<LinkByType/>
-							<ChoiceHistoryOnInput>Auto</ChoiceHistoryOnInput>
-							<Indexing>DontIndex</Indexing>
-							<FullTextSearch>Use</FullTextSearch>
-						</Properties>
-					</Attribute>
-					<Attribute uuid="e77dfef8-9269-48e1-81a1-8398e45e20ad">
-						<Properties>
-							<Name>Коэффициент</Name>
-							<Synonym>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Коэффициент</v8:content>
-								</v8:item>
-							</Synonym>
-							<Comment/>
-							<Type>
-								<v8:Type>xs:decimal</v8:Type>
-								<v8:NumberQualifiers>
-									<v8:Digits>5</v8:Digits>
-									<v8:FractionDigits>2</v8:FractionDigits>
-									<v8:AllowedSign>Any</v8:AllowedSign>
-								</v8:NumberQualifiers>
-							</Type>
-							<PasswordMode>false</PasswordMode>
-							<Format/>
-							<EditFormat/>
-							<ToolTip>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Коэффициент услуги</v8:content>
-								</v8:item>
-							</ToolTip>
-							<MarkNegatives>false</MarkNegatives>
-							<Mask/>
-							<MultiLine>false</MultiLine>
-							<ExtendedEdit>false</ExtendedEdit>
-							<MinValue xsi:nil="true"/>
-							<MaxValue xsi:nil="true"/>
-							<FillChecking>DontCheck</FillChecking>
-							<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
-							<ChoiceParameterLinks/>
-							<ChoiceParameters/>
 							<QuickChoice>Auto</QuickChoice>
 							<CreateOnInput>Auto</CreateOnInput>
 							<ChoiceForm/>

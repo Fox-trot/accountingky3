@@ -2,6 +2,10 @@
 <Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.4">
 	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<Events>
+		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
 	<ChildItems>
 		<InputField name="Организация" id="1">
 			<DataPath>Запись.Организация</DataPath>
@@ -12,6 +16,9 @@
 			<DataPath>Запись.Номенклатура</DataPath>
 			<ContextMenu name="НоменклатураКонтекстноеМеню" id="5"/>
 			<ExtendedTooltip name="НоменклатураРасширеннаяПодсказка" id="6"/>
+			<Events>
+				<Event name="OnChange">НоменклатураПриИзменении</Event>
+			</Events>
 		</InputField>
 		<InputField name="СчетУчета" id="7">
 			<DataPath>Запись.СчетУчета</DataPath>
@@ -21,29 +28,11 @@
 					<v8:content>Счет учета</v8:content>
 				</v8:item>
 			</Title>
+			<ToolTipRepresentation>Button</ToolTipRepresentation>
 			<Width>10</Width>
 			<HorizontalStretch>false</HorizontalStretch>
 			<ContextMenu name="СчетУчетаКонтекстноеМеню" id="8"/>
 			<ExtendedTooltip name="СчетУчетаРасширеннаяПодсказка" id="9"/>
-		</InputField>
-		<InputField name="СчетСебестоимости" id="69">
-			<DataPath>Запись.СчетСебестоимости</DataPath>
-			<Width>10</Width>
-			<HorizontalStretch>false</HorizontalStretch>
-			<ContextMenu name="СчетСебестоимостиКонтекстноеМеню" id="70"/>
-			<ExtendedTooltip name="СчетСебестоимостиРасширеннаяПодсказка" id="71"/>
-		</InputField>
-		<InputField name="СчетПередачи" id="72">
-			<DataPath>Запись.СчетПередачи</DataPath>
-			<Width>10</Width>
-			<HorizontalStretch>false</HorizontalStretch>
-			<ContextMenu name="СчетПередачиКонтекстноеМеню" id="73"/>
-			<ExtendedTooltip name="СчетПередачиРасширеннаяПодсказка" id="74"/>
-		</InputField>
-		<InputField name="ВЭД" id="10">
-			<DataPath>Запись.ВЭД</DataPath>
-			<ContextMenu name="ВЭДКонтекстноеМеню" id="11"/>
-			<ExtendedTooltip name="ВЭДРасширеннаяПодсказка" id="12"/>
 		</InputField>
 		<InputField name="СчетДохода" id="60">
 			<DataPath>Запись.СчетДохода</DataPath>
@@ -53,6 +42,7 @@
 					<v8:content>Счет дохода</v8:content>
 				</v8:item>
 			</Title>
+			<ToolTipRepresentation>Button</ToolTipRepresentation>
 			<Width>10</Width>
 			<HorizontalStretch>false</HorizontalStretch>
 			<ContextMenu name="СчетДоходаКонтекстноеМеню" id="61"/>
@@ -84,53 +74,17 @@
 							<v8:content>Счет расхода</v8:content>
 						</v8:item>
 					</Title>
+					<ToolTipRepresentation>Button</ToolTipRepresentation>
 					<Width>10</Width>
 					<HorizontalStretch>false</HorizontalStretch>
 					<ContextMenu name="СчетРасходаКонтекстноеМеню" id="64"/>
 					<ExtendedTooltip name="СчетРасходаРасширеннаяПодсказка" id="65"/>
 				</InputField>
-				<InputField name="СтатьяРасхода" id="66">
+				<InputField name="СтатьяЗатрат" id="66">
 					<DataPath>Запись.СтатьяРасхода</DataPath>
-					<DropListButton>true</DropListButton>
-					<OpenButton>true</OpenButton>
-					<ChooseType>false</ChooseType>
-					<ContextMenu name="СтатьяРасходаКонтекстноеМеню" id="67"/>
-					<ExtendedTooltip name="СтатьяРасходаРасширеннаяПодсказка" id="68"/>
-				</InputField>
-			</ChildItems>
-		</UsualGroup>
-		<UsualGroup name="ГруппаЗабалансовыйУчет" id="81">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Забалансовый учет</v8:content>
-				</v8:item>
-			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Группа забалансовый учет</v8:content>
-				</v8:item>
-			</ToolTip>
-			<Group>Vertical</Group>
-			<Behavior>Collapsible</Behavior>
-			<Collapsed>true</Collapsed>
-			<ControlRepresentation>Picture</ControlRepresentation>
-			<ExtendedTooltip name="ГруппаЗабалансовыйУчетРасширеннаяПодсказка" id="82"/>
-			<ChildItems>
-				<InputField name="СчетУчетаЗабалансовый" id="75">
-					<DataPath>Запись.СчетУчетаЗабалансовый</DataPath>
-					<Width>10</Width>
-					<HorizontalStretch>false</HorizontalStretch>
-					<ContextMenu name="СчетУчетаЗабалансовыйКонтекстноеМеню" id="76"/>
-					<ExtendedTooltip name="СчетУчетаЗабалансовыйРасширеннаяПодсказка" id="77"/>
-				</InputField>
-				<InputField name="СчетПередачиЗабалансовый" id="78">
-					<DataPath>Запись.СчетПередачиЗабалансовый</DataPath>
-					<Width>10</Width>
-					<HorizontalStretch>false</HorizontalStretch>
-					<ContextMenu name="СчетПередачиЗабалансовыйКонтекстноеМеню" id="79"/>
-					<ExtendedTooltip name="СчетПередачиЗабалансовыйРасширеннаяПодсказка" id="80"/>
+					<ToolTipRepresentation>Button</ToolTipRepresentation>
+					<ContextMenu name="СтатьяЗатратКонтекстноеМеню" id="67"/>
+					<ExtendedTooltip name="СтатьяЗатратРасширеннаяПодсказка" id="68"/>
 				</InputField>
 			</ChildItems>
 		</UsualGroup>

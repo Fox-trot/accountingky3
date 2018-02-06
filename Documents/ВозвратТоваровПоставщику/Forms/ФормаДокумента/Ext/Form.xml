@@ -156,24 +156,6 @@
 								</InputField>
 							</ChildItems>
 						</UsualGroup>
-						<InputField name="ДокументОснование" id="13">
-							<DataPath>Объект.ДокументОснование</DataPath>
-							<Title>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Документ поступления</v8:content>
-								</v8:item>
-							</Title>
-							<EditMode>EnterOnInput</EditMode>
-							<DropListButton>false</DropListButton>
-							<ChoiceButton>true</ChoiceButton>
-							<ChoiceButtonRepresentation>ShowInInputField</ChoiceButtonRepresentation>
-							<ContextMenu name="ДокументОснованиеКонтекстноеМеню" id="14"/>
-							<ExtendedTooltip name="ДокументОснованиеРасширеннаяПодсказка" id="15"/>
-							<Events>
-								<Event name="OnChange">ДокументОснованиеПриИзменении</Event>
-							</Events>
-						</InputField>
 					</ChildItems>
 				</UsualGroup>
 				<UsualGroup name="ГруппаПраваяШапка" id="32">
@@ -194,6 +176,17 @@
 					<ShowTitle>false</ShowTitle>
 					<ExtendedTooltip name="ГруппаПраваяШапкаРасширеннаяПодсказка" id="33"/>
 					<ChildItems>
+						<CheckBoxField name="БезналичныйРасчет" id="272">
+							<DataPath>Объект.БезналичныйРасчет</DataPath>
+							<TitleLocation>Right</TitleLocation>
+							<ToolTipRepresentation>Button</ToolTipRepresentation>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="БезналичныйРасчетКонтекстноеМеню" id="273"/>
+							<ExtendedTooltip name="БезналичныйРасчетРасширеннаяПодсказка" id="274"/>
+							<Events>
+								<Event name="OnChange">БезналичныйРасчетПриИзменении</Event>
+							</Events>
+						</CheckBoxField>
 						<UsualGroup name="ГруппаНомерДата" id="188">
 							<Title>
 								<v8:item>
@@ -305,7 +298,7 @@
 							<ContextMenu name="ТоварыКонтекстноеМеню" id="44"/>
 							<AutoCommandBar name="ТоварыКоманднаяПанель" id="45">
 								<ChildItems>
-									<Popup name="Заполнить" id="198">
+									<Popup name="ВариантыЗаполнения" id="198">
 										<Title>
 											<v8:item>
 												<v8:lang>ru</v8:lang>
@@ -315,10 +308,10 @@
 										<ToolTip>
 											<v8:item>
 												<v8:lang>ru</v8:lang>
-												<v8:content>Заполнить</v8:content>
+												<v8:content>Варианты заполнения</v8:content>
 											</v8:item>
 										</ToolTip>
-										<ExtendedTooltip name="ЗаполнитьРасширеннаяПодсказка" id="199"/>
+										<ExtendedTooltip name="ВариантыЗаполненияРасширеннаяПодсказка" id="199"/>
 										<ChildItems>
 											<Button name="ТоварыЗаполнитьПоПоступлению" id="200">
 												<Type>CommandBarButton</Type>
@@ -332,6 +325,11 @@
 											</Button>
 										</ChildItems>
 									</Popup>
+									<Button name="ТоварыПоискПоШтрихкодуТовары" id="275">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.ПоискПоШтрихкодуТовары</CommandName>
+										<ExtendedTooltip name="ТоварыПоискПоШтрихкодуТоварыРасширеннаяПодсказка" id="276"/>
+									</Button>
 									<Button name="ТоварыПодборНоменклатуры" id="222">
 										<Type>CommandBarButton</Type>
 										<CommandName>Form.Command.ПодборНоменклатуры</CommandName>
@@ -488,20 +486,6 @@
 									<ContextMenu name="ТоварыСчетУчетаКонтекстноеМеню" id="101"/>
 									<ExtendedTooltip name="ТоварыСчетУчетаРасширеннаяПодсказка" id="102"/>
 								</InputField>
-								<InputField name="ТоварыКоэффициент" id="244">
-									<DataPath>Объект.Товары.Коэффициент</DataPath>
-									<Title>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Коэф.%</v8:content>
-										</v8:item>
-									</Title>
-									<EditMode>EnterOnInput</EditMode>
-									<Width>8</Width>
-									<HorizontalStretch>false</HorizontalStretch>
-									<ContextMenu name="ТоварыКоэффициентКонтекстноеМеню" id="245"/>
-									<ExtendedTooltip name="ТоварыКоэффициентРасширеннаяПодсказка" id="246"/>
-								</InputField>
 							</ChildItems>
 						</Table>
 					</ChildItems>
@@ -621,24 +605,24 @@
 								<Event name="OnChange">РасчетПоЕмкостиПриИзменении</Event>
 							</Events>
 						</CheckBoxField>
-						<InputField name="СтавкаНДС" id="238">
-							<DataPath>Объект.СтавкаНДС</DataPath>
-							<Width>15</Width>
+						<InputField name="ЗначениеСтавкиНДС" id="238">
+							<DataPath>Объект.ЗначениеСтавкиНДС</DataPath>
+							<Width>10</Width>
 							<HorizontalStretch>false</HorizontalStretch>
-							<ContextMenu name="СтавкаНДСКонтекстноеМеню" id="239"/>
-							<ExtendedTooltip name="СтавкаНДСРасширеннаяПодсказка" id="240"/>
+							<ContextMenu name="ЗначениеСтавкиНДСКонтекстноеМеню" id="239"/>
+							<ExtendedTooltip name="ЗначениеСтавкиНДСРасширеннаяПодсказка" id="240"/>
 							<Events>
-								<Event name="OnChange">СтавкаНДСПриИзменении</Event>
+								<Event name="OnChange">ЗначениеСтавкиНДСПриИзменении</Event>
 							</Events>
 						</InputField>
-						<InputField name="СтавкаНСП" id="241">
-							<DataPath>Объект.СтавкаНСП</DataPath>
-							<Width>15</Width>
+						<InputField name="ЗначениеСтавкиНСП" id="241">
+							<DataPath>Объект.ЗначениеСтавкиНСП</DataPath>
+							<Width>10</Width>
 							<HorizontalStretch>false</HorizontalStretch>
-							<ContextMenu name="СтавкаНСПКонтекстноеМеню" id="242"/>
-							<ExtendedTooltip name="СтавкаНСПРасширеннаяПодсказка" id="243"/>
+							<ContextMenu name="ЗначениеСтавкиНСПКонтекстноеМеню" id="242"/>
+							<ExtendedTooltip name="ЗначениеСтавкиНСПРасширеннаяПодсказка" id="243"/>
 							<Events>
-								<Event name="OnChange">СтавкаНСППриИзменении</Event>
+								<Event name="OnChange">ЗначениеСтавкиНСППриИзменении</Event>
 							</Events>
 						</InputField>
 						<UsualGroup name="ГруппаИнформация" id="264">
@@ -847,28 +831,6 @@
 				<v8:Type>cfg:CatalogRef.Валюты</v8:Type>
 			</Type>
 		</Attribute>
-		<Attribute name="Контрагент" id="14">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Контрагент</v8:content>
-				</v8:item>
-			</Title>
-			<Type>
-				<v8:Type>cfg:CatalogRef.Контрагенты</v8:Type>
-			</Type>
-		</Attribute>
-		<Attribute name="ДоговорКонтрагента" id="15">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Договор контрагента</v8:content>
-				</v8:item>
-			</Title>
-			<Type>
-				<v8:Type>cfg:CatalogRef.ДоговорыКонтрагентов</v8:Type>
-			</Type>
-		</Attribute>
 		<Attribute name="ПараметрыПодключаемыхКоманд" id="16">
 			<Title>
 				<v8:item>
@@ -924,6 +886,27 @@
 				</v8:item>
 			</ToolTip>
 			<Action>ПодборНоменклатуры</Action>
+		</Command>
+		<Command name="ПоискПоШтрихкодуТовары" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Поиск по штрихкоду товары</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Поиск по штрихкоду товары</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Shortcut>F7</Shortcut>
+			<Picture>
+				<xr:Ref>CommonPicture.НовыйПоШтрихкоду</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ПоискПоШтрихкодуТовары</Action>
+			<ModifiesSavedData>true</ModifiesSavedData>
 		</Command>
 	</Commands>
 </Form>

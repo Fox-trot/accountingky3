@@ -188,7 +188,8 @@
 			<RegisterRecordsWritingOnPost>WriteSelected</RegisterRecordsWritingOnPost>
 			<SequenceFilling>AutoFill</SequenceFilling>
 			<RegisterRecords>
-				<xr:Item xsi:type="xr:MDObjectRef">AccumulationRegister.РабочееВремяСотрудников</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">AccumulationRegister.удалитьРабочееВремяСотрудников</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">InformationRegister.СведенияОРаботеСверхурочно</xr:Item>
 			</RegisterRecords>
 			<PostInPrivilegedMode>true</PostInPrivilegedMode>
 			<UnpostInPrivilegedMode>true</UnpostInPrivilegedMode>
@@ -219,62 +220,6 @@
 			<ChoiceHistoryOnInput>DontUse</ChoiceHistoryOnInput>
 		</Properties>
 		<ChildObjects>
-			<Attribute uuid="2bfd9700-52e5-4ee6-b84a-458ea2cf5668">
-				<Properties>
-					<Name>ПериодРегистрации</Name>
-					<Synonym>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Период регистрации</v8:content>
-						</v8:item>
-					</Synonym>
-					<Comment/>
-					<Type>
-						<v8:Type>xs:dateTime</v8:Type>
-						<v8:DateQualifiers>
-							<v8:DateFractions>Date</v8:DateFractions>
-						</v8:DateQualifiers>
-					</Type>
-					<PasswordMode>false</PasswordMode>
-					<Format>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>ДФ='ММММ гггг'</v8:content>
-						</v8:item>
-					</Format>
-					<EditFormat>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>ДФ='ММММ гггг'</v8:content>
-						</v8:item>
-					</EditFormat>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Месяц регистрации работы</v8:content>
-						</v8:item>
-					</ToolTip>
-					<MarkNegatives>false</MarkNegatives>
-					<Mask/>
-					<MultiLine>false</MultiLine>
-					<ExtendedEdit>false</ExtendedEdit>
-					<MinValue xsi:nil="true"/>
-					<MaxValue xsi:nil="true"/>
-					<FillFromFillingValue>true</FillFromFillingValue>
-					<FillValue xsi:nil="true"/>
-					<FillChecking>DontCheck</FillChecking>
-					<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
-					<ChoiceParameterLinks/>
-					<ChoiceParameters/>
-					<QuickChoice>Auto</QuickChoice>
-					<CreateOnInput>Auto</CreateOnInput>
-					<ChoiceForm/>
-					<LinkByType/>
-					<ChoiceHistoryOnInput>Auto</ChoiceHistoryOnInput>
-					<Indexing>DontIndex</Indexing>
-					<FullTextSearch>Use</FullTextSearch>
-				</Properties>
-			</Attribute>
 			<Attribute uuid="b80c231f-6a31-4cb8-9173-4c7ba09214ab">
 				<Properties>
 					<Name>Организация</Name>
@@ -549,6 +494,42 @@
 							<FullTextSearch>Use</FullTextSearch>
 						</Properties>
 					</Attribute>
+					<Attribute uuid="7b5483dd-aaee-4a3b-9ead-92fbe3c596bd">
+						<Properties>
+							<Name>Подразделение</Name>
+							<Synonym>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Подразделение</v8:content>
+								</v8:item>
+							</Synonym>
+							<Comment/>
+							<Type>
+								<v8:Type>cfg:CatalogRef.ПодразделенияОрганизаций</v8:Type>
+							</Type>
+							<PasswordMode>false</PasswordMode>
+							<Format/>
+							<EditFormat/>
+							<ToolTip/>
+							<MarkNegatives>false</MarkNegatives>
+							<Mask/>
+							<MultiLine>false</MultiLine>
+							<ExtendedEdit>false</ExtendedEdit>
+							<MinValue xsi:nil="true"/>
+							<MaxValue xsi:nil="true"/>
+							<FillChecking>ShowError</FillChecking>
+							<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+							<ChoiceParameterLinks/>
+							<ChoiceParameters/>
+							<QuickChoice>Auto</QuickChoice>
+							<CreateOnInput>Auto</CreateOnInput>
+							<ChoiceForm/>
+							<LinkByType/>
+							<ChoiceHistoryOnInput>Auto</ChoiceHistoryOnInput>
+							<Indexing>DontIndex</Indexing>
+							<FullTextSearch>Use</FullTextSearch>
+						</Properties>
+					</Attribute>
 					<Attribute uuid="c7100429-5389-4cd7-944d-d391572b532d">
 						<Properties>
 							<Name>ГрафикРаботы</Name>
@@ -625,7 +606,7 @@
 								<app:item name="Отбор.СпособРасчета">
 									<app:value xsi:type="v8:FixedArray">
 										<v8:Value xsi:type="xr:DesignTimeRef">Enum.СпособыРасчетаНачислений.EnumValue.РаботаСверхурочно</v8:Value>
-										<v8:Value xsi:type="xr:DesignTimeRef">Enum.СпособыРасчетаНачислений.EnumValue.РаботаСверхурочноБаза</v8:Value>
+										<v8:Value xsi:type="xr:DesignTimeRef">02e94f3c-807d-41fb-b114-c6774bf9e9ac.d8326890-1c95-47ad-9135-e7311ff4a9ee</v8:Value>
 									</app:value>
 								</app:item>
 							</ChoiceParameters>
@@ -663,6 +644,52 @@
 								<v8:item>
 									<v8:lang>ru</v8:lang>
 									<v8:content>Отработано часов</v8:content>
+								</v8:item>
+							</ToolTip>
+							<MarkNegatives>false</MarkNegatives>
+							<Mask/>
+							<MultiLine>false</MultiLine>
+							<ExtendedEdit>false</ExtendedEdit>
+							<MinValue xsi:nil="true"/>
+							<MaxValue xsi:nil="true"/>
+							<FillChecking>ShowError</FillChecking>
+							<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+							<ChoiceParameterLinks/>
+							<ChoiceParameters/>
+							<QuickChoice>Auto</QuickChoice>
+							<CreateOnInput>Auto</CreateOnInput>
+							<ChoiceForm/>
+							<LinkByType/>
+							<ChoiceHistoryOnInput>Auto</ChoiceHistoryOnInput>
+							<Indexing>DontIndex</Indexing>
+							<FullTextSearch>Use</FullTextSearch>
+						</Properties>
+					</Attribute>
+					<Attribute uuid="f0bfbc88-da98-40f4-8fa4-eb573b39b4af">
+						<Properties>
+							<Name>РазмерОсновногоВидаРасчета</Name>
+							<Synonym>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Размер</v8:content>
+								</v8:item>
+							</Synonym>
+							<Comment/>
+							<Type>
+								<v8:Type>xs:decimal</v8:Type>
+								<v8:NumberQualifiers>
+									<v8:Digits>15</v8:Digits>
+									<v8:FractionDigits>2</v8:FractionDigits>
+									<v8:AllowedSign>Any</v8:AllowedSign>
+								</v8:NumberQualifiers>
+							</Type>
+							<PasswordMode>false</PasswordMode>
+							<Format/>
+							<EditFormat/>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Размер основного вида расчета.</v8:content>
 								</v8:item>
 							</ToolTip>
 							<MarkNegatives>false</MarkNegatives>

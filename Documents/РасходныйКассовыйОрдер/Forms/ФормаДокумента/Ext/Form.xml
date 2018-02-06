@@ -131,25 +131,10 @@
 								<Event name="OnChange">ФизЛицоПриИзменении</Event>
 							</Events>
 						</InputField>
-						<InputField name="БанковскийСчет" id="635">
-							<DataPath>Объект.БанковскийСчет</DataPath>
-							<ChoiceParameterLinks>
-								<xr:Link>
-									<xr:Name>Отбор.ВалютаДенежныхСредств</xr:Name>
-									<xr:DataPath xsi:type="xs:string">КратностьВзаиморасчетов</xr:DataPath>
-									<xr:ValueChange>Clear</xr:ValueChange>
-								</xr:Link>
-								<xr:Link>
-									<xr:Name>Отбор.Владелец</xr:Name>
-									<xr:DataPath xsi:type="xs:string">1/0:62dc2d00-9123-46af-9073-75201484f70e</xr:DataPath>
-									<xr:ValueChange>Clear</xr:ValueChange>
-								</xr:Link>
-							</ChoiceParameterLinks>
-							<ContextMenu name="БанковскийСчетКонтекстноеМеню" id="636"/>
-							<ExtendedTooltip name="БанковскийСчетРасширеннаяПодсказка" id="637"/>
-							<Events>
-								<Event name="OnChange">БанковскийСчетПриИзменении</Event>
-							</Events>
+						<InputField name="СтатьяДвиженияДенежныхСредств" id="873">
+							<DataPath>Объект.СтатьяДвиженияДенежныхСредств</DataPath>
+							<ContextMenu name="СтатьяДвиженияДенежныхСредствКонтекстноеМеню" id="874"/>
+							<ExtendedTooltip name="СтатьяДвиженияДенежныхСредствРасширеннаяПодсказка" id="875"/>
 						</InputField>
 					</ChildItems>
 				</UsualGroup>
@@ -237,6 +222,65 @@
 								<Event name="OnChange">КассаПриИзменении</Event>
 							</Events>
 						</InputField>
+						<InputField name="БанковскийСчет" id="635">
+							<DataPath>Объект.БанковскийСчет</DataPath>
+							<ChoiceParameterLinks>
+								<xr:Link>
+									<xr:Name>Отбор.ВалютаДенежныхСредств</xr:Name>
+									<xr:DataPath xsi:type="xs:string">Объект.ВалютаДокумента</xr:DataPath>
+									<xr:ValueChange>Clear</xr:ValueChange>
+								</xr:Link>
+							</ChoiceParameterLinks>
+							<ContextMenu name="БанковскийСчетКонтекстноеМеню" id="636"/>
+							<ExtendedTooltip name="БанковскийСчетРасширеннаяПодсказка" id="637"/>
+							<Events>
+								<Event name="OnChange">БанковскийСчетПриИзменении</Event>
+							</Events>
+						</InputField>
+						<UsualGroup name="ГруппаКурсКратностьВР" id="865">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа курс кратность ВР</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа курс кратность ВР</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаКурсКратностьВРРасширеннаяПодсказка" id="866"/>
+							<ChildItems>
+								<InputField name="КурсВзаиморасчетов" id="859">
+									<DataPath>Объект.КурсВзаиморасчетов</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Курс ВР</v8:content>
+										</v8:item>
+									</Title>
+									<ChoiceButton>false</ChoiceButton>
+									<ContextMenu name="КурсВзаиморасчетовКонтекстноеМеню" id="860"/>
+									<ExtendedTooltip name="КурсВзаиморасчетовРасширеннаяПодсказка" id="861"/>
+									<Events>
+										<Event name="OnChange">КурсВзаиморасчетовПриИзменении</Event>
+										<Event name="ChoiceProcessing">КурсВзаиморасчетовОбработкаВыбора</Event>
+									</Events>
+								</InputField>
+								<InputField name="КратностьВзаиморасчетов" id="862">
+									<DataPath>Объект.КратностьВзаиморасчетов</DataPath>
+									<ContextMenu name="КратностьВзаиморасчетовКонтекстноеМеню" id="863"/>
+									<ExtendedTooltip name="КратностьВзаиморасчетовРасширеннаяПодсказка" id="864"/>
+									<Events>
+										<Event name="OnChange">КратностьВзаиморасчетовПриИзменении</Event>
+									</Events>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
 					</ChildItems>
 				</UsualGroup>
 			</ChildItems>
@@ -425,46 +469,6 @@
 															<ContextMenu name="ВалютаРасчетовКонтекстноеМеню" id="697"/>
 															<ExtendedTooltip name="ВалютаРасчетовРасширеннаяПодсказка" id="698"/>
 														</LabelField>
-														<UsualGroup name="ГруппаКурсКратностьРасчетов" id="699">
-															<Title>
-																<v8:item>
-																	<v8:lang>ru</v8:lang>
-																	<v8:content>Группа курс кратность расчетов</v8:content>
-																</v8:item>
-															</Title>
-															<ToolTip>
-																<v8:item>
-																	<v8:lang>ru</v8:lang>
-																	<v8:content>Группа курс кратность расчетов</v8:content>
-																</v8:item>
-															</ToolTip>
-															<Group>Horizontal</Group>
-															<Representation>None</Representation>
-															<ShowTitle>false</ShowTitle>
-															<ExtendedTooltip name="ГруппаКурсКратностьРасчетовРасширеннаяПодсказка" id="700"/>
-															<ChildItems>
-																<InputField name="РасшифровкаПлатежаКурсВзаиморасчетов1" id="701">
-																	<DataPath>Items.РасшифровкаПлатежа.CurrentData.КурсВзаиморасчетов</DataPath>
-																	<Width>8</Width>
-																	<HorizontalStretch>false</HorizontalStretch>
-																	<ContextMenu name="РасшифровкаПлатежаКурсВзаиморасчетов1КонтекстноеМеню" id="702"/>
-																	<ExtendedTooltip name="РасшифровкаПлатежаКурсВзаиморасчетов1РасширеннаяПодсказка" id="703"/>
-																	<Events>
-																		<Event name="OnChange">РасшифровкаПлатежаКурсВзаиморасчетов1ПриИзменении</Event>
-																	</Events>
-																</InputField>
-																<InputField name="РасшифровкаПлатежаКратностьВзаиморасчетов1" id="704">
-																	<DataPath>Items.РасшифровкаПлатежа.CurrentData.КратностьВзаиморасчетов</DataPath>
-																	<Width>2</Width>
-																	<HorizontalStretch>false</HorizontalStretch>
-																	<ContextMenu name="РасшифровкаПлатежаКратностьВзаиморасчетов1КонтекстноеМеню" id="705"/>
-																	<ExtendedTooltip name="РасшифровкаПлатежаКратностьВзаиморасчетов1РасширеннаяПодсказка" id="706"/>
-																	<Events>
-																		<Event name="OnChange">РасшифровкаПлатежаКратностьВзаиморасчетов1ПриИзменении</Event>
-																	</Events>
-																</InputField>
-															</ChildItems>
-														</UsualGroup>
 													</ChildItems>
 												</UsualGroup>
 											</ChildItems>
@@ -520,6 +524,7 @@
 												<ExtendedTooltip name="РасшифровкаПлатежаУправлениеПоискомРасширеннаяПодсказка" id="721"/>
 											</SearchControlAddition>
 											<Events>
+												<Event name="BeforeAddRow">РасшифровкаПлатежаПередНачаломДобавления</Event>
 												<Event name="AfterDeleteRow">РасшифровкаПлатежаПослеУдаления</Event>
 											</Events>
 											<ChildItems>
@@ -548,28 +553,6 @@
 														<Event name="OnChange">РасшифровкаПлатежаСуммаПлатежаПриИзменении</Event>
 													</Events>
 												</InputField>
-												<InputField name="РасшифровкаПлатежаКурсВзаиморасчетов" id="826">
-													<DataPath>Объект.РасшифровкаПлатежа.КурсВзаиморасчетов</DataPath>
-													<EditMode>EnterOnInput</EditMode>
-													<Width>8</Width>
-													<HorizontalStretch>false</HorizontalStretch>
-													<ContextMenu name="РасшифровкаПлатежаКурсВзаиморасчетовКонтекстноеМеню" id="827"/>
-													<ExtendedTooltip name="РасшифровкаПлатежаКурсВзаиморасчетовРасширеннаяПодсказка" id="828"/>
-													<Events>
-														<Event name="OnChange">РасшифровкаПлатежаКурсВзаиморасчетовПриИзменении</Event>
-													</Events>
-												</InputField>
-												<InputField name="РасшифровкаПлатежаКратностьВзаиморасчетов" id="829">
-													<DataPath>Объект.РасшифровкаПлатежа.КратностьВзаиморасчетов</DataPath>
-													<EditMode>EnterOnInput</EditMode>
-													<Width>4</Width>
-													<HorizontalStretch>false</HorizontalStretch>
-													<ContextMenu name="РасшифровкаПлатежаКратностьВзаиморасчетовКонтекстноеМеню" id="830"/>
-													<ExtendedTooltip name="РасшифровкаПлатежаКратностьВзаиморасчетовРасширеннаяПодсказка" id="831"/>
-													<Events>
-														<Event name="OnChange">РасшифровкаПлатежаКратностьВзаиморасчетовПриИзменении</Event>
-													</Events>
-												</InputField>
 												<InputField name="РасшифровкаПлатежаСуммаВзаиморасчетов" id="832">
 													<DataPath>Объект.РасшифровкаПлатежа.СуммаВзаиморасчетов</DataPath>
 													<EditMode>EnterOnInput</EditMode>
@@ -593,7 +576,7 @@
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Выплата заработной платы</v8:content>
+							<v8:content>Выплата ЗП</v8:content>
 						</v8:item>
 					</Title>
 					<ToolTip>
@@ -604,6 +587,21 @@
 					</ToolTip>
 					<ExtendedTooltip name="СтраницаВыплатаЗаработнойПлатыРасширеннаяПодсказка" id="777"/>
 					<ChildItems>
+						<InputField name="ДокументОснование" id="879">
+							<DataPath>Объект.ДокументОснование</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Ведомость</v8:content>
+								</v8:item>
+							</Title>
+							<DropListButton>false</DropListButton>
+							<ChoiceButton>true</ChoiceButton>
+							<ChoiceButtonRepresentation>ShowInInputField</ChoiceButtonRepresentation>
+							<ContextMenu name="ДокументОснованиеКонтекстноеМеню" id="880"/>
+							<ExtendedTooltip name="ДокументОснованиеРасширеннаяПодсказка" id="881"/>
+						</InputField>
 						<Table name="ВыплатаЗаработнойПлаты" id="778">
 							<AutoInsertNewRow>true</AutoInsertNewRow>
 							<EnableStartDrag>true</EnableStartDrag>
@@ -638,6 +636,7 @@
 								<ExtendedTooltip name="ВыплатаЗаработнойПлатыУправлениеПоискомРасширеннаяПодсказка" id="790"/>
 							</SearchControlAddition>
 							<Events>
+								<Event name="BeforeAddRow">ВыплатаЗаработнойПлатыПередНачаломДобавления</Event>
 								<Event name="AfterDeleteRow">ВыплатаЗаработнойПлатыПослеУдаления</Event>
 							</Events>
 							<ChildItems>
@@ -649,23 +648,11 @@
 									<ContextMenu name="ВыплатаЗаработнойПлатыНомерСтрокиКонтекстноеМеню" id="792"/>
 									<ExtendedTooltip name="ВыплатаЗаработнойПлатыНомерСтрокиРасширеннаяПодсказка" id="793"/>
 								</LabelField>
-								<InputField name="ВыплатаЗаработнойПлатыВедомость" id="794">
-									<DataPath>Объект.ВыплатаЗаработнойПлаты.Ведомость</DataPath>
-									<EditMode>EnterOnInput</EditMode>
-									<ContextMenu name="ВыплатаЗаработнойПлатыВедомостьКонтекстноеМеню" id="795"/>
-									<ExtendedTooltip name="ВыплатаЗаработнойПлатыВедомостьРасширеннаяПодсказка" id="796"/>
-								</InputField>
 								<InputField name="ВыплатаЗаработнойПлатыФизЛицо" id="797">
 									<DataPath>Объект.ВыплатаЗаработнойПлаты.ФизЛицо</DataPath>
 									<EditMode>EnterOnInput</EditMode>
 									<ContextMenu name="ВыплатаЗаработнойПлатыФизЛицоКонтекстноеМеню" id="798"/>
 									<ExtendedTooltip name="ВыплатаЗаработнойПлатыФизЛицоРасширеннаяПодсказка" id="799"/>
-								</InputField>
-								<InputField name="ВыплатаЗаработнойПлатыСтатьяДвиженияДенежныхСредств" id="800">
-									<DataPath>Объект.ВыплатаЗаработнойПлаты.СтатьяДвиженияДенежныхСредств</DataPath>
-									<EditMode>EnterOnInput</EditMode>
-									<ContextMenu name="ВыплатаЗаработнойПлатыСтатьяДвиженияДенежныхСредствКонтекстноеМеню" id="801"/>
-									<ExtendedTooltip name="ВыплатаЗаработнойПлатыСтатьяДвиженияДенежныхСредствРасширеннаяПодсказка" id="802"/>
 								</InputField>
 								<InputField name="ВыплатаЗаработнойПлатыСуммаПлатежа" id="803">
 									<DataPath>Объект.ВыплатаЗаработнойПлаты.СуммаПлатежа</DataPath>
@@ -731,6 +718,7 @@
 								<ExtendedTooltip name="ПрочиеПлатежиУправлениеПоискомРасширеннаяПодсказка" id="754"/>
 							</SearchControlAddition>
 							<Events>
+								<Event name="BeforeAddRow">ПрочиеПлатежиПередНачаломДобавления</Event>
 								<Event name="AfterDeleteRow">ПрочиеПлатежиПослеУдаления</Event>
 							</Events>
 							<ChildItems>
@@ -773,6 +761,9 @@
 								<InputField name="ПрочиеПлатежиСубконто1" id="847">
 									<DataPath>Объект.ПрочиеПлатежи.Субконто1</DataPath>
 									<EditMode>EnterOnInput</EditMode>
+									<DropListButton>false</DropListButton>
+									<ChoiceButton>true</ChoiceButton>
+									<ChoiceButtonRepresentation>ShowInInputField</ChoiceButtonRepresentation>
 									<ContextMenu name="ПрочиеПлатежиСубконто1КонтекстноеМеню" id="848"/>
 									<ExtendedTooltip name="ПрочиеПлатежиСубконто1РасширеннаяПодсказка" id="849"/>
 									<Events>
@@ -782,6 +773,9 @@
 								<InputField name="ПрочиеПлатежиСубконто2" id="850">
 									<DataPath>Объект.ПрочиеПлатежи.Субконто2</DataPath>
 									<EditMode>EnterOnInput</EditMode>
+									<DropListButton>false</DropListButton>
+									<ChoiceButton>true</ChoiceButton>
+									<ChoiceButtonRepresentation>ShowInInputField</ChoiceButtonRepresentation>
 									<ContextMenu name="ПрочиеПлатежиСубконто2КонтекстноеМеню" id="851"/>
 									<ExtendedTooltip name="ПрочиеПлатежиСубконто2РасширеннаяПодсказка" id="852"/>
 									<Events>
@@ -791,6 +785,9 @@
 								<InputField name="ПрочиеПлатежиСубконто3" id="853">
 									<DataPath>Объект.ПрочиеПлатежи.Субконто3</DataPath>
 									<EditMode>EnterOnInput</EditMode>
+									<DropListButton>false</DropListButton>
+									<ChoiceButton>true</ChoiceButton>
+									<ChoiceButtonRepresentation>ShowInInputField</ChoiceButtonRepresentation>
 									<ContextMenu name="ПрочиеПлатежиСубконто3КонтекстноеМеню" id="854"/>
 									<ExtendedTooltip name="ПрочиеПлатежиСубконто3РасширеннаяПодсказка" id="855"/>
 									<Events>
@@ -862,48 +859,22 @@
 									<HorizontalStretch>false</HorizontalStretch>
 									<ContextMenu name="СчетРасчетовКонтекстноеМеню" id="815"/>
 									<ExtendedTooltip name="СчетРасчетовРасширеннаяПодсказка" id="816"/>
+									<Events>
+										<Event name="OnChange">СчетРасчетовПриИзменении</Event>
+									</Events>
 								</InputField>
 							</ChildItems>
 						</UsualGroup>
-						<UsualGroup name="ГруппаДокументОснование" id="559">
-							<Title>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Группа документ основание</v8:content>
-								</v8:item>
-							</Title>
-							<ToolTip>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Группа документ основание</v8:content>
-								</v8:item>
-							</ToolTip>
-							<Group>Horizontal</Group>
-							<Representation>None</Representation>
-							<ShowTitle>false</ShowTitle>
-							<ExtendedTooltip name="ГруппаДокументОснованиеExtendedTooltip" id="560"/>
-							<ChildItems>
-								<InputField name="ДокументОснование" id="561">
-									<DataPath>Объект.ДокументОснование</DataPath>
-									<SkipOnInput>true</SkipOnInput>
-									<EditMode>EnterOnInput</EditMode>
-									<Wrap>false</Wrap>
-									<DropListButton>false</DropListButton>
-									<ChoiceButton>true</ChoiceButton>
-									<ChoiceButtonRepresentation>ShowInInputField</ChoiceButtonRepresentation>
-									<ChoiceParameters>
-										<app:item name="Отбор.Проведен">
-											<app:value xsi:type="FormChoiceListDesTimeValue">
-												<Presentation/>
-												<Value xsi:type="xs:boolean">true</Value>
-											</app:value>
-										</app:item>
-									</ChoiceParameters>
-									<ContextMenu name="ДокументОснованиеКонтекстноеМеню" id="562"/>
-									<ExtendedTooltip name="ДокументОснованиеРасширеннаяПодсказка" id="563"/>
-								</InputField>
-							</ChildItems>
-						</UsualGroup>
+						<CheckBoxField name="Корректировка" id="876">
+							<DataPath>Объект.Корректировка</DataPath>
+							<TitleLocation>Right</TitleLocation>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="КорректировкаКонтекстноеМеню" id="877"/>
+							<ExtendedTooltip name="КорректировкаРасширеннаяПодсказка" id="878"/>
+							<Events>
+								<Event name="OnChange">КорректировкаПриИзменении</Event>
+							</Events>
+						</CheckBoxField>
 						<UsualGroup name="ГруппаПечать" id="546">
 							<Title>
 								<v8:item>
@@ -1027,6 +998,16 @@
 			<ShowTitle>false</ShowTitle>
 			<ExtendedTooltip name="ПодвалРасширеннаяПодсказка" id="655"/>
 			<ChildItems>
+				<LabelDecoration name="КурсоваяРазница" id="867">
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Курсовая разница</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="КурсоваяРазницаКонтекстноеМеню" id="868"/>
+					<ExtendedTooltip name="КурсоваяРазницаРасширеннаяПодсказка" id="869"/>
+				</LabelDecoration>
 				<UsualGroup name="ГруппаИтоги" id="656">
 					<Title>
 						<v8:item>
@@ -1232,11 +1213,11 @@
 				<v8:Type>cfg:CatalogRef.Контрагенты</v8:Type>
 			</Type>
 		</Attribute>
-		<Attribute name="КратностьВзаиморасчетов" id="8">
+		<Attribute name="КратностьВзаиморасчетовПоНацБанку" id="8">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Кратность взаиморасчетов</v8:content>
+					<v8:content>Кратность взаиморасчетов по нац банку</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -1248,11 +1229,11 @@
 				</v8:NumberQualifiers>
 			</Type>
 		</Attribute>
-		<Attribute name="КурсВзаиморасчетов" id="9">
+		<Attribute name="КурсВзаиморасчетовПоНацБанку" id="9">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Курс взаиморасчетов</v8:content>
+					<v8:content>Курс взаиморасчетов по нац банку</v8:content>
 				</v8:item>
 			</Title>
 			<Type>

@@ -33,7 +33,7 @@
 			<title xsi:type="v8:LocalStringType">
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Надпись рекомендации [Заголовок скрыт]</v8:content>
+					<v8:content>Надпись рекомендации [ЗаголовокСкрыт]</v8:content>
 				</v8:item>
 			</title>
 		</field>
@@ -43,7 +43,7 @@
 			<title xsi:type="v8:LocalStringType">
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Правило проверки [Заголовок скрыт]</v8:content>
+					<v8:content>Правило проверки [ЗаголовокСкрыт]</v8:content>
 				</v8:item>
 			</title>
 			<role>
@@ -66,7 +66,7 @@
 			<title xsi:type="v8:LocalStringType">
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Надпись ошибка [Заголовок скрыт]</v8:content>
+					<v8:content>Надпись ошибка [ЗаголовокСкрыт]</v8:content>
 				</v8:item>
 			</title>
 		</field>
@@ -76,7 +76,7 @@
 			<title xsi:type="v8:LocalStringType">
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Надпись возможные причины [Заголовок скрыт]</v8:content>
+					<v8:content>Надпись возможные причины [ЗаголовокСкрыт]</v8:content>
 				</v8:item>
 			</title>
 		</field>
@@ -98,7 +98,7 @@
 			<title xsi:type="v8:LocalStringType">
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Проблемный объект [Заголовок скрыт]</v8:content>
+					<v8:content>Проблемный объект [ЗаголовокСкрыт]</v8:content>
 				</v8:item>
 			</title>
 			<role>
@@ -131,7 +131,7 @@
 			<title xsi:type="v8:LocalStringType">
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Надпись решение [Заголовок скрыт]</v8:content>
+					<v8:content>Надпись решение [ЗаголовокСкрыт]</v8:content>
 				</v8:item>
 			</title>
 		</field>
@@ -145,7 +145,7 @@
 			<title xsi:type="v8:LocalStringType">
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Надпись проблемные объекты [Заголовок скрыт]</v8:content>
+					<v8:content>Надпись проблемные объекты [ЗаголовокСкрыт]</v8:content>
 				</v8:item>
 			</title>
 		</field>
@@ -194,12 +194,12 @@
 	РезультатыПроверкиУчета.Выявлено КАК Выявлено,
 	РезультатыПроверкиУчета.ИгнорироватьПроблему КАК ИгнорироватьПроблему,
 	РезультатыПроверкиУчета.ДополнительнаяИнформация КАК ДополнительнаяИнформация,
-	"Ошибка" КАК НадписьОшибка,
-	"Возможные причины" КАК НадписьВозможныеПричины,
-	"Рекомендации" КАК НадписьРекомендации,
-	"Решение" КАК НадписьРешение,
+	&amp;НадписьОшибка КАК НадписьОшибка,
+	&amp;НадписьВозможныеПричины КАК НадписьВозможныеПричины,
+	&amp;НадписьРекомендации КАК НадписьРекомендации,
+	&amp;НадписьРешение КАК НадписьРешение,
 	ПравилаПроверкиУчета.Идентификатор КАК ИдентификаторПроверки,
-	"Проблемные объекты" КАК НадписьПроблемныеОбъекты,
+	&amp;НадписьПроблемныеОбъекты КАК НадписьПроблемныеОбъекты,
 	ПравилаПроверкиУчета.Наименование КАК ПравилоПроверкиНаименование,
 	ПравилаПроверкиУчета.Причины КАК ПравилоПроверкиПричиныПроблемы,
 	ПравилаПроверкиУчета.Рекомендация КАК ПравилоПроверкиРекомендации
@@ -271,13 +271,25 @@
 	</dataSetLink>
 	<calculatedField>
 		<dataPath>ОбработчкПереходаКИсправлениюРасчет</dataPath>
-		<expression>"%" + ИдентификаторПроверки + "," + ОбработчикПереходаКИсправлению + "," + Строка(XMLСтрока(ВидПроверки)) + "%"</expression>
+		<expression>ОбработчикПереходаКИсправлению</expression>
 		<title xsi:type="v8:LocalStringType">
 			<v8:item>
 				<v8:lang>ru</v8:lang>
 				<v8:content>Обработчк перехода к исправлению расчет</v8:content>
 			</v8:item>
 		</title>
+		<presentationExpression>"%" + ИдентификаторПроверки + "," + ОбработчикПереходаКИсправлению + "," + Строка(XMLСтрока(ВидПроверки)) + "%"</presentationExpression>
+	</calculatedField>
+	<calculatedField>
+		<dataPath>ПроблемныйОбъектРасчет</dataPath>
+		<expression>ПроблемныйОбъект</expression>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Проблемный объект расчет [ЗаголовокСкрыт]</v8:content>
+			</v8:item>
+		</title>
+		<presentationExpression>КонтрольВеденияУчетаСлужебный.ОформитьПредставлениеПроблемногоОбъекта(ПроблемныйОбъект, Представление(ПроблемныйОбъект), ДополнительнаяИнформация)</presentationExpression>
 	</calculatedField>
 	<totalField>
 		<dataPath>КоличествоПроблемСОбъектом</dataPath>
@@ -319,6 +331,101 @@
 		<useRestriction>false</useRestriction>
 		<availableAsField>false</availableAsField>
 		<use>Always</use>
+	</parameter>
+	<parameter>
+		<name>НадписьОшибка</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Надпись ошибка</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:string</v8:Type>
+			<v8:StringQualifiers>
+				<v8:Length>64</v8:Length>
+				<v8:AllowedLength>Variable</v8:AllowedLength>
+			</v8:StringQualifiers>
+		</valueType>
+		<value xsi:type="xs:string"/>
+		<useRestriction>true</useRestriction>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<parameter>
+		<name>НадписьВозможныеПричины</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Надпись возможные причины</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:string</v8:Type>
+			<v8:StringQualifiers>
+				<v8:Length>64</v8:Length>
+				<v8:AllowedLength>Variable</v8:AllowedLength>
+			</v8:StringQualifiers>
+		</valueType>
+		<value xsi:nil="true"/>
+		<useRestriction>true</useRestriction>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<parameter>
+		<name>НадписьРекомендации</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Надпись рекомендации</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:string</v8:Type>
+			<v8:StringQualifiers>
+				<v8:Length>64</v8:Length>
+				<v8:AllowedLength>Variable</v8:AllowedLength>
+			</v8:StringQualifiers>
+		</valueType>
+		<value xsi:nil="true"/>
+		<useRestriction>true</useRestriction>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<parameter>
+		<name>НадписьРешение</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Надпись решение</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:string</v8:Type>
+			<v8:StringQualifiers>
+				<v8:Length>64</v8:Length>
+				<v8:AllowedLength>Variable</v8:AllowedLength>
+			</v8:StringQualifiers>
+		</valueType>
+		<value xsi:nil="true"/>
+		<useRestriction>true</useRestriction>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<parameter>
+		<name>НадписьПроблемныеОбъекты</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Надпись проблемные объекты</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:string</v8:Type>
+			<v8:StringQualifiers>
+				<v8:Length>64</v8:Length>
+				<v8:AllowedLength>Variable</v8:AllowedLength>
+			</v8:StringQualifiers>
+		</valueType>
+		<value xsi:nil="true"/>
+		<useRestriction>true</useRestriction>
+		<availableAsField>false</availableAsField>
 	</parameter>
 	<template>
 		<name>Макет1</name>
@@ -665,7 +772,7 @@
 				</dcscor:item>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 					<dcscor:parameter>ВыводитьОтбор</dcscor:parameter>
-					<dcscor:value xsi:type="dcsset:DataCompositionTextOutputType">DontOutput</dcscor:value>
+					<dcscor:value xsi:type="dcsset:DataCompositionTextOutputType">Output</dcscor:value>
 				</dcscor:item>
 			</dcsset:outputParameters>
 			<dcsset:item xsi:type="dcsset:StructureItemTable">
@@ -872,7 +979,7 @@
 								<dcsset:name>Детализация</dcsset:name>
 								<dcsset:groupItems>
 									<dcsset:item xsi:type="dcsset:GroupItemField">
-										<dcsset:field>ПроблемныйОбъект</dcsset:field>
+										<dcsset:field>ПроблемныйОбъектРасчет</dcsset:field>
 										<dcsset:groupType>Items</dcsset:groupType>
 										<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
 										<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>

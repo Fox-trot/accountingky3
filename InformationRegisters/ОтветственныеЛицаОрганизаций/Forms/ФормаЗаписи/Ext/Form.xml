@@ -4,6 +4,9 @@
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
 	<Events>
 		<Event name="AfterWrite">ПослеЗаписи</Event>
+		<Event name="ChoiceProcessing">ОбработкаВыбора</Event>
+		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
+		<Event name="OnReadAtServer">ПриЧтенииНаСервере</Event>
 		<Event name="OnOpen">ПриОткрытии</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 		<Event name="BeforeWriteAtServer">ПередЗаписьюНаСервере</Event>
@@ -23,10 +26,10 @@
 				<Event name="OnChange">ОтветственноеЛицоПриИзменении</Event>
 			</Events>
 		</InputField>
-		<InputField name="Физлицо" id="7">
+		<InputField name="ФизЛицо" id="7">
 			<DataPath>Запись.ФизЛицо</DataPath>
-			<ContextMenu name="ФизлицоКонтекстноеМеню" id="8"/>
-			<ExtendedTooltip name="ФизлицоРасширеннаяПодсказка" id="27"/>
+			<ContextMenu name="ФизЛицоКонтекстноеМеню" id="8"/>
+			<ExtendedTooltip name="ФизЛицоРасширеннаяПодсказка" id="27"/>
 			<Events>
 				<Event name="OnChange">ФизлицоПриИзменении</Event>
 			</Events>
@@ -72,10 +75,71 @@
 				</Button>
 			</ChildItems>
 		</UsualGroup>
-		<LabelDecoration name="Отступ1" id="21">
-			<ContextMenu name="Отступ1КонтекстноеМеню" id="22"/>
-			<ExtendedTooltip name="Отступ1ExtendedTooltip" id="32"/>
-		</LabelDecoration>
+		<Button name="СправочникФизическиеЛицаНапечататьПомощникРаботыФаксимильнойПечати" id="36">
+			<Type>Hyperlink</Type>
+			<CommandName>Catalog.ФизическиеЛица.Command.НапечататьПомощникСозданияФаксимилеПодписи</CommandName>
+			<DataPath>Запись.ФизЛицо</DataPath>
+			<ExtendedTooltip name="СправочникФизическиеЛицаНапечататьПомощникРаботыФаксимильнойПечатиРасширеннаяПодсказка" id="37"/>
+		</Button>
+		<PictureField name="АдресФаксимильнойПечати" id="38">
+			<DataPath>АдресФаксимильнойПечати</DataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Картинка факсимиле</v8:content>
+				</v8:item>
+			</Title>
+			<TitleLocation>None</TitleLocation>
+			<ToolTipRepresentation>Balloon</ToolTipRepresentation>
+			<Width>15</Width>
+			<Height>6</Height>
+			<HorizontalStretch>false</HorizontalStretch>
+			<VerticalStretch>false</VerticalStretch>
+			<PictureSize>Proportionally</PictureSize>
+			<Hyperlink>true</Hyperlink>
+			<NonselectedPictureText>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Добавить факсимиле подписи</v8:content>
+				</v8:item>
+			</NonselectedPictureText>
+			<TextColor>style:НедоступныеДанныеЦвет</TextColor>
+			<ContextMenu name="АдресФаксимильнойПечатиКонтекстноеМеню" id="39">
+				<ChildItems>
+					<Button name="КонтекстИзменитьИзображениеФаксимиле" id="41">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.ИзменитьИзображениеФаксимиле</CommandName>
+						<ExtendedTooltip name="КонтекстИзменитьИзображениеФаксимилеРасширеннаяПодсказка" id="42"/>
+					</Button>
+					<Button name="КонтекстДобавитьИзображениеФаксимиле" id="43">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.ДобавитьИзображениеФаксимиле</CommandName>
+						<ExtendedTooltip name="КонтекстДобавитьИзображениеФаксимилеРасширеннаяПодсказка" id="44"/>
+					</Button>
+					<Button name="КонтекстОчиститьИзображениеФаксимиле" id="45">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.ОчиститьИзображениеФаксимиле</CommandName>
+						<ExtendedTooltip name="КонтекстОчиститьИзображениеФаксимилеРасширеннаяПодсказка" id="46"/>
+					</Button>
+					<Button name="КонтекстФаксимилеИзПрисоединенныхФайлов" id="47">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.ФаксимилеИзПрисоединенныхФайлов</CommandName>
+						<ExtendedTooltip name="КонтекстФаксимилеИзПрисоединенныхФайловРасширеннаяПодсказка" id="48"/>
+					</Button>
+				</ChildItems>
+			</ContextMenu>
+			<ExtendedTooltip name="АдресФаксимильнойПечатиExtendedTooltip" id="40">
+				<Title formatted="false">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Факсимильная печать будет использоваться в печатной форме документа "Счет на оплату", выставляемого покупателю.</v8:content>
+					</v8:item>
+				</Title>
+			</ExtendedTooltip>
+			<Events>
+				<Event name="Click">АдресФаксимильнойПечатиНажатие</Event>
+			</Events>
+		</PictureField>
 	</ChildItems>
 	<Attributes>
 		<Attribute name="Запись" id="1">
@@ -99,6 +163,21 @@
 				<Item/>
 			</FunctionalOptions>
 		</Attribute>
+		<Attribute name="АдресФаксимильнойПечати" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Адрес факсимильной печати</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
 	</Attributes>
 	<Commands>
 		<Command name="ИсторияИзменений" id="1">
@@ -115,6 +194,86 @@
 				</v8:item>
 			</ToolTip>
 			<Action>ИсторияИзменений</Action>
+		</Command>
+		<Command name="ИзменитьИзображениеФаксимиле" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть карточку файла</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Изменить изображение факсимиле</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Change</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ИзменитьИзображениеФаксимиле</Action>
+			<ModifiesSavedData>true</ModifiesSavedData>
+		</Command>
+		<Command name="ДобавитьИзображениеФаксимиле" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выбрать изображение факсимиле</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Добавить изображение факсимиле</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.CreateListItem</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ДобавитьИзображениеФаксимиле</Action>
+			<ModifiesSavedData>true</ModifiesSavedData>
+		</Command>
+		<Command name="ОчиститьИзображениеФаксимиле" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Очистить изображение факсимиле</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Очистить изображение факсимиле</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Delete</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ОчиститьИзображениеФаксимиле</Action>
+			<ModifiesSavedData>true</ModifiesSavedData>
+		</Command>
+		<Command name="ФаксимилеИзПрисоединенныхФайлов" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выбрать из присоединенных</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выбрать факсимиле из присоединенных файлов</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.ChooseValue</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ФаксимилеИзПрисоединенныхФайлов</Action>
+			<ModifiesSavedData>true</ModifiesSavedData>
 		</Command>
 	</Commands>
 </Form>

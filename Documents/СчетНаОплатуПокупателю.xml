@@ -263,6 +263,53 @@
 					<FullTextSearch>Use</FullTextSearch>
 				</Properties>
 			</Attribute>
+			<Attribute uuid="800a04d4-6ddb-40a1-b693-79c3d56a5d3d">
+				<Properties>
+					<Name>Склад</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Склад</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Склад</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment/>
+					<Type>
+						<v8:Type>cfg:CatalogRef.Склады</v8:Type>
+					</Type>
+					<PasswordMode>false</PasswordMode>
+					<Format/>
+					<EditFormat/>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Склад, с которого производится реализация.</v8:content>
+						</v8:item>
+					</ToolTip>
+					<MarkNegatives>false</MarkNegatives>
+					<Mask/>
+					<MultiLine>false</MultiLine>
+					<ExtendedEdit>false</ExtendedEdit>
+					<MinValue xsi:nil="true"/>
+					<MaxValue xsi:nil="true"/>
+					<FillFromFillingValue>true</FillFromFillingValue>
+					<FillValue xsi:nil="true"/>
+					<FillChecking>ShowError</FillChecking>
+					<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+					<ChoiceParameterLinks/>
+					<ChoiceParameters/>
+					<QuickChoice>Auto</QuickChoice>
+					<CreateOnInput>Auto</CreateOnInput>
+					<ChoiceForm/>
+					<LinkByType/>
+					<ChoiceHistoryOnInput>Auto</ChoiceHistoryOnInput>
+					<Indexing>DontIndex</Indexing>
+					<FullTextSearch>Use</FullTextSearch>
+				</Properties>
+			</Attribute>
 			<Attribute uuid="94afe9bd-01bb-48ff-a2f3-c886afdffe11">
 				<Properties>
 					<Name>Контрагент</Name>
@@ -295,7 +342,13 @@
 					<FillValue xsi:type="xr:DesignTimeRef">Catalog.Контрагенты.EmptyRef</FillValue>
 					<FillChecking>ShowError</FillChecking>
 					<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
-					<ChoiceParameterLinks/>
+					<ChoiceParameterLinks>
+						<xr:Link>
+							<xr:Name>Отбор.ДокументВладелец</xr:Name>
+							<xr:DataPath xsi:type="xs:string">Document.СчетНаОплатуПокупателю.StandardAttribute.Ref</xr:DataPath>
+							<xr:ValueChange>Clear</xr:ValueChange>
+						</xr:Link>
+					</ChoiceParameterLinks>
 					<ChoiceParameters/>
 					<QuickChoice>Auto</QuickChoice>
 					<CreateOnInput>Auto</CreateOnInput>
@@ -630,7 +683,7 @@
 					<MinValue xsi:nil="true"/>
 					<MaxValue xsi:nil="true"/>
 					<FillFromFillingValue>false</FillFromFillingValue>
-					<FillValue xsi:nil="true"/>
+					<FillValue xsi:type="xr:DesignTimeRef">Catalog.СтавкиНСП.EmptyRef</FillValue>
 					<FillChecking>ShowError</FillChecking>
 					<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
 					<ChoiceParameterLinks/>
@@ -677,7 +730,7 @@
 					<MinValue xsi:nil="true"/>
 					<MaxValue xsi:nil="true"/>
 					<FillFromFillingValue>false</FillFromFillingValue>
-					<FillValue xsi:nil="true"/>
+					<FillValue xsi:type="xr:DesignTimeRef">Catalog.СтавкиНСП.EmptyRef</FillValue>
 					<FillChecking>ShowError</FillChecking>
 					<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
 					<ChoiceParameterLinks/>
@@ -898,6 +951,98 @@
 						<v8:item>
 							<v8:lang>ru</v8:lang>
 							<v8:content>Скидка в процентах.</v8:content>
+						</v8:item>
+					</ToolTip>
+					<MarkNegatives>false</MarkNegatives>
+					<Mask/>
+					<MultiLine>false</MultiLine>
+					<ExtendedEdit>false</ExtendedEdit>
+					<MinValue xsi:nil="true"/>
+					<MaxValue xsi:nil="true"/>
+					<FillFromFillingValue>false</FillFromFillingValue>
+					<FillValue xsi:nil="true"/>
+					<FillChecking>DontCheck</FillChecking>
+					<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+					<ChoiceParameterLinks/>
+					<ChoiceParameters/>
+					<QuickChoice>Auto</QuickChoice>
+					<CreateOnInput>Auto</CreateOnInput>
+					<ChoiceForm/>
+					<LinkByType/>
+					<ChoiceHistoryOnInput>Auto</ChoiceHistoryOnInput>
+					<Indexing>DontIndex</Indexing>
+					<FullTextSearch>Use</FullTextSearch>
+				</Properties>
+			</Attribute>
+			<Attribute uuid="acf4426b-5276-48e6-b782-747fc5dc8523">
+				<Properties>
+					<Name>СрокОплаты</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Срок оплаты</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment/>
+					<Type>
+						<v8:Type>xs:dateTime</v8:Type>
+						<v8:DateQualifiers>
+							<v8:DateFractions>Date</v8:DateFractions>
+						</v8:DateQualifiers>
+					</Type>
+					<PasswordMode>false</PasswordMode>
+					<Format/>
+					<EditFormat/>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Планируемая дата оплаты по данному счету.</v8:content>
+						</v8:item>
+					</ToolTip>
+					<MarkNegatives>false</MarkNegatives>
+					<Mask/>
+					<MultiLine>false</MultiLine>
+					<ExtendedEdit>false</ExtendedEdit>
+					<MinValue xsi:nil="true"/>
+					<MaxValue xsi:nil="true"/>
+					<FillFromFillingValue>false</FillFromFillingValue>
+					<FillValue xsi:nil="true"/>
+					<FillChecking>DontCheck</FillChecking>
+					<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+					<ChoiceParameterLinks/>
+					<ChoiceParameters/>
+					<QuickChoice>Auto</QuickChoice>
+					<CreateOnInput>Auto</CreateOnInput>
+					<ChoiceForm/>
+					<LinkByType/>
+					<ChoiceHistoryOnInput>Auto</ChoiceHistoryOnInput>
+					<Indexing>DontIndex</Indexing>
+					<FullTextSearch>Use</FullTextSearch>
+				</Properties>
+			</Attribute>
+			<Attribute uuid="9eba7620-0070-466f-b074-35aa58ddfda9">
+				<Properties>
+					<Name>ДатаОплаты</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата оплаты</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment/>
+					<Type>
+						<v8:Type>xs:dateTime</v8:Type>
+						<v8:DateQualifiers>
+							<v8:DateFractions>Date</v8:DateFractions>
+						</v8:DateQualifiers>
+					</Type>
+					<PasswordMode>false</PasswordMode>
+					<Format/>
+					<EditFormat/>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Признак поступления оптаты по данному счету.</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>

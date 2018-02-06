@@ -22,6 +22,7 @@ var makeCompression = [ВыполнятьСжатиеТаблицИБ];  // за
 var executeDeferredHandlers = [ВыполнитьОтложенныеОбработчики];  // выполнить отложенные обработчики обновления
 var tempLogFileName = "templog.txt";
 var errorFileName = "error.txt";
+var taskNameScheduleService = [ИмяЗадачиПланировщикаЗадач]; // Если указано, то задача, которой запущен скрипт.
 #КонецОбласти
 
 #Область ОбластьОбновленияКонфигурации
@@ -47,6 +48,7 @@ else {
     ClusterPassword = eval("WScript.Arguments").Named.Item("p2");
 }
 
+adminName = adminName.replace(/"/g, '""');
 InfoBasePassword = fromUnicode(InfoBasePassword);
 ClusterPassword = fromUnicode(ClusterPassword);
 var infoBaseAuthorization = format('/N\"{0}\" /P\"{1}\" /WA-', adminName, InfoBasePassword);
@@ -215,6 +217,8 @@ function finalize(success) {
     if (success == undefined)
         success = false;
 
+	deleteScheduleTask();
+	
     // Запись результата обновления в Event Log
     writeEventLog(success);
 
@@ -230,7 +234,21 @@ function finalize(success) {
 
     // очистка глобального COM-соединения
     ComConnection = null;
+}
 
+function deleteScheduleTask() {
+	if (taskNameScheduleService != '') {
+		try {
+			schedule = new ActiveXObject('Schedule.Service');
+			schedule.Connect();
+			
+			root = schedule.GetFolder('\\');
+			root.DeleteTask(taskNameScheduleService, 0);
+		}
+		catch (ex) {
+			log(format("Ошибка при удалении задачи из планировщика задач: {0}", ex.message), true);
+		}
+	}
 }
 
 function createConnection() {

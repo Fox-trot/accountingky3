@@ -52,7 +52,6 @@
 		</ChildItems>
 	</AutoCommandBar>
 	<Events>
-		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
 		<Event name="OnReadAtServer">ПриЧтенииНаСервере</Event>
 		<Event name="OnOpen">ПриОткрытии</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
@@ -151,6 +150,12 @@
 								</InputField>
 								<InputField name="Дата" id="4">
 									<DataPath>Объект.Date</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Дата СФ</v8:content>
+										</v8:item>
+									</Title>
 									<EditMode>EnterOnInput</EditMode>
 									<ContextMenu name="ДатаКонтекстноеМеню" id="5"/>
 									<ExtendedTooltip name="ДатаРасширеннаяПодсказка" id="6"/>
@@ -165,15 +170,16 @@
 							<EditMode>EnterOnInput</EditMode>
 							<ContextMenu name="КонтрагентКонтекстноеМеню" id="14"/>
 							<ExtendedTooltip name="КонтрагентРасширеннаяПодсказка" id="15"/>
-							<Events>
-								<Event name="OnChange">КонтрагентПриИзменении</Event>
-							</Events>
 						</InputField>
-						<InputField name="ДоговорКонтрагента" id="16">
-							<DataPath>Объект.ДоговорКонтрагента</DataPath>
-							<EditMode>EnterOnInput</EditMode>
-							<ContextMenu name="ДоговорКонтрагентаКонтекстноеМеню" id="17"/>
-							<ExtendedTooltip name="ДоговорКонтрагентаРасширеннаяПодсказка" id="18"/>
+						<InputField name="ЗначениеСтавкиНДС" id="272">
+							<DataPath>Объект.ЗначениеСтавкиНДС</DataPath>
+							<ContextMenu name="ЗначениеСтавкиНДСКонтекстноеМеню" id="273"/>
+							<ExtendedTooltip name="ЗначениеСтавкиНДСРасширеннаяПодсказка" id="274"/>
+						</InputField>
+						<InputField name="ЗначениеСтавкиНСП" id="275">
+							<DataPath>Объект.ЗначениеСтавкиНСП</DataPath>
+							<ContextMenu name="ЗначениеСтавкиНСПКонтекстноеМеню" id="276"/>
+							<ExtendedTooltip name="ЗначениеСтавкиНСПРасширеннаяПодсказка" id="277"/>
 						</InputField>
 					</ChildItems>
 				</UsualGroup>
@@ -241,6 +247,12 @@
 								</InputField>
 								<InputField name="ДатаСФ" id="190">
 									<DataPath>Объект.ДатаСФ</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Дата поставки</v8:content>
+										</v8:item>
+									</Title>
 									<ContextMenu name="ДатаСФКонтекстноеМеню" id="191"/>
 									<ExtendedTooltip name="ДатаСФРасширеннаяПодсказка" id="192"/>
 								</InputField>
@@ -277,7 +289,7 @@
 									<ExtendedTooltip name="ВалютаДокументаРасширеннаяПодсказка" id="12"/>
 								</InputField>
 								<InputField name="Курс" id="19">
-									<DataPath>Объект.Курс</DataPath>
+									<DataPath>1/0:bb8da858-6849-4af7-b02a-fd25c7ae0bfe</DataPath>
 									<EditMode>EnterOnInput</EditMode>
 									<ContextMenu name="КурсКонтекстноеМеню" id="20"/>
 									<ExtendedTooltip name="КурсРасширеннаяПодсказка" id="21"/>
@@ -302,22 +314,27 @@
 							<ShowTitle>false</ShowTitle>
 							<ExtendedTooltip name="Группа23РасширеннаяПодсказка" id="126"/>
 							<ChildItems>
-								<CheckBoxField name="Общая" id="119">
-									<DataPath>Объект.Общая</DataPath>
-									<TitleLocation>Left</TitleLocation>
-									<CheckBoxType>Auto</CheckBoxType>
-									<ContextMenu name="ОбщаяКонтекстноеМеню" id="120"/>
-									<ExtendedTooltip name="ОбщаяРасширеннаяПодсказка" id="121"/>
-								</CheckBoxField>
 								<CheckBoxField name="Возврат" id="226">
-									<DataPath>Объект.Возврат</DataPath>
+									<DataPath>Объект.ВозвратТоваров</DataPath>
+									<TitleLocation>Right</TitleLocation>
 									<CheckBoxType>Auto</CheckBoxType>
 									<ContextMenu name="ВозвратКонтекстноеМеню" id="227"/>
 									<ExtendedTooltip name="ВозвратРасширеннаяПодсказка" id="228"/>
 								</CheckBoxField>
+								<CheckBoxField name="БезналичныйРасчет" id="278">
+									<DataPath>Объект.БезналичныйРасчет</DataPath>
+									<TitleLocation>Right</TitleLocation>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="БезналичныйРасчетКонтекстноеМеню" id="279"/>
+									<ExtendedTooltip name="БезналичныйРасчетРасширеннаяПодсказка" id="280"/>
+									<Events>
+										<Event name="OnChange">БезналичныйРасчетПриИзменении</Event>
+									</Events>
+								</CheckBoxField>
 								<CheckBoxField name="НДСНеПодтвержден" id="229">
 									<DataPath>Объект.НДСНеПодтвержден</DataPath>
 									<Enabled>false</Enabled>
+									<TitleLocation>Right</TitleLocation>
 									<CheckBoxType>Auto</CheckBoxType>
 									<ContextMenu name="НДСНеПодтвержденКонтекстноеМеню" id="230"/>
 									<ExtendedTooltip name="НДСНеПодтвержденРасширеннаяПодсказка" id="231"/>
@@ -331,6 +348,122 @@
 		<Pages name="Группа3" id="129">
 			<ExtendedTooltip name="Группа3РасширеннаяПодсказка" id="130"/>
 			<ChildItems>
+				<Page name="СтраницаДокументы" id="133">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Документы</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница документы</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="СтраницаДокументыРасширеннаяПодсказка" id="134"/>
+					<ChildItems>
+						<Table name="ДокументыПоступления" id="135">
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<DataPath>Объект.ДокументыПоступления</DataPath>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="ДокументыПоступленияКонтекстноеМеню" id="136"/>
+							<AutoCommandBar name="ДокументыПоступленияКоманднаяПанель" id="137">
+								<ChildItems>
+									<Button name="ДокументыПоступленияПодборПоКонтрагенту" id="210">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.ЗаполнитьДокументы</CommandName>
+										<ExtendedTooltip name="ДокументыПоступленияПодборПоКонтрагентуРасширеннаяПодсказка" id="211"/>
+									</Button>
+								</ChildItems>
+							</AutoCommandBar>
+							<ExtendedTooltip name="ДокументыПоступленияРасширеннаяПодсказка" id="138"/>
+							<SearchStringAddition name="ДокументыПоступленияСтрокаПоиска" id="139">
+								<AdditionSource>
+									<Item>ДокументыПоступления</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ДокументыПоступленияСтрокаПоискаКонтекстноеМеню" id="140"/>
+								<ExtendedTooltip name="ДокументыПоступленияСтрокаПоискаРасширеннаяПодсказка" id="141"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="ДокументыПоступленияСостояниеПросмотра" id="142">
+								<AdditionSource>
+									<Item>ДокументыПоступления</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ДокументыПоступленияСостояниеПросмотраКонтекстноеМеню" id="143"/>
+								<ExtendedTooltip name="ДокументыПоступленияСостояниеПросмотраРасширеннаяПодсказка" id="144"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="ДокументыПоступленияУправлениеПоиском" id="145">
+								<AdditionSource>
+									<Item>ДокументыПоступления</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="ДокументыПоступленияУправлениеПоискомКонтекстноеМеню" id="146"/>
+								<ExtendedTooltip name="ДокументыПоступленияУправлениеПоискомРасширеннаяПодсказка" id="147"/>
+							</SearchControlAddition>
+							<Events>
+								<Event name="AfterDeleteRow">ДокументыПоступленияПослеУдаления</Event>
+							</Events>
+							<ChildItems>
+								<LabelField name="ДокументыПоступленияНомерСтроки" id="148">
+									<DataPath>Объект.ДокументыПоступления.LineNumber</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>4</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="ДокументыПоступленияНомерСтрокиКонтекстноеМеню" id="149"/>
+									<ExtendedTooltip name="ДокументыПоступленияНомерСтрокиРасширеннаяПодсказка" id="150"/>
+								</LabelField>
+								<InputField name="ДокументыПоступленияДокумент" id="151">
+									<DataPath>Объект.ДокументыПоступления.ДокументПоступления</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<DropListButton>false</DropListButton>
+									<ChoiceButton>true</ChoiceButton>
+									<ChoiceButtonRepresentation>ShowInInputField</ChoiceButtonRepresentation>
+									<ContextMenu name="ДокументыПоступленияДокументКонтекстноеМеню" id="152"/>
+									<ExtendedTooltip name="ДокументыПоступленияДокументРасширеннаяПодсказка" id="153"/>
+									<Events>
+										<Event name="OnChange">ДокументыПоступленияДокументПриИзменении</Event>
+									</Events>
+								</InputField>
+								<InputField name="ДокументыПоступленияСуммаДокумента" id="207">
+									<DataPath>Объект.ДокументыПоступления.Сумма</DataPath>
+									<ReadOnly>true</ReadOnly>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>10</Width>
+									<ContextMenu name="ДокументыПоступленияСуммаДокументаКонтекстноеМеню" id="208"/>
+									<ExtendedTooltip name="ДокументыПоступленияСуммаДокументаРасширеннаяПодсказка" id="209"/>
+								</InputField>
+								<InputField name="ДокументыПоступленияСуммаНДС" id="281">
+									<DataPath>Объект.ДокументыПоступления.СуммаНДС</DataPath>
+									<ReadOnly>true</ReadOnly>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>10</Width>
+									<ContextMenu name="ДокументыПоступленияСуммаНДСКонтекстноеМеню" id="282"/>
+									<ExtendedTooltip name="ДокументыПоступленияСуммаНДСРасширеннаяПодсказка" id="283"/>
+								</InputField>
+								<InputField name="ДокументыПоступленияСуммаНСП" id="284">
+									<DataPath>Объект.ДокументыПоступления.СуммаНСП</DataPath>
+									<ReadOnly>true</ReadOnly>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>10</Width>
+									<ContextMenu name="ДокументыПоступленияСуммаНСПКонтекстноеМеню" id="285"/>
+									<ExtendedTooltip name="ДокументыПоступленияСуммаНСПРасширеннаяПодсказка" id="286"/>
+								</InputField>
+								<InputField name="ДокументыПоступленияВсего" id="287">
+									<DataPath>Объект.ДокументыПоступления.Всего</DataPath>
+									<ReadOnly>true</ReadOnly>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>10</Width>
+									<ContextMenu name="ДокументыПоступленияВсегоКонтекстноеМеню" id="288"/>
+									<ExtendedTooltip name="ДокументыПоступленияВсегоРасширеннаяПодсказка" id="289"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
 				<Page name="Группа4" id="131">
 					<Title>
 						<v8:item>
@@ -342,6 +475,7 @@
 					<ChildItems>
 						<Table name="Товары" id="34">
 							<Representation>List</Representation>
+							<ReadOnly>true</ReadOnly>
 							<AutoInsertNewRow>true</AutoInsertNewRow>
 							<EnableStartDrag>true</EnableStartDrag>
 							<EnableDrag>true</EnableDrag>
@@ -352,13 +486,17 @@
 									<v8:content>НСП</v8:content>
 								</v8:item>
 							</Title>
+							<CommandSet>
+								<ExcludedCommand>Copy</ExcludedCommand>
+								<ExcludedCommand>Add</ExcludedCommand>
+							</CommandSet>
 							<RowFilter xsi:nil="true"/>
 							<ContextMenu name="ТоварыКонтекстноеМеню" id="35"/>
 							<AutoCommandBar name="ТоварыКоманднаяПанель" id="36">
 								<ChildItems>
 									<Button name="ТоварыЗаполнитьПоДокументамПоступления" id="232">
 										<Type>CommandBarButton</Type>
-										<CommandName>Form.Command.ЗаполнитьПоДокументамПоступления</CommandName>
+										<CommandName>Form.Command.ЗаполнитьПоДокументам</CommandName>
 										<ExtendedTooltip name="ТоварыЗаполнитьПоДокументамПоступленияРасширеннаяПодсказка" id="233"/>
 									</Button>
 								</ChildItems>
@@ -441,14 +579,6 @@
 									<ContextMenu name="ТоварыСуммаКонтекстноеМеню" id="63"/>
 									<ExtendedTooltip name="ТоварыСуммаРасширеннаяПодсказка" id="64"/>
 								</InputField>
-								<InputField name="ТоварыСтавкаНДС" id="218">
-									<DataPath>Объект.Товары.СтавкаНДС</DataPath>
-									<EditMode>EnterOnInput</EditMode>
-									<Width>8</Width>
-									<HorizontalStretch>false</HorizontalStretch>
-									<ContextMenu name="ТоварыСтавкаНДСКонтекстноеМеню" id="219"/>
-									<ExtendedTooltip name="ТоварыСтавкаНДСРасширеннаяПодсказка" id="220"/>
-								</InputField>
 								<InputField name="ТоварыСуммаНДС" id="71">
 									<DataPath>Объект.Товары.СуммаНДС</DataPath>
 									<Title>
@@ -461,14 +591,6 @@
 									<Width>10</Width>
 									<ContextMenu name="ТоварыСуммаНДСКонтекстноеМеню" id="72"/>
 									<ExtendedTooltip name="ТоварыСуммаНДСРасширеннаяПодсказка" id="73"/>
-								</InputField>
-								<InputField name="ТоварыСтавкаНСП" id="221">
-									<DataPath>Объект.Товары.СтавкаНСП</DataPath>
-									<EditMode>EnterOnInput</EditMode>
-									<Width>8</Width>
-									<HorizontalStretch>false</HorizontalStretch>
-									<ContextMenu name="ТоварыСтавкаНСПКонтекстноеМеню" id="222"/>
-									<ExtendedTooltip name="ТоварыСтавкаНСПРасширеннаяПодсказка" id="223"/>
 								</InputField>
 								<InputField name="ТоварыСуммаНСП" id="77">
 									<DataPath>Объект.Товары.СуммаНСП</DataPath>
@@ -503,97 +625,6 @@
 						</Table>
 					</ChildItems>
 				</Page>
-				<Page name="СтраницаДокументы" id="133">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Документы</v8:content>
-						</v8:item>
-					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Страница документы</v8:content>
-						</v8:item>
-					</ToolTip>
-					<ExtendedTooltip name="СтраницаДокументыРасширеннаяПодсказка" id="134"/>
-					<ChildItems>
-						<Table name="ДокументыПоступления" id="135">
-							<AutoInsertNewRow>true</AutoInsertNewRow>
-							<EnableStartDrag>true</EnableStartDrag>
-							<EnableDrag>true</EnableDrag>
-							<DataPath>Объект.ДокументыПоступления</DataPath>
-							<RowFilter xsi:nil="true"/>
-							<ContextMenu name="ДокументыПоступленияКонтекстноеМеню" id="136"/>
-							<AutoCommandBar name="ДокументыПоступленияКоманднаяПанель" id="137">
-								<ChildItems>
-									<Button name="ДокументыПоступленияПодборПоКонтрагенту" id="210">
-										<Type>CommandBarButton</Type>
-										<CommandName>Form.Command.ЗаполнитьПоКонтрагенту</CommandName>
-										<ExtendedTooltip name="ДокументыПоступленияПодборПоКонтрагентуРасширеннаяПодсказка" id="211"/>
-									</Button>
-								</ChildItems>
-							</AutoCommandBar>
-							<ExtendedTooltip name="ДокументыПоступленияРасширеннаяПодсказка" id="138"/>
-							<SearchStringAddition name="ДокументыПоступленияСтрокаПоиска" id="139">
-								<AdditionSource>
-									<Item>ДокументыПоступления</Item>
-									<Type>SearchStringRepresentation</Type>
-								</AdditionSource>
-								<ContextMenu name="ДокументыПоступленияСтрокаПоискаКонтекстноеМеню" id="140"/>
-								<ExtendedTooltip name="ДокументыПоступленияСтрокаПоискаРасширеннаяПодсказка" id="141"/>
-							</SearchStringAddition>
-							<ViewStatusAddition name="ДокументыПоступленияСостояниеПросмотра" id="142">
-								<AdditionSource>
-									<Item>ДокументыПоступления</Item>
-									<Type>ViewStatusRepresentation</Type>
-								</AdditionSource>
-								<ContextMenu name="ДокументыПоступленияСостояниеПросмотраКонтекстноеМеню" id="143"/>
-								<ExtendedTooltip name="ДокументыПоступленияСостояниеПросмотраРасширеннаяПодсказка" id="144"/>
-							</ViewStatusAddition>
-							<SearchControlAddition name="ДокументыПоступленияУправлениеПоиском" id="145">
-								<AdditionSource>
-									<Item>ДокументыПоступления</Item>
-									<Type>SearchControl</Type>
-								</AdditionSource>
-								<ContextMenu name="ДокументыПоступленияУправлениеПоискомКонтекстноеМеню" id="146"/>
-								<ExtendedTooltip name="ДокументыПоступленияУправлениеПоискомРасширеннаяПодсказка" id="147"/>
-							</SearchControlAddition>
-							<Events>
-								<Event name="AfterDeleteRow">ДокументыПоступленияПослеУдаления</Event>
-							</Events>
-							<ChildItems>
-								<LabelField name="ДокументыПоступленияНомерСтроки" id="148">
-									<DataPath>Объект.ДокументыПоступления.LineNumber</DataPath>
-									<EditMode>EnterOnInput</EditMode>
-									<Width>4</Width>
-									<HorizontalStretch>false</HorizontalStretch>
-									<ContextMenu name="ДокументыПоступленияНомерСтрокиКонтекстноеМеню" id="149"/>
-									<ExtendedTooltip name="ДокументыПоступленияНомерСтрокиРасширеннаяПодсказка" id="150"/>
-								</LabelField>
-								<InputField name="ДокументыПоступленияДокумент" id="151">
-									<DataPath>Объект.ДокументыПоступления.ДокументПоступления</DataPath>
-									<EditMode>EnterOnInput</EditMode>
-									<DropListButton>false</DropListButton>
-									<ChoiceButton>true</ChoiceButton>
-									<ChoiceButtonRepresentation>ShowInInputField</ChoiceButtonRepresentation>
-									<ContextMenu name="ДокументыПоступленияДокументКонтекстноеМеню" id="152"/>
-									<ExtendedTooltip name="ДокументыПоступленияДокументРасширеннаяПодсказка" id="153"/>
-									<Events>
-										<Event name="OnChange">ДокументыПоступленияДокументПриИзменении</Event>
-									</Events>
-								</InputField>
-								<InputField name="ДокументыПоступленияСуммаДокумента" id="207">
-									<DataPath>Объект.ДокументыПоступления.СуммаДокумента</DataPath>
-									<EditMode>EnterOnInput</EditMode>
-									<Width>10</Width>
-									<ContextMenu name="ДокументыПоступленияСуммаДокументаКонтекстноеМеню" id="208"/>
-									<ExtendedTooltip name="ДокументыПоступленияСуммаДокументаРасширеннаяПодсказка" id="209"/>
-								</InputField>
-							</ChildItems>
-						</Table>
-					</ChildItems>
-				</Page>
 				<Page name="СтраницаДополнительно" id="154">
 					<Title>
 						<v8:item>
@@ -609,43 +640,6 @@
 					</ToolTip>
 					<ExtendedTooltip name="СтраницаДополнительноРасширеннаяПодсказка" id="155"/>
 					<ChildItems>
-						<UsualGroup name="ГруппаДокументОснование" id="200">
-							<Title>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Группа документ основание</v8:content>
-								</v8:item>
-							</Title>
-							<ToolTip>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Группа документ основание</v8:content>
-								</v8:item>
-							</ToolTip>
-							<Group>Horizontal</Group>
-							<Representation>None</Representation>
-							<ShowTitle>false</ShowTitle>
-							<ExtendedTooltip name="ГруппаДокументОснованиеExtendedTooltip" id="201"/>
-							<ChildItems>
-								<InputField name="ДокументОснование" id="202">
-									<DataPath>Объект.ДокументОснование</DataPath>
-									<SkipOnInput>true</SkipOnInput>
-									<EditMode>EnterOnInput</EditMode>
-									<Wrap>false</Wrap>
-									<DropListButton>false</DropListButton>
-									<ChoiceButton>true</ChoiceButton>
-									<ChoiceButtonRepresentation>ShowInInputField</ChoiceButtonRepresentation>
-									<ContextMenu name="ДокументОснованиеКонтекстноеМеню" id="203"/>
-									<ExtendedTooltip name="ДокументОснованиеРасширеннаяПодсказка" id="204"/>
-								</InputField>
-								<Button name="ЗаполнитьПоОснованию" id="205">
-									<Type>UsualButton</Type>
-									<SkipOnInput>true</SkipOnInput>
-									<CommandName>Form.Command.ЗаполнитьПоОснованию</CommandName>
-									<ExtendedTooltip name="ЗаполнитьПоОснованиюExtendedTooltip" id="206"/>
-								</Button>
-							</ChildItems>
-						</UsualGroup>
 						<UsualGroup name="ГруппаИнформация" id="264">
 							<Title>
 								<v8:item>
@@ -785,7 +779,7 @@
 							<ExtendedTooltip name="ТоварыИтогСуммаНСПРасширеннаяПодсказка" id="254"/>
 						</InputField>
 						<InputField name="ТоварыИтогСуммаСФ" id="255">
-							<DataPath>Объект.Товары.TotalСуммаСФ</DataPath>
+							<DataPath>1/0:fa0c4afd-ee69-4d47-b1ea-56ab79f7bae8/101000000:2b069b86-bf0a-4532-9faf-7bad7860e953</DataPath>
 							<ReadOnly>true</ReadOnly>
 							<Title>
 								<v8:item>
@@ -889,56 +883,35 @@
 		</Attribute>
 	</Attributes>
 	<Commands>
-		<Command name="ЗаполнитьПоОснованию" id="2">
+		<Command name="ЗаполнитьДокументы" id="3">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Заполнить по основанию</v8:content>
+					<v8:content>Заполнить</v8:content>
 				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Заполнить по основанию</v8:content>
+					<v8:content>Заполнить документы</v8:content>
 				</v8:item>
 			</ToolTip>
-			<Picture>
-				<xr:Ref>CommonPicture.ЗаполнитьПоОснованию</xr:Ref>
-				<xr:LoadTransparent>true</xr:LoadTransparent>
-			</Picture>
-			<Action>ЗаполнитьПоОснованию</Action>
-			<Representation>Picture</Representation>
-			<ModifiesSavedData>true</ModifiesSavedData>
+			<Action>ЗаполнитьДокументы</Action>
 		</Command>
-		<Command name="ЗаполнитьПоКонтрагенту" id="3">
+		<Command name="ЗаполнитьПоДокументам" id="4">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Заполнить по контрагенту</v8:content>
+					<v8:content>Заполнить по документам</v8:content>
 				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Заполнить по контрагенту</v8:content>
+					<v8:content>Заполнить по документам</v8:content>
 				</v8:item>
 			</ToolTip>
-			<Action>ЗаполнитьПоКонтрагенту</Action>
-		</Command>
-		<Command name="ЗаполнитьПоДокументамПоступления" id="4">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Заполнить по документам поступления</v8:content>
-				</v8:item>
-			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Заполнить по документам поступления</v8:content>
-				</v8:item>
-			</ToolTip>
-			<Action>ЗаполнитьПоДокументамПоступления</Action>
+			<Action>ЗаполнитьПоДокументам</Action>
 		</Command>
 	</Commands>
 	<CommandInterface>

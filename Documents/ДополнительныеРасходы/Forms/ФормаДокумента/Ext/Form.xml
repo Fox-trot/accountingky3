@@ -593,6 +593,10 @@
 								<ContextMenu name="РасходыУправлениеПоискомКонтекстноеМеню" id="339"/>
 								<ExtendedTooltip name="РасходыУправлениеПоискомРасширеннаяПодсказка" id="340"/>
 							</SearchControlAddition>
+							<Events>
+								<Event name="BeforeAddRow">РасходыПередНачаломДобавления</Event>
+								<Event name="AfterDeleteRow">РасходыПослеУдаления</Event>
+							</Events>
 							<ChildItems>
 								<LabelField name="РасходыНомерСтроки" id="341">
 									<DataPath>Объект.Расходы.LineNumber</DataPath>
@@ -762,23 +766,23 @@
 									<ExtendedTooltip name="ГруппаСтавкиРасширеннаяПодсказка" id="590"/>
 									<ChildItems>
 										<InputField name="СтавкаНДС" id="591">
-											<DataPath>Объект.СтавкаНДС</DataPath>
-											<Width>15</Width>
+											<DataPath>Объект.ЗначениеСтавкиНДС</DataPath>
+											<Width>10</Width>
 											<HorizontalStretch>false</HorizontalStretch>
 											<ContextMenu name="СтавкаНДСКонтекстноеМеню" id="592"/>
 											<ExtendedTooltip name="СтавкаНДСРасширеннаяПодсказка" id="593"/>
 											<Events>
-												<Event name="OnChange">СтавкаНДСПриИзменении</Event>
+												<Event name="OnChange">ЗначениеСтавкиНДСПриИзменении</Event>
 											</Events>
 										</InputField>
 										<InputField name="СтавкаНСП" id="594">
-											<DataPath>Объект.СтавкаНСП</DataPath>
-											<Width>15</Width>
+											<DataPath>Объект.ЗначениеСтавкиНСП</DataPath>
+											<Width>10</Width>
 											<HorizontalStretch>false</HorizontalStretch>
 											<ContextMenu name="СтавкаНСПКонтекстноеМеню" id="595"/>
 											<ExtendedTooltip name="СтавкаНСПРасширеннаяПодсказка" id="596"/>
 											<Events>
-												<Event name="OnChange">СтавкаНСППриИзменении</Event>
+												<Event name="OnChange">ЗначениеСтавкиНСППриИзменении</Event>
 											</Events>
 										</InputField>
 										<InputField name="ЗачетНДС" id="524">
@@ -978,28 +982,6 @@
 				<v8:DateQualifiers>
 					<v8:DateFractions>DateTime</v8:DateFractions>
 				</v8:DateQualifiers>
-			</Type>
-		</Attribute>
-		<Attribute name="Контрагент" id="7">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Контрагент</v8:content>
-				</v8:item>
-			</Title>
-			<Type>
-				<v8:Type>cfg:CatalogRef.Контрагенты</v8:Type>
-			</Type>
-		</Attribute>
-		<Attribute name="ДоговорКонтрагента" id="8">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Договор контрагента</v8:content>
-				</v8:item>
-			</Title>
-			<Type>
-				<v8:Type>cfg:CatalogRef.ДоговорыКонтрагентов</v8:Type>
 			</Type>
 		</Attribute>
 		<Attribute name="ВалютаРегламентированногоУчета" id="10">

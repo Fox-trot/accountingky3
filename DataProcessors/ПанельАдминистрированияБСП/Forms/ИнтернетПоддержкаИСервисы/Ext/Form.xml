@@ -19,6 +19,7 @@
 	</AutoCommandBar>
 	<Events>
 		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
+		<Event name="OnOpen">ПриОткрытии</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 		<Event name="OnClose">ПриЗакрытии</Event>
 	</Events>
@@ -617,8 +618,7 @@
 							<ToolTip>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Автоматическое получение новостей с серверов 1С,
-настройки новостей и лент новостей.</v8:content>
+									<v8:content>Настоятельно рекомендуется включить общую опцию получения новостей от фирмы 1С, что позволит оперативно получать важную информацию от службы поддержки.</v8:content>
 								</v8:item>
 							</ToolTip>
 							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
@@ -1105,6 +1105,69 @@
 				</CheckBoxField>
 			</ChildItems>
 		</UsualGroup>
+		<UsualGroup name="ГруппаОбсуждения" id="1818">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обсуждения</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Horizontal</Group>
+			<Behavior>Collapsible</Behavior>
+			<Collapsed>true</Collapsed>
+			<ControlRepresentation>Picture</ControlRepresentation>
+			<ExtendedTooltip name="ГруппаОбсужденияРасширеннаяПодсказка" id="1819"/>
+			<ChildItems>
+				<UsualGroup name="ГруппаПодключениеОбсуждений" id="1820">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Подключение обсуждений</v8:content>
+						</v8:item>
+					</Title>
+					<Width>43</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаПодключениеОбсужденийРасширеннаяПодсказка" id="1821"/>
+					<ChildItems>
+						<LabelDecoration name="СостояниеПодключенияОбсуждений" id="1822">
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>&lt;Состояние подключения обсуждений&gt;</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="СостояниеПодключенияОбсужденийКонтекстноеМеню" id="1823"/>
+							<ExtendedTooltip name="СостояниеПодключенияОбсужденийРасширеннаяПодсказка" id="1824"/>
+						</LabelDecoration>
+						<Button name="ПодключитьОтключитьОбсуждения" id="1825">
+							<Type>UsualButton</Type>
+							<CommandName>Form.Command.ПодключитьОтключитьОбсуждения</CommandName>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Подключить</v8:content>
+								</v8:item>
+							</Title>
+							<ExtendedTooltip name="ПодключитьОтключитьОбсужденияРасширеннаяПодсказка" id="1826"/>
+						</Button>
+						<LabelDecoration name="ПояснениеПодключениеОбсуждений" id="1829">
+							<TextColor>style:ПоясняющийТекст</TextColor>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Общение пользователей друг с другом в режиме реального времени.</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="ПояснениеПодключениеОбсужденийКонтекстноеМеню" id="1830"/>
+							<ExtendedTooltip name="ПояснениеПодключениеОбсужденийРасширеннаяПодсказка" id="1831"/>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
 		<UsualGroup name="ГруппаИнтеграцияВызовОнлайнПоддержки" id="1694">
 			<Title>
 				<v8:item>
@@ -1365,19 +1428,6 @@
 												<Value xsi:type="xs:decimal">0</Value>
 											</xr:Value>
 										</xr:Item>
-										<xr:Item>
-											<xr:Presentation/>
-											<xr:CheckState>0</xr:CheckState>
-											<xr:Value xsi:type="FormChoiceListDesTimeValue">
-												<Presentation>
-													<v8:item>
-														<v8:lang>ru</v8:lang>
-														<v8:content>Разрешить отправку сведений стороннему разработчику</v8:content>
-													</v8:item>
-												</Presentation>
-												<Value xsi:type="xs:decimal">1</Value>
-											</xr:Value>
-										</xr:Item>
 									</ChoiceList>
 									<ContextMenu name="ЦентрМониторингаРазрешитьОтправлятьДанныеКонтекстноеМеню" id="1676"/>
 									<ExtendedTooltip name="ЦентрМониторингаРазрешитьОтправлятьДанныеРасширеннаяПодсказка" id="1677"/>
@@ -1387,6 +1437,76 @@
 								</RadioButtonField>
 							</ChildItems>
 						</UsualGroup>
+						<UsualGroup name="ГруппаНастройкиОтправкиОтчетовОбОшибках" id="1842">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Переключатель</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаНастройкиОтправкиОтчетовОбОшибкахРасширеннаяПодсказка" id="1843"/>
+							<ChildItems>
+								<LabelDecoration name="ДекорацияОтчетыОбОшибках" id="1844">
+									<Width>3</Width>
+									<ContextMenu name="ДекорацияОтчетыОбОшибкахКонтекстноеМеню" id="1845"/>
+									<ExtendedTooltip name="ДекорацияОтчетыОбОшибкахРасширеннаяПодсказка" id="1846"/>
+								</LabelDecoration>
+								<Button name="ОбработкаНастройкаОтчетовОбАварийномЗавершенииРаботыНастройкаОтправкиОтчетовОбОшибках" id="1840">
+									<Type>Hyperlink</Type>
+									<CommandName>0</CommandName>
+									<ExtendedTooltip name="ОбработкаНастройкаОтчетовОбАварийномЗавершенииРаботыНастройкаОтправкиОтчетовОбОшибкахРасширеннаяПодсказка" id="1841"/>
+								</Button>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаСтороннему" id="1832">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Переключатель</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаСтороннемуРасширеннаяПодсказка" id="1833"/>
+					<ChildItems>
+						<LabelDecoration name="ДекорацияСтороннему" id="1834">
+							<Width>1</Width>
+							<Height>1</Height>
+							<ContextMenu name="ДекорацияСтороннемуКонтекстноеМеню" id="1835"/>
+							<ExtendedTooltip name="ДекорацияСтороннемуРасширеннаяПодсказка" id="1836"/>
+						</LabelDecoration>
+						<RadioButtonField name="ЦентрМониторингаРазрешитьОтправлятьДанныеСтороннему" id="1837">
+							<DataPath>ЦентрМониторингаРазрешитьОтправлятьДанные</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<RadioButtonType>RadioButtons</RadioButtonType>
+							<ColumnsCount>1</ColumnsCount>
+							<ChoiceList>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Разрешить отправку сведений стороннему разработчику</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xs:decimal">1</Value>
+									</xr:Value>
+								</xr:Item>
+							</ChoiceList>
+							<ContextMenu name="ЦентрМониторингаРазрешитьОтправлятьДанныеСтороннемуКонтекстноеМеню" id="1838"/>
+							<ExtendedTooltip name="ЦентрМониторингаРазрешитьОтправлятьДанныеСтороннемуРасширеннаяПодсказка" id="1839"/>
+							<Events>
+								<Event name="OnChange">РазрешитьОтправлятьДанныеПриИзменении</Event>
+							</Events>
+						</RadioButtonField>
 					</ChildItems>
 				</UsualGroup>
 				<UsualGroup name="ГруппаОтправкиДанныхНастройкаРесурсаОбщая" id="1678">
@@ -1757,6 +1877,15 @@
 				</v8:item>
 			</Title>
 			<Action>БИППроверкаКонтрагентовПроверитьДоступКВебСервису</Action>
+		</Command>
+		<Command name="ПодключитьОтключитьОбсуждения" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подключить/Отключить обсуждения</v8:content>
+				</v8:item>
+			</Title>
+			<Action>ПодключитьОтключитьОбсуждения</Action>
 		</Command>
 	</Commands>
 </Form>

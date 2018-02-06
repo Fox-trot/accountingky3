@@ -180,7 +180,7 @@
 			<ChoiceDataGetModeOnInputByString>Directly</ChoiceDataGetModeOnInputByString>
 			<DefaultObjectForm>Document.РеализацияТоваровУслуг.Form.ФормаДокумента</DefaultObjectForm>
 			<DefaultListForm>Document.РеализацияТоваровУслуг.Form.ФормаСписка</DefaultListForm>
-			<DefaultChoiceForm/>
+			<DefaultChoiceForm>Document.РеализацияТоваровУслуг.Form.ФормаВыбора</DefaultChoiceForm>
 			<AuxiliaryObjectForm/>
 			<AuxiliaryListForm/>
 			<AuxiliaryChoiceForm/>
@@ -190,11 +190,11 @@
 			<RegisterRecordsWritingOnPost>WriteSelected</RegisterRecordsWritingOnPost>
 			<SequenceFilling>AutoFill</SequenceFilling>
 			<RegisterRecords>
-				<xr:Item xsi:type="xr:MDObjectRef">InformationRegister.РеализацияИтоги</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">InformationRegister.удалитьРеализацияИтоги</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">AccumulationRegister.ДвижениеОСНУ</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">AccumulationRegister.НДС</xr:Item>
-				<xr:Item xsi:type="xr:MDObjectRef">AccumulationRegister.БланкиСФ</xr:Item>
-				<xr:Item xsi:type="xr:MDObjectRef">AccumulationRegister.РеализацияТоваров</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">AccumulationRegister.БланкиСчетовФактур</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">AccumulationRegister.Продажи</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">InformationRegister.СчетаФактурыВыписанные</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">InformationRegister.СостоянияОС</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">InformationRegister.СобытияОС</xr:Item>
@@ -395,7 +395,13 @@
 					<FillValue xsi:type="xr:DesignTimeRef">Catalog.Контрагенты.EmptyRef</FillValue>
 					<FillChecking>ShowError</FillChecking>
 					<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
-					<ChoiceParameterLinks/>
+					<ChoiceParameterLinks>
+						<xr:Link>
+							<xr:Name>Отбор.ДокументВладелец</xr:Name>
+							<xr:DataPath xsi:type="xs:string">Document.РеализацияТоваровУслуг.StandardAttribute.Ref</xr:DataPath>
+							<xr:ValueChange>Clear</xr:ValueChange>
+						</xr:Link>
+					</ChoiceParameterLinks>
 					<ChoiceParameters/>
 					<QuickChoice>Auto</QuickChoice>
 					<CreateOnInput>Auto</CreateOnInput>
@@ -741,7 +747,7 @@
 					<MinValue xsi:nil="true"/>
 					<MaxValue xsi:nil="true"/>
 					<FillFromFillingValue>false</FillFromFillingValue>
-					<FillValue xsi:nil="true"/>
+					<FillValue xsi:type="xr:DesignTimeRef">Catalog.СтавкиНСП.EmptyRef</FillValue>
 					<FillChecking>ShowError</FillChecking>
 					<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
 					<ChoiceParameterLinks/>
@@ -788,7 +794,7 @@
 					<MinValue xsi:nil="true"/>
 					<MaxValue xsi:nil="true"/>
 					<FillFromFillingValue>false</FillFromFillingValue>
-					<FillValue xsi:nil="true"/>
+					<FillValue xsi:type="xr:DesignTimeRef">Catalog.СтавкиНСП.EmptyRef</FillValue>
 					<FillChecking>ShowError</FillChecking>
 					<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
 					<ChoiceParameterLinks/>
@@ -1141,12 +1147,11 @@
 					</Synonym>
 					<Comment/>
 					<Type>
-						<v8:Type>xs:decimal</v8:Type>
-						<v8:NumberQualifiers>
-							<v8:Digits>8</v8:Digits>
-							<v8:FractionDigits>0</v8:FractionDigits>
-							<v8:AllowedSign>Any</v8:AllowedSign>
-						</v8:NumberQualifiers>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>6</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
 					</Type>
 					<PasswordMode>false</PasswordMode>
 					<Format>
@@ -1164,11 +1169,11 @@
 					<ToolTip>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Номер бланка счет-фактуры</v8:content>
+							<v8:content>Номер бланка счет-фактуры.</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
-					<Mask>99999999</Mask>
+					<Mask>999999</Mask>
 					<MultiLine>false</MultiLine>
 					<ExtendedEdit>false</ExtendedEdit>
 					<MinValue xsi:nil="true"/>
@@ -1394,7 +1399,7 @@
 					<ToolTip>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Банковский счет организации для печати</v8:content>
+							<v8:content>Банковский счет организации для печати.</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -1471,7 +1476,7 @@
 			</Attribute>
 			<Attribute uuid="e52e2c63-3da1-45fa-a93e-01991301357e">
 				<Properties>
-					<Name>ФизЛицо</Name>
+					<Name>МОЛ</Name>
 					<Synonym>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -1675,6 +1680,7 @@
 			</Attribute>
 			<Form>ФормаДокумента</Form>
 			<Form>ФормаСписка</Form>
+			<Form>ФормаВыбора</Form>
 			<TabularSection uuid="2e65e226-86a8-4603-be67-69e9d08e33e1">
 				<InternalInfo>
 					<xr:GeneratedType name="DocumentTabularSection.РеализацияТоваровУслуг.Товары" category="TabularSection">
@@ -2888,58 +2894,6 @@
 							<FullTextSearch>Use</FullTextSearch>
 						</Properties>
 					</Attribute>
-					<Attribute uuid="678c2948-e4ce-439c-8481-31c231961ca8">
-						<Properties>
-							<Name>СчетУчета</Name>
-							<Synonym>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Счет учета</v8:content>
-								</v8:item>
-								<v8:item>
-									<v8:lang>en</v8:lang>
-									<v8:content>Счет учета (БУ)</v8:content>
-								</v8:item>
-							</Synonym>
-							<Comment/>
-							<Type>
-								<v8:Type>cfg:ChartOfAccountsRef.Хозрасчетный</v8:Type>
-							</Type>
-							<PasswordMode>false</PasswordMode>
-							<Format/>
-							<EditFormat/>
-							<ToolTip>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Счет учета по отражению услуги.</v8:content>
-								</v8:item>
-							</ToolTip>
-							<MarkNegatives>false</MarkNegatives>
-							<Mask/>
-							<MultiLine>false</MultiLine>
-							<ExtendedEdit>false</ExtendedEdit>
-							<MinValue xsi:nil="true"/>
-							<MaxValue xsi:nil="true"/>
-							<FillChecking>ShowError</FillChecking>
-							<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
-							<ChoiceParameterLinks/>
-							<ChoiceParameters>
-								<app:item name="Отбор.Забалансовый">
-									<app:value xsi:type="xs:boolean">false</app:value>
-								</app:item>
-								<app:item name="Отбор.ЗапретитьИспользоватьВПроводках">
-									<app:value xsi:type="xs:boolean">false</app:value>
-								</app:item>
-							</ChoiceParameters>
-							<QuickChoice>Auto</QuickChoice>
-							<CreateOnInput>Auto</CreateOnInput>
-							<ChoiceForm/>
-							<LinkByType/>
-							<ChoiceHistoryOnInput>Auto</ChoiceHistoryOnInput>
-							<Indexing>DontIndex</Indexing>
-							<FullTextSearch>Use</FullTextSearch>
-						</Properties>
-					</Attribute>
 					<Attribute uuid="24a199e0-0de6-4c35-ab19-78b0c218c7f5">
 						<Properties>
 							<Name>СчетДохода</Name>
@@ -3350,7 +3304,7 @@
 							<Synonym>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Отражение АО</v8:content>
+									<v8:content>Отражение расходов</v8:content>
 								</v8:item>
 							</Synonym>
 							<Comment/>
@@ -3360,7 +3314,12 @@
 							<PasswordMode>false</PasswordMode>
 							<Format/>
 							<EditFormat/>
-							<ToolTip/>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Способ отражения расходов по амортизации.</v8:content>
+								</v8:item>
+							</ToolTip>
 							<MarkNegatives>false</MarkNegatives>
 							<Mask/>
 							<MultiLine>false</MultiLine>
@@ -3991,6 +3950,10 @@
 				</ChildObjects>
 			</TabularSection>
 			<Template>ПФ_MXL_Накладная</Template>
+			<Template>ПФ_MXL_Акт</Template>
+			<Template>удалитьПФ_MXL_ТоварныйЧек</Template>
+			<Template>ПФ_MXL_ТТН</Template>
+			<Template>ПФ_MXL_ТТНВВалюте</Template>
 		</ChildObjects>
 	</Document>
 </MetaDataObject>

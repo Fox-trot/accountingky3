@@ -55,6 +55,7 @@
 		</ChildItems>
 	</AutoCommandBar>
 	<Events>
+		<Event name="AfterWriteAtServer">ПослеЗаписиНаСервере</Event>
 		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
 		<Event name="OnReadAtServer">ПриЧтенииНаСервере</Event>
 		<Event name="OnOpen">ПриОткрытии</Event>
@@ -250,7 +251,7 @@
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>ОС</v8:content>
+							<v8:content>Основные средства</v8:content>
 						</v8:item>
 					</Title>
 					<ToolTip>
@@ -332,8 +333,10 @@
 								<ExtendedTooltip name="ОСУправлениеПоискомРасширеннаяПодсказка" id="92"/>
 							</SearchControlAddition>
 							<Events>
+								<Event name="OnEditEnd">ОСПриОкончанииРедактирования</Event>
 								<Event name="BeforeAddRow">ОСПередНачаломДобавления</Event>
 								<Event name="OnStartEdit">ОСПриНачалеРедактирования</Event>
+								<Event name="AfterDeleteRow">ОСПослеУдаления</Event>
 							</Events>
 							<ChildItems>
 								<LabelField name="ОСНомерСтроки" id="93">
@@ -381,6 +384,9 @@
 											</ChoiceParameterLinks>
 											<ContextMenu name="ОСОсновноеСредствоКонтекстноеМеню" id="97"/>
 											<ExtendedTooltip name="ОСОсновноеСредствоРасширеннаяПодсказка" id="98"/>
+											<Events>
+												<Event name="OnChange">ОСОсновноеСредствоПриИзменении</Event>
+											</Events>
 										</InputField>
 										<InputField name="ОСИнвентарныйНомер" id="417">
 											<DataPath>Объект.ОС.ИнвентарныйНомер</DataPath>
@@ -620,7 +626,7 @@
 						</Table>
 					</ChildItems>
 				</Page>
-				<Page name="СтраницаГруппа123" id="234">
+				<Page name="СтраницаОСНедвижимость" id="234">
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -630,12 +636,12 @@
 					<ToolTip>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Страница группа123</v8:content>
+							<v8:content>Страница ОСНедвижимость</v8:content>
 						</v8:item>
 					</ToolTip>
-					<ExtendedTooltip name="СтраницаГруппа123РасширеннаяПодсказка" id="235"/>
+					<ExtendedTooltip name="СтраницаОСНедвижимостьРасширеннаяПодсказка" id="235"/>
 					<ChildItems>
-						<Table name="ОСГруппа1" id="696">
+						<Table name="Недвижимость" id="696">
 							<CommandBarLocation>None</CommandBarLocation>
 							<ChangeRowSet>false</ChangeRowSet>
 							<ChangeRowOrder>false</ChangeRowOrder>
@@ -644,65 +650,57 @@
 							<EnableDrag>true</EnableDrag>
 							<DataPath>Объект.ОС</DataPath>
 							<RowFilter xsi:nil="true"/>
-							<ContextMenu name="ОСГруппа1КонтекстноеМеню" id="697"/>
-							<AutoCommandBar name="ОСГруппа1КоманднаяПанель" id="698"/>
-							<ExtendedTooltip name="ОСГруппа1РасширеннаяПодсказка" id="699"/>
-							<SearchStringAddition name="ОСГруппа1СтрокаПоиска" id="700">
+							<ContextMenu name="НедвижимостьКонтекстноеМеню" id="697"/>
+							<AutoCommandBar name="НедвижимостьКоманднаяПанель" id="698"/>
+							<ExtendedTooltip name="НедвижимостьРасширеннаяПодсказка" id="699"/>
+							<SearchStringAddition name="НедвижимостьСтрокаПоиска" id="700">
 								<AdditionSource>
-									<Item>ОСГруппа1</Item>
+									<Item>Недвижимость</Item>
 									<Type>SearchStringRepresentation</Type>
 								</AdditionSource>
-								<ContextMenu name="ОСГруппа1СтрокаПоискаКонтекстноеМеню" id="701"/>
-								<ExtendedTooltip name="ОСГруппа1СтрокаПоискаРасширеннаяПодсказка" id="702"/>
+								<ContextMenu name="НедвижимостьСтрокаПоискаКонтекстноеМеню" id="701"/>
+								<ExtendedTooltip name="НедвижимостьСтрокаПоискаРасширеннаяПодсказка" id="702"/>
 							</SearchStringAddition>
-							<ViewStatusAddition name="ОСГруппа1СостояниеПросмотра" id="703">
+							<ViewStatusAddition name="НедвижимостьСостояниеПросмотра" id="703">
 								<AdditionSource>
-									<Item>ОСГруппа1</Item>
+									<Item>Недвижимость</Item>
 									<Type>ViewStatusRepresentation</Type>
 								</AdditionSource>
-								<ContextMenu name="ОСГруппа1СостояниеПросмотраКонтекстноеМеню" id="704"/>
-								<ExtendedTooltip name="ОСГруппа1СостояниеПросмотраРасширеннаяПодсказка" id="705"/>
+								<ContextMenu name="НедвижимостьСостояниеПросмотраКонтекстноеМеню" id="704"/>
+								<ExtendedTooltip name="НедвижимостьСостояниеПросмотраРасширеннаяПодсказка" id="705"/>
 							</ViewStatusAddition>
-							<SearchControlAddition name="ОСГруппа1УправлениеПоиском" id="706">
+							<SearchControlAddition name="НедвижимостьУправлениеПоиском" id="706">
 								<AdditionSource>
-									<Item>ОСГруппа1</Item>
+									<Item>Недвижимость</Item>
 									<Type>SearchControl</Type>
 								</AdditionSource>
-								<ContextMenu name="ОСГруппа1УправлениеПоискомКонтекстноеМеню" id="707"/>
-								<ExtendedTooltip name="ОСГруппа1УправлениеПоискомРасширеннаяПодсказка" id="708"/>
+								<ContextMenu name="НедвижимостьУправлениеПоискомКонтекстноеМеню" id="707"/>
+								<ExtendedTooltip name="НедвижимостьУправлениеПоискомРасширеннаяПодсказка" id="708"/>
 							</SearchControlAddition>
 							<ChildItems>
-								<LabelField name="ОСГруппа1НомерСтроки" id="1113">
-									<DataPath>Объект.ОС.LineNumber</DataPath>
-									<EditMode>EnterOnInput</EditMode>
-									<Width>4</Width>
-									<HorizontalStretch>false</HorizontalStretch>
-									<ContextMenu name="ОСГруппа1НомерСтрокиКонтекстноеМеню" id="1114"/>
-									<ExtendedTooltip name="ОСГруппа1НомерСтрокиРасширеннаяПодсказка" id="1115"/>
-								</LabelField>
-								<ColumnGroup name="ОСГруппа1Группа1" id="787">
+								<ColumnGroup name="НедвижимостьГруппа1" id="787">
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>ОСГруппа1 группа1</v8:content>
+											<v8:content>Недвижимость группа1</v8:content>
 										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>ОСГруппа1 группа1</v8:content>
+											<v8:content>Недвижимость группа1</v8:content>
 										</v8:item>
 									</ToolTip>
-									<ExtendedTooltip name="ОСГруппа1Группа1РасширеннаяПодсказка" id="788"/>
+									<ExtendedTooltip name="НедвижимостьГруппа1РасширеннаяПодсказка" id="788"/>
 									<ChildItems>
-										<InputField name="ОСГруппа1ОсновноеСредство" id="712">
+										<InputField name="НедвижимостьОсновноеСредство" id="712">
 											<DataPath>Объект.ОС.ОсновноеСредство</DataPath>
 											<ReadOnly>true</ReadOnly>
 											<EditMode>EnterOnInput</EditMode>
-											<ContextMenu name="ОСГруппа1ОсновноеСредствоКонтекстноеМеню" id="713"/>
-											<ExtendedTooltip name="ОСГруппа1ОсновноеСредствоРасширеннаяПодсказка" id="714"/>
+											<ContextMenu name="НедвижимостьОсновноеСредствоКонтекстноеМеню" id="713"/>
+											<ExtendedTooltip name="НедвижимостьОсновноеСредствоРасширеннаяПодсказка" id="714"/>
 										</InputField>
-										<InputField name="ОСГруппа1ИнвентарныйНомер" id="898">
+										<InputField name="НедвижимостьИнвентарныйНомер" id="898">
 											<DataPath>Объект.ОС.ИнвентарныйНомер</DataPath>
 											<ReadOnly>true</ReadOnly>
 											<Title>
@@ -712,121 +710,122 @@
 												</v8:item>
 											</Title>
 											<EditMode>EnterOnInput</EditMode>
-											<ContextMenu name="ОСГруппа1ИнвентарныйНомерКонтекстноеМеню" id="899"/>
-											<ExtendedTooltip name="ОСГруппа1ИнвентарныйНомерРасширеннаяПодсказка" id="900"/>
+											<ContextMenu name="НедвижимостьИнвентарныйНомерКонтекстноеМеню" id="899"/>
+											<ExtendedTooltip name="НедвижимостьИнвентарныйНомерРасширеннаяПодсказка" id="900"/>
 										</InputField>
-										<InputField name="ОСГруппа1КодИмущества" id="775">
+										<InputField name="НедвижимостьКодИмущества" id="775">
 											<DataPath>Объект.ОС.КодИмущества</DataPath>
 											<EditMode>EnterOnInput</EditMode>
-											<ContextMenu name="ОСГруппа1КодИмуществаКонтекстноеМеню" id="776"/>
-											<ExtendedTooltip name="ОСГруппа1КодИмуществаРасширеннаяПодсказка" id="777"/>
+											<ContextMenu name="НедвижимостьКодИмуществаКонтекстноеМеню" id="776"/>
+											<ExtendedTooltip name="НедвижимостьКодИмуществаРасширеннаяПодсказка" id="777"/>
 										</InputField>
 									</ChildItems>
 								</ColumnGroup>
-								<ColumnGroup name="ОСГруппа1Группа2" id="789">
+								<ColumnGroup name="НедвижимостьГруппа2" id="789">
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>ОСГруппа1 группа2</v8:content>
+											<v8:content>Недвижимость группа2</v8:content>
 										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>ОСГруппа1 группа2</v8:content>
+											<v8:content>Недвижимость группа2</v8:content>
 										</v8:item>
 									</ToolTip>
-									<ExtendedTooltip name="ОСГруппа1Группа2РасширеннаяПодсказка" id="790"/>
+									<ExtendedTooltip name="НедвижимостьГруппа2РасширеннаяПодсказка" id="790"/>
 									<ChildItems>
-										<InputField name="ОСГруппа1МатериалСтен" id="757">
+										<InputField name="НедвижимостьМатериалСтен" id="757">
 											<DataPath>Объект.ОС.МатериалСтен</DataPath>
 											<EditMode>EnterOnInput</EditMode>
-											<ContextMenu name="ОСГруппа1МатериалСтенКонтекстноеМеню" id="758"/>
-											<ExtendedTooltip name="ОСГруппа1МатериалСтенРасширеннаяПодсказка" id="759"/>
+											<ContextMenu name="НедвижимостьМатериалСтенКонтекстноеМеню" id="758"/>
+											<ExtendedTooltip name="НедвижимостьМатериалСтенРасширеннаяПодсказка" id="759"/>
 										</InputField>
-										<InputField name="ОСГруппа1ЖилаяПлощадь" id="760">
+										<InputField name="НедвижимостьЖилаяПлощадь" id="760">
 											<DataPath>Объект.ОС.ЖилаяПлощадь</DataPath>
 											<EditMode>EnterOnInput</EditMode>
 											<Width>10</Width>
-											<ContextMenu name="ОСГруппа1ЖилаяПлощадьКонтекстноеМеню" id="761"/>
-											<ExtendedTooltip name="ОСГруппа1ЖилаяПлощадьРасширеннаяПодсказка" id="762"/>
+											<ContextMenu name="НедвижимостьЖилаяПлощадьКонтекстноеМеню" id="761"/>
+											<ExtendedTooltip name="НедвижимостьЖилаяПлощадьРасширеннаяПодсказка" id="762"/>
 										</InputField>
-										<InputField name="ОСГруппа1НежилаяПлощадь" id="763">
+										<InputField name="НедвижимостьНежилаяПлощадь" id="763">
 											<DataPath>Объект.ОС.НежилаяПлощадь</DataPath>
 											<EditMode>EnterOnInput</EditMode>
 											<Width>10</Width>
-											<ContextMenu name="ОСГруппа1НежилаяПлощадьКонтекстноеМеню" id="764"/>
-											<ExtendedTooltip name="ОСГруппа1НежилаяПлощадьРасширеннаяПодсказка" id="765"/>
+											<ContextMenu name="НедвижимостьНежилаяПлощадьКонтекстноеМеню" id="764"/>
+											<ExtendedTooltip name="НедвижимостьНежилаяПлощадьРасширеннаяПодсказка" id="765"/>
 										</InputField>
 									</ChildItems>
 								</ColumnGroup>
-								<ColumnGroup name="ОСГруппа1Группа3" id="791">
+								<ColumnGroup name="НедвижимостьГруппа3" id="791">
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>ОСГруппа1 группа3</v8:content>
+											<v8:content>Недвижимость группа3</v8:content>
 										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>ОСГруппа1 группа3</v8:content>
+											<v8:content>Недвижимость группа3</v8:content>
 										</v8:item>
 									</ToolTip>
-									<ExtendedTooltip name="ОСГруппа1Группа3РасширеннаяПодсказка" id="792"/>
+									<ExtendedTooltip name="НедвижимостьГруппа3РасширеннаяПодсказка" id="792"/>
 									<ChildItems>
-										<InputField name="ОСГруппа1РегиональныйКоэффициент" id="766">
+										<InputField name="НедвижимостьРегиональныйКоэффициент" id="766">
 											<DataPath>Объект.ОС.РегиональныйКоэффициент</DataPath>
 											<EditMode>EnterOnInput</EditMode>
-											<ContextMenu name="ОСГруппа1РегиональныйКоэффициентКонтекстноеМеню" id="767"/>
-											<ExtendedTooltip name="ОСГруппа1РегиональныйКоэффициентРасширеннаяПодсказка" id="768"/>
+											<ContextMenu name="НедвижимостьРегиональныйКоэффициентКонтекстноеМеню" id="767"/>
+											<ExtendedTooltip name="НедвижимостьРегиональныйКоэффициентРасширеннаяПодсказка" id="768"/>
 										</InputField>
-										<InputField name="ОСГруппа1ЗональныйКоэффициент" id="769">
+										<InputField name="НедвижимостьЗональныйКоэффициент" id="769">
 											<DataPath>Объект.ОС.ЗональныйКоэффициент</DataPath>
 											<EditMode>EnterOnInput</EditMode>
-											<ContextMenu name="ОСГруппа1ЗональныйКоэффициентКонтекстноеМеню" id="770"/>
-											<ExtendedTooltip name="ОСГруппа1ЗональныйКоэффициентРасширеннаяПодсказка" id="771"/>
+											<ContextMenu name="НедвижимостьЗональныйКоэффициентКонтекстноеМеню" id="770"/>
+											<ExtendedTooltip name="НедвижимостьЗональныйКоэффициентРасширеннаяПодсказка" id="771"/>
 										</InputField>
-										<InputField name="ОСГруппа1ОтраслевойКоэффициент" id="772">
+										<InputField name="НедвижимостьОтраслевойКоэффициент" id="772">
 											<DataPath>Объект.ОС.ОтраслевойКоэффициент</DataPath>
 											<EditMode>EnterOnInput</EditMode>
-											<ContextMenu name="ОСГруппа1ОтраслевойКоэффициентКонтекстноеМеню" id="773"/>
-											<ExtendedTooltip name="ОСГруппа1ОтраслевойКоэффициентРасширеннаяПодсказка" id="774"/>
+											<ContextMenu name="НедвижимостьОтраслевойКоэффициентКонтекстноеМеню" id="773"/>
+											<ExtendedTooltip name="НедвижимостьОтраслевойКоэффициентРасширеннаяПодсказка" id="774"/>
 										</InputField>
 									</ChildItems>
 								</ColumnGroup>
-								<ColumnGroup name="ОСГруппа1Группа4" id="793">
+								<ColumnGroup name="НедвижимостьГруппа4" id="793">
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>ОСГруппа1 группа4</v8:content>
+											<v8:content>Недвижимость группа4</v8:content>
 										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>ОСГруппа1 группа4</v8:content>
+											<v8:content>Недвижимость группа4</v8:content>
 										</v8:item>
 									</ToolTip>
-									<ExtendedTooltip name="ОСГруппа1Группа4РасширеннаяПодсказка" id="794"/>
+									<ExtendedTooltip name="НедвижимостьГруппа4РасширеннаяПодсказка" id="794"/>
 									<ChildItems>
-										<InputField name="ОСГруппа1КатегорияИмущества" id="778">
+										<InputField name="НедвижимостьКатегорияИмущества" id="778">
 											<DataPath>Объект.ОС.КатегорияИмущества</DataPath>
 											<EditMode>EnterOnInput</EditMode>
-											<ContextMenu name="ОСГруппа1КатегорияИмуществаКонтекстноеМеню" id="779"/>
-											<ExtendedTooltip name="ОСГруппа1КатегорияИмуществаРасширеннаяПодсказка" id="780"/>
+											<ContextMenu name="НедвижимостьКатегорияИмуществаКонтекстноеМеню" id="779"/>
+											<ExtendedTooltip name="НедвижимостьКатегорияИмуществаРасширеннаяПодсказка" id="780"/>
 										</InputField>
-										<InputField name="ОСГруппа1КодНазначенияИмущества" id="781">
-											<DataPath>Объект.ОС.КодНазначенияИмущества</DataPath>
-											<EditMode>EnterOnInput</EditMode>
-											<ContextMenu name="ОСГруппа1КодНазначенияИмуществаКонтекстноеМеню" id="782"/>
-											<ExtendedTooltip name="ОСГруппа1КодНазначенияИмуществаРасширеннаяПодсказка" id="783"/>
-										</InputField>
-										<InputField name="ОСГруппа1КодПользователяИмущества" id="784">
+										<InputField name="НедвижимостьКодПользователяИмущества" id="784">
 											<DataPath>Объект.ОС.КодПользователяИмущества</DataPath>
 											<EditMode>EnterOnInput</EditMode>
-											<ContextMenu name="ОСГруппа1КодПользователяИмуществаКонтекстноеМеню" id="785"/>
-											<ExtendedTooltip name="ОСГруппа1КодПользователяИмуществаРасширеннаяПодсказка" id="786"/>
+											<ContextMenu name="НедвижимостьКодПользователяИмуществаКонтекстноеМеню" id="785"/>
+											<ExtendedTooltip name="НедвижимостьКодПользователяИмуществаРасширеннаяПодсказка" id="786"/>
+										</InputField>
+										<InputField name="НедвижимостьГруппаИмущества" id="1153">
+											<DataPath>Объект.ОС.ГруппаИмущества</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<EditMode>EnterOnInput</EditMode>
+											<ContextMenu name="НедвижимостьГруппаИмуществаКонтекстноеМеню" id="1154"/>
+											<ExtendedTooltip name="НедвижимостьГруппаИмуществаРасширеннаяПодсказка" id="1155"/>
 										</InputField>
 									</ChildItems>
 								</ColumnGroup>
@@ -834,7 +833,7 @@
 						</Table>
 					</ChildItems>
 				</Page>
-				<Page name="СтраницаГруппа4" id="288">
+				<Page name="СтраницаОСТранспорт" id="288">
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -844,12 +843,12 @@
 					<ToolTip>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Страница группа4</v8:content>
+							<v8:content>Страница ОСТранспорт</v8:content>
 						</v8:item>
 					</ToolTip>
-					<ExtendedTooltip name="СтраницаГруппа4РасширеннаяПодсказка" id="289"/>
+					<ExtendedTooltip name="СтраницаОСТранспортРасширеннаяПодсказка" id="289"/>
 					<ChildItems>
-						<Table name="ОСГруппа4" id="795">
+						<Table name="Транспорт" id="795">
 							<CommandBarLocation>None</CommandBarLocation>
 							<ChangeRowSet>false</ChangeRowSet>
 							<ChangeRowOrder>false</ChangeRowOrder>
@@ -858,53 +857,45 @@
 							<EnableDrag>true</EnableDrag>
 							<DataPath>Объект.ОС</DataPath>
 							<RowFilter xsi:nil="true"/>
-							<ContextMenu name="ОСГруппа4КонтекстноеМеню" id="796"/>
-							<AutoCommandBar name="ОСГруппа4КоманднаяПанель" id="797"/>
-							<ExtendedTooltip name="ОСГруппа4РасширеннаяПодсказка" id="798"/>
-							<SearchStringAddition name="ОСГруппа4СтрокаПоиска" id="799">
+							<ContextMenu name="ТранспортКонтекстноеМеню" id="796"/>
+							<AutoCommandBar name="ТранспортКоманднаяПанель" id="797"/>
+							<ExtendedTooltip name="ТранспортРасширеннаяПодсказка" id="798"/>
+							<SearchStringAddition name="ТранспортСтрокаПоиска" id="799">
 								<AdditionSource>
-									<Item>ОСГруппа4</Item>
+									<Item>Транспорт</Item>
 									<Type>SearchStringRepresentation</Type>
 								</AdditionSource>
-								<ContextMenu name="ОСГруппа4СтрокаПоискаКонтекстноеМеню" id="800"/>
-								<ExtendedTooltip name="ОСГруппа4СтрокаПоискаРасширеннаяПодсказка" id="801"/>
+								<ContextMenu name="ТранспортСтрокаПоискаКонтекстноеМеню" id="800"/>
+								<ExtendedTooltip name="ТранспортСтрокаПоискаРасширеннаяПодсказка" id="801"/>
 							</SearchStringAddition>
-							<ViewStatusAddition name="ОСГруппа4СостояниеПросмотра" id="802">
+							<ViewStatusAddition name="ТранспортСостояниеПросмотра" id="802">
 								<AdditionSource>
-									<Item>ОСГруппа4</Item>
+									<Item>Транспорт</Item>
 									<Type>ViewStatusRepresentation</Type>
 								</AdditionSource>
-								<ContextMenu name="ОСГруппа4СостояниеПросмотраКонтекстноеМеню" id="803"/>
-								<ExtendedTooltip name="ОСГруппа4СостояниеПросмотраРасширеннаяПодсказка" id="804"/>
+								<ContextMenu name="ТранспортСостояниеПросмотраКонтекстноеМеню" id="803"/>
+								<ExtendedTooltip name="ТранспортСостояниеПросмотраРасширеннаяПодсказка" id="804"/>
 							</ViewStatusAddition>
-							<SearchControlAddition name="ОСГруппа4УправлениеПоиском" id="805">
+							<SearchControlAddition name="ТранспортУправлениеПоиском" id="805">
 								<AdditionSource>
-									<Item>ОСГруппа4</Item>
+									<Item>Транспорт</Item>
 									<Type>SearchControl</Type>
 								</AdditionSource>
-								<ContextMenu name="ОСГруппа4УправлениеПоискомКонтекстноеМеню" id="806"/>
-								<ExtendedTooltip name="ОСГруппа4УправлениеПоискомРасширеннаяПодсказка" id="807"/>
+								<ContextMenu name="ТранспортУправлениеПоискомКонтекстноеМеню" id="806"/>
+								<ExtendedTooltip name="ТранспортУправлениеПоискомРасширеннаяПодсказка" id="807"/>
 							</SearchControlAddition>
 							<ChildItems>
-								<LabelField name="ОСГруппа4НомерСтроки" id="1116">
-									<DataPath>Объект.ОС.LineNumber</DataPath>
-									<EditMode>EnterOnInput</EditMode>
-									<Width>4</Width>
-									<HorizontalStretch>false</HorizontalStretch>
-									<ContextMenu name="ОСГруппа4НомерСтрокиКонтекстноеМеню" id="1117"/>
-									<ExtendedTooltip name="ОСГруппа4НомерСтрокиРасширеннаяПодсказка" id="1118"/>
-								</LabelField>
-								<ColumnGroup name="ОСГруппа4Группа1" id="1107">
-									<ExtendedTooltip name="ОСГруппа4Группа1РасширеннаяПодсказка" id="1108"/>
+								<ColumnGroup name="ТранспортГруппа1" id="1135">
+									<ExtendedTooltip name="ТранспортГруппа1РасширеннаяПодсказка" id="1136"/>
 									<ChildItems>
-										<InputField name="ОСГруппа4ОсновноеСредство" id="811">
+										<InputField name="ТранспортОсновноеСредство" id="811">
 											<DataPath>Объект.ОС.ОсновноеСредство</DataPath>
 											<ReadOnly>true</ReadOnly>
 											<EditMode>EnterOnInput</EditMode>
-											<ContextMenu name="ОСГруппа4ОсновноеСредствоКонтекстноеМеню" id="812"/>
-											<ExtendedTooltip name="ОСГруппа4ОсновноеСредствоРасширеннаяПодсказка" id="813"/>
+											<ContextMenu name="ТранспортОсновноеСредствоКонтекстноеМеню" id="812"/>
+											<ExtendedTooltip name="ТранспортОсновноеСредствоРасширеннаяПодсказка" id="813"/>
 										</InputField>
-										<InputField name="ОСГруппа4ИнвентарныйНомер" id="895">
+										<InputField name="ТранспортИнвентарныйНомер" id="895">
 											<DataPath>Объект.ОС.ИнвентарныйНомер</DataPath>
 											<ReadOnly>true</ReadOnly>
 											<Title>
@@ -914,61 +905,69 @@
 												</v8:item>
 											</Title>
 											<EditMode>EnterOnInput</EditMode>
-											<ContextMenu name="ОСГруппа4ИнвентарныйНомерКонтекстноеМеню" id="896"/>
-											<ExtendedTooltip name="ОСГруппа4ИнвентарныйНомерРасширеннаяПодсказка" id="897"/>
+											<Width>10</Width>
+											<HorizontalStretch>false</HorizontalStretch>
+											<ContextMenu name="ТранспортИнвентарныйНомерКонтекстноеМеню" id="896"/>
+											<ExtendedTooltip name="ТранспортИнвентарныйНомерРасширеннаяПодсказка" id="897"/>
 										</InputField>
-										<InputField name="ОСГруппа4КодИмущества" id="1095">
-											<DataPath>Объект.ОС.КодИмущества</DataPath>
+										<LabelField name="ТранспортВидТранспортаКод" id="1156">
+											<DataPath>Объект.ОС.ВидТранспорта.Code</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Код вида транспорта</v8:content>
+												</v8:item>
+											</Title>
 											<EditMode>EnterOnInput</EditMode>
-											<ContextMenu name="ОСГруппа4КодИмуществаКонтекстноеМеню" id="1096"/>
-											<ExtendedTooltip name="ОСГруппа4КодИмуществаРасширеннаяПодсказка" id="1097"/>
-										</InputField>
+											<ContextMenu name="ТранспортВидТранспортаКодКонтекстноеМеню" id="1157"/>
+											<ExtendedTooltip name="ТранспортВидТранспортаКодРасширеннаяПодсказка" id="1158"/>
+										</LabelField>
 									</ChildItems>
 								</ColumnGroup>
-								<ColumnGroup name="ОСГруппа4Группа2" id="1109">
-									<ExtendedTooltip name="ОСГруппа4Группа2РасширеннаяПодсказка" id="1110"/>
+								<ColumnGroup name="ТранспортГруппа2" id="1140">
+									<ExtendedTooltip name="ТранспортГруппа2РасширеннаяПодсказка" id="1141"/>
 									<ChildItems>
-										<InputField name="ОСГруппа4ВидТранспорта" id="886">
+										<InputField name="ТранспортВидТранспорта" id="886">
 											<DataPath>Объект.ОС.ВидТранспорта</DataPath>
 											<EditMode>EnterOnInput</EditMode>
-											<ContextMenu name="ОСГруппа4ВидТранспортаКонтекстноеМеню" id="887"/>
-											<ExtendedTooltip name="ОСГруппа4ВидТранспортаРасширеннаяПодсказка" id="888"/>
+											<ContextMenu name="ТранспортВидТранспортаКонтекстноеМеню" id="887"/>
+											<ExtendedTooltip name="ТранспортВидТранспортаРасширеннаяПодсказка" id="888"/>
 										</InputField>
-										<InputField name="ОСГруппа4ДатаВводаВЭксплуатацию" id="1098">
-											<DataPath>Объект.ОС.ДатаВводаВЭксплуатацию</DataPath>
+										<InputField name="ТранспортГосНомер" id="892">
+											<DataPath>Объект.ОС.ГосНомер</DataPath>
 											<EditMode>EnterOnInput</EditMode>
-											<ContextMenu name="ОСГруппа4ДатаВводаВЭксплуатациюКонтекстноеМеню" id="1099"/>
-											<ExtendedTooltip name="ОСГруппа4ДатаВводаВЭксплуатациюРасширеннаяПодсказка" id="1100"/>
+											<ContextMenu name="ТранспортГосНомерКонтекстноеМеню" id="893"/>
+											<ExtendedTooltip name="ТранспортГосНомерРасширеннаяПодсказка" id="894"/>
 										</InputField>
-										<InputField name="ОСГруппа4ОбъемДвигателя" id="889">
+										<InputField name="ТранспортОбъемДвигателя" id="889">
 											<DataPath>Объект.ОС.ОбъемДвигателя</DataPath>
 											<EditMode>EnterOnInput</EditMode>
 											<Width>10</Width>
-											<ContextMenu name="ОСГруппа4ОбъемДвигателяКонтекстноеМеню" id="890"/>
-											<ExtendedTooltip name="ОСГруппа4ОбъемДвигателяРасширеннаяПодсказка" id="891"/>
+											<ContextMenu name="ТранспортОбъемДвигателяКонтекстноеМеню" id="890"/>
+											<ExtendedTooltip name="ТранспортОбъемДвигателяРасширеннаяПодсказка" id="891"/>
 										</InputField>
 									</ChildItems>
 								</ColumnGroup>
-								<ColumnGroup name="ОСГруппа4Группа3" id="1111">
-									<ExtendedTooltip name="ОСГруппа4Группа3РасширеннаяПодсказка" id="1112"/>
+								<ColumnGroup name="ТранспортГруппа3" id="1142">
+									<ExtendedTooltip name="ТранспортГруппа3РасширеннаяПодсказка" id="1143"/>
 									<ChildItems>
-										<InputField name="ОСГруппа4КодПользователяИмущества" id="1101">
-											<DataPath>Объект.ОС.КодПользователяИмущества</DataPath>
-											<EditMode>EnterOnInput</EditMode>
-											<ContextMenu name="ОСГруппа4КодПользователяИмуществаКонтекстноеМеню" id="1102"/>
-											<ExtendedTooltip name="ОСГруппа4КодПользователяИмуществаРасширеннаяПодсказка" id="1103"/>
-										</InputField>
-										<InputField name="ОСГруппа4КатегорияИмущества" id="1104">
+										<InputField name="ТранспортКатегорияИмущества" id="1144">
 											<DataPath>Объект.ОС.КатегорияИмущества</DataPath>
 											<EditMode>EnterOnInput</EditMode>
-											<ContextMenu name="ОСГруппа4КатегорияИмуществаКонтекстноеМеню" id="1105"/>
-											<ExtendedTooltip name="ОСГруппа4КатегорияИмуществаРасширеннаяПодсказка" id="1106"/>
+											<ContextMenu name="ТранспортКатегорияИмуществаКонтекстноеМеню" id="1145"/>
+											<ExtendedTooltip name="ТранспортКатегорияИмуществаРасширеннаяПодсказка" id="1146"/>
 										</InputField>
-										<InputField name="ОСГруппа4ГосНомер" id="892">
-											<DataPath>Объект.ОС.ГосНомер</DataPath>
+										<InputField name="ТранспортКодПользователяИмущества" id="1147">
+											<DataPath>Объект.ОС.КодПользователяИмущества</DataPath>
 											<EditMode>EnterOnInput</EditMode>
-											<ContextMenu name="ОСГруппа4ГосНомерКонтекстноеМеню" id="893"/>
-											<ExtendedTooltip name="ОСГруппа4ГосНомерРасширеннаяПодсказка" id="894"/>
+											<ContextMenu name="ТранспортКодПользователяИмуществаКонтекстноеМеню" id="1148"/>
+											<ExtendedTooltip name="ТранспортКодПользователяИмуществаРасширеннаяПодсказка" id="1149"/>
+										</InputField>
+										<InputField name="ТранспортМаркаТранспортногоСредства" id="1150">
+											<DataPath>Объект.ОС.МаркаТранспортногоСредства</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<ContextMenu name="ТранспортМаркаТранспортногоСредстваКонтекстноеМеню" id="1151"/>
+											<ExtendedTooltip name="ТранспортМаркаТранспортногоСредстваРасширеннаяПодсказка" id="1152"/>
 										</InputField>
 									</ChildItems>
 								</ColumnGroup>
@@ -1294,7 +1293,30 @@
 				<Field>Объект.RegisterRecords</Field>
 			</UseAlways>
 			<Columns>
-				<AdditionalColumns table="Объект.ОС"/>
+				<AdditionalColumns table="Объект.ОС">
+					<Column name="ГруппаИмуществаНедвижимость" id="1">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Группа имущества недвижимость</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:boolean</v8:Type>
+						</Type>
+					</Column>
+					<Column name="ГруппаИмуществаТранспорт" id="2">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Группа имущества транспорт</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:boolean</v8:Type>
+						</Type>
+					</Column>
+				</AdditionalColumns>
 			</Columns>
 		</Attribute>
 		<Attribute name="ДатаДокумента" id="2">

@@ -131,23 +131,6 @@
 								</InputField>
 							</ChildItems>
 						</UsualGroup>
-						<InputField name="ДокументОснование" id="293">
-							<DataPath>Объект.ДокументОснование</DataPath>
-							<Title>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Документ реализации</v8:content>
-								</v8:item>
-							</Title>
-							<DropListButton>false</DropListButton>
-							<ChoiceButton>true</ChoiceButton>
-							<ChoiceButtonRepresentation>ShowInInputField</ChoiceButtonRepresentation>
-							<ContextMenu name="ДокументОснованиеКонтекстноеМеню" id="294"/>
-							<ExtendedTooltip name="ДокументОснованиеРасширеннаяПодсказка" id="295"/>
-							<Events>
-								<Event name="OnChange">ДокументОснованиеПриИзменении</Event>
-							</Events>
-						</InputField>
 						<UsualGroup name="ГруппаСкидкаОбщая" id="463">
 							<Title>
 								<v8:item>
@@ -265,6 +248,17 @@
 					<ShowTitle>false</ShowTitle>
 					<ExtendedTooltip name="ПраваяКолонкаExtendedTooltip" id="26"/>
 					<ChildItems>
+						<CheckBoxField name="БезналичныйРасчет" id="535">
+							<DataPath>Объект.БезналичныйРасчет</DataPath>
+							<TitleLocation>Right</TitleLocation>
+							<ToolTipRepresentation>Button</ToolTipRepresentation>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="БезналичныйРасчетКонтекстноеМеню" id="536"/>
+							<ExtendedTooltip name="БезналичныйРасчетРасширеннаяПодсказка" id="537"/>
+							<Events>
+								<Event name="OnChange">БезналичныйРасчетПриИзменении</Event>
+							</Events>
+						</CheckBoxField>
 						<UsualGroup name="ГруппаНомерДата" id="27">
 							<Title>
 								<v8:item>
@@ -404,6 +398,11 @@
 											</Button>
 										</ChildItems>
 									</Popup>
+									<Button name="ТоварыПоискПоШтрихкодуТовары" id="541">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.ПоискПоШтрихкодуТовары</CommandName>
+										<ExtendedTooltip name="ТоварыПоискПоШтрихкодуТоварыРасширеннаяПодсказка" id="542"/>
+									</Button>
 									<Button name="ТоварыПодборНоменклатуры" id="439">
 										<Type>CommandBarButton</Type>
 										<CommandName>Form.Command.ПодборНоменклатуры</CommandName>
@@ -566,6 +565,46 @@
 								</InputField>
 							</ChildItems>
 						</Table>
+					</ChildItems>
+				</Page>
+				<Page name="СтраницаСчетФактура" id="524">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Счет-фактура</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница счет фактура</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="СтраницаСчетФактураРасширеннаяПодсказка" id="525"/>
+					<ChildItems>
+						<InputField name="СерияБланкаСФ" id="526">
+							<DataPath>Объект.СерияБланкаСФ</DataPath>
+							<ContextMenu name="СерияБланкаСФКонтекстноеМеню" id="527"/>
+							<ExtendedTooltip name="СерияБланкаСФРасширеннаяПодсказка" id="528"/>
+						</InputField>
+						<InputField name="НомерБланкаСФ" id="529">
+							<DataPath>Объект.НомерБланкаСФ</DataPath>
+							<ContextMenu name="НомерБланкаСФКонтекстноеМеню" id="530"/>
+							<ExtendedTooltip name="НомерБланкаСФРасширеннаяПодсказка" id="531"/>
+						</InputField>
+						<InputField name="ДатаСФ" id="532">
+							<DataPath>Объект.ДатаСФ</DataPath>
+							<ContextMenu name="ДатаСФКонтекстноеМеню" id="533"/>
+							<ExtendedTooltip name="ДатаСФРасширеннаяПодсказка" id="534"/>
+						</InputField>
+						<CheckBoxField name="ЭкспортнаяПоставка" id="538">
+							<DataPath>Объект.ЭкспортнаяПоставка</DataPath>
+							<TitleLocation>Right</TitleLocation>
+							<ToolTipRepresentation>Button</ToolTipRepresentation>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="ЭкспортнаяПоставкаКонтекстноеМеню" id="539"/>
+							<ExtendedTooltip name="ЭкспортнаяПоставкаРасширеннаяПодсказка" id="540"/>
+						</CheckBoxField>
 					</ChildItems>
 				</Page>
 				<Page name="СтраницаДополнительно" id="106">
@@ -889,28 +928,6 @@
 				<v8:Type>cfg:CatalogRef.Валюты</v8:Type>
 			</Type>
 		</Attribute>
-		<Attribute name="ДоговорКонтрагента" id="8">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Договор контрагента</v8:content>
-				</v8:item>
-			</Title>
-			<Type>
-				<v8:Type>cfg:CatalogRef.ДоговорыКонтрагентов</v8:Type>
-			</Type>
-		</Attribute>
-		<Attribute name="Контрагент" id="9">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Контрагент</v8:content>
-				</v8:item>
-			</Title>
-			<Type>
-				<v8:Type>cfg:CatalogRef.Контрагенты</v8:Type>
-			</Type>
-		</Attribute>
 		<Attribute name="СуммаСкидкиПоСтроке" id="10">
 			<Title>
 				<v8:item>
@@ -948,7 +965,7 @@
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Подбор номенклатуры</v8:content>
+					<v8:content>Подбор</v8:content>
 				</v8:item>
 			</Title>
 			<ToolTip>
@@ -988,6 +1005,27 @@
 				</v8:item>
 			</ToolTip>
 			<Action>ЗаполнитьПоРеализации</Action>
+		</Command>
+		<Command name="ПоискПоШтрихкодуТовары" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Поиск по штрихкоду товары</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Поиск по штрихкоду товары</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Shortcut>F7</Shortcut>
+			<Picture>
+				<xr:Ref>CommonPicture.НовыйПоШтрихкоду</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ПоискПоШтрихкодуТовары</Action>
+			<ModifiesSavedData>true</ModifiesSavedData>
 		</Command>
 	</Commands>
 </Form>

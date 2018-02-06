@@ -119,7 +119,7 @@
 	Склад.*,
 	Организация.*}
 ИЗ
-	РегистрБухгалтерии.Хозрасчетный.Остатки(&amp;Период, {(Счет).*}, &amp;СубконтоНоменклатураИСклад, {(Организация).* КАК Организация, (Субконто1).* КАК Номенклатура, (Субконто2).* КАК Склад}) КАК ХозрасчетныйОстатки_КонОст
+	РегистрБухгалтерии.Хозрасчетный.Остатки({(&amp;Период)}, {(Счет).*}, &amp;СубконтоНоменклатураИСклад, {(Организация).* КАК Организация, (Субконто1).* КАК Номенклатура, (Субконто2).* КАК Склад}) КАК ХозрасчетныйОстатки_КонОст
 {ГДЕ
 	ХозрасчетныйОстатки_КонОст.СуммаОстаток КАК Сумма,
 	ХозрасчетныйОстатки_КонОст.КоличествоОстаток КАК Количество}</query>
@@ -151,7 +151,7 @@
 		</valueType>
 		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
 		<useRestriction>false</useRestriction>
-		<expression>ДобавитьКДате(КонецПериода(&amp;Период, "ДЕНЬ"), "СЕКУНДА", 1)</expression>
+		<availableAsField>false</availableAsField>
 		<use>Always</use>
 	</parameter>
 	<parameter>
@@ -167,6 +167,7 @@
 		</valueType>
 		<value xsi:type="xs:boolean">true</value>
 		<useRestriction>false</useRestriction>
+		<availableAsField>false</availableAsField>
 		<use>Always</use>
 	</parameter>
 	<parameter>
@@ -184,6 +185,7 @@
 		<value xsi:type="dcscor:DesignTimeValue">ПланВидовХарактеристик.ВидыСубконтоХозрасчетные.Склады</value>
 		<useRestriction>true</useRestriction>
 		<valueListAllowed>true</valueListAllowed>
+		<availableAsField>false</availableAsField>
 	</parameter>
 	<template>
 		<name>Макет1</name>
@@ -467,7 +469,7 @@
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 					<dcscor:use>false</dcscor:use>
 					<dcscor:parameter>МакетОформления</dcscor:parameter>
-					<dcscor:value xsi:type="xs:string">ОформлениеОтчетовЗеленый</dcscor:value>
+					<dcscor:value xsi:type="xs:string">Основной</dcscor:value>
 				</dcscor:item>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 					<dcscor:parameter>РасположениеРеквизитов</dcscor:parameter>

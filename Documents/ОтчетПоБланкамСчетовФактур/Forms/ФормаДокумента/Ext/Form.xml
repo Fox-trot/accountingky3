@@ -19,6 +19,13 @@
 					</v8:item>
 				</ToolTip>
 				<ExtendedTooltip name="ГруппаВажныеКомандыРасширеннаяПодсказка" id="281"/>
+				<ChildItems>
+					<Button name="Заполнить" id="491">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.Заполнить</CommandName>
+						<ExtendedTooltip name="ЗаполнитьРасширеннаяПодсказка" id="492"/>
+					</Button>
+				</ChildItems>
 			</ButtonGroup>
 			<ButtonGroup name="ГруппаГлобальныеКоманды" id="282">
 				<Title>
@@ -35,11 +42,6 @@
 				</ToolTip>
 				<ExtendedTooltip name="ГруппаГлобальныеКомандыРасширеннаяПодсказка" id="283"/>
 			</ButtonGroup>
-			<Button name="Заполнить" id="491">
-				<Type>CommandBarButton</Type>
-				<CommandName>Form.Command.Заполнить</CommandName>
-				<ExtendedTooltip name="ЗаполнитьРасширеннаяПодсказка" id="492"/>
-			</Button>
 		</ChildItems>
 	</AutoCommandBar>
 	<Events>
@@ -143,14 +145,23 @@
 							<v8:content>Страница использование бланков</v8:content>
 						</v8:item>
 					</ToolTip>
+					<Group>Horizontal</Group>
 					<ExtendedTooltip name="СтраницаИспользованиеБланковРасширеннаяПодсказка" id="285"/>
 					<ChildItems>
 						<Table name="БланкиСФ" id="427">
+							<TitleLocation>Top</TitleLocation>
 							<CommandBarLocation>None</CommandBarLocation>
 							<AutoInsertNewRow>true</AutoInsertNewRow>
 							<EnableStartDrag>true</EnableStartDrag>
 							<EnableDrag>true</EnableDrag>
 							<DataPath>Объект.БланкиСФОбороты</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Использованные бланки</v8:content>
+								</v8:item>
+							</Title>
+							<TitleFont ref="style:ШрифтПравойПанелиОтборов" kind="StyleItem"/>
 							<RowFilter xsi:nil="true"/>
 							<ContextMenu name="БланкиСФКонтекстноеМеню" id="428"/>
 							<AutoCommandBar name="БланкиСФКоманднаяПанель" id="429"/>
@@ -180,58 +191,20 @@
 								<ExtendedTooltip name="БланкиСФУправлениеПоискомРасширеннаяПодсказка" id="439"/>
 							</SearchControlAddition>
 							<ChildItems>
-								<LabelField name="БланкиСФНомерСтроки" id="440">
-									<DataPath>Объект.БланкиСФОбороты.LineNumber</DataPath>
-									<EditMode>EnterOnInput</EditMode>
-									<Width>4</Width>
-									<HorizontalStretch>false</HorizontalStretch>
-									<ContextMenu name="БланкиСФНомерСтрокиКонтекстноеМеню" id="441"/>
-									<ExtendedTooltip name="БланкиСФНомерСтрокиРасширеннаяПодсказка" id="442"/>
-								</LabelField>
 								<InputField name="БланкиСФСерия" id="443">
-									<DataPath>Объект.БланкиСФОбороты.Серия</DataPath>
+									<DataPath>Объект.БланкиСФОбороты.СерияБланкаСФ</DataPath>
 									<EditMode>EnterOnInput</EditMode>
 									<ContextMenu name="БланкиСФСерияКонтекстноеМеню" id="444"/>
 									<ExtendedTooltip name="БланкиСФСерияРасширеннаяПодсказка" id="445"/>
 								</InputField>
 								<InputField name="БланкиСФНомер" id="446">
-									<DataPath>Объект.БланкиСФОбороты.Номер</DataPath>
+									<DataPath>Объект.БланкиСФОбороты.НомерБланкаСФ</DataPath>
 									<EditMode>EnterOnInput</EditMode>
 									<ContextMenu name="БланкиСФНомерКонтекстноеМеню" id="447"/>
 									<ExtendedTooltip name="БланкиСФНомерРасширеннаяПодсказка" id="448"/>
 								</InputField>
-								<InputField name="БланкиСФОперация" id="452">
-									<DataPath>Объект.БланкиСФОбороты.Операция</DataPath>
-									<EditMode>EnterOnInput</EditMode>
-									<ContextMenu name="БланкиСФОперацияКонтекстноеМеню" id="453"/>
-									<ExtendedTooltip name="БланкиСФОперацияРасширеннаяПодсказка" id="454"/>
-								</InputField>
-								<InputField name="БланкиСФКоличество" id="455">
-									<DataPath>Объект.БланкиСФОбороты.Количество</DataPath>
-									<EditMode>EnterOnInput</EditMode>
-									<Width>10</Width>
-									<ContextMenu name="БланкиСФКоличествоКонтекстноеМеню" id="456"/>
-									<ExtendedTooltip name="БланкиСФКоличествоРасширеннаяПодсказка" id="457"/>
-								</InputField>
 							</ChildItems>
 						</Table>
-					</ChildItems>
-				</Page>
-				<Page name="СтраницаОстаткиБланков" id="461">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Остатки бланков</v8:content>
-						</v8:item>
-					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Страница остатки бланков</v8:content>
-						</v8:item>
-					</ToolTip>
-					<ExtendedTooltip name="СтраницаОстаткиБланковРасширеннаяПодсказка" id="462"/>
-					<ChildItems>
 						<Table name="БланкиСФОстаткиНаНачало" id="463">
 							<TitleLocation>Top</TitleLocation>
 							<CommandBarLocation>None</CommandBarLocation>
@@ -243,7 +216,7 @@
 							<Title>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>На начало месяца</v8:content>
+									<v8:content>Остаток на начало месяца</v8:content>
 								</v8:item>
 							</Title>
 							<TitleFont ref="style:ШрифтПравойПанелиОтборов" kind="StyleItem"/>
@@ -276,38 +249,17 @@
 								<ExtendedTooltip name="БланкиСФОстаткиНаНачалоУправлениеПоискомРасширеннаяПодсказка" id="475"/>
 							</SearchControlAddition>
 							<ChildItems>
-								<LabelField name="БланкиСФОстаткиНомерСтроки" id="476">
-									<DataPath>Объект.БланкиСФОстатки.LineNumber</DataPath>
-									<EditMode>EnterOnInput</EditMode>
-									<Width>4</Width>
-									<HorizontalStretch>false</HorizontalStretch>
-									<ContextMenu name="БланкиСФОстаткиНомерСтрокиКонтекстноеМеню" id="477"/>
-									<ExtendedTooltip name="БланкиСФОстаткиНомерСтрокиРасширеннаяПодсказка" id="478"/>
-								</LabelField>
-								<InputField name="БланкиСФОстаткиСодержание" id="479">
-									<DataPath>Объект.БланкиСФОстатки.Содержание</DataPath>
-									<EditMode>EnterOnInput</EditMode>
-									<ContextMenu name="БланкиСФОстаткиСодержаниеКонтекстноеМеню" id="480"/>
-									<ExtendedTooltip name="БланкиСФОстаткиСодержаниеРасширеннаяПодсказка" id="481"/>
-								</InputField>
 								<InputField name="БланкиСФОстаткиСерия" id="482">
-									<DataPath>Объект.БланкиСФОстатки.Серия</DataPath>
+									<DataPath>Объект.БланкиСФОстатки.СерияБланкаСФ</DataPath>
 									<EditMode>EnterOnInput</EditMode>
 									<ContextMenu name="БланкиСФОстаткиСерияКонтекстноеМеню" id="483"/>
 									<ExtendedTooltip name="БланкиСФОстаткиСерияРасширеннаяПодсказка" id="484"/>
 								</InputField>
 								<InputField name="БланкиСФОстаткиНаНачалоНомер" id="521">
-									<DataPath>Объект.БланкиСФОстатки.Номер</DataPath>
+									<DataPath>Объект.БланкиСФОстатки.НомерБланкаСФ</DataPath>
 									<EditMode>EnterOnInput</EditMode>
 									<ContextMenu name="БланкиСФОстаткиНаНачалоНомерКонтекстноеМеню" id="522"/>
 									<ExtendedTooltip name="БланкиСФОстаткиНаНачалоНомерРасширеннаяПодсказка" id="523"/>
-								</InputField>
-								<InputField name="БланкиСФОстаткиКоличество" id="488">
-									<DataPath>Объект.БланкиСФОстатки.Количество</DataPath>
-									<EditMode>EnterOnInput</EditMode>
-									<Width>10</Width>
-									<ContextMenu name="БланкиСФОстаткиКоличествоКонтекстноеМеню" id="489"/>
-									<ExtendedTooltip name="БланкиСФОстаткиКоличествоРасширеннаяПодсказка" id="490"/>
 								</InputField>
 							</ChildItems>
 						</Table>
@@ -322,7 +274,7 @@
 							<Title>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>На конец месяца</v8:content>
+									<v8:content>Остаток на окончание месяца</v8:content>
 								</v8:item>
 							</Title>
 							<TitleFont ref="style:ШрифтПравойПанелиОтборов" kind="StyleItem"/>
@@ -355,38 +307,17 @@
 								<ExtendedTooltip name="БланкиСФОстаткиНаКонецУправлениеПоискомРасширеннаяПодсказка" id="505"/>
 							</SearchControlAddition>
 							<ChildItems>
-								<LabelField name="БланкиСФОстаткиНомерСтроки1" id="506">
-									<DataPath>Объект.БланкиСФОстатки.LineNumber</DataPath>
-									<EditMode>EnterOnInput</EditMode>
-									<Width>4</Width>
-									<HorizontalStretch>false</HorizontalStretch>
-									<ContextMenu name="БланкиСФОстаткиНомерСтроки1КонтекстноеМеню" id="507"/>
-									<ExtendedTooltip name="БланкиСФОстаткиНомерСтроки1РасширеннаяПодсказка" id="508"/>
-								</LabelField>
-								<InputField name="БланкиСФОстаткиСодержание1" id="509">
-									<DataPath>Объект.БланкиСФОстатки.Содержание</DataPath>
-									<EditMode>EnterOnInput</EditMode>
-									<ContextMenu name="БланкиСФОстаткиСодержание1КонтекстноеМеню" id="510"/>
-									<ExtendedTooltip name="БланкиСФОстаткиСодержание1РасширеннаяПодсказка" id="511"/>
-								</InputField>
 								<InputField name="БланкиСФОстаткиСерия1" id="512">
-									<DataPath>Объект.БланкиСФОстатки.Серия</DataPath>
+									<DataPath>Объект.БланкиСФОстатки.СерияБланкаСФ</DataPath>
 									<EditMode>EnterOnInput</EditMode>
 									<ContextMenu name="БланкиСФОстаткиСерия1КонтекстноеМеню" id="513"/>
 									<ExtendedTooltip name="БланкиСФОстаткиСерия1РасширеннаяПодсказка" id="514"/>
 								</InputField>
 								<InputField name="БланкиСФОстаткиНаКонецНомер" id="524">
-									<DataPath>Объект.БланкиСФОстатки.Номер</DataPath>
+									<DataPath>Объект.БланкиСФОстатки.НомерБланкаСФ</DataPath>
 									<EditMode>EnterOnInput</EditMode>
 									<ContextMenu name="БланкиСФОстаткиНаКонецНомерКонтекстноеМеню" id="525"/>
 									<ExtendedTooltip name="БланкиСФОстаткиНаКонецНомерРасширеннаяПодсказка" id="526"/>
-								</InputField>
-								<InputField name="БланкиСФОстаткиКоличество1" id="518">
-									<DataPath>Объект.БланкиСФОстатки.Количество</DataPath>
-									<EditMode>EnterOnInput</EditMode>
-									<Width>10</Width>
-									<ContextMenu name="БланкиСФОстаткиКоличество1КонтекстноеМеню" id="519"/>
-									<ExtendedTooltip name="БланкиСФОстаткиКоличество1РасширеннаяПодсказка" id="520"/>
 								</InputField>
 							</ChildItems>
 						</Table>
@@ -407,6 +338,59 @@
 					</ToolTip>
 					<ExtendedTooltip name="СтраницаДополнительноРасширеннаяПодсказка" id="107"/>
 					<ChildItems>
+						<UsualGroup name="ГруппаНомерДата" id="527">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа номер дата</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа номер дата</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаНомерДатаExtendedTooltip" id="528"/>
+							<ChildItems>
+								<InputField name="Номер" id="529">
+									<DataPath>Объект.Number</DataPath>
+									<SkipOnInput>true</SkipOnInput>
+									<Width>10</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<Wrap>false</Wrap>
+									<InputHint>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>&lt;Авто&gt;</v8:content>
+										</v8:item>
+									</InputHint>
+									<ContextMenu name="НомерКонтекстноеМеню" id="530"/>
+									<ExtendedTooltip name="НомерExtendedTooltip" id="531"/>
+								</InputField>
+								<InputField name="Дата" id="532">
+									<DataPath>Объект.Date</DataPath>
+									<SkipOnInput>true</SkipOnInput>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>от</v8:content>
+										</v8:item>
+									</Title>
+									<Width>15</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<Wrap>false</Wrap>
+									<ContextMenu name="ДатаКонтекстноеМеню" id="533"/>
+									<ExtendedTooltip name="ДатаExtendedTooltip" id="534"/>
+									<Events>
+										<Event name="OnChange">ДатаПриИзменении</Event>
+									</Events>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
 						<UsualGroup name="ГруппаДанныеДляПечати" id="351">
 							<Title>
 								<v8:item>

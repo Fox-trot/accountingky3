@@ -321,6 +321,11 @@
 								<Event name="OnChange">ОрганизацияПриИзменении</Event>
 							</Events>
 						</InputField>
+						<InputField name="Склад" id="949">
+							<DataPath>Объект.Склад</DataPath>
+							<ContextMenu name="СкладКонтекстноеМеню" id="950"/>
+							<ExtendedTooltip name="СкладРасширеннаяПодсказка" id="951"/>
+						</InputField>
 					</ChildItems>
 				</UsualGroup>
 			</ChildItems>
@@ -365,6 +370,11 @@
 							<ContextMenu name="ТоварыКонтекстноеМеню" id="271"/>
 							<AutoCommandBar name="ТоварыКоманднаяПанель" id="272">
 								<ChildItems>
+									<Button name="ТоварыПоискПоШтрихкодуТовары" id="962">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.ПоискПоШтрихкодуТовары</CommandName>
+										<ExtendedTooltip name="ТоварыПоискПоШтрихкодуТоварыРасширеннаяПодсказка" id="963"/>
+									</Button>
 									<Button name="ТоварыПодборНоменклатуры" id="892">
 										<Type>CommandBarButton</Type>
 										<CommandName>Form.Command.ПодборНоменклатуры</CommandName>
@@ -397,6 +407,10 @@
 								<ContextMenu name="ТоварыУправлениеПоискомКонтекстноеМеню" id="281"/>
 								<ExtendedTooltip name="ТоварыУправлениеПоискомРасширеннаяПодсказка" id="282"/>
 							</SearchControlAddition>
+							<Events>
+								<Event name="BeforeAddRow">ТоварыПередНачаломДобавления</Event>
+								<Event name="AfterDeleteRow">ТоварыПослеУдаления</Event>
+							</Events>
 							<ChildItems>
 								<LabelField name="ТоварыНомерСтроки" id="283">
 									<DataPath>Объект.Товары.LineNumber</DataPath>
@@ -543,7 +557,15 @@
 							<DataPath>Объект.Услуги</DataPath>
 							<RowFilter xsi:nil="true"/>
 							<ContextMenu name="УслугиКонтекстноеМеню" id="355"/>
-							<AutoCommandBar name="УслугиКоманднаяПанель" id="356"/>
+							<AutoCommandBar name="УслугиКоманднаяПанель" id="356">
+								<ChildItems>
+									<Button name="УслугиПоискПоШтрихкодуУслуги" id="964">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.ПоискПоШтрихкодуУслуги</CommandName>
+										<ExtendedTooltip name="УслугиПоискПоШтрихкодуУслугиРасширеннаяПодсказка" id="965"/>
+									</Button>
+								</ChildItems>
+							</AutoCommandBar>
 							<ExtendedTooltip name="УслугиРасширеннаяПодсказка" id="357"/>
 							<SearchStringAddition name="УслугиСтрокаПоиска" id="358">
 								<AdditionSource>
@@ -569,6 +591,10 @@
 								<ContextMenu name="УслугиУправлениеПоискомКонтекстноеМеню" id="365"/>
 								<ExtendedTooltip name="УслугиУправлениеПоискомРасширеннаяПодсказка" id="366"/>
 							</SearchControlAddition>
+							<Events>
+								<Event name="BeforeAddRow">УслугиПередНачаломДобавления</Event>
+								<Event name="AfterDeleteRow">УслугиПослеУдаления</Event>
+							</Events>
 							<ChildItems>
 								<LabelField name="УслугиНомерСтроки" id="367">
 									<DataPath>Объект.Услуги.LineNumber</DataPath>
@@ -709,54 +735,107 @@
 					</ToolTip>
 					<ExtendedTooltip name="СтраницаДополнительноРасширеннаяПодсказка" id="107"/>
 					<ChildItems>
-						<UsualGroup name="ГруппаСтавки" id="913">
+						<UsualGroup name="ГруппаДополнительноКолонки" id="960">
 							<Title>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Группа ставки</v8:content>
+									<v8:content>Группа дополнительно колонки</v8:content>
 								</v8:item>
 							</Title>
 							<ToolTip>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Группа ставки</v8:content>
+									<v8:content>Группа дополнительно колонки</v8:content>
 								</v8:item>
 							</ToolTip>
-							<Group>Vertical</Group>
+							<Group>Horizontal</Group>
 							<Representation>None</Representation>
 							<ShowTitle>false</ShowTitle>
-							<ExtendedTooltip name="ГруппаСтавкиРасширеннаяПодсказка" id="914"/>
+							<ExtendedTooltip name="ГруппаДополнительноКолонкиРасширеннаяПодсказка" id="961"/>
 							<ChildItems>
-								<InputField name="СтавкаНДС" id="915">
-									<DataPath>Объект.СтавкаНДС</DataPath>
-									<Width>15</Width>
-									<HorizontalStretch>false</HorizontalStretch>
-									<ContextMenu name="СтавкаНДСКонтекстноеМеню" id="916"/>
-									<ExtendedTooltip name="СтавкаНДСРасширеннаяПодсказка" id="917"/>
-									<Events>
-										<Event name="OnChange">СтавкаНДСПриИзменении</Event>
-									</Events>
-								</InputField>
-								<InputField name="СтавкаНСП" id="918">
-									<DataPath>Объект.СтавкаНСП</DataPath>
-									<Width>15</Width>
-									<HorizontalStretch>false</HorizontalStretch>
-									<ContextMenu name="СтавкаНСПКонтекстноеМеню" id="919"/>
-									<ExtendedTooltip name="СтавкаНСПРасширеннаяПодсказка" id="920"/>
-									<Events>
-										<Event name="OnChange">СтавкаНСППриИзменении</Event>
-									</Events>
-								</InputField>
-								<InputField name="СтавкаНСПУслуги" id="921">
-									<DataPath>Объект.СтавкаНСПУслуги</DataPath>
-									<Width>15</Width>
-									<HorizontalStretch>false</HorizontalStretch>
-									<ContextMenu name="СтавкаНСПУслугиКонтекстноеМеню" id="922"/>
-									<ExtendedTooltip name="СтавкаНСПУслугиРасширеннаяПодсказка" id="923"/>
-									<Events>
-										<Event name="OnChange">СтавкаНСПУслугиПриИзменении</Event>
-									</Events>
-								</InputField>
+								<UsualGroup name="ГруппаСтавки" id="913">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа ставки</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа ставки</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Vertical</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="ГруппаСтавкиРасширеннаяПодсказка" id="914"/>
+									<ChildItems>
+										<InputField name="СтавкаНДС" id="915">
+											<DataPath>Объект.СтавкаНДС</DataPath>
+											<Width>15</Width>
+											<HorizontalStretch>false</HorizontalStretch>
+											<ContextMenu name="СтавкаНДСКонтекстноеМеню" id="916"/>
+											<ExtendedTooltip name="СтавкаНДСРасширеннаяПодсказка" id="917"/>
+											<Events>
+												<Event name="OnChange">СтавкаНДСПриИзменении</Event>
+											</Events>
+										</InputField>
+										<InputField name="СтавкаНСП" id="918">
+											<DataPath>Объект.СтавкаНСП</DataPath>
+											<Width>15</Width>
+											<HorizontalStretch>false</HorizontalStretch>
+											<ContextMenu name="СтавкаНСПКонтекстноеМеню" id="919"/>
+											<ExtendedTooltip name="СтавкаНСПРасширеннаяПодсказка" id="920"/>
+											<Events>
+												<Event name="OnChange">СтавкаНСППриИзменении</Event>
+											</Events>
+										</InputField>
+										<InputField name="СтавкаНСПУслуги" id="921">
+											<DataPath>Объект.СтавкаНСПУслуги</DataPath>
+											<Width>15</Width>
+											<HorizontalStretch>false</HorizontalStretch>
+											<ContextMenu name="СтавкаНСПУслугиКонтекстноеМеню" id="922"/>
+											<ExtendedTooltip name="СтавкаНСПУслугиРасширеннаяПодсказка" id="923"/>
+											<Events>
+												<Event name="OnChange">СтавкаНСПУслугиПриИзменении</Event>
+											</Events>
+										</InputField>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="ГруппаПериодыОплаты" id="952">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа периоды оплаты</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа периоды оплаты</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Vertical</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="ГруппаПериодыОплатыРасширеннаяПодсказка" id="953"/>
+									<ChildItems>
+										<InputField name="СрокОплаты" id="954">
+											<DataPath>Объект.СрокОплаты</DataPath>
+											<ToolTipRepresentation>Button</ToolTipRepresentation>
+											<ContextMenu name="СрокОплатыКонтекстноеМеню" id="955"/>
+											<ExtendedTooltip name="СрокОплатыРасширеннаяПодсказка" id="956"/>
+										</InputField>
+										<CheckBoxField name="ДатаОплаты" id="957">
+											<DataPath>Объект.ДатаОплаты</DataPath>
+											<ToolTipRepresentation>Button</ToolTipRepresentation>
+											<CheckBoxType>Auto</CheckBoxType>
+											<ContextMenu name="ДатаОплатыКонтекстноеМеню" id="958"/>
+											<ExtendedTooltip name="ДатаОплатыРасширеннаяПодсказка" id="959"/>
+										</CheckBoxField>
+									</ChildItems>
+								</UsualGroup>
 							</ChildItems>
 						</UsualGroup>
 						<UsualGroup name="ГруппаИнформация" id="858">
@@ -979,17 +1058,6 @@
 				<v8:Type>cfg:CatalogRef.Валюты</v8:Type>
 			</Type>
 		</Attribute>
-		<Attribute name="ДоговорКонтрагента" id="16">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Договор контрагента</v8:content>
-				</v8:item>
-			</Title>
-			<Type>
-				<v8:Type>cfg:CatalogRef.ДоговорыКонтрагентов</v8:Type>
-			</Type>
-		</Attribute>
 		<Attribute name="ИтогВсего" id="17">
 			<Title>
 				<v8:item>
@@ -1060,17 +1128,6 @@
 				</v8:NumberQualifiers>
 			</Type>
 		</Attribute>
-		<Attribute name="Контрагент" id="21">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Контрагент</v8:content>
-				</v8:item>
-			</Title>
-			<Type>
-				<v8:Type>cfg:CatalogRef.Контрагенты</v8:Type>
-			</Type>
-		</Attribute>
 		<Attribute name="СуммаСкидкиПоСтроке" id="22">
 			<Title>
 				<v8:item>
@@ -1118,6 +1175,48 @@
 				</v8:item>
 			</ToolTip>
 			<Action>ПодборНоменклатуры</Action>
+		</Command>
+		<Command name="ПоискПоШтрихкодуТовары" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Поиск по штрихкоду товары</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Поиск по штрихкоду товары</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Shortcut>F7</Shortcut>
+			<Picture>
+				<xr:Ref>CommonPicture.НовыйПоШтрихкоду</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ПоискПоШтрихкодуТовары</Action>
+			<ModifiesSavedData>true</ModifiesSavedData>
+		</Command>
+		<Command name="ПоискПоШтрихкодуУслуги" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Поиск по штрихкоду услуги</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Поиск по штрихкоду товары</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Shortcut>F7</Shortcut>
+			<Picture>
+				<xr:Ref>CommonPicture.НовыйПоШтрихкоду</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ПоискПоШтрихкодуУслуги</Action>
+			<ModifiesSavedData>true</ModifiesSavedData>
 		</Command>
 	</Commands>
 	<CommandInterface>

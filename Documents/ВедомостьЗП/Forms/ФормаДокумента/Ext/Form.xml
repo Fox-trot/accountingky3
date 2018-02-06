@@ -35,6 +35,11 @@
 				</ToolTip>
 				<ExtendedTooltip name="ГруппаГлобальныеКомандыРасширеннаяПодсказка" id="332"/>
 			</ButtonGroup>
+			<Button name="СформироватьДокументыВыплаты" id="376">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.СформироватьДокументыВыплаты</CommandName>
+				<ExtendedTooltip name="СформироватьДокументыВыплатыРасширеннаяПодсказка" id="377"/>
+			</Button>
 		</ChildItems>
 	</AutoCommandBar>
 	<Events>
@@ -117,57 +122,25 @@
 										<Event name="OnChange">ПодразделениеПриИзменении</Event>
 									</Events>
 								</InputField>
-								<CheckBoxField name="ПоБанковскимСчетам" id="339">
-									<DataPath>Объект.ПоБанковскимСчетам</DataPath>
-									<TitleLocation>Right</TitleLocation>
-									<CheckBoxType>Auto</CheckBoxType>
-									<ContextMenu name="ПоБанковскимСчетамКонтекстноеМеню" id="340"/>
-									<ExtendedTooltip name="ПоБанковскимСчетамРасширеннаяПодсказка" id="341"/>
+								<InputField name="ВидВедомости" id="428">
+									<DataPath>Объект.ВидВедомости</DataPath>
+									<ContextMenu name="ВидВедомостиКонтекстноеМеню" id="429"/>
+									<ExtendedTooltip name="ВидВедомостиРасширеннаяПодсказка" id="430"/>
 									<Events>
-										<Event name="OnChange">ПоБанковскимСчетамПриИзменении</Event>
+										<Event name="OnChange">ВидВедомостиПриИзменении</Event>
 									</Events>
-								</CheckBoxField>
-								<CheckBoxField name="ПоЗППроект" id="342">
-									<DataPath>Объект.ПоЗППроект</DataPath>
-									<TitleLocation>Right</TitleLocation>
-									<CheckBoxType>Auto</CheckBoxType>
-									<ContextMenu name="ПоЗППроектКонтекстноеМеню" id="343"/>
-									<ExtendedTooltip name="ПоЗППроектРасширеннаяПодсказка" id="344"/>
-									<Events>
-										<Event name="OnChange">ПоЗППроектПриИзменении</Event>
-									</Events>
-								</CheckBoxField>
-								<CheckBoxField name="ПоКассе" id="345">
-									<DataPath>Объект.ПоКассе</DataPath>
-									<TitleLocation>Right</TitleLocation>
-									<CheckBoxType>Auto</CheckBoxType>
-									<ContextMenu name="ПоКассеКонтекстноеМеню" id="346"/>
-									<ExtendedTooltip name="ПоКассеРасширеннаяПодсказка" id="347"/>
-									<Events>
-										<Event name="OnChange">ПоКассеПриИзменении</Event>
-									</Events>
-								</CheckBoxField>
-								<CheckBoxField name="ПоАвансовомуОтчету" id="373">
-									<DataPath>Объект.ПоАвансовомуОтчету</DataPath>
-									<Title>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>АО</v8:content>
-										</v8:item>
-									</Title>
-									<TitleLocation>Right</TitleLocation>
-									<CheckBoxType>Auto</CheckBoxType>
-									<ContextMenu name="ПоАвансовомуОтчетуКонтекстноеМеню" id="374"/>
-									<ExtendedTooltip name="ПоАвансовомуОтчетуРасширеннаяПодсказка" id="375"/>
-									<Events>
-										<Event name="OnChange">ПоАвансовомуОтчетуПриИзменении</Event>
-									</Events>
-								</CheckBoxField>
-								<Button name="СформироватьДокументыВыплаты" id="376">
-									<Type>UsualButton</Type>
-									<CommandName>Form.Command.СформироватьДокументыВыплаты</CommandName>
-									<ExtendedTooltip name="СформироватьДокументыВыплатыРасширеннаяПодсказка" id="377"/>
-								</Button>
+								</InputField>
+								<InputField name="ВидДокументаВыплаты" id="431">
+									<DataPath>Объект.ВидДокументаВыплаты</DataPath>
+									<ListChoiceMode>true</ListChoiceMode>
+									<ContextMenu name="ВидДокументаВыплатыКонтекстноеМеню" id="432"/>
+									<ExtendedTooltip name="ВидДокументаВыплатыРасширеннаяПодсказка" id="433"/>
+								</InputField>
+								<InputField name="СтатьяДвиженияДенежныхСредств" id="220">
+									<DataPath>Объект.СтатьяДвиженияДенежныхСредств</DataPath>
+									<ContextMenu name="СтатьяДвиженияДенежныхСредствКонтекстноеМеню" id="221"/>
+									<ExtendedTooltip name="СтатьяДвиженияДенежныхСредствРасширеннаяПодсказка" id="222"/>
+								</InputField>
 							</ChildItems>
 						</UsualGroup>
 						<UsualGroup name="ПраваяКолонка" id="11">
@@ -261,40 +234,6 @@
 										<Event name="OnChange">КассаПриИзменении</Event>
 									</Events>
 								</InputField>
-								<RadioButtonField name="СпособВыплаты" id="417">
-									<DataPath>Объект.СпособВыплаты</DataPath>
-									<RadioButtonType>Auto</RadioButtonType>
-									<ChoiceList>
-										<xr:Item>
-											<xr:Presentation/>
-											<xr:CheckState>0</xr:CheckState>
-											<xr:Value xsi:type="FormChoiceListDesTimeValue">
-												<Presentation>
-													<v8:item>
-														<v8:lang>ru</v8:lang>
-														<v8:content>Индивидуальные</v8:content>
-													</v8:item>
-												</Presentation>
-												<Value xsi:type="xs:decimal">1</Value>
-											</xr:Value>
-										</xr:Item>
-										<xr:Item>
-											<xr:Presentation/>
-											<xr:CheckState>0</xr:CheckState>
-											<xr:Value xsi:type="FormChoiceListDesTimeValue">
-												<Presentation>
-													<v8:item>
-														<v8:lang>ru</v8:lang>
-														<v8:content>Общий</v8:content>
-													</v8:item>
-												</Presentation>
-												<Value xsi:type="xs:decimal">2</Value>
-											</xr:Value>
-										</xr:Item>
-									</ChoiceList>
-									<ContextMenu name="СпособВыплатыКонтекстноеМеню" id="418"/>
-									<ExtendedTooltip name="СпособВыплатыРасширеннаяПодсказка" id="419"/>
-								</RadioButtonField>
 								<UsualGroup name="РасчетГруппа" id="189">
 									<Title>
 										<v8:item>
@@ -315,12 +254,6 @@
 											<HorizontalStretch>false</HorizontalStretch>
 											<ContextMenu name="ПорядокОкругленияКонтекстноеМеню" id="194"/>
 											<ExtendedTooltip name="ПорядокОкругленияРасширеннаяПодсказка" id="195"/>
-										</InputField>
-										<InputField name="ПроцентВыплаты" id="196">
-											<DataPath>Объект.ПроцентВыплаты</DataPath>
-											<EditMode>EnterOnInput</EditMode>
-											<ContextMenu name="ПроцентВыплатыКонтекстноеМеню" id="197"/>
-											<ExtendedTooltip name="ПроцентВыплатыExtendedTooltip" id="198"/>
 										</InputField>
 									</ChildItems>
 								</UsualGroup>
@@ -345,100 +278,6 @@
 			</ToolTip>
 			<ExtendedTooltip name="СтраницыРасширеннаяПодсказка" id="25"/>
 			<ChildItems>
-				<Page name="СтраницаТаблицыВыплат" id="378">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Таблица выплат</v8:content>
-						</v8:item>
-					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Страница таблицы выплат</v8:content>
-						</v8:item>
-					</ToolTip>
-					<ExtendedTooltip name="СтраницаТаблицыВыплатРасширеннаяПодсказка" id="379"/>
-					<ChildItems>
-						<Table name="ТаблицаВыплат" id="380">
-							<ReadOnly>true</ReadOnly>
-							<AutoInsertNewRow>true</AutoInsertNewRow>
-							<EnableStartDrag>true</EnableStartDrag>
-							<EnableDrag>true</EnableDrag>
-							<DataPath>Объект.ТаблицаВыплат</DataPath>
-							<CommandSet>
-								<ExcludedCommand>Copy</ExcludedCommand>
-								<ExcludedCommand>Delete</ExcludedCommand>
-								<ExcludedCommand>Add</ExcludedCommand>
-								<ExcludedCommand>Change</ExcludedCommand>
-							</CommandSet>
-							<RowFilter xsi:nil="true"/>
-							<ContextMenu name="ТаблицаВыплатКонтекстноеМеню" id="381"/>
-							<AutoCommandBar name="ТаблицаВыплатКоманднаяПанель" id="382"/>
-							<ExtendedTooltip name="ТаблицаВыплатРасширеннаяПодсказка" id="383"/>
-							<SearchStringAddition name="ТаблицаВыплатСтрокаПоиска" id="384">
-								<AdditionSource>
-									<Item>ТаблицаВыплат</Item>
-									<Type>SearchStringRepresentation</Type>
-								</AdditionSource>
-								<ContextMenu name="ТаблицаВыплатСтрокаПоискаКонтекстноеМеню" id="385"/>
-								<ExtendedTooltip name="ТаблицаВыплатСтрокаПоискаРасширеннаяПодсказка" id="386"/>
-							</SearchStringAddition>
-							<ViewStatusAddition name="ТаблицаВыплатСостояниеПросмотра" id="387">
-								<AdditionSource>
-									<Item>ТаблицаВыплат</Item>
-									<Type>ViewStatusRepresentation</Type>
-								</AdditionSource>
-								<ContextMenu name="ТаблицаВыплатСостояниеПросмотраКонтекстноеМеню" id="388"/>
-								<ExtendedTooltip name="ТаблицаВыплатСостояниеПросмотраРасширеннаяПодсказка" id="389"/>
-							</ViewStatusAddition>
-							<SearchControlAddition name="ТаблицаВыплатУправлениеПоиском" id="390">
-								<AdditionSource>
-									<Item>ТаблицаВыплат</Item>
-									<Type>SearchControl</Type>
-								</AdditionSource>
-								<ContextMenu name="ТаблицаВыплатУправлениеПоискомКонтекстноеМеню" id="391"/>
-								<ExtendedTooltip name="ТаблицаВыплатУправлениеПоискомРасширеннаяПодсказка" id="392"/>
-							</SearchControlAddition>
-							<ChildItems>
-								<LabelField name="ТаблицаВыплатНомерСтроки" id="393">
-									<DataPath>Объект.ТаблицаВыплат.LineNumber</DataPath>
-									<EditMode>EnterOnInput</EditMode>
-									<Width>4</Width>
-									<HorizontalStretch>false</HorizontalStretch>
-									<ContextMenu name="ТаблицаВыплатНомерСтрокиКонтекстноеМеню" id="394"/>
-									<ExtendedTooltip name="ТаблицаВыплатНомерСтрокиРасширеннаяПодсказка" id="395"/>
-								</LabelField>
-								<InputField name="ТаблицаВыплатНаименование" id="396">
-									<DataPath>Объект.ТаблицаВыплат.Наименование</DataPath>
-									<EditMode>EnterOnInput</EditMode>
-									<ContextMenu name="ТаблицаВыплатНаименованиеКонтекстноеМеню" id="397"/>
-									<ExtendedTooltip name="ТаблицаВыплатНаименованиеРасширеннаяПодсказка" id="398"/>
-								</InputField>
-								<InputField name="ТаблицаВыплатБанк" id="399">
-									<DataPath>Объект.ТаблицаВыплат.Банк</DataPath>
-									<EditMode>EnterOnInput</EditMode>
-									<ContextMenu name="ТаблицаВыплатБанкКонтекстноеМеню" id="400"/>
-									<ExtendedTooltip name="ТаблицаВыплатБанкРасширеннаяПодсказка" id="401"/>
-								</InputField>
-								<InputField name="ТаблицаВыплатСумма" id="402">
-									<DataPath>Объект.ТаблицаВыплат.Сумма</DataPath>
-									<EditMode>EnterOnInput</EditMode>
-									<Width>10</Width>
-									<ContextMenu name="ТаблицаВыплатСуммаКонтекстноеМеню" id="403"/>
-									<ExtendedTooltip name="ТаблицаВыплатСуммаРасширеннаяПодсказка" id="404"/>
-								</InputField>
-								<InputField name="ТаблицаВыплатСуммаОстаток" id="405">
-									<DataPath>Объект.ТаблицаВыплат.СуммаОстаток</DataPath>
-									<EditMode>EnterOnInput</EditMode>
-									<Width>10</Width>
-									<ContextMenu name="ТаблицаВыплатСуммаОстатокКонтекстноеМеню" id="406"/>
-									<ExtendedTooltip name="ТаблицаВыплатСуммаОстатокРасширеннаяПодсказка" id="407"/>
-								</InputField>
-							</ChildItems>
-						</Table>
-					</ChildItems>
-				</Page>
 				<Page name="СтраницаЗарплата" id="26">
 					<Title>
 						<v8:item>
@@ -489,7 +328,7 @@
 												<Title>
 													<v8:item>
 														<v8:lang>ru</v8:lang>
-														<v8:content>По остаткам</v8:content>
+														<v8:content>За месяц</v8:content>
 													</v8:item>
 												</Title>
 												<ExtendedTooltip name="ЗарплатаЗаполнитьПоОстаткамЗаМесяцРасширеннаяПодсказка" id="298"/>
@@ -500,7 +339,7 @@
 												<Title>
 													<v8:item>
 														<v8:lang>ru</v8:lang>
-														<v8:content>За месяц</v8:content>
+														<v8:content>По остаткам</v8:content>
 													</v8:item>
 												</Title>
 												<ExtendedTooltip name="ЗарплатаЗаполнитьПоОстаткамРасширеннаяПодсказка" id="188"/>
@@ -683,19 +522,6 @@
 									<ContextMenu name="ЗарплатаСуммаПоКассеКонтекстноеМеню" id="361"/>
 									<ExtendedTooltip name="ЗарплатаСуммаПоКассеРасширеннаяПодсказка" id="362"/>
 								</InputField>
-								<InputField name="ЗарплатаСуммаПоАвансовомуОтчету" id="363">
-									<DataPath>Объект.Зарплата.СуммаПоАвансовомуОтчету</DataPath>
-									<Title>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>АО</v8:content>
-										</v8:item>
-									</Title>
-									<EditMode>EnterOnInput</EditMode>
-									<Width>10</Width>
-									<ContextMenu name="ЗарплатаСуммаПоАвансовомуОтчетуКонтекстноеМеню" id="364"/>
-									<ExtendedTooltip name="ЗарплатаСуммаПоАвансовомуОтчетуРасширеннаяПодсказка" id="365"/>
-								</InputField>
 							</ChildItems>
 						</Table>
 					</ChildItems>
@@ -787,6 +613,100 @@
 						</Table>
 					</ChildItems>
 				</Page>
+				<Page name="СтраницаТаблицыВыплат" id="378">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Таблица выплат</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница таблицы выплат</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="СтраницаТаблицыВыплатРасширеннаяПодсказка" id="379"/>
+					<ChildItems>
+						<Table name="ТаблицаВыплат" id="380">
+							<ReadOnly>true</ReadOnly>
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<DataPath>Объект.ТаблицаВыплат</DataPath>
+							<CommandSet>
+								<ExcludedCommand>Copy</ExcludedCommand>
+								<ExcludedCommand>Delete</ExcludedCommand>
+								<ExcludedCommand>Add</ExcludedCommand>
+								<ExcludedCommand>Change</ExcludedCommand>
+							</CommandSet>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="ТаблицаВыплатКонтекстноеМеню" id="381"/>
+							<AutoCommandBar name="ТаблицаВыплатКоманднаяПанель" id="382"/>
+							<ExtendedTooltip name="ТаблицаВыплатРасширеннаяПодсказка" id="383"/>
+							<SearchStringAddition name="ТаблицаВыплатСтрокаПоиска" id="384">
+								<AdditionSource>
+									<Item>ТаблицаВыплат</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ТаблицаВыплатСтрокаПоискаКонтекстноеМеню" id="385"/>
+								<ExtendedTooltip name="ТаблицаВыплатСтрокаПоискаРасширеннаяПодсказка" id="386"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="ТаблицаВыплатСостояниеПросмотра" id="387">
+								<AdditionSource>
+									<Item>ТаблицаВыплат</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ТаблицаВыплатСостояниеПросмотраКонтекстноеМеню" id="388"/>
+								<ExtendedTooltip name="ТаблицаВыплатСостояниеПросмотраРасширеннаяПодсказка" id="389"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="ТаблицаВыплатУправлениеПоиском" id="390">
+								<AdditionSource>
+									<Item>ТаблицаВыплат</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="ТаблицаВыплатУправлениеПоискомКонтекстноеМеню" id="391"/>
+								<ExtendedTooltip name="ТаблицаВыплатУправлениеПоискомРасширеннаяПодсказка" id="392"/>
+							</SearchControlAddition>
+							<ChildItems>
+								<LabelField name="ТаблицаВыплатНомерСтроки" id="393">
+									<DataPath>Объект.ТаблицаВыплат.LineNumber</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>4</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="ТаблицаВыплатНомерСтрокиКонтекстноеМеню" id="394"/>
+									<ExtendedTooltip name="ТаблицаВыплатНомерСтрокиРасширеннаяПодсказка" id="395"/>
+								</LabelField>
+								<InputField name="ТаблицаВыплатНаименование" id="396">
+									<DataPath>Объект.ТаблицаВыплат.Наименование</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ТаблицаВыплатНаименованиеКонтекстноеМеню" id="397"/>
+									<ExtendedTooltip name="ТаблицаВыплатНаименованиеРасширеннаяПодсказка" id="398"/>
+								</InputField>
+								<InputField name="ТаблицаВыплатБанк" id="399">
+									<DataPath>Объект.ТаблицаВыплат.Банк</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ТаблицаВыплатБанкКонтекстноеМеню" id="400"/>
+									<ExtendedTooltip name="ТаблицаВыплатБанкРасширеннаяПодсказка" id="401"/>
+								</InputField>
+								<InputField name="ТаблицаВыплатСумма" id="402">
+									<DataPath>Объект.ТаблицаВыплат.Сумма</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>10</Width>
+									<ContextMenu name="ТаблицаВыплатСуммаКонтекстноеМеню" id="403"/>
+									<ExtendedTooltip name="ТаблицаВыплатСуммаРасширеннаяПодсказка" id="404"/>
+								</InputField>
+								<InputField name="ТаблицаВыплатСуммаОстаток" id="405">
+									<DataPath>Объект.ТаблицаВыплат.СуммаОстаток</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>10</Width>
+									<ContextMenu name="ТаблицаВыплатСуммаОстатокКонтекстноеМеню" id="406"/>
+									<ExtendedTooltip name="ТаблицаВыплатСуммаОстатокРасширеннаяПодсказка" id="407"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
 				<Page name="СтраницаДополнительно" id="110">
 					<Title>
 						<v8:item>
@@ -802,11 +722,6 @@
 					</ToolTip>
 					<ExtendedTooltip name="СтраницаДополнительноРасширеннаяПодсказка" id="111"/>
 					<ChildItems>
-						<InputField name="СтатьяДвиженияДенежныхСредств" id="220">
-							<DataPath>Объект.СтатьяДвиженияДенежныхСредств</DataPath>
-							<ContextMenu name="СтатьяДвиженияДенежныхСредствКонтекстноеМеню" id="221"/>
-							<ExtendedTooltip name="СтатьяДвиженияДенежныхСредствРасширеннаяПодсказка" id="222"/>
-						</InputField>
 						<UsualGroup name="ГруппаИнформация" id="420">
 							<Title>
 								<v8:item>
@@ -911,7 +826,35 @@
 					<BackColor>style:ИтогиФонГруппы</BackColor>
 					<ExtendedTooltip name="ГруппаИтогиРасширеннаяПодсказка" id="338"/>
 					<ChildItems>
-						<InputField name="ЗарплатаИтогРезультат" id="136">
+						<InputField name="ЗарплатаИтогПоКассе" id="437">
+							<DataPath>Объект.Зарплата.TotalСуммаПоКассе</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>К выплате</v8:content>
+								</v8:item>
+							</Title>
+							<Width>9</Width>
+							<ChoiceButton>false</ChoiceButton>
+							<ContextMenu name="ЗарплатаИтогПоКассеКонтекстноеМеню" id="438"/>
+							<ExtendedTooltip name="ЗарплатаИтогПоКассеРасширеннаяПодсказка" id="439"/>
+						</InputField>
+						<InputField name="ЗарплатаИтогПоКартСчету" id="434">
+							<DataPath>Объект.Зарплата.TotalСуммаПоКартСчету</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>К выплате</v8:content>
+								</v8:item>
+							</Title>
+							<Width>9</Width>
+							<ChoiceButton>false</ChoiceButton>
+							<ContextMenu name="ЗарплатаИтогПоКартСчетуКонтекстноеМеню" id="435"/>
+							<ExtendedTooltip name="ЗарплатаИтогПоКартСчетуРасширеннаяПодсказка" id="436"/>
+						</InputField>
+						<InputField name="ЗарплатаИтогПоБанковкомуСчету" id="136">
 							<DataPath>Объект.Зарплата.TotalСуммаПоБанковскомуСчету</DataPath>
 							<ReadOnly>true</ReadOnly>
 							<Title>
@@ -922,8 +865,8 @@
 							</Title>
 							<Width>9</Width>
 							<ChoiceButton>false</ChoiceButton>
-							<ContextMenu name="ЗарплатаИтогРезультатКонтекстноеМеню" id="137"/>
-							<ExtendedTooltip name="ЗарплатаИтогРезультатРасширеннаяПодсказка" id="138"/>
+							<ContextMenu name="ЗарплатаИтогПоБанковкомуСчетуКонтекстноеМеню" id="137"/>
+							<ExtendedTooltip name="ЗарплатаИтогПоБанковкомуСчетуРасширеннаяПодсказка" id="138"/>
 						</InputField>
 					</ChildItems>
 				</UsualGroup>
@@ -985,10 +928,20 @@
 				<ManualQuery>true</ManualQuery>
 				<DynamicDataRead>false</DynamicDataRead>
 				<QueryText>ВЫБРАТЬ
-	ВложенныйЗапрос.Ссылка,
-	ВложенныйЗапрос.СуммаДокумента
-ИЗ	 
-(ВЫБРАТЬ
+	АвансовыйОтчетВыплатаЗП.Ссылка КАК Ссылка,
+	СУММА(АвансовыйОтчетВыплатаЗП.Сумма) КАК Сумма
+ПОМЕСТИТЬ ВременнаяТаблицаАвансовыйОтчетВыплатаЗП
+ИЗ
+	Документ.АвансовыйОтчет.ВыплатаЗаработнойПлаты КАК АвансовыйОтчетВыплатаЗП
+ГДЕ
+	АвансовыйОтчетВыплатаЗП.Ссылка.ДокументОснование = &amp;ДокументОснование
+
+СГРУППИРОВАТЬ ПО
+	АвансовыйОтчетВыплатаЗП.Ссылка
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
 	ПлатежноеПоручениеИсходящее.Ссылка КАК Ссылка,
 	ПлатежноеПоручениеИсходящее.СуммаДокумента КАК СуммаДокумента
 ИЗ
@@ -1004,8 +957,15 @@
 ИЗ
 	Документ.РасходныйКассовыйОрдер КАК РасходныйКассовыйОрдер
 ГДЕ
-	РасходныйКассовыйОрдер.ДокументОснование = &amp;ДокументОснование) КАК ВложенныйЗапрос
-</QueryText>
+	РасходныйКассовыйОрдер.ДокументОснование = &amp;ДокументОснование
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	ВременнаяТаблицаАвансовыйОтчетВыплатаЗП.Ссылка,
+	ВременнаяТаблицаАвансовыйОтчетВыплатаЗП.Сумма
+ИЗ
+	ВременнаяТаблицаАвансовыйОтчетВыплатаЗП КАК ВременнаяТаблицаАвансовыйОтчетВыплатаЗП</QueryText>
 				<ListSettings>
 					<dcsset:filter>
 						<dcsset:viewMode>Normal</dcsset:viewMode>

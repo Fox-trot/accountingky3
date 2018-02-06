@@ -104,17 +104,6 @@
 							<ContextMenu name="СкладКонтекстноеМеню" id="105"/>
 							<ExtendedTooltip name="СкладРасширеннаяПодсказка" id="106"/>
 						</InputField>
-						<InputField name="ДокументОснование" id="123">
-							<DataPath>Объект.ДокументОснование</DataPath>
-							<DropListButton>false</DropListButton>
-							<ChoiceButton>true</ChoiceButton>
-							<ChoiceButtonRepresentation>ShowInInputField</ChoiceButtonRepresentation>
-							<ContextMenu name="ДокументОснованиеКонтекстноеМеню" id="124"/>
-							<ExtendedTooltip name="ДокументОснованиеРасширеннаяПодсказка" id="125"/>
-							<Events>
-								<Event name="OnChange">ДокументОснованиеПриИзменении</Event>
-							</Events>
-						</InputField>
 					</ChildItems>
 				</UsualGroup>
 				<UsualGroup name="ШапкаПравая" id="165">
@@ -241,6 +230,11 @@
 							<ContextMenu name="ТоварыКонтекстноеМеню" id="24"/>
 							<AutoCommandBar name="ТоварыКоманднаяПанель" id="25">
 								<ChildItems>
+									<Button name="ТоварыПоискПоШтрихкодуТовары" id="340">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.ПоискПоШтрихкодуТовары</CommandName>
+										<ExtendedTooltip name="ТоварыПоискПоШтрихкодуТоварыРасширеннаяПодсказка" id="341"/>
+									</Button>
 									<Button name="ПодборНоменклатуры" id="305">
 										<Type>CommandBarButton</Type>
 										<CommandName>Form.Command.ПодборНоменклатуры</CommandName>
@@ -274,6 +268,7 @@
 								<ExtendedTooltip name="ТоварыУправлениеПоискомРасширеннаяПодсказка" id="41"/>
 							</SearchControlAddition>
 							<Events>
+								<Event name="BeforeAddRow">ТоварыПередНачаломДобавления</Event>
 								<Event name="AfterDeleteRow">ТоварыПослеУдаления</Event>
 							</Events>
 							<ChildItems>
@@ -742,6 +737,27 @@
 				</v8:item>
 			</ToolTip>
 			<Action>ПодборНоменклатуры</Action>
+		</Command>
+		<Command name="ПоискПоШтрихкодуТовары" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Поиск по штрихкоду товары</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Поиск по штрихкоду товары</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Shortcut>F7</Shortcut>
+			<Picture>
+				<xr:Ref>CommonPicture.НовыйПоШтрихкоду</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ПоискПоШтрихкодуТовары</Action>
+			<ModifiesSavedData>true</ModifiesSavedData>
 		</Command>
 	</Commands>
 </Form>
