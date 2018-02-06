@@ -91,6 +91,23 @@
 							<DataPath>Объект.Контрагент</DataPath>
 							<ContextMenu name="КонтрагентКонтекстноеМеню" id="482"/>
 							<ExtendedTooltip name="КонтрагентРасширеннаяПодсказка" id="483"/>
+							<Events>
+								<Event name="OnChange">КонтрагентПриИзменении</Event>
+							</Events>
+						</InputField>
+						<InputField name="ДоговорКонтрагента" id="521">
+							<DataPath>Объект.ДоговорКонтрагента</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Договор</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="ДоговорКонтрагентаКонтекстноеМеню" id="522"/>
+							<ExtendedTooltip name="ДоговорКонтрагентаРасширеннаяПодсказка" id="523"/>
+							<Events>
+								<Event name="OnChange">ДоговорКонтрагентаПриИзменении</Event>
+							</Events>
 						</InputField>
 						<UsualGroup name="ГруппаСрокОтгрузка" id="519">
 							<Title>
@@ -323,6 +340,9 @@
 									<EditMode>EnterOnInput</EditMode>
 									<ContextMenu name="ПродукцияНоменклатураКонтекстноеМеню" id="455"/>
 									<ExtendedTooltip name="ПродукцияНоменклатураРасширеннаяПодсказка" id="456"/>
+									<Events>
+										<Event name="OnChange">ПродукцияНоменклатураПриИзменении</Event>
+									</Events>
 								</InputField>
 								<InputField name="ПродукцияСпецификация" id="457">
 									<DataPath>Объект.Продукция.Спецификация</DataPath>
@@ -366,9 +386,6 @@
 									<Width>10</Width>
 									<ContextMenu name="ПродукцияСуммаНДСКонтекстноеМеню" id="514"/>
 									<ExtendedTooltip name="ПродукцияСуммаНДСРасширеннаяПодсказка" id="515"/>
-									<Events>
-										<Event name="OnChange">ПродукцияСуммаНДСПриИзменении</Event>
-									</Events>
 								</InputField>
 								<InputField name="ПродукцияСуммаНСП" id="516">
 									<DataPath>Объект.Продукция.СуммаНСП</DataPath>
@@ -376,17 +393,26 @@
 									<Width>10</Width>
 									<ContextMenu name="ПродукцияСуммаНСПКонтекстноеМеню" id="517"/>
 									<ExtendedTooltip name="ПродукцияСуммаНСПРасширеннаяПодсказка" id="518"/>
-									<Events>
-										<Event name="OnChange">ПродукцияСуммаНСППриИзменении</Event>
-									</Events>
 								</InputField>
-								<InputField name="ПродукцияВсего" id="478">
-									<DataPath>Объект.Продукция.Всего</DataPath>
-									<ReadOnly>true</ReadOnly>
+								<InputField name="ПродукцияПроцентСкидкиНаценки" id="530">
+									<DataPath>Объект.Продукция.ПроцентСкидкиНаценки</DataPath>
 									<EditMode>EnterOnInput</EditMode>
 									<Width>10</Width>
-									<ContextMenu name="ПродукцияВсегоКонтекстноеМеню" id="479"/>
-									<ExtendedTooltip name="ПродукцияВсегоРасширеннаяПодсказка" id="480"/>
+									<ContextMenu name="ПродукцияПроцентСкидкиНаценкиКонтекстноеМеню" id="531"/>
+									<ExtendedTooltip name="ПродукцияПроцентСкидкиНаценкиРасширеннаяПодсказка" id="532"/>
+									<Events>
+										<Event name="OnChange">ПродукцияПроцентСкидкиНаценкиПриИзменении</Event>
+									</Events>
+								</InputField>
+								<InputField name="ПродукцияСуммаСкидки" id="533">
+									<DataPath>Объект.Продукция.СуммаСкидки</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>10</Width>
+									<ContextMenu name="ПродукцияСуммаСкидкиКонтекстноеМеню" id="534"/>
+									<ExtendedTooltip name="ПродукцияСуммаСкидкиРасширеннаяПодсказка" id="535"/>
+									<Events>
+										<Event name="OnChange">ПродукцияСуммаСкидкиПриИзменении</Event>
+									</Events>
 								</InputField>
 							</ChildItems>
 						</Table>
@@ -407,22 +433,26 @@
 					</ToolTip>
 					<ExtendedTooltip name="СтраницаДополнительноРасширеннаяПодсказка" id="107"/>
 					<ChildItems>
-						<UsualGroup name="ГруппаДанныеДляПечати" id="351">
-							<Title>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Печать</v8:content>
-								</v8:item>
-							</Title>
-							<ToolTip>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Группа данные для печати</v8:content>
-								</v8:item>
-							</ToolTip>
-							<Group>Horizontal</Group>
-							<ExtendedTooltip name="ГруппаДанныеДляПечатиРасширеннаяПодсказка" id="352"/>
-						</UsualGroup>
+						<InputField name="СтавкаНДС" id="524">
+							<DataPath>Объект.СтавкаНДС</DataPath>
+							<Width>15</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ContextMenu name="СтавкаНДСКонтекстноеМеню" id="525"/>
+							<ExtendedTooltip name="СтавкаНДСРасширеннаяПодсказка" id="526"/>
+							<Events>
+								<Event name="OnChange">СтавкаНДСПриИзменении</Event>
+							</Events>
+						</InputField>
+						<InputField name="СтавкаНСП" id="527">
+							<DataPath>Объект.СтавкаНСП</DataPath>
+							<Width>15</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ContextMenu name="СтавкаНСПКонтекстноеМеню" id="528"/>
+							<ExtendedTooltip name="СтавкаНСПРасширеннаяПодсказка" id="529"/>
+							<Events>
+								<Event name="OnChange">СтавкаНСППриИзменении</Event>
+							</Events>
+						</InputField>
 						<UsualGroup name="ГруппаИнформация" id="430">
 							<Title>
 								<v8:item>
@@ -436,7 +466,7 @@
 									<v8:content>Группа информация</v8:content>
 								</v8:item>
 							</ToolTip>
-							<Group>Horizontal</Group>
+							<Group>Vertical</Group>
 							<VerticalAlign>Bottom</VerticalAlign>
 							<Representation>None</Representation>
 							<ShowTitle>false</ShowTitle>
@@ -472,7 +502,9 @@
 											<v8:content>Автор документа</v8:content>
 										</v8:item>
 									</ToolTip>
+									<Width>35</Width>
 									<AutoMaxWidth>false</AutoMaxWidth>
+									<HorizontalStretch>false</HorizontalStretch>
 									<Border width="1">
 										<v8ui:style xsi:type="v8ui:ControlBorderType">Single</v8ui:style>
 									</Border>
@@ -527,6 +559,18 @@
 					<BackColor>style:ИтогиФонГруппы</BackColor>
 					<ExtendedTooltip name="ГруппаИтогиРасширеннаяПодсказка" id="423"/>
 					<ChildItems>
+						<InputField name="ИтогСумма" id="536">
+							<DataPath>ИтогСумма</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Сумма</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="ИтогСуммаКонтекстноеМеню" id="537"/>
+							<ExtendedTooltip name="ИтогСуммаРасширеннаяПодсказка" id="538"/>
+						</InputField>
 						<InputField name="ИтогСуммаНДС" id="504">
 							<DataPath>ИтогСуммаНДС</DataPath>
 							<ReadOnly>true</ReadOnly>
@@ -552,19 +596,6 @@
 							<Width>12</Width>
 							<ContextMenu name="ИтогСуммаНСПКонтекстноеМеню" id="508"/>
 							<ExtendedTooltip name="ИтогСуммаНСПРасширеннаяПодсказка" id="509"/>
-						</InputField>
-						<InputField name="ИтогВсего" id="510">
-							<DataPath>ИтогВсего</DataPath>
-							<ReadOnly>true</ReadOnly>
-							<Title>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Всего</v8:content>
-								</v8:item>
-							</Title>
-							<Width>10</Width>
-							<ContextMenu name="ИтогВсегоКонтекстноеМеню" id="511"/>
-							<ExtendedTooltip name="ИтогВсегоРасширеннаяПодсказка" id="512"/>
 						</InputField>
 						<LabelField name="ВалютаДокументаИтогиВсего" id="427">
 							<DataPath>Объект.ВалютаДокумента</DataPath>
@@ -613,11 +644,11 @@
 			</Title>
 			<Type/>
 		</Attribute>
-		<Attribute name="ИтогВсего" id="5">
+		<Attribute name="ИтогСумма" id="5">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Итог всего</v8:content>
+					<v8:content>Итог сумма</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -659,6 +690,17 @@
 					<v8:FractionDigits>2</v8:FractionDigits>
 					<v8:AllowedSign>Any</v8:AllowedSign>
 				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ВалютаРегламентированногоУчета" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Валюта регламентированного учета</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Валюты</v8:Type>
 			</Type>
 		</Attribute>
 	</Attributes>

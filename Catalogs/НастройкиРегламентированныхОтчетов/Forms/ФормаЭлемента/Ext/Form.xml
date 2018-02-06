@@ -19,16 +19,10 @@
 				</ToolTip>
 				<ExtendedTooltip name="ГруппаВажныеКомандыРасширеннаяПодсказка" id="152"/>
 				<ChildItems>
-					<Button name="Настройка" id="149">
+					<Button name="ФормаЗаполнить" id="155">
 						<Type>CommandBarButton</Type>
-						<CommandName>Form.Command.БазоыеНастройки</CommandName>
-						<Title>
-							<v8:item>
-								<v8:lang>ru</v8:lang>
-								<v8:content>Настройка</v8:content>
-							</v8:item>
-						</Title>
-						<ExtendedTooltip name="НастройкаРасширеннаяПодсказка" id="150"/>
+						<CommandName>Form.Command.Заполнить</CommandName>
+						<ExtendedTooltip name="ФормаЗаполнитьРасширеннаяПодсказка" id="156"/>
 					</Button>
 				</ChildItems>
 			</ButtonGroup>
@@ -49,6 +43,10 @@
 			</ButtonGroup>
 		</ChildItems>
 	</AutoCommandBar>
+	<Events>
+		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
 	<ChildItems>
 		<UsualGroup name="Шапка" id="140">
 			<Title>
@@ -78,12 +76,15 @@
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Группа</v8:content>
+							<v8:content>Группа настроек</v8:content>
 						</v8:item>
 					</Title>
 					<EditMode>EnterOnInput</EditMode>
 					<ContextMenu name="РодительКонтекстноеМеню" id="8"/>
 					<ExtendedTooltip name="РодительРасширеннаяПодсказка" id="9"/>
+					<Events>
+						<Event name="OnChange">РодительПриИзменении</Event>
+					</Events>
 				</InputField>
 			</ChildItems>
 		</UsualGroup>
@@ -95,265 +96,402 @@
 				</v8:item>
 			</Title>
 			<ExtendedTooltip name="СтраницыРасширеннаяПодсказка" id="14"/>
-			<Events>
-				<Event name="OnCurrentPageChange">СтраницыПриСменеСтраницы</Event>
-			</Events>
 			<ChildItems>
-				<Page name="ГруппаОтчет" id="15">
+				<Page name="СтраницаСтрокиОтчета" id="15">
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Отчет</v8:content>
+							<v8:content>Строки отчета</v8:content>
 						</v8:item>
 					</Title>
-					<ExtendedTooltip name="ГруппаОтчетРасширеннаяПодсказка" id="16"/>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница строки отчета</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="СтраницаСтрокиОтчетаРасширеннаяПодсказка" id="16"/>
 					<ChildItems>
-						<Table name="Отчет" id="17">
+						<Table name="СтрокиОтчета" id="17">
 							<Representation>List</Representation>
 							<AutoInsertNewRow>true</AutoInsertNewRow>
 							<EnableStartDrag>true</EnableStartDrag>
 							<EnableDrag>true</EnableDrag>
-							<DataPath>Объект.Отчет</DataPath>
+							<DataPath>Объект.СтрокиОтчета</DataPath>
 							<RowFilter xsi:nil="true"/>
-							<ContextMenu name="ОтчетКонтекстноеМеню" id="18"/>
-							<AutoCommandBar name="ОтчетКоманднаяПанель" id="19">
-								<ChildItems>
-									<Button name="НомераПроходов" id="145">
-										<Type>CommandBarButton</Type>
-										<CommandName>Form.Command.НомераПроходов</CommandName>
-										<ExtendedTooltip name="НомераПроходовРасширеннаяПодсказка" id="146"/>
-									</Button>
-								</ChildItems>
-							</AutoCommandBar>
-							<ExtendedTooltip name="ОтчетРасширеннаяПодсказка" id="20"/>
-							<SearchStringAddition name="ОтчетСтрокаПоиска" id="21">
+							<ContextMenu name="СтрокиОтчетаКонтекстноеМеню" id="18"/>
+							<AutoCommandBar name="СтрокиОтчетаКоманднаяПанель" id="19"/>
+							<ExtendedTooltip name="СтрокиОтчетаРасширеннаяПодсказка" id="20"/>
+							<SearchStringAddition name="СтрокиОтчетаСтрокаПоиска" id="21">
 								<AdditionSource>
-									<Item>Отчет</Item>
+									<Item>СтрокиОтчета</Item>
 									<Type>SearchStringRepresentation</Type>
 								</AdditionSource>
-								<ContextMenu name="ОтчетСтрокаПоискаКонтекстноеМеню" id="22"/>
-								<ExtendedTooltip name="ОтчетСтрокаПоискаРасширеннаяПодсказка" id="23"/>
+								<ContextMenu name="СтрокиОтчетаСтрокаПоискаКонтекстноеМеню" id="22"/>
+								<ExtendedTooltip name="СтрокиОтчетаСтрокаПоискаРасширеннаяПодсказка" id="23"/>
 							</SearchStringAddition>
-							<ViewStatusAddition name="ОтчетСостояниеПросмотра" id="24">
+							<ViewStatusAddition name="СтрокиОтчетаСостояниеПросмотра" id="24">
 								<AdditionSource>
-									<Item>Отчет</Item>
+									<Item>СтрокиОтчета</Item>
 									<Type>ViewStatusRepresentation</Type>
 								</AdditionSource>
-								<ContextMenu name="ОтчетСостояниеПросмотраКонтекстноеМеню" id="25"/>
-								<ExtendedTooltip name="ОтчетСостояниеПросмотраРасширеннаяПодсказка" id="26"/>
+								<ContextMenu name="СтрокиОтчетаСостояниеПросмотраКонтекстноеМеню" id="25"/>
+								<ExtendedTooltip name="СтрокиОтчетаСостояниеПросмотраРасширеннаяПодсказка" id="26"/>
 							</ViewStatusAddition>
-							<SearchControlAddition name="ОтчетУправлениеПоиском" id="27">
+							<SearchControlAddition name="СтрокиОтчетаУправлениеПоиском" id="27">
 								<AdditionSource>
-									<Item>Отчет</Item>
+									<Item>СтрокиОтчета</Item>
 									<Type>SearchControl</Type>
 								</AdditionSource>
-								<ContextMenu name="ОтчетУправлениеПоискомКонтекстноеМеню" id="28"/>
-								<ExtendedTooltip name="ОтчетУправлениеПоискомРасширеннаяПодсказка" id="29"/>
+								<ContextMenu name="СтрокиОтчетаУправлениеПоискомКонтекстноеМеню" id="28"/>
+								<ExtendedTooltip name="СтрокиОтчетаУправлениеПоискомРасширеннаяПодсказка" id="29"/>
 							</SearchControlAddition>
+							<Events>
+								<Event name="BeforeDeleteRow">СтрокиОтчетаПередУдалением</Event>
+								<Event name="OnActivateRow">СтрокиОтчетаПриАктивизацииСтроки</Event>
+								<Event name="OnStartEdit">СтрокиОтчетаПриНачалеРедактирования</Event>
+							</Events>
 							<ChildItems>
-								<LabelField name="ОтчетНомерСтроки" id="30">
-									<DataPath>Объект.Отчет.LineNumber</DataPath>
+								<InputField name="СтрокиОтчетаСтрока" id="33">
+									<DataPath>Объект.СтрокиОтчета.КодСтроки</DataPath>
 									<EditMode>EnterOnInput</EditMode>
 									<Width>4</Width>
 									<HorizontalStretch>false</HorizontalStretch>
-									<ContextMenu name="ОтчетНомерСтрокиКонтекстноеМеню" id="31"/>
-									<ExtendedTooltip name="ОтчетНомерСтрокиРасширеннаяПодсказка" id="32"/>
-								</LabelField>
-								<InputField name="ОтчетСтрока" id="33">
-									<DataPath>Объект.Отчет.Строка</DataPath>
-									<EditMode>EnterOnInput</EditMode>
-									<ContextMenu name="ОтчетСтрокаКонтекстноеМеню" id="34"/>
-									<ExtendedTooltip name="ОтчетСтрокаРасширеннаяПодсказка" id="35"/>
+									<ContextMenu name="СтрокиОтчетаСтрокаКонтекстноеМеню" id="34"/>
+									<ExtendedTooltip name="СтрокиОтчетаСтрокаРасширеннаяПодсказка" id="35"/>
 								</InputField>
-								<InputField name="ОтчетГруппа" id="36">
-									<DataPath>Объект.Отчет.Группа</DataPath>
+								<InputField name="СтрокиОтчетаГруппа" id="36">
+									<DataPath>Объект.СтрокиОтчета.Группа</DataPath>
 									<EditMode>EnterOnInput</EditMode>
-									<ContextMenu name="ОтчетГруппаКонтекстноеМеню" id="37"/>
-									<ExtendedTooltip name="ОтчетГруппаРасширеннаяПодсказка" id="38"/>
+									<ContextMenu name="СтрокиОтчетаГруппаКонтекстноеМеню" id="37"/>
+									<ExtendedTooltip name="СтрокиОтчетаГруппаРасширеннаяПодсказка" id="38"/>
 								</InputField>
-								<InputField name="ОтчетИмяКолонки" id="54">
-									<DataPath>Объект.Отчет.ИмяКолонки</DataPath>
+								<InputField name="СтрокиОтчетаНаименование" id="39">
+									<DataPath>Объект.СтрокиОтчета.НаименованиеСтроки</DataPath>
 									<EditMode>EnterOnInput</EditMode>
-									<ContextMenu name="ОтчетИмяКолонкиКонтекстноеМеню" id="55"/>
-									<ExtendedTooltip name="ОтчетИмяКолонкиРасширеннаяПодсказка" id="56"/>
+									<MultiLine>true</MultiLine>
+									<ContextMenu name="СтрокиОтчетаНаименованиеКонтекстноеМеню" id="40"/>
+									<ExtendedTooltip name="СтрокиОтчетаНаименованиеРасширеннаяПодсказка" id="41"/>
 								</InputField>
-								<ColumnGroup name="Наименования" id="138">
-									<Title>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Наименования</v8:content>
-										</v8:item>
-									</Title>
-									<ToolTip>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Наименования</v8:content>
-										</v8:item>
-									</ToolTip>
-									<ExtendedTooltip name="НаименованияРасширеннаяПодсказка" id="139"/>
-									<ChildItems>
-										<InputField name="ОтчетНаименование" id="39">
-											<DataPath>Объект.Отчет.Наименование</DataPath>
-											<EditMode>EnterOnInput</EditMode>
-											<MultiLine>true</MultiLine>
-											<ContextMenu name="ОтчетНаименованиеКонтекстноеМеню" id="40"/>
-											<ExtendedTooltip name="ОтчетНаименованиеРасширеннаяПодсказка" id="41"/>
-										</InputField>
-										<InputField name="ОтчетНаименованиеК" id="42">
-											<DataPath>Объект.Отчет.НаименованиеК</DataPath>
-											<EditMode>EnterOnInput</EditMode>
-											<MultiLine>true</MultiLine>
-											<ContextMenu name="ОтчетНаименованиеККонтекстноеМеню" id="43"/>
-											<ExtendedTooltip name="ОтчетНаименованиеКРасширеннаяПодсказка" id="44"/>
-										</InputField>
-									</ChildItems>
-								</ColumnGroup>
-								<CheckBoxField name="ОтчетЗаголовок" id="45">
-									<DataPath>Объект.Отчет.Заголовок</DataPath>
+								<InputField name="СтрокиОтчетаНаименованиеК" id="42">
+									<DataPath>Объект.СтрокиОтчета.НаименованиеСтрокиКырг</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<MultiLine>true</MultiLine>
+									<ContextMenu name="СтрокиОтчетаНаименованиеККонтекстноеМеню" id="43"/>
+									<ExtendedTooltip name="СтрокиОтчетаНаименованиеКРасширеннаяПодсказка" id="44"/>
+								</InputField>
+								<CheckBoxField name="СтрокиОтчетаЗаголовок" id="45">
+									<DataPath>Объект.СтрокиОтчета.ЭтоЗаголовок</DataPath>
 									<EditMode>EnterOnInput</EditMode>
 									<CheckBoxType>Auto</CheckBoxType>
-									<ContextMenu name="ОтчетЗаголовокКонтекстноеМеню" id="46"/>
-									<ExtendedTooltip name="ОтчетЗаголовокРасширеннаяПодсказка" id="47"/>
+									<ContextMenu name="СтрокиОтчетаЗаголовокКонтекстноеМеню" id="46"/>
+									<ExtendedTooltip name="СтрокиОтчетаЗаголовокРасширеннаяПодсказка" id="47"/>
 								</CheckBoxField>
-								<InputField name="ОтчетЗнакГруппы" id="48">
-									<DataPath>Объект.Отчет.ЗнакГруппы</DataPath>
+								<InputField name="СтрокиОтчетаЗнакГруппы" id="48">
+									<DataPath>Объект.СтрокиОтчета.ЗнакГруппы</DataPath>
 									<EditMode>EnterOnInput</EditMode>
-									<ContextMenu name="ОтчетЗнакГруппыКонтекстноеМеню" id="49"/>
-									<ExtendedTooltip name="ОтчетЗнакГруппыРасширеннаяПодсказка" id="50"/>
-								</InputField>
-								<InputField name="ОтчетПроход" id="51">
-									<DataPath>Объект.Отчет.Проход</DataPath>
-									<Title>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>№ прохода</v8:content>
-										</v8:item>
-									</Title>
-									<EditMode>EnterOnInput</EditMode>
-									<ContextMenu name="ОтчетПроходКонтекстноеМеню" id="52"/>
-									<ExtendedTooltip name="ОтчетПроходРасширеннаяПодсказка" id="53"/>
+									<ContextMenu name="СтрокиОтчетаЗнакГруппыКонтекстноеМеню" id="49"/>
+									<ExtendedTooltip name="СтрокиОтчетаЗнакГруппыРасширеннаяПодсказка" id="50"/>
 								</InputField>
 							</ChildItems>
 						</Table>
 					</ChildItems>
 				</Page>
-				<Page name="ГруппаНастройки" id="57">
+				<Page name="СтраницаНастройкиСтрок" id="57">
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Настройки</v8:content>
+							<v8:content>Настройки строк</v8:content>
 						</v8:item>
 					</Title>
-					<ExtendedTooltip name="ГруппаНастройкиРасширеннаяПодсказка" id="58"/>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница настройки строк</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="СтраницаНастройкиСтрокРасширеннаяПодсказка" id="58"/>
 					<ChildItems>
-						<CheckBoxField name="ВсеНастройки" id="142">
-							<DataPath>ВсеНастройки</DataPath>
-							<CheckBoxType>Auto</CheckBoxType>
-							<ContextMenu name="ВсеНастройкиКонтекстноеМеню" id="143"/>
-							<ExtendedTooltip name="ВсеНастройкиРасширеннаяПодсказка" id="144"/>
-							<Events>
-								<Event name="OnChange">ВсеНастройкиПриИзменении</Event>
-							</Events>
-						</CheckBoxField>
-						<Table name="Настройки" id="59">
+						<Table name="НастройкиСтрок" id="59">
 							<Representation>List</Representation>
 							<AutoInsertNewRow>true</AutoInsertNewRow>
 							<EnableStartDrag>true</EnableStartDrag>
 							<EnableDrag>true</EnableDrag>
-							<DataPath>Объект.Настройки</DataPath>
+							<DataPath>Объект.НастройкиСтрок</DataPath>
 							<RowFilter xsi:nil="true"/>
-							<ContextMenu name="НастройкиКонтекстноеМеню" id="60"/>
-							<AutoCommandBar name="НастройкиКоманднаяПанель" id="61"/>
-							<ExtendedTooltip name="НастройкиРасширеннаяПодсказка" id="62"/>
-							<SearchStringAddition name="НастройкиСтрокаПоиска" id="63">
+							<ContextMenu name="НастройкиСтрокКонтекстноеМеню" id="60"/>
+							<AutoCommandBar name="НастройкиСтрокКоманднаяПанель" id="61"/>
+							<ExtendedTooltip name="НастройкиСтрокРасширеннаяПодсказка" id="62"/>
+							<SearchStringAddition name="НастройкиСтрокСтрокаПоиска" id="63">
 								<AdditionSource>
-									<Item>Настройки</Item>
+									<Item>НастройкиСтрок</Item>
 									<Type>SearchStringRepresentation</Type>
 								</AdditionSource>
-								<ContextMenu name="НастройкиСтрокаПоискаКонтекстноеМеню" id="64"/>
-								<ExtendedTooltip name="НастройкиСтрокаПоискаРасширеннаяПодсказка" id="65"/>
+								<ContextMenu name="НастройкиСтрокСтрокаПоискаКонтекстноеМеню" id="64"/>
+								<ExtendedTooltip name="НастройкиСтрокСтрокаПоискаРасширеннаяПодсказка" id="65"/>
 							</SearchStringAddition>
-							<ViewStatusAddition name="НастройкиСостояниеПросмотра" id="66">
+							<ViewStatusAddition name="НастройкиСтрокСостояниеПросмотра" id="66">
 								<AdditionSource>
-									<Item>Настройки</Item>
+									<Item>НастройкиСтрок</Item>
 									<Type>ViewStatusRepresentation</Type>
 								</AdditionSource>
-								<ContextMenu name="НастройкиСостояниеПросмотраКонтекстноеМеню" id="67"/>
-								<ExtendedTooltip name="НастройкиСостояниеПросмотраРасширеннаяПодсказка" id="68"/>
+								<ContextMenu name="НастройкиСтрокСостояниеПросмотраКонтекстноеМеню" id="67"/>
+								<ExtendedTooltip name="НастройкиСтрокСостояниеПросмотраРасширеннаяПодсказка" id="68"/>
 							</ViewStatusAddition>
-							<SearchControlAddition name="НастройкиУправлениеПоиском" id="69">
+							<SearchControlAddition name="НастройкиСтрокУправлениеПоиском" id="69">
 								<AdditionSource>
-									<Item>Настройки</Item>
+									<Item>НастройкиСтрок</Item>
 									<Type>SearchControl</Type>
 								</AdditionSource>
-								<ContextMenu name="НастройкиУправлениеПоискомКонтекстноеМеню" id="70"/>
-								<ExtendedTooltip name="НастройкиУправлениеПоискомРасширеннаяПодсказка" id="71"/>
+								<ContextMenu name="НастройкиСтрокУправлениеПоискомКонтекстноеМеню" id="70"/>
+								<ExtendedTooltip name="НастройкиСтрокУправлениеПоискомРасширеннаяПодсказка" id="71"/>
 							</SearchControlAddition>
+							<Events>
+								<Event name="BeforeAddRow">НастройкиСтрокПередНачаломДобавления</Event>
+								<Event name="OnStartEdit">НастройкиСтрокПриНачалеРедактирования</Event>
+							</Events>
 							<ChildItems>
-								<InputField name="НастройкиИмяКолонки" id="96">
-									<DataPath>Объект.Настройки.ИмяКолонки</DataPath>
-									<EditMode>EnterOnInput</EditMode>
-									<ContextMenu name="НастройкиИмяКолонкиКонтекстноеМеню" id="97"/>
-									<ExtendedTooltip name="НастройкиИмяКолонкиРасширеннаяПодсказка" id="98"/>
-								</InputField>
-								<LabelField name="НастройкиНомерСтроки" id="72">
-									<DataPath>Объект.Настройки.LineNumber</DataPath>
+								<InputField name="НастройкиСтрокКодСтроки" id="75">
+									<DataPath>Объект.НастройкиСтрок.КодСтроки</DataPath>
+									<ReadOnly>true</ReadOnly>
 									<EditMode>EnterOnInput</EditMode>
 									<Width>4</Width>
 									<HorizontalStretch>false</HorizontalStretch>
-									<ContextMenu name="НастройкиНомерСтрокиКонтекстноеМеню" id="73"/>
-									<ExtendedTooltip name="НастройкиНомерСтрокиРасширеннаяПодсказка" id="74"/>
-								</LabelField>
-								<InputField name="НастройкиСтрока" id="75">
-									<DataPath>Объект.Настройки.Строка</DataPath>
-									<EditMode>EnterOnInput</EditMode>
-									<ContextMenu name="НастройкиСтрокаКонтекстноеМеню" id="76"/>
-									<ExtendedTooltip name="НастройкиСтрокаРасширеннаяПодсказка" id="77"/>
+									<ContextMenu name="НастройкиСтрокКодСтрокиКонтекстноеМеню" id="76"/>
+									<ExtendedTooltip name="НастройкиСтрокКодСтрокиРасширеннаяПодсказка" id="77"/>
 								</InputField>
-								<InputField name="НастройкиСчет" id="78">
-									<DataPath>Объект.Настройки.Счет</DataPath>
+								<InputField name="НастройкиСтрокСчетУчета" id="78">
+									<DataPath>Объект.НастройкиСтрок.СчетУчета</DataPath>
 									<EditMode>EnterOnInput</EditMode>
 									<Width>8</Width>
 									<HorizontalStretch>false</HorizontalStretch>
-									<ContextMenu name="НастройкиСчетКонтекстноеМеню" id="79"/>
-									<ExtendedTooltip name="НастройкиСчетРасширеннаяПодсказка" id="80"/>
+									<ContextMenu name="НастройкиСтрокСчетУчетаКонтекстноеМеню" id="79"/>
+									<ExtendedTooltip name="НастройкиСтрокСчетУчетаРасширеннаяПодсказка" id="80"/>
 								</InputField>
-								<InputField name="НастройкиДебет" id="81">
-									<DataPath>Объект.Настройки.Дебет</DataPath>
+								<InputField name="НастройкиСтрокФормула" id="87">
+									<DataPath>Объект.НастройкиСтрок.Формула</DataPath>
 									<EditMode>EnterOnInput</EditMode>
-									<Width>8</Width>
-									<HorizontalStretch>false</HorizontalStretch>
-									<ContextMenu name="НастройкиДебетКонтекстноеМеню" id="82"/>
-									<ExtendedTooltip name="НастройкиДебетРасширеннаяПодсказка" id="83"/>
+									<ContextMenu name="НастройкиСтрокФормулаКонтекстноеМеню" id="88"/>
+									<ExtendedTooltip name="НастройкиСтрокФормулаРасширеннаяПодсказка" id="89"/>
+									<Events>
+										<Event name="StartChoice">НастройкиСтрокФормулаНачалоВыбора</Event>
+									</Events>
 								</InputField>
-								<InputField name="НастройкиКредит" id="84">
-									<DataPath>Объект.Настройки.Кредит</DataPath>
+								<InputField name="НастройкиСтрокЗнак" id="90">
+									<DataPath>Объект.НастройкиСтрок.Знак</DataPath>
 									<EditMode>EnterOnInput</EditMode>
-									<Width>8</Width>
-									<HorizontalStretch>false</HorizontalStretch>
-									<ContextMenu name="НастройкиКредитКонтекстноеМеню" id="85"/>
-									<ExtendedTooltip name="НастройкиКредитРасширеннаяПодсказка" id="86"/>
-								</InputField>
-								<InputField name="НастройкиФормула" id="87">
-									<DataPath>Объект.Настройки.Формула</DataPath>
-									<EditMode>EnterOnInput</EditMode>
-									<ContextMenu name="НастройкиФормулаКонтекстноеМеню" id="88"/>
-									<ExtendedTooltip name="НастройкиФормулаРасширеннаяПодсказка" id="89"/>
-								</InputField>
-								<InputField name="НастройкиЗнак" id="90">
-									<DataPath>Объект.Настройки.Знак</DataPath>
-									<EditMode>EnterOnInput</EditMode>
-									<ContextMenu name="НастройкиЗнакКонтекстноеМеню" id="91"/>
-									<ExtendedTooltip name="НастройкиЗнакРасширеннаяПодсказка" id="92"/>
-								</InputField>
-								<InputField name="НастройкиВидКапитала" id="93">
-									<DataPath>Объект.Настройки.ВидКапитала</DataPath>
-									<EditMode>EnterOnInput</EditMode>
-									<ContextMenu name="НастройкиВидКапиталаКонтекстноеМеню" id="94"/>
-									<ExtendedTooltip name="НастройкиВидКапиталаРасширеннаяПодсказка" id="95"/>
+									<ContextMenu name="НастройкиСтрокЗнакКонтекстноеМеню" id="91"/>
+									<ExtendedTooltip name="НастройкиСтрокЗнакРасширеннаяПодсказка" id="92"/>
 								</InputField>
 							</ChildItems>
 						</Table>
+						<CheckBoxField name="ВсеСтроки" id="223">
+							<DataPath>ВсеСтроки</DataPath>
+							<TitleLocation>Right</TitleLocation>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="ВсеСтрокиКонтекстноеМеню" id="224"/>
+							<ExtendedTooltip name="ВсеСтрокиРасширеннаяПодсказка" id="225"/>
+							<Events>
+								<Event name="OnChange">ВсеСтрокиПриИзменении</Event>
+							</Events>
+						</CheckBoxField>
+					</ChildItems>
+				</Page>
+				<Page name="СтраницаНастройкиСтрокОДДС" id="157">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Настройки строк ОДДС</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница настройки строк ОДДС</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="СтраницаНастройкиСтрокОДДСРасширеннаяПодсказка" id="158"/>
+					<ChildItems>
+						<Table name="НастройкиСтрокОДДС" id="159">
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<DataPath>Объект.НастройкиСтрокОДДС</DataPath>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="НастройкиСтрокОДДСКонтекстноеМеню" id="160"/>
+							<AutoCommandBar name="НастройкиСтрокОДДСКоманднаяПанель" id="161"/>
+							<ExtendedTooltip name="НастройкиСтрокОДДСРасширеннаяПодсказка" id="162"/>
+							<SearchStringAddition name="НастройкиСтрокОДДССтрокаПоиска" id="163">
+								<AdditionSource>
+									<Item>НастройкиСтрокОДДС</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="НастройкиСтрокОДДССтрокаПоискаКонтекстноеМеню" id="164"/>
+								<ExtendedTooltip name="НастройкиСтрокОДДССтрокаПоискаРасширеннаяПодсказка" id="165"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="НастройкиСтрокОДДССостояниеПросмотра" id="166">
+								<AdditionSource>
+									<Item>НастройкиСтрокОДДС</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="НастройкиСтрокОДДССостояниеПросмотраКонтекстноеМеню" id="167"/>
+								<ExtendedTooltip name="НастройкиСтрокОДДССостояниеПросмотраРасширеннаяПодсказка" id="168"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="НастройкиСтрокОДДСУправлениеПоиском" id="169">
+								<AdditionSource>
+									<Item>НастройкиСтрокОДДС</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="НастройкиСтрокОДДСУправлениеПоискомКонтекстноеМеню" id="170"/>
+								<ExtendedTooltip name="НастройкиСтрокОДДСУправлениеПоискомРасширеннаяПодсказка" id="171"/>
+							</SearchControlAddition>
+							<Events>
+								<Event name="BeforeAddRow">НастройкиСтрокОДДСПередНачаломДобавления</Event>
+								<Event name="OnStartEdit">НастройкиСтрокОДДСПриНачалеРедактирования</Event>
+							</Events>
+							<ChildItems>
+								<InputField name="НастройкиСтрокОДДСКодСтроки" id="175">
+									<DataPath>Объект.НастройкиСтрокОДДС.КодСтроки</DataPath>
+									<ReadOnly>true</ReadOnly>
+									<EditMode>EnterOnInput</EditMode>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="НастройкиСтрокОДДСКодСтрокиКонтекстноеМеню" id="176"/>
+									<ExtendedTooltip name="НастройкиСтрокОДДСКодСтрокиРасширеннаяПодсказка" id="177"/>
+								</InputField>
+								<InputField name="НастройкиСтрокОДДССчетДт" id="178">
+									<DataPath>Объект.НастройкиСтрокОДДС.СчетДт</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="НастройкиСтрокОДДССчетДтКонтекстноеМеню" id="179"/>
+									<ExtendedTooltip name="НастройкиСтрокОДДССчетДтРасширеннаяПодсказка" id="180"/>
+								</InputField>
+								<InputField name="НастройкиСтрокОДДССчетКт" id="181">
+									<DataPath>Объект.НастройкиСтрокОДДС.СчетКт</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="НастройкиСтрокОДДССчетКтКонтекстноеМеню" id="182"/>
+									<ExtendedTooltip name="НастройкиСтрокОДДССчетКтРасширеннаяПодсказка" id="183"/>
+								</InputField>
+								<InputField name="НастройкиСтрокОДДСФормула" id="184">
+									<DataPath>Объект.НастройкиСтрокОДДС.Формула</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="НастройкиСтрокОДДСФормулаКонтекстноеМеню" id="185"/>
+									<ExtendedTooltip name="НастройкиСтрокОДДСФормулаРасширеннаяПодсказка" id="186"/>
+								</InputField>
+								<InputField name="НастройкиСтрокОДДСЗнак" id="187">
+									<DataPath>Объект.НастройкиСтрокОДДС.Знак</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="НастройкиСтрокОДДСЗнакКонтекстноеМеню" id="188"/>
+									<ExtendedTooltip name="НастройкиСтрокОДДСЗнакРасширеннаяПодсказка" id="189"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+						<CheckBoxField name="ВсеСтроки1" id="226">
+							<DataPath>ВсеСтроки</DataPath>
+							<TitleLocation>Right</TitleLocation>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="ВсеСтроки1КонтекстноеМеню" id="227"/>
+							<ExtendedTooltip name="ВсеСтроки1РасширеннаяПодсказка" id="228"/>
+							<Events>
+								<Event name="OnChange">ВсеСтрокиПриИзменении</Event>
+							</Events>
+						</CheckBoxField>
+					</ChildItems>
+				</Page>
+				<Page name="СтраницаНастройкиСтрокОИК" id="190">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Настройки строк ОИК</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница настройки строк ОИК</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="СтраницаНастройкиСтрокОИКРасширеннаяПодсказка" id="191"/>
+					<ChildItems>
+						<Table name="НастройкиСтрокОИК" id="192">
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<DataPath>Объект.НастройкиСтрокОИК</DataPath>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="НастройкиСтрокОИККонтекстноеМеню" id="193"/>
+							<AutoCommandBar name="НастройкиСтрокОИККоманднаяПанель" id="194"/>
+							<ExtendedTooltip name="НастройкиСтрокОИКРасширеннаяПодсказка" id="195"/>
+							<SearchStringAddition name="НастройкиСтрокОИКСтрокаПоиска" id="196">
+								<AdditionSource>
+									<Item>НастройкиСтрокОИК</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="НастройкиСтрокОИКСтрокаПоискаКонтекстноеМеню" id="197"/>
+								<ExtendedTooltip name="НастройкиСтрокОИКСтрокаПоискаРасширеннаяПодсказка" id="198"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="НастройкиСтрокОИКСостояниеПросмотра" id="199">
+								<AdditionSource>
+									<Item>НастройкиСтрокОИК</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="НастройкиСтрокОИКСостояниеПросмотраКонтекстноеМеню" id="200"/>
+								<ExtendedTooltip name="НастройкиСтрокОИКСостояниеПросмотраРасширеннаяПодсказка" id="201"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="НастройкиСтрокОИКУправлениеПоиском" id="202">
+								<AdditionSource>
+									<Item>НастройкиСтрокОИК</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="НастройкиСтрокОИКУправлениеПоискомКонтекстноеМеню" id="203"/>
+								<ExtendedTooltip name="НастройкиСтрокОИКУправлениеПоискомРасширеннаяПодсказка" id="204"/>
+							</SearchControlAddition>
+							<Events>
+								<Event name="BeforeAddRow">НастройкиСтрокОИКПередНачаломДобавления</Event>
+								<Event name="OnStartEdit">НастройкиСтрокОИКПриНачалеРедактирования</Event>
+							</Events>
+							<ChildItems>
+								<InputField name="НастройкиСтрокОИККодСтроки" id="208">
+									<DataPath>Объект.НастройкиСтрокОИК.КодСтроки</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="НастройкиСтрокОИККодСтрокиКонтекстноеМеню" id="209"/>
+									<ExtendedTooltip name="НастройкиСтрокОИККодСтрокиРасширеннаяПодсказка" id="210"/>
+								</InputField>
+								<InputField name="НастройкиСтрокОИКСчетУчета" id="211">
+									<DataPath>Объект.НастройкиСтрокОИК.СчетУчета</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="НастройкиСтрокОИКСчетУчетаКонтекстноеМеню" id="212"/>
+									<ExtendedTooltip name="НастройкиСтрокОИКСчетУчетаРасширеннаяПодсказка" id="213"/>
+								</InputField>
+								<InputField name="НастройкиСтрокОИКФормула" id="214">
+									<DataPath>Объект.НастройкиСтрокОИК.Формула</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="НастройкиСтрокОИКФормулаКонтекстноеМеню" id="215"/>
+									<ExtendedTooltip name="НастройкиСтрокОИКФормулаРасширеннаяПодсказка" id="216"/>
+								</InputField>
+								<InputField name="НастройкиСтрокОИКЗнак" id="217">
+									<DataPath>Объект.НастройкиСтрокОИК.Знак</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="НастройкиСтрокОИКЗнакКонтекстноеМеню" id="218"/>
+									<ExtendedTooltip name="НастройкиСтрокОИКЗнакРасширеннаяПодсказка" id="219"/>
+								</InputField>
+								<InputField name="НастройкиСтрокОИКВидКапитала" id="220">
+									<DataPath>Объект.НастройкиСтрокОИК.ВидКапитала</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="НастройкиСтрокОИКВидКапиталаКонтекстноеМеню" id="221"/>
+									<ExtendedTooltip name="НастройкиСтрокОИКВидКапиталаРасширеннаяПодсказка" id="222"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+						<CheckBoxField name="ВсеСтроки2" id="229">
+							<DataPath>ВсеСтроки</DataPath>
+							<TitleLocation>Right</TitleLocation>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="ВсеСтроки2КонтекстноеМеню" id="230"/>
+							<ExtendedTooltip name="ВсеСтроки2РасширеннаяПодсказка" id="231"/>
+							<Events>
+								<Event name="OnChange">ВсеСтрокиПриИзменении</Event>
+							</Events>
+						</CheckBoxField>
 					</ChildItems>
 				</Page>
 			</ChildItems>
@@ -367,48 +505,81 @@
 			<MainAttribute>true</MainAttribute>
 			<SavedData>true</SavedData>
 		</Attribute>
-		<Attribute name="ВсеНастройки" id="2">
+		<Attribute name="ИмяТабличнойЧасти" id="2">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Все настройки</v8:content>
+					<v8:content>Имя табличной части</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ВсеСтроки" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Все строки</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>
 		</Attribute>
+		<Attribute name="Родитель" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Родитель</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.НастройкиРегламентированныхОтчетов</v8:Type>
+			</Type>
+		</Attribute>
+		<ConditionalAppearance>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>СтрокиОтчета</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Объект.СтрокиОтчета.ЭтоЗаголовок</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ЦветФона</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:ReportHeaderBackColor</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+		</ConditionalAppearance>
 	</Attributes>
 	<Commands>
-		<Command name="НомераПроходов" id="1">
+		<Command name="Заполнить" id="3">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Номера проходов</v8:content>
+					<v8:content>Заполнить</v8:content>
 				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Номера проходов</v8:content>
+					<v8:content>Заполнить</v8:content>
 				</v8:item>
 			</ToolTip>
-			<Action>НомераПроходов</Action>
-		</Command>
-		<Command name="БазоыеНастройки" id="2">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Базоые настройки</v8:content>
-				</v8:item>
-			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Базоые настройки</v8:content>
-				</v8:item>
-			</ToolTip>
-			<Action>БазовыеНастройки</Action>
+			<Action>Заполнить</Action>
 		</Command>
 	</Commands>
 </Form>
