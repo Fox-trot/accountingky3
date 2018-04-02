@@ -3,6 +3,10 @@
 	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
 	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<Events>
+		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
 	<ChildItems>
 		<InputField name="Наименование" id="4">
 			<DataPath>Объект.Description</DataPath>
@@ -22,29 +26,46 @@
 			<ContextMenu name="ВладелецКонтекстноеМеню" id="8"/>
 			<ExtendedTooltip name="ВладелецРасширеннаяПодсказка" id="9"/>
 		</InputField>
-		<InputField name="Количество" id="10">
-			<DataPath>Объект.Количество</DataPath>
-			<EditMode>EnterOnInput</EditMode>
-			<ContextMenu name="КоличествоКонтекстноеМеню" id="11"/>
-			<ExtendedTooltip name="КоличествоРасширеннаяПодсказка" id="12"/>
-		</InputField>
-		<InputField name="Вес" id="13">
-			<DataPath>Объект.Вес</DataPath>
-			<EditMode>EnterOnInput</EditMode>
-			<ContextMenu name="ВесКонтекстноеМеню" id="14"/>
-			<ExtendedTooltip name="ВесРасширеннаяПодсказка" id="15"/>
-		</InputField>
-		<InputField name="ДатаСоздания" id="84">
-			<DataPath>Объект.ДатаСоздания</DataPath>
+		<UsualGroup name="ГруппаКоличество" id="87">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Дата</v8:content>
+					<v8:content>Группа количество</v8:content>
 				</v8:item>
 			</Title>
-			<ContextMenu name="ДатаСозданияКонтекстноеМеню" id="85"/>
-			<ExtendedTooltip name="ДатаСозданияРасширеннаяПодсказка" id="86"/>
-		</InputField>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа количество</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаКоличествоРасширеннаяПодсказка" id="88"/>
+			<ChildItems>
+				<InputField name="Количество" id="10">
+					<DataPath>Объект.Количество</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Норма расхода на</v8:content>
+						</v8:item>
+					</Title>
+					<EditMode>EnterOnInput</EditMode>
+					<Width>10</Width>
+					<ContextMenu name="КоличествоКонтекстноеМеню" id="11"/>
+					<ExtendedTooltip name="КоличествоРасширеннаяПодсказка" id="12"/>
+				</InputField>
+				<LabelField name="ВладелецЕдиницаИзмерения" id="84">
+					<DataPath>Объект.Owner.ЕдиницаИзмерения</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<Width>5</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ContextMenu name="ВладелецЕдиницаИзмеренияКонтекстноеМеню" id="85"/>
+					<ExtendedTooltip name="ВладелецЕдиницаИзмеренияРасширеннаяПодсказка" id="86"/>
+				</LabelField>
+			</ChildItems>
+		</UsualGroup>
 		<Pages name="Страницы" id="19">
 			<Title>
 				<v8:item>
@@ -63,57 +84,88 @@
 					</Title>
 					<ExtendedTooltip name="ГруппаМатериалыРасширеннаяПодсказка" id="22"/>
 					<ChildItems>
-						<Table name="Материалы" id="23">
+						<Table name="ИсходныеКомплектующие" id="23">
 							<Representation>List</Representation>
 							<AutoInsertNewRow>true</AutoInsertNewRow>
 							<EnableStartDrag>true</EnableStartDrag>
 							<EnableDrag>true</EnableDrag>
-							<DataPath>Объект.Материалы</DataPath>
+							<DataPath>Объект.ИсходныеКомплектующие</DataPath>
 							<RowFilter xsi:nil="true"/>
-							<ContextMenu name="МатериалыКонтекстноеМеню" id="24"/>
-							<AutoCommandBar name="МатериалыКоманднаяПанель" id="25"/>
-							<ExtendedTooltip name="МатериалыРасширеннаяПодсказка" id="26"/>
-							<SearchStringAddition name="МатериалыСтрокаПоиска" id="27">
+							<ContextMenu name="ИсходныеКомплектующиеКонтекстноеМеню" id="24"/>
+							<AutoCommandBar name="ИсходныеКомплектующиеКоманднаяПанель" id="25">
+								<ChildItems>
+									<ButtonGroup name="ГруппаКопированиеСтрок" id="89">
+										<Title>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Группа копирование строк</v8:content>
+											</v8:item>
+										</Title>
+										<ToolTip>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Группа копирование строк</v8:content>
+											</v8:item>
+										</ToolTip>
+										<Representation>Compact</Representation>
+										<ExtendedTooltip name="ГруппаКопированиеСтрокРасширеннаяПодсказка" id="90"/>
+										<ChildItems>
+											<Button name="ИсходныеКомплектующиеКопироватьСтроки" id="91">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.ИсходныеКомплектующиеКопироватьСтроки</CommandName>
+												<ExtendedTooltip name="ИсходныеКомплектующиеКопироватьСтрокиРасширеннаяПодсказка" id="92"/>
+											</Button>
+											<Button name="ИсходныеКомплектующиеВставитьСтроки" id="93">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.ИсходныеКомплектующиеВставитьСтроки</CommandName>
+												<ExtendedTooltip name="ИсходныеКомплектующиеВставитьСтрокиРасширеннаяПодсказка" id="94"/>
+											</Button>
+										</ChildItems>
+									</ButtonGroup>
+								</ChildItems>
+							</AutoCommandBar>
+							<ExtendedTooltip name="ИсходныеКомплектующиеРасширеннаяПодсказка" id="26"/>
+							<SearchStringAddition name="ИсходныеКомплектующиеСтрокаПоиска" id="27">
 								<AdditionSource>
-									<Item>Материалы</Item>
+									<Item>ИсходныеКомплектующие</Item>
 									<Type>SearchStringRepresentation</Type>
 								</AdditionSource>
-								<ContextMenu name="МатериалыСтрокаПоискаКонтекстноеМеню" id="28"/>
-								<ExtendedTooltip name="МатериалыСтрокаПоискаРасширеннаяПодсказка" id="29"/>
+								<ContextMenu name="ИсходныеКомплектующиеСтрокаПоискаКонтекстноеМеню" id="28"/>
+								<ExtendedTooltip name="ИсходныеКомплектующиеСтрокаПоискаРасширеннаяПодсказка" id="29"/>
 							</SearchStringAddition>
-							<ViewStatusAddition name="МатериалыСостояниеПросмотра" id="30">
+							<ViewStatusAddition name="ИсходныеКомплектующиеСостояниеПросмотра" id="30">
 								<AdditionSource>
-									<Item>Материалы</Item>
+									<Item>ИсходныеКомплектующие</Item>
 									<Type>ViewStatusRepresentation</Type>
 								</AdditionSource>
-								<ContextMenu name="МатериалыСостояниеПросмотраКонтекстноеМеню" id="31"/>
-								<ExtendedTooltip name="МатериалыСостояниеПросмотраРасширеннаяПодсказка" id="32"/>
+								<ContextMenu name="ИсходныеКомплектующиеСостояниеПросмотраКонтекстноеМеню" id="31"/>
+								<ExtendedTooltip name="ИсходныеКомплектующиеСостояниеПросмотраРасширеннаяПодсказка" id="32"/>
 							</ViewStatusAddition>
-							<SearchControlAddition name="МатериалыУправлениеПоиском" id="33">
+							<SearchControlAddition name="ИсходныеКомплектующиеУправлениеПоиском" id="33">
 								<AdditionSource>
-									<Item>Материалы</Item>
+									<Item>ИсходныеКомплектующие</Item>
 									<Type>SearchControl</Type>
 								</AdditionSource>
-								<ContextMenu name="МатериалыУправлениеПоискомКонтекстноеМеню" id="34"/>
-								<ExtendedTooltip name="МатериалыУправлениеПоискомРасширеннаяПодсказка" id="35"/>
+								<ContextMenu name="ИсходныеКомплектующиеУправлениеПоискомКонтекстноеМеню" id="34"/>
+								<ExtendedTooltip name="ИсходныеКомплектующиеУправлениеПоискомРасширеннаяПодсказка" id="35"/>
 							</SearchControlAddition>
 							<ChildItems>
-								<LabelField name="МатериалыНомерСтроки" id="36">
-									<DataPath>Объект.Материалы.LineNumber</DataPath>
+								<LabelField name="ИсходныеКомплектующиеНомерСтроки" id="36">
+									<DataPath>Объект.ИсходныеКомплектующие.LineNumber</DataPath>
 									<EditMode>EnterOnInput</EditMode>
 									<Width>4</Width>
 									<HorizontalStretch>false</HorizontalStretch>
-									<ContextMenu name="МатериалыНомерСтрокиКонтекстноеМеню" id="37"/>
-									<ExtendedTooltip name="МатериалыНомерСтрокиРасширеннаяПодсказка" id="38"/>
+									<ContextMenu name="ИсходныеКомплектующиеНомерСтрокиКонтекстноеМеню" id="37"/>
+									<ExtendedTooltip name="ИсходныеКомплектующиеНомерСтрокиРасширеннаяПодсказка" id="38"/>
 								</LabelField>
-								<InputField name="МатериалыНоменклатура" id="39">
-									<DataPath>Объект.Материалы.Номенклатура</DataPath>
+								<InputField name="ИсходныеКомплектующиеНоменклатура" id="39">
+									<DataPath>Объект.ИсходныеКомплектующие.Номенклатура</DataPath>
 									<EditMode>EnterOnInput</EditMode>
-									<ContextMenu name="МатериалыНоменклатураКонтекстноеМеню" id="40"/>
-									<ExtendedTooltip name="МатериалыНоменклатураРасширеннаяПодсказка" id="41"/>
+									<ContextMenu name="ИсходныеКомплектующиеНоменклатураКонтекстноеМеню" id="40"/>
+									<ExtendedTooltip name="ИсходныеКомплектующиеНоменклатураРасширеннаяПодсказка" id="41"/>
 								</InputField>
-								<InputField name="МатериалыЕдиницаИзмерения" id="81">
-									<DataPath>Объект.Материалы.Номенклатура.ЕдиницаИзмерения</DataPath>
+								<InputField name="ИсходныеКомплектующиеЕдиницаИзмерения" id="81">
+									<DataPath>Объект.ИсходныеКомплектующие.Номенклатура.ЕдиницаИзмерения</DataPath>
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
@@ -123,27 +175,27 @@
 									<EditMode>EnterOnInput</EditMode>
 									<Width>6</Width>
 									<HorizontalStretch>false</HorizontalStretch>
-									<ContextMenu name="МатериалыЕдиницаИзмеренияКонтекстноеМеню" id="82"/>
-									<ExtendedTooltip name="МатериалыЕдиницаИзмеренияРасширеннаяПодсказка" id="83"/>
+									<ContextMenu name="ИсходныеКомплектующиеЕдиницаИзмеренияКонтекстноеМеню" id="82"/>
+									<ExtendedTooltip name="ИсходныеКомплектующиеЕдиницаИзмеренияРасширеннаяПодсказка" id="83"/>
 								</InputField>
-								<InputField name="МатериалыКоличество" id="42">
-									<DataPath>Объект.Материалы.Количество</DataPath>
+								<InputField name="ИсходныеКомплектующиеКоличество" id="42">
+									<DataPath>Объект.ИсходныеКомплектующие.Количество</DataPath>
 									<EditMode>EnterOnInput</EditMode>
 									<Width>10</Width>
-									<ContextMenu name="МатериалыКоличествоКонтекстноеМеню" id="43"/>
-									<ExtendedTooltip name="МатериалыКоличествоРасширеннаяПодсказка" id="44"/>
+									<ContextMenu name="ИсходныеКомплектующиеКоличествоКонтекстноеМеню" id="43"/>
+									<ExtendedTooltip name="ИсходныеКомплектующиеКоличествоРасширеннаяПодсказка" id="44"/>
 								</InputField>
-								<InputField name="МатериалыВидРаботы" id="45">
-									<DataPath>Объект.Материалы.ВидРаботы</DataPath>
+								<InputField name="ИсходныеКомплектующиеВидРаботы" id="45">
+									<DataPath>Объект.ИсходныеКомплектующие.ВидРаботы</DataPath>
 									<EditMode>EnterOnInput</EditMode>
-									<ContextMenu name="МатериалыВидРаботыКонтекстноеМеню" id="46"/>
-									<ExtendedTooltip name="МатериалыВидРаботыРасширеннаяПодсказка" id="47"/>
+									<ContextMenu name="ИсходныеКомплектующиеВидРаботыКонтекстноеМеню" id="46"/>
+									<ExtendedTooltip name="ИсходныеКомплектующиеВидРаботыРасширеннаяПодсказка" id="47"/>
 								</InputField>
-								<InputField name="МатериалыПримечание" id="48">
-									<DataPath>Объект.Материалы.Примечание</DataPath>
+								<InputField name="ИсходныеКомплектующиеПримечание" id="48">
+									<DataPath>1/0:7e491d83-8145-4dec-87e9-56e92c53262a/0:bc842cae-058b-4c39-a77c-9bf824a06e5a</DataPath>
 									<EditMode>EnterOnInput</EditMode>
-									<ContextMenu name="МатериалыПримечаниеКонтекстноеМеню" id="49"/>
-									<ExtendedTooltip name="МатериалыПримечаниеРасширеннаяПодсказка" id="50"/>
+									<ContextMenu name="ИсходныеКомплектующиеПримечаниеКонтекстноеМеню" id="49"/>
+									<ExtendedTooltip name="ИсходныеКомплектующиеПримечаниеРасширеннаяПодсказка" id="50"/>
 								</InputField>
 							</ChildItems>
 						</Table>
@@ -215,14 +267,14 @@
 									<ExtendedTooltip name="ВидыРаботКоличествоРасширеннаяПодсказка" id="74"/>
 								</InputField>
 								<InputField name="ВидыРаботСтоимость" id="75">
-									<DataPath>Объект.ВидыРабот.Стоимость</DataPath>
+									<DataPath>1/0:b9cc9eb6-d14e-4e2c-9cb5-d7c31d8d842a/0:e61aa27c-b8d5-4b49-8db3-9ebbd546d6bf</DataPath>
 									<EditMode>EnterOnInput</EditMode>
 									<Width>10</Width>
 									<ContextMenu name="ВидыРаботСтоимостьКонтекстноеМеню" id="76"/>
 									<ExtendedTooltip name="ВидыРаботСтоимостьРасширеннаяПодсказка" id="77"/>
 								</InputField>
 								<InputField name="ВидыРаботПримечание" id="78">
-									<DataPath>Объект.ВидыРабот.Примечание</DataPath>
+									<DataPath>1/0:b9cc9eb6-d14e-4e2c-9cb5-d7c31d8d842a/0:a818268f-2a66-4003-8ebf-241f85849ad6</DataPath>
 									<EditMode>EnterOnInput</EditMode>
 									<ContextMenu name="ВидыРаботПримечаниеКонтекстноеМеню" id="79"/>
 									<ExtendedTooltip name="ВидыРаботПримечаниеРасширеннаяПодсказка" id="80"/>
@@ -242,7 +294,7 @@
 			<MainAttribute>true</MainAttribute>
 			<SavedData>true</SavedData>
 			<Columns>
-				<AdditionalColumns table="Объект.Материалы">
+				<AdditionalColumns table="Объект.ИсходныеКомплектующие">
 					<Column name="ЕдиницаИзмерения" id="1">
 						<Title>
 							<v8:item>
@@ -262,4 +314,49 @@
 			</Columns>
 		</Attribute>
 	</Attributes>
+	<Commands>
+		<Command name="ИсходныеКомплектующиеКопироватьСтроки" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Копировать строки </v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Скопировать строки в буфер обмена</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Shortcut>Ctrl+Shift+C</Shortcut>
+			<Picture>
+				<xr:Ref>CommonPicture.КопированиеСтрок</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ИсходныеКомплектующиеКопироватьСтроки</Action>
+			<Representation>Picture</Representation>
+		</Command>
+		<Command name="ИсходныеКомплектующиеВставитьСтроки" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вставить строки</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вставить строки из буфера обмена</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Shortcut>Ctrl+Shift+V</Shortcut>
+			<Picture>
+				<xr:Ref>CommonPicture.ВставкаСтрок</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ИсходныеКомплектующиеВставитьСтроки</Action>
+			<Representation>Picture</Representation>
+			<ModifiesSavedData>true</ModifiesSavedData>
+		</Command>
+	</Commands>
 </Form>

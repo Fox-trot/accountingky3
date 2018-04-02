@@ -35,12 +35,6 @@
 				</ToolTip>
 				<ExtendedTooltip name="ГруппаГлобальныеКомандыРасширеннаяПодсказка" id="1226"/>
 				<ChildItems>
-					<Button name="ФормаОбщаяКомандаОтчетПоДвижениям" id="1227">
-						<Type>CommandBarButton</Type>
-						<CommandName>0:8aabb09e-5cb7-4d67-b9e8-c3eabf06a09f</CommandName>
-						<DataPath>Объект.Ref</DataPath>
-						<ExtendedTooltip name="ФормаОбщаяКомандаОтчетПоДвижениямРасширеннаяПодсказка" id="1228"/>
-					</Button>
 					<Button name="ФормаОбщаяКомандаЗапуститьМонитор" id="660">
 						<Type>CommandBarButton</Type>
 						<CommandName>CommonCommand.ЗапуститьМонитор</CommandName>
@@ -2744,7 +2738,15 @@
 							<DataPath>Объект.АвансыИДоотгрузка</DataPath>
 							<RowFilter xsi:nil="true"/>
 							<ContextMenu name="АвансыИДоотгрузкаКонтекстноеМеню" id="1468"/>
-							<AutoCommandBar name="АвансыИДоотгрузкаКоманднаяПанель" id="1469"/>
+							<AutoCommandBar name="АвансыИДоотгрузкаКоманднаяПанель" id="1469">
+								<ChildItems>
+									<Button name="АвансыИДоотгрузкаЗаполнитьАвансы" id="1501">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.ЗаполнитьАвансы</CommandName>
+										<ExtendedTooltip name="АвансыИДоотгрузкаЗаполнитьАвансыРасширеннаяПодсказка" id="1502"/>
+									</Button>
+								</ChildItems>
+							</AutoCommandBar>
 							<ExtendedTooltip name="АвансыИДоотгрузкаРасширеннаяПодсказка" id="1470"/>
 							<SearchStringAddition name="АвансыИДоотгрузкаСтрокаПоиска" id="1471">
 								<AdditionSource>
@@ -2793,6 +2795,12 @@
 								</InputField>
 								<InputField name="АвансыИДоотгрузкаСумма" id="1489">
 									<DataPath>Объект.АвансыИДоотгрузка.Сумма</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Сальдо Кт</v8:content>
+										</v8:item>
+									</Title>
 									<EditMode>EnterOnInput</EditMode>
 									<Width>10</Width>
 									<ContextMenu name="АвансыИДоотгрузкаСуммаКонтекстноеМеню" id="1490"/>
@@ -3066,6 +3074,15 @@
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>
 		</Attribute>
+		<Attribute name="ДанныеУчетнойПолитики" id="15">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Данные учетной политики</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
 		<ConditionalAppearance>
 			<dcsset:item>
 				<dcsset:selection>
@@ -3270,6 +3287,21 @@
 			</Picture>
 			<Action>ЗагрузитьДанныеИзТСД</Action>
 			<ModifiesSavedData>true</ModifiesSavedData>
+		</Command>
+		<Command name="ЗаполнитьАвансы" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполнить</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполнить авансы</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ЗаполнитьАвансы</Action>
 		</Command>
 	</Commands>
 </Form>

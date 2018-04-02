@@ -151,6 +151,34 @@
 														<CommandName>Form.Command.ПодборНоменклатуры</CommandName>
 														<ExtendedTooltip name="ТоварыПодборНоменклатурыРасширеннаяПодсказка" id="459"/>
 													</Button>
+													<ButtonGroup name="ГруппаКопированиеСтрокТовары" id="471">
+														<Title>
+															<v8:item>
+																<v8:lang>ru</v8:lang>
+																<v8:content>Группа копирование строк</v8:content>
+															</v8:item>
+														</Title>
+														<ToolTip>
+															<v8:item>
+																<v8:lang>ru</v8:lang>
+																<v8:content>Группа копирование строк</v8:content>
+															</v8:item>
+														</ToolTip>
+														<Representation>Compact</Representation>
+														<ExtendedTooltip name="ГруппаКопированиеСтрокТоварыРасширеннаяПодсказка" id="472"/>
+														<ChildItems>
+															<Button name="ТоварыКопироватьСтроки" id="473">
+																<Type>CommandBarButton</Type>
+																<CommandName>Form.Command.ТоварыКопироватьСтроки</CommandName>
+																<ExtendedTooltip name="ТоварыКопироватьСтрокиРасширеннаяПодсказка" id="474"/>
+															</Button>
+															<Button name="ТоварыВставитьСтроки" id="475">
+																<Type>CommandBarButton</Type>
+																<CommandName>Form.Command.ТоварыВставитьСтроки</CommandName>
+																<ExtendedTooltip name="ТоварыВставитьСтрокиРасширеннаяПодсказка" id="476"/>
+															</Button>
+														</ChildItems>
+													</ButtonGroup>
 												</ChildItems>
 											</AutoCommandBar>
 											<ExtendedTooltip name="ТоварыРасширеннаяПодсказка" id="368"/>
@@ -192,24 +220,15 @@
 													<EditMode>EnterOnInput</EditMode>
 													<ContextMenu name="ТоварыНоменклатураКонтекстноеМеню" id="382"/>
 													<ExtendedTooltip name="ТоварыНоменклатураРасширеннаяПодсказка" id="383"/>
-													<Events>
-														<Event name="OnChange">ТоварыНоменклатураПриИзменении</Event>
-													</Events>
 												</InputField>
-												<InputField name="ТоварыЕдиницаИзмерения" id="440">
-													<DataPath>Объект.Товары.ЕдиницаИзмерения</DataPath>
-													<Title>
-														<v8:item>
-															<v8:lang>ru</v8:lang>
-															<v8:content>ЕИ</v8:content>
-														</v8:item>
-													</Title>
+												<LabelField name="ТоварыНоменклатураЕдиницаИзмерения" id="468">
+													<DataPath>Объект.Товары.Номенклатура.ЕдиницаИзмерения</DataPath>
 													<EditMode>EnterOnInput</EditMode>
 													<Width>6</Width>
 													<HorizontalStretch>false</HorizontalStretch>
-													<ContextMenu name="ТоварыЕдиницаИзмеренияКонтекстноеМеню" id="441"/>
-													<ExtendedTooltip name="ТоварыЕдиницаИзмеренияРасширеннаяПодсказка" id="442"/>
-												</InputField>
+													<ContextMenu name="ТоварыНоменклатураЕдиницаИзмеренияКонтекстноеМеню" id="469"/>
+													<ExtendedTooltip name="ТоварыНоменклатураЕдиницаИзмеренияРасширеннаяПодсказка" id="470"/>
+												</LabelField>
 												<InputField name="ТоварыКоличество" id="384">
 													<DataPath>Объект.Товары.Количество</DataPath>
 													<EditMode>EnterOnInput</EditMode>
@@ -723,6 +742,49 @@
 				</v8:item>
 			</ToolTip>
 			<Action>ПодборНоменклатуры</Action>
+		</Command>
+		<Command name="ТоварыВставитьСтроки" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вставить строки</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вставить строки из буфера обмена</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Shortcut>Ctrl+Shift+V</Shortcut>
+			<Picture>
+				<xr:Ref>CommonPicture.ВставкаСтрок</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ТоварыВставитьСтроки</Action>
+			<Representation>Picture</Representation>
+			<ModifiesSavedData>true</ModifiesSavedData>
+		</Command>
+		<Command name="ТоварыКопироватьСтроки" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Копировать строки </v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Скопировать строки в буфер обмена</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Shortcut>Ctrl+Shift+C</Shortcut>
+			<Picture>
+				<xr:Ref>CommonPicture.КопированиеСтрок</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ТоварыКопироватьСтроки</Action>
+			<Representation>Picture</Representation>
 		</Command>
 	</Commands>
 </Form>

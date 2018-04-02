@@ -35,12 +35,6 @@
 				</ToolTip>
 				<ExtendedTooltip name="ГруппаГлобальныеКомандыРасширеннаяПодсказка" id="283"/>
 				<ChildItems>
-					<Button name="ФормаОбщаяКомандаОтчетПоДвижениям" id="431">
-						<Type>CommandBarButton</Type>
-						<CommandName>0:8aabb09e-5cb7-4d67-b9e8-c3eabf06a09f</CommandName>
-						<DataPath>Объект.Ref</DataPath>
-						<ExtendedTooltip name="ФормаОбщаяКомандаОтчетПоДвижениямРасширеннаяПодсказка" id="432"/>
-					</Button>
 					<Button name="ФормаОбщаяКомандаСтруктураПодчиненности" id="433">
 						<Type>CommandBarButton</Type>
 						<CommandName>CommonCommand.СтруктураПодчиненности</CommandName>
@@ -235,6 +229,20 @@
 								</InputField>
 							</ChildItems>
 						</UsualGroup>
+						<InputField name="ДокументОснование" id="599">
+							<DataPath>Объект.ДокументОснование</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Документ отгрузки</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="ДокументОснованиеКонтекстноеМеню" id="600"/>
+							<ExtendedTooltip name="ДокументОснованиеРасширеннаяПодсказка" id="601"/>
+							<Events>
+								<Event name="OnChange">ДокументОснованиеПриИзменении</Event>
+							</Events>
+						</InputField>
 					</ChildItems>
 				</UsualGroup>
 				<UsualGroup name="ПраваяКолонка" id="25">
@@ -426,6 +434,34 @@
 										<CommandName>Form.Command.ПодборНоменклатуры</CommandName>
 										<ExtendedTooltip name="ТоварыПодборНоменклатурыРасширеннаяПодсказка" id="440"/>
 									</Button>
+									<ButtonGroup name="ГруппаКопированиеСтрокТовары" id="590">
+										<Title>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Группа копирование строк</v8:content>
+											</v8:item>
+										</Title>
+										<ToolTip>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Группа копирование строк</v8:content>
+											</v8:item>
+										</ToolTip>
+										<Representation>Compact</Representation>
+										<ExtendedTooltip name="ГруппаКопированиеСтрокТоварыРасширеннаяПодсказка" id="591"/>
+										<ChildItems>
+											<Button name="ТоварыКопироватьСтроки" id="592">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.ТоварыКопироватьСтроки</CommandName>
+												<ExtendedTooltip name="ТоварыКопироватьСтрокиРасширеннаяПодсказка" id="593"/>
+											</Button>
+											<Button name="ТоварыВставитьСтроки" id="594">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.ТоварыВставитьСтроки</CommandName>
+												<ExtendedTooltip name="ТоварыВставитьСтрокиРасширеннаяПодсказка" id="595"/>
+											</Button>
+										</ChildItems>
+									</ButtonGroup>
 								</ChildItems>
 							</AutoCommandBar>
 							<ExtendedTooltip name="ТоварыРасширеннаяПодсказка" id="301"/>
@@ -507,8 +543,8 @@
 										<Event name="OnChange">ТоварыСуммаПриИзменении</Event>
 									</Events>
 								</InputField>
-								<InputField name="ТоварыДоход1" id="574">
-									<DataPath>Объект.Товары.Доход</DataPath>
+								<InputField name="ТоварыСуммаДохода1" id="574">
+									<DataPath>Объект.Товары.СуммаДохода</DataPath>
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
@@ -517,8 +553,8 @@
 									</Title>
 									<EditMode>EnterOnInput</EditMode>
 									<Width>10</Width>
-									<ContextMenu name="ТоварыДоход1КонтекстноеМеню" id="575"/>
-									<ExtendedTooltip name="ТоварыДоход1РасширеннаяПодсказка" id="576"/>
+									<ContextMenu name="ТоварыСуммаДохода1КонтекстноеМеню" id="575"/>
+									<ExtendedTooltip name="ТоварыСуммаДохода1РасширеннаяПодсказка" id="576"/>
 								</InputField>
 								<InputField name="ТоварыСуммаНДС" id="323">
 									<DataPath>Объект.Товары.СуммаНДС</DataPath>
@@ -570,8 +606,8 @@
 									<ContextMenu name="ТоварыВсегоКонтекстноеМеню" id="429"/>
 									<ExtendedTooltip name="ТоварыВсегоРасширеннаяПодсказка" id="430"/>
 								</InputField>
-								<InputField name="ТоварыДоход2" id="571">
-									<DataPath>Объект.Товары.Доход</DataPath>
+								<InputField name="ТоварыСуммаДохода2" id="571">
+									<DataPath>Объект.Товары.СуммаДохода</DataPath>
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
@@ -580,8 +616,15 @@
 									</Title>
 									<EditMode>EnterOnInput</EditMode>
 									<Width>10</Width>
-									<ContextMenu name="ТоварыДоход2КонтекстноеМеню" id="572"/>
-									<ExtendedTooltip name="ТоварыДоход2РасширеннаяПодсказка" id="573"/>
+									<ContextMenu name="ТоварыСуммаДохода2КонтекстноеМеню" id="572"/>
+									<ExtendedTooltip name="ТоварыСуммаДохода2РасширеннаяПодсказка" id="573"/>
+								</InputField>
+								<InputField name="ТоварыСебестоимость" id="596">
+									<DataPath>Объект.Товары.Себестоимость</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>10</Width>
+									<ContextMenu name="ТоварыСебестоимостьКонтекстноеМеню" id="597"/>
+									<ExtendedTooltip name="ТоварыСебестоимостьРасширеннаяПодсказка" id="598"/>
 								</InputField>
 								<InputField name="ТоварыСчетУчета" id="338">
 									<DataPath>Объект.Товары.СчетУчета</DataPath>
@@ -944,23 +987,43 @@
 										<Event name="StartChoice">КомментарийНачалоВыбора</Event>
 									</Events>
 								</InputField>
-								<LabelField name="АвторДокумента" id="521">
-									<DataPath>Объект.Автор</DataPath>
-									<ReadOnly>true</ReadOnly>
+								<UsualGroup name="ГруппаОснованиеАвтор" id="602">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа основание автор</v8:content>
+										</v8:item>
+									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>Автор документа</v8:content>
+											<v8:content>Группа основание автор</v8:content>
 										</v8:item>
 									</ToolTip>
-									<AutoMaxWidth>false</AutoMaxWidth>
-									<Border width="1">
-										<v8ui:style xsi:type="v8ui:ControlBorderType">Single</v8ui:style>
-									</Border>
-									<TextColor>#993300</TextColor>
-									<ContextMenu name="АвторДокументаКонтекстноеМеню" id="522"/>
-									<ExtendedTooltip name="АвторДокументаExtendedTooltip" id="523"/>
-								</LabelField>
+									<Group>Vertical</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="ГруппаОснованиеАвторРасширеннаяПодсказка" id="603"/>
+									<ChildItems>
+										<LabelField name="АвторДокумента" id="521">
+											<DataPath>Объект.Автор</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Автор документа</v8:content>
+												</v8:item>
+											</ToolTip>
+											<AutoMaxWidth>false</AutoMaxWidth>
+											<Border width="1">
+												<v8ui:style xsi:type="v8ui:ControlBorderType">Single</v8ui:style>
+											</Border>
+											<TextColor>#993300</TextColor>
+											<ContextMenu name="АвторДокументаКонтекстноеМеню" id="522"/>
+											<ExtendedTooltip name="АвторДокументаExtendedTooltip" id="523"/>
+										</LabelField>
+									</ChildItems>
+								</UsualGroup>
 							</ChildItems>
 						</UsualGroup>
 					</ChildItems>
@@ -1261,6 +1324,49 @@
 				<xr:TransparentPixel x="13" y="2"/>
 			</Picture>
 			<Action>ЗагрузитьДанныеИзТСД</Action>
+			<ModifiesSavedData>true</ModifiesSavedData>
+		</Command>
+		<Command name="ТоварыКопироватьСтроки" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Копировать строки </v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Скопировать строки в буфер обмена</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Shortcut>Ctrl+Shift+C</Shortcut>
+			<Picture>
+				<xr:Ref>CommonPicture.КопированиеСтрок</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ТоварыКопироватьСтроки</Action>
+			<Representation>Picture</Representation>
+		</Command>
+		<Command name="ТоварыВставитьСтроки" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вставить строки</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вставить строки из буфера обмена</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Shortcut>Ctrl+Shift+V</Shortcut>
+			<Picture>
+				<xr:Ref>CommonPicture.ВставкаСтрок</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ТоварыВставитьСтроки</Action>
+			<Representation>Picture</Representation>
 			<ModifiesSavedData>true</ModifiesSavedData>
 		</Command>
 	</Commands>
