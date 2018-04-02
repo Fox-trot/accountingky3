@@ -7,7 +7,7 @@ var infoBasePath = [ПараметрПутиКИнформационнойБаз
 var BaseFileName = [СтрокаПутиКФайлуИнформационнойБазы];
 var connectionString = [СтрокаСоединенияИнформационнойБазы] +';UC=РезервноеКопирование';
 var adminName = [ИмяАдминистратораОбновления];  // имя администратора, инициировавшего обновление
-var backupFileName = [КаталогРезервнойКопии]+'.zip';  // Файл резервной копии
+var backupFileName = [КаталогРезервнойКопии] + '.zip';  // Файл резервной копии
 var UseRestore = [ВосстанавливатьИнформационнуюБазу];  // Использовать восстановление ИБ в случае падения
 var createBackup = [СоздаватьРезервнуюКопию]; // создавать резервную копию
 var eventLogID = [СобытиеЖурналаРегистрации];
@@ -202,32 +202,27 @@ function initialize()
 	appendLog();
 	log(format("Файл скрипта: {0}", thisFileName));
 	log(format("Файл резервной копии: {0}", backupFileName));
-	 return 0; 
+	return 0; 
 }
 
 // Финализация
 function finalize(success) {
-	var TestFolder = oShellApplication.NameSpace(backupFileName);
-	
 	if (success == undefined)
 		success = false;
 	
-	if (!(oFileSystemObject.FileExists(backupFileName)))
-		log("Произошла ошибка при создании резервной копии ИБ. Для диагностики запустите резервное копирование вручную");
-	
-	if (TestFolder != null) {
+	if (!(oFileSystemObject.FileExists(backupFileName))) {
+		log("Не удалось создать резервную копию базы.");
+		success = false;
+	}
+	else {
 		FileArchive = oFileSystemObject.GetFile(backupFileName);
 		if (FileArchive.size / 1024 < 5) {
-			log("Произошла ошибка при создании резервной копии ИБ. Для диагностики запустите резервное копирование вручную");
+			log("Не удалось создать резервную копию базы.");
 			success = false;
 		}
 		else {
 			log("Резервная копия успешно создана");
 		}
-	}
-	if (TestFolder == null) {
-		log("Произошла ошибка при создании резервной копии ИБ. Для диагностики запустите резервное копирование вручную");
-		success = false;
 	}
 	
 	// Запись результата обновления в Event Log
@@ -321,7 +316,7 @@ function doSetResult(success)
 	var res = 0;
 	try
 	{
-		connection.РезервноеКопированиеИБСервер.ЗавершитьРезервноеКопирование(success,backupFileName);
+		connection.РезервноеКопированиеИБСервер.ЗавершитьРезервноеКопирование(success, backupFileName);
 	}
 	catch(e)
 	{
@@ -365,35 +360,40 @@ function writeEventLog(success)
 // Создание резервной копии информационной базы
 function backupDB() {
 	try {
-		var NewTextFile = oFileSystemObject.CreateTextFile(backupFileName,false);
 		
-		NewTextFile.Write(String.fromCharCode(80,75,5,6,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0));
-		NewTextFile.Close();
+		var fileDBName = BaseFileName + '1Cv8.1CD';
+		fileDB = oFileSystemObject.GetFile(fileDBName);
+		log(format("Размер файла 1Cv8.1CD: {0} Мб.", fileDB.size / 1024 / 1024));
 		
-		var ZIPFile = oFileSystemObject.GetAbsolutePathName(backupFileName);
-		var dFolder = oShellApplication.NameSpace(ZIPFile);
-		var file = oFileSystemObject.GetAbsolutePathName(BaseFileName + '1Cv8.1CD');
-		var FolderNameSpace = oFileSystemObject.GetParentFolderName(file);
-		var Folder = oShellApplication.Namespace(FolderNameSpace);
-		var FolderItemNameSpace = oFileSystemObject.GetFileName(file);
-		var FolderItem = Folder.ParseName(FolderItemNameSpace);
+		var backupPath = oFileSystemObject.GetAbsolutePathName(backupFileName);
+		if (fileDB.size / 1024 / 1024 > 2000) {
+			log("Размер файла 1Cv8.1CD превышает 2 Гб, поэтому сжатие в zip не используется.");
+			backupFileName = backupFileName.replace(".zip", "");
+			backupPath = oFileSystemObject.GetAbsolutePathName(backupFileName);
+			oFileSystemObject.CreateFolder(backupPath);
+			backupFileName = backupPath + '\\1Cv8.1CD'
+		}
+		else {	
+			var NewTextFile = oFileSystemObject.CreateTextFile(backupFileName, false);
+			NewTextFile.Write(String.fromCharCode(80,75,5,6,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0));
+			NewTextFile.Close();
+		}
+
+		var destFolder = oShellApplication.NameSpace(backupPath);
+		var sourceFilePath = oFileSystemObject.GetAbsolutePathName(fileDBName);
 		
 		if (!createBackup)
 			return 0;
 			
-		dFolder.CopyHere(file);
+		destFolder.CopyHere(sourceFilePath);
+		log("Начато создание резервной копии...");
 		
-		ret = 0;
-		log(format("Попытка создания резервной копии", ret), ret != 0);
-		
-		fileDB = oFileSystemObject.GetFile(BaseFileName + '1Cv8.1CD');
-		log(format("Размер файла 1Cv8.1CD: {0} кб.", fileDB.size));
 	}
 	catch(e) {
 		alert(e.message);
 		CollectGarbage();   // предотвращает исключение out of memory
 		log(format("Исключение при создании резервной копии базы: {0}, {1}", e.name, e.message), true);
-		ret = -1;
+		ret = 1;
 	}
 	if (ret == 0)
 		backupCreated = true;
@@ -404,6 +404,7 @@ function backupDB() {
 // Ожидать создания файла резервной копии, начатое в backupDB()
 function WaitUntilFinish()
 {
+	log(format("backupFileName: {0}", backupFileName));
 	try {
 		FileArchive = oFileSystemObject.GetFile(backupFileName);
 	}
@@ -413,26 +414,6 @@ function WaitUntilFinish()
 		return -1;
 	}
 	var nowSize = FileArchive.size;
-	
-	var ZIPFile = oFileSystemObject.GetAbsolutePathName(backupFileName);
-	var dFolder = oShellApplication.NameSpace(ZIPFile);
-	
-	if (dFolder != null) {
-		var folderItem = dFolder.ParseName('1Cv8.1CD');
-		if (folderItem != null) {
-			backupInfo0 = dFolder.GetDetailsOf(folderItem, 0); // Имя
-			backupInfo1 = dFolder.GetDetailsOf(folderItem, 1); // Тип
-			backupInfo2 = dFolder.GetDetailsOf(folderItem, 2); // Сжатый размер
-			backupInfo3 = dFolder.GetDetailsOf(folderItem, 3); // Защищен паролем
-			backupInfo4 = dFolder.GetDetailsOf(folderItem, 4); // Метод сжатия
-			backupInfo5 = dFolder.GetDetailsOf(folderItem, 5); // Размер
-			backupInfo6 = dFolder.GetDetailsOf(folderItem, 6); // Сжатие
-			backupInfo7 = dFolder.GetDetailsOf(folderItem, 7); // Дата изменения
-			
-			
-			log(format("Ожидание завершения: Имя {0}; Тип {1}; Сжатый размер {2}; Защищен паролем {3}; Метод сжатия {4}; Размер {5}; Сжатие {6}; Дата изменения {7}", backupInfo0, backupInfo1, backupInfo2, backupInfo3, backupInfo4, backupInfo5, backupInfo6, backupInfo7));
-		}
-	}
 	
 	// Файл все еще не начал создаваться, возможно выполняется интерактивное действие, ожидаем далее.
 	if (nowSize / 1024 < 5) {

@@ -11,7 +11,8 @@
 		</ChildItems>
 	</AutoCommandBar>
 	<Events>
-		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="AfterWrite">ПослеЗаписи</Event>
+		<Event name="BeforeWrite">ПередЗаписью</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 	</Events>
 	<ChildItems>
@@ -44,16 +45,44 @@
 			<Representation>NormalSeparation</Representation>
 			<ExtendedTooltip name="ГруппаНалогиРасширеннаяПодсказка" id="74"/>
 			<ChildItems>
-				<CheckBoxField name="ПлательщикНДС" id="7">
-					<DataPath>Запись.ПлательщикНДС</DataPath>
-					<TitleLocation>Right</TitleLocation>
-					<CheckBoxType>Auto</CheckBoxType>
-					<ContextMenu name="ПлательщикНДСКонтекстноеМеню" id="8"/>
-					<ExtendedTooltip name="ПлательщикНДСРасширеннаяПодсказка" id="9"/>
-					<Events>
-						<Event name="OnChange">ПлательщикНДСПриИзменении</Event>
-					</Events>
-				</CheckBoxField>
+				<UsualGroup name="ГруппаНДС" id="192">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа НДС</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа НДС</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаНДСРасширеннаяПодсказка" id="193"/>
+					<ChildItems>
+						<CheckBoxField name="ПлательщикНДС" id="7">
+							<DataPath>Запись.ПлательщикНДС</DataPath>
+							<TitleLocation>Right</TitleLocation>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="ПлательщикНДСКонтекстноеМеню" id="8"/>
+							<ExtendedTooltip name="ПлательщикНДСРасширеннаяПодсказка" id="9"/>
+							<Events>
+								<Event name="OnChange">ПлательщикНДСПриИзменении</Event>
+							</Events>
+						</CheckBoxField>
+						<CheckBoxField name="Контракт" id="194">
+							<DataPath>Запись.Контракт</DataPath>
+							<TitleLocation>Right</TitleLocation>
+							<ToolTipRepresentation>Button</ToolTipRepresentation>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="КонтрактКонтекстноеМеню" id="195"/>
+							<ExtendedTooltip name="КонтрактРасширеннаяПодсказка" id="196"/>
+						</CheckBoxField>
+					</ChildItems>
+				</UsualGroup>
 				<UsualGroup name="ГруппаНСП" id="128">
 					<Title>
 						<v8:item>
@@ -268,6 +297,88 @@
 							<ContextMenu name="ПроцентТСКонтекстноеМеню" id="190"/>
 							<ExtendedTooltip name="ПроцентТСРасширеннаяПодсказка" id="191"/>
 						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаЕН" id="197">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Единый налог</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа Единый налог</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<Behavior>Collapsible</Behavior>
+			<Collapsed>true</Collapsed>
+			<ControlRepresentation>Picture</ControlRepresentation>
+			<Representation>NormalSeparation</Representation>
+			<ExtendedTooltip name="ГруппаЕНРасширеннаяПодсказка" id="198"/>
+			<ChildItems>
+				<UsualGroup name="ГруппаВидДеятельности1" id="211">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Вид деятельности "Переработка, производство, торговля"</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа вид деятельности1</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Representation>None</Representation>
+					<ExtendedTooltip name="ГруппаВидДеятельности1РасширеннаяПодсказка" id="212"/>
+					<ChildItems>
+						<InputField name="СтавкаЕННаличнаяФорма1" id="199">
+							<DataPath>Запись.СтавкаЕННаличнаяФорма1</DataPath>
+							<ToolTipRepresentation>Button</ToolTipRepresentation>
+							<ContextMenu name="СтавкаЕННаличнаяФорма1КонтекстноеМеню" id="200"/>
+							<ExtendedTooltip name="СтавкаЕННаличнаяФорма1РасширеннаяПодсказка" id="201"/>
+						</InputField>
+						<InputField name="СтавкаЕНБезНаличнаяФорма1" id="205">
+							<DataPath>Запись.СтавкаЕНБезНаличнаяФорма1</DataPath>
+							<ToolTipRepresentation>Button</ToolTipRepresentation>
+							<ContextMenu name="СтавкаЕНБезНаличнаяФорма1КонтекстноеМеню" id="206"/>
+							<ExtendedTooltip name="СтавкаЕНБезНаличнаяФорма1РасширеннаяПодсказка" id="207"/>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаВидДеятельности2" id="213">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Вид деятельности "Прочее"</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа вид деятельности1</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Representation>None</Representation>
+					<ExtendedTooltip name="ГруппаВидДеятельности2РасширеннаяПодсказка" id="214"/>
+					<ChildItems>
+						<InputField name="СтавкаЕННаличнаяФорма2" id="202">
+							<DataPath>Запись.СтавкаЕННаличнаяФорма2</DataPath>
+							<ToolTipRepresentation>Button</ToolTipRepresentation>
+							<ContextMenu name="СтавкаЕННаличнаяФорма2КонтекстноеМеню" id="203"/>
+							<ExtendedTooltip name="СтавкаЕННаличнаяФорма2РасширеннаяПодсказка" id="204"/>
+						</InputField>
+						<InputField name="СтавкаЕНБезНаличнаяФорма2" id="208">
+							<DataPath>Запись.СтавкаЕНБезНаличнаяФорма2</DataPath>
+							<ToolTipRepresentation>Button</ToolTipRepresentation>
+							<ContextMenu name="СтавкаЕНБезНаличнаяФорма2КонтекстноеМеню" id="209"/>
+							<ExtendedTooltip name="СтавкаЕНБезНаличнаяФорма2РасширеннаяПодсказка" id="210"/>
+						</InputField>
 					</ChildItems>
 				</UsualGroup>
 			</ChildItems>

@@ -4,8 +4,8 @@
 		<name>ИнформационнаяБаза</name>
 		<dataSourceType>Local</dataSourceType>
 	</dataSource>
-	<dataSet xsi:type="DataSetQuery">
-		<name>СкладИНоменклатура</name>
+	<dataSet xsi:type="DataSetUnion">
+		<name>Данные</name>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>Счет</dataPath>
 			<field>Счет</field>
@@ -13,6 +13,7 @@
 				<dcscom:account>true</dcscom:account>
 				<dcscom:accountTypeExpression>Счет.Вид</dcscom:accountTypeExpression>
 			</role>
+			<presentationExpression>Счет.Наименование</presentationExpression>
 			<valueType>
 				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:ChartOfAccountsRef.Хозрасчетный</v8:Type>
 			</valueType>
@@ -50,6 +51,17 @@
 					<v8:AllowedSign>Any</v8:AllowedSign>
 				</v8:NumberQualifiers>
 			</valueType>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ЧЦ=15; ЧДЦ=3</v8:content>
+						</v8:item>
+					</dcscor:value>
+				</dcscor:item>
+			</appearance>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>Сумма</dataPath>
@@ -68,6 +80,17 @@
 					<v8:AllowedSign>Any</v8:AllowedSign>
 				</v8:NumberQualifiers>
 			</valueType>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ЧЦ=15; ЧДЦ=2</v8:content>
+						</v8:item>
+					</dcscor:value>
+				</dcscor:item>
+			</appearance>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>Номенклатура</dataPath>
@@ -103,28 +126,440 @@
 				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:CatalogRef.Склады</v8:Type>
 			</valueType>
 		</field>
-		<dataSource>ИнформационнаяБаза</dataSource>
-		<query>ВЫБРАТЬ
+		<item xsi:type="DataSetQuery">
+			<name>СкладИНоменклатура</name>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Счет</dataPath>
+				<field>Счет</field>
+				<role>
+					<dcscom:account>true</dcscom:account>
+					<dcscom:accountTypeExpression>Счет.Вид</dcscom:accountTypeExpression>
+				</role>
+				<presentationExpression>Счет.Наименование</presentationExpression>
+				<valueType>
+					<v8:Type xmlns:d6p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d6p1:ChartOfAccountsRef.Хозрасчетный</v8:Type>
+				</valueType>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Организация</dataPath>
+				<field>Организация</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Организация</v8:content>
+					</v8:item>
+				</title>
+				<role>
+					<dcscom:dimension>true</dcscom:dimension>
+				</role>
+				<valueType>
+					<v8:Type xmlns:d6p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d6p1:CatalogRef.Организации</v8:Type>
+				</valueType>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Количество</dataPath>
+				<field>Количество</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Количество</v8:content>
+					</v8:item>
+				</title>
+				<valueType>
+					<v8:Type>xs:decimal</v8:Type>
+					<v8:NumberQualifiers>
+						<v8:Digits>15</v8:Digits>
+						<v8:FractionDigits>3</v8:FractionDigits>
+						<v8:AllowedSign>Any</v8:AllowedSign>
+					</v8:NumberQualifiers>
+				</valueType>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Сумма</dataPath>
+				<field>Сумма</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Сумма</v8:content>
+					</v8:item>
+				</title>
+				<useRestriction>
+					<field>true</field>
+				</useRestriction>
+				<valueType>
+					<v8:Type>xs:decimal</v8:Type>
+					<v8:NumberQualifiers>
+						<v8:Digits>15</v8:Digits>
+						<v8:FractionDigits>2</v8:FractionDigits>
+						<v8:AllowedSign>Any</v8:AllowedSign>
+					</v8:NumberQualifiers>
+				</valueType>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Номенклатура</dataPath>
+				<field>Номенклатура</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Номенклатура</v8:content>
+					</v8:item>
+				</title>
+				<role>
+					<dcscom:dimension>true</dcscom:dimension>
+					<dcscom:ignoreNullValues>true</dcscom:ignoreNullValues>
+				</role>
+				<valueType>
+					<v8:Type xmlns:d6p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d6p1:CatalogRef.Номенклатура</v8:Type>
+				</valueType>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Склад</dataPath>
+				<field>Склад</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Склад</v8:content>
+					</v8:item>
+				</title>
+				<role>
+					<dcscom:dimension>true</dcscom:dimension>
+					<dcscom:ignoreNullValues>true</dcscom:ignoreNullValues>
+				</role>
+				<valueType>
+					<v8:Type xmlns:d6p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d6p1:CatalogRef.Склады</v8:Type>
+				</valueType>
+			</field>
+			<dataSource>ИнформационнаяБаза</dataSource>
+			<query>ВЫБРАТЬ
+    ХозрасчетныйОстатки_КонОст.Счет КАК Счет,
+    ХозрасчетныйОстатки_КонОст.Субконто1 КАК Номенклатура,
+    ХозрасчетныйОстатки_КонОст.СуммаОстаток КАК Сумма,
+    ХозрасчетныйОстатки_КонОст.КоличествоОстаток КАК Количество,
+    ХозрасчетныйОстатки_КонОст.Субконто2 КАК Склад,
+    ХозрасчетныйОстатки_КонОст.Организация КАК Организация
+{ВЫБРАТЬ
+    Счет.*,
+    Номенклатура.*,
+    Сумма,
+    Количество,
+    Склад.*,
+    Организация.*}
+ИЗ
+    РегистрБухгалтерии.Хозрасчетный.Остатки(&amp;КонецПериода, Счет В (&amp;СчетаУчетаСкладИНоменклатура) {(Счет).*}, &amp;СубконтоНоменклатураИСклад, {(Организация).* КАК Организация, (Субконто1).* КАК Номенклатура, (Субконто2).* КАК Склад}) КАК ХозрасчетныйОстатки_КонОст
+{ГДЕ
+    ХозрасчетныйОстатки_КонОст.СуммаОстаток КАК Сумма,
+    ХозрасчетныйОстатки_КонОст.КоличествоОстаток КАК Количество}</query>
+			<autoFillFields>false</autoFillFields>
+		</item>
+		<item xsi:type="DataSetQuery">
+			<name>НоменклатураБезСклада</name>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Счет</dataPath>
+				<field>Счет</field>
+				<role>
+					<dcscom:account>true</dcscom:account>
+					<dcscom:accountTypeExpression>Счет.Вид</dcscom:accountTypeExpression>
+				</role>
+				<presentationExpression>Счет.Наименование</presentationExpression>
+				<valueType>
+					<v8:Type xmlns:d6p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d6p1:ChartOfAccountsRef.Хозрасчетный</v8:Type>
+				</valueType>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Организация</dataPath>
+				<field>Организация</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Организация</v8:content>
+					</v8:item>
+				</title>
+				<role>
+					<dcscom:dimension>true</dcscom:dimension>
+				</role>
+				<valueType>
+					<v8:Type xmlns:d6p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d6p1:CatalogRef.Организации</v8:Type>
+				</valueType>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Количество</dataPath>
+				<field>Количество</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Количество</v8:content>
+					</v8:item>
+				</title>
+				<valueType>
+					<v8:Type>xs:decimal</v8:Type>
+					<v8:NumberQualifiers>
+						<v8:Digits>15</v8:Digits>
+						<v8:FractionDigits>3</v8:FractionDigits>
+						<v8:AllowedSign>Any</v8:AllowedSign>
+					</v8:NumberQualifiers>
+				</valueType>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Сумма</dataPath>
+				<field>Сумма</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Сумма</v8:content>
+					</v8:item>
+				</title>
+				<useRestriction>
+					<field>true</field>
+				</useRestriction>
+				<valueType>
+					<v8:Type>xs:decimal</v8:Type>
+					<v8:NumberQualifiers>
+						<v8:Digits>15</v8:Digits>
+						<v8:FractionDigits>2</v8:FractionDigits>
+						<v8:AllowedSign>Any</v8:AllowedSign>
+					</v8:NumberQualifiers>
+				</valueType>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Номенклатура</dataPath>
+				<field>Номенклатура</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Номенклатура</v8:content>
+					</v8:item>
+				</title>
+				<role>
+					<dcscom:dimension>true</dcscom:dimension>
+					<dcscom:ignoreNullValues>true</dcscom:ignoreNullValues>
+				</role>
+				<valueType>
+					<v8:Type xmlns:d6p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d6p1:CatalogRef.Номенклатура</v8:Type>
+				</valueType>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Склад</dataPath>
+				<field>Склад</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Склад</v8:content>
+					</v8:item>
+				</title>
+				<valueType>
+					<v8:Type xmlns:d6p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d6p1:CatalogRef.Склады</v8:Type>
+				</valueType>
+			</field>
+			<dataSource>ИнформационнаяБаза</dataSource>
+			<query>ВЫБРАТЬ
+    ХозрасчетныйОстатки_КонОст.Счет КАК Счет,
+    ХозрасчетныйОстатки_КонОст.Субконто1 КАК Номенклатура,
+    ХозрасчетныйОстатки_КонОст.СуммаОстаток КАК Сумма,
+    ХозрасчетныйОстатки_КонОст.КоличествоОстаток КАК Количество,
+    &amp;СкладПустаяСсылка КАК Склад,
+    ХозрасчетныйОстатки_КонОст.Организация КАК Организация
+{ВЫБРАТЬ
+    Счет.*,
+    Номенклатура.*,
+    Сумма,
+    Количество,
+    Склад,
+    Организация.*}
+ИЗ
+    РегистрБухгалтерии.Хозрасчетный.Остатки(&amp;КонецПериода, Счет В (&amp;СчетаУчетаНоменклатураБезСклада) {(Счет).*}, &amp;СубконтоНоменклатура, {(Организация).* КАК Организация, (Субконто1).* КАК Номенклатура}) КАК ХозрасчетныйОстатки_КонОст
+{ГДЕ
+    ХозрасчетныйОстатки_КонОст.СуммаОстаток КАК Сумма,
+    ХозрасчетныйОстатки_КонОст.КоличествоОстаток КАК Количество}</query>
+			<autoFillFields>false</autoFillFields>
+		</item>
+		<item xsi:type="DataSetQuery">
+			<name>СкладТолькоКоличествоИНоменклатура</name>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Счет</dataPath>
+				<field>Счет</field>
+				<role>
+					<dcscom:account>true</dcscom:account>
+					<dcscom:accountTypeExpression>Счет.Вид</dcscom:accountTypeExpression>
+				</role>
+				<presentationExpression>Счет.Наименование</presentationExpression>
+				<valueType>
+					<v8:Type xmlns:d6p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d6p1:ChartOfAccountsRef.Хозрасчетный</v8:Type>
+				</valueType>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Организация</dataPath>
+				<field>Организация</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Организация</v8:content>
+					</v8:item>
+				</title>
+				<role>
+					<dcscom:dimension>true</dcscom:dimension>
+				</role>
+				<valueType>
+					<v8:Type xmlns:d6p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d6p1:CatalogRef.Организации</v8:Type>
+				</valueType>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Количество</dataPath>
+				<field>Количество</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Количество</v8:content>
+					</v8:item>
+				</title>
+				<valueType>
+					<v8:Type>xs:decimal</v8:Type>
+					<v8:NumberQualifiers>
+						<v8:Digits>15</v8:Digits>
+						<v8:FractionDigits>3</v8:FractionDigits>
+						<v8:AllowedSign>Any</v8:AllowedSign>
+					</v8:NumberQualifiers>
+				</valueType>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Сумма</dataPath>
+				<field>Сумма</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Сумма</v8:content>
+					</v8:item>
+				</title>
+				<valueType>
+					<v8:Type>xs:decimal</v8:Type>
+					<v8:NumberQualifiers>
+						<v8:Digits>15</v8:Digits>
+						<v8:FractionDigits>2</v8:FractionDigits>
+						<v8:AllowedSign>Any</v8:AllowedSign>
+					</v8:NumberQualifiers>
+				</valueType>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Номенклатура</dataPath>
+				<field>Номенклатура</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Номенклатура</v8:content>
+					</v8:item>
+				</title>
+				<role>
+					<dcscom:dimension>true</dcscom:dimension>
+					<dcscom:ignoreNullValues>true</dcscom:ignoreNullValues>
+				</role>
+				<valueType>
+					<v8:Type xmlns:d6p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d6p1:CatalogRef.Номенклатура</v8:Type>
+				</valueType>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Склад</dataPath>
+				<field>Склад</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Склад</v8:content>
+					</v8:item>
+				</title>
+				<role>
+					<dcscom:dimension>true</dcscom:dimension>
+					<dcscom:ignoreNullValues>true</dcscom:ignoreNullValues>
+				</role>
+				<valueType>
+					<v8:Type xmlns:d6p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d6p1:CatalogRef.Склады</v8:Type>
+				</valueType>
+			</field>
+			<dataSource>ИнформационнаяБаза</dataSource>
+			<query>ВЫБРАТЬ
 	ХозрасчетныйОстатки_КонОст.Счет КАК Счет,
-	ХозрасчетныйОстатки_КонОст.Субконто1 КАК Номенклатура,
-	ХозрасчетныйОстатки_КонОст.СуммаОстаток КАК Сумма,
+	ХозрасчетныйОстатки_КонОст.Субконто1 КАК Субконто1,
 	ХозрасчетныйОстатки_КонОст.КоличествоОстаток КАК Количество,
-	ХозрасчетныйОстатки_КонОст.Субконто2 КАК Склад,
+	ХозрасчетныйОстатки_КонОст.Субконто2 КАК Субконто2,
 	ХозрасчетныйОстатки_КонОст.Организация КАК Организация
+ПОМЕСТИТЬ ОстаткиПоСкладам
+{ВЫБРАТЬ
+	Счет.*,
+	Субконто1.*,
+	Количество,
+	Субконто2.*,
+	Организация.*}
+ИЗ
+	РегистрБухгалтерии.Хозрасчетный.Остатки(&amp;КонецПериода, Счет В (&amp;СчетаУчетаСкладТолькоКоличествоИНоменклатура) {(Счет).*}, &amp;СубконтоНоменклатураИСклад, {(Организация).* КАК Организация, (Субконто1).* КАК Номенклатура, (Субконто2).* КАК Склад}) КАК ХозрасчетныйОстатки_КонОст
+{ГДЕ
+	ХозрасчетныйОстатки_КонОст.СуммаОстаток КАК Сумма,
+	ХозрасчетныйОстатки_КонОст.КоличествоОстаток КАК Количество}
+
+ИНДЕКСИРОВАТЬ ПО
+	Счет,
+	Субконто1,
+	Организация
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	ХозрасчетныйОстатки_КонОст.Счет КАК Счет,
+	ХозрасчетныйОстатки_КонОст.Субконто1 КАК Субконто1,
+	ХозрасчетныйОстатки_КонОст.Организация КАК Организация,
+	ВЫБОР
+		КОГДА ХозрасчетныйОстатки_КонОст.КоличествоОстаток &lt;&gt; 0
+			ТОГДА ХозрасчетныйОстатки_КонОст.СуммаОстаток / ХозрасчетныйОстатки_КонОст.КоличествоОстаток
+		ИНАЧЕ ХозрасчетныйОстатки_КонОст.СуммаОстаток
+	КОНЕЦ КАК СредняяЦена
+ПОМЕСТИТЬ СредниеЦеныНоменклатуры
+{ВЫБРАТЬ
+	Счет.*,
+	Субконто1.*,
+	Организация.*}
+ИЗ
+	РегистрБухгалтерии.Хозрасчетный.Остатки(&amp;КонецПериода, Счет В (&amp;СчетаУчетаСкладТолькоКоличествоИНоменклатура) {(Счет).*}, &amp;СубконтоНоменклатура, {(Организация).* КАК Организация, (Субконто1).* КАК Номенклатура}) КАК ХозрасчетныйОстатки_КонОст
+{ГДЕ
+	ХозрасчетныйОстатки_КонОст.СуммаОстаток КАК Сумма,
+	ХозрасчетныйОстатки_КонОст.КоличествоОстаток КАК Количество}
+
+ИНДЕКСИРОВАТЬ ПО
+	Счет,
+	Субконто1,
+	Организация
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	ОстаткиПоСкладам.Счет КАК Счет,
+	ОстаткиПоСкладам.Субконто1 КАК Номенклатура,
+	ОстаткиПоСкладам.Количество КАК Количество,
+	ОстаткиПоСкладам.Субконто2 КАК Склад,
+	ОстаткиПоСкладам.Организация КАК Организация,
+	ЕСТЬNULL(СредниеЦеныНоменклатуры.СредняяЦена, 0) * ОстаткиПоСкладам.Количество КАК Сумма
 {ВЫБРАТЬ
 	Счет.*,
 	Номенклатура.*,
-	Сумма,
 	Количество,
 	Склад.*,
-	Организация.*}
+	Организация.*,
+	Сумма}
 ИЗ
-	РегистрБухгалтерии.Хозрасчетный.Остатки({(&amp;Период)}, {(Счет).*}, &amp;СубконтоНоменклатураИСклад, {(Организация).* КАК Организация, (Субконто1).* КАК Номенклатура, (Субконто2).* КАК Склад}) КАК ХозрасчетныйОстатки_КонОст
-{ГДЕ
-	ХозрасчетныйОстатки_КонОст.СуммаОстаток КАК Сумма,
-	ХозрасчетныйОстатки_КонОст.КоличествоОстаток КАК Количество}</query>
-		<autoFillFields>false</autoFillFields>
+	ОстаткиПоСкладам КАК ОстаткиПоСкладам
+		ЛЕВОЕ СОЕДИНЕНИЕ СредниеЦеныНоменклатуры КАК СредниеЦеныНоменклатуры
+		ПО ОстаткиПоСкладам.Счет = СредниеЦеныНоменклатуры.Счет
+			И ОстаткиПоСкладам.Субконто1 = СредниеЦеныНоменклатуры.Субконто1
+			И ОстаткиПоСкладам.Организация = СредниеЦеныНоменклатуры.Организация
+</query>
+			<autoFillFields>false</autoFillFields>
+		</item>
 	</dataSet>
+	<calculatedField>
+		<dataPath>Сумма</dataPath>
+		<expression>ЕстьNull(Сумма,0)</expression>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Сумма</v8:content>
+			</v8:item>
+		</title>
+	</calculatedField>
 	<totalField>
 		<dataPath>Количество</dataPath>
 		<expression>Сумма(Количество)</expression>
@@ -136,39 +571,21 @@
 		<expression>Сумма(Сумма)</expression>
 	</totalField>
 	<parameter>
-		<name>Период</name>
+		<name>КонецПериода</name>
 		<title xsi:type="v8:LocalStringType">
 			<v8:item>
 				<v8:lang>ru</v8:lang>
-				<v8:content>Период</v8:content>
+				<v8:content>Конец периода</v8:content>
 			</v8:item>
 		</title>
 		<valueType>
 			<v8:Type>xs:dateTime</v8:Type>
 			<v8:DateQualifiers>
-				<v8:DateFractions>Date</v8:DateFractions>
+				<v8:DateFractions>DateTime</v8:DateFractions>
 			</v8:DateQualifiers>
 		</valueType>
 		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
-		<useRestriction>false</useRestriction>
-		<availableAsField>false</availableAsField>
-		<use>Always</use>
-	</parameter>
-	<parameter>
-		<name>ВыводитьПодписи</name>
-		<title xsi:type="v8:LocalStringType">
-			<v8:item>
-				<v8:lang>ru</v8:lang>
-				<v8:content>Выводить подписи</v8:content>
-			</v8:item>
-		</title>
-		<valueType>
-			<v8:Type>xs:boolean</v8:Type>
-		</valueType>
-		<value xsi:type="xs:boolean">true</value>
-		<useRestriction>false</useRestriction>
-		<availableAsField>false</availableAsField>
-		<use>Always</use>
+		<useRestriction>true</useRestriction>
 	</parameter>
 	<parameter>
 		<name>СубконтоНоменклатураИСклад</name>
@@ -185,7 +602,109 @@
 		<value xsi:type="dcscor:DesignTimeValue">ПланВидовХарактеристик.ВидыСубконтоХозрасчетные.Склады</value>
 		<useRestriction>true</useRestriction>
 		<valueListAllowed>true</valueListAllowed>
-		<availableAsField>false</availableAsField>
+	</parameter>
+	<parameter>
+		<name>СкладПустаяСсылка</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Склад пустая ссылка</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:CatalogRef.Склады</v8:Type>
+		</valueType>
+		<value xsi:type="dcscor:DesignTimeValue">Справочник.Склады.ПустаяСсылка</value>
+		<useRestriction>true</useRestriction>
+	</parameter>
+	<parameter>
+		<name>СубконтоНоменклатура</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Субконто номенклатура</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:ChartOfCharacteristicTypesRef.ВидыСубконтоХозрасчетные</v8:Type>
+		</valueType>
+		<value xsi:type="dcscor:DesignTimeValue">ПланВидовХарактеристик.ВидыСубконтоХозрасчетные.Номенклатура</value>
+		<useRestriction>true</useRestriction>
+	</parameter>
+	<parameter>
+		<name>СчетаУчетаСкладИНоменклатура</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Счета учета склад и номенклатура</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:ChartOfAccountsRef.Хозрасчетный</v8:Type>
+		</valueType>
+		<value xsi:nil="true"/>
+		<useRestriction>true</useRestriction>
+	</parameter>
+	<parameter>
+		<name>СчетаУчетаНоменклатураБезСклада</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Счета учета номенклатура без склада</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:ChartOfAccountsRef.Хозрасчетный</v8:Type>
+		</valueType>
+		<value xsi:nil="true"/>
+		<useRestriction>true</useRestriction>
+	</parameter>
+	<parameter>
+		<name>СчетаУчетаСкладТолькоКоличествоИНоменклатура</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Счета учета склад только количество и номенклатура</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:ChartOfAccountsRef.Хозрасчетный</v8:Type>
+		</valueType>
+		<value xsi:nil="true"/>
+		<useRestriction>true</useRestriction>
+	</parameter>
+	<parameter>
+		<name>ПериодОтчета</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Период отчета</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>v8:StandardPeriod</v8:Type>
+		</valueType>
+		<value xsi:type="v8:StandardPeriod">
+			<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+			<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+			<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+		</value>
+		<useRestriction>false</useRestriction>
+	</parameter>
+	<parameter>
+		<name>НастройкиОтчета</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Настройки отчета</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>v8:ValueStorage</v8:Type>
+		</valueType>
+		<value xsi:type="v8:ValueStorage">AQEIAAAAAAAAAO+7v3siVSJ9</value>
+		<useRestriction>false</useRestriction>
+		<use>Always</use>
 	</parameter>
 	<template>
 		<name>Макет1</name>
@@ -313,7 +832,7 @@
 						<dcsat:appearance>
 							<dcscor:item>
 								<dcscor:parameter>Формат</dcscor:parameter>
-								<dcscor:value xsi:type="xs:string">ЧДЦ=3; ЧГ=3,0</dcscor:value>
+								<dcscor:value xsi:type="xs:string">ЧЦ=15; ЧДЦ=3</dcscor:value>
 							</dcscor:item>
 						</dcsat:appearance>
 					</dcsat:item>
@@ -335,7 +854,7 @@
 						<dcsat:appearance>
 							<dcscor:item>
 								<dcscor:parameter>Формат</dcscor:parameter>
-								<dcscor:value xsi:type="xs:string">ЧДЦ=2; ЧГ=3,0</dcscor:value>
+								<dcscor:value xsi:type="xs:string">ЧЦ=15; ЧДЦ=2</dcscor:value>
 							</dcscor:item>
 						</dcsat:appearance>
 					</dcsat:item>
@@ -372,7 +891,7 @@
 		<template>Макет7</template>
 	</fieldTemplate>
 	<settingsVariant>
-		<dcsset:name>Основной</dcsset:name>
+		<dcsset:name>ОстаткиПоСкладу</dcsset:name>
 		<dcsset:presentation xsi:type="v8:LocalStringType">
 			<v8:item>
 				<v8:lang>ru</v8:lang>
@@ -384,67 +903,35 @@
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>Номенклатура.ЕдиницаИзмерения</dcsset:field>
 				</dcsset:item>
-				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>Количество</dcsset:field>
-				</dcsset:item>
-				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>Сумма</dcsset:field>
-				</dcsset:item>
-				<dcsset:viewMode>Normal</dcsset:viewMode>
-				<dcsset:userSettingID>e6d65f77-6be6-401a-85a3-a9b029073fc3</dcsset:userSettingID>
 			</dcsset:selection>
 			<dcsset:filter>
 				<dcsset:item xsi:type="dcsset:FilterItemComparison">
 					<dcsset:use>false</dcsset:use>
-					<dcsset:left xsi:type="dcscor:Field">Организация</dcsset:left>
-					<dcsset:comparisonType>Equal</dcsset:comparisonType>
-					<dcsset:viewMode>Normal</dcsset:viewMode>
-					<dcsset:userSettingID>b66c9ca0-efff-45eb-a6d6-e4ea068a0a59</dcsset:userSettingID>
-				</dcsset:item>
-				<dcsset:item xsi:type="dcsset:FilterItemComparison">
-					<dcsset:use>false</dcsset:use>
 					<dcsset:left xsi:type="dcscor:Field">Номенклатура</dcsset:left>
 					<dcsset:comparisonType>Equal</dcsset:comparisonType>
-					<dcsset:viewMode>Normal</dcsset:viewMode>
-					<dcsset:userSettingID>ac526f0e-ce9e-4ca2-b8e4-bdf9a17caa93</dcsset:userSettingID>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:FilterItemComparison">
 					<dcsset:use>false</dcsset:use>
 					<dcsset:left xsi:type="dcscor:Field">Склад</dcsset:left>
 					<dcsset:comparisonType>Equal</dcsset:comparisonType>
-					<dcsset:userSettingID>c635b42c-8442-4092-8461-27f339a2b011</dcsset:userSettingID>
 				</dcsset:item>
-				<dcsset:viewMode>Normal</dcsset:viewMode>
-				<dcsset:userSettingID>c52ea20c-162b-43d9-b9f8-fbf44bfa8434</dcsset:userSettingID>
 			</dcsset:filter>
 			<dcsset:dataParameters>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-					<dcscor:parameter>Период</dcscor:parameter>
-					<dcscor:value xsi:type="v8:StandardBeginningDate">
-						<v8:variant xsi:type="v8:StandardBeginningDateVariant">Custom</v8:variant>
-						<v8:date>0001-01-01T00:00:00</v8:date>
+					<dcscor:parameter>ПериодОтчета</dcscor:parameter>
+					<dcscor:value xsi:type="v8:StandardPeriod">
+						<v8:variant xsi:type="v8:StandardPeriodVariant">Today</v8:variant>
 					</dcscor:value>
-					<dcsset:userSettingID>377a6118-4dd4-4d25-b4a4-71034ceb671c</dcsset:userSettingID>
+					<dcsset:viewMode>Normal</dcsset:viewMode>
+					<dcsset:userSettingID>1929aa20-b038-4682-bd00-3d0e4c9c3405</dcsset:userSettingID>
 				</dcscor:item>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-					<dcscor:parameter>ВыводитьПодписи</dcscor:parameter>
-					<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
+					<dcscor:parameter>НастройкиОтчета</dcscor:parameter>
+					<dcscor:value xsi:type="v8:ValueStorage">AQEIAAAAAAAAAO+7v3siVSJ9</dcscor:value>
 					<dcsset:viewMode>Normal</dcsset:viewMode>
-					<dcsset:userSettingID>6aa5786c-2960-4530-b7a5-c251b4d47f46</dcsset:userSettingID>
+					<dcsset:userSettingID>fb49f9f8-9d76-402a-9d3b-e926b1e8b300</dcsset:userSettingID>
 				</dcscor:item>
 			</dcsset:dataParameters>
-			<dcsset:order>
-				<dcsset:item xsi:type="dcsset:OrderItemField">
-					<dcsset:field>Склад</dcsset:field>
-					<dcsset:orderType>Asc</dcsset:orderType>
-				</dcsset:item>
-				<dcsset:item xsi:type="dcsset:OrderItemField">
-					<dcsset:field>Номенклатура</dcsset:field>
-					<dcsset:orderType>Asc</dcsset:orderType>
-				</dcsset:item>
-				<dcsset:viewMode>Normal</dcsset:viewMode>
-				<dcsset:userSettingID>9e64f64b-1bd7-43b6-9ca7-1f671a90b59e</dcsset:userSettingID>
-			</dcsset:order>
 			<dcsset:conditionalAppearance>
 				<dcsset:item>
 					<dcsset:selection/>
@@ -462,14 +949,12 @@
 						</v8:item>
 					</dcsset:presentation>
 				</dcsset:item>
-				<dcsset:viewMode>Normal</dcsset:viewMode>
-				<dcsset:userSettingID>e26ab273-431d-4844-af7d-49cad56c479b</dcsset:userSettingID>
 			</dcsset:conditionalAppearance>
 			<dcsset:outputParameters>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 					<dcscor:use>false</dcscor:use>
 					<dcscor:parameter>МакетОформления</dcscor:parameter>
-					<dcscor:value xsi:type="xs:string">Основной</dcscor:value>
+					<dcscor:value xsi:type="xs:string">БезОформления</dcscor:value>
 				</dcscor:item>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 					<dcscor:parameter>РасположениеРеквизитов</dcscor:parameter>
@@ -489,7 +974,6 @@
 					</dcscor:item>
 				</dcscor:item>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-					<dcscor:use>false</dcscor:use>
 					<dcscor:parameter>ВыводитьЗаголовок</dcscor:parameter>
 					<dcscor:value xsi:type="dcsset:DataCompositionTextOutputType">DontOutput</dcscor:value>
 				</dcscor:item>
@@ -512,6 +996,7 @@
 				</dcscor:item>
 			</dcsset:outputParameters>
 			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:name>Группировка</dcsset:name>
 				<dcsset:groupItems>
 					<dcsset:item xsi:type="dcsset:GroupItemField">
 						<dcsset:field>Склад</dcsset:field>
@@ -545,8 +1030,6 @@
 					</dcsset:selection>
 				</dcsset:item>
 			</dcsset:item>
-			<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
-			<dcsset:itemsUserSettingID>4fd7ee5b-a1dd-4c22-8f63-3f0c93db57c8</dcsset:itemsUserSettingID>
 		</dcsset:settings>
 	</settingsVariant>
 </DataCompositionSchema>

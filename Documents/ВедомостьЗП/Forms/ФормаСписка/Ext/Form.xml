@@ -45,7 +45,7 @@
 						<Button name="ФормаОбработкаСозданиеРКОиППИНаОснованииВедомостиЗПОткрытьОбработкуСозданияДокументовВыплаты" id="143">
 							<Type>CommandBarButton</Type>
 							<CommandName>0:9313de45-b595-497f-9c19-8f360a64a3f9</CommandName>
-							<DataPath>Items.Список.CurrentData.Ref</DataPath>
+							<DataPath>~Items.Список.CurrentData.Ref</DataPath>
 							<Title>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
@@ -74,7 +74,7 @@
 						<Button name="ФормаОбщаяКомандаОтчетПоДвижениям" id="112">
 							<Type>CommandBarButton</Type>
 							<CommandName>0:8aabb09e-5cb7-4d67-b9e8-c3eabf06a09f</CommandName>
-							<DataPath>Items.Список.CurrentData.Ref</DataPath>
+							<DataPath>~Items.Список.CurrentData.Ref</DataPath>
 							<ExtendedTooltip name="ФормаОбщаяКомандаОтчетПоДвижениямРасширеннаяПодсказка" id="113"/>
 						</Button>
 					</ChildItems>
@@ -169,7 +169,7 @@
 							<ExtendedTooltip name="ПериодРегистрацииРасширеннаяПодсказка" id="119"/>
 						</LabelField>
 						<LabelField name="Дата" id="16">
-							<DataPath>Список.Date</DataPath>
+							<DataPath>~Список.Date</DataPath>
 							<DefaultItem>true</DefaultItem>
 							<Width>10</Width>
 							<HorizontalStretch>false</HorizontalStretch>
@@ -177,7 +177,7 @@
 							<ExtendedTooltip name="ДатаРасширеннаяПодсказка" id="18"/>
 						</LabelField>
 						<LabelField name="Номер" id="19">
-							<DataPath>Список.Number</DataPath>
+							<DataPath>~Список.Number</DataPath>
 							<Width>11</Width>
 							<HorizontalStretch>false</HorizontalStretch>
 							<ContextMenu name="НомерКонтекстноеМеню" id="20"/>
@@ -192,6 +192,16 @@
 							<DataPath>Список.Подразделение</DataPath>
 							<ContextMenu name="ПодразделениеКонтекстноеМеню" id="121"/>
 							<ExtendedTooltip name="ПодразделениеРасширеннаяПодсказка" id="122"/>
+						</LabelField>
+						<LabelField name="ВидВедомости" id="150">
+							<DataPath>Список.ВидВедомости</DataPath>
+							<ContextMenu name="ВидВедомостиКонтекстноеМеню" id="151"/>
+							<ExtendedTooltip name="ВидВедомостиРасширеннаяПодсказка" id="152"/>
+						</LabelField>
+						<LabelField name="ВидДокументаВыплаты" id="153">
+							<DataPath>Список.ВидДокументаВыплаты</DataPath>
+							<ContextMenu name="ВидДокументаВыплатыКонтекстноеМеню" id="154"/>
+							<ExtendedTooltip name="ВидДокументаВыплатыРасширеннаяПодсказка" id="155"/>
 						</LabelField>
 						<LabelField name="СуммаДокумента" id="140">
 							<DataPath>Список.СуммаДокумента</DataPath>
@@ -461,11 +471,52 @@
 			</Type>
 			<MainAttribute>true</MainAttribute>
 			<UseAlways>
-				<Field>Список.Ref</Field>
+				<Field>~Список.Ref</Field>
 			</UseAlways>
 			<Settings xsi:type="DynamicList">
-				<ManualQuery>false</ManualQuery>
+				<ManualQuery>true</ManualQuery>
 				<DynamicDataRead>true</DynamicDataRead>
+				<QueryText>ВЫБРАТЬ
+	ДокументВедомостьЗП.Ссылка КАК Ссылка,
+	ДокументВедомостьЗП.ПометкаУдаления КАК ПометкаУдаления,
+	ДокументВедомостьЗП.Номер КАК Номер,
+	ДокументВедомостьЗП.Дата КАК Дата,
+	ДокументВедомостьЗП.Проведен КАК Проведен,
+	ДокументВедомостьЗП.Организация КАК Организация,
+	ДокументВедомостьЗП.ПериодРегистрации КАК ПериодРегистрации,
+	ДокументВедомостьЗП.Подразделение КАК Подразделение,
+	ВЫБОР
+		КОГДА ДокументВедомостьЗП.ВидВедомости = 1
+			ТОГДА "Все"
+		КОГДА ДокументВедомостьЗП.ВидВедомости = 2
+			ТОГДА "Касса"
+		КОГДА ДокументВедомостьЗП.ВидВедомости = 3
+			ТОГДА "Банк"
+		КОГДА ДокументВедомостьЗП.ВидВедомости = 4
+			ТОГДА "ЗП проект"
+		ИНАЧЕ ""
+	КОНЕЦ КАК ВидВедомости,
+	ВЫБОР
+		КОГДА ДокументВедомостьЗП.ВидДокументаВыплаты = 1
+			ТОГДА "Общий"
+		КОГДА ДокументВедомостьЗП.ВидДокументаВыплаты = 2
+			ТОГДА "Индивидуальный"
+		КОГДА ДокументВедомостьЗП.ВидДокументаВыплаты = 3
+			ТОГДА "Подотчет"
+		КОГДА ДокументВедомостьЗП.ВидДокументаВыплаты = 4
+			ТОГДА "ППИ"
+		КОГДА ДокументВедомостьЗП.ВидДокументаВыплаты = 5
+			ТОГДА "Авансовый отчет"
+		ИНАЧЕ ""
+	КОНЕЦ КАК ВидДокументаВыплаты,
+	ДокументВедомостьЗП.Касса КАК Касса,
+	ДокументВедомостьЗП.БанковскийСчет КАК БанковскийСчет,
+	ДокументВедомостьЗП.СтатьяДвиженияДенежныхСредств КАК СтатьяДвиженияДенежныхСредств,
+	ДокументВедомостьЗП.СуммаДокумента КАК СуммаДокумента,
+	ДокументВедомостьЗП.Комментарий КАК Комментарий,
+	ДокументВедомостьЗП.Автор КАК Автор
+ИЗ
+	Документ.ВедомостьЗП КАК ДокументВедомостьЗП</QueryText>
 				<MainTable>Document.ВедомостьЗП</MainTable>
 				<ListSettings>
 					<dcsset:filter>

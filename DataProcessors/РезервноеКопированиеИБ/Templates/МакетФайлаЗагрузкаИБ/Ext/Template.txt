@@ -9,8 +9,7 @@ var infoBasePath = [ПараметрПутиКИнформационнойБаз
 var BaseFileName = [СтрокаПутиКФайлуИнформационнойБазы]; 
 var connectionString = [СтрокаСоединенияИнформационнойБазы] + ';С="РазрешитьРаботуПользователей"; UC=РезервноеКопирование';
 var adminName = [ИмяАдминистратораОбновления];  // имя администратора, инициировавшего обновление
-var backupFileCopyName = [КаталогРезервнойКопии2] + '1Cv8' + now.valueOf() + '.zip';  // Файл резервной копии
-var backupFileName = [КаталогРезервнойКопии];  // Файл резервной копии
+var backupFileName = [ФайлРезервнойКопии];  // Файл резервной копии
 var eventLogID = [СобытиеЖурналаРегистрации];
 var comConnectorName = [ИмяCOMСоединителя];  // имя COM-класса для работы с 1С:Предприятием 8 через COM-соединение
 var useComConnector = [ИспользоватьCOMСоединитель];  // флаг использования COM-соединения для работы с 1С:Предприятием 8
@@ -344,95 +343,68 @@ function writeEventLog(success)
     }
 }
 
-// Восстановление БД
-function backupDB()
+// Восстановление информационной базы из резервной копии
+function restoreDB()
 {
-	var oShellApplication = new ActiveXObject("Shell.Application");
-	var ZIPFile = oFileSystemObject.GetAbsolutePathName(backupFileName);
-	var dFolder = oShellApplication.NameSpace(ZIPFile);
-	var file = oFileSystemObject.GetAbsolutePathName(BaseFileName);
-	var Folder = oShellApplication.Namespace(file);
-	var FileObject	= oFileSystemObject.GetFile(BaseFileName + '1Cv8.1CD');
-	var FileObject2 = new ActiveXObject("Scripting.FileSystemObject");
-	
 	// сначала переместим cd-файл базы во временный каталог
-	if (FileObject2.FileExists(TempCatalog + '1Cv8.1CD')) {
-		FileObject2.DeleteFile(TempCatalog + '1Cv8.1CD');
-	}
 	try
 	{
+		if (oFileSystemObject.FileExists(TempCatalog + '1Cv8.1CD')) {
+			oFileSystemObject.DeleteFile(TempCatalog + '1Cv8.1CD');
+		}
+		var FileObject	= oFileSystemObject.GetFile(BaseFileName + '1Cv8.1CD');
 		FileObject.Move(TempCatalog);
 	}
 	catch(e)
 	{
 		retryCount++;
 		CollectGarbage();   // предотвращает исключение out of memory
-		if (retryCount > 5)
-		{
-			log(format("Ошибка переноса файла базы во временный каталог (возможно есть активные сеансы к файлу базы): {0}, {1}.", e.name, e.message), true);
+		if (retryCount > 5) {
+			log(format("Ошибка переноса файла базы во временный каталог (возможно к файлу базы подключены активные сеансы): {0}, {1}.", e.name, e.message), true);
 			return 1;
 		}
-		else
-		{
+		else {
 			log(format("Попытка переноса файла базы во временный каталог ({0} из 5): {1}, {2}.", retryCount, e.name, e.message));
 			return -1;
 		}
 	}
 	
+	log(format("Файл резервной копии: {0}", backupFileName));
 	try
 	{
-        Folder.CopyHere(dFolder.Items());
-        
-		
-        ret = 0;
-   		log(format("Восстановление базы данных проведено: {0}", ret), ret != 0);
+		if (backupFileName.toLowerCase().lastIndexOf(".zip") == backupFileName.length - 4) {
+			var backupFile = oFileSystemObject.GetAbsolutePathName(backupFileName);
+			var backupFolder = oShellApplication.NameSpace(backupFile);
+			var dbFile = oFileSystemObject.GetAbsolutePathName(BaseFileName);
+			var dbFolder = oShellApplication.Namespace(dbFile);
+	        	dbFolder.CopyHere(backupFolder.Items());
+		}
+		else {
+			oFileSystemObject.CopyFile(backupFileName, BaseFileName, true);
+		}
+   		
+		log("Восстановление базы данных проведено успешно");
+        	ret = 0;
 	}
 	catch(e)
 	{
 		CollectGarbage();   // предотвращает исключение out of memory
 		log(format("Исключение при восстановлении базы из резервной копии: {0}, {1}.", e.name, e.message), true);
 		ret = 1;
+		var FileObject	= oFileSystemObject.GetFile(TempCatalog + '1Cv8.1CD');
+		FileObject.Move(BaseFileName);
 	}
-	if (ret == 0)
-	    backupCreated = true;
-	    	
-   	
 	return ret;
 }
 
 function WaitUntilFinish()
 {
-	FileName = BaseFileName+ '\\1Cv8.1CD';
-
-	var FileArchiveObject = new ActiveXObject("Scripting.FileSystemObject");
-	FileArchive = FileArchiveObject.GetFile(FileName);
-	
+	FileArchive = oFileSystemObject.GetFile(BaseFileName + '\\1Cv8.1CD');
 	FileSize = FileArchive.size / 1024;
-	
 	if (FileSize < 5)
 		return -1;
 	
 	return 0;
-}
-
-// Восстановление информационной базы из резервной копии
-function restoreDB()
-{
-    if (!backupCreated)
-        return 0;
-	try
-	{
-		oFileSystemObject.CopyFile(backupFileName, BaseFileName, true);
-		ret = 0;
-		log(format("База данных восстановлена из резервной копии", ret), ret != 0);
-	}
-	catch(e)
-	{
-		CollectGarbage();   // предотвращает исключение out of memory
-		log(format("Исключение при восстановлении базы из резервной копии", e.name, e.message), true);
-		ret = -1;
-	}
-	return ret;
 }
 
 function doAllowConnections()

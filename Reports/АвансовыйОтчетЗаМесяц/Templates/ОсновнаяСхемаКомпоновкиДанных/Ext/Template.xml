@@ -68,19 +68,6 @@
 			</role>
 		</field>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>ПолученоСчетКт</dataPath>
-			<field>ПолученоСчетКт</field>
-			<title xsi:type="v8:LocalStringType">
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Получено счет кт</v8:content>
-				</v8:item>
-			</title>
-			<role>
-				<dcscom:dimension>true</dcscom:dimension>
-			</role>
-		</field>
-		<field xsi:type="DataSetFieldField">
 			<dataPath>ПолученоСуммаОборот</dataPath>
 			<field>ПолученоСуммаОборот</field>
 			<title xsi:type="v8:LocalStringType">
@@ -107,7 +94,7 @@
 			</title>
 			<role>
 				<dcscom:periodNumber>2</dcscom:periodNumber>
-				<dcscom:periodType>Main</dcscom:periodType>
+				<dcscom:periodType>Additional</dcscom:periodType>
 			</role>
 			<appearance>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
@@ -130,63 +117,30 @@
 			</role>
 		</field>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>СубконтоКт1</dataPath>
-			<field>СубконтоКт1</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>СубконтоКт2</dataPath>
-			<field>СубконтоКт2</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>СубконтоКт3</dataPath>
-			<field>СубконтоКт3</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>СубконтоДт1</dataPath>
-			<field>СубконтоДт1</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>СубконтоДт2</dataPath>
-			<field>СубконтоДт2</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>СубконтоДт3</dataPath>
-			<field>СубконтоДт3</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>СчетДт</dataPath>
-			<field>СчетДт</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>СчетКт</dataPath>
-			<field>СчетКт</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>ВалютаКт</dataPath>
-			<field>ВалютаКт</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>ВалютаДт</dataPath>
-			<field>ВалютаДт</field>
+			<dataPath>ПолученоСчетКт</dataPath>
+			<field>ПолученоСчетКт</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Получено счет кт</v8:content>
+				</v8:item>
+			</title>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+			</role>
 		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ
-	ХозрасчетныйДвиженияССубконто.Период КАК ПолученоДата,
-	ХозрасчетныйДвиженияССубконто.Регистратор КАК ПолученоДокумент,
-	ХозрасчетныйДвиженияССубконто.Организация,
-	ХозрасчетныйДвиженияССубконто.СчетДт КАК ПолученоСчетДт,
-	ХозрасчетныйДвиженияССубконто.СчетКт КАК ПолученоСчетКт,
-	ХозрасчетныйДвиженияССубконто.Сумма КАК ПолученоСуммаОборот
+	ХозрасчетныйОбороты.ПериодДень КАК ПолученоДата,
+	ХозрасчетныйОбороты.Регистратор КАК ПолученоДокумент,
+	ХозрасчетныйОбороты.Организация КАК Организация,
+	ХозрасчетныйОбороты.Счет КАК ПолученоСчетДт,
+	ХозрасчетныйОбороты.КорСчет КАК ПолученоСчетКт,
+	ХозрасчетныйОбороты.СуммаОборот КАК ПолученоСуммаОборот
 ИЗ
-	РегистрБухгалтерии.Хозрасчетный.ДвиженияССубконто(
-			,
-			,
-			(Счет = &amp;Счет
-				ИЛИ Счет = &amp;ПарныйСчет)
-				И СубконтоДт1 = &amp;Подотчетник
-				И СубконтоКт1 &lt;&gt; &amp;Подотчетник,
-			,
-			) КАК ХозрасчетныйДвиженияССубконто</query>
+	РегистрБухгалтерии.Хозрасчетный.Обороты(, , Авто, Счет = &amp;Счет, , Субконто1 = &amp;Подотчетник, КорСчет в иерархии (Значение(ПланСчетов.Хозрасчетный.ДенежныеСредстваВКассе)), ) КАК ХозрасчетныйОбороты
+	
+</query>
 	</dataSet>
 	<dataSet xsi:type="DataSetQuery">
 		<name>ТЗ_Израсходовано</name>
@@ -872,7 +826,7 @@
 			</appearance>
 		</field>
 		<dataSource>ИсточникДанных1</dataSource>
-		<query>ВЫБРАТЬ РАЗЛИЧНЫЕ
+		<query>ВЫБРАТЬ
 	ХозрасчетныйДвиженияССубконто.СчетДт КАК ТоварСчетДт,
 	ХозрасчетныйДвиженияССубконто.Сумма КАК ТоварСуммаОборот,
 	ХозрасчетныйДвиженияССубконто.Регистратор.Номер КАК ТоварНомерДок,

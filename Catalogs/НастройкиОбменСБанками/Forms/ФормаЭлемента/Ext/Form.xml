@@ -38,23 +38,6 @@
 						</Title>
 						<ExtendedTooltip name="НачальнаяДатаЗапросаДанныхРасширеннаяПодсказка" id="479"/>
 					</Button>
-					<Popup name="КомандыЭДО" id="956">
-						<Title>
-							<v8:item>
-								<v8:lang>ru</v8:lang>
-								<v8:content>1С:ДиректБанк</v8:content>
-							</v8:item>
-						</Title>
-						<ExtendedTooltip name="КомандыЭДОРасширеннаяПодсказка" id="957"/>
-						<ChildItems>
-							<Button name="ФормаОбработкаОбменСБанкамиСписокЭД" id="958">
-								<Type>CommandBarButton</Type>
-								<CommandName>DataProcessor.ОбменСБанками.Command.СписокЭД</CommandName>
-								<DataPath>Объект.Ref</DataPath>
-								<ExtendedTooltip name="ФормаОбработкаОбменСБанкамиСписокЭДРасширеннаяПодсказка" id="959"/>
-							</Button>
-						</ChildItems>
-					</Popup>
 					<Button name="ЗагрузитьНастройки" id="849">
 						<Type>CommandBarButton</Type>
 						<CommandName>Form.Command.ЗагрузитьНастройки</CommandName>
@@ -325,365 +308,148 @@
 									</Title>
 									<ExtendedTooltip name="СтраницаАсинхронныйРасширеннаяПодсказка" id="531"/>
 									<ChildItems>
-										<Pages name="СтраницыАсинхронныхНастроек" id="698">
+										<InputField name="ИдентификаторОрганизацииАсинхронный" id="702">
+											<DataPath>Объект.ИдентификаторОрганизации</DataPath>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Уникальный идентификатор, который выдал банк</v8:content>
+												</v8:item>
+											</ToolTip>
+											<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+											<Width>52</Width>
+											<HorizontalStretch>false</HorizontalStretch>
+											<AutoMarkIncomplete>true</AutoMarkIncomplete>
+											<ContextMenu name="ИдентификаторОрганизацииАсинхронныйКонтекстноеМеню" id="703"/>
+											<ExtendedTooltip name="ИдентификаторОрганизацииАсинхронныйРасширеннаяПодсказка" id="704"/>
+										</InputField>
+										<InputField name="АдресСервераАсинхронный" id="713">
+											<DataPath>Объект.АдресСервера</DataPath>
 											<Title>
 												<v8:item>
 													<v8:lang>ru</v8:lang>
-													<v8:content>Страницы асинхронных настроек</v8:content>
+													<v8:content>Адрес сервера банка</v8:content>
 												</v8:item>
 											</Title>
-											<ExtendedTooltip name="СтраницыАсинхронныхНастроекРасширеннаяПодсказка" id="699"/>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Адрес сервера банка в виде https://mybank.ru</v8:content>
+												</v8:item>
+											</ToolTip>
+											<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+											<HorizontalStretch>false</HorizontalStretch>
+											<AutoMarkIncomplete>true</AutoMarkIncomplete>
+											<ContextMenu name="АдресСервераАсинхронныйКонтекстноеМеню" id="714"/>
+											<ExtendedTooltip name="АдресСервераАсинхронныйРасширеннаяПодсказка" id="715"/>
+										</InputField>
+										<InputField name="ЛогинАсинхронныйОбмен" id="724">
+											<DataPath>Объект.ИмяПользователя</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Логин для аутентификации</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Логин в учетной системе банка</v8:content>
+												</v8:item>
+											</ToolTip>
+											<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+											<Width>28</Width>
+											<HorizontalStretch>false</HorizontalStretch>
+											<ContextMenu name="ЛогинАсинхронныйОбменКонтекстноеМеню" id="725"/>
+											<ExtendedTooltip name="ЛогинАсинхронныйОбменРасширеннаяПодсказка" id="726"/>
+										</InputField>
+										<UsualGroup name="ГруппаСертификатыАсинхронный" id="763">
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Сертификаты ключа электронной подписи</v8:content>
+												</v8:item>
+											</Title>
+											<Group>Vertical</Group>
+											<ExtendedTooltip name="ГруппаСертификатыАсинхронныйРасширеннаяПодсказка" id="764"/>
 											<ChildItems>
-												<Page name="АсинхронныйОбменБезКриптографии" id="700">
+												<Table name="СертификатыНеобходимыхПодписейАсинхронно" id="765">
+													<Representation>List</Representation>
+													<AutoAddIncomplete>false</AutoAddIncomplete>
+													<AutoMarkIncomplete>true</AutoMarkIncomplete>
+													<EnableStartDrag>true</EnableStartDrag>
+													<EnableDrag>true</EnableDrag>
+													<DataPath>Объект.СертификатыПодписейОрганизации</DataPath>
 													<Title>
 														<v8:item>
 															<v8:lang>ru</v8:lang>
-															<v8:content>Асинхронный обмен без криптографии</v8:content>
+															<v8:content>Сертификаты ключа ЭП</v8:content>
 														</v8:item>
 													</Title>
-													<ExtendedTooltip name="АсинхронныйОбменБезКриптографииРасширеннаяПодсказка" id="701"/>
+													<CommandSet>
+														<ExcludedCommand>Copy</ExcludedCommand>
+													</CommandSet>
+													<SearchStringLocation>None</SearchStringLocation>
+													<ViewStatusLocation>None</ViewStatusLocation>
+													<SearchControlLocation>None</SearchControlLocation>
+													<RowFilter xsi:nil="true"/>
+													<ContextMenu name="СертификатыНеобходимыхПодписейАсинхронноКонтекстноеМеню" id="766"/>
+													<AutoCommandBar name="СертификатыНеобходимыхПодписейАсинхронноКоманднаяПанель" id="767"/>
+													<ExtendedTooltip name="СертификатыНеобходимыхПодписейАсинхронноРасширеннаяПодсказка" id="768"/>
+													<SearchStringAddition name="СертификатыНеобходимыхПодписейАсинхронноСтрокаПоиска" id="769">
+														<AdditionSource>
+															<Item>СертификатыНеобходимыхПодписейАсинхронно</Item>
+															<Type>SearchStringRepresentation</Type>
+														</AdditionSource>
+														<ContextMenu name="СертификатыНеобходимыхПодписейАсинхронноСтрокаПоискаКонтекстноеМеню" id="772"/>
+														<ExtendedTooltip name="СертификатыНеобходимыхПодписейАсинхронноСтрокаПоискаРасширеннаяПодсказка" id="773"/>
+													</SearchStringAddition>
+													<ViewStatusAddition name="СертификатыНеобходимыхПодписейАсинхронноСостояниеПросмотра" id="774">
+														<AdditionSource>
+															<Item>СертификатыНеобходимыхПодписейАсинхронно</Item>
+															<Type>ViewStatusRepresentation</Type>
+														</AdditionSource>
+														<ContextMenu name="СертификатыНеобходимыхПодписейАсинхронноСостояниеПросмотраКонтекстноеМеню" id="777"/>
+														<ExtendedTooltip name="СертификатыНеобходимыхПодписейАсинхронноСостояниеПросмотраРасширеннаяПодсказка" id="778"/>
+													</ViewStatusAddition>
+													<SearchControlAddition name="СертификатыНеобходимыхПодписейАсинхронноУправлениеПоиском" id="779">
+														<AdditionSource>
+															<Item>СертификатыНеобходимыхПодписейАсинхронно</Item>
+															<Type>SearchControl</Type>
+														</AdditionSource>
+														<ContextMenu name="СертификатыНеобходимыхПодписейАсинхронноУправлениеПоискомКонтекстноеМеню" id="782"/>
+														<ExtendedTooltip name="СертификатыНеобходимыхПодписейАсинхронноУправлениеПоискомРасширеннаяПодсказка" id="783"/>
+													</SearchControlAddition>
 													<ChildItems>
-														<InputField name="ИдентификаторОрганизацииАсинхронныйБезКриптографии" id="702">
-															<DataPath>Объект.ИдентификаторОрганизации</DataPath>
-															<ToolTip>
-																<v8:item>
-																	<v8:lang>ru</v8:lang>
-																	<v8:content>Уникальный идентификатор, который выдал банк</v8:content>
-																</v8:item>
-															</ToolTip>
-															<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
-															<Width>52</Width>
-															<HorizontalStretch>false</HorizontalStretch>
-															<AutoMarkIncomplete>true</AutoMarkIncomplete>
-															<ContextMenu name="ИдентификаторОрганизацииАсинхронныйБезКриптографииКонтекстноеМеню" id="703"/>
-															<ExtendedTooltip name="ИдентификаторОрганизацииАсинхронныйБезКриптографииРасширеннаяПодсказка" id="704"/>
-														</InputField>
-														<InputField name="АдресСервераАсинхронныйБезКриптографии" id="713">
-															<DataPath>Объект.АдресСервера</DataPath>
+														<LabelField name="СертификатыНеобходимыхПодписейАсинхронноНомерСтроки" id="784">
+															<DataPath>Объект.СертификатыПодписейОрганизации.LineNumber</DataPath>
+															<EditMode>EnterOnInput</EditMode>
+															<ContextMenu name="СертификатыНеобходимыхПодписейАсинхронноНомерСтрокиКонтекстноеМеню" id="785"/>
+															<ExtendedTooltip name="СертификатыНеобходимыхПодписейАсинхронноНомерСтрокиРасширеннаяПодсказка" id="786"/>
+														</LabelField>
+														<InputField name="СертификатыНеобходимыхПодписейАсинхронноСертификат" id="787">
+															<DataPath>Объект.СертификатыПодписейОрганизации.СертификатЭП</DataPath>
 															<Title>
 																<v8:item>
 																	<v8:lang>ru</v8:lang>
-																	<v8:content>Адрес сервера банка</v8:content>
+																	<v8:content>Сертификат организации</v8:content>
 																</v8:item>
 															</Title>
-															<ToolTip>
-																<v8:item>
-																	<v8:lang>ru</v8:lang>
-																	<v8:content>Адрес сервера банка в виде https://mybank.ru</v8:content>
-																</v8:item>
-															</ToolTip>
-															<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
-															<HorizontalStretch>false</HorizontalStretch>
-															<AutoMarkIncomplete>true</AutoMarkIncomplete>
-															<ContextMenu name="АдресСервераАсинхронныйБезКриптографииКонтекстноеМеню" id="714"/>
-															<ExtendedTooltip name="АдресСервераАсинхронныйБезКриптографииРасширеннаяПодсказка" id="715"/>
-														</InputField>
-														<CheckBoxField name="ПодписыватьЭлектронныеДокументы" id="695">
-															<DataPath>Объект.ИспользуетсяКриптография</DataPath>
-															<Title>
-																<v8:item>
-																	<v8:lang>ru</v8:lang>
-																	<v8:content>Подписывать электронные документы</v8:content>
-																</v8:item>
-															</Title>
-															<TitleLocation>Right</TitleLocation>
-															<CheckBoxType>Auto</CheckBoxType>
-															<ContextMenu name="ПодписыватьЭлектронныеДокументыКонтекстноеМеню" id="696"/>
-															<ExtendedTooltip name="ПодписыватьЭлектронныеДокументыРасширеннаяПодсказка" id="697"/>
-															<Events>
-																<Event name="OnChange">ИспользуетсяКриптографияПриИзменении</Event>
-															</Events>
-														</CheckBoxField>
-														<InputField name="ЛогинАсинхронныйОбменБезКриптографии" id="724">
-															<DataPath>Объект.ИмяПользователя</DataPath>
-															<Title>
-																<v8:item>
-																	<v8:lang>ru</v8:lang>
-																	<v8:content>Логин для аутентификации</v8:content>
-																</v8:item>
-															</Title>
-															<ToolTip>
-																<v8:item>
-																	<v8:lang>ru</v8:lang>
-																	<v8:content>Логин в учетной системе банка</v8:content>
-																</v8:item>
-															</ToolTip>
-															<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
-															<Width>28</Width>
-															<HorizontalStretch>false</HorizontalStretch>
-															<ContextMenu name="ЛогинАсинхронныйОбменБезКриптографииКонтекстноеМеню" id="725"/>
-															<ExtendedTooltip name="ЛогинАсинхронныйОбменБезКриптографииРасширеннаяПодсказка" id="726"/>
+															<EditMode>EnterOnInput</EditMode>
+															<ChoiceParameterLinks>
+																<xr:Link>
+																	<xr:Name>Отбор.Организация</xr:Name>
+																	<xr:DataPath xsi:type="xs:string">Объект.Организация</xr:DataPath>
+																	<xr:ValueChange>Clear</xr:ValueChange>
+																</xr:Link>
+															</ChoiceParameterLinks>
+															<ContextMenu name="СертификатыНеобходимыхПодписейАсинхронноСертификатКонтекстноеМеню" id="788"/>
+															<ExtendedTooltip name="СертификатыНеобходимыхПодписейАсинхронноСертификатРасширеннаяПодсказка" id="789"/>
 														</InputField>
 													</ChildItems>
-												</Page>
-												<Page name="АсинхронныйОбменСКриптографией" id="727">
-													<Title>
-														<v8:item>
-															<v8:lang>ru</v8:lang>
-															<v8:content>Асинхронный обмен с криптографией</v8:content>
-														</v8:item>
-													</Title>
-													<ExtendedTooltip name="АсинхронныйОбменСКриптографиейРасширеннаяПодсказка" id="728"/>
-													<ChildItems>
-														<InputField name="ИдентификаторОрганизацииАсинхронныйСКриптографией" id="898">
-															<DataPath>Объект.ИдентификаторОрганизации</DataPath>
-															<ToolTip>
-																<v8:item>
-																	<v8:lang>ru</v8:lang>
-																	<v8:content>Уникальный идентификатор, который выдал банк</v8:content>
-																</v8:item>
-															</ToolTip>
-															<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
-															<Width>52</Width>
-															<HorizontalStretch>false</HorizontalStretch>
-															<AutoMarkIncomplete>true</AutoMarkIncomplete>
-															<ContextMenu name="ИдентификаторОрганизацииАсинхронныйСКриптографиейКонтекстноеМеню" id="899"/>
-															<ExtendedTooltip name="ИдентификаторОрганизацииАсинхронныйСКриптографиейРасширеннаяПодсказка" id="900"/>
-														</InputField>
-														<InputField name="АдресСервераАсинхронныйСКриптографией" id="909">
-															<DataPath>Объект.АдресСервера</DataPath>
-															<Title>
-																<v8:item>
-																	<v8:lang>ru</v8:lang>
-																	<v8:content>Адрес сервера банка</v8:content>
-																</v8:item>
-															</Title>
-															<ToolTip>
-																<v8:item>
-																	<v8:lang>ru</v8:lang>
-																	<v8:content>Адрес сервера банка в виде https://mybank.ru</v8:content>
-																</v8:item>
-															</ToolTip>
-															<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
-															<HorizontalStretch>false</HorizontalStretch>
-															<AutoMarkIncomplete>true</AutoMarkIncomplete>
-															<ContextMenu name="АдресСервераАсинхронныйСКриптографиейКонтекстноеМеню" id="910"/>
-															<ExtendedTooltip name="АдресСервераАсинхронныйСКриптографиейРасширеннаяПодсказка" id="911"/>
-														</InputField>
-														<CheckBoxField name="ИспользуетсяКриптография" id="920">
-															<DataPath>Объект.ИспользуетсяКриптография</DataPath>
-															<Title>
-																<v8:item>
-																	<v8:lang>ru</v8:lang>
-																	<v8:content>Подписывать электронные документы</v8:content>
-																</v8:item>
-															</Title>
-															<TitleLocation>Right</TitleLocation>
-															<CheckBoxType>Auto</CheckBoxType>
-															<ContextMenu name="ИспользуетсяКриптографияКонтекстноеМеню" id="921"/>
-															<ExtendedTooltip name="ИспользуетсяКриптографияРасширеннаяПодсказка" id="922"/>
-															<Events>
-																<Event name="OnChange">ИспользуетсяКриптографияПриИзменении</Event>
-															</Events>
-														</CheckBoxField>
-														<UsualGroup name="ГруппаАвторизацииАсинхронныйОбмен" id="751">
-															<Title>
-																<v8:item>
-																	<v8:lang>ru</v8:lang>
-																	<v8:content>Группа авторизации</v8:content>
-																</v8:item>
-															</Title>
-															<Group>Horizontal</Group>
-															<Representation>None</Representation>
-															<ShowTitle>false</ShowTitle>
-															<ExtendedTooltip name="ГруппаАвторизацииАсинхронныйОбменРасширеннаяПодсказка" id="752"/>
-															<ChildItems>
-																<RadioButtonField name="ВариантАутентификацииАсинхронныйОбмен" id="753">
-																	<DataPath>ВариантАутентификации</DataPath>
-																	<Title>
-																		<v8:item>
-																			<v8:lang>ru</v8:lang>
-																			<v8:content>Вариант аутентификации</v8:content>
-																		</v8:item>
-																	</Title>
-																	<TitleLocation>Left</TitleLocation>
-																	<RadioButtonType>Auto</RadioButtonType>
-																	<ColumnsCount>1</ColumnsCount>
-																	<ChoiceList>
-																		<xr:Item>
-																			<xr:Presentation/>
-																			<xr:CheckState>0</xr:CheckState>
-																			<xr:Value xsi:type="FormChoiceListDesTimeValue">
-																				<Presentation>
-																					<v8:item>
-																						<v8:lang>ru</v8:lang>
-																						<v8:content>По логину</v8:content>
-																					</v8:item>
-																				</Presentation>
-																				<Value xsi:type="xs:decimal">0</Value>
-																			</xr:Value>
-																		</xr:Item>
-																		<xr:Item>
-																			<xr:Presentation/>
-																			<xr:CheckState>0</xr:CheckState>
-																			<xr:Value xsi:type="FormChoiceListDesTimeValue">
-																				<Presentation>
-																					<v8:item>
-																						<v8:lang>ru</v8:lang>
-																						<v8:content>По сертификату подписи</v8:content>
-																					</v8:item>
-																				</Presentation>
-																				<Value xsi:type="xs:decimal">1</Value>
-																			</xr:Value>
-																		</xr:Item>
-																	</ChoiceList>
-																	<ContextMenu name="ВариантАутентификацииАсинхронныйОбменКонтекстноеМеню" id="754"/>
-																	<ExtendedTooltip name="ВариантАутентификацииАсинхронныйОбменРасширеннаяПодсказка" id="755"/>
-																	<Events>
-																		<Event name="OnChange">ВариантАутентификацииАсинхронныйОбменПриИзменении</Event>
-																	</Events>
-																</RadioButtonField>
-																<Pages name="СтраницыЛогинАсинхронныйОбмен" id="795">
-																	<Title>
-																		<v8:item>
-																			<v8:lang>ru</v8:lang>
-																			<v8:content>Страницы логин асинхронный обмен</v8:content>
-																		</v8:item>
-																	</Title>
-																	<PagesRepresentation>None</PagesRepresentation>
-																	<ExtendedTooltip name="СтраницыЛогинАсинхронныйОбменРасширеннаяПодсказка" id="796"/>
-																	<ChildItems>
-																		<Page name="СтраницаЛогинВиден" id="797">
-																			<Title>
-																				<v8:item>
-																					<v8:lang>ru</v8:lang>
-																					<v8:content>Страница логин виден</v8:content>
-																				</v8:item>
-																			</Title>
-																			<ExtendedTooltip name="СтраницаЛогинВиденРасширеннаяПодсказка" id="798"/>
-																			<ChildItems>
-																				<InputField name="ЛогинАсинхронныйОбмен" id="756">
-																					<DataPath>Объект.ИмяПользователя</DataPath>
-																					<Title>
-																						<v8:item>
-																							<v8:lang>ru</v8:lang>
-																							<v8:content>Логин</v8:content>
-																						</v8:item>
-																					</Title>
-																					<ToolTip>
-																						<v8:item>
-																							<v8:lang>ru</v8:lang>
-																							<v8:content>Логин в учетной системе банка</v8:content>
-																						</v8:item>
-																					</ToolTip>
-																					<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
-																					<Width>26</Width>
-																					<HorizontalStretch>false</HorizontalStretch>
-																					<ContextMenu name="ЛогинАсинхронныйОбменКонтекстноеМеню" id="757"/>
-																					<ExtendedTooltip name="ЛогинАсинхронныйОбменРасширеннаяПодсказка" id="758"/>
-																				</InputField>
-																			</ChildItems>
-																		</Page>
-																		<Page name="СтраницаЛогинНеВиден" id="799">
-																			<Title>
-																				<v8:item>
-																					<v8:lang>ru</v8:lang>
-																					<v8:content>Страница логин не виден</v8:content>
-																				</v8:item>
-																			</Title>
-																			<ExtendedTooltip name="СтраницаЛогинНеВиденРасширеннаяПодсказка" id="800"/>
-																			<ChildItems>
-																				<LabelDecoration name="ПустаяДекорацияЛогин" id="801">
-																					<ContextMenu name="ПустаяДекорацияЛогинКонтекстноеМеню" id="802"/>
-																					<ExtendedTooltip name="ПустаяДекорацияЛогинРасширеннаяПодсказка" id="803"/>
-																				</LabelDecoration>
-																			</ChildItems>
-																		</Page>
-																	</ChildItems>
-																</Pages>
-															</ChildItems>
-														</UsualGroup>
-														<UsualGroup name="ГруппаСертификатыАсинхронный" id="763">
-															<Title>
-																<v8:item>
-																	<v8:lang>ru</v8:lang>
-																	<v8:content>Сертификаты ключа электронной подписи</v8:content>
-																</v8:item>
-															</Title>
-															<Group>Vertical</Group>
-															<ExtendedTooltip name="ГруппаСертификатыАсинхронныйРасширеннаяПодсказка" id="764"/>
-															<ChildItems>
-																<Table name="СертификатыНеобходимыхПодписейАсинхронно" id="765">
-																	<Representation>List</Representation>
-																	<AutoAddIncomplete>false</AutoAddIncomplete>
-																	<AutoMarkIncomplete>true</AutoMarkIncomplete>
-																	<EnableStartDrag>true</EnableStartDrag>
-																	<EnableDrag>true</EnableDrag>
-																	<DataPath>Объект.СертификатыПодписейОрганизации</DataPath>
-																	<Title>
-																		<v8:item>
-																			<v8:lang>ru</v8:lang>
-																			<v8:content>Сертификаты ключа ЭП</v8:content>
-																		</v8:item>
-																	</Title>
-																	<CommandSet>
-																		<ExcludedCommand>Copy</ExcludedCommand>
-																	</CommandSet>
-																	<SearchStringLocation>None</SearchStringLocation>
-																	<ViewStatusLocation>None</ViewStatusLocation>
-																	<SearchControlLocation>None</SearchControlLocation>
-																	<RowFilter xsi:nil="true"/>
-																	<ContextMenu name="СертификатыНеобходимыхПодписейАсинхронноКонтекстноеМеню" id="766"/>
-																	<AutoCommandBar name="СертификатыНеобходимыхПодписейАсинхронноКоманднаяПанель" id="767"/>
-																	<ExtendedTooltip name="СертификатыНеобходимыхПодписейАсинхронноРасширеннаяПодсказка" id="768"/>
-																	<SearchStringAddition name="СертификатыНеобходимыхПодписейАсинхронноСтрокаПоиска" id="769">
-																		<AdditionSource>
-																			<Item>СертификатыНеобходимыхПодписейАсинхронно</Item>
-																			<Type>SearchStringRepresentation</Type>
-																		</AdditionSource>
-																		<ContextMenu name="СертификатыНеобходимыхПодписейАсинхронноСтрокаПоискаКонтекстноеМеню" id="772"/>
-																		<ExtendedTooltip name="СертификатыНеобходимыхПодписейАсинхронноСтрокаПоискаРасширеннаяПодсказка" id="773"/>
-																	</SearchStringAddition>
-																	<ViewStatusAddition name="СертификатыНеобходимыхПодписейАсинхронноСостояниеПросмотра" id="774">
-																		<AdditionSource>
-																			<Item>СертификатыНеобходимыхПодписейАсинхронно</Item>
-																			<Type>ViewStatusRepresentation</Type>
-																		</AdditionSource>
-																		<ContextMenu name="СертификатыНеобходимыхПодписейАсинхронноСостояниеПросмотраКонтекстноеМеню" id="777"/>
-																		<ExtendedTooltip name="СертификатыНеобходимыхПодписейАсинхронноСостояниеПросмотраРасширеннаяПодсказка" id="778"/>
-																	</ViewStatusAddition>
-																	<SearchControlAddition name="СертификатыНеобходимыхПодписейАсинхронноУправлениеПоиском" id="779">
-																		<AdditionSource>
-																			<Item>СертификатыНеобходимыхПодписейАсинхронно</Item>
-																			<Type>SearchControl</Type>
-																		</AdditionSource>
-																		<ContextMenu name="СертификатыНеобходимыхПодписейАсинхронноУправлениеПоискомКонтекстноеМеню" id="782"/>
-																		<ExtendedTooltip name="СертификатыНеобходимыхПодписейАсинхронноУправлениеПоискомРасширеннаяПодсказка" id="783"/>
-																	</SearchControlAddition>
-																	<ChildItems>
-																		<LabelField name="СертификатыНеобходимыхПодписейАсинхронноНомерСтроки" id="784">
-																			<DataPath>Объект.СертификатыПодписейОрганизации.LineNumber</DataPath>
-																			<EditMode>EnterOnInput</EditMode>
-																			<ContextMenu name="СертификатыНеобходимыхПодписейАсинхронноНомерСтрокиКонтекстноеМеню" id="785"/>
-																			<ExtendedTooltip name="СертификатыНеобходимыхПодписейАсинхронноНомерСтрокиРасширеннаяПодсказка" id="786"/>
-																		</LabelField>
-																		<InputField name="СертификатыНеобходимыхПодписейАсинхронноСертификат" id="787">
-																			<DataPath>Объект.СертификатыПодписейОрганизации.СертификатЭП</DataPath>
-																			<Title>
-																				<v8:item>
-																					<v8:lang>ru</v8:lang>
-																					<v8:content>Сертификат организации</v8:content>
-																				</v8:item>
-																			</Title>
-																			<EditMode>EnterOnInput</EditMode>
-																			<ChoiceParameterLinks>
-																				<xr:Link>
-																					<xr:Name>Отбор.Организация</xr:Name>
-																					<xr:DataPath xsi:type="xs:string">Объект.Организация</xr:DataPath>
-																					<xr:ValueChange>Clear</xr:ValueChange>
-																				</xr:Link>
-																			</ChoiceParameterLinks>
-																			<ContextMenu name="СертификатыНеобходимыхПодписейАсинхронноСертификатКонтекстноеМеню" id="788"/>
-																			<ExtendedTooltip name="СертификатыНеобходимыхПодписейАсинхронноСертификатРасширеннаяПодсказка" id="789"/>
-																		</InputField>
-																	</ChildItems>
-																</Table>
-															</ChildItems>
-														</UsualGroup>
-													</ChildItems>
-												</Page>
+												</Table>
 											</ChildItems>
-										</Pages>
+										</UsualGroup>
 									</ChildItems>
 								</Page>
 								<Page name="СтраницаСинхронный" id="332">
@@ -844,6 +610,7 @@
 														<LabelField name="СертификатыНеобходимыхПодписейНомерСтроки" id="297">
 															<DataPath>Объект.СертификатыПодписейОрганизации.LineNumber</DataPath>
 															<EditMode>EnterOnInput</EditMode>
+															<Width>2</Width>
 															<ContextMenu name="СертификатыНеобходимыхПодписейНомерСтрокиКонтекстноеМеню" id="298"/>
 															<ExtendedTooltip name="СертификатыНеобходимыхПодписейНомерСтрокиExtendedTooltip" id="423"/>
 														</LabelField>
@@ -1067,6 +834,7 @@
 																<LabelField name="СертификатыПодписейОрганизацииНомерСтроки" id="1012">
 																	<DataPath>Объект.СертификатыПодписейОрганизации.LineNumber</DataPath>
 																	<EditMode>EnterOnInput</EditMode>
+																	<Width>2</Width>
 																	<ContextMenu name="СертификатыПодписейОрганизацииНомерСтрокиКонтекстноеМеню" id="1013"/>
 																	<ExtendedTooltip name="СертификатыПодписейОрганизацииНомерСтрокиРасширеннаяПодсказка" id="1014"/>
 																</LabelField>
@@ -1162,6 +930,7 @@
 														<LabelField name="СертификатыПодписейОрганизацииНомерСтрокиОбработка" id="650">
 															<DataPath>Объект.СертификатыПодписейОрганизации.LineNumber</DataPath>
 															<EditMode>EnterOnInput</EditMode>
+															<Width>2</Width>
 															<ContextMenu name="СертификатыПодписейОрганизацииНомерСтрокиОбработкаКонтекстноеМеню" id="651"/>
 															<ExtendedTooltip name="СертификатыПодписейОрганизацииНомерСтрокиОбработкаРасширеннаяПодсказка" id="652"/>
 														</LabelField>

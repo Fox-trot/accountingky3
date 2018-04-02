@@ -219,6 +219,7 @@
 							<ChildItems>
 								<InputField name="Курс" id="728">
 									<DataPath>Объект.Курс</DataPath>
+									<ReadOnly>true</ReadOnly>
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
@@ -232,6 +233,7 @@
 								</InputField>
 								<InputField name="Кратность" id="731">
 									<DataPath>Объект.Кратность</DataPath>
+									<ReadOnly>true</ReadOnly>
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
@@ -432,6 +434,11 @@
 										<Event name="OnChange">СпособРаспределенияАкцизаПриИзменении</Event>
 									</Events>
 								</InputField>
+								<Button name="РаспределитьАкциз" id="774">
+									<Type>UsualButton</Type>
+									<CommandName>Form.Command.РаспределитьАкциз</CommandName>
+									<ExtendedTooltip name="РаспределитьАкцизРасширеннаяПодсказка" id="775"/>
+								</Button>
 							</ChildItems>
 						</UsualGroup>
 					</ChildItems>
@@ -540,6 +547,7 @@
 							</SearchControlAddition>
 							<Events>
 								<Event name="BeforeAddRow">ТоварыПередНачаломДобавления</Event>
+								<Event name="OnStartEdit">ТоварыПриНачалеРедактирования</Event>
 								<Event name="AfterDeleteRow">ТоварыПослеУдаления</Event>
 							</Events>
 							<ChildItems>
@@ -592,6 +600,8 @@
 										</v8:item>
 									</Title>
 									<EditMode>EnterOnInput</EditMode>
+									<Width>5</Width>
+									<HorizontalStretch>false</HorizontalStretch>
 									<ContextMenu name="ТоварыКоэффициентДопЕдиницыКонтекстноеМеню" id="766"/>
 									<ExtendedTooltip name="ТоварыКоэффициентДопЕдиницыРасширеннаяПодсказка" id="767"/>
 									<Events>
@@ -660,9 +670,6 @@
 									<Width>10</Width>
 									<ContextMenu name="ТоварыВесКонтекстноеМеню" id="507"/>
 									<ExtendedTooltip name="ТоварыВесРасширеннаяПодсказка" id="508"/>
-									<Events>
-										<Event name="OnChange">ТоварыВесПриИзменении</Event>
-									</Events>
 								</InputField>
 								<InputField name="ТоварыСуммаАкциза" id="509">
 									<DataPath>Объект.Товары.СуммаАкциза</DataPath>
@@ -774,6 +781,7 @@
 							</SearchControlAddition>
 							<Events>
 								<Event name="BeforeAddRow">УслугиПередНачаломДобавления</Event>
+								<Event name="OnStartEdit">УслугиПриНачалеРедактирования</Event>
 								<Event name="AfterDeleteRow">УслугиПослеУдаления</Event>
 							</Events>
 							<ChildItems>
@@ -870,9 +878,6 @@
 									<Width>10</Width>
 									<ContextMenu name="УслугиВесКонтекстноеМеню" id="544"/>
 									<ExtendedTooltip name="УслугиВесРасширеннаяПодсказка" id="545"/>
-									<Events>
-										<Event name="OnChange">УслугиВесПриИзменении</Event>
-									</Events>
 								</InputField>
 								<InputField name="УслугиСуммаАкциза" id="546">
 									<DataPath>Объект.Услуги.СуммаАкциза</DataPath>
@@ -991,13 +996,13 @@
 							</SearchControlAddition>
 							<Events>
 								<Event name="BeforeAddRow">ОСПередНачаломДобавления</Event>
+								<Event name="OnStartEdit">ОСПриНачалеРедактирования</Event>
 								<Event name="AfterDeleteRow">ОСПослеУдаления</Event>
 							</Events>
 							<ChildItems>
 								<LabelField name="ОСНомерСтроки" id="53">
 									<DataPath>Объект.ОС.LineNumber</DataPath>
 									<EditMode>EnterOnInput</EditMode>
-									<FixingInTable>Left</FixingInTable>
 									<Width>4</Width>
 									<HorizontalStretch>false</HorizontalStretch>
 									<ContextMenu name="ОСНомерСтрокиКонтекстноеМеню" id="54"/>
@@ -1006,7 +1011,6 @@
 								<InputField name="ОСОсновноеСредство" id="56">
 									<DataPath>Объект.ОС.ОсновноеСредство</DataPath>
 									<EditMode>EnterOnInput</EditMode>
-									<FixingInTable>Left</FixingInTable>
 									<ChoiceParameterLinks>
 										<xr:Link>
 											<xr:Name>ДоступныНепринятые</xr:Name>
@@ -1067,9 +1071,6 @@
 									<Width>10</Width>
 									<ContextMenu name="ОСВесКонтекстноеМеню" id="556"/>
 									<ExtendedTooltip name="ОСВесРасширеннаяПодсказка" id="557"/>
-									<Events>
-										<Event name="OnChange">ОСВесПриИзменении</Event>
-									</Events>
 								</InputField>
 								<InputField name="ОССуммаАкциза" id="558">
 									<DataPath>Объект.ОС.СуммаАкциза</DataPath>
@@ -1964,6 +1965,26 @@
 			</Picture>
 			<Action>ЗагрузитьДанныеИзТСД</Action>
 			<ModifiesSavedData>true</ModifiesSavedData>
+		</Command>
+		<Command name="РаспределитьАкциз" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Распределить акциз</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Распределить акциз</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.ЗаполнитьПоОснованию</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>РаспределитьАкциз</Action>
+			<Representation>Picture</Representation>
 		</Command>
 	</Commands>
 </Form>

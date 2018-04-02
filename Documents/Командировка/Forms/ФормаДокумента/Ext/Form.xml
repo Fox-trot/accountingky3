@@ -52,8 +52,8 @@
 		</ChildItems>
 	</AutoCommandBar>
 	<Events>
-		<Event name="ChoiceProcessing">ОбработкаВыбора</Event>
 		<Event name="AfterWriteAtServer">ПослеЗаписиНаСервере</Event>
+		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
 		<Event name="OnReadAtServer">ПриЧтенииНаСервере</Event>
 		<Event name="OnOpen">ПриОткрытии</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
@@ -84,71 +84,25 @@
 					<ShowTitle>false</ShowTitle>
 					<ExtendedTooltip name="ЛеваяКолонкаExtendedTooltip" id="4"/>
 					<ChildItems>
-						<UsualGroup name="ГруппаСтранаГород" id="171">
-							<Title>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Группа страна город</v8:content>
-								</v8:item>
-							</Title>
-							<ToolTip>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Группа страна город</v8:content>
-								</v8:item>
-							</ToolTip>
-							<Group>Vertical</Group>
-							<Representation>None</Representation>
-							<ShowTitle>false</ShowTitle>
-							<ExtendedTooltip name="ГруппаСтранаГородРасширеннаяПодсказка" id="172"/>
-							<ChildItems>
-								<InputField name="Страна" id="173">
-									<DataPath>Объект.Страна</DataPath>
-									<DropListButton>false</DropListButton>
-									<ChoiceButton>true</ChoiceButton>
-									<ChoiceButtonRepresentation>ShowInInputField</ChoiceButtonRepresentation>
-									<ContextMenu name="СтранаКонтекстноеМеню" id="174"/>
-									<ExtendedTooltip name="СтранаРасширеннаяПодсказка" id="175"/>
-									<Events>
-										<Event name="OnChange">СтранаПриИзменении</Event>
-									</Events>
-								</InputField>
-								<InputField name="Город" id="176">
-									<DataPath>Объект.Город</DataPath>
-									<Width>20</Width>
-									<ContextMenu name="ГородКонтекстноеМеню" id="177"/>
-									<ExtendedTooltip name="ГородРасширеннаяПодсказка" id="178"/>
-									<Events>
-										<Event name="OnChange">ГородПриИзменении</Event>
-									</Events>
-								</InputField>
-							</ChildItems>
-						</UsualGroup>
-						<UsualGroup name="ГруппаОрганизацияКудаИОснование" id="542">
-							<Title>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Группа организация куда и основание</v8:content>
-								</v8:item>
-							</Title>
-							<ToolTip>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Группа организация куда и основание</v8:content>
-								</v8:item>
-							</ToolTip>
-							<Group>Vertical</Group>
-							<Representation>None</Representation>
-							<ShowTitle>false</ShowTitle>
-							<ExtendedTooltip name="ГруппаОрганизацияКудаИОснованиеРасширеннаяПодсказка" id="543"/>
-							<ChildItems>
-								<InputField name="ОснованиеКомандировки" id="547">
-									<DataPath>Объект.ОснованиеКомандировки</DataPath>
-									<ContextMenu name="ОснованиеКомандировкиКонтекстноеМеню" id="548"/>
-									<ExtendedTooltip name="ОснованиеКомандировкиРасширеннаяПодсказка" id="549"/>
-								</InputField>
-							</ChildItems>
-						</UsualGroup>
+						<InputField name="Страна" id="173">
+							<DataPath>Объект.Страна</DataPath>
+							<DropListButton>false</DropListButton>
+							<ChoiceButton>true</ChoiceButton>
+							<ChoiceButtonRepresentation>ShowInInputField</ChoiceButtonRepresentation>
+							<ContextMenu name="СтранаКонтекстноеМеню" id="174"/>
+							<ExtendedTooltip name="СтранаРасширеннаяПодсказка" id="175"/>
+						</InputField>
+						<InputField name="Город" id="176">
+							<DataPath>Объект.Город</DataPath>
+							<Width>20</Width>
+							<ContextMenu name="ГородКонтекстноеМеню" id="177"/>
+							<ExtendedTooltip name="ГородРасширеннаяПодсказка" id="178"/>
+						</InputField>
+						<InputField name="ОснованиеКомандировки" id="547">
+							<DataPath>Объект.ОснованиеКомандировки</DataPath>
+							<ContextMenu name="ОснованиеКомандировкиКонтекстноеМеню" id="548"/>
+							<ExtendedTooltip name="ОснованиеКомандировкиРасширеннаяПодсказка" id="549"/>
+						</InputField>
 					</ChildItems>
 				</UsualGroup>
 				<UsualGroup name="ПраваяКолонка" id="25">
@@ -237,60 +191,57 @@
 							</ChoiceParameterLinks>
 							<ContextMenu name="ПодразделениеКонтекстноеМеню" id="315"/>
 							<ExtendedTooltip name="ПодразделениеРасширеннаяПодсказка" id="316"/>
-							<Events>
-								<Event name="OnChange">ПодразделениеПриИзменении</Event>
-							</Events>
 						</InputField>
-						<UsualGroup name="ГруппаДатаСПо" id="179">
-							<Title>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Группа дата с по</v8:content>
-								</v8:item>
-							</Title>
-							<ToolTip>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Группа дата с по</v8:content>
-								</v8:item>
-							</ToolTip>
-							<Group>Horizontal</Group>
-							<Representation>None</Representation>
-							<ShowTitle>false</ShowTitle>
-							<ExtendedTooltip name="ГруппаДатаСПоРасширеннаяПодсказка" id="180"/>
-							<ChildItems>
-								<InputField name="ДатаНачала" id="184">
-									<DataPath>Объект.ДатаНачала</DataPath>
-									<ContextMenu name="ДатаНачалаКонтекстноеМеню" id="185"/>
-									<ExtendedTooltip name="ДатаНачалаРасширеннаяПодсказка" id="186"/>
-									<Events>
-										<Event name="OnChange">ДатаНачалаПриИзменении</Event>
-									</Events>
-								</InputField>
-								<InputField name="ДатаОкончания" id="181">
-									<DataPath>Объект.ДатаОкончания</DataPath>
-									<ContextMenu name="ДатаОкончанияКонтекстноеМеню" id="182"/>
-									<ExtendedTooltip name="ДатаОкончанияРасширеннаяПодсказка" id="183"/>
-									<Events>
-										<Event name="OnChange">ДатаОкончанияПриИзменении</Event>
-									</Events>
-								</InputField>
-								<InputField name="КоличествоДней" id="320">
-									<DataPath>Объект.КоличествоДней</DataPath>
-									<ReadOnly>true</ReadOnly>
-									<Title>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Дней</v8:content>
-										</v8:item>
-									</Title>
-									<ContextMenu name="КоличествоДнейКонтекстноеМеню" id="321"/>
-									<ExtendedTooltip name="КоличествоДнейРасширеннаяПодсказка" id="322"/>
-								</InputField>
-							</ChildItems>
-						</UsualGroup>
 					</ChildItems>
 				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаДатаСПо" id="179">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа дата с по</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа дата с по</v8:content>
+				</v8:item>
+			</ToolTip>
+			<HorizontalStretch>false</HorizontalStretch>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаДатаСПоРасширеннаяПодсказка" id="180"/>
+			<ChildItems>
+				<InputField name="ДатаНачала" id="184">
+					<DataPath>Объект.ДатаНачала</DataPath>
+					<ContextMenu name="ДатаНачалаКонтекстноеМеню" id="185"/>
+					<ExtendedTooltip name="ДатаНачалаРасширеннаяПодсказка" id="186"/>
+					<Events>
+						<Event name="OnChange">ДатаНачалаПриИзменении</Event>
+					</Events>
+				</InputField>
+				<InputField name="ДатаОкончания" id="181">
+					<DataPath>Объект.ДатаОкончания</DataPath>
+					<ContextMenu name="ДатаОкончанияКонтекстноеМеню" id="182"/>
+					<ExtendedTooltip name="ДатаОкончанияРасширеннаяПодсказка" id="183"/>
+					<Events>
+						<Event name="OnChange">ДатаОкончанияПриИзменении</Event>
+					</Events>
+				</InputField>
+				<InputField name="КоличествоДней" id="320">
+					<DataPath>Объект.КоличествоДней</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дней</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="КоличествоДнейКонтекстноеМеню" id="321"/>
+					<ExtendedTooltip name="КоличествоДнейРасширеннаяПодсказка" id="322"/>
+				</InputField>
 			</ChildItems>
 		</UsualGroup>
 		<Pages name="Страницы" id="59">
@@ -307,9 +258,6 @@
 				</v8:item>
 			</ToolTip>
 			<ExtendedTooltip name="СтраницыРасширеннаяПодсказка" id="60"/>
-			<Events>
-				<Event name="OnCurrentPageChange">СтраницыПриСменеСтраницы</Event>
-			</Events>
 			<ChildItems>
 				<Page name="СтраницаСотрудники" id="61">
 					<Title>
@@ -335,22 +283,44 @@
 							<ContextMenu name="СотрудникиКонтекстноеМеню" id="126"/>
 							<AutoCommandBar name="СотрудникиКоманднаяПанель" id="127">
 								<ChildItems>
-									<Button name="СотрудникиЗаполнитьПоПодразделению" id="243">
-										<Type>CommandBarButton</Type>
-										<CommandName>Form.Command.ЗаполнитьПоПодразделению</CommandName>
-										<Title>
-											<v8:item>
-												<v8:lang>ru</v8:lang>
-												<v8:content>Заполнить</v8:content>
-											</v8:item>
-										</Title>
-										<ExtendedTooltip name="СотрудникиЗаполнитьПоПодразделениюРасширеннаяПодсказка" id="244"/>
-									</Button>
 									<Button name="СотрудникиПодбор" id="346">
 										<Type>CommandBarButton</Type>
 										<CommandName>Form.Command.ПодборСотрудников</CommandName>
 										<ExtendedTooltip name="СотрудникиПодборРасширеннаяПодсказка" id="347"/>
 									</Button>
+									<ButtonGroup name="СотрудникиГруппаЗаполнение" id="575">
+										<Title>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Сотрудники группа заполнение</v8:content>
+											</v8:item>
+										</Title>
+										<ToolTip>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Сотрудники группа заполнение</v8:content>
+											</v8:item>
+										</ToolTip>
+										<ExtendedTooltip name="СотрудникиГруппаЗаполнениеРасширеннаяПодсказка" id="576"/>
+										<ChildItems>
+											<Button name="СотрудникиЗаполнить" id="243">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.Заполнить</CommandName>
+												<Title>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Заполнить</v8:content>
+													</v8:item>
+												</Title>
+												<ExtendedTooltip name="СотрудникиЗаполнитьРасширеннаяПодсказка" id="244"/>
+											</Button>
+											<Button name="СотрудникиРассчитать" id="573">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.Рассчитать</CommandName>
+												<ExtendedTooltip name="СотрудникиРассчитатьРасширеннаяПодсказка" id="574"/>
+											</Button>
+										</ChildItems>
+									</ButtonGroup>
 								</ChildItems>
 							</AutoCommandBar>
 							<ExtendedTooltip name="СотрудникиРасширеннаяПодсказка" id="128"/>
@@ -379,8 +349,6 @@
 								<ExtendedTooltip name="СотрудникиУправлениеПоискомРасширеннаяПодсказка" id="143"/>
 							</SearchControlAddition>
 							<Events>
-								<Event name="OnEditEnd">СотрудникиПриОкончанииРедактирования</Event>
-								<Event name="ChoiceProcessing">СотрудникиОбработкаВыбора</Event>
 								<Event name="OnStartEdit">СотрудникиПриНачалеРедактирования</Event>
 							</Events>
 							<ChildItems>
@@ -416,17 +384,17 @@
 									</ToolTip>
 									<ExtendedTooltip name="ГруппаПодразделениеРасширеннаяПодсказка" id="210"/>
 									<ChildItems>
-										<InputField name="СотрудникиПодразделение" id="203">
-											<DataPath>Объект.Сотрудники.Подразделение</DataPath>
-											<EditMode>EnterOnInput</EditMode>
-											<ContextMenu name="СотрудникиПодразделениеКонтекстноеМеню" id="204"/>
-											<ExtendedTooltip name="СотрудникиПодразделениеРасширеннаяПодсказка" id="205"/>
-										</InputField>
 										<InputField name="СотрудникиДолжность" id="206">
 											<DataPath>Объект.Сотрудники.Должность</DataPath>
 											<EditMode>EnterOnInput</EditMode>
 											<ContextMenu name="СотрудникиДолжностьКонтекстноеМеню" id="207"/>
 											<ExtendedTooltip name="СотрудникиДолжностьРасширеннаяПодсказка" id="208"/>
+										</InputField>
+										<InputField name="СотрудникиПодразделение" id="203">
+											<DataPath>Объект.Сотрудники.Подразделение</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<ContextMenu name="СотрудникиПодразделениеКонтекстноеМеню" id="204"/>
+											<ExtendedTooltip name="СотрудникиПодразделениеРасширеннаяПодсказка" id="205"/>
 										</InputField>
 									</ChildItems>
 								</ColumnGroup>
@@ -446,7 +414,7 @@
 									<ExtendedTooltip name="ГруппаВидРасчетаОтражениеРасширеннаяПодсказка" id="363"/>
 									<ChildItems>
 										<InputField name="СотрудникиСчетУчетаЗатрат" id="364">
-											<DataPath>Объект.Сотрудники.СчетУчетаЗатрат</DataPath>
+											<DataPath>1/0:97ac3b56-06e4-4113-ae17-eeffb9531543/0:a07b59a8-8bf7-42fb-a2a7-7d5639686bf3</DataPath>
 											<EditMode>EnterOnInput</EditMode>
 											<Width>8</Width>
 											<HorizontalStretch>false</HorizontalStretch>
@@ -454,7 +422,7 @@
 											<ExtendedTooltip name="СотрудникиСчетУчетаЗатратРасширеннаяПодсказка" id="366"/>
 										</InputField>
 										<InputField name="СотрудникиСтатьяЗатрат" id="367">
-											<DataPath>Объект.Сотрудники.СтатьяЗатрат</DataPath>
+											<DataPath>1/0:97ac3b56-06e4-4113-ae17-eeffb9531543/0:9e41bd3c-0aea-488c-b3f5-b29d2fda7438</DataPath>
 											<EditMode>EnterOnInput</EditMode>
 											<Width>8</Width>
 											<HorizontalStretch>false</HorizontalStretch>
@@ -468,16 +436,6 @@
 									<Width>10</Width>
 									<ContextMenu name="СотрудникиДниКонтекстноеМеню" id="151"/>
 									<ExtendedTooltip name="СотрудникиДниРасширеннаяПодсказка" id="152"/>
-								</InputField>
-								<InputField name="СотрудникиГород" id="156">
-									<DataPath>Объект.Сотрудники.Город</DataPath>
-									<EditMode>EnterOnInput</EditMode>
-									<Width>20</Width>
-									<ContextMenu name="СотрудникиГородКонтекстноеМеню" id="157"/>
-									<ExtendedTooltip name="СотрудникиГородРасширеннаяПодсказка" id="158"/>
-									<Events>
-										<Event name="OnChange">СотрудникиГородПриИзменении</Event>
-									</Events>
 								</InputField>
 								<ColumnGroup name="СотрудникиТариф" id="213">
 									<Title>
@@ -514,6 +472,7 @@
 													<DataPath>Объект.Сотрудники.Суточные</DataPath>
 													<EditMode>EnterOnInput</EditMode>
 													<Width>10</Width>
+													<HorizontalStretch>false</HorizontalStretch>
 													<ContextMenu name="СотрудникиСуточныеКонтекстноеМеню" id="160"/>
 													<ExtendedTooltip name="СотрудникиСуточныеРасширеннаяПодсказка" id="161"/>
 													<Events>
@@ -524,6 +483,7 @@
 													<DataPath>Объект.Сотрудники.Проживание</DataPath>
 													<EditMode>EnterOnInput</EditMode>
 													<Width>10</Width>
+													<HorizontalStretch>false</HorizontalStretch>
 													<ContextMenu name="СотрудникиПроживаниеКонтекстноеМеню" id="163"/>
 													<ExtendedTooltip name="СотрудникиПроживаниеРасширеннаяПодсказка" id="164"/>
 													<Events>
@@ -551,6 +511,7 @@
 													<DataPath>Объект.Сотрудники.Проездные</DataPath>
 													<EditMode>EnterOnInput</EditMode>
 													<Width>10</Width>
+													<HorizontalStretch>false</HorizontalStretch>
 													<ContextMenu name="СотрудникиПроездныеКонтекстноеМеню" id="166"/>
 													<ExtendedTooltip name="СотрудникиПроездныеРасширеннаяПодсказка" id="167"/>
 													<Events>
@@ -563,8 +524,10 @@
 								</ColumnGroup>
 								<InputField name="СотрудникиСуммаВсего" id="274">
 									<DataPath>Объект.Сотрудники.СуммаВсего</DataPath>
+									<ReadOnly>true</ReadOnly>
 									<EditMode>EnterOnInput</EditMode>
 									<Width>10</Width>
+									<HorizontalStretch>false</HorizontalStretch>
 									<ContextMenu name="СотрудникиСуммаВсегоКонтекстноеМеню" id="275"/>
 									<ExtendedTooltip name="СотрудникиСуммаВсегоРасширеннаяПодсказка" id="276"/>
 								</InputField>
@@ -575,16 +538,23 @@
 									<HorizontalStretch>false</HorizontalStretch>
 									<ContextMenu name="СотрудникиВалютаКонтекстноеМеню" id="169"/>
 									<ExtendedTooltip name="СотрудникиВалютаРасширеннаяПодсказка" id="170"/>
-									<Events>
-										<Event name="OnChange">СотрудникиВалютаПриИзменении</Event>
-									</Events>
 								</InputField>
 								<InputField name="СотрудникиКурс" id="536">
-									<DataPath>Объект.Сотрудники.Курс</DataPath>
+									<DataPath>1/0:97ac3b56-06e4-4113-ae17-eeffb9531543/0:dd359f34-d248-47e3-864e-61e48e3f958e</DataPath>
+									<ReadOnly>true</ReadOnly>
 									<EditMode>EnterOnInput</EditMode>
 									<Width>10</Width>
+									<HorizontalStretch>false</HorizontalStretch>
 									<ContextMenu name="СотрудникиКурсКонтекстноеМеню" id="537"/>
 									<ExtendedTooltip name="СотрудникиКурсРасширеннаяПодсказка" id="538"/>
+								</InputField>
+								<InputField name="СотрудникиКратность" id="570">
+									<ReadOnly>true</ReadOnly>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>10</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="СотрудникиКратностьКонтекстноеМеню" id="571"/>
+									<ExtendedTooltip name="СотрудникиКратностьРасширеннаяПодсказка" id="572"/>
 								</InputField>
 								<InputField name="СотрудникиЗадание" id="351">
 									<DataPath>Объект.Сотрудники.Задание</DataPath>
@@ -686,6 +656,7 @@
 						</Table>
 						<Table name="ТаблицаАО" id="520">
 							<CommandBarLocation>None</CommandBarLocation>
+							<ReadOnly>true</ReadOnly>
 							<Height>2</Height>
 							<UseAlternationRowColor>true</UseAlternationRowColor>
 							<EnableStartDrag>true</EnableStartDrag>
@@ -995,10 +966,7 @@
 	РасходныйКассовыйОрдер.СуммаДокумента,
 	РасходныйКассовыйОрдер.ДокументОснование
 ИЗ
-	Документ.РасходныйКассовыйОрдер КАК РасходныйКассовыйОрдер
-ГДЕ
-	РасходныйКассовыйОрдер.ДокументОснование = &amp;ДокументСсылка
-	и не РасходныйКассовыйОрдер.ДокументОснование = ЗНАЧЕНИЕ(Документ.Командировка.ПустаяСсылка)</QueryText>
+	Документ.РасходныйКассовыйОрдер КАК РасходныйКассовыйОрдер</QueryText>
 				<MainTable>Document.РасходныйКассовыйОрдер</MainTable>
 				<AutoSaveUserSettings>false</AutoSaveUserSettings>
 				<ListSettings>
@@ -1018,33 +986,6 @@
 					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
 				</ListSettings>
 			</Settings>
-		</Attribute>
-		<Attribute name="КоличествоДней" id="9">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Количество дней</v8:content>
-				</v8:item>
-			</Title>
-			<Type>
-				<v8:Type>xs:decimal</v8:Type>
-				<v8:NumberQualifiers>
-					<v8:Digits>10</v8:Digits>
-					<v8:FractionDigits>0</v8:FractionDigits>
-					<v8:AllowedSign>Any</v8:AllowedSign>
-				</v8:NumberQualifiers>
-			</Type>
-		</Attribute>
-		<Attribute name="Подразделение" id="10">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Подразделение</v8:content>
-				</v8:item>
-			</Title>
-			<Type>
-				<v8:Type>cfg:CatalogRef.ПодразделенияОрганизаций</v8:Type>
-			</Type>
 		</Attribute>
 		<Attribute name="ВалютаРегламентированногоУчета" id="11">
 			<Title>
@@ -1069,16 +1010,14 @@
 			</Type>
 			<Settings xsi:type="DynamicList">
 				<ManualQuery>true</ManualQuery>
-				<DynamicDataRead>false</DynamicDataRead>
+				<DynamicDataRead>true</DynamicDataRead>
 				<QueryText>ВЫБРАТЬ
 	АвансовыйОтчет.Ссылка,
 	АвансовыйОтчет.ФизЛицо,
 	АвансовыйОтчет.СуммаДокумента,
 	АвансовыйОтчет.ДокументОснование
 ИЗ
-	Документ.АвансовыйОтчет КАК АвансовыйОтчет
-ГДЕ
-	АвансовыйОтчет.ДокументОснование = &amp;ДокументСсылка</QueryText>
+	Документ.АвансовыйОтчет КАК АвансовыйОтчет</QueryText>
 				<MainTable>Document.АвансовыйОтчет</MainTable>
 				<ListSettings>
 					<dcsset:filter>
@@ -1109,20 +1048,20 @@
 		</Attribute>
 	</Attributes>
 	<Commands>
-		<Command name="ЗаполнитьПоПодразделению" id="1">
+		<Command name="Заполнить" id="1">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Заполнить по подразделению</v8:content>
+					<v8:content>Заполнить</v8:content>
 				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Заполнить по подразделению</v8:content>
+					<v8:content>Заполнить</v8:content>
 				</v8:item>
 			</ToolTip>
-			<Action>ЗаполнитьПоПодразделению</Action>
+			<Action>Заполнить</Action>
 		</Command>
 		<Command name="СформироватьРКО" id="3">
 			<Title>
@@ -1147,6 +1086,21 @@
 				</v8:item>
 			</Title>
 			<Action>ПодборСотрудников</Action>
+		</Command>
+		<Command name="Рассчитать" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Рассчитать</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Рассчитать</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Рассчитать</Action>
 		</Command>
 	</Commands>
 	<Parameters>

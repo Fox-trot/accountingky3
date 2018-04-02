@@ -43,11 +43,6 @@
 		<field xsi:type="DataSetFieldField">
 			<dataPath>СуммаНачальныйОстаток</dataPath>
 			<field>СуммаНачальныйОстаток</field>
-			<role>
-				<dcscom:balance>true</dcscom:balance>
-				<dcscom:balanceGroupName>Сумма</dcscom:balanceGroupName>
-				<dcscom:balanceType>OpeningBalance</dcscom:balanceType>
-			</role>
 			<appearance>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 					<dcscor:parameter>Формат</dcscor:parameter>
@@ -65,11 +60,6 @@
 		<field xsi:type="DataSetFieldField">
 			<dataPath>СуммаКонечныйОстаток</dataPath>
 			<field>СуммаКонечныйОстаток</field>
-			<role>
-				<dcscom:balance>true</dcscom:balance>
-				<dcscom:balanceGroupName>Сумма</dcscom:balanceGroupName>
-				<dcscom:balanceType>ClosingBalance</dcscom:balanceType>
-			</role>
 			<appearance>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 					<dcscor:parameter>Формат</dcscor:parameter>
@@ -88,7 +78,11 @@
 	Типовой.СуммаНачальныйОстаток КАК СуммаНачальныйОстаток,
 	Типовой.СуммаОборотДт КАК СуммаОборотДт,
 	Типовой.СуммаОборотКт КАК СуммаОборотКт,
-	Типовой.СуммаКонечныйОстаток КАК СуммаКонечныйОстаток,
+	ВЫБОР
+		КОГДА Типовой.Счет.Вид = ЗНАЧЕНИЕ(ВидСчета.Пассивный)
+			ТОГДА -Типовой.СуммаКонечныйОстаток
+		ИНАЧЕ Типовой.СуммаКонечныйОстаток
+	КОНЕЦ КАК СуммаКонечныйОстаток,
 	МестоОС.МОЛ КАК МОЛ
 {ВЫБРАТЬ
 	Счет.*,

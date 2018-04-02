@@ -57,7 +57,7 @@
 						<Button name="ФормаОбщаяКомандаСтруктураПодчиненности" id="159">
 							<Type>CommandBarButton</Type>
 							<CommandName>CommonCommand.СтруктураПодчиненности</CommandName>
-							<DataPath>Items.Список.CurrentData.Ref</DataPath>
+							<DataPath>Items.Список.CurrentData.Ссылка</DataPath>
 							<ExtendedTooltip name="ФормаОбщаяКомандаСтруктураПодчиненностиРасширеннаяПодсказка" id="160"/>
 						</Button>
 					</ChildItems>
@@ -157,8 +157,24 @@
 						<Event name="OnActivateRow">СписокПриАктивизацииСтроки</Event>
 					</Events>
 					<ChildItems>
+						<PictureField name="ЕстьФайлы" id="169">
+							<DataPath>Список.ЕстьФайлы</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<HeaderPicture>
+								<xr:Ref>CommonPicture.Скрепка</xr:Ref>
+								<xr:LoadTransparent>true</xr:LoadTransparent>
+							</HeaderPicture>
+							<Width>2</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ValuesPicture>
+								<xr:Ref>CommonPicture.КоллекцияСкрепка</xr:Ref>
+								<xr:LoadTransparent>true</xr:LoadTransparent>
+							</ValuesPicture>
+							<ContextMenu name="ЕстьФайлыКонтекстноеМеню" id="170"/>
+							<ExtendedTooltip name="ЕстьФайлыРасширеннаяПодсказка" id="171"/>
+						</PictureField>
 						<LabelField name="Дата" id="16">
-							<DataPath>Список.Date</DataPath>
+							<DataPath>Список.Дата</DataPath>
 							<DefaultItem>true</DefaultItem>
 							<Width>10</Width>
 							<HorizontalStretch>false</HorizontalStretch>
@@ -166,26 +182,17 @@
 							<ExtendedTooltip name="ДатаРасширеннаяПодсказка" id="18"/>
 						</LabelField>
 						<LabelField name="Номер" id="19">
-							<DataPath>Список.Number</DataPath>
+							<DataPath>Список.Номер</DataPath>
 							<Width>11</Width>
 							<HorizontalStretch>false</HorizontalStretch>
 							<ContextMenu name="НомерКонтекстноеМеню" id="20"/>
 							<ExtendedTooltip name="НомерРасширеннаяПодсказка" id="21"/>
 						</LabelField>
-						<LabelField name="Организация" id="26">
-							<DataPath>Список.Организация</DataPath>
-							<ContextMenu name="ОрганизацияКонтекстноеМеню" id="27"/>
-							<ExtendedTooltip name="ОрганизацияРасширеннаяПодсказка" id="28"/>
-						</LabelField>
 						<LabelField name="Контрагент" id="128">
 							<DataPath>Список.Контрагент</DataPath>
+							<Width>30</Width>
 							<ContextMenu name="КонтрагентКонтекстноеМеню" id="129"/>
 							<ExtendedTooltip name="КонтрагентРасширеннаяПодсказка" id="130"/>
-						</LabelField>
-						<LabelField name="ДоговорКонтрагента" id="163">
-							<DataPath>Список.ДоговорКонтрагента</DataPath>
-							<ContextMenu name="ДоговорКонтрагентаКонтекстноеМеню" id="164"/>
-							<ExtendedTooltip name="ДоговорКонтрагентаРасширеннаяПодсказка" id="165"/>
 						</LabelField>
 						<ColumnGroup name="ГруппаСумма" id="114">
 							<Title>
@@ -224,6 +231,16 @@
 								</LabelField>
 							</ChildItems>
 						</ColumnGroup>
+						<LabelField name="ДоговорКонтрагента" id="163">
+							<DataPath>Список.ДоговорКонтрагента</DataPath>
+							<ContextMenu name="ДоговорКонтрагентаКонтекстноеМеню" id="164"/>
+							<ExtendedTooltip name="ДоговорКонтрагентаРасширеннаяПодсказка" id="165"/>
+						</LabelField>
+						<LabelField name="Организация" id="26">
+							<DataPath>Список.Организация</DataPath>
+							<ContextMenu name="ОрганизацияКонтекстноеМеню" id="27"/>
+							<ExtendedTooltip name="ОрганизацияРасширеннаяПодсказка" id="28"/>
+						</LabelField>
 						<LabelField name="Комментарий" id="29">
 							<DataPath>Список.Комментарий</DataPath>
 							<ContextMenu name="КомментарийКонтекстноеМеню" id="30"/>
@@ -576,13 +593,52 @@
 			</Type>
 			<MainAttribute>true</MainAttribute>
 			<UseAlways>
+				<Field>Список.Ссылка</Field>
 				<Field>Список.Контрагент</Field>
-				<Field>Список.Ref</Field>
 				<Field>~Список.ФизЛицо</Field>
+				<Field>~Список.Ref</Field>
 			</UseAlways>
 			<Settings xsi:type="DynamicList">
-				<ManualQuery>false</ManualQuery>
+				<ManualQuery>true</ManualQuery>
 				<DynamicDataRead>true</DynamicDataRead>
+				<QueryText>ВЫБРАТЬ
+	ДокументСчетНаОплатуПокупателю.Ссылка КАК Ссылка,
+	ДокументСчетНаОплатуПокупателю.ПометкаУдаления КАК ПометкаУдаления,
+	ДокументСчетНаОплатуПокупателю.Номер КАК Номер,
+	ДокументСчетНаОплатуПокупателю.Дата КАК Дата,
+	ДокументСчетНаОплатуПокупателю.Проведен КАК Проведен,
+	ДокументСчетНаОплатуПокупателю.Организация КАК Организация,
+	ДокументСчетНаОплатуПокупателю.Склад КАК Склад,
+	ДокументСчетНаОплатуПокупателю.Контрагент КАК Контрагент,
+	ДокументСчетНаОплатуПокупателю.БезналичныйРасчет КАК БезналичныйРасчет,
+	ДокументСчетНаОплатуПокупателю.ДоговорКонтрагента КАК ДоговорКонтрагента,
+	ДокументСчетНаОплатуПокупателю.ВалютаДокумента КАК ВалютаДокумента,
+	ДокументСчетНаОплатуПокупателю.Курс КАК Курс,
+	ДокументСчетНаОплатуПокупателю.Кратность КАК Кратность,
+	ДокументСчетНаОплатуПокупателю.СтавкаНДС КАК СтавкаНДС,
+	ДокументСчетНаОплатуПокупателю.СтавкаНСП КАК СтавкаНСП,
+	ДокументСчетНаОплатуПокупателю.СтавкаНСПУслуги КАК СтавкаНСПУслуги,
+	ДокументСчетНаОплатуПокупателю.СуммаВключаетНалоги КАК СуммаВключаетНалоги,
+	ДокументСчетНаОплатуПокупателю.СуммаДокумента КАК СуммаДокумента,
+	ДокументСчетНаОплатуПокупателю.ДокументОснование КАК ДокументОснование,
+	ДокументСчетНаОплатуПокупателю.ВидСкидкиНаценки КАК ВидСкидкиНаценки,
+	ДокументСчетНаОплатуПокупателю.ПроцентСкидкиНаценки КАК ПроцентСкидкиНаценки,
+	ДокументСчетНаОплатуПокупателю.СрокОплаты КАК СрокОплаты,
+	ДокументСчетНаОплатуПокупателю.ДатаОплаты КАК ДатаОплаты,
+	ДокументСчетНаОплатуПокупателю.Комментарий КАК Комментарий,
+	ДокументСчетНаОплатуПокупателю.Автор КАК Автор,
+	ДокументСчетНаОплатуПокупателю.МоментВремени КАК МоментВремени,
+	ВЫБОР
+		КОГДА НаличиеПрисоединенныхФайлов.ЕстьФайлы ЕСТЬ NULL
+			ТОГДА 0
+		КОГДА НаличиеПрисоединенныхФайлов.ЕстьФайлы
+			ТОГДА 1
+		ИНАЧЕ 0
+	КОНЕЦ КАК ЕстьФайлы
+ИЗ
+	Документ.СчетНаОплатуПокупателю КАК ДокументСчетНаОплатуПокупателю
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.НаличиеФайлов КАК НаличиеПрисоединенныхФайлов
+		ПО ДокументСчетНаОплатуПокупателю.Ссылка = НаличиеПрисоединенныхФайлов.ОбъектСФайлами</QueryText>
 				<MainTable>Document.СчетНаОплатуПокупателю</MainTable>
 				<ListSettings>
 					<dcsset:filter>
@@ -787,6 +843,21 @@
 				</v8:item>
 			</Title>
 			<Type/>
+		</Attribute>
+		<Attribute name="АдресХранилищаНастройкиДинСпискаДляРеестра" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Адрес хранилища настройки дин списка для реестра</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
 		</Attribute>
 	</Attributes>
 	<Commands>

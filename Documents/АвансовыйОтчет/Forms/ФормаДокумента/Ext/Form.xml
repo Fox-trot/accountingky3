@@ -572,6 +572,13 @@
 										</InputField>
 									</ChildItems>
 								</ColumnGroup>
+								<InputField name="ОплатаПоставщикамКратность" id="1313">
+									<DataPath>Объект.ОплатаПоставщикам.Кратность</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>10</Width>
+									<ContextMenu name="ОплатаПоставщикамКратностьКонтекстноеМеню" id="1314"/>
+									<ExtendedTooltip name="ОплатаПоставщикамКратностьРасширеннаяПодсказка" id="1315"/>
+								</InputField>
 								<ColumnGroup name="КолонкаОплата5" id="390">
 									<Title>
 										<v8:item>
@@ -764,6 +771,9 @@
 								<ContextMenu name="ПрочееУправлениеПоискомКонтекстноеМеню" id="707"/>
 								<ExtendedTooltip name="ПрочееУправлениеПоискомРасширеннаяПодсказка" id="708"/>
 							</SearchControlAddition>
+							<Events>
+								<Event name="OnStartEdit">ПрочееПриНачалеРедактирования</Event>
+							</Events>
 							<ChildItems>
 								<LabelField name="ПрочееНомерСтроки" id="709">
 									<DataPath>Объект.Прочее.LineNumber</DataPath>
@@ -1023,6 +1033,31 @@
 										</ColumnGroup>
 									</ChildItems>
 								</ColumnGroup>
+								<InputField name="ПрочееВалюта" id="1304">
+									<DataPath>Объект.Прочее.Валюта</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ПрочееВалютаКонтекстноеМеню" id="1305"/>
+									<ExtendedTooltip name="ПрочееВалютаРасширеннаяПодсказка" id="1306"/>
+									<Events>
+										<Event name="OnChange">ПрочееВалютаПриИзменении</Event>
+									</Events>
+								</InputField>
+								<InputField name="ПрочееКурс" id="1307">
+									<DataPath>Объект.Прочее.Курс</DataPath>
+									<ReadOnly>true</ReadOnly>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>10</Width>
+									<ContextMenu name="ПрочееКурсКонтекстноеМеню" id="1308"/>
+									<ExtendedTooltip name="ПрочееКурсРасширеннаяПодсказка" id="1309"/>
+								</InputField>
+								<InputField name="ПрочееКратность" id="1310">
+									<DataPath>Объект.Прочее.Кратность</DataPath>
+									<ReadOnly>true</ReadOnly>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>10</Width>
+									<ContextMenu name="ПрочееКратностьКонтекстноеМеню" id="1311"/>
+									<ExtendedTooltip name="ПрочееКратностьРасширеннаяПодсказка" id="1312"/>
+								</InputField>
 							</ChildItems>
 						</Table>
 					</ChildItems>
@@ -1734,22 +1769,6 @@
 									<ContextMenu name="ОбменВалютНомерСтрокиКонтекстноеМеню" id="852"/>
 									<ExtendedTooltip name="ОбменВалютНомерСтрокиРасширеннаяПодсказка" id="853"/>
 								</LabelField>
-								<InputField name="ОбменВалютВалютаДо" id="1288">
-									<DataPath>Объект.ОбменВалют.ВалютаДо</DataPath>
-									<EditMode>EnterOnInput</EditMode>
-									<ContextMenu name="ОбменВалютВалютаДоКонтекстноеМеню" id="1289"/>
-									<ExtendedTooltip name="ОбменВалютВалютаДоРасширеннаяПодсказка" id="1290"/>
-								</InputField>
-								<InputField name="ОбменВалютСуммаДо" id="1285">
-									<DataPath>Объект.ОбменВалют.СуммаДо</DataPath>
-									<EditMode>EnterOnInput</EditMode>
-									<Width>10</Width>
-									<ContextMenu name="ОбменВалютСуммаДоКонтекстноеМеню" id="1286"/>
-									<ExtendedTooltip name="ОбменВалютСуммаДоРасширеннаяПодсказка" id="1287"/>
-									<Events>
-										<Event name="OnChange">ОбменВалютСуммаДоПриИзменении</Event>
-									</Events>
-								</InputField>
 								<InputField name="ОбменВалютВалютаПосле" id="1282">
 									<DataPath>Объект.ОбменВалют.ВалютаПосле</DataPath>
 									<EditMode>EnterOnInput</EditMode>
@@ -1764,6 +1783,22 @@
 									<ExtendedTooltip name="ОбменВалютСуммаПослеРасширеннаяПодсказка" id="1281"/>
 									<Events>
 										<Event name="OnChange">ОбменВалютСуммаПослеПриИзменении</Event>
+									</Events>
+								</InputField>
+								<InputField name="ОбменВалютВалютаДо" id="1288">
+									<DataPath>Объект.ОбменВалют.ВалютаДо</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ОбменВалютВалютаДоКонтекстноеМеню" id="1289"/>
+									<ExtendedTooltip name="ОбменВалютВалютаДоРасширеннаяПодсказка" id="1290"/>
+								</InputField>
+								<InputField name="ОбменВалютСуммаДо" id="1285">
+									<DataPath>Объект.ОбменВалют.СуммаДо</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>10</Width>
+									<ContextMenu name="ОбменВалютСуммаДоКонтекстноеМеню" id="1286"/>
+									<ExtendedTooltip name="ОбменВалютСуммаДоРасширеннаяПодсказка" id="1287"/>
+									<Events>
+										<Event name="OnChange">ОбменВалютСуммаДоПриИзменении</Event>
 									</Events>
 								</InputField>
 								<InputField name="ОбменВалютКурсОтчета" id="869">
@@ -2180,6 +2215,17 @@
 					<v8:Length>0</v8:Length>
 					<v8:AllowedLength>Variable</v8:AllowedLength>
 				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ВалютаРегламентированногоУчета" id="18">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Валюта регламентированного учета</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Валюты</v8:Type>
 			</Type>
 		</Attribute>
 		<ConditionalAppearance>

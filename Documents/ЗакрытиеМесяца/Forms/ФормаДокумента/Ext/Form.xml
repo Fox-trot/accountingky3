@@ -421,6 +421,17 @@
 												<Event name="OnChange">РасчетСебестоимостиГотовойПродукцииПриИзменении</Event>
 											</Events>
 										</CheckBoxField>
+										<CheckBoxField name="РасчетЕдиногоНалога" id="1912">
+											<DataPath>Объект.РасчетЕдиногоНалога</DataPath>
+											<TitleLocation>Right</TitleLocation>
+											<ToolTipRepresentation>Button</ToolTipRepresentation>
+											<CheckBoxType>Auto</CheckBoxType>
+											<ContextMenu name="РасчетЕдиногоНалогаКонтекстноеМеню" id="1913"/>
+											<ExtendedTooltip name="РасчетЕдиногоНалогаРасширеннаяПодсказка" id="1914"/>
+											<Events>
+												<Event name="OnChange">РасчетЕдиногоНалогаПриИзменении</Event>
+											</Events>
+										</CheckBoxField>
 									</ChildItems>
 								</UsualGroup>
 								<UsualGroup name="ГруппаОсновнаяПравая" id="1174">
@@ -503,6 +514,12 @@
 											<ContextMenu name="НадписьСебестоимостиГотовойПродукцииКонтекстноеМеню" id="1684"/>
 											<ExtendedTooltip name="НадписьСебестоимостиГотовойПродукцииРасширеннаяПодсказка" id="1685"/>
 										</LabelField>
+										<LabelField name="НадписьЕдиныйНалог" id="1948">
+											<DataPath>Объект.НадписьЕдиныйНалог</DataPath>
+											<TitleLocation>None</TitleLocation>
+											<ContextMenu name="НадписьЕдиныйНалогКонтекстноеМеню" id="1949"/>
+											<ExtendedTooltip name="НадписьЕдиныйНалогРасширеннаяПодсказка" id="1950"/>
+										</LabelField>
 									</ChildItems>
 								</UsualGroup>
 							</ChildItems>
@@ -524,6 +541,11 @@
 					</ToolTip>
 					<ExtendedTooltip name="СтраницаНДСРасширеннаяПодсказка" id="589"/>
 					<ChildItems>
+						<Button name="ОткрытьМониторРасчетов" id="1963">
+							<Type>UsualButton</Type>
+							<CommandName>Form.Command.ОткрытьМониторРасчетов</CommandName>
+							<ExtendedTooltip name="ОткрытьМониторРасчетовРасширеннаяПодсказка" id="1964"/>
+						</Button>
 						<Pages name="СтраницыВесьНДС" id="1089">
 							<Title>
 								<v8:item>
@@ -539,7 +561,7 @@
 							</ToolTip>
 							<ExtendedTooltip name="СтраницыВесьНДСРасширеннаяПодсказка" id="1090"/>
 							<ChildItems>
-								<Page name="СтраницаНДСАвансы" id="1091">
+								<Page name="СтраницаАвансыИДоотгрузка" id="1091">
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
@@ -549,184 +571,142 @@
 									<ToolTip>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>Страница НДСАвансы</v8:content>
+											<v8:content>Страница авансы и доотгрузка</v8:content>
 										</v8:item>
 									</ToolTip>
-									<ExtendedTooltip name="СтраницаНДСАвансыРасширеннаяПодсказка" id="1092"/>
+									<ExtendedTooltip name="СтраницаАвансыИДоотгрузкаРасширеннаяПодсказка" id="1092"/>
 									<ChildItems>
-										<Table name="Авансы" id="1395">
-											<TitleLocation>Auto</TitleLocation>
-											<Height>1</Height>
+										<Table name="АвансыИДоотгрузка" id="1786">
+											<CommandBarLocation>None</CommandBarLocation>
+											<ReadOnly>true</ReadOnly>
+											<SelectionMode>SingleRow</SelectionMode>
 											<AutoInsertNewRow>true</AutoInsertNewRow>
 											<EnableStartDrag>true</EnableStartDrag>
 											<EnableDrag>true</EnableDrag>
-											<DataPath>Объект.Авансы</DataPath>
-											<Title>
-												<v8:item>
-													<v8:lang>ru</v8:lang>
-													<v8:content>Таблица авансов</v8:content>
-												</v8:item>
-											</Title>
+											<DataPath>Объект.АвансыИДоотгрузка</DataPath>
+											<CommandSet>
+												<ExcludedCommand>Copy</ExcludedCommand>
+												<ExcludedCommand>MoveUp</ExcludedCommand>
+												<ExcludedCommand>Delete</ExcludedCommand>
+												<ExcludedCommand>Add</ExcludedCommand>
+												<ExcludedCommand>Change</ExcludedCommand>
+												<ExcludedCommand>MoveDown</ExcludedCommand>
+											</CommandSet>
 											<RowFilter xsi:nil="true"/>
-											<ContextMenu name="АвансыКонтекстноеМеню" id="1396"/>
-											<AutoCommandBar name="АвансыКоманднаяПанель" id="1397"/>
-											<ExtendedTooltip name="АвансыРасширеннаяПодсказка" id="1398"/>
-											<SearchStringAddition name="АвансыСтрокаПоиска" id="1399">
+											<ContextMenu name="АвансыИДоотгрузкаКонтекстноеМеню" id="1787"/>
+											<AutoCommandBar name="АвансыИДоотгрузкаКоманднаяПанель" id="1788"/>
+											<ExtendedTooltip name="АвансыИДоотгрузкаРасширеннаяПодсказка" id="1789"/>
+											<SearchStringAddition name="АвансыИДоотгрузкаСтрокаПоиска" id="1790">
 												<AdditionSource>
-													<Item>Авансы</Item>
+													<Item>АвансыИДоотгрузка</Item>
 													<Type>SearchStringRepresentation</Type>
 												</AdditionSource>
-												<ContextMenu name="АвансыСтрокаПоискаКонтекстноеМеню" id="1400"/>
-												<ExtendedTooltip name="АвансыСтрокаПоискаРасширеннаяПодсказка" id="1401"/>
+												<ContextMenu name="АвансыИДоотгрузкаСтрокаПоискаКонтекстноеМеню" id="1791"/>
+												<ExtendedTooltip name="АвансыИДоотгрузкаСтрокаПоискаРасширеннаяПодсказка" id="1792"/>
 											</SearchStringAddition>
-											<ViewStatusAddition name="АвансыСостояниеПросмотра" id="1402">
+											<ViewStatusAddition name="АвансыИДоотгрузкаСостояниеПросмотра" id="1793">
 												<AdditionSource>
-													<Item>Авансы</Item>
+													<Item>АвансыИДоотгрузка</Item>
 													<Type>ViewStatusRepresentation</Type>
 												</AdditionSource>
-												<ContextMenu name="АвансыСостояниеПросмотраКонтекстноеМеню" id="1403"/>
-												<ExtendedTooltip name="АвансыСостояниеПросмотраРасширеннаяПодсказка" id="1404"/>
+												<ContextMenu name="АвансыИДоотгрузкаСостояниеПросмотраКонтекстноеМеню" id="1794"/>
+												<ExtendedTooltip name="АвансыИДоотгрузкаСостояниеПросмотраРасширеннаяПодсказка" id="1795"/>
 											</ViewStatusAddition>
-											<SearchControlAddition name="АвансыУправлениеПоиском" id="1405">
+											<SearchControlAddition name="АвансыИДоотгрузкаУправлениеПоиском" id="1796">
 												<AdditionSource>
-													<Item>Авансы</Item>
+													<Item>АвансыИДоотгрузка</Item>
 													<Type>SearchControl</Type>
 												</AdditionSource>
-												<ContextMenu name="АвансыУправлениеПоискомКонтекстноеМеню" id="1406"/>
-												<ExtendedTooltip name="АвансыУправлениеПоискомРасширеннаяПодсказка" id="1407"/>
+												<ContextMenu name="АвансыИДоотгрузкаУправлениеПоискомКонтекстноеМеню" id="1797"/>
+												<ExtendedTooltip name="АвансыИДоотгрузкаУправлениеПоискомРасширеннаяПодсказка" id="1798"/>
 											</SearchControlAddition>
 											<ChildItems>
-												<LabelField name="АвансыНомерСтроки" id="1408">
-													<DataPath>Объект.Авансы.LineNumber</DataPath>
+												<LabelField name="АвансыИДоотгрузкаНомерСтроки" id="1799">
+													<DataPath>Объект.АвансыИДоотгрузка.LineNumber</DataPath>
 													<EditMode>EnterOnInput</EditMode>
 													<Width>4</Width>
 													<HorizontalStretch>false</HorizontalStretch>
-													<ContextMenu name="АвансыНомерСтрокиКонтекстноеМеню" id="1409"/>
-													<ExtendedTooltip name="АвансыНомерСтрокиРасширеннаяПодсказка" id="1410"/>
+													<ContextMenu name="АвансыИДоотгрузкаНомерСтрокиКонтекстноеМеню" id="1800"/>
+													<ExtendedTooltip name="АвансыИДоотгрузкаНомерСтрокиРасширеннаяПодсказка" id="1801"/>
 												</LabelField>
-												<InputField name="АвансыКонтрагент" id="1497">
-													<DataPath>Объект.Авансы.Контрагент</DataPath>
+												<InputField name="АвансыИДоотгрузкаКонтрагент" id="1802">
+													<DataPath>Объект.АвансыИДоотгрузка.Контрагент</DataPath>
 													<EditMode>EnterOnInput</EditMode>
-													<ContextMenu name="АвансыКонтрагентКонтекстноеМеню" id="1498"/>
-													<ExtendedTooltip name="АвансыКонтрагентРасширеннаяПодсказка" id="1499"/>
+													<ContextMenu name="АвансыИДоотгрузкаКонтрагентКонтекстноеМеню" id="1803"/>
+													<ExtendedTooltip name="АвансыИДоотгрузкаКонтрагентРасширеннаяПодсказка" id="1804"/>
 												</InputField>
-												<InputField name="АвансыДоговор" id="1500">
-													<DataPath>Объект.Авансы.Договор</DataPath>
+												<InputField name="АвансыИДоотгрузкаДоговор" id="1805">
+													<DataPath>Объект.АвансыИДоотгрузка.Договор</DataPath>
 													<EditMode>EnterOnInput</EditMode>
-													<ContextMenu name="АвансыДоговорКонтекстноеМеню" id="1501"/>
-													<ExtendedTooltip name="АвансыДоговорРасширеннаяПодсказка" id="1502"/>
+													<ContextMenu name="АвансыИДоотгрузкаДоговорКонтекстноеМеню" id="1806"/>
+													<ExtendedTooltip name="АвансыИДоотгрузкаДоговорРасширеннаяПодсказка" id="1807"/>
 												</InputField>
-												<InputField name="АвансыСумма" id="1411">
-													<DataPath>Объект.Авансы.Сумма</DataPath>
+												<InputField name="АвансыИДоотгрузкаСуммаАвансНачало" id="1808">
+													<DataPath>Объект.АвансыИДоотгрузка.СуммаАвансНачало</DataPath>
 													<EditMode>EnterOnInput</EditMode>
 													<Width>10</Width>
-													<ContextMenu name="АвансыСуммаКонтекстноеМеню" id="1412"/>
-													<ExtendedTooltip name="АвансыСуммаРасширеннаяПодсказка" id="1413"/>
+													<ContextMenu name="АвансыИДоотгрузкаСуммаАвансНачалоКонтекстноеМеню" id="1809"/>
+													<ExtendedTooltip name="АвансыИДоотгрузкаСуммаАвансНачалоРасширеннаяПодсказка" id="1810"/>
 												</InputField>
-												<InputField name="АвансыНДС" id="1414">
-													<DataPath>Объект.Авансы.СуммаНДС</DataPath>
+												<InputField name="АвансыИДоотгрузкаСуммаОплата" id="1811">
+													<DataPath>Объект.АвансыИДоотгрузка.СуммаОплата</DataPath>
 													<EditMode>EnterOnInput</EditMode>
 													<Width>10</Width>
-													<ContextMenu name="АвансыНДСКонтекстноеМеню" id="1415"/>
-													<ExtendedTooltip name="АвансыНДСРасширеннаяПодсказка" id="1416"/>
+													<ContextMenu name="АвансыИДоотгрузкаСуммаОплатаКонтекстноеМеню" id="1812"/>
+													<ExtendedTooltip name="АвансыИДоотгрузкаСуммаОплатаРасширеннаяПодсказка" id="1813"/>
 												</InputField>
-												<InputField name="АвансыНСП" id="1417">
-													<DataPath>Объект.Авансы.СуммаНСП</DataPath>
+												<InputField name="АвансыИДоотгрузкаСуммаОтгрузка" id="1814">
+													<DataPath>Объект.АвансыИДоотгрузка.СуммаОтгрузка</DataPath>
 													<EditMode>EnterOnInput</EditMode>
 													<Width>10</Width>
-													<ContextMenu name="АвансыНСПКонтекстноеМеню" id="1418"/>
-													<ExtendedTooltip name="АвансыНСПРасширеннаяПодсказка" id="1419"/>
+													<ContextMenu name="АвансыИДоотгрузкаСуммаОтгрузкаКонтекстноеМеню" id="1815"/>
+													<ExtendedTooltip name="АвансыИДоотгрузкаСуммаОтгрузкаРасширеннаяПодсказка" id="1816"/>
+												</InputField>
+												<InputField name="АвансыИДоотгрузкаСуммаДоотгрузка" id="1817">
+													<DataPath>Объект.АвансыИДоотгрузка.СуммаДоотгрузка</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<Width>10</Width>
+													<ContextMenu name="АвансыИДоотгрузкаСуммаДоотгрузкаКонтекстноеМеню" id="1818"/>
+													<ExtendedTooltip name="АвансыИДоотгрузкаСуммаДоотгрузкаРасширеннаяПодсказка" id="1819"/>
+												</InputField>
+												<InputField name="АвансыИДоотгрузкаСуммаАванс" id="1820">
+													<DataPath>Объект.АвансыИДоотгрузка.СуммаАванс</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<Width>10</Width>
+													<ContextMenu name="АвансыИДоотгрузкаСуммаАвансКонтекстноеМеню" id="1821"/>
+													<ExtendedTooltip name="АвансыИДоотгрузкаСуммаАвансРасширеннаяПодсказка" id="1822"/>
+												</InputField>
+												<InputField name="АвансыИДоотгрузкаСуммаАвансКонец" id="1823">
+													<DataPath>Объект.АвансыИДоотгрузка.СуммаАвансКонец</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<Width>10</Width>
+													<ContextMenu name="АвансыИДоотгрузкаСуммаАвансКонецКонтекстноеМеню" id="1824"/>
+													<ExtendedTooltip name="АвансыИДоотгрузкаСуммаАвансКонецРасширеннаяПодсказка" id="1825"/>
 												</InputField>
 											</ChildItems>
 										</Table>
-										<Table name="Доотгрузка" id="1420">
-											<TitleLocation>Auto</TitleLocation>
-											<Height>1</Height>
-											<AutoInsertNewRow>true</AutoInsertNewRow>
-											<EnableStartDrag>true</EnableStartDrag>
-											<EnableDrag>true</EnableDrag>
-											<DataPath>Объект.Доотгрузка</DataPath>
-											<Title>
-												<v8:item>
-													<v8:lang>ru</v8:lang>
-													<v8:content>Таблица доотгрузок</v8:content>
-												</v8:item>
-											</Title>
-											<RowFilter xsi:nil="true"/>
-											<ContextMenu name="ДоотгрузкаКонтекстноеМеню" id="1421"/>
-											<AutoCommandBar name="ДоотгрузкаКоманднаяПанель" id="1422"/>
-											<ExtendedTooltip name="ДоотгрузкаРасширеннаяПодсказка" id="1423"/>
-											<SearchStringAddition name="ДоотгрузкаСтрокаПоиска" id="1424">
-												<AdditionSource>
-													<Item>Доотгрузка</Item>
-													<Type>SearchStringRepresentation</Type>
-												</AdditionSource>
-												<ContextMenu name="ДоотгрузкаСтрокаПоискаКонтекстноеМеню" id="1425"/>
-												<ExtendedTooltip name="ДоотгрузкаСтрокаПоискаРасширеннаяПодсказка" id="1426"/>
-											</SearchStringAddition>
-											<ViewStatusAddition name="ДоотгрузкаСостояниеПросмотра" id="1427">
-												<AdditionSource>
-													<Item>Доотгрузка</Item>
-													<Type>ViewStatusRepresentation</Type>
-												</AdditionSource>
-												<ContextMenu name="ДоотгрузкаСостояниеПросмотраКонтекстноеМеню" id="1428"/>
-												<ExtendedTooltip name="ДоотгрузкаСостояниеПросмотраРасширеннаяПодсказка" id="1429"/>
-											</ViewStatusAddition>
-											<SearchControlAddition name="ДоотгрузкаУправлениеПоиском" id="1430">
-												<AdditionSource>
-													<Item>Доотгрузка</Item>
-													<Type>SearchControl</Type>
-												</AdditionSource>
-												<ContextMenu name="ДоотгрузкаУправлениеПоискомКонтекстноеМеню" id="1431"/>
-												<ExtendedTooltip name="ДоотгрузкаУправлениеПоискомРасширеннаяПодсказка" id="1432"/>
-											</SearchControlAddition>
-											<ChildItems>
-												<LabelField name="ДоотгрузкаНомерСтроки" id="1433">
-													<DataPath>Объект.Доотгрузка.LineNumber</DataPath>
-													<EditMode>EnterOnInput</EditMode>
-													<Width>4</Width>
-													<HorizontalStretch>false</HorizontalStretch>
-													<ContextMenu name="ДоотгрузкаНомерСтрокиКонтекстноеМеню" id="1434"/>
-													<ExtendedTooltip name="ДоотгрузкаНомерСтрокиРасширеннаяПодсказка" id="1435"/>
-												</LabelField>
-												<InputField name="ДоотгрузкаКонтрагент" id="1436">
-													<DataPath>Объект.Доотгрузка.Контрагент</DataPath>
-													<EditMode>EnterOnInput</EditMode>
-													<ContextMenu name="ДоотгрузкаКонтрагентКонтекстноеМеню" id="1437"/>
-													<ExtendedTooltip name="ДоотгрузкаКонтрагентРасширеннаяПодсказка" id="1438"/>
-												</InputField>
-												<InputField name="ДоотгрузкаДоговор" id="1439">
-													<DataPath>Объект.Доотгрузка.Договор</DataPath>
-													<EditMode>EnterOnInput</EditMode>
-													<ContextMenu name="ДоотгрузкаДоговорКонтекстноеМеню" id="1440"/>
-													<ExtendedTooltip name="ДоотгрузкаДоговорРасширеннаяПодсказка" id="1441"/>
-												</InputField>
-												<InputField name="ДоотгрузкаСумма" id="1442">
-													<DataPath>Объект.Доотгрузка.Сумма</DataPath>
-													<EditMode>EnterOnInput</EditMode>
-													<Width>10</Width>
-													<ContextMenu name="ДоотгрузкаСуммаКонтекстноеМеню" id="1443"/>
-													<ExtendedTooltip name="ДоотгрузкаСуммаРасширеннаяПодсказка" id="1444"/>
-												</InputField>
-												<InputField name="ДоотгрузкаНДС" id="1445">
-													<DataPath>Объект.Доотгрузка.СуммаНДС</DataPath>
-													<EditMode>EnterOnInput</EditMode>
-													<Width>10</Width>
-													<ContextMenu name="ДоотгрузкаНДСКонтекстноеМеню" id="1446"/>
-													<ExtendedTooltip name="ДоотгрузкаНДСРасширеннаяПодсказка" id="1447"/>
-												</InputField>
-												<InputField name="ДоотгрузкаНСП" id="1448">
-													<DataPath>Объект.Доотгрузка.СуммаНСП</DataPath>
-													<EditMode>EnterOnInput</EditMode>
-													<Width>10</Width>
-													<ContextMenu name="ДоотгрузкаНСПКонтекстноеМеню" id="1449"/>
-													<ExtendedTooltip name="ДоотгрузкаНСПРасширеннаяПодсказка" id="1450"/>
-												</InputField>
-											</ChildItems>
-										</Table>
-										<Table name="ДоотгрузкаРасшифровка" id="1451">
-											<TitleLocation>Auto</TitleLocation>
-											<Height>1</Height>
+									</ChildItems>
+								</Page>
+								<Page name="СтраницаРасшифровки" id="1784">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Расшифровки</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Страница расшифровки</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ExtendedTooltip name="СтраницаРасшифровкиРасширеннаяПодсказка" id="1785"/>
+									<ChildItems>
+										<Table name="ДоотгрузкаРасшифровка" id="1826">
+											<TitleLocation>Top</TitleLocation>
+											<CommandBarLocation>None</CommandBarLocation>
+											<ReadOnly>true</ReadOnly>
+											<SelectionMode>SingleRow</SelectionMode>
 											<AutoInsertNewRow>true</AutoInsertNewRow>
 											<EnableStartDrag>true</EnableStartDrag>
 											<EnableDrag>true</EnableDrag>
@@ -734,96 +714,197 @@
 											<Title>
 												<v8:item>
 													<v8:lang>ru</v8:lang>
-													<v8:content>Таблица расшифровки доотгрузок</v8:content>
+													<v8:content>Расшифровка по доотгрузкам</v8:content>
 												</v8:item>
 											</Title>
+											<CommandSet>
+												<ExcludedCommand>Copy</ExcludedCommand>
+												<ExcludedCommand>MoveUp</ExcludedCommand>
+												<ExcludedCommand>Delete</ExcludedCommand>
+												<ExcludedCommand>Add</ExcludedCommand>
+												<ExcludedCommand>Change</ExcludedCommand>
+												<ExcludedCommand>MoveDown</ExcludedCommand>
+											</CommandSet>
 											<RowFilter xsi:nil="true"/>
-											<ContextMenu name="ДоотгрузкаРасшифровкаКонтекстноеМеню" id="1452"/>
-											<AutoCommandBar name="ДоотгрузкаРасшифровкаКоманднаяПанель" id="1453"/>
-											<ExtendedTooltip name="ДоотгрузкаРасшифровкаРасширеннаяПодсказка" id="1454"/>
-											<SearchStringAddition name="ДоотгрузкаРасшифровкаСтрокаПоиска" id="1455">
+											<ContextMenu name="ДоотгрузкаРасшифровкаКонтекстноеМеню" id="1827"/>
+											<AutoCommandBar name="ДоотгрузкаРасшифровкаКоманднаяПанель" id="1828"/>
+											<ExtendedTooltip name="ДоотгрузкаРасшифровкаРасширеннаяПодсказка" id="1829"/>
+											<SearchStringAddition name="ДоотгрузкаРасшифровкаСтрокаПоиска" id="1830">
 												<AdditionSource>
 													<Item>ДоотгрузкаРасшифровка</Item>
 													<Type>SearchStringRepresentation</Type>
 												</AdditionSource>
-												<ContextMenu name="ДоотгрузкаРасшифровкаСтрокаПоискаКонтекстноеМеню" id="1456"/>
-												<ExtendedTooltip name="ДоотгрузкаРасшифровкаСтрокаПоискаРасширеннаяПодсказка" id="1457"/>
+												<ContextMenu name="ДоотгрузкаРасшифровкаСтрокаПоискаКонтекстноеМеню" id="1831"/>
+												<ExtendedTooltip name="ДоотгрузкаРасшифровкаСтрокаПоискаРасширеннаяПодсказка" id="1832"/>
 											</SearchStringAddition>
-											<ViewStatusAddition name="ДоотгрузкаРасшифровкаСостояниеПросмотра" id="1458">
+											<ViewStatusAddition name="ДоотгрузкаРасшифровкаСостояниеПросмотра" id="1833">
 												<AdditionSource>
 													<Item>ДоотгрузкаРасшифровка</Item>
 													<Type>ViewStatusRepresentation</Type>
 												</AdditionSource>
-												<ContextMenu name="ДоотгрузкаРасшифровкаСостояниеПросмотраКонтекстноеМеню" id="1459"/>
-												<ExtendedTooltip name="ДоотгрузкаРасшифровкаСостояниеПросмотраРасширеннаяПодсказка" id="1460"/>
+												<ContextMenu name="ДоотгрузкаРасшифровкаСостояниеПросмотраКонтекстноеМеню" id="1834"/>
+												<ExtendedTooltip name="ДоотгрузкаРасшифровкаСостояниеПросмотраРасширеннаяПодсказка" id="1835"/>
 											</ViewStatusAddition>
-											<SearchControlAddition name="ДоотгрузкаРасшифровкаУправлениеПоиском" id="1461">
+											<SearchControlAddition name="ДоотгрузкаРасшифровкаУправлениеПоиском" id="1836">
 												<AdditionSource>
 													<Item>ДоотгрузкаРасшифровка</Item>
 													<Type>SearchControl</Type>
 												</AdditionSource>
-												<ContextMenu name="ДоотгрузкаРасшифровкаУправлениеПоискомКонтекстноеМеню" id="1462"/>
-												<ExtendedTooltip name="ДоотгрузкаРасшифровкаУправлениеПоискомРасширеннаяПодсказка" id="1463"/>
+												<ContextMenu name="ДоотгрузкаРасшифровкаУправлениеПоискомКонтекстноеМеню" id="1837"/>
+												<ExtendedTooltip name="ДоотгрузкаРасшифровкаУправлениеПоискомРасширеннаяПодсказка" id="1838"/>
 											</SearchControlAddition>
 											<ChildItems>
-												<LabelField name="ДоотгрузкаРасшифровкаНомерСтроки" id="1464">
+												<LabelField name="ДоотгрузкаРасшифровкаНомерСтроки" id="1839">
 													<DataPath>Объект.ДоотгрузкаРасшифровка.LineNumber</DataPath>
 													<EditMode>EnterOnInput</EditMode>
 													<Width>4</Width>
 													<HorizontalStretch>false</HorizontalStretch>
-													<ContextMenu name="ДоотгрузкаРасшифровкаНомерСтрокиКонтекстноеМеню" id="1465"/>
-													<ExtendedTooltip name="ДоотгрузкаРасшифровкаНомерСтрокиРасширеннаяПодсказка" id="1466"/>
+													<ContextMenu name="ДоотгрузкаРасшифровкаНомерСтрокиКонтекстноеМеню" id="1840"/>
+													<ExtendedTooltip name="ДоотгрузкаРасшифровкаНомерСтрокиРасширеннаяПодсказка" id="1841"/>
 												</LabelField>
-												<InputField name="ДоотгрузкаРасшифровкаКонтрагент" id="1467">
-													<DataPath>Объект.ДоотгрузкаРасшифровка.Контрагент</DataPath>
+												<InputField name="ДоотгрузкаРасшифровкаДатаДокумента" id="1866">
+													<DataPath>Объект.ДоотгрузкаРасшифровка.ДатаДокумента</DataPath>
 													<EditMode>EnterOnInput</EditMode>
-													<ContextMenu name="ДоотгрузкаРасшифровкаКонтрагентКонтекстноеМеню" id="1468"/>
-													<ExtendedTooltip name="ДоотгрузкаРасшифровкаКонтрагентРасширеннаяПодсказка" id="1469"/>
+													<ContextMenu name="ДоотгрузкаРасшифровкаДатаДокументаКонтекстноеМеню" id="1867"/>
+													<ExtendedTooltip name="ДоотгрузкаРасшифровкаДатаДокументаРасширеннаяПодсказка" id="1868"/>
 												</InputField>
-												<InputField name="ДоотгрузкаРасшифровкаДоговор" id="1470">
-													<DataPath>Объект.ДоотгрузкаРасшифровка.Договор</DataPath>
+												<InputField name="ДоотгрузкаРасшифровкаДокументОперации" id="1851">
+													<DataPath>Объект.ДоотгрузкаРасшифровка.ДокументОперации</DataPath>
 													<EditMode>EnterOnInput</EditMode>
-													<ContextMenu name="ДоотгрузкаРасшифровкаДоговорКонтекстноеМеню" id="1471"/>
-													<ExtendedTooltip name="ДоотгрузкаРасшифровкаДоговорРасширеннаяПодсказка" id="1472"/>
+													<ContextMenu name="ДоотгрузкаРасшифровкаДокументОперацииКонтекстноеМеню" id="1852"/>
+													<ExtendedTooltip name="ДоотгрузкаРасшифровкаДокументОперацииРасширеннаяПодсказка" id="1853"/>
 												</InputField>
-												<InputField name="ДоотгрузкаРасшифровкаДокументАванса" id="1473">
+												<InputField name="ДоотгрузкаРасшифровкаДокументАванса" id="1848">
 													<DataPath>Объект.ДоотгрузкаРасшифровка.ДокументАванса</DataPath>
 													<EditMode>EnterOnInput</EditMode>
-													<DropListButton>false</DropListButton>
-													<ChoiceButton>true</ChoiceButton>
-													<ChoiceButtonRepresentation>ShowInInputField</ChoiceButtonRepresentation>
-													<ContextMenu name="ДоотгрузкаРасшифровкаДокументАвансаКонтекстноеМеню" id="1474"/>
-													<ExtendedTooltip name="ДоотгрузкаРасшифровкаДокументАвансаРасширеннаяПодсказка" id="1475"/>
+													<ContextMenu name="ДоотгрузкаРасшифровкаДокументАвансаКонтекстноеМеню" id="1849"/>
+													<ExtendedTooltip name="ДоотгрузкаРасшифровкаДокументАвансаРасширеннаяПодсказка" id="1850"/>
 												</InputField>
-												<InputField name="ДоотгрузкаРасшифровкаДокументОплаты" id="1476">
-													<DataPath>Объект.ДоотгрузкаРасшифровка.ДокументОплаты</DataPath>
+												<InputField name="ДоотгрузкаРасшифровкаСуммаОстатокАванса" id="1863">
+													<DataPath>Объект.ДоотгрузкаРасшифровка.СуммаОстатокАванса</DataPath>
 													<EditMode>EnterOnInput</EditMode>
-													<DropListButton>false</DropListButton>
-													<ChoiceButton>true</ChoiceButton>
-													<ChoiceButtonRepresentation>ShowInInputField</ChoiceButtonRepresentation>
-													<ContextMenu name="ДоотгрузкаРасшифровкаДокументОплатыКонтекстноеМеню" id="1477"/>
-													<ExtendedTooltip name="ДоотгрузкаРасшифровкаДокументОплатыРасширеннаяПодсказка" id="1478"/>
+													<Width>10</Width>
+													<ContextMenu name="ДоотгрузкаРасшифровкаСуммаОстатокАвансаКонтекстноеМеню" id="1864"/>
+													<ExtendedTooltip name="ДоотгрузкаРасшифровкаСуммаОстатокАвансаРасширеннаяПодсказка" id="1865"/>
 												</InputField>
-												<InputField name="ДоотгрузкаРасшифровкаСумма" id="1479">
+												<InputField name="ДоотгрузкаРасшифровкаСумма" id="1854">
 													<DataPath>Объект.ДоотгрузкаРасшифровка.Сумма</DataPath>
+													<Title>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Доотгрузка</v8:content>
+														</v8:item>
+													</Title>
 													<EditMode>EnterOnInput</EditMode>
 													<Width>10</Width>
-													<ContextMenu name="ДоотгрузкаРасшифровкаСуммаКонтекстноеМеню" id="1480"/>
-													<ExtendedTooltip name="ДоотгрузкаРасшифровкаСуммаРасширеннаяПодсказка" id="1481"/>
+													<ContextMenu name="ДоотгрузкаРасшифровкаСуммаКонтекстноеМеню" id="1855"/>
+													<ExtendedTooltip name="ДоотгрузкаРасшифровкаСуммаРасширеннаяПодсказка" id="1856"/>
 												</InputField>
-												<InputField name="ДоотгрузкаРасшифровкаНДС" id="1482">
-													<DataPath>Объект.ДоотгрузкаРасшифровка.СуммаНДС</DataPath>
+											</ChildItems>
+										</Table>
+										<Table name="АвансыРасшифровка" id="1869">
+											<TitleLocation>Top</TitleLocation>
+											<CommandBarLocation>None</CommandBarLocation>
+											<ReadOnly>true</ReadOnly>
+											<SelectionMode>SingleRow</SelectionMode>
+											<AutoInsertNewRow>true</AutoInsertNewRow>
+											<EnableStartDrag>true</EnableStartDrag>
+											<EnableDrag>true</EnableDrag>
+											<DataPath>Объект.АвансыРасшифровка</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Расшифровка по авансам</v8:content>
+												</v8:item>
+											</Title>
+											<CommandSet>
+												<ExcludedCommand>Copy</ExcludedCommand>
+												<ExcludedCommand>MoveUp</ExcludedCommand>
+												<ExcludedCommand>Delete</ExcludedCommand>
+												<ExcludedCommand>Add</ExcludedCommand>
+												<ExcludedCommand>Change</ExcludedCommand>
+												<ExcludedCommand>MoveDown</ExcludedCommand>
+											</CommandSet>
+											<RowFilter xsi:nil="true"/>
+											<ContextMenu name="АвансыРасшифровкаКонтекстноеМеню" id="1870"/>
+											<AutoCommandBar name="АвансыРасшифровкаКоманднаяПанель" id="1871"/>
+											<ExtendedTooltip name="АвансыРасшифровкаРасширеннаяПодсказка" id="1872"/>
+											<SearchStringAddition name="АвансыРасшифровкаСтрокаПоиска" id="1873">
+												<AdditionSource>
+													<Item>АвансыРасшифровка</Item>
+													<Type>SearchStringRepresentation</Type>
+												</AdditionSource>
+												<ContextMenu name="АвансыРасшифровкаСтрокаПоискаКонтекстноеМеню" id="1874"/>
+												<ExtendedTooltip name="АвансыРасшифровкаСтрокаПоискаРасширеннаяПодсказка" id="1875"/>
+											</SearchStringAddition>
+											<ViewStatusAddition name="АвансыРасшифровкаСостояниеПросмотра" id="1876">
+												<AdditionSource>
+													<Item>АвансыРасшифровка</Item>
+													<Type>ViewStatusRepresentation</Type>
+												</AdditionSource>
+												<ContextMenu name="АвансыРасшифровкаСостояниеПросмотраКонтекстноеМеню" id="1877"/>
+												<ExtendedTooltip name="АвансыРасшифровкаСостояниеПросмотраРасширеннаяПодсказка" id="1878"/>
+											</ViewStatusAddition>
+											<SearchControlAddition name="АвансыРасшифровкаУправлениеПоиском" id="1879">
+												<AdditionSource>
+													<Item>АвансыРасшифровка</Item>
+													<Type>SearchControl</Type>
+												</AdditionSource>
+												<ContextMenu name="АвансыРасшифровкаУправлениеПоискомКонтекстноеМеню" id="1880"/>
+												<ExtendedTooltip name="АвансыРасшифровкаУправлениеПоискомРасширеннаяПодсказка" id="1881"/>
+											</SearchControlAddition>
+											<ChildItems>
+												<LabelField name="АвансыРасшифровкаНомерСтроки" id="1882">
+													<DataPath>Объект.АвансыРасшифровка.LineNumber</DataPath>
 													<EditMode>EnterOnInput</EditMode>
-													<Width>10</Width>
-													<ContextMenu name="ДоотгрузкаРасшифровкаНДСКонтекстноеМеню" id="1483"/>
-													<ExtendedTooltip name="ДоотгрузкаРасшифровкаНДСРасширеннаяПодсказка" id="1484"/>
+													<Width>4</Width>
+													<HorizontalStretch>false</HorizontalStretch>
+													<ContextMenu name="АвансыРасшифровкаНомерСтрокиКонтекстноеМеню" id="1883"/>
+													<ExtendedTooltip name="АвансыРасшифровкаНомерСтрокиРасширеннаяПодсказка" id="1884"/>
+												</LabelField>
+												<InputField name="АвансыРасшифровкаКонтрагент" id="1885">
+													<DataPath>Объект.АвансыРасшифровка.Контрагент</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="АвансыРасшифровкаКонтрагентКонтекстноеМеню" id="1886"/>
+													<ExtendedTooltip name="АвансыРасшифровкаКонтрагентРасширеннаяПодсказка" id="1887"/>
 												</InputField>
-												<InputField name="ДоотгрузкаРасшифровкаНСП" id="1485">
-													<DataPath>Объект.ДоотгрузкаРасшифровка.СуммаНСП</DataPath>
+												<InputField name="АвансыРасшифровкаДоговор" id="1888">
+													<DataPath>Объект.АвансыРасшифровка.Договор</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="АвансыРасшифровкаДоговорКонтекстноеМеню" id="1889"/>
+													<ExtendedTooltip name="АвансыРасшифровкаДоговорРасширеннаяПодсказка" id="1890"/>
+												</InputField>
+												<InputField name="АвансыРасшифровкаДатаДокумента" id="1906">
+													<DataPath>Объект.АвансыРасшифровка.ДатаДокумента</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="АвансыРасшифровкаДатаДокументаКонтекстноеМеню" id="1907"/>
+													<ExtendedTooltip name="АвансыРасшифровкаДатаДокументаРасширеннаяПодсказка" id="1908"/>
+												</InputField>
+												<InputField name="АвансыРасшифровкаДокумент" id="1903">
+													<DataPath>Объект.АвансыРасшифровка.Документ</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="АвансыРасшифровкаДокументКонтекстноеМеню" id="1904"/>
+													<ExtendedTooltip name="АвансыРасшифровкаДокументРасширеннаяПодсказка" id="1905"/>
+												</InputField>
+												<InputField name="АвансыРасшифровкаСуммаДокумента" id="1909">
+													<DataPath>Объект.АвансыРасшифровка.СуммаДокумента</DataPath>
 													<EditMode>EnterOnInput</EditMode>
 													<Width>10</Width>
-													<ContextMenu name="ДоотгрузкаРасшифровкаНСПКонтекстноеМеню" id="1486"/>
-													<ExtendedTooltip name="ДоотгрузкаРасшифровкаНСПРасширеннаяПодсказка" id="1487"/>
+													<ContextMenu name="АвансыРасшифровкаСуммаДокументаКонтекстноеМеню" id="1910"/>
+													<ExtendedTooltip name="АвансыРасшифровкаСуммаДокументаРасширеннаяПодсказка" id="1911"/>
+												</InputField>
+												<InputField name="АвансыРасшифровкаСумма" id="1891">
+													<DataPath>Объект.АвансыРасшифровка.Сумма</DataPath>
+													<Title>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Сумма аванса</v8:content>
+														</v8:item>
+													</Title>
+													<EditMode>EnterOnInput</EditMode>
+													<Width>10</Width>
+													<ContextMenu name="АвансыРасшифровкаСуммаКонтекстноеМеню" id="1892"/>
+													<ExtendedTooltip name="АвансыРасшифровкаСуммаРасширеннаяПодсказка" id="1893"/>
 												</InputField>
 											</ChildItems>
 										</Table>
@@ -846,7 +927,6 @@
 									<ExtendedTooltip name="СтраницаНДСОтчетРасширеннаяПодсказка" id="1094"/>
 									<ChildItems>
 										<Table name="НДС" id="1095">
-											<ReadOnly>true</ReadOnly>
 											<AutoInsertNewRow>true</AutoInsertNewRow>
 											<EnableStartDrag>true</EnableStartDrag>
 											<EnableDrag>true</EnableDrag>
@@ -884,6 +964,7 @@
 											<ChildItems>
 												<LabelField name="НДСНомерСтроки" id="1108">
 													<DataPath>Объект.НДС.LineNumber</DataPath>
+													<ReadOnly>true</ReadOnly>
 													<EditMode>EnterOnInput</EditMode>
 													<Width>4</Width>
 													<HorizontalStretch>false</HorizontalStretch>
@@ -892,18 +973,21 @@
 												</LabelField>
 												<InputField name="НДССтрока" id="1111">
 													<DataPath>Объект.НДС.Строка</DataPath>
+													<ReadOnly>true</ReadOnly>
 													<EditMode>EnterOnInput</EditMode>
 													<ContextMenu name="НДССтрокаКонтекстноеМеню" id="1112"/>
 													<ExtendedTooltip name="НДССтрокаРасширеннаяПодсказка" id="1113"/>
 												</InputField>
 												<InputField name="НДССодержание" id="1114">
 													<DataPath>Объект.НДС.Содержание</DataPath>
+													<ReadOnly>true</ReadOnly>
 													<EditMode>EnterOnInput</EditMode>
 													<ContextMenu name="НДССодержаниеКонтекстноеМеню" id="1115"/>
 													<ExtendedTooltip name="НДССодержаниеРасширеннаяПодсказка" id="1116"/>
 												</InputField>
 												<InputField name="НДССумма" id="1117">
 													<DataPath>Объект.НДС.Сумма</DataPath>
+													<ReadOnly>true</ReadOnly>
 													<EditMode>EnterOnInput</EditMode>
 													<Width>10</Width>
 													<ContextMenu name="НДССуммаКонтекстноеМеню" id="1118"/>
@@ -958,6 +1042,11 @@
 					<TitleDataPath>Объект.АмортизацияОС.RowsCount</TitleDataPath>
 					<ExtendedTooltip name="СтраницаАмортизацияОСРасширеннаяПодсказка" id="29"/>
 					<ChildItems>
+						<Button name="ОткрытьМониторОС" id="1961">
+							<Type>UsualButton</Type>
+							<CommandName>Form.Command.ОткрытьМониторОС</CommandName>
+							<ExtendedTooltip name="ОткрытьМониторОСРасширеннаяПодсказка" id="1962"/>
+						</Button>
 						<Table name="АмортизацияОС" id="30">
 							<ReadOnly>true</ReadOnly>
 							<AutoInsertNewRow>true</AutoInsertNewRow>
@@ -1600,6 +1689,11 @@
 										<CommandName>Form.Command.ПарныеСчетаУчетаПодробно</CommandName>
 										<ExtendedTooltip name="ПарныеСчетаУчетаПодробноРасширеннаяПодсказка" id="1274"/>
 									</Button>
+									<Button name="ОткрытьМониторРасчетов1" id="1965">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.ОткрытьМониторРасчетов</CommandName>
+										<ExtendedTooltip name="ОткрытьМониторРасчетов1РасширеннаяПодсказка" id="1966"/>
+									</Button>
 								</ChildItems>
 							</AutoCommandBar>
 							<ExtendedTooltip name="ПарныеСчетаУчетаРасширеннаяПодсказка" id="922"/>
@@ -2093,9 +2187,6 @@
 									<HorizontalStretch>false</HorizontalStretch>
 									<ContextMenu name="РасходыБПСчетДтКонтекстноеМеню" id="1225"/>
 									<ExtendedTooltip name="РасходыБПСчетДтРасширеннаяПодсказка" id="1226"/>
-									<Events>
-										<Event name="OnChange">РасходыБПСчетДтПриИзменении</Event>
-									</Events>
 								</InputField>
 								<InputField name="РасходыБПРБП" id="1242">
 									<DataPath>Объект.РасходыБП.РБП</DataPath>
@@ -2739,6 +2830,165 @@
 						</Table>
 					</ChildItems>
 				</Page>
+				<Page name="СтраницаЕдиныйНалог" id="1915">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Единый налог</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница единый налог</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="СтраницаЕдиныйНалогРасширеннаяПодсказка" id="1916"/>
+					<ChildItems>
+						<Table name="ЕдиныйНалог" id="1917">
+							<ReadOnly>true</ReadOnly>
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<DataPath>Объект.ЕдиныйНалог</DataPath>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="ЕдиныйНалогКонтекстноеМеню" id="1918"/>
+							<AutoCommandBar name="ЕдиныйНалогКоманднаяПанель" id="1919">
+								<Autofill>false</Autofill>
+							</AutoCommandBar>
+							<ExtendedTooltip name="ЕдиныйНалогРасширеннаяПодсказка" id="1920"/>
+							<SearchStringAddition name="ЕдиныйНалогСтрокаПоиска" id="1921">
+								<AdditionSource>
+									<Item>ЕдиныйНалог</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ЕдиныйНалогСтрокаПоискаКонтекстноеМеню" id="1922"/>
+								<ExtendedTooltip name="ЕдиныйНалогСтрокаПоискаРасширеннаяПодсказка" id="1923"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="ЕдиныйНалогСостояниеПросмотра" id="1924">
+								<AdditionSource>
+									<Item>ЕдиныйНалог</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ЕдиныйНалогСостояниеПросмотраКонтекстноеМеню" id="1925"/>
+								<ExtendedTooltip name="ЕдиныйНалогСостояниеПросмотраРасширеннаяПодсказка" id="1926"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="ЕдиныйНалогУправлениеПоиском" id="1927">
+								<AdditionSource>
+									<Item>ЕдиныйНалог</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="ЕдиныйНалогУправлениеПоискомКонтекстноеМеню" id="1928"/>
+								<ExtendedTooltip name="ЕдиныйНалогУправлениеПоискомРасширеннаяПодсказка" id="1929"/>
+							</SearchControlAddition>
+							<ChildItems>
+								<LabelField name="ЕдиныйНалогНомерСтроки" id="1930">
+									<DataPath>Объект.ЕдиныйНалог.LineNumber</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>4</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="ЕдиныйНалогНомерСтрокиКонтекстноеМеню" id="1931"/>
+									<ExtendedTooltip name="ЕдиныйНалогНомерСтрокиРасширеннаяПодсказка" id="1932"/>
+								</LabelField>
+								<InputField name="ЕдиныйНалогВидДеятельности" id="1933">
+									<DataPath>Объект.ЕдиныйНалог.ВидДеятельности</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ЕдиныйНалогВидДеятельностиКонтекстноеМеню" id="1934"/>
+									<ExtendedTooltip name="ЕдиныйНалогВидДеятельностиРасширеннаяПодсказка" id="1935"/>
+								</InputField>
+								<InputField name="ЕдиныйНалогСуммаНаличная" id="1936">
+									<DataPath>Объект.ЕдиныйНалог.СуммаНаличная</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>10</Width>
+									<ContextMenu name="ЕдиныйНалогСуммаНаличнаяКонтекстноеМеню" id="1937"/>
+									<ExtendedTooltip name="ЕдиныйНалогСуммаНаличнаяРасширеннаяПодсказка" id="1938"/>
+								</InputField>
+								<InputField name="ЕдиныйНалогСуммаБезналичная" id="1939">
+									<DataPath>Объект.ЕдиныйНалог.СуммаБезналичная</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>10</Width>
+									<ContextMenu name="ЕдиныйНалогСуммаБезналичнаяКонтекстноеМеню" id="1940"/>
+									<ExtendedTooltip name="ЕдиныйНалогСуммаБезналичнаяРасширеннаяПодсказка" id="1941"/>
+								</InputField>
+								<InputField name="ЕдиныйНалогСуммаНаличнаяЕдиныйНалог" id="1942">
+									<DataPath>Объект.ЕдиныйНалог.СуммаНаличнаяЕдиныйНалог</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>10</Width>
+									<ContextMenu name="ЕдиныйНалогСуммаНаличнаяЕдиныйНалогКонтекстноеМеню" id="1943"/>
+									<ExtendedTooltip name="ЕдиныйНалогСуммаНаличнаяЕдиныйНалогРасширеннаяПодсказка" id="1944"/>
+								</InputField>
+								<InputField name="ЕдиныйНалогСуммаБезналичнаяЕдиныйНалог" id="1945">
+									<DataPath>Объект.ЕдиныйНалог.СуммаБезналичнаяЕдиныйНалог</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>10</Width>
+									<ContextMenu name="ЕдиныйНалогСуммаБезналичнаяЕдиныйНалогКонтекстноеМеню" id="1946"/>
+									<ExtendedTooltip name="ЕдиныйНалогСуммаБезналичнаяЕдиныйНалогРасширеннаяПодсказка" id="1947"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+						<UsualGroup name="ПодвалЕдиныйНалог" id="1951">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Подвал единый налог</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Подвал единый налог</v8:content>
+								</v8:item>
+							</ToolTip>
+							<HorizontalStretch>true</HorizontalStretch>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ПодвалЕдиныйНалогРасширеннаяПодсказка" id="1952"/>
+							<ChildItems>
+								<UsualGroup name="ГруппаИтогиЕдиныйНалог" id="1953">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа итоги единый налог</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа итоги единый налог</v8:content>
+										</v8:item>
+									</ToolTip>
+									<GroupHorizontalAlign>Right</GroupHorizontalAlign>
+									<HorizontalAlign>Right</HorizontalAlign>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<BackColor>style:ИтогиФонГруппы</BackColor>
+									<ExtendedTooltip name="ГруппаИтогиЕдиныйНалогРасширеннаяПодсказка" id="1954"/>
+									<ChildItems>
+										<InputField name="ЕдиныйНалогИтогСуммаНаличнаяЕдиныйНалог" id="1955">
+											<DataPath>Объект.ЕдиныйНалог.TotalСуммаНаличнаяЕдиныйНалог</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<Width>9</Width>
+											<HorizontalStretch>false</HorizontalStretch>
+											<ChoiceButton>false</ChoiceButton>
+											<ContextMenu name="ЕдиныйНалогИтогСуммаНаличнаяЕдиныйНалогКонтекстноеМеню" id="1956"/>
+											<ExtendedTooltip name="ЕдиныйНалогИтогСуммаНаличнаяЕдиныйНалогРасширеннаяПодсказка" id="1957"/>
+										</InputField>
+										<InputField name="ЕдиныйНалогИтогСуммаБезналичнаяЕдиныйНалог" id="1958">
+											<DataPath>Объект.ЕдиныйНалог.TotalСуммаБезналичнаяЕдиныйНалог</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<Width>9</Width>
+											<HorizontalStretch>false</HorizontalStretch>
+											<ChoiceButton>false</ChoiceButton>
+											<ContextMenu name="ЕдиныйНалогИтогСуммаБезналичнаяЕдиныйНалогКонтекстноеМеню" id="1959"/>
+											<ExtendedTooltip name="ЕдиныйНалогИтогСуммаБезналичнаяЕдиныйНалогРасширеннаяПодсказка" id="1960"/>
+										</InputField>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</Page>
 				<Page name="СтраницаДополнительно" id="393">
 					<Title>
 						<v8:item>
@@ -2902,6 +3152,17 @@
 			</Title>
 			<Type/>
 		</Attribute>
+		<Attribute name="РасчетЕдиногоНалогаЗаКвартал" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Расчет единого налога за квартал</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
 		<ConditionalAppearance>
 			<dcsset:item>
 				<dcsset:selection>
@@ -2960,6 +3221,169 @@
 					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 						<dcscor:parameter>ТолькоПросмотр</dcscor:parameter>
 						<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>НДССумма</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Объект.НДС.Строка</dcsset:left>
+						<dcsset:comparisonType>Contains</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:string">069</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:use>false</dcscor:use>
+						<dcscor:parameter>ЦветФона</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:ЦветРамкиГруппыЦеныИВалюты</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ТолькоПросмотр</dcscor:parameter>
+						<dcscor:value xsi:type="xs:boolean">false</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>НДССумма</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Объект.НДС.Строка</dcsset:left>
+						<dcsset:comparisonType>Contains</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:string">070</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:use>false</dcscor:use>
+						<dcscor:parameter>ЦветФона</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:БыстрыеНастройкиФонГруппы</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ТолькоПросмотр</dcscor:parameter>
+						<dcscor:value xsi:type="xs:boolean">false</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>НДССумма</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Объект.НДС.Строка</dcsset:left>
+						<dcsset:comparisonType>Contains</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:string">071</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:use>false</dcscor:use>
+						<dcscor:parameter>ЦветФона</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:ДобавленныйРеквизитФон</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ТолькоПросмотр</dcscor:parameter>
+						<dcscor:value xsi:type="xs:boolean">false</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>НДССумма</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Объект.НДС.Строка</dcsset:left>
+						<dcsset:comparisonType>Contains</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:string">072</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:use>false</dcscor:use>
+						<dcscor:parameter>ЦветФона</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:ВыборСтандартногоПериодаФонКнопки</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ТолькоПросмотр</dcscor:parameter>
+						<dcscor:value xsi:type="xs:boolean">false</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>ДоотгрузкаРасшифровка</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Объект.ДоотгрузкаРасшифровка.Сумма</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:decimal">0</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ЦветФона</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:ДобавленныйРеквизитФон</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>АвансыРасшифровка</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Объект.АвансыРасшифровка.СуммаДокумента</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:decimal">0</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ЦветФона</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:ДобавленныйРеквизитФон</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>АвансыРасшифровкаКонтрагент</dcsset:field>
+					</dcsset:item>
+					<dcsset:item>
+						<dcsset:field>АвансыРасшифровкаДоговор</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Объект.АвансыРасшифровка.СуммаДокумента</dcsset:left>
+						<dcsset:comparisonType>NotEqual</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:decimal">0</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ЦветТекста</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:НедоступныеДанныеЦвет</dcscor:value>
 					</dcscor:item>
 				</dcsset:appearance>
 			</dcsset:item>
@@ -3059,6 +3483,36 @@
 				</v8:item>
 			</ToolTip>
 			<Action>ПолучитьРасшифровку</Action>
+		</Command>
+		<Command name="ОткрытьМониторОС" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Монитор ОС</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть монитор ОС</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ОткрытьМониторОС</Action>
+		</Command>
+		<Command name="ОткрытьМониторРасчетов" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Монитор расчетов</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть монитор расчетов</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ОткрытьМониторРасчетов</Action>
 		</Command>
 	</Commands>
 	<Parameters>

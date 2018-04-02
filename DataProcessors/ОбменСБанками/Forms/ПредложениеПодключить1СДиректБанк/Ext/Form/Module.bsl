@@ -32,7 +32,7 @@
 &НаКлиенте
 Процедура ДекорацияЗаголовокНажатие(Элемент)
 	
-	ПерейтиПоНавигационнойСсылке("http://www.v8.1c.ru/edi/edi_app/bank/?utm_source=led&utm_campaign=2017&utm_medium=appadv");
+	ОбщегоНазначенияКлиент.ОткрытьНавигационнуюСсылку("http://www.v8.1c.ru/edi/edi_app/bank/?utm_source=led&utm_campaign=2017&utm_medium=appadv");
 	
 КонецПроцедуры
 

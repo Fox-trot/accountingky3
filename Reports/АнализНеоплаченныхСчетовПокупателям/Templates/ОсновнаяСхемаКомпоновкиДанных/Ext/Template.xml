@@ -136,6 +136,17 @@
 				<group>true</group>
 				<order>true</order>
 			</useRestriction>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ЧЦ=10; ЧДЦ=4</v8:content>
+						</v8:item>
+					</dcscor:value>
+				</dcscor:item>
+			</appearance>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>Кратность</dataPath>
@@ -146,6 +157,17 @@
 				<group>true</group>
 				<order>true</order>
 			</useRestriction>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ЧЦ=10</v8:content>
+						</v8:item>
+					</dcscor:value>
+				</dcscor:item>
+			</appearance>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>СуммаВВалюте</dataPath>
@@ -161,6 +183,17 @@
 				<group>true</group>
 				<order>true</order>
 			</useRestriction>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ЧЦ=15; ЧДЦ=2</v8:content>
+						</v8:item>
+					</dcscor:value>
+				</dcscor:item>
+			</appearance>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>ВалютаДокумента</dataPath>
@@ -187,9 +220,13 @@
 ПОМЕСТИТЬ СчетаНаОплату
 ИЗ
 	Документ.СчетНаОплатуПокупателю КАК СчетНаОплатуПокупателю
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.СтатусыДокументов КАК СтатусыДокументов
+		ПО (СтатусыДокументов.Организация = СчетНаОплатуПокупателю.Организация)
+			И (СтатусыДокументов.Документ = СчетНаОплатуПокупателю.Ссылка)
 ГДЕ
 	НЕ СчетНаОплатуПокупателю.ПометкаУдаления
-	И СчетНаОплатуПокупателю.ДатаОплаты = ДАТАВРЕМЯ(1, 1, 1)
+	И (СтатусыДокументов.Статус ЕСТЬ NULL
+			ИЛИ СтатусыДокументов.Статус В (&amp;СтатусыНеоплаченныхСчетов))
 
 ИНДЕКСИРОВАТЬ ПО
 	Контрагент
@@ -267,8 +304,8 @@
 	СчетаНаОплату.Дата КАК Дата,
 	СчетаНаОплату.СчетНаОплату КАК СчетНаОплату,
 	СчетаНаОплату.Номер КАК Номер,
-	ЕСТЬNULL(КурсыВалют.Курс, 0) КАК Курс,
-	ЕСТЬNULL(КурсыВалют.Кратность, 1) КАК Кратность,
+	КурсыВалют.Курс КАК Курс,
+	КурсыВалют.Кратность КАК Кратность,
 	СчетаНаОплату.ВалютаДокумента КАК ВалютаДокумента,
 	СчетаНаОплату.СрокОплаты КАК СрокОплаты
 ИЗ
@@ -338,7 +375,7 @@
 		</valueType>
 		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
 		<useRestriction>true</useRestriction>
-		<expression>ВЫБОР КОГДА &amp;Период = Неопределено ИЛИ &amp;Период = NULL ИЛИ &amp;Период = ДатаВремя(1,1,1) ТОГДА ДатаВремя(3999,12,31)  ИНАЧЕ КонецПериода(&amp;Период, "День") КОНЕЦ</expression>
+		<expression>ТекущаяДатаСеанса()</expression>
 	</parameter>
 	<parameter>
 		<name>ВалютаРегламентированногоУчета</name>
@@ -348,26 +385,35 @@
 				<v8:content>Валюта регламентированного учета</v8:content>
 			</v8:item>
 		</title>
-		<valueType>
-			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:CatalogRef.Валюты</v8:Type>
-		</valueType>
 		<value xsi:nil="true"/>
 		<useRestriction>true</useRestriction>
 	</parameter>
 	<parameter>
-		<name>ВыводитьПодписи</name>
+		<name>СтатусыНеоплаченныхСчетов</name>
 		<title xsi:type="v8:LocalStringType">
 			<v8:item>
 				<v8:lang>ru</v8:lang>
-				<v8:content>Выводить подписи</v8:content>
+				<v8:content>Статусы неоплаченных счетов</v8:content>
+			</v8:item>
+		</title>
+		<value xsi:type="dcscor:DesignTimeValue">Перечисление.СтатусОплатыСчета.НеОплачен</value>
+		<value xsi:type="dcscor:DesignTimeValue">Перечисление.СтатусОплатыСчета.ОплаченЧастично</value>
+		<useRestriction>true</useRestriction>
+		<valueListAllowed>true</valueListAllowed>
+	</parameter>
+	<parameter>
+		<name>НастройкиОтчета</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Настройки отчета</v8:content>
 			</v8:item>
 		</title>
 		<valueType>
-			<v8:Type>xs:boolean</v8:Type>
+			<v8:Type>v8:ValueStorage</v8:Type>
 		</valueType>
-		<value xsi:type="xs:boolean">false</value>
+		<value xsi:type="v8:ValueStorage">AQEIAAAAAAAAAO+7v3siVSJ9</value>
 		<useRestriction>false</useRestriction>
-		<availableAsField>false</availableAsField>
 		<use>Always</use>
 	</parameter>
 	<template>
@@ -572,26 +618,13 @@
 					<dcsset:use>false</dcsset:use>
 					<dcsset:field>ВалютаДокумента</dcsset:field>
 				</dcsset:item>
-				<dcsset:viewMode>Normal</dcsset:viewMode>
-				<dcsset:userSettingID>c56f0742-bf92-440e-8f1b-4b85da1a837d</dcsset:userSettingID>
 			</dcsset:selection>
-			<dcsset:filter>
-				<dcsset:item xsi:type="dcsset:FilterItemComparison">
-					<dcsset:use>false</dcsset:use>
-					<dcsset:left xsi:type="dcscor:Field">Организация</dcsset:left>
-					<dcsset:comparisonType>Equal</dcsset:comparisonType>
-					<dcsset:viewMode>Normal</dcsset:viewMode>
-					<dcsset:userSettingID>14643d47-3fb8-4998-a4be-794edcec6539</dcsset:userSettingID>
-				</dcsset:item>
-				<dcsset:viewMode>Normal</dcsset:viewMode>
-				<dcsset:userSettingID>882ec261-b208-4dde-a6cc-25ffbed71584</dcsset:userSettingID>
-			</dcsset:filter>
 			<dcsset:dataParameters>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-					<dcscor:parameter>ВыводитьПодписи</dcscor:parameter>
-					<dcscor:value xsi:type="xs:boolean">false</dcscor:value>
+					<dcscor:parameter>НастройкиОтчета</dcscor:parameter>
+					<dcscor:value xsi:type="v8:ValueStorage">AQEIAAAAAAAAAO+7v3siVSJ9</dcscor:value>
 					<dcsset:viewMode>Normal</dcsset:viewMode>
-					<dcsset:userSettingID>6228e6e4-32d5-4308-b0f3-7ecf09dda8fb</dcsset:userSettingID>
+					<dcsset:userSettingID>2dfdfb44-c1f3-4324-bc8f-20526cfba014</dcsset:userSettingID>
 				</dcscor:item>
 			</dcsset:dataParameters>
 			<dcsset:order>
@@ -599,8 +632,6 @@
 					<dcsset:field>Дата</dcsset:field>
 					<dcsset:orderType>Asc</dcsset:orderType>
 				</dcsset:item>
-				<dcsset:viewMode>Normal</dcsset:viewMode>
-				<dcsset:userSettingID>4cb9a7ed-8391-45d0-a329-c84707cd0255</dcsset:userSettingID>
 			</dcsset:order>
 			<dcsset:conditionalAppearance>
 				<dcsset:item>
@@ -625,9 +656,12 @@
 						</dcscor:item>
 					</dcsset:appearance>
 				</dcsset:item>
-				<dcsset:viewMode>Normal</dcsset:viewMode>
 			</dcsset:conditionalAppearance>
 			<dcsset:outputParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>ВыводитьЗаголовок</dcscor:parameter>
+					<dcscor:value xsi:type="dcsset:DataCompositionTextOutputType">DontOutput</dcscor:value>
+				</dcscor:item>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 					<dcscor:parameter>ВыводитьПараметрыДанных</dcscor:parameter>
 					<dcscor:value xsi:type="dcsset:DataCompositionTextOutputType">DontOutput</dcscor:value>
@@ -646,7 +680,6 @@
 					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
 				</dcsset:selection>
 			</dcsset:item>
-			<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
 		</dcsset:settings>
 	</settingsVariant>
 </DataCompositionSchema>
