@@ -15,6 +15,7 @@
 	</AutoCommandBar>
 	<Events>
 		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 		<Event name="OnClose">ПриЗакрытии</Event>
 	</Events>
 	<ChildItems>
@@ -328,39 +329,53 @@
 						</InputField>
 					</ChildItems>
 				</UsualGroup>
-				<UsualGroup name="ГруппаСтатьяДДСкурсоваяРазница" id="381">
+				<UsualGroup name="ГруппаСтатьяДДС" id="381">
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Статья ДДС (курсовая разница)</v8:content>
+							<v8:content>Статья ДДС</v8:content>
 						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Группа статья ДДС (курсовая разница)</v8:content>
+							<v8:content>Группа статья ДДС</v8:content>
 						</v8:item>
 					</ToolTip>
-					<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
 					<Group>Horizontal</Group>
 					<Representation>None</Representation>
 					<ShowTitle>false</ShowTitle>
 					<ThroughAlign>Use</ThroughAlign>
-					<ExtendedTooltip name="ГруппаСтатьяДДСкурсоваяРазницаРасширеннаяПодсказка" id="382">
-						<Title formatted="false">
-							<v8:item>
-								<v8:lang>ru</v8:lang>
-								<v8:content>Статья движения денежных средств для проводок по курсовым разницам.</v8:content>
-							</v8:item>
-						</Title>
-					</ExtendedTooltip>
+					<ExtendedTooltip name="ГруппаСтатьяДДСРасширеннаяПодсказка" id="382"/>
 					<ChildItems>
+						<Button name="НастройкаУчетаПоСтатьямДДС" id="410">
+							<Type>Hyperlink</Type>
+							<CommandName>Form.Command.НастройкаУчетаПоСтатьямДДС</CommandName>
+							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+							<ExtendedTooltip name="НастройкаУчетаПоСтатьямДДСРасширеннаяПодсказка" id="411">
+								<Title formatted="false">
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Учет поступлений и расходов денежных средств по статьям. Выбор статей движения в кассовых и банковских документах.</v8:content>
+									</v8:item>
+								</Title>
+							</ExtendedTooltip>
+						</Button>
 						<InputField name="СтатьяДДСКурсоваяРазница" id="383">
 							<DataPath>НаборКонстант.СтатьяДДСКурсоваяРазница</DataPath>
+							<TitleHeight>2</TitleHeight>
+							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
 							<Width>30</Width>
 							<HorizontalStretch>false</HorizontalStretch>
 							<ContextMenu name="СтатьяДДСКурсоваяРазницаКонтекстноеМеню" id="384"/>
-							<ExtendedTooltip name="СтатьяДДСКурсоваяРазницаРасширеннаяПодсказка" id="385"/>
+							<ExtendedTooltip name="СтатьяДДСКурсоваяРазницаРасширеннаяПодсказка" id="385">
+								<Title formatted="false">
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Статья движения денежных средств для проводок по курсовым разницам.</v8:content>
+									</v8:item>
+								</Title>
+							</ExtendedTooltip>
 							<Events>
 								<Event name="OnChange">СтатьяДДСКурсоваяРазницаПриИзменении</Event>
 							</Events>
@@ -785,6 +800,19 @@
 						</CheckBoxField>
 					</ChildItems>
 				</UsualGroup>
+				<Button name="НастройкаУчетаПоСкладам" id="405">
+					<Type>Hyperlink</Type>
+					<CommandName>Form.Command.НастройкаУчетаПоСкладам</CommandName>
+					<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+					<ExtendedTooltip name="НастройкаУчетаПоСкладамРасширеннаяПодсказка" id="406">
+						<Title formatted="false">
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Настройка расчета себестоимости товаров в разрезе складов (мест хранения).</v8:content>
+							</v8:item>
+						</Title>
+					</ExtendedTooltip>
+				</Button>
 			</ChildItems>
 		</UsualGroup>
 		<UsualGroup name="ГруппаПокупкаИПродажа" id="363">
@@ -954,54 +982,19 @@
 					<ShowTitle>false</ShowTitle>
 					<ExtendedTooltip name="НастройкиПроизводствоРасширеннаяПодсказка" id="398"/>
 					<ChildItems>
-						<CheckBoxField name="ФункциональнаяОпцияУчетПроизводстваПоЗаказам" id="399">
-							<DataPath>НаборКонстант.ФункциональнаяОпцияУчетПроизводстваПоЗаказам</DataPath>
-							<Title>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Учет производства по заказам</v8:content>
-								</v8:item>
-							</Title>
-							<TitleLocation>Right</TitleLocation>
+						<Button name="НастройкаУчетаПроизводства" id="412">
+							<Type>Hyperlink</Type>
+							<CommandName>Form.Command.НастройкаУчетаПроизводства</CommandName>
 							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
-							<CheckBoxType>Auto</CheckBoxType>
-							<ContextMenu name="ФункциональнаяОпцияУчетПроизводстваПоЗаказамКонтекстноеМеню" id="400"/>
-							<ExtendedTooltip name="ФункциональнаяОпцияУчетПроизводстваПоЗаказамРасширеннаяПодсказка" id="401">
-								<Title formatted="true">
+							<ExtendedTooltip name="НастройкаУчетаПроизводстваРасширеннаяПодсказка" id="413">
+								<Title formatted="false">
 									<v8:item>
 										<v8:lang>ru</v8:lang>
-										<v8:content>Включает новые возможности для ведения производства. &lt;b&gt;Позаказное производство &lt;/&gt;позволяет собирать затраты на производство и выпускать готовую продукцию по заказам.</v8:content>
+										<v8:content>Выбор варианта учета производства.</v8:content>
 									</v8:item>
 								</Title>
 							</ExtendedTooltip>
-							<Events>
-								<Event name="OnChange">ФункциональнаяОпцияУчетПроизводстваПоЗаказамПриИзменении</Event>
-							</Events>
-						</CheckBoxField>
-						<CheckBoxField name="ИспользоватьНесколькоНоменклатурныхГрупп" id="402">
-							<DataPath>НаборКонстант.ИспользоватьНесколькоНоменклатурныхГрупп</DataPath>
-							<Title>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Использовать несколько номенклатурных групп</v8:content>
-								</v8:item>
-							</Title>
-							<TitleLocation>Right</TitleLocation>
-							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
-							<CheckBoxType>Auto</CheckBoxType>
-							<ContextMenu name="ИспользоватьНесколькоНоменклатурныхГруппКонтекстноеМеню" id="403"/>
-							<ExtendedTooltip name="ИспользоватьНесколькоНоменклатурныхГруппРасширеннаяПодсказка" id="404">
-								<Title formatted="true">
-									<v8:item>
-										<v8:lang>ru</v8:lang>
-										<v8:content>Включает / отключет учет по номенклатурным группам.</v8:content>
-									</v8:item>
-								</Title>
-							</ExtendedTooltip>
-							<Events>
-								<Event name="OnChange">ИспользоватьНесколькоНоменклатурныхГруппПриИзменении</Event>
-							</Events>
-						</CheckBoxField>
+						</Button>
 					</ChildItems>
 				</UsualGroup>
 			</ChildItems>
@@ -1486,6 +1479,51 @@
 				</v8:item>
 			</ToolTip>
 			<Action>НастройкаСчетовУчетаСОсобымПорядкомПереоценки</Action>
+		</Command>
+		<Command name="НастройкаУчетаПоСкладам" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Настройка учета по складам</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Настройка учета по организациям</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>НастройкаУчетаПоСкладам</Action>
+		</Command>
+		<Command name="НастройкаУчетаПоСтатьямДДС" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Настройка учета по статьям движения денежных средств</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Настройка учета по организациям</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>НастройкаУчетаПоСтатьямДДС</Action>
+		</Command>
+		<Command name="НастройкаУчетаПроизводства" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Настройка учета производства</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Настройка учета по организациям</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>НастройкаУчетаПроизводства</Action>
 		</Command>
 	</Commands>
 </Form>

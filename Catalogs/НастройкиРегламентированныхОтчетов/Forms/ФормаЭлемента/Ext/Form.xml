@@ -52,46 +52,22 @@
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 	</Events>
 	<ChildItems>
-		<UsualGroup name="Шапка" id="140">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Шапка</v8:content>
-				</v8:item>
-			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Шапка</v8:content>
-				</v8:item>
-			</ToolTip>
-			<Group>Horizontal</Group>
-			<ShowTitle>false</ShowTitle>
-			<ExtendedTooltip name="ШапкаРасширеннаяПодсказка" id="141"/>
-			<ChildItems>
-				<InputField name="Наименование" id="4">
-					<DataPath>Объект.Description</DataPath>
-					<EditMode>EnterOnInput</EditMode>
-					<ContextMenu name="НаименованиеКонтекстноеМеню" id="5"/>
-					<ExtendedTooltip name="НаименованиеРасширеннаяПодсказка" id="6"/>
-				</InputField>
-				<InputField name="Родитель" id="7">
-					<DataPath>Объект.Parent</DataPath>
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Группа настроек</v8:content>
-						</v8:item>
-					</Title>
-					<EditMode>EnterOnInput</EditMode>
-					<ContextMenu name="РодительКонтекстноеМеню" id="8"/>
-					<ExtendedTooltip name="РодительРасширеннаяПодсказка" id="9"/>
-					<Events>
-						<Event name="OnChange">РодительПриИзменении</Event>
-					</Events>
-				</InputField>
-			</ChildItems>
-		</UsualGroup>
+		<InputField name="ВидОтчета" id="282">
+			<DataPath>Объект.ВидОтчета</DataPath>
+			<Width>10</Width>
+			<HorizontalStretch>false</HorizontalStretch>
+			<ContextMenu name="ВидОтчетаКонтекстноеМеню" id="283"/>
+			<ExtendedTooltip name="ВидОтчетаРасширеннаяПодсказка" id="284"/>
+			<Events>
+				<Event name="OnChange">ВидОтчетаПриИзменении</Event>
+			</Events>
+		</InputField>
+		<InputField name="Наименование" id="4">
+			<DataPath>Объект.Description</DataPath>
+			<EditMode>EnterOnInput</EditMode>
+			<ContextMenu name="НаименованиеКонтекстноеМеню" id="5"/>
+			<ExtendedTooltip name="НаименованиеРасширеннаяПодсказка" id="6"/>
+		</InputField>
 		<Pages name="Страницы" id="13">
 			<Title>
 				<v8:item>
@@ -400,6 +376,99 @@
 						</CheckBoxField>
 					</ChildItems>
 				</Page>
+				<Page name="СтраницаНастройкиСтрокОДДСПоСтатьям" id="234">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Настройки строк ОДДС (по статьям)</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница настройки строк ОДДС</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="СтраницаНастройкиСтрокОДДСПоСтатьямРасширеннаяПодсказка" id="235"/>
+					<ChildItems>
+						<Table name="НастройкиСтрокОДДСПоСтатьям" id="236">
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<DataPath>Объект.НастройкиСтрокОДДСПоСтатьям</DataPath>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="НастройкиСтрокОДДСПоСтатьямКонтекстноеМеню" id="237"/>
+							<AutoCommandBar name="НастройкиСтрокОДДСПоСтатьямКоманднаяПанель" id="238"/>
+							<ExtendedTooltip name="НастройкиСтрокОДДСПоСтатьямРасширеннаяПодсказка" id="239"/>
+							<SearchStringAddition name="НастройкиСтрокОДДСПоСтатьямСтрокаПоиска" id="240">
+								<AdditionSource>
+									<Item>НастройкиСтрокОДДСПоСтатьям</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="НастройкиСтрокОДДСПоСтатьямСтрокаПоискаКонтекстноеМеню" id="241"/>
+								<ExtendedTooltip name="НастройкиСтрокОДДСПоСтатьямСтрокаПоискаРасширеннаяПодсказка" id="242"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="НастройкиСтрокОДДСПоСтатьямСостояниеПросмотра" id="243">
+								<AdditionSource>
+									<Item>НастройкиСтрокОДДСПоСтатьям</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="НастройкиСтрокОДДСПоСтатьямСостояниеПросмотраКонтекстноеМеню" id="244"/>
+								<ExtendedTooltip name="НастройкиСтрокОДДСПоСтатьямСостояниеПросмотраРасширеннаяПодсказка" id="245"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="НастройкиСтрокОДДСПоСтатьямУправлениеПоиском" id="246">
+								<AdditionSource>
+									<Item>НастройкиСтрокОДДСПоСтатьям</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="НастройкиСтрокОДДСПоСтатьямУправлениеПоискомКонтекстноеМеню" id="247"/>
+								<ExtendedTooltip name="НастройкиСтрокОДДСПоСтатьямУправлениеПоискомРасширеннаяПодсказка" id="248"/>
+							</SearchControlAddition>
+							<Events>
+								<Event name="BeforeAddRow">НастройкиСтрокОДДСПоСтатьямПередНачаломДобавления</Event>
+								<Event name="OnStartEdit">НастройкиСтрокОДДСПоСтатьямПриНачалеРедактирования</Event>
+							</Events>
+							<ChildItems>
+								<InputField name="НастройкиСтрокОДДСПоСтатьямКодСтроки" id="270">
+									<DataPath>Объект.НастройкиСтрокОДДСПоСтатьям.КодСтроки</DataPath>
+									<ReadOnly>true</ReadOnly>
+									<EditMode>EnterOnInput</EditMode>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="НастройкиСтрокОДДСПоСтатьямКодСтрокиКонтекстноеМеню" id="271"/>
+									<ExtendedTooltip name="НастройкиСтрокОДДСПоСтатьямКодСтрокиРасширеннаяПодсказка" id="272"/>
+								</InputField>
+								<InputField name="НастройкиСтрокОДДСПоСтатьямСтатьяДвиженияДенежныхСредств" id="273">
+									<DataPath>Объект.НастройкиСтрокОДДСПоСтатьям.СтатьяДвиженияДенежныхСредств</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="НастройкиСтрокОДДСПоСтатьямСтатьяДвиженияДенежныхСредствКонтекстноеМеню" id="274"/>
+									<ExtendedTooltip name="НастройкиСтрокОДДСПоСтатьямСтатьяДвиженияДенежныхСредствРасширеннаяПодсказка" id="275"/>
+								</InputField>
+								<InputField name="НастройкиСтрокОДДСПоСтатьямФормула" id="276">
+									<DataPath>Объект.НастройкиСтрокОДДСПоСтатьям.Формула</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="НастройкиСтрокОДДСПоСтатьямФормулаКонтекстноеМеню" id="277"/>
+									<ExtendedTooltip name="НастройкиСтрокОДДСПоСтатьямФормулаРасширеннаяПодсказка" id="278"/>
+								</InputField>
+								<InputField name="НастройкиСтрокОДДСПоСтатьямЗнак" id="279">
+									<DataPath>Объект.НастройкиСтрокОДДСПоСтатьям.Знак</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="НастройкиСтрокОДДСПоСтатьямЗнакКонтекстноеМеню" id="280"/>
+									<ExtendedTooltip name="НастройкиСтрокОДДСПоСтатьямЗнакРасширеннаяПодсказка" id="281"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+						<CheckBoxField name="ВсеСтроки3" id="264">
+							<DataPath>ВсеСтроки</DataPath>
+							<TitleLocation>Right</TitleLocation>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="ВсеСтроки3КонтекстноеМеню" id="265"/>
+							<ExtendedTooltip name="ВсеСтроки3РасширеннаяПодсказка" id="266"/>
+							<Events>
+								<Event name="OnChange">ВсеСтрокиПриИзменении</Event>
+							</Events>
+						</CheckBoxField>
+					</ChildItems>
+				</Page>
 				<Page name="СтраницаНастройкиСтрокОИК" id="190">
 					<Title>
 						<v8:item>
@@ -535,15 +604,26 @@
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>
 		</Attribute>
-		<Attribute name="Родитель" id="4">
+		<Attribute name="ВидОтчета" id="4">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Родитель</v8:content>
+					<v8:content>Вид отчета</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
-				<v8:Type>cfg:CatalogRef.НастройкиРегламентированныхОтчетов</v8:Type>
+				<v8:Type>cfg:EnumRef.ВидыРегламентированныхОтчетов</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ИспользоватьСтатьиДвиженияДенежныхСредств" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Использовать статьи движения денежных средств</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
 			</Type>
 		</Attribute>
 		<ConditionalAppearance>
