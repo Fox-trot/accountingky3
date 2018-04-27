@@ -1,13 +1,36 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.4">
 	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<AutoTitle>false</AutoTitle>
+	<CommandBarLocation>None</CommandBarLocation>
 	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
-	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<Autofill>false</Autofill>
+	</AutoCommandBar>
 	<Events>
+		<Event name="AfterWrite">ПослеЗаписи</Event>
+		<Event name="AfterWriteAtServer">ПослеЗаписиНаСервере</Event>
 		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+		<Event name="BeforeWriteAtServer">ПередЗаписьюНаСервере</Event>
 	</Events>
 	<ChildItems>
+		<CommandBar name="ГруппаКоманднаяПанель" id="101">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа командная панель</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа командная панель</v8:content>
+				</v8:item>
+			</ToolTip>
+			<CommandSource>Form</CommandSource>
+			<ExtendedTooltip name="ГруппаКоманднаяПанельРасширеннаяПодсказка" id="102"/>
+		</CommandBar>
 		<InputField name="Наименование" id="4">
 			<DataPath>Объект.Description</DataPath>
 			<EditMode>EnterOnInput</EditMode>
@@ -192,7 +215,6 @@
 									<ExtendedTooltip name="ИсходныеКомплектующиеВидРаботыРасширеннаяПодсказка" id="47"/>
 								</InputField>
 								<InputField name="ИсходныеКомплектующиеПримечание" id="48">
-									<DataPath>1/0:7e491d83-8145-4dec-87e9-56e92c53262a/0:bc842cae-058b-4c39-a77c-9bf824a06e5a</DataPath>
 									<EditMode>EnterOnInput</EditMode>
 									<ContextMenu name="ИсходныеКомплектующиеПримечаниеКонтекстноеМеню" id="49"/>
 									<ExtendedTooltip name="ИсходныеКомплектующиеПримечаниеРасширеннаяПодсказка" id="50"/>
@@ -267,14 +289,12 @@
 									<ExtendedTooltip name="ВидыРаботКоличествоРасширеннаяПодсказка" id="74"/>
 								</InputField>
 								<InputField name="ВидыРаботСтоимость" id="75">
-									<DataPath>1/0:b9cc9eb6-d14e-4e2c-9cb5-d7c31d8d842a/0:e61aa27c-b8d5-4b49-8db3-9ebbd546d6bf</DataPath>
 									<EditMode>EnterOnInput</EditMode>
 									<Width>10</Width>
 									<ContextMenu name="ВидыРаботСтоимостьКонтекстноеМеню" id="76"/>
 									<ExtendedTooltip name="ВидыРаботСтоимостьРасширеннаяПодсказка" id="77"/>
 								</InputField>
 								<InputField name="ВидыРаботПримечание" id="78">
-									<DataPath>1/0:b9cc9eb6-d14e-4e2c-9cb5-d7c31d8d842a/0:a818268f-2a66-4003-8ebf-241f85849ad6</DataPath>
 									<EditMode>EnterOnInput</EditMode>
 									<ContextMenu name="ВидыРаботПримечаниеКонтекстноеМеню" id="79"/>
 									<ExtendedTooltip name="ВидыРаботПримечаниеРасширеннаяПодсказка" id="80"/>
@@ -285,6 +305,44 @@
 				</Page>
 			</ChildItems>
 		</Pages>
+		<UsualGroup name="ГруппаДействияФормы" id="95">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа действия формы</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа действия формы</v8:content>
+				</v8:item>
+			</ToolTip>
+			<GroupHorizontalAlign>Right</GroupHorizontalAlign>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаДействияФормыРасширеннаяПодсказка" id="96"/>
+			<ChildItems>
+				<Button name="Ок" id="97">
+					<Type>UsualButton</Type>
+					<CommandName>Form.StandardCommand.WriteAndClose</CommandName>
+					<BackColor>#FFE100</BackColor>
+					<Font ref="style:NormalTextFont" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ОК</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="ОкРасширеннаяПодсказка" id="98"/>
+				</Button>
+				<Button name="Отмена" id="99">
+					<Type>UsualButton</Type>
+					<CommandName>Form.StandardCommand.Cancel</CommandName>
+					<ExtendedTooltip name="ОтменаРасширеннаяПодсказка" id="100"/>
+				</Button>
+			</ChildItems>
+		</UsualGroup>
 	</ChildItems>
 	<Attributes>
 		<Attribute name="Объект" id="1">
@@ -359,4 +417,11 @@
 			<ModifiesSavedData>true</ModifiesSavedData>
 		</Command>
 	</Commands>
+	<Parameters>
+		<Parameter name="ОткрытоИзКарточкиНоменклатуры">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Parameter>
+	</Parameters>
 </Form>

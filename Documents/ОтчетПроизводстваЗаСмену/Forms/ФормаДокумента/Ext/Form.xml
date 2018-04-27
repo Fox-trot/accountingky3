@@ -51,7 +51,7 @@
 		</ChildItems>
 	</AutoCommandBar>
 	<Events>
-		<Event name="AfterWrite">ПослеЗаписи</Event>
+		<Event name="AfterWriteAtServer">ПослеЗаписиНаСервере</Event>
 		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
 		<Event name="OnReadAtServer">ПриЧтенииНаСервере</Event>
 		<Event name="OnOpen">ПриОткрытии</Event>
@@ -469,6 +469,9 @@
 									<EditMode>EnterOnInput</EditMode>
 									<ContextMenu name="УслугиНоменклатураКонтекстноеМеню" id="427"/>
 									<ExtendedTooltip name="УслугиНоменклатураРасширеннаяПодсказка" id="428"/>
+									<Events>
+										<Event name="OnChange">УслугиНоменклатураПриИзменении</Event>
+									</Events>
 								</InputField>
 								<InputField name="УслугиКоличество" id="429">
 									<DataPath>Объект.Услуги.Количество</DataPath>
@@ -477,6 +480,9 @@
 									<HorizontalStretch>false</HorizontalStretch>
 									<ContextMenu name="УслугиКоличествоКонтекстноеМеню" id="430"/>
 									<ExtendedTooltip name="УслугиКоличествоРасширеннаяПодсказка" id="431"/>
+									<Events>
+										<Event name="OnChange">УслугиКоличествоПриИзменении</Event>
+									</Events>
 								</InputField>
 								<InputField name="УслугиПлановаяСтоимость" id="456">
 									<DataPath>Объект.Услуги.ПлановаяСтоимость</DataPath>
@@ -485,6 +491,9 @@
 									<HorizontalStretch>false</HorizontalStretch>
 									<ContextMenu name="УслугиПлановаяСтоимостьКонтекстноеМеню" id="457"/>
 									<ExtendedTooltip name="УслугиПлановаяСтоимостьРасширеннаяПодсказка" id="458"/>
+									<Events>
+										<Event name="OnChange">УслугиПлановаяСтоимостьПриИзменении</Event>
+									</Events>
 								</InputField>
 								<InputField name="УслугиСуммаПлановая" id="432">
 									<DataPath>Объект.Услуги.СуммаПлановая</DataPath>
@@ -493,6 +502,9 @@
 									<HorizontalStretch>false</HorizontalStretch>
 									<ContextMenu name="УслугиСуммаПлановаяКонтекстноеМеню" id="433"/>
 									<ExtendedTooltip name="УслугиСуммаПлановаяРасширеннаяПодсказка" id="434"/>
+									<Events>
+										<Event name="OnChange">УслугиСуммаПлановаяПриИзменении</Event>
+									</Events>
 								</InputField>
 								<InputField name="УслугиСчетЗатрат" id="435">
 									<DataPath>Объект.Услуги.СчетЗатрат</DataPath>
@@ -501,30 +513,39 @@
 									<HorizontalStretch>false</HorizontalStretch>
 									<ContextMenu name="УслугиСчетЗатратКонтекстноеМеню" id="436"/>
 									<ExtendedTooltip name="УслугиСчетЗатратРасширеннаяПодсказка" id="437"/>
-								</InputField>
-								<InputField name="УслугиПодразделениеЗатрат" id="438">
-									<DataPath>Объект.Услуги.ПодразделениеЗатрат</DataPath>
-									<EditMode>EnterOnInput</EditMode>
-									<ContextMenu name="УслугиПодразделениеЗатратКонтекстноеМеню" id="439"/>
-									<ExtendedTooltip name="УслугиПодразделениеЗатратРасширеннаяПодсказка" id="440"/>
+									<Events>
+										<Event name="OnChange">УслугиСчетЗатратПриИзменении</Event>
+									</Events>
 								</InputField>
 								<InputField name="УслугиСубконто1" id="441">
 									<DataPath>Объект.Услуги.Субконто1</DataPath>
 									<EditMode>EnterOnInput</EditMode>
 									<ContextMenu name="УслугиСубконто1КонтекстноеМеню" id="442"/>
 									<ExtendedTooltip name="УслугиСубконто1РасширеннаяПодсказка" id="443"/>
+									<Events>
+										<Event name="OnChange">УслугиСубконто1ПриИзменении</Event>
+										<Event name="StartChoice">УслугиСубконто1НачалоВыбора</Event>
+									</Events>
 								</InputField>
 								<InputField name="УслугиСубконто2" id="444">
 									<DataPath>Объект.Услуги.Субконто2</DataPath>
 									<EditMode>EnterOnInput</EditMode>
 									<ContextMenu name="УслугиСубконто2КонтекстноеМеню" id="445"/>
 									<ExtendedTooltip name="УслугиСубконто2РасширеннаяПодсказка" id="446"/>
+									<Events>
+										<Event name="OnChange">УслугиСубконто2ПриИзменении</Event>
+										<Event name="StartChoice">УслугиСубконто2НачалоВыбора</Event>
+									</Events>
 								</InputField>
 								<InputField name="УслугиСубконто3" id="447">
 									<DataPath>Объект.Услуги.Субконто3</DataPath>
 									<EditMode>EnterOnInput</EditMode>
 									<ContextMenu name="УслугиСубконто3КонтекстноеМеню" id="448"/>
 									<ExtendedTooltip name="УслугиСубконто3РасширеннаяПодсказка" id="449"/>
+									<Events>
+										<Event name="OnChange">УслугиСубконто3ПриИзменении</Event>
+										<Event name="StartChoice">УслугиСубконто3НачалоВыбора</Event>
+									</Events>
 								</InputField>
 								<InputField name="УслугиСпецификация" id="450">
 									<DataPath>Объект.Услуги.Спецификация</DataPath>
@@ -744,9 +765,6 @@
 									<EditMode>EnterOnInput</EditMode>
 									<ContextMenu name="МатериалыНоменклатураКонтекстноеМеню" id="523"/>
 									<ExtendedTooltip name="МатериалыНоменклатураРасширеннаяПодсказка" id="524"/>
-									<Events>
-										<Event name="OnChange">МатериалыНоменклатураПриИзменении</Event>
-									</Events>
 								</InputField>
 								<LabelField name="МатериалыНоменклатураЕдиницаИзмерения" id="555">
 									<DataPath>Объект.Материалы.Номенклатура.ЕдиницаИзмерения</DataPath>
@@ -964,6 +982,43 @@
 			<UseAlways>
 				<Field>Объект.RegisterRecords</Field>
 			</UseAlways>
+			<Columns>
+				<AdditionalColumns table="Объект.Услуги">
+					<Column name="Субконто1Доступность" id="1">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Субконто1 доступность</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:boolean</v8:Type>
+						</Type>
+					</Column>
+					<Column name="Субконто2Доступность" id="2">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Субконто2 доступность</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:boolean</v8:Type>
+						</Type>
+					</Column>
+					<Column name="Субконто3Доступность" id="3">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Субконто3 доступность</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:boolean</v8:Type>
+						</Type>
+					</Column>
+				</AdditionalColumns>
+			</Columns>
 		</Attribute>
 		<Attribute name="ДатаДокумента" id="7">
 			<Title>
@@ -1034,12 +1089,12 @@
 			<dcsset:item>
 				<dcsset:selection>
 					<dcsset:item>
-						<dcsset:field>ТоварыСубконтоОприходования1</dcsset:field>
+						<dcsset:field>УслугиСубконто1</dcsset:field>
 					</dcsset:item>
 				</dcsset:selection>
 				<dcsset:filter>
 					<dcsset:item xsi:type="dcsset:FilterItemComparison">
-						<dcsset:left xsi:type="dcscor:Field">Объект.Товары.СубконтоОприходования1Доступность</dcsset:left>
+						<dcsset:left xsi:type="dcscor:Field">Объект.Услуги.Субконто1Доступность</dcsset:left>
 						<dcsset:comparisonType>Equal</dcsset:comparisonType>
 						<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
 					</dcsset:item>
@@ -1054,12 +1109,12 @@
 			<dcsset:item>
 				<dcsset:selection>
 					<dcsset:item>
-						<dcsset:field>ТоварыСубконтоОприходования2</dcsset:field>
+						<dcsset:field>УслугиСубконто2</dcsset:field>
 					</dcsset:item>
 				</dcsset:selection>
 				<dcsset:filter>
 					<dcsset:item xsi:type="dcsset:FilterItemComparison">
-						<dcsset:left xsi:type="dcscor:Field">Объект.Товары.СубконтоОприходования2Доступность</dcsset:left>
+						<dcsset:left xsi:type="dcscor:Field">Объект.Услуги.Субконто2Доступность</dcsset:left>
 						<dcsset:comparisonType>Equal</dcsset:comparisonType>
 						<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
 					</dcsset:item>
@@ -1074,12 +1129,12 @@
 			<dcsset:item>
 				<dcsset:selection>
 					<dcsset:item>
-						<dcsset:field>ТоварыСубконтоОприходования3</dcsset:field>
+						<dcsset:field>УслугиСубконто3</dcsset:field>
 					</dcsset:item>
 				</dcsset:selection>
 				<dcsset:filter>
 					<dcsset:item xsi:type="dcsset:FilterItemComparison">
-						<dcsset:left xsi:type="dcscor:Field">Объект.Товары.СубконтоОприходования3Доступность</dcsset:left>
+						<dcsset:left xsi:type="dcscor:Field">Объект.Услуги.Субконто3Доступность</dcsset:left>
 						<dcsset:comparisonType>Equal</dcsset:comparisonType>
 						<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
 					</dcsset:item>

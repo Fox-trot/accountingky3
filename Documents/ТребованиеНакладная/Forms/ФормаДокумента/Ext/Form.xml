@@ -51,7 +51,7 @@
 		</ChildItems>
 	</AutoCommandBar>
 	<Events>
-		<Event name="AfterWrite">ПослеЗаписи</Event>
+		<Event name="AfterWriteAtServer">ПослеЗаписиНаСервере</Event>
 		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
 		<Event name="OnReadAtServer">ПриЧтенииНаСервере</Event>
 		<Event name="OnOpen">ПриОткрытии</Event>
@@ -318,6 +318,9 @@
 								<ContextMenu name="МатериалыУправлениеПоискомКонтекстноеМеню" id="40"/>
 								<ExtendedTooltip name="МатериалыУправлениеПоискомРасширеннаяПодсказка" id="41"/>
 							</SearchControlAddition>
+							<Events>
+								<Event name="BeforeRowChange">МатериалыПередНачаломИзменения</Event>
+							</Events>
 							<ChildItems>
 								<LabelField name="МатериалыНомерСтроки" id="354">
 									<DataPath>Объект.Материалы.LineNumber</DataPath>
@@ -368,31 +371,34 @@
 										<Event name="OnChange">МатериалыСчетЗатратПриИзменении</Event>
 									</Events>
 								</InputField>
-								<InputField name="МатериалыСубконтоЗатрат1" id="459">
-									<DataPath>Объект.Материалы.СубконтоЗатрат1</DataPath>
+								<InputField name="МатериалыСубконто1" id="459">
+									<DataPath>Объект.Материалы.Субконто1</DataPath>
 									<EditMode>EnterOnInput</EditMode>
-									<ContextMenu name="МатериалыСубконтоЗатрат1КонтекстноеМеню" id="460"/>
-									<ExtendedTooltip name="МатериалыСубконтоЗатрат1РасширеннаяПодсказка" id="461"/>
+									<ContextMenu name="МатериалыСубконто1КонтекстноеМеню" id="460"/>
+									<ExtendedTooltip name="МатериалыСубконто1РасширеннаяПодсказка" id="461"/>
 									<Events>
-										<Event name="OnChange">МатериалыСубконтоЗатрат1ПриИзменении</Event>
+										<Event name="OnChange">МатериалыСубконто1ПриИзменении</Event>
+										<Event name="StartChoice">МатериалыСубконто1НачалоВыбора</Event>
 									</Events>
 								</InputField>
-								<InputField name="МатериалыСубконтоЗатрат2" id="462">
-									<DataPath>Объект.Материалы.СубконтоЗатрат2</DataPath>
+								<InputField name="МатериалыСубконто2" id="462">
+									<DataPath>Объект.Материалы.Субконто2</DataPath>
 									<EditMode>EnterOnInput</EditMode>
-									<ContextMenu name="МатериалыСубконтоЗатрат2КонтекстноеМеню" id="463"/>
-									<ExtendedTooltip name="МатериалыСубконтоЗатрат2РасширеннаяПодсказка" id="464"/>
+									<ContextMenu name="МатериалыСубконто2КонтекстноеМеню" id="463"/>
+									<ExtendedTooltip name="МатериалыСубконто2РасширеннаяПодсказка" id="464"/>
 									<Events>
-										<Event name="OnChange">МатериалыСубконтоЗатрат2ПриИзменении</Event>
+										<Event name="OnChange">МатериалыСубконто2ПриИзменении</Event>
+										<Event name="StartChoice">МатериалыСубконто2НачалоВыбора</Event>
 									</Events>
 								</InputField>
-								<InputField name="МатериалыСубконтоЗатрат3" id="465">
-									<DataPath>Объект.Материалы.СубконтоЗатрат3</DataPath>
+								<InputField name="МатериалыСубконто3" id="465">
+									<DataPath>Объект.Материалы.Субконто3</DataPath>
 									<EditMode>EnterOnInput</EditMode>
-									<ContextMenu name="МатериалыСубконтоЗатрат3КонтекстноеМеню" id="466"/>
-									<ExtendedTooltip name="МатериалыСубконтоЗатрат3РасширеннаяПодсказка" id="467"/>
+									<ContextMenu name="МатериалыСубконто3КонтекстноеМеню" id="466"/>
+									<ExtendedTooltip name="МатериалыСубконто3РасширеннаяПодсказка" id="467"/>
 									<Events>
-										<Event name="OnChange">МатериалыСубконтоЗатрат3ПриИзменении</Event>
+										<Event name="OnChange">МатериалыСубконто3ПриИзменении</Event>
+										<Event name="StartChoice">МатериалыСубконто3НачалоВыбора</Event>
 									</Events>
 								</InputField>
 							</ChildItems>
@@ -443,31 +449,34 @@
 										<Event name="OnChange">СчетЗатратПриИзменении</Event>
 									</Events>
 								</InputField>
-								<InputField name="СубконтоЗатрат1" id="442">
-									<DataPath>Объект.СубконтоЗатрат1</DataPath>
+								<InputField name="Субконто1" id="442">
+									<DataPath>Объект.Субконто1</DataPath>
 									<EditMode>EnterOnInput</EditMode>
-									<ContextMenu name="СубконтоЗатрат1КонтекстноеМеню" id="443"/>
-									<ExtendedTooltip name="СубконтоЗатрат1РасширеннаяПодсказка" id="444"/>
+									<ContextMenu name="Субконто1КонтекстноеМеню" id="443"/>
+									<ExtendedTooltip name="Субконто1РасширеннаяПодсказка" id="444"/>
 									<Events>
-										<Event name="OnChange">СубконтоЗатрат1ПриИзменении</Event>
+										<Event name="OnChange">Субконто1ПриИзменении</Event>
+										<Event name="StartChoice">Субконто1НачалоВыбора</Event>
 									</Events>
 								</InputField>
-								<InputField name="СубконтоЗатрат2" id="445">
-									<DataPath>Объект.СубконтоЗатрат2</DataPath>
+								<InputField name="Субконто2" id="445">
+									<DataPath>Объект.Субконто2</DataPath>
 									<EditMode>EnterOnInput</EditMode>
-									<ContextMenu name="СубконтоЗатрат2КонтекстноеМеню" id="446"/>
-									<ExtendedTooltip name="СубконтоЗатрат2РасширеннаяПодсказка" id="447"/>
+									<ContextMenu name="Субконто2КонтекстноеМеню" id="446"/>
+									<ExtendedTooltip name="Субконто2РасширеннаяПодсказка" id="447"/>
 									<Events>
-										<Event name="OnChange">СубконтоЗатрат2ПриИзменении</Event>
+										<Event name="OnChange">Субконто2ПриИзменении</Event>
+										<Event name="StartChoice">Субконто2НачалоВыбора</Event>
 									</Events>
 								</InputField>
-								<InputField name="СубконтоЗатрат3" id="448">
-									<DataPath>Объект.СубконтоЗатрат3</DataPath>
+								<InputField name="Субконто3" id="448">
+									<DataPath>Объект.Субконто3</DataPath>
 									<EditMode>EnterOnInput</EditMode>
-									<ContextMenu name="СубконтоЗатрат3КонтекстноеМеню" id="449"/>
-									<ExtendedTooltip name="СубконтоЗатрат3РасширеннаяПодсказка" id="450"/>
+									<ContextMenu name="Субконто3КонтекстноеМеню" id="449"/>
+									<ExtendedTooltip name="Субконто3РасширеннаяПодсказка" id="450"/>
 									<Events>
-										<Event name="OnChange">СубконтоЗатрат3ПриИзменении</Event>
+										<Event name="OnChange">Субконто3ПриИзменении</Event>
+										<Event name="StartChoice">Субконто3НачалоВыбора</Event>
 									</Events>
 								</InputField>
 							</ChildItems>
@@ -756,33 +765,33 @@
 			</UseAlways>
 			<Columns>
 				<AdditionalColumns table="Объект.Материалы">
-					<Column name="СубконтоЗатрат1Доступность" id="1">
+					<Column name="Субконто1Доступность" id="1">
 						<Title>
 							<v8:item>
 								<v8:lang>ru</v8:lang>
-								<v8:content>Субконто затрат1 доступность</v8:content>
+								<v8:content>Субконто1 доступность</v8:content>
 							</v8:item>
 						</Title>
 						<Type>
 							<v8:Type>xs:boolean</v8:Type>
 						</Type>
 					</Column>
-					<Column name="СубконтоЗатрат2Доступность" id="2">
+					<Column name="Субконто2Доступность" id="2">
 						<Title>
 							<v8:item>
 								<v8:lang>ru</v8:lang>
-								<v8:content>Субконто затрат2 доступность</v8:content>
+								<v8:content>Субконто2 доступность</v8:content>
 							</v8:item>
 						</Title>
 						<Type>
 							<v8:Type>xs:boolean</v8:Type>
 						</Type>
 					</Column>
-					<Column name="СубконтоЗатрат3Доступность" id="3">
+					<Column name="Субконто3Доступность" id="3">
 						<Title>
 							<v8:item>
 								<v8:lang>ru</v8:lang>
-								<v8:content>Субконто затрат3 доступность</v8:content>
+								<v8:content>Субконто3 доступность</v8:content>
 							</v8:item>
 						</Title>
 						<Type>
@@ -861,14 +870,14 @@
 			<dcsset:item>
 				<dcsset:selection>
 					<dcsset:item>
-						<dcsset:field>МатериалыСубконтоЗатрат1</dcsset:field>
+						<dcsset:field>МатериалыСубконто1</dcsset:field>
 					</dcsset:item>
 				</dcsset:selection>
 				<dcsset:filter>
 					<dcsset:item xsi:type="dcsset:FilterItemComparison">
-						<dcsset:left xsi:type="dcscor:Field">Объект.Материалы.СубконтоЗатрат1Доступность</dcsset:left>
+						<dcsset:left xsi:type="dcscor:Field">Объект.Материалы.Субконто1Доступность</dcsset:left>
 						<dcsset:comparisonType>Equal</dcsset:comparisonType>
-						<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
+						<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
 					</dcsset:item>
 				</dcsset:filter>
 				<dcsset:appearance>
@@ -881,14 +890,14 @@
 			<dcsset:item>
 				<dcsset:selection>
 					<dcsset:item>
-						<dcsset:field>МатериалыСубконтоЗатрат2</dcsset:field>
+						<dcsset:field>МатериалыСубконто2</dcsset:field>
 					</dcsset:item>
 				</dcsset:selection>
 				<dcsset:filter>
 					<dcsset:item xsi:type="dcsset:FilterItemComparison">
-						<dcsset:left xsi:type="dcscor:Field">Объект.Материалы.СубконтоЗатрат2Доступность</dcsset:left>
+						<dcsset:left xsi:type="dcscor:Field">Объект.Материалы.Субконто2Доступность</dcsset:left>
 						<dcsset:comparisonType>Equal</dcsset:comparisonType>
-						<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
+						<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
 					</dcsset:item>
 				</dcsset:filter>
 				<dcsset:appearance>
@@ -901,14 +910,14 @@
 			<dcsset:item>
 				<dcsset:selection>
 					<dcsset:item>
-						<dcsset:field>МатериалыСубконтоЗатрат3</dcsset:field>
+						<dcsset:field>МатериалыСубконто3</dcsset:field>
 					</dcsset:item>
 				</dcsset:selection>
 				<dcsset:filter>
 					<dcsset:item xsi:type="dcsset:FilterItemComparison">
-						<dcsset:left xsi:type="dcscor:Field">Объект.Материалы.СубконтоЗатрат3Доступность</dcsset:left>
+						<dcsset:left xsi:type="dcscor:Field">Объект.Материалы.Субконто3Доступность</dcsset:left>
 						<dcsset:comparisonType>Equal</dcsset:comparisonType>
-						<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
+						<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
 					</dcsset:item>
 				</dcsset:filter>
 				<dcsset:appearance>

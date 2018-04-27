@@ -51,7 +51,7 @@
 		</ChildItems>
 	</AutoCommandBar>
 	<Events>
-		<Event name="AfterWrite">ПослеЗаписи</Event>
+		<Event name="AfterWriteAtServer">ПослеЗаписиНаСервере</Event>
 		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
 		<Event name="OnReadAtServer">ПриЧтенииНаСервере</Event>
 		<Event name="OnOpen">ПриОткрытии</Event>
@@ -307,6 +307,9 @@
 								<ContextMenu name="ТоварыУправлениеПоискомКонтекстноеМеню" id="40"/>
 								<ExtendedTooltip name="ТоварыУправлениеПоискомРасширеннаяПодсказка" id="41"/>
 							</SearchControlAddition>
+							<Events>
+								<Event name="BeforeRowChange">ТоварыПередНачаломИзменения</Event>
+							</Events>
 							<ChildItems>
 								<LabelField name="ТоварыНомерСтроки" id="42">
 									<DataPath>Объект.Товары.LineNumber</DataPath>
@@ -368,8 +371,8 @@
 										<Event name="OnChange">ТоварыСчетЗатратПриИзменении</Event>
 									</Events>
 								</InputField>
-								<InputField name="ТоварыСубконтоЗатрат1" id="110">
-									<DataPath>Объект.Товары.СубконтоЗатрат1</DataPath>
+								<InputField name="ТоварыСубконто1" id="110">
+									<DataPath>Объект.Товары.Субконто1</DataPath>
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
@@ -385,14 +388,15 @@
 										<xr:DataPath>Items.Товары.CurrentData.СчетЗатрат</xr:DataPath>
 										<xr:LinkItem>1</xr:LinkItem>
 									</TypeLink>
-									<ContextMenu name="ТоварыСубконтоЗатрат1КонтекстноеМеню" id="111"/>
-									<ExtendedTooltip name="ТоварыСубконтоЗатрат1РасширеннаяПодсказка" id="112"/>
+									<ContextMenu name="ТоварыСубконто1КонтекстноеМеню" id="111"/>
+									<ExtendedTooltip name="ТоварыСубконто1РасширеннаяПодсказка" id="112"/>
 									<Events>
-										<Event name="OnChange">ТоварыСубконтоЗатрат1ПриИзменении</Event>
+										<Event name="OnChange">ТоварыСубконто1ПриИзменении</Event>
+										<Event name="StartChoice">ТоварыСубконто1НачалоВыбора</Event>
 									</Events>
 								</InputField>
-								<InputField name="ТоварыСубконтоЗатрат2" id="113">
-									<DataPath>Объект.Товары.СубконтоЗатрат2</DataPath>
+								<InputField name="ТоварыСубконто2" id="113">
+									<DataPath>Объект.Товары.Субконто2</DataPath>
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
@@ -408,14 +412,15 @@
 										<xr:DataPath>Items.Товары.CurrentData.СчетЗатрат</xr:DataPath>
 										<xr:LinkItem>2</xr:LinkItem>
 									</TypeLink>
-									<ContextMenu name="ТоварыСубконтоЗатрат2КонтекстноеМеню" id="114"/>
-									<ExtendedTooltip name="ТоварыСубконтоЗатрат2РасширеннаяПодсказка" id="115"/>
+									<ContextMenu name="ТоварыСубконто2КонтекстноеМеню" id="114"/>
+									<ExtendedTooltip name="ТоварыСубконто2РасширеннаяПодсказка" id="115"/>
 									<Events>
-										<Event name="OnChange">ТоварыСубконтоЗатрат2ПриИзменении</Event>
+										<Event name="OnChange">ТоварыСубконто2ПриИзменении</Event>
+										<Event name="StartChoice">ТоварыСубконто2НачалоВыбора</Event>
 									</Events>
 								</InputField>
-								<InputField name="ТоварыСубконтоЗатрат3" id="116">
-									<DataPath>Объект.Товары.СубконтоЗатрат3</DataPath>
+								<InputField name="ТоварыСубконто3" id="116">
+									<DataPath>Объект.Товары.Субконто3</DataPath>
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
@@ -431,10 +436,11 @@
 										<xr:DataPath>Items.Товары.CurrentData.СчетЗатрат</xr:DataPath>
 										<xr:LinkItem>3</xr:LinkItem>
 									</TypeLink>
-									<ContextMenu name="ТоварыСубконтоЗатрат3КонтекстноеМеню" id="117"/>
-									<ExtendedTooltip name="ТоварыСубконтоЗатрат3РасширеннаяПодсказка" id="118"/>
+									<ContextMenu name="ТоварыСубконто3КонтекстноеМеню" id="117"/>
+									<ExtendedTooltip name="ТоварыСубконто3РасширеннаяПодсказка" id="118"/>
 									<Events>
-										<Event name="OnChange">ТоварыСубконтоЗатрат3ПриИзменении</Event>
+										<Event name="OnChange">ТоварыСубконто3ПриИзменении</Event>
+										<Event name="StartChoice">ТоварыСубконто3НачалоВыбора</Event>
 									</Events>
 								</InputField>
 							</ChildItems>

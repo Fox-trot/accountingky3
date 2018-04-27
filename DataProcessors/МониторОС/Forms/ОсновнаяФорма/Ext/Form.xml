@@ -61,6 +61,9 @@
 							</Title>
 							<ContextMenu name="ДатаНачалаКонтекстноеМеню" id="933"/>
 							<ExtendedTooltip name="ДатаНачалаРасширеннаяПодсказка" id="934"/>
+							<Events>
+								<Event name="OnChange">ДатаНачалаПриИзменении</Event>
+							</Events>
 						</InputField>
 						<InputField name="ДатаОкончания" id="935">
 							<DataPath>ДатаОкончания</DataPath>
@@ -72,6 +75,9 @@
 							</Title>
 							<ContextMenu name="ДатаОкончанияКонтекстноеМеню" id="936"/>
 							<ExtendedTooltip name="ДатаОкончанияРасширеннаяПодсказка" id="937"/>
+							<Events>
+								<Event name="OnChange">ДатаОкончанияПриИзменении</Event>
+							</Events>
 						</InputField>
 					</ChildItems>
 				</UsualGroup>
@@ -98,21 +104,21 @@
 			</ToolTip>
 			<ExtendedTooltip name="СтраницыОбработкиРасширеннаяПодсказка" id="48"/>
 			<ChildItems>
-				<Page name="СтраницаОбщая" id="49">
+				<Page name="СтраницаСвод" id="49">
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Общая</v8:content>
+							<v8:content>Свод</v8:content>
 						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Страница общая</v8:content>
+							<v8:content>Страница свод</v8:content>
 						</v8:item>
 					</ToolTip>
 					<VerticalStretch>false</VerticalStretch>
-					<ExtendedTooltip name="СтраницаОбщаяРасширеннаяПодсказка" id="50"/>
+					<ExtendedTooltip name="СтраницаСводРасширеннаяПодсказка" id="50"/>
 					<ChildItems>
 						<UsualGroup name="ГруппаОбщаяВерх" id="291">
 							<Title>
@@ -151,110 +157,123 @@
 									<ShowTitle>false</ShowTitle>
 									<ExtendedTooltip name="ГруппаОбщаяЛеваяРасширеннаяПодсказка" id="86"/>
 									<ChildItems>
-										<Table name="СписокОС" id="51">
+										<Table name="СписокОС_ТЗ" id="1313">
+											<Representation>List</Representation>
 											<CommandBarLocation>None</CommandBarLocation>
-											<MaxWidth>10</MaxWidth>
-											<Height>10</Height>
-											<AutoMaxHeight>false</AutoMaxHeight>
-											<UseAlternationRowColor>true</UseAlternationRowColor>
-											<VerticalStretch>false</VerticalStretch>
+											<AutoInsertNewRow>true</AutoInsertNewRow>
 											<EnableStartDrag>true</EnableStartDrag>
-											<DataPath>СписокОС</DataPath>
-											<RowPictureDataPath>СписокОС.DefaultPicture</RowPictureDataPath>
-											<AutoRefresh>false</AutoRefresh>
-											<AutoRefreshPeriod>60</AutoRefreshPeriod>
-											<Period>
-												<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
-												<v8:startDate>0001-01-01T00:00:00</v8:startDate>
-												<v8:endDate>0001-01-01T00:00:00</v8:endDate>
-											</Period>
-											<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
-											<RestoreCurrentRow>false</RestoreCurrentRow>
-											<TopLevelParent xsi:nil="true"/>
-											<ShowRoot>true</ShowRoot>
-											<AllowRootChoice>false</AllowRootChoice>
-											<UpdateOnDataChange>Auto</UpdateOnDataChange>
-											<ContextMenu name="СписокОСКонтекстноеМеню" id="52"/>
-											<AutoCommandBar name="СписокОСКоманднаяПанель" id="53"/>
-											<ExtendedTooltip name="СписокОСРасширеннаяПодсказка" id="54"/>
-											<SearchStringAddition name="СписокОССтрокаПоиска" id="55">
+											<EnableDrag>true</EnableDrag>
+											<DataPath>СписокОС_ТЗ</DataPath>
+											<CommandSet>
+												<ExcludedCommand>Copy</ExcludedCommand>
+												<ExcludedCommand>Delete</ExcludedCommand>
+												<ExcludedCommand>Add</ExcludedCommand>
+												<ExcludedCommand>Change</ExcludedCommand>
+											</CommandSet>
+											<RowFilter xsi:nil="true"/>
+											<ContextMenu name="СписокОС_ТЗКонтекстноеМеню" id="1314"/>
+											<AutoCommandBar name="СписокОС_ТЗКоманднаяПанель" id="1315"/>
+											<ExtendedTooltip name="СписокОС_ТЗРасширеннаяПодсказка" id="1316"/>
+											<SearchStringAddition name="СписокОС_ТЗСтрокаПоиска" id="1317">
 												<AdditionSource>
-													<Item>СписокОС</Item>
+													<Item>СписокОС_ТЗ</Item>
 													<Type>SearchStringRepresentation</Type>
 												</AdditionSource>
-												<ContextMenu name="СписокОССтрокаПоискаКонтекстноеМеню" id="56"/>
-												<ExtendedTooltip name="СписокОССтрокаПоискаРасширеннаяПодсказка" id="57"/>
+												<ContextMenu name="СписокОС_ТЗСтрокаПоискаКонтекстноеМеню" id="1318"/>
+												<ExtendedTooltip name="СписокОС_ТЗСтрокаПоискаРасширеннаяПодсказка" id="1319"/>
 											</SearchStringAddition>
-											<ViewStatusAddition name="СписокОССостояниеПросмотра" id="58">
+											<ViewStatusAddition name="СписокОС_ТЗСостояниеПросмотра" id="1320">
 												<AdditionSource>
-													<Item>СписокОС</Item>
+													<Item>СписокОС_ТЗ</Item>
 													<Type>ViewStatusRepresentation</Type>
 												</AdditionSource>
-												<ContextMenu name="СписокОССостояниеПросмотраКонтекстноеМеню" id="59"/>
-												<ExtendedTooltip name="СписокОССостояниеПросмотраРасширеннаяПодсказка" id="60"/>
+												<ContextMenu name="СписокОС_ТЗСостояниеПросмотраКонтекстноеМеню" id="1321"/>
+												<ExtendedTooltip name="СписокОС_ТЗСостояниеПросмотраРасширеннаяПодсказка" id="1322"/>
 											</ViewStatusAddition>
-											<SearchControlAddition name="СписокОСУправлениеПоиском" id="61">
+											<SearchControlAddition name="СписокОС_ТЗУправлениеПоиском" id="1323">
 												<AdditionSource>
-													<Item>СписокОС</Item>
+													<Item>СписокОС_ТЗ</Item>
 													<Type>SearchControl</Type>
 												</AdditionSource>
-												<ContextMenu name="СписокОСУправлениеПоискомКонтекстноеМеню" id="62"/>
-												<ExtendedTooltip name="СписокОСУправлениеПоискомРасширеннаяПодсказка" id="63"/>
+												<ContextMenu name="СписокОС_ТЗУправлениеПоискомКонтекстноеМеню" id="1324"/>
+												<ExtendedTooltip name="СписокОС_ТЗУправлениеПоискомРасширеннаяПодсказка" id="1325"/>
 											</SearchControlAddition>
 											<Events>
-												<Event name="OnActivateRow">СписокОСПриАктивизацииСтроки</Event>
+												<Event name="OnActivateRow">СписокОС_ТЗПриАктивизацииСтроки</Event>
 											</Events>
 											<ChildItems>
-												<LabelField name="СписокОСОсновноеСредство" id="1279">
-													<DataPath>СписокОС.ОсновноеСредство</DataPath>
-													<ContextMenu name="СписокОСОсновноеСредствоКонтекстноеМеню" id="1280"/>
-													<ExtendedTooltip name="СписокОСОсновноеСредствоРасширеннаяПодсказка" id="1281"/>
-												</LabelField>
-												<LabelField name="СписокОССчетУчета" id="1282">
-													<DataPath>СписокОС.СчетУчета</DataPath>
+												<InputField name="СписокОС_ТЗОсновноеСредство" id="1326">
+													<DataPath>СписокОС_ТЗ.ОсновноеСредство</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="СписокОС_ТЗОсновноеСредствоКонтекстноеМеню" id="1327"/>
+													<ExtendedTooltip name="СписокОС_ТЗОсновноеСредствоРасширеннаяПодсказка" id="1328"/>
+												</InputField>
+												<InputField name="СписокОС_ТЗСчетУчета" id="1329">
+													<DataPath>СписокОС_ТЗ.СчетУчета</DataPath>
+													<EditMode>EnterOnInput</EditMode>
 													<Width>8</Width>
 													<HorizontalStretch>false</HorizontalStretch>
-													<ContextMenu name="СписокОССчетУчетаКонтекстноеМеню" id="1283"/>
-													<ExtendedTooltip name="СписокОССчетУчетаРасширеннаяПодсказка" id="1284"/>
-												</LabelField>
-												<LabelField name="СписокОСИнвентарныйНомер" id="1276">
-													<DataPath>СписокОС.ИнвентарныйНомер</DataPath>
+													<ContextMenu name="СписокОС_ТЗСчетУчетаКонтекстноеМеню" id="1330"/>
+													<ExtendedTooltip name="СписокОС_ТЗСчетУчетаРасширеннаяПодсказка" id="1331"/>
+												</InputField>
+												<InputField name="СписокОС_ТЗИнвентарныйНомер" id="1332">
+													<DataPath>СписокОС_ТЗ.ИнвентарныйНомер</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="СписокОС_ТЗИнвентарныйНомерКонтекстноеМеню" id="1333"/>
+													<ExtendedTooltip name="СписокОС_ТЗИнвентарныйНомерРасширеннаяПодсказка" id="1334"/>
+												</InputField>
+												<InputField name="СписокОС_ТЗГруппаНУ" id="1335">
+													<DataPath>СписокОС_ТЗ.ГруппаНУ</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="СписокОС_ТЗГруппаНУКонтекстноеМеню" id="1336"/>
+													<ExtendedTooltip name="СписокОС_ТЗГруппаНУРасширеннаяПодсказка" id="1337"/>
+												</InputField>
+												<InputField name="СписокОС_ТЗПодразделение" id="1338">
+													<DataPath>СписокОС_ТЗ.Подразделение</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="СписокОС_ТЗПодразделениеКонтекстноеМеню" id="1339"/>
+													<ExtendedTooltip name="СписокОС_ТЗПодразделениеРасширеннаяПодсказка" id="1340"/>
+												</InputField>
+												<InputField name="СписокОС_ТЗПервоначальнаяСтоимость" id="1341">
+													<DataPath>СписокОС_ТЗ.ПервоначальнаяСтоимость</DataPath>
+													<Title>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Стоимость БУ</v8:content>
+														</v8:item>
+													</Title>
+													<EditMode>EnterOnInput</EditMode>
 													<Width>10</Width>
-													<ContextMenu name="СписокОСИнвентарныйНомерКонтекстноеМеню" id="1277"/>
-													<ExtendedTooltip name="СписокОСИнвентарныйНомерРасширеннаяПодсказка" id="1278"/>
-												</LabelField>
-												<LabelField name="СписокОСГруппаНУ" id="1285">
-													<DataPath>СписокОС.ГруппаНУ</DataPath>
-													<ContextMenu name="СписокОСГруппаНУКонтекстноеМеню" id="1286"/>
-													<ExtendedTooltip name="СписокОСГруппаНУРасширеннаяПодсказка" id="1287"/>
-												</LabelField>
-												<LabelField name="СписокОСПодразделение" id="1288">
-													<DataPath>СписокОС.Подразделение</DataPath>
-													<ContextMenu name="СписокОСПодразделениеКонтекстноеМеню" id="1289"/>
-													<ExtendedTooltip name="СписокОСПодразделениеРасширеннаяПодсказка" id="1290"/>
-												</LabelField>
-												<LabelField name="СписокОСПервоначальнаяСтоимость" id="1291">
-													<DataPath>СписокОС.ПервоначальнаяСтоимость</DataPath>
+													<ContextMenu name="СписокОС_ТЗПервоначальнаяСтоимостьКонтекстноеМеню" id="1342"/>
+													<ExtendedTooltip name="СписокОС_ТЗПервоначальнаяСтоимостьРасширеннаяПодсказка" id="1343"/>
+												</InputField>
+												<InputField name="СписокОС_ТЗНакопленныйИзнос" id="1344">
+													<DataPath>СписокОС_ТЗ.НакопленныйИзнос</DataPath>
+													<EditMode>EnterOnInput</EditMode>
 													<Width>10</Width>
-													<ContextMenu name="СписокОСПервоначальнаяСтоимостьКонтекстноеМеню" id="1292"/>
-													<ExtendedTooltip name="СписокОСПервоначальнаяСтоимостьРасширеннаяПодсказка" id="1293"/>
-												</LabelField>
-												<LabelField name="СписокОСНакопленныйИзнос" id="1294">
-													<DataPath>СписокОС.НакопленныйИзнос</DataPath>
-													<Width>10</Width>
-													<ContextMenu name="СписокОСНакопленныйИзносКонтекстноеМеню" id="1295"/>
-													<ExtendedTooltip name="СписокОСНакопленныйИзносРасширеннаяПодсказка" id="1296"/>
-												</LabelField>
-												<LabelField name="СписокОССостояние" id="1297">
-													<DataPath>СписокОС.Состояние</DataPath>
-													<ContextMenu name="СписокОССостояниеКонтекстноеМеню" id="1298"/>
-													<ExtendedTooltip name="СписокОССостояниеРасширеннаяПодсказка" id="1299"/>
-												</LabelField>
-												<LabelField name="СписокОСМОЛ" id="1300">
-													<DataPath>СписокОС.МОЛ</DataPath>
-													<ContextMenu name="СписокОСМОЛКонтекстноеМеню" id="1301"/>
-													<ExtendedTooltip name="СписокОСМОЛРасширеннаяПодсказка" id="1302"/>
-												</LabelField>
+													<ContextMenu name="СписокОС_ТЗНакопленныйИзносКонтекстноеМеню" id="1345"/>
+													<ExtendedTooltip name="СписокОС_ТЗНакопленныйИзносРасширеннаяПодсказка" id="1346"/>
+												</InputField>
+												<InputField name="СписокОС_ТЗСостояниеОС" id="1347">
+													<DataPath>СписокОС_ТЗ.СостояниеОС</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="СписокОС_ТЗСостояниеОСКонтекстноеМеню" id="1348"/>
+													<ExtendedTooltip name="СписокОС_ТЗСостояниеОСРасширеннаяПодсказка" id="1349"/>
+												</InputField>
+												<InputField name="СписокОС_ТЗМОЛ" id="1350">
+													<DataPath>СписокОС_ТЗ.МОЛ</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="СписокОС_ТЗМОЛКонтекстноеМеню" id="1351"/>
+													<ExtendedTooltip name="СписокОС_ТЗМОЛРасширеннаяПодсказка" id="1352"/>
+												</InputField>
+												<InputField name="СписокОС_ТЗСчетНачисленияАмортизации" id="1353">
+													<DataPath>СписокОС_ТЗ.СчетНачисленияАмортизации</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<Width>8</Width>
+													<HorizontalStretch>false</HorizontalStretch>
+													<ContextMenu name="СписокОС_ТЗСчетНачисленияАмортизацииКонтекстноеМеню" id="1354"/>
+													<ExtendedTooltip name="СписокОС_ТЗСчетНачисленияАмортизацииРасширеннаяПодсказка" id="1355"/>
+												</InputField>
 											</ChildItems>
 										</Table>
 									</ChildItems>
@@ -577,39 +596,34 @@
 							<ShowTitle>false</ShowTitle>
 							<ExtendedTooltip name="ГруппаОбщаяНизРасширеннаяПодсказка" id="290"/>
 							<ChildItems>
-								<UsualGroup name="ГруппаПерепровести" id="342">
+								<UsualGroup name="ГруппаКоманды" id="1309">
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>Группа перепровести</v8:content>
+											<v8:content>Группа команды</v8:content>
 										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>Группа перепровести</v8:content>
+											<v8:content>Группа команды</v8:content>
 										</v8:item>
 									</ToolTip>
 									<Group>Horizontal</Group>
 									<Representation>None</Representation>
 									<ShowTitle>false</ShowTitle>
-									<ExtendedTooltip name="ГруппаПерепровестиРасширеннаяПодсказка" id="343"/>
+									<ExtendedTooltip name="ГруппаКомандыРасширеннаяПодсказка" id="1310"/>
 									<ChildItems>
+										<Button name="ПоказатьРасшифровку" id="1426">
+											<Type>UsualButton</Type>
+											<CommandName>Form.Command.ПоказатьРасшифровку</CommandName>
+											<ExtendedTooltip name="ПоказатьРасшифровкуРасширеннаяПодсказка" id="1427"/>
+										</Button>
 										<Button name="ПерепровестиДокументы" id="340">
 											<Type>UsualButton</Type>
 											<CommandName>Form.Command.ПерепровестиДокументы</CommandName>
 											<ExtendedTooltip name="ПерепровестиДокументыРасширеннаяПодсказка" id="341"/>
 										</Button>
-										<InputField name="ОтборСобытие" id="238">
-											<DataPath>ОтборСобытие</DataPath>
-											<EditMode>EnterOnInput</EditMode>
-											<ClearButton>true</ClearButton>
-											<ContextMenu name="ОтборСобытиеКонтекстноеМеню" id="239"/>
-											<ExtendedTooltip name="ОтборСобытиеРасширеннаяПодсказка" id="240"/>
-											<Events>
-												<Event name="OnChange">ОтборСобытиеПриИзменении</Event>
-											</Events>
-										</InputField>
 										<CheckBoxField name="ВключатьЗакрытиеМесяца" id="1075">
 											<DataPath>ВключатьЗакрытиеМесяца</DataPath>
 											<CheckBoxType>Auto</CheckBoxType>
@@ -619,25 +633,21 @@
 												<Event name="OnChange">ВключатьЗакрытиеМесяцаПриИзменении</Event>
 											</Events>
 										</CheckBoxField>
-										<Button name="ПоказатьТаблицуРасшифровкаПоСобытиямОС" id="350">
-											<Type>UsualButton</Type>
-											<CommandName>Form.Command.ПоказатьТаблицуРасшифровкаПоСобытиямОС</CommandName>
-											<Title>
-												<v8:item>
-													<v8:lang>ru</v8:lang>
-													<v8:content>Показать таблицу расшифровки по событиям ОС</v8:content>
-												</v8:item>
-											</Title>
-											<ExtendedTooltip name="ПоказатьТаблицуРасшифровкаПоСобытиямОСРасширеннаяПодсказка" id="351"/>
-										</Button>
+										<CheckBoxField name="ТолькоЗакрытиеМесяца" id="1306">
+											<DataPath>ТолькоЗакрытиеМесяца</DataPath>
+											<CheckBoxType>Auto</CheckBoxType>
+											<ContextMenu name="ТолькоЗакрытиеМесяцаКонтекстноеМеню" id="1307"/>
+											<ExtendedTooltip name="ТолькоЗакрытиеМесяцаРасширеннаяПодсказка" id="1308"/>
+											<Events>
+												<Event name="OnChange">ТолькоЗакрытиеМесяцаПриИзменении</Event>
+											</Events>
+										</CheckBoxField>
 									</ChildItems>
 								</UsualGroup>
 								<Table name="РасшифровкаПоСобытиямОС" id="222">
 									<Representation>List</Representation>
 									<CommandBarLocation>None</CommandBarLocation>
 									<ReadOnly>true</ReadOnly>
-									<Height>6</Height>
-									<AutoMaxHeight>false</AutoMaxHeight>
 									<AutoInsertNewRow>true</AutoInsertNewRow>
 									<VerticalStretch>false</VerticalStretch>
 									<EnableStartDrag>true</EnableStartDrag>
@@ -705,13 +715,20 @@
 											<Title>
 												<v8:item>
 													<v8:lang>ru</v8:lang>
-													<v8:content>Первоначальная стоимость</v8:content>
+													<v8:content>Стоимость БУ</v8:content>
 												</v8:item>
 											</Title>
 											<EditMode>EnterOnInput</EditMode>
 											<Width>10</Width>
 											<ContextMenu name="РасшифровкаПоСобытиямОСПервоначальнаяСтоимостьКонтекстноеМеню" id="248"/>
 											<ExtendedTooltip name="РасшифровкаПоСобытиямОСПервоначальнаяСтоимостьРасширеннаяПодсказка" id="249"/>
+										</InputField>
+										<InputField name="РасшифровкаПоСобытиямОСАмортизацияЗаМесяц" id="1303">
+											<DataPath>РасшифровкаПоСобытиямОС.АмортизацияЗаМесяц</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<Width>10</Width>
+											<ContextMenu name="РасшифровкаПоСобытиямОСАмортизацияЗаМесяцКонтекстноеМеню" id="1304"/>
+											<ExtendedTooltip name="РасшифровкаПоСобытиямОСАмортизацияЗаМесяцРасширеннаяПодсказка" id="1305"/>
 										</InputField>
 										<InputField name="РасшифровкаПоСобытиямОСНакопленныйИзнос" id="250">
 											<DataPath>РасшифровкаПоСобытиямОС.НакопленныйИзнос</DataPath>
@@ -795,6 +812,40 @@
 										</InputField>
 									</ChildItems>
 								</Table>
+								<UsualGroup name="ГруппаИтоги" id="1359">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа итоги</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа итоги</v8:content>
+										</v8:item>
+									</ToolTip>
+									<GroupHorizontalAlign>Right</GroupHorizontalAlign>
+									<HorizontalAlign>Right</HorizontalAlign>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<BackColor>style:ИтогиФонГруппы</BackColor>
+									<ExtendedTooltip name="ГруппаИтогиРасширеннаяПодсказка" id="1360"/>
+									<ChildItems>
+										<InputField name="ИтогАмортизацияЗаМесяц" id="1356">
+											<DataPath>ИтогАмортизацияЗаМесяц</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<Width>9</Width>
+											<HorizontalStretch>false</HorizontalStretch>
+											<ChoiceButton>false</ChoiceButton>
+											<ClearButton>false</ClearButton>
+											<SpinButton>false</SpinButton>
+											<OpenButton>false</OpenButton>
+											<ContextMenu name="ИтогАмортизацияЗаМесяцКонтекстноеМеню" id="1357"/>
+											<ExtendedTooltip name="ИтогАмортизацияЗаМесяцРасширеннаяПодсказка" id="1358"/>
+										</InputField>
+									</ChildItems>
+								</UsualGroup>
 								<ProgressBarField name="СостояниеПрогресса" id="347">
 									<DataPath>СостояниеПрогресса</DataPath>
 									<Title>
@@ -818,94 +869,6 @@
 								</SpreadSheetDocumentField>
 							</ChildItems>
 						</UsualGroup>
-					</ChildItems>
-				</Page>
-				<Page name="СтраницаНакопленныйИзнос" id="416">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Накопленный износ</v8:content>
-						</v8:item>
-					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Страница накопленный износ</v8:content>
-						</v8:item>
-					</ToolTip>
-					<ExtendedTooltip name="СтраницаНакопленныйИзносРасширеннаяПодсказка" id="417"/>
-					<ChildItems>
-						<Table name="АмортизацияОС" id="1078">
-							<UseAlternationRowColor>true</UseAlternationRowColor>
-							<EnableStartDrag>true</EnableStartDrag>
-							<DataPath>АмортизацияОС</DataPath>
-							<RowPictureDataPath>АмортизацияОС.DefaultPicture</RowPictureDataPath>
-							<AutoRefresh>false</AutoRefresh>
-							<AutoRefreshPeriod>60</AutoRefreshPeriod>
-							<Period>
-								<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
-								<v8:startDate>0001-01-01T00:00:00</v8:startDate>
-								<v8:endDate>0001-01-01T00:00:00</v8:endDate>
-							</Period>
-							<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
-							<RestoreCurrentRow>false</RestoreCurrentRow>
-							<TopLevelParent xsi:nil="true"/>
-							<ShowRoot>true</ShowRoot>
-							<AllowRootChoice>false</AllowRootChoice>
-							<UpdateOnDataChange>Auto</UpdateOnDataChange>
-							<ContextMenu name="АмортизацияОСКонтекстноеМеню" id="1079"/>
-							<AutoCommandBar name="АмортизацияОСКоманднаяПанель" id="1080"/>
-							<ExtendedTooltip name="АмортизацияОСРасширеннаяПодсказка" id="1081"/>
-							<SearchStringAddition name="АмортизацияОССтрокаПоиска" id="1082">
-								<AdditionSource>
-									<Item>АмортизацияОС</Item>
-									<Type>SearchStringRepresentation</Type>
-								</AdditionSource>
-								<ContextMenu name="АмортизацияОССтрокаПоискаКонтекстноеМеню" id="1083"/>
-								<ExtendedTooltip name="АмортизацияОССтрокаПоискаРасширеннаяПодсказка" id="1084"/>
-							</SearchStringAddition>
-							<ViewStatusAddition name="АмортизацияОССостояниеПросмотра" id="1085">
-								<AdditionSource>
-									<Item>АмортизацияОС</Item>
-									<Type>ViewStatusRepresentation</Type>
-								</AdditionSource>
-								<ContextMenu name="АмортизацияОССостояниеПросмотраКонтекстноеМеню" id="1086"/>
-								<ExtendedTooltip name="АмортизацияОССостояниеПросмотраРасширеннаяПодсказка" id="1087"/>
-							</ViewStatusAddition>
-							<SearchControlAddition name="АмортизацияОСУправлениеПоиском" id="1088">
-								<AdditionSource>
-									<Item>АмортизацияОС</Item>
-									<Type>SearchControl</Type>
-								</AdditionSource>
-								<ContextMenu name="АмортизацияОСУправлениеПоискомКонтекстноеМеню" id="1089"/>
-								<ExtendedTooltip name="АмортизацияОСУправлениеПоискомРасширеннаяПодсказка" id="1090"/>
-							</SearchControlAddition>
-							<ChildItems>
-								<LabelField name="АмортизацияОСДокумент" id="1091">
-									<DataPath>АмортизацияОС.Документ</DataPath>
-									<ContextMenu name="АмортизацияОСДокументКонтекстноеМеню" id="1092"/>
-									<ExtendedTooltip name="АмортизацияОСДокументРасширеннаяПодсказка" id="1093"/>
-								</LabelField>
-								<LabelField name="АмортизацияОСНакопленныйИзнос" id="1100">
-									<DataPath>АмортизацияОС.НакопленныйИзнос</DataPath>
-									<Width>10</Width>
-									<ContextMenu name="АмортизацияОСНакопленныйИзносКонтекстноеМеню" id="1101"/>
-									<ExtendedTooltip name="АмортизацияОСНакопленныйИзносРасширеннаяПодсказка" id="1102"/>
-								</LabelField>
-								<LabelField name="АмортизацияОСИзносЗаПериод" id="1094">
-									<DataPath>АмортизацияОС.ИзносЗаПериод</DataPath>
-									<Width>10</Width>
-									<ContextMenu name="АмортизацияОСИзносЗаПериодКонтекстноеМеню" id="1095"/>
-									<ExtendedTooltip name="АмортизацияОСИзносЗаПериодРасширеннаяПодсказка" id="1096"/>
-								</LabelField>
-								<LabelField name="АмортизацияОСИнвентарныйНомер" id="1097">
-									<DataPath>АмортизацияОС.ИнвентарныйНомер</DataPath>
-									<Width>10</Width>
-									<ContextMenu name="АмортизацияОСИнвентарныйНомерКонтекстноеМеню" id="1098"/>
-									<ExtendedTooltip name="АмортизацияОСИнвентарныйНомерРасширеннаяПодсказка" id="1099"/>
-								</LabelField>
-							</ChildItems>
-						</Table>
 					</ChildItems>
 				</Page>
 				<Page name="СтраницаНалогНаИмущество" id="446">
@@ -1082,7 +1045,7 @@
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Амортизация ОС за период</v8:content>
+							<v8:content>Ведомость ОС</v8:content>
 						</v8:item>
 					</Title>
 					<ToolTip>
@@ -1093,7 +1056,7 @@
 					</ToolTip>
 					<ExtendedTooltip name="СтраницаАмортизацияОСЗаПериодРасширеннаяПодсказка" id="449"/>
 					<ChildItems>
-						<Table name="АмортизацияПоОС" id="1103">
+						<Table name="АмортизацияПоОС" id="1361">
 							<UseAlternationRowColor>true</UseAlternationRowColor>
 							<EnableStartDrag>true</EnableStartDrag>
 							<DataPath>АмортизацияПоОС</DataPath>
@@ -1111,113 +1074,247 @@
 							<ShowRoot>true</ShowRoot>
 							<AllowRootChoice>false</AllowRootChoice>
 							<UpdateOnDataChange>Auto</UpdateOnDataChange>
-							<ContextMenu name="АмортизацияПоОСКонтекстноеМеню" id="1104"/>
-							<AutoCommandBar name="АмортизацияПоОСКоманднаяПанель" id="1105"/>
-							<ExtendedTooltip name="АмортизацияПоОСРасширеннаяПодсказка" id="1106"/>
-							<SearchStringAddition name="АмортизацияПоОССтрокаПоиска" id="1107">
+							<ContextMenu name="АмортизацияПоОСКонтекстноеМеню" id="1362"/>
+							<AutoCommandBar name="АмортизацияПоОСКоманднаяПанель" id="1363"/>
+							<ExtendedTooltip name="АмортизацияПоОСРасширеннаяПодсказка" id="1364"/>
+							<SearchStringAddition name="АмортизацияПоОССтрокаПоиска" id="1365">
 								<AdditionSource>
 									<Item>АмортизацияПоОС</Item>
 									<Type>SearchStringRepresentation</Type>
 								</AdditionSource>
-								<ContextMenu name="АмортизацияПоОССтрокаПоискаКонтекстноеМеню" id="1108"/>
-								<ExtendedTooltip name="АмортизацияПоОССтрокаПоискаРасширеннаяПодсказка" id="1109"/>
+								<ContextMenu name="АмортизацияПоОССтрокаПоискаКонтекстноеМеню" id="1366"/>
+								<ExtendedTooltip name="АмортизацияПоОССтрокаПоискаРасширеннаяПодсказка" id="1367"/>
 							</SearchStringAddition>
-							<ViewStatusAddition name="АмортизацияПоОССостояниеПросмотра" id="1110">
+							<ViewStatusAddition name="АмортизацияПоОССостояниеПросмотра" id="1368">
 								<AdditionSource>
 									<Item>АмортизацияПоОС</Item>
 									<Type>ViewStatusRepresentation</Type>
 								</AdditionSource>
-								<ContextMenu name="АмортизацияПоОССостояниеПросмотраКонтекстноеМеню" id="1111"/>
-								<ExtendedTooltip name="АмортизацияПоОССостояниеПросмотраРасширеннаяПодсказка" id="1112"/>
+								<ContextMenu name="АмортизацияПоОССостояниеПросмотраКонтекстноеМеню" id="1369"/>
+								<ExtendedTooltip name="АмортизацияПоОССостояниеПросмотраРасширеннаяПодсказка" id="1370"/>
 							</ViewStatusAddition>
-							<SearchControlAddition name="АмортизацияПоОСУправлениеПоиском" id="1113">
+							<SearchControlAddition name="АмортизацияПоОСУправлениеПоиском" id="1371">
 								<AdditionSource>
 									<Item>АмортизацияПоОС</Item>
 									<Type>SearchControl</Type>
 								</AdditionSource>
-								<ContextMenu name="АмортизацияПоОСУправлениеПоискомКонтекстноеМеню" id="1114"/>
-								<ExtendedTooltip name="АмортизацияПоОСУправлениеПоискомРасширеннаяПодсказка" id="1115"/>
+								<ContextMenu name="АмортизацияПоОСУправлениеПоискомКонтекстноеМеню" id="1372"/>
+								<ExtendedTooltip name="АмортизацияПоОСУправлениеПоискомРасширеннаяПодсказка" id="1373"/>
 							</SearchControlAddition>
 							<ChildItems>
-								<LabelField name="АмортизацияПоОСОсновноеСредство" id="1125">
-									<DataPath>АмортизацияПоОС.ОсновноеСредство</DataPath>
-									<ContextMenu name="АмортизацияПоОСОсновноеСредствоКонтекстноеМеню" id="1126"/>
-									<ExtendedTooltip name="АмортизацияПоОСОсновноеСредствоРасширеннаяПодсказка" id="1127"/>
-								</LabelField>
-								<LabelField name="АмортизацияПоОСИнвентарныйНомер" id="1122">
-									<DataPath>АмортизацияПоОС.ИнвентарныйНомер</DataPath>
-									<ContextMenu name="АмортизацияПоОСИнвентарныйНомерКонтекстноеМеню" id="1123"/>
-									<ExtendedTooltip name="АмортизацияПоОСИнвентарныйНомерРасширеннаяПодсказка" id="1124"/>
-								</LabelField>
-								<LabelField name="АмортизацияПоОСПервоначальнаяСтоимость" id="1128">
-									<DataPath>АмортизацияПоОС.ПервоначальнаяСтоимость</DataPath>
-									<Width>10</Width>
-									<ContextMenu name="АмортизацияПоОСПервоначальнаяСтоимостьКонтекстноеМеню" id="1129"/>
-									<ExtendedTooltip name="АмортизацияПоОСПервоначальнаяСтоимостьРасширеннаяПодсказка" id="1130"/>
-								</LabelField>
-								<ColumnGroup name="ГруппаПриодРасход" id="1140">
+								<ColumnGroup name="ГруппаОСИИнвентарныйНомер" id="1416">
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>Группа приод расход</v8:content>
+											<v8:content>Группа ОСИИнвентарный номер</v8:content>
 										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>Группа приод расход</v8:content>
+											<v8:content>Группа ОСИИнвентарный номер</v8:content>
 										</v8:item>
 									</ToolTip>
-									<ExtendedTooltip name="ГруппаПриодРасходРасширеннаяПодсказка" id="1141"/>
+									<ExtendedTooltip name="ГруппаОСИИнвентарныйНомерРасширеннаяПодсказка" id="1417"/>
 									<ChildItems>
-										<LabelField name="АмортизацияПоОСПриход" id="1134">
-											<DataPath>АмортизацияПоОС.Приход</DataPath>
-											<Width>10</Width>
-											<ContextMenu name="АмортизацияПоОСПриходКонтекстноеМеню" id="1135"/>
-											<ExtendedTooltip name="АмортизацияПоОСПриходРасширеннаяПодсказка" id="1136"/>
+										<LabelField name="АмортизацияПоОСОсновноеСредство" id="1392">
+											<DataPath>АмортизацияПоОС.ОсновноеСредство</DataPath>
+											<ContextMenu name="АмортизацияПоОСОсновноеСредствоКонтекстноеМеню" id="1393"/>
+											<ExtendedTooltip name="АмортизацияПоОСОсновноеСредствоРасширеннаяПодсказка" id="1394"/>
 										</LabelField>
-										<LabelField name="АмортизацияПоОСРасход" id="1137">
-											<DataPath>АмортизацияПоОС.Расход</DataPath>
-											<Width>10</Width>
-											<ContextMenu name="АмортизацияПоОСРасходКонтекстноеМеню" id="1138"/>
-											<ExtendedTooltip name="АмортизацияПоОСРасходРасширеннаяПодсказка" id="1139"/>
+										<LabelField name="АмортизацияПоОСИнвентарныйНомер" id="1386">
+											<DataPath>АмортизацияПоОС.ИнвентарныйНомер</DataPath>
+											<ContextMenu name="АмортизацияПоОСИнвентарныйНомерКонтекстноеМеню" id="1387"/>
+											<ExtendedTooltip name="АмортизацияПоОСИнвентарныйНомерРасширеннаяПодсказка" id="1388"/>
 										</LabelField>
 									</ChildItems>
 								</ColumnGroup>
-								<ColumnGroup name="ГруппаИзнос" id="1142">
+								<ColumnGroup name="ГруппаСуммыНачало" id="1418">
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>Группа износ</v8:content>
+											<v8:content>Группа суммы начало</v8:content>
 										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>Группа износ</v8:content>
+											<v8:content>Группа суммы начало</v8:content>
 										</v8:item>
 									</ToolTip>
-									<ExtendedTooltip name="ГруппаИзносРасширеннаяПодсказка" id="1143"/>
+									<ExtendedTooltip name="ГруппаСуммыНачалоРасширеннаяПодсказка" id="1419"/>
 									<ChildItems>
-										<LabelField name="АмортизацияПоОСИзносЗаПериод" id="1116">
-											<DataPath>АмортизацияПоОС.ИзносЗаПериод</DataPath>
+										<LabelField name="АмортизацияПоОССтоимостьБУНаНачало" id="1401">
+											<DataPath>АмортизацияПоОС.СтоимостьБУНаНачало</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Стомость БУ (нач)</v8:content>
+												</v8:item>
+											</Title>
 											<Width>10</Width>
-											<ContextMenu name="АмортизацияПоОСИзносЗаПериодКонтекстноеМеню" id="1117"/>
-											<ExtendedTooltip name="АмортизацияПоОСИзносЗаПериодРасширеннаяПодсказка" id="1118"/>
+											<ContextMenu name="АмортизацияПоОССтоимостьБУНаНачалоКонтекстноеМеню" id="1402"/>
+											<ExtendedTooltip name="АмортизацияПоОССтоимостьБУНаНачалоРасширеннаяПодсказка" id="1403"/>
 										</LabelField>
-										<LabelField name="АмортизацияПоОСИзносНаКонец" id="1119">
+										<LabelField name="АмортизацияПоОСИзносНаНачало" id="1377">
+											<DataPath>АмортизацияПоОС.ИзносНаНачало</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Накопленный износ (нач)</v8:content>
+												</v8:item>
+											</Title>
+											<Width>10</Width>
+											<ContextMenu name="АмортизацияПоОСИзносНаНачалоКонтекстноеМеню" id="1378"/>
+											<ExtendedTooltip name="АмортизацияПоОСИзносНаНачалоРасширеннаяПодсказка" id="1379"/>
+										</LabelField>
+									</ChildItems>
+								</ColumnGroup>
+								<ColumnGroup name="ГруппаСуммыПриход" id="1420">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Приход</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа суммы приход</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ShowInHeader>true</ShowInHeader>
+									<ExtendedTooltip name="ГруппаСуммыПриходРасширеннаяПодсказка" id="1421"/>
+									<ChildItems>
+										<LabelField name="АмортизацияПоОССтоимостьБУПриход" id="1404">
+											<DataPath>АмортизацияПоОС.СтоимостьБУПриход</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Приход</v8:content>
+												</v8:item>
+											</Title>
+											<ShowInHeader>false</ShowInHeader>
+											<Width>10</Width>
+											<ContextMenu name="АмортизацияПоОССтоимостьБУПриходКонтекстноеМеню" id="1405"/>
+											<ExtendedTooltip name="АмортизацияПоОССтоимостьБУПриходРасширеннаяПодсказка" id="1406"/>
+										</LabelField>
+										<LabelField name="АмортизацияПоОСИзносПриход" id="1380">
+											<DataPath>АмортизацияПоОС.ИзносПриход</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Приход</v8:content>
+												</v8:item>
+											</Title>
+											<ShowInHeader>false</ShowInHeader>
+											<Width>10</Width>
+											<ContextMenu name="АмортизацияПоОСИзносПриходКонтекстноеМеню" id="1381"/>
+											<ExtendedTooltip name="АмортизацияПоОСИзносПриходРасширеннаяПодсказка" id="1382"/>
+										</LabelField>
+									</ChildItems>
+								</ColumnGroup>
+								<ColumnGroup name="ГруппаСуммыРасход" id="1422">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Расход</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа суммы расход</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ShowInHeader>true</ShowInHeader>
+									<ExtendedTooltip name="ГруппаСуммыРасходРасширеннаяПодсказка" id="1423"/>
+									<ChildItems>
+										<LabelField name="АмортизацияПоОССтоимостьБУРасход" id="1407">
+											<DataPath>АмортизацияПоОС.СтоимостьБУРасход</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Расход</v8:content>
+												</v8:item>
+											</Title>
+											<ShowInHeader>false</ShowInHeader>
+											<Width>10</Width>
+											<ContextMenu name="АмортизацияПоОССтоимостьБУРасходКонтекстноеМеню" id="1408"/>
+											<ExtendedTooltip name="АмортизацияПоОССтоимостьБУРасходРасширеннаяПодсказка" id="1409"/>
+										</LabelField>
+										<LabelField name="АмортизацияПоОСИзносРасход" id="1383">
+											<DataPath>АмортизацияПоОС.ИзносРасход</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Расход</v8:content>
+												</v8:item>
+											</Title>
+											<ShowInHeader>false</ShowInHeader>
+											<Width>10</Width>
+											<ContextMenu name="АмортизацияПоОСИзносРасходКонтекстноеМеню" id="1384"/>
+											<ExtendedTooltip name="АмортизацияПоОСИзносРасходРасширеннаяПодсказка" id="1385"/>
+										</LabelField>
+									</ChildItems>
+								</ColumnGroup>
+								<ColumnGroup name="ГруппаСуммыКонец" id="1424">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа суммы конец</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа суммы конец</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ExtendedTooltip name="ГруппаСуммыКонецРасширеннаяПодсказка" id="1425"/>
+									<ChildItems>
+										<LabelField name="АмортизацияПоОССтоимостьБУНаКонец" id="1398">
+											<DataPath>АмортизацияПоОС.СтоимостьБУНаКонец</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Стомость БУ (кон)</v8:content>
+												</v8:item>
+											</Title>
+											<Width>10</Width>
+											<ContextMenu name="АмортизацияПоОССтоимостьБУНаКонецКонтекстноеМеню" id="1399"/>
+											<ExtendedTooltip name="АмортизацияПоОССтоимостьБУНаКонецРасширеннаяПодсказка" id="1400"/>
+										</LabelField>
+										<LabelField name="АмортизацияПоОСИзносНаКонец" id="1374">
 											<DataPath>АмортизацияПоОС.ИзносНаКонец</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Накопленный износ (кон)</v8:content>
+												</v8:item>
+											</Title>
 											<Width>10</Width>
-											<ContextMenu name="АмортизацияПоОСИзносНаКонецКонтекстноеМеню" id="1120"/>
-											<ExtendedTooltip name="АмортизацияПоОСИзносНаКонецРасширеннаяПодсказка" id="1121"/>
+											<ContextMenu name="АмортизацияПоОСИзносНаКонецКонтекстноеМеню" id="1375"/>
+											<ExtendedTooltip name="АмортизацияПоОСИзносНаКонецРасширеннаяПодсказка" id="1376"/>
 										</LabelField>
 									</ChildItems>
 								</ColumnGroup>
-								<LabelField name="АмортизацияПоОСПервоначальнаяСтоимостьНаКонец" id="1131">
-									<DataPath>АмортизацияПоОС.ПервоначальнаяСтоимостьНаКонец</DataPath>
-									<Width>10</Width>
-									<ContextMenu name="АмортизацияПоОСПервоначальнаяСтоимостьНаКонецКонтекстноеМеню" id="1132"/>
-									<ExtendedTooltip name="АмортизацияПоОСПервоначальнаяСтоимостьНаКонецРасширеннаяПодсказка" id="1133"/>
+								<LabelField name="АмортизацияПоОССчет" id="1410">
+									<DataPath>АмортизацияПоОС.Счет</DataPath>
+									<Width>6</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="АмортизацияПоОССчетКонтекстноеМеню" id="1411"/>
+									<ExtendedTooltip name="АмортизацияПоОССчетРасширеннаяПодсказка" id="1412"/>
+								</LabelField>
+								<LabelField name="АмортизацияПоОСПодразделение" id="1395">
+									<DataPath>АмортизацияПоОС.Подразделение</DataPath>
+									<ContextMenu name="АмортизацияПоОСПодразделениеКонтекстноеМеню" id="1396"/>
+									<ExtendedTooltip name="АмортизацияПоОСПодразделениеРасширеннаяПодсказка" id="1397"/>
+								</LabelField>
+								<LabelField name="АмортизацияПоОСМОЛ" id="1389">
+									<DataPath>АмортизацияПоОС.МОЛ</DataPath>
+									<ContextMenu name="АмортизацияПоОСМОЛКонтекстноеМеню" id="1390"/>
+									<ExtendedTooltip name="АмортизацияПоОСМОЛРасширеннаяПодсказка" id="1391"/>
 								</LabelField>
 							</ChildItems>
 						</Table>
@@ -1927,112 +2024,6 @@
 		</Pages>
 	</ChildItems>
 	<Attributes>
-		<Attribute name="СписокОС" id="1">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Список ОС</v8:content>
-				</v8:item>
-			</Title>
-			<Type>
-				<v8:Type>cfg:DynamicList</v8:Type>
-			</Type>
-			<Settings xsi:type="DynamicList">
-				<ManualQuery>true</ManualQuery>
-				<DynamicDataRead>true</DynamicDataRead>
-				<QueryText>ВЫБРАТЬ
-	ПараметрыУчетаОССрезПоследних.ОсновноеСредство КАК ОсновноеСредство,
-	ПараметрыУчетаОССрезПоследних.ИнвентарныйНомер КАК ИнвентарныйНомер,
-	ПараметрыУчетаОССрезПоследних.СчетУчета КАК СчетУчета,
-	ПараметрыУчетаОССрезПоследних.СчетУчета.ПарныйСчет КАК СчетНачисленияАмортизации,
-	ПараметрыУчетаОССрезПоследних.ГруппаНУ КАК ГруппаНУ
-ПОМЕСТИТЬ ВременнаяТаблицаПараметрыУчетаОС
-ИЗ
-	РегистрСведений.ПараметрыУчетаОС.СрезПоследних(&amp;ДатаОкончания, Организация = &amp;Организация) КАК ПараметрыУчетаОССрезПоследних
-;
-
-////////////////////////////////////////////////////////////////////////////////
-ВЫБРАТЬ
-	ОсновныеСредства.Ссылка КАК ОсновноеСредство,
-	ВременнаяТаблицаПараметрыУчетаОС.ИнвентарныйНомер КАК ИнвентарныйНомер,
-	ВременнаяТаблицаПараметрыУчетаОС.СчетУчета КАК СчетУчета,
-	ВременнаяТаблицаПараметрыУчетаОС.СчетНачисленияАмортизации КАК СчетНачисленияАмортизации,
-	ВременнаяТаблицаПараметрыУчетаОС.ГруппаНУ КАК ГруппаНУ,
-	МестонахождениеОССрезПоследних.МОЛ КАК МОЛ,
-	МестонахождениеОССрезПоследних.Подразделение КАК Подразделение,
-	СостоянияОССрезПоследних.Состояние КАК Состояние,
-	Износ.СуммаКонечныйОстатокКт КАК НакопленныйИзнос,
-	Стоимость.СуммаКонечныйОстатокДт КАК ПервоначальнаяСтоимость
-ИЗ
-	Справочник.ОсновныеСредства КАК ОсновныеСредства
-		ЛЕВОЕ СОЕДИНЕНИЕ ВременнаяТаблицаПараметрыУчетаОС КАК ВременнаяТаблицаПараметрыУчетаОС
-		ПО ОсновныеСредства.Ссылка = ВременнаяТаблицаПараметрыУчетаОС.ОсновноеСредство
-		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.МестонахождениеОС.СрезПоследних(&amp;ДатаОкончания, Организация = &amp;Организация) КАК МестонахождениеОССрезПоследних
-		ПО ОсновныеСредства.Ссылка = МестонахождениеОССрезПоследних.ОсновноеСредство
-		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.СостоянияОС.СрезПоследних(&amp;ДатаОкончания, Организация = &amp;Организация) КАК СостоянияОССрезПоследних
-		ПО ОсновныеСредства.Ссылка = СостоянияОССрезПоследних.ОсновноеСредство
-		ЛЕВОЕ СОЕДИНЕНИЕ РегистрБухгалтерии.Хозрасчетный.ОстаткиИОбороты(
-				,
-				&amp;ДатаОкончания,
-				,
-				,
-				Счет В
-					(ВЫБРАТЬ
-						ВременнаяТаблицаПараметрыУчетаОС.СчетНачисленияАмортизации
-					ИЗ
-						ВременнаяТаблицаПараметрыУчетаОС КАК ВременнаяТаблицаПараметрыУчетаОС),
-				,
-				Организация = &amp;Организация
-					И Субконто1 В
-						(ВЫБРАТЬ
-							ВременнаяТаблицаПараметрыУчетаОС.ОсновноеСредство
-						ИЗ
-							ВременнаяТаблицаПараметрыУчетаОС КАК ВременнаяТаблицаПараметрыУчетаОС)) КАК Износ
-		ПО ОсновныеСредства.Ссылка = Износ.Субконто1
-		ЛЕВОЕ СОЕДИНЕНИЕ РегистрБухгалтерии.Хозрасчетный.ОстаткиИОбороты(
-				,
-				&amp;ДатаОкончания,
-				,
-				,
-				Счет В
-					(ВЫБРАТЬ
-						ВременнаяТаблицаПараметрыУчетаОС.СчетУчета
-					ИЗ
-						ВременнаяТаблицаПараметрыУчетаОС КАК ВременнаяТаблицаПараметрыУчетаОС),
-				,
-				Организация = &amp;Организация
-					И Субконто1 В
-						(ВЫБРАТЬ
-							ВременнаяТаблицаПараметрыУчетаОС.ОсновноеСредство
-						ИЗ
-							ВременнаяТаблицаПараметрыУчетаОС КАК ВременнаяТаблицаПараметрыУчетаОС)) КАК Стоимость
-		ПО ОсновныеСредства.Ссылка = Стоимость.Субконто1</QueryText>
-				<MainTable>Catalog.ОсновныеСредства</MainTable>
-				<ListSettings>
-					<dcsset:filter>
-						<dcsset:viewMode>Normal</dcsset:viewMode>
-						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
-					</dcsset:filter>
-					<dcsset:order>
-						<dcsset:item xsi:type="dcsset:OrderItemField">
-							<dcsset:field>ОсновноеСредство</dcsset:field>
-							<dcsset:orderType>Asc</dcsset:orderType>
-						</dcsset:item>
-						<dcsset:item xsi:type="dcsset:OrderItemField">
-							<dcsset:field>СчетУчета</dcsset:field>
-							<dcsset:orderType>Asc</dcsset:orderType>
-						</dcsset:item>
-						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
-					</dcsset:order>
-					<dcsset:conditionalAppearance>
-						<dcsset:viewMode>Normal</dcsset:viewMode>
-						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
-					</dcsset:conditionalAppearance>
-					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
-					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
-				</ListSettings>
-			</Settings>
-		</Attribute>
 		<Attribute name="РасшифровкаПоСобытиямОС" id="2">
 			<Title>
 				<v8:item>
@@ -2169,13 +2160,7 @@
 						</v8:item>
 					</Title>
 					<Type>
-						<v8:Type>cfg:DocumentRef.ПоступлениеТоваровУслуг</v8:Type>
-						<v8:Type>cfg:DocumentRef.МодернизацияОС</v8:Type>
-						<v8:Type>cfg:DocumentRef.ПринятиеКУчетуОС</v8:Type>
-						<v8:Type>cfg:DocumentRef.ПеремещениеОС</v8:Type>
-						<v8:Type>cfg:DocumentRef.ИнвентаризацияОС</v8:Type>
-						<v8:Type>cfg:DocumentRef.СписаниеОС</v8:Type>
-						<v8:Type>cfg:DocumentRef.ВводНачальныхОстатков</v8:Type>
+						<v8:TypeSet>cfg:DocumentRef</v8:TypeSet>
 					</Type>
 				</Column>
 				<Column name="МОЛ" id="11">
@@ -2209,6 +2194,22 @@
 					</Title>
 					<Type>
 						<v8:Type>cfg:EnumRef.СпособыНачисленияАмортизацииОС</v8:Type>
+					</Type>
+				</Column>
+				<Column name="АмортизацияЗаМесяц" id="14">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Амортизация за месяц</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>15</v8:Digits>
+							<v8:FractionDigits>2</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
 					</Type>
 				</Column>
 			</Columns>
@@ -2319,17 +2320,6 @@
 			</Title>
 			<Type>
 				<v8:Type>cfg:EnumRef.ВидыПроверки</v8:Type>
-			</Type>
-		</Attribute>
-		<Attribute name="ОтборСобытие" id="25">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Событие</v8:content>
-				</v8:item>
-			</Title>
-			<Type>
-				<v8:Type>cfg:EnumRef.ВидыСобытийОС</v8:Type>
 			</Type>
 		</Attribute>
 		<Attribute name="ИдентификаторЗадания" id="26">
@@ -2920,21 +2910,24 @@
 ИЗ
 	РегистрСведений.ПараметрыУчетаОС.СрезПоследних(
 			&amp;ДатаОкончания,
-			Организация = &amp;Организация
-				И ОсновноеСредство = &amp;ОсновноеСредство) КАК ПараметрыУчетаОССрезПоследних
+			Организация = &amp;Организация) КАК ПараметрыУчетаОССрезПоследних
 ;
 
 ////////////////////////////////////////////////////////////////////////////////
 ВЫБРАТЬ
 	ПервоначальнаяСтоимость.Счет КАК Счет,
 	ПервоначальнаяСтоимость.Субконто1 КАК ОсновноеСредство,
-	ПервоначальнаяСтоимость.СуммаНачальныйОстаток КАК ПервоначальнаяСтоимость,
-	ПервоначальнаяСтоимость.СуммаОборотДт КАК Приход,
-	ПервоначальнаяСтоимость.СуммаОборотКт КАК Расход,
-	ПервоначальнаяСтоимость.СуммаКонечныйОстаток КАК ПервоначальнаяСтоимостьНаКонец,
-	Амортизация.СуммаНачальныйОстатокКт КАК ИзносЗаПериод,
+	ПервоначальнаяСтоимость.СуммаНачальныйОстатокДт КАК СтоимостьБУНаНачало,
+	ПервоначальнаяСтоимость.СуммаОборотДт КАК СтоимостьБУПриход,
+	ПервоначальнаяСтоимость.СуммаОборотКт КАК СтоимостьБУРасход,
+	ПервоначальнаяСтоимость.СуммаКонечныйОстатокДт КАК СтоимостьБУНаКонец,
+	Амортизация.СуммаНачальныйОстатокКт КАК ИзносНаНачало,
+	Амортизация.СуммаОборотДт КАК ИзносПриход,
+	Амортизация.СуммаОборотКт КАК ИзносРасход,
 	Амортизация.СуммаКонечныйОстатокКт КАК ИзносНаКонец,
-	ВременнаяТаблицаПараметрыУчетаОС.ИнвентарныйНомер КАК ИнвентарныйНомер
+	ВременнаяТаблицаПараметрыУчетаОС.ИнвентарныйНомер КАК ИнвентарныйНомер,
+	ВременнаяТаблицаМестонахождениеОС.Подразделение КАК Подразделение,
+	ВременнаяТаблицаМестонахождениеОС.МОЛ КАК МОЛ
 ИЗ
 	РегистрБухгалтерии.Хозрасчетный.ОстаткиИОбороты(
 			&amp;ДатаНачала,
@@ -2962,8 +2955,9 @@
 				Организация = &amp;Организация) КАК Амортизация
 		ПО ПервоначальнаяСтоимость.Субконто1 = Амортизация.Субконто1
 		ЛЕВОЕ СОЕДИНЕНИЕ ВременнаяТаблицаПараметрыУчетаОС КАК ВременнаяТаблицаПараметрыУчетаОС
-		ПО ПервоначальнаяСтоимость.Субконто1 = ВременнаяТаблицаПараметрыУчетаОС.ОсновноеСредство</QueryText>
-				<MainTable>AccountingRegister.Хозрасчетный.BalanceAndTurnovers</MainTable>
+		ПО ПервоначальнаяСтоимость.Субконто1 = ВременнаяТаблицаПараметрыУчетаОС.ОсновноеСредство
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.МестонахождениеОС.СрезПоследних КАК ВременнаяТаблицаМестонахождениеОС
+		ПО ПервоначальнаяСтоимость.Субконто1 = ВременнаяТаблицаМестонахождениеОС.ОсновноеСредство</QueryText>
 				<ListSettings>
 					<dcsset:filter>
 						<dcsset:viewMode>Normal</dcsset:viewMode>
@@ -3003,92 +2997,6 @@
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>
-		</Attribute>
-		<Attribute name="АмортизацияОС" id="61">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Амортизация ОС</v8:content>
-				</v8:item>
-			</Title>
-			<Type>
-				<v8:Type>cfg:DynamicList</v8:Type>
-			</Type>
-			<Settings xsi:type="DynamicList">
-				<ManualQuery>true</ManualQuery>
-				<DynamicDataRead>false</DynamicDataRead>
-				<QueryText>ВЫБРАТЬ
-	ПараметрыУчетаОССрезПоследних.ОсновноеСредство КАК ОсновноеСредство,
-	ПараметрыУчетаОССрезПоследних.СчетУчета.ПарныйСчет КАК Счет,
-	ПараметрыУчетаОССрезПоследних.ИнвентарныйНомер КАК ИнвентарныйНомер
-ПОМЕСТИТЬ ВременнаяТаблицаПараметрыУчетаОС
-ИЗ
-	РегистрСведений.ПараметрыУчетаОС.СрезПоследних(
-			&amp;ДатаОкончания,
-			Организация = &amp;Организация
-				И ОсновноеСредство = &amp;ОсновноеСредство) КАК ПараметрыУчетаОССрезПоследних
-;
-
-////////////////////////////////////////////////////////////////////////////////
-ВЫБРАТЬ
-	ХозрасчетныйОстаткиИОбороты.Регистратор КАК Документ,
-	СУММА(ВЫБОР
-			КОГДА ТИПЗНАЧЕНИЯ(ХозрасчетныйОстаткиИОбороты.Регистратор) = ТИП(Документ.РеализацияТоваровУслуг)
-				ТОГДА ХозрасчетныйОстаткиИОбороты.СуммаОборотДт
-			ИНАЧЕ ХозрасчетныйОстаткиИОбороты.СуммаКонечныйОстатокКт
-		КОНЕЦ) КАК НакопленныйИзнос,
-	СУММА(ХозрасчетныйОстаткиИОбороты.СуммаОборотКт) КАК ИзносЗаПериод,
-	ХозрасчетныйОстаткиИОбороты.Субконто1 КАК ОсновноеСредство,
-	ХозрасчетныйОстаткиИОбороты.Счет КАК Счет,
-	ВременнаяТаблицаПараметрыУчетаОС.ИнвентарныйНомер КАК ИнвентарныйНомер
-ИЗ
-	РегистрБухгалтерии.Хозрасчетный.ОстаткиИОбороты(
-			&amp;ДатаНачала,
-			&amp;ДатаОкончания,
-			Регистратор,
-			,
-			Счет В
-				(ВЫБРАТЬ
-					ВременнаяТаблицаПараметрыУчетаОС.Счет
-				ИЗ
-					ВременнаяТаблицаПараметрыУчетаОС КАК ВременнаяТаблицаПараметрыУчетаОС),
-			ЗНАЧЕНИЕ(ПланВидовХарактеристик.ВидыСубконтоХозрасчетные.ОсновныеСредства),
-			Организация = &amp;Организация
-				И Субконто1 = &amp;ОсновноеСредство) КАК ХозрасчетныйОстаткиИОбороты
-		ВНУТРЕННЕЕ СОЕДИНЕНИЕ ВременнаяТаблицаПараметрыУчетаОС КАК ВременнаяТаблицаПараметрыУчетаОС
-		ПО ХозрасчетныйОстаткиИОбороты.Субконто1 = ВременнаяТаблицаПараметрыУчетаОС.ОсновноеСредство
-ГДЕ
-	(ХозрасчетныйОстаткиИОбороты.Регистратор ССЫЛКА Документ.ЗакрытиеМесяца
-			ИЛИ ХозрасчетныйОстаткиИОбороты.Регистратор ССЫЛКА Документ.ВводНачальныхОстатков
-			ИЛИ ХозрасчетныйОстаткиИОбороты.Регистратор ССЫЛКА Документ.РеализацияТоваровУслуг)
-
-СГРУППИРОВАТЬ ПО
-	ХозрасчетныйОстаткиИОбороты.Регистратор,
-	ХозрасчетныйОстаткиИОбороты.Субконто1,
-	ХозрасчетныйОстаткиИОбороты.Счет,
-	ВременнаяТаблицаПараметрыУчетаОС.ИнвентарныйНомер</QueryText>
-				<MainTable>AccountingRegister.Хозрасчетный.BalanceAndTurnovers</MainTable>
-				<ListSettings>
-					<dcsset:filter>
-						<dcsset:viewMode>Normal</dcsset:viewMode>
-						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
-					</dcsset:filter>
-					<dcsset:order>
-						<dcsset:item xsi:type="dcsset:OrderItemField">
-							<dcsset:field>Документ</dcsset:field>
-							<dcsset:orderType>Asc</dcsset:orderType>
-						</dcsset:item>
-						<dcsset:viewMode>Normal</dcsset:viewMode>
-						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
-					</dcsset:order>
-					<dcsset:conditionalAppearance>
-						<dcsset:viewMode>Normal</dcsset:viewMode>
-						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
-					</dcsset:conditionalAppearance>
-					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
-					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
-				</ListSettings>
-			</Settings>
 		</Attribute>
 		<Attribute name="Замечания" id="62">
 			<Title>
@@ -3184,6 +3092,198 @@
 				</ListSettings>
 			</Settings>
 		</Attribute>
+		<Attribute name="ТолькоЗакрытиеМесяца" id="64">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Только ЗМ
+</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="СписокОС_ТЗ" id="65">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Список о с ТЗ</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="ОсновноеСредство" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Основное средство</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.ОсновныеСредства</v8:Type>
+					</Type>
+				</Column>
+				<Column name="СчетУчета" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Счет учета</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:ChartOfAccountsRef.Хозрасчетный</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ИнвентарныйНомер" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Инвентарный номер</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>9</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="ГруппаНУ" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа НУ</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.ГруппыНалоговогоУчетаОС</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Подразделение" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Подразделение</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.ПодразделенияОрганизаций</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ПервоначальнаяСтоимость" id="6">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Первоначальная стоимость</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>15</v8:Digits>
+							<v8:FractionDigits>2</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="НакопленныйИзнос" id="7">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Накопленный износ</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>15</v8:Digits>
+							<v8:FractionDigits>2</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="СостояниеОС" id="8">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Состояние ОС</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:EnumRef.ВидыСобытийОС</v8:Type>
+					</Type>
+				</Column>
+				<Column name="МОЛ" id="9">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>МОЛ</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.ФизическиеЛица</v8:Type>
+					</Type>
+				</Column>
+				<Column name="СчетНачисленияАмортизации" id="10">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Счет начисления амортизации</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:ChartOfAccountsRef.Хозрасчетный</v8:Type>
+					</Type>
+				</Column>
+				<Column name="КлючСвязи" id="11">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ключ связи</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>5</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="ИтогАмортизацияЗаМесяц" id="66">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Амортизация за месяц</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>15</v8:Digits>
+					<v8:FractionDigits>2</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ПоказатьКомандуРасшифровки" id="67">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Показать команду расшифровки</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
 	</Attributes>
 	<Commands>
 		<Command name="ПерепровестиДокументы" id="2">
@@ -3200,21 +3300,6 @@
 				</v8:item>
 			</ToolTip>
 			<Action>ПерепровестиДокументы</Action>
-		</Command>
-		<Command name="ПоказатьТаблицуРасшифровкаПоСобытиямОС" id="3">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Показать таблицу расшифровка по событиям ОС</v8:content>
-				</v8:item>
-			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Показать таблицу расшифровка по событиям ОС</v8:content>
-				</v8:item>
-			</ToolTip>
-			<Action>ПоказатьТаблицуРасшифровкаПоСобытиямОС</Action>
 		</Command>
 		<Command name="Сформировать" id="4">
 			<Title>
@@ -3245,6 +3330,21 @@
 				</v8:item>
 			</ToolTip>
 			<Action>ЗаполнитьЗамечания</Action>
+		</Command>
+		<Command name="ПоказатьРасшифровку" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Показать расшифровку</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Показать расшифровку</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ПоказатьРасшифровку</Action>
 		</Command>
 	</Commands>
 </Form>
