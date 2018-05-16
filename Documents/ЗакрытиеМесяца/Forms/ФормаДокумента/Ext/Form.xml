@@ -409,6 +409,9 @@
 											<CheckBoxType>Auto</CheckBoxType>
 											<ContextMenu name="РасчетСтоимостиПродукцииКонтекстноеМеню" id="1968"/>
 											<ExtendedTooltip name="РасчетСтоимостиПродукцииРасширеннаяПодсказка" id="1969"/>
+											<Events>
+												<Event name="OnChange">РасчетСтоимостиПродукцииПриИзменении</Event>
+											</Events>
 										</CheckBoxField>
 										<CheckBoxField name="РасчетСебестоимостиГотовойПродукции" id="1616">
 											<DataPath>Объект.РасчетСебестоимостиГотовойПродукции</DataPath>
@@ -2632,202 +2635,389 @@
 					</ToolTip>
 					<ExtendedTooltip name="СтраницаПроизводствоРасширеннаяПодсказка" id="1512"/>
 					<ChildItems>
-						<UsualGroup name="ГруппаОХРиВП" id="1559">
+						<UsualGroup name="ГруппаПроизводствоПоЗаказам" id="1970">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа производство по заказам</v8:content>
+								</v8:item>
+							</Title>
 							<ToolTip>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Группа ОХРи ВП</v8:content>
+									<v8:content>Группа производство по заказам</v8:content>
 								</v8:item>
 							</ToolTip>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаПроизводствоПоЗаказамРасширеннаяПодсказка" id="1971"/>
+							<ChildItems>
+								<UsualGroup name="ГруппаОХРиВП" id="1559">
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа ОХРи ВП</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Horizontal</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="ГруппаОХРиВПРасширеннаяПодсказка" id="1560"/>
+									<ChildItems>
+										<InputField name="СуммаОбщехозяйственныхРасходов" id="1686">
+											<DataPath>Объект.СуммаОбщехозяйственныхРасходов</DataPath>
+											<Width>10</Width>
+											<ContextMenu name="СуммаОбщехозяйственныхРасходовКонтекстноеМеню" id="1687"/>
+											<ExtendedTooltip name="СуммаОбщехозяйственныхРасходовРасширеннаяПодсказка" id="1688"/>
+										</InputField>
+										<InputField name="СуммаВспомогательногоПроизводства" id="1689">
+											<DataPath>Объект.СуммаВспомогательногоПроизводства</DataPath>
+											<Width>10</Width>
+											<ContextMenu name="СуммаВспомогательногоПроизводстваКонтекстноеМеню" id="1690"/>
+											<ExtendedTooltip name="СуммаВспомогательногоПроизводстваРасширеннаяПодсказка" id="1691"/>
+										</InputField>
+									</ChildItems>
+								</UsualGroup>
+								<Table name="РасходыНаПроизводство" id="1692">
+									<Height>1</Height>
+									<AutoInsertNewRow>true</AutoInsertNewRow>
+									<EnableStartDrag>true</EnableStartDrag>
+									<EnableDrag>true</EnableDrag>
+									<DataPath>Объект.РасходыНаПроизводство</DataPath>
+									<RowFilter xsi:nil="true"/>
+									<ContextMenu name="РасходыНаПроизводствоКонтекстноеМеню" id="1693"/>
+									<AutoCommandBar name="РасходыНаПроизводствоКоманднаяПанель" id="1694"/>
+									<ExtendedTooltip name="РасходыНаПроизводствоРасширеннаяПодсказка" id="1695"/>
+									<SearchStringAddition name="РасходыНаПроизводствоСтрокаПоиска" id="1696">
+										<AdditionSource>
+											<Item>РасходыНаПроизводство</Item>
+											<Type>SearchStringRepresentation</Type>
+										</AdditionSource>
+										<ContextMenu name="РасходыНаПроизводствоСтрокаПоискаКонтекстноеМеню" id="1697"/>
+										<ExtendedTooltip name="РасходыНаПроизводствоСтрокаПоискаРасширеннаяПодсказка" id="1698"/>
+									</SearchStringAddition>
+									<ViewStatusAddition name="РасходыНаПроизводствоСостояниеПросмотра" id="1699">
+										<AdditionSource>
+											<Item>РасходыНаПроизводство</Item>
+											<Type>ViewStatusRepresentation</Type>
+										</AdditionSource>
+										<ContextMenu name="РасходыНаПроизводствоСостояниеПросмотраКонтекстноеМеню" id="1700"/>
+										<ExtendedTooltip name="РасходыНаПроизводствоСостояниеПросмотраРасширеннаяПодсказка" id="1701"/>
+									</ViewStatusAddition>
+									<SearchControlAddition name="РасходыНаПроизводствоУправлениеПоиском" id="1702">
+										<AdditionSource>
+											<Item>РасходыНаПроизводство</Item>
+											<Type>SearchControl</Type>
+										</AdditionSource>
+										<ContextMenu name="РасходыНаПроизводствоУправлениеПоискомКонтекстноеМеню" id="1703"/>
+										<ExtendedTooltip name="РасходыНаПроизводствоУправлениеПоискомРасширеннаяПодсказка" id="1704"/>
+									</SearchControlAddition>
+									<ChildItems>
+										<LabelField name="РасходыНаПроизводствоНомерСтроки" id="1705">
+											<DataPath>Объект.РасходыНаПроизводство.LineNumber</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<Width>4</Width>
+											<HorizontalStretch>false</HorizontalStretch>
+											<ContextMenu name="РасходыНаПроизводствоНомерСтрокиКонтекстноеМеню" id="1706"/>
+											<ExtendedTooltip name="РасходыНаПроизводствоНомерСтрокиРасширеннаяПодсказка" id="1707"/>
+										</LabelField>
+										<InputField name="РасходыНаПроизводствоЗаказ" id="1708">
+											<DataPath>Объект.РасходыНаПроизводство.Заказ</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<DropListButton>false</DropListButton>
+											<ChoiceButton>true</ChoiceButton>
+											<ChoiceButtonRepresentation>ShowInInputField</ChoiceButtonRepresentation>
+											<ContextMenu name="РасходыНаПроизводствоЗаказКонтекстноеМеню" id="1709"/>
+											<ExtendedTooltip name="РасходыНаПроизводствоЗаказРасширеннаяПодсказка" id="1710"/>
+										</InputField>
+										<InputField name="РасходыНаПроизводствоНоменклатура" id="1711">
+											<DataPath>Объект.РасходыНаПроизводство.Номенклатура</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<ContextMenu name="РасходыНаПроизводствоНоменклатураКонтекстноеМеню" id="1712"/>
+											<ExtendedTooltip name="РасходыНаПроизводствоНоменклатураРасширеннаяПодсказка" id="1713"/>
+										</InputField>
+										<InputField name="РасходыНаПроизводствоКоличество" id="1714">
+											<DataPath>Объект.РасходыНаПроизводство.Количество</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<Width>10</Width>
+											<ContextMenu name="РасходыНаПроизводствоКоличествоКонтекстноеМеню" id="1715"/>
+											<ExtendedTooltip name="РасходыНаПроизводствоКоличествоРасширеннаяПодсказка" id="1716"/>
+										</InputField>
+										<InputField name="РасходыНаПроизводствоСуммаПрямыхЗатратНаГП" id="1717">
+											<DataPath>Объект.РасходыНаПроизводство.СуммаПрямыхЗатратНаГП</DataPath>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Сумма прямых затрат на данную готовую продукцию за текущий месяц (Дт 1630).</v8:content>
+												</v8:item>
+											</ToolTip>
+											<EditMode>EnterOnInput</EditMode>
+											<Width>10</Width>
+											<ContextMenu name="РасходыНаПроизводствоСуммаПрямыхЗатратНаГПКонтекстноеМеню" id="1718"/>
+											<ExtendedTooltip name="РасходыНаПроизводствоСуммаПрямыхЗатратНаГПРасширеннаяПодсказка" id="1719"/>
+										</InputField>
+										<InputField name="РасходыНаПроизводствоСуммаОбщехозяйственныхРасходов" id="1720">
+											<DataPath>Объект.РасходыНаПроизводство.СуммаОбщехозяйственныхРасходов</DataPath>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Распределенная сумма общехозяйственных расходов.</v8:content>
+												</v8:item>
+											</ToolTip>
+											<EditMode>EnterOnInput</EditMode>
+											<Width>10</Width>
+											<ContextMenu name="РасходыНаПроизводствоСуммаОбщехозяйственныхРасходовКонтекстноеМеню" id="1721"/>
+											<ExtendedTooltip name="РасходыНаПроизводствоСуммаОбщехозяйственныхРасходовРасширеннаяПодсказка" id="1722"/>
+										</InputField>
+										<InputField name="РасходыНаПроизводствоСуммаВспомогательногоПроизводства" id="1723">
+											<DataPath>Объект.РасходыНаПроизводство.СуммаВспомогательногоПроизводства</DataPath>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Распределенная сумма вспомогательного производства.</v8:content>
+												</v8:item>
+											</ToolTip>
+											<EditMode>EnterOnInput</EditMode>
+											<Width>10</Width>
+											<ContextMenu name="РасходыНаПроизводствоСуммаВспомогательногоПроизводстваКонтекстноеМеню" id="1724"/>
+											<ExtendedTooltip name="РасходыНаПроизводствоСуммаВспомогательногоПроизводстваРасширеннаяПодсказка" id="1725"/>
+										</InputField>
+										<InputField name="РасходыНаПроизводствоСуммаКорректировкиГП" id="1726">
+											<DataPath>Объект.РасходыНаПроизводство.СуммаКорректировкиГП</DataPath>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Сумма корректировки по выпускаемой готовой продукции (если продукция уже готова): ОХР + ВП.</v8:content>
+												</v8:item>
+											</ToolTip>
+											<EditMode>EnterOnInput</EditMode>
+											<Width>10</Width>
+											<ContextMenu name="РасходыНаПроизводствоСуммаКорректировкиГПКонтекстноеМеню" id="1727"/>
+											<ExtendedTooltip name="РасходыНаПроизводствоСуммаКорректировкиГПРасширеннаяПодсказка" id="1728"/>
+										</InputField>
+										<InputField name="РасходыНаПроизводствоСуммаНЗППредыдущегоПериода" id="1729">
+											<DataPath>Объект.РасходыНаПроизводство.СуммаНЗППредыдущегоПериода</DataPath>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Сумма незавершенного производства (Дт 1630) на начало месяца.</v8:content>
+												</v8:item>
+											</ToolTip>
+											<EditMode>EnterOnInput</EditMode>
+											<Width>10</Width>
+											<ContextMenu name="РасходыНаПроизводствоСуммаНЗППредыдущегоПериодаКонтекстноеМеню" id="1730"/>
+											<ExtendedTooltip name="РасходыНаПроизводствоСуммаНЗППредыдущегоПериодаРасширеннаяПодсказка" id="1731"/>
+										</InputField>
+										<InputField name="РасходыНаПроизводствоСуммаНЗП" id="1732">
+											<DataPath>Объект.РасходыНаПроизводство.СуммаНЗП</DataPath>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Прямые затраты + ОХР + ВП.</v8:content>
+												</v8:item>
+											</ToolTip>
+											<EditMode>EnterOnInput</EditMode>
+											<Width>10</Width>
+											<ContextMenu name="РасходыНаПроизводствоСуммаНЗПКонтекстноеМеню" id="1733"/>
+											<ExtendedTooltip name="РасходыНаПроизводствоСуммаНЗПРасширеннаяПодсказка" id="1734"/>
+										</InputField>
+										<InputField name="РасходыНаПроизводствоСуммаНЗПТекущегоПериода" id="1735">
+											<DataPath>Объект.РасходыНаПроизводство.СуммаНЗПТекущегоПериода</DataPath>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Сумма незавершенного производства (Дт 1630) на конец месяца.</v8:content>
+												</v8:item>
+											</ToolTip>
+											<EditMode>EnterOnInput</EditMode>
+											<Width>10</Width>
+											<ContextMenu name="РасходыНаПроизводствоСуммаНЗПТекущегоПериодаКонтекстноеМеню" id="1736"/>
+											<ExtendedTooltip name="РасходыНаПроизводствоСуммаНЗПТекущегоПериодаРасширеннаяПодсказка" id="1737"/>
+										</InputField>
+										<InputField name="РасходыНаПроизводствоСуммаКорректировкиРеализации" id="1738">
+											<DataPath>Объект.РасходыНаПроизводство.СуммаКорректировкиРеализации</DataPath>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Сумма корректировки реализованной продукции: Корр выпуска ГП / количество готовой продукции * количество реализованной продукции.</v8:content>
+												</v8:item>
+											</ToolTip>
+											<EditMode>EnterOnInput</EditMode>
+											<Width>10</Width>
+											<ContextMenu name="РасходыНаПроизводствоСуммаКорректировкиРеализацииКонтекстноеМеню" id="1739"/>
+											<ExtendedTooltip name="РасходыНаПроизводствоСуммаКорректировкиРеализацииРасширеннаяПодсказка" id="1740"/>
+										</InputField>
+									</ChildItems>
+								</Table>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="ГруппаПроизводствоПоНоменклатурнымГруппам" id="1972">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа производство по номенклатурным группам</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа производство по номенклатурным группам</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаПроизводствоПоНоменклатурнымГруппамРасширеннаяПодсказка" id="1973"/>
+							<ChildItems>
+								<Table name="НакладныеРасходы" id="1974">
+									<ReadOnly>true</ReadOnly>
+									<Height>1</Height>
+									<AutoInsertNewRow>true</AutoInsertNewRow>
+									<EnableStartDrag>true</EnableStartDrag>
+									<EnableDrag>true</EnableDrag>
+									<DataPath>Объект.НакладныеРасходы</DataPath>
+									<RowFilter xsi:nil="true"/>
+									<ContextMenu name="НакладныеРасходыКонтекстноеМеню" id="1975"/>
+									<AutoCommandBar name="НакладныеРасходыКоманднаяПанель" id="1976">
+										<Autofill>false</Autofill>
+									</AutoCommandBar>
+									<ExtendedTooltip name="НакладныеРасходыРасширеннаяПодсказка" id="1977"/>
+									<SearchStringAddition name="НакладныеРасходыСтрокаПоиска" id="1978">
+										<AdditionSource>
+											<Item>НакладныеРасходы</Item>
+											<Type>SearchStringRepresentation</Type>
+										</AdditionSource>
+										<ContextMenu name="НакладныеРасходыСтрокаПоискаКонтекстноеМеню" id="1979"/>
+										<ExtendedTooltip name="НакладныеРасходыСтрокаПоискаРасширеннаяПодсказка" id="1980"/>
+									</SearchStringAddition>
+									<ViewStatusAddition name="НакладныеРасходыСостояниеПросмотра" id="1981">
+										<AdditionSource>
+											<Item>НакладныеРасходы</Item>
+											<Type>ViewStatusRepresentation</Type>
+										</AdditionSource>
+										<ContextMenu name="НакладныеРасходыСостояниеПросмотраКонтекстноеМеню" id="1982"/>
+										<ExtendedTooltip name="НакладныеРасходыСостояниеПросмотраРасширеннаяПодсказка" id="1983"/>
+									</ViewStatusAddition>
+									<SearchControlAddition name="НакладныеРасходыУправлениеПоиском" id="1984">
+										<AdditionSource>
+											<Item>НакладныеРасходы</Item>
+											<Type>SearchControl</Type>
+										</AdditionSource>
+										<ContextMenu name="НакладныеРасходыУправлениеПоискомКонтекстноеМеню" id="1985"/>
+										<ExtendedTooltip name="НакладныеРасходыУправлениеПоискомРасширеннаяПодсказка" id="1986"/>
+									</SearchControlAddition>
+									<ChildItems>
+										<InputField name="НакладныеРасходыСчетЗатрат" id="1990">
+											<DataPath>Объект.НакладныеРасходы.СчетЗатрат</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<Width>8</Width>
+											<HorizontalStretch>false</HorizontalStretch>
+											<ContextMenu name="НакладныеРасходыСчетЗатратКонтекстноеМеню" id="1991"/>
+											<ExtendedTooltip name="НакладныеРасходыСчетЗатратРасширеннаяПодсказка" id="1992"/>
+										</InputField>
+										<InputField name="НакладныеРасходыСчетРасходов" id="1993">
+											<DataPath>Объект.НакладныеРасходы.СчетРасходов</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<Width>8</Width>
+											<HorizontalStretch>false</HorizontalStretch>
+											<ContextMenu name="НакладныеРасходыСчетРасходовКонтекстноеМеню" id="1994"/>
+											<ExtendedTooltip name="НакладныеРасходыСчетРасходовРасширеннаяПодсказка" id="1995"/>
+										</InputField>
+										<InputField name="НакладныеРасходыПодразделение" id="1996">
+											<DataPath>Объект.НакладныеРасходы.Подразделение</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<ContextMenu name="НакладныеРасходыПодразделениеКонтекстноеМеню" id="1997"/>
+											<ExtendedTooltip name="НакладныеРасходыПодразделениеРасширеннаяПодсказка" id="1998"/>
+										</InputField>
+										<InputField name="НакладныеРасходыНоменклатурнаяГруппа" id="1999">
+											<DataPath>Объект.НакладныеРасходы.НоменклатурнаяГруппа</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<ContextMenu name="НакладныеРасходыНоменклатурнаяГруппаКонтекстноеМеню" id="2000"/>
+											<ExtendedTooltip name="НакладныеРасходыНоменклатурнаяГруппаРасширеннаяПодсказка" id="2001"/>
+										</InputField>
+										<InputField name="НакладныеРасходыПодразделениеЗатрат" id="2008">
+											<DataPath>Объект.НакладныеРасходы.ПодразделениеЗатрат</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<ContextMenu name="НакладныеРасходыПодразделениеЗатратКонтекстноеМеню" id="2009"/>
+											<ExtendedTooltip name="НакладныеРасходыПодразделениеЗатратРасширеннаяПодсказка" id="2010"/>
+										</InputField>
+										<InputField name="НакладныеРасходыСтатьяЗатрат" id="2005">
+											<DataPath>Объект.НакладныеРасходы.СтатьяЗатрат</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<ContextMenu name="НакладныеРасходыСтатьяЗатратКонтекстноеМеню" id="2006"/>
+											<ExtendedTooltip name="НакладныеРасходыСтатьяЗатратРасширеннаяПодсказка" id="2007"/>
+										</InputField>
+										<InputField name="НакладныеРасходыСумма" id="2002">
+											<DataPath>Объект.НакладныеРасходы.Сумма</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<Width>10</Width>
+											<HorizontalStretch>false</HorizontalStretch>
+											<ContextMenu name="НакладныеРасходыСуммаКонтекстноеМеню" id="2003"/>
+											<ExtendedTooltip name="НакладныеРасходыСуммаРасширеннаяПодсказка" id="2004"/>
+										</InputField>
+									</ChildItems>
+								</Table>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="ПодвалПроизводство" id="2011">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Подвал производство</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Подвал производство</v8:content>
+								</v8:item>
+							</ToolTip>
+							<HorizontalStretch>true</HorizontalStretch>
+							<VerticalStretch>false</VerticalStretch>
 							<Group>Horizontal</Group>
 							<Representation>None</Representation>
 							<ShowTitle>false</ShowTitle>
-							<ExtendedTooltip name="ГруппаОХРиВПРасширеннаяПодсказка" id="1560"/>
+							<ExtendedTooltip name="ПодвалПроизводствоРасширеннаяПодсказка" id="2012"/>
 							<ChildItems>
-								<InputField name="СуммаОбщехозяйственныхРасходов" id="1686">
-									<DataPath>Объект.СуммаОбщехозяйственныхРасходов</DataPath>
-									<Width>10</Width>
-									<ContextMenu name="СуммаОбщехозяйственныхРасходовКонтекстноеМеню" id="1687"/>
-									<ExtendedTooltip name="СуммаОбщехозяйственныхРасходовРасширеннаяПодсказка" id="1688"/>
-								</InputField>
-								<InputField name="СуммаВспомогательногоПроизводства" id="1689">
-									<DataPath>Объект.СуммаВспомогательногоПроизводства</DataPath>
-									<Width>10</Width>
-									<ContextMenu name="СуммаВспомогательногоПроизводстваКонтекстноеМеню" id="1690"/>
-									<ExtendedTooltip name="СуммаВспомогательногоПроизводстваРасширеннаяПодсказка" id="1691"/>
-								</InputField>
+								<UsualGroup name="ГруппаИтогиПроизводство" id="2013">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Итоги</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа итоги</v8:content>
+										</v8:item>
+									</ToolTip>
+									<GroupHorizontalAlign>Right</GroupHorizontalAlign>
+									<Group>Horizontal</Group>
+									<HorizontalAlign>Right</HorizontalAlign>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<BackColor>style:ИтогиФонГруппы</BackColor>
+									<ExtendedTooltip name="ГруппаИтогиПроизводствоРасширеннаяПодсказка" id="2014"/>
+									<ChildItems>
+										<InputField name="НакладныеРасходыИтогСумма" id="2015">
+											<DataPath>Объект.НакладныеРасходы.TotalСумма</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Сумма</v8:content>
+												</v8:item>
+											</Title>
+											<Width>9</Width>
+											<HorizontalStretch>false</HorizontalStretch>
+											<ChoiceButton>false</ChoiceButton>
+											<ContextMenu name="НакладныеРасходыИтогСуммаКонтекстноеМеню" id="2016"/>
+											<ExtendedTooltip name="НакладныеРасходыИтогСуммаРасширеннаяПодсказка" id="2017"/>
+										</InputField>
+									</ChildItems>
+								</UsualGroup>
 							</ChildItems>
 						</UsualGroup>
-						<Table name="РасходыНаПроизводство" id="1692">
-							<AutoInsertNewRow>true</AutoInsertNewRow>
-							<EnableStartDrag>true</EnableStartDrag>
-							<EnableDrag>true</EnableDrag>
-							<DataPath>Объект.РасходыНаПроизводство</DataPath>
-							<RowFilter xsi:nil="true"/>
-							<ContextMenu name="РасходыНаПроизводствоКонтекстноеМеню" id="1693"/>
-							<AutoCommandBar name="РасходыНаПроизводствоКоманднаяПанель" id="1694"/>
-							<ExtendedTooltip name="РасходыНаПроизводствоРасширеннаяПодсказка" id="1695"/>
-							<SearchStringAddition name="РасходыНаПроизводствоСтрокаПоиска" id="1696">
-								<AdditionSource>
-									<Item>РасходыНаПроизводство</Item>
-									<Type>SearchStringRepresentation</Type>
-								</AdditionSource>
-								<ContextMenu name="РасходыНаПроизводствоСтрокаПоискаКонтекстноеМеню" id="1697"/>
-								<ExtendedTooltip name="РасходыНаПроизводствоСтрокаПоискаРасширеннаяПодсказка" id="1698"/>
-							</SearchStringAddition>
-							<ViewStatusAddition name="РасходыНаПроизводствоСостояниеПросмотра" id="1699">
-								<AdditionSource>
-									<Item>РасходыНаПроизводство</Item>
-									<Type>ViewStatusRepresentation</Type>
-								</AdditionSource>
-								<ContextMenu name="РасходыНаПроизводствоСостояниеПросмотраКонтекстноеМеню" id="1700"/>
-								<ExtendedTooltip name="РасходыНаПроизводствоСостояниеПросмотраРасширеннаяПодсказка" id="1701"/>
-							</ViewStatusAddition>
-							<SearchControlAddition name="РасходыНаПроизводствоУправлениеПоиском" id="1702">
-								<AdditionSource>
-									<Item>РасходыНаПроизводство</Item>
-									<Type>SearchControl</Type>
-								</AdditionSource>
-								<ContextMenu name="РасходыНаПроизводствоУправлениеПоискомКонтекстноеМеню" id="1703"/>
-								<ExtendedTooltip name="РасходыНаПроизводствоУправлениеПоискомРасширеннаяПодсказка" id="1704"/>
-							</SearchControlAddition>
-							<ChildItems>
-								<LabelField name="РасходыНаПроизводствоНомерСтроки" id="1705">
-									<DataPath>Объект.РасходыНаПроизводство.LineNumber</DataPath>
-									<EditMode>EnterOnInput</EditMode>
-									<Width>4</Width>
-									<HorizontalStretch>false</HorizontalStretch>
-									<ContextMenu name="РасходыНаПроизводствоНомерСтрокиКонтекстноеМеню" id="1706"/>
-									<ExtendedTooltip name="РасходыНаПроизводствоНомерСтрокиРасширеннаяПодсказка" id="1707"/>
-								</LabelField>
-								<InputField name="РасходыНаПроизводствоЗаказ" id="1708">
-									<DataPath>Объект.РасходыНаПроизводство.Заказ</DataPath>
-									<EditMode>EnterOnInput</EditMode>
-									<DropListButton>false</DropListButton>
-									<ChoiceButton>true</ChoiceButton>
-									<ChoiceButtonRepresentation>ShowInInputField</ChoiceButtonRepresentation>
-									<ContextMenu name="РасходыНаПроизводствоЗаказКонтекстноеМеню" id="1709"/>
-									<ExtendedTooltip name="РасходыНаПроизводствоЗаказРасширеннаяПодсказка" id="1710"/>
-								</InputField>
-								<InputField name="РасходыНаПроизводствоНоменклатура" id="1711">
-									<DataPath>Объект.РасходыНаПроизводство.Номенклатура</DataPath>
-									<EditMode>EnterOnInput</EditMode>
-									<ContextMenu name="РасходыНаПроизводствоНоменклатураКонтекстноеМеню" id="1712"/>
-									<ExtendedTooltip name="РасходыНаПроизводствоНоменклатураРасширеннаяПодсказка" id="1713"/>
-								</InputField>
-								<InputField name="РасходыНаПроизводствоКоличество" id="1714">
-									<DataPath>Объект.РасходыНаПроизводство.Количество</DataPath>
-									<EditMode>EnterOnInput</EditMode>
-									<Width>10</Width>
-									<ContextMenu name="РасходыНаПроизводствоКоличествоКонтекстноеМеню" id="1715"/>
-									<ExtendedTooltip name="РасходыНаПроизводствоКоличествоРасширеннаяПодсказка" id="1716"/>
-								</InputField>
-								<InputField name="РасходыНаПроизводствоСуммаПрямыхЗатратНаГП" id="1717">
-									<DataPath>Объект.РасходыНаПроизводство.СуммаПрямыхЗатратНаГП</DataPath>
-									<ToolTip>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Сумма прямых затрат на данную готовую продукцию за текущий месяц (Дт 1630).</v8:content>
-										</v8:item>
-									</ToolTip>
-									<EditMode>EnterOnInput</EditMode>
-									<Width>10</Width>
-									<ContextMenu name="РасходыНаПроизводствоСуммаПрямыхЗатратНаГПКонтекстноеМеню" id="1718"/>
-									<ExtendedTooltip name="РасходыНаПроизводствоСуммаПрямыхЗатратНаГПРасширеннаяПодсказка" id="1719"/>
-								</InputField>
-								<InputField name="РасходыНаПроизводствоСуммаОбщехозяйственныхРасходов" id="1720">
-									<DataPath>Объект.РасходыНаПроизводство.СуммаОбщехозяйственныхРасходов</DataPath>
-									<ToolTip>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Распределенная сумма общехозяйственных расходов.</v8:content>
-										</v8:item>
-									</ToolTip>
-									<EditMode>EnterOnInput</EditMode>
-									<Width>10</Width>
-									<ContextMenu name="РасходыНаПроизводствоСуммаОбщехозяйственныхРасходовКонтекстноеМеню" id="1721"/>
-									<ExtendedTooltip name="РасходыНаПроизводствоСуммаОбщехозяйственныхРасходовРасширеннаяПодсказка" id="1722"/>
-								</InputField>
-								<InputField name="РасходыНаПроизводствоСуммаВспомогательногоПроизводства" id="1723">
-									<DataPath>Объект.РасходыНаПроизводство.СуммаВспомогательногоПроизводства</DataPath>
-									<ToolTip>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Распределенная сумма вспомогательного производства.</v8:content>
-										</v8:item>
-									</ToolTip>
-									<EditMode>EnterOnInput</EditMode>
-									<Width>10</Width>
-									<ContextMenu name="РасходыНаПроизводствоСуммаВспомогательногоПроизводстваКонтекстноеМеню" id="1724"/>
-									<ExtendedTooltip name="РасходыНаПроизводствоСуммаВспомогательногоПроизводстваРасширеннаяПодсказка" id="1725"/>
-								</InputField>
-								<InputField name="РасходыНаПроизводствоСуммаКорректировкиГП" id="1726">
-									<DataPath>Объект.РасходыНаПроизводство.СуммаКорректировкиГП</DataPath>
-									<ToolTip>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Сумма корректировки по выпускаемой готовой продукции (если продукция уже готова): ОХР + ВП.</v8:content>
-										</v8:item>
-									</ToolTip>
-									<EditMode>EnterOnInput</EditMode>
-									<Width>10</Width>
-									<ContextMenu name="РасходыНаПроизводствоСуммаКорректировкиГПКонтекстноеМеню" id="1727"/>
-									<ExtendedTooltip name="РасходыНаПроизводствоСуммаКорректировкиГПРасширеннаяПодсказка" id="1728"/>
-								</InputField>
-								<InputField name="РасходыНаПроизводствоСуммаНЗППредыдущегоПериода" id="1729">
-									<DataPath>Объект.РасходыНаПроизводство.СуммаНЗППредыдущегоПериода</DataPath>
-									<ToolTip>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Сумма незавершенного производства (Дт 1630) на начало месяца.</v8:content>
-										</v8:item>
-									</ToolTip>
-									<EditMode>EnterOnInput</EditMode>
-									<Width>10</Width>
-									<ContextMenu name="РасходыНаПроизводствоСуммаНЗППредыдущегоПериодаКонтекстноеМеню" id="1730"/>
-									<ExtendedTooltip name="РасходыНаПроизводствоСуммаНЗППредыдущегоПериодаРасширеннаяПодсказка" id="1731"/>
-								</InputField>
-								<InputField name="РасходыНаПроизводствоСуммаНЗП" id="1732">
-									<DataPath>Объект.РасходыНаПроизводство.СуммаНЗП</DataPath>
-									<ToolTip>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Прямые затраты + ОХР + ВП.</v8:content>
-										</v8:item>
-									</ToolTip>
-									<EditMode>EnterOnInput</EditMode>
-									<Width>10</Width>
-									<ContextMenu name="РасходыНаПроизводствоСуммаНЗПКонтекстноеМеню" id="1733"/>
-									<ExtendedTooltip name="РасходыНаПроизводствоСуммаНЗПРасширеннаяПодсказка" id="1734"/>
-								</InputField>
-								<InputField name="РасходыНаПроизводствоСуммаНЗПТекущегоПериода" id="1735">
-									<DataPath>Объект.РасходыНаПроизводство.СуммаНЗПТекущегоПериода</DataPath>
-									<ToolTip>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Сумма незавершенного производства (Дт 1630) на конец месяца.</v8:content>
-										</v8:item>
-									</ToolTip>
-									<EditMode>EnterOnInput</EditMode>
-									<Width>10</Width>
-									<ContextMenu name="РасходыНаПроизводствоСуммаНЗПТекущегоПериодаКонтекстноеМеню" id="1736"/>
-									<ExtendedTooltip name="РасходыНаПроизводствоСуммаНЗПТекущегоПериодаРасширеннаяПодсказка" id="1737"/>
-								</InputField>
-								<InputField name="РасходыНаПроизводствоСуммаКорректировкиРеализации" id="1738">
-									<DataPath>Объект.РасходыНаПроизводство.СуммаКорректировкиРеализации</DataPath>
-									<ToolTip>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Сумма корректировки реализованной продукции: Корр выпуска ГП / количество готовой продукции * количество реализованной продукции.</v8:content>
-										</v8:item>
-									</ToolTip>
-									<EditMode>EnterOnInput</EditMode>
-									<Width>10</Width>
-									<ContextMenu name="РасходыНаПроизводствоСуммаКорректировкиРеализацииКонтекстноеМеню" id="1739"/>
-									<ExtendedTooltip name="РасходыНаПроизводствоСуммаКорректировкиРеализацииРасширеннаяПодсказка" id="1740"/>
-								</InputField>
-							</ChildItems>
-						</Table>
 					</ChildItems>
 				</Page>
 				<Page name="СтраницаЕдиныйНалог" id="1915">
