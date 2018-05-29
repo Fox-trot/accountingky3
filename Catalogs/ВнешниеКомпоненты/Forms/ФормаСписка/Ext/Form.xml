@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.4">
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.5">
 	<AutoSaveDataInSettings>Use</AutoSaveDataInSettings>
 	<CommandSet>
 		<ExcludedCommand>Copy</ExcludedCommand>
@@ -31,7 +31,6 @@
 					<v8:content>Быстрые отборы</v8:content>
 				</v8:item>
 			</Title>
-			<Group>Horizontal</Group>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
 			<ExtendedTooltip name="БыстрыеОтборыExtendedTooltip" id="45"/>
@@ -107,6 +106,24 @@
 			<CommandSource>Form</CommandSource>
 			<ExtendedTooltip name="КоманднаяПанельРасширеннаяПодсказка" id="37"/>
 			<ChildItems>
+				<Button name="ФормаСоздать" id="69">
+					<Type>CommandBarButton</Type>
+					<CommandName>Form.StandardCommand.Create</CommandName>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Добавить из файла...</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="ФормаСоздатьРасширеннаяПодсказка" id="70">
+						<Title formatted="false">
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Добавить из файла на диске...</v8:content>
+							</v8:item>
+						</Title>
+					</ExtendedTooltip>
+				</Button>
 				<ButtonGroup name="ГруппаДействие" id="65">
 					<Title>
 						<v8:item>
@@ -116,12 +133,6 @@
 					</Title>
 					<ExtendedTooltip name="ГруппаДействиеРасширеннаяПодсказка" id="66"/>
 					<ChildItems>
-						<Button name="ФормаОбновитьССайта" id="67">
-							<Type>CommandBarButton</Type>
-							<OnlyInAllActions>false</OnlyInAllActions>
-							<CommandName>Form.Command.ОбновитьССайта</CommandName>
-							<ExtendedTooltip name="ФормаОбновитьССайтаРасширеннаяПодсказка" id="68"/>
-						</Button>
 						<Button name="ФормаОбновитьИзФайла" id="58">
 							<Type>CommandBarButton</Type>
 							<CommandName>Form.Command.ОбновитьИзФайла</CommandName>
@@ -129,8 +140,14 @@
 						</Button>
 						<Button name="ФормаСохранитьКак" id="60">
 							<Type>CommandBarButton</Type>
+							<OnlyInAllActions>false</OnlyInAllActions>
 							<CommandName>Form.Command.СохранитьКак</CommandName>
 							<ExtendedTooltip name="ФормаСохранитьКакРасширеннаяПодсказка" id="61"/>
+						</Button>
+						<Button name="ОбновитьСПортала1СИТС" id="67">
+							<Type>CommandBarButton</Type>
+							<CommandName>Form.Command.ОбновитьСПортала1СИТС</CommandName>
+							<ExtendedTooltip name="ОбновитьСПортала1СИТСРасширеннаяПодсказка" id="68"/>
 						</Button>
 					</ChildItems>
 				</ButtonGroup>
@@ -226,8 +243,8 @@
 					<ContextMenu name="ВерсияКонтекстноеМеню" id="23"/>
 					<ExtendedTooltip name="ВерсияРасширеннаяПодсказка" id="24"/>
 				</LabelField>
-				<CheckBoxField name="ОбновлятьССайта" id="28">
-					<DataPath>Список.ОбновлятьССайта</DataPath>
+				<CheckBoxField name="ОбновлятьСПортала1СИТС" id="28">
+					<DataPath>Список.ОбновлятьСПортала1СИТС</DataPath>
 					<TitleLocation>None</TitleLocation>
 					<HorizontalAlign>Center</HorizontalAlign>
 					<HeaderPicture>
@@ -236,8 +253,8 @@
 					</HeaderPicture>
 					<HeaderHorizontalAlign>Center</HeaderHorizontalAlign>
 					<CheckBoxType>Auto</CheckBoxType>
-					<ContextMenu name="ОбновлятьССайтаКонтекстноеМеню" id="29"/>
-					<ExtendedTooltip name="ОбновлятьССайтаРасширеннаяПодсказка" id="30"/>
+					<ContextMenu name="ОбновлятьСПортала1СИТСКонтекстноеМеню" id="29"/>
+					<ExtendedTooltip name="ОбновлятьСПортала1СИТСРасширеннаяПодсказка" id="30"/>
 				</CheckBoxField>
 				<LabelField name="Наименование" id="52">
 					<DataPath>Список.Наименование</DataPath>
@@ -275,7 +292,7 @@
 	Таблица.Версия КАК Версия,
 	Таблица.Идентификатор КАК Идентификатор,
 	Таблица.Использование КАК Использование,
-	Таблица.ОбновлятьССайта КАК ОбновлятьССайта,
+	Таблица.ОбновлятьСПортала1СИТС КАК ОбновлятьСПортала1СИТС,
 	Таблица.ДатаВерсии КАК ДатаВерсии
 ИЗ
 	Справочник.ВнешниеКомпоненты КАК Таблица</QueryText>
@@ -325,7 +342,7 @@
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Обновить из файла на диске...</v8:content>
+					<v8:content>Обновить из файла...</v8:content>
 				</v8:item>
 			</Title>
 			<ToolTip>
@@ -339,6 +356,7 @@
 				<xr:LoadTransparent>true</xr:LoadTransparent>
 			</Picture>
 			<Action>ОбновитьИзФайла</Action>
+			<Representation>TextPicture</Representation>
 		</Command>
 		<Command name="СохранитьКак" id="3">
 			<Title>
@@ -359,19 +377,23 @@
 			</Picture>
 			<Action>СохранитьКак</Action>
 		</Command>
-		<Command name="ОбновитьССайта" id="1">
+		<Command name="ОбновитьСПортала1СИТС" id="1">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Обновить с сайта</v8:content>
+					<v8:content>Обновить с Портала 1С:ИТС</v8:content>
 				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Обновить с сайта</v8:content>
+					<v8:content>Обновить с Портала 1С:ИТС</v8:content>
 				</v8:item>
 			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.ОбновлениеВнешнихКомпонентССайта</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
 			<Action>ОбновитьССайта</Action>
 		</Command>
 	</Commands>

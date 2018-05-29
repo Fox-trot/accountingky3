@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.4">
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.5">
 	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
 	<CommandSet>
-		<ExcludedCommand>CustomizeForm</ExcludedCommand>
-		<ExcludedCommand>Reread</ExcludedCommand>
 		<ExcludedCommand>Copy</ExcludedCommand>
+		<ExcludedCommand>CustomizeForm</ExcludedCommand>
 		<ExcludedCommand>Delete</ExcludedCommand>
+		<ExcludedCommand>Reread</ExcludedCommand>
 		<ExcludedCommand>Write</ExcludedCommand>
 	</CommandSet>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
@@ -35,7 +35,6 @@
 					<v8:content>Предмет</v8:content>
 				</v8:item>
 			</Title>
-			<Group>Horizontal</Group>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
 			<ExtendedTooltip name="ПредметРасширеннаяПодсказка" id="135"/>
@@ -90,8 +89,6 @@
 					<v8:content>Напомнить</v8:content>
 				</v8:item>
 			</Title>
-			<Group>Horizontal</Group>
-			<VerticalAlign>Center</VerticalAlign>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
 			<ExtendedTooltip name="НастройкаВремениExtendedTooltip" id="112"/>
@@ -103,7 +100,6 @@
 							<v8:content>Панель переключателей</v8:content>
 						</v8:item>
 					</Title>
-					<Group>Horizontal</Group>
 					<Representation>None</Representation>
 					<ShowTitle>false</ShowTitle>
 					<ExtendedTooltip name="ПанельПереключателейExtendedTooltip" id="113"/>
@@ -151,7 +147,7 @@
 								</v8:item>
 							</Title>
 							<VerticalStretch>true</VerticalStretch>
-							<Group>Horizontal</Group>
+							<Group>HorizontalIfPossible</Group>
 							<ShowTitle>false</ShowTitle>
 							<ExtendedTooltip name="БезДетализацииExtendedTooltip" id="116"/>
 							<ChildItems>
@@ -176,7 +172,7 @@
 									<v8:content>Дата время</v8:content>
 								</v8:item>
 							</Title>
-							<Group>Horizontal</Group>
+							<Group>HorizontalIfPossible</Group>
 							<ShowTitle>false</ShowTitle>
 							<ExtendedTooltip name="ДатаВремяExtendedTooltip" id="118"/>
 							<ChildItems>
@@ -246,7 +242,7 @@
 									<v8:content>Настройка источника</v8:content>
 								</v8:item>
 							</Title>
-							<Group>Horizontal</Group>
+							<Group>HorizontalIfPossible</Group>
 							<ShowTitle>false</ShowTitle>
 							<ExtendedTooltip name="НастройкаИсточникаExtendedTooltip" id="121"/>
 							<ChildItems>
@@ -475,12 +471,14 @@
 										</v8:item>
 									</ToolTip>
 									<Width>20</Width>
-									<HorizontalStretch>false</HorizontalStretch>
 									<ListChoiceMode>true</ListChoiceMode>
 									<ChooseType>false</ChooseType>
 									<TextEdit>false</TextEdit>
 									<ContextMenu name="ИмяРеквизитаИсточникаКонтекстноеМеню" id="36"/>
 									<ExtendedTooltip name="ИмяРеквизитаИсточникаExtendedTooltip" id="125"/>
+									<Events>
+										<Event name="Clearing">ИмяРеквизитаИсточникаОчистка</Event>
+									</Events>
 								</InputField>
 							</ChildItems>
 						</Page>
@@ -491,7 +489,7 @@
 									<v8:content>Настройка периодичности</v8:content>
 								</v8:item>
 							</Title>
-							<Group>Horizontal</Group>
+							<Group>HorizontalIfPossible</Group>
 							<ShowTitle>false</ShowTitle>
 							<ExtendedTooltip name="НастройкаПериодичностиExtendedTooltip" id="126"/>
 							<ChildItems>
