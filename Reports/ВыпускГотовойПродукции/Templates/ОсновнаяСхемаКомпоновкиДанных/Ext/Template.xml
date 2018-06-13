@@ -36,6 +36,7 @@
 			<field>Подразделение</field>
 			<role>
 				<dcscom:dimension>true</dcscom:dimension>
+				<dcscom:ignoreNullValues>true</dcscom:ignoreNullValues>
 			</role>
 			<appearance>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
@@ -49,6 +50,7 @@
 			<field>Продукция</field>
 			<role>
 				<dcscom:dimension>true</dcscom:dimension>
+				<dcscom:ignoreNullValues>true</dcscom:ignoreNullValues>
 			</role>
 			<appearance>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
@@ -62,6 +64,7 @@
 			<field>НоменклатурнаяГруппа</field>
 			<role>
 				<dcscom:dimension>true</dcscom:dimension>
+				<dcscom:ignoreNullValues>true</dcscom:ignoreNullValues>
 			</role>
 			<appearance>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
@@ -133,6 +136,26 @@
 				</dcscor:item>
 			</appearance>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СтатьяЗатрат</dataPath>
+			<field>СтатьяЗатрат</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Статья затрат</v8:content>
+				</v8:item>
+			</title>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+				<dcscom:ignoreNullValues>true</dcscom:ignoreNullValues>
+			</role>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>МаксимальнаяШирина</dcscor:parameter>
+					<dcscor:value xsi:type="xs:decimal">50</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
 	ВыпускПродукцииУслугОбороты.Организация КАК Организация,
@@ -141,20 +164,74 @@
 	ВыпускПродукцииУслугОбороты.Продукция КАК Продукция,
 	ВыпускПродукцииУслугОбороты.КоличествоОборот КАК Количество,
 	ВыпускПродукцииУслугОбороты.ПлановаяСтоимостьОборот КАК СуммаЗатрат,
-	ВыпускПродукцииУслугОбороты.ПлановаяСтоимостьОборот / ВыпускПродукцииУслугОбороты.КоличествоОборот КАК СебестоимостьЗаЕдиницу
+	ВыпускПродукцииУслугОбороты.ПлановаяСтоимостьОборот / ВыпускПродукцииУслугОбороты.КоличествоОборот КАК СебестоимостьЗаЕдиницу,
+	ВыпускПродукцииУслугОбороты.СчетЗатрат КАК СчетЗатрат,
+	ВыпускПродукцииУслугОбороты.СчетСписания КАК СчетСписания
+ПОМЕСТИТЬ ВременнаяТаблицаВыпускГП
+ИЗ
+	РегистрНакопления.ВыпускПродукцииУслуг.Обороты(&amp;НачалоПериода, &amp;КонецПериода, , ) КАК ВыпускПродукцииУслугОбороты
+;
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	ХозрасчетныйОбороты.Счет КАК Счет,
+	ХозрасчетныйОбороты.Субконто1 КАК Продукция,
+	ХозрасчетныйОбороты.КорСчет КАК КорСчет,
+	ХозрасчетныйОбороты.КорСубконто1 КАК Подразделение,
+	ХозрасчетныйОбороты.КорСубконто2 КАК НоменклатурнаяГруппа,
+	ХозрасчетныйОбороты.КорСубконто3 КАК СтатьяЗатрат,
+	ХозрасчетныйОбороты.Организация КАК Организация,
+	ХозрасчетныйОбороты.СуммаОборот КАК СуммаЗатрат,
+	ХозрасчетныйОбороты.КоличествоОборот КАК Количество
+ПОМЕСТИТЬ ВременнаяТаблицаВыпускФакт
+ИЗ
+	РегистрБухгалтерии.Хозрасчетный.Обороты(
+			&amp;НачалоПериода,
+			&amp;КонецПериода,
+			,
+			Счет В
+				(ВЫБРАТЬ
+					ВременнаяТаблицаВыпускГП.СчетСписания
+				ИЗ
+					ВременнаяТаблицаВыпускГП КАК ВременнаяТаблицаВыпускГП),
+			ЗНАЧЕНИЕ(ПланВидовХарактеристик.ВидыСубконтоХозрасчетные.Номенклатура),
+			Субконто1 В
+				(ВЫБРАТЬ
+					ВременнаяТаблицаВыпускГП.Продукция
+				ИЗ
+					ВременнаяТаблицаВыпускГП КАК ВременнаяТаблицаВыпускГП),
+			КорСчет В
+				(ВЫБРАТЬ
+					ВременнаяТаблицаВыпускГП.СчетЗатрат
+				ИЗ
+					ВременнаяТаблицаВыпускГП КАК ВременнаяТаблицаВыпускГП),
+			&amp;МассивКорСубконто) КАК ХозрасчетныйОбороты
+;
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	ВременнаяТаблицаВыпускФакт.Организация КАК Организация,
+	ВременнаяТаблицаВыпускФакт.Подразделение КАК Подразделение,
+	ВременнаяТаблицаВыпускФакт.НоменклатурнаяГруппа КАК НоменклатурнаяГруппа,
+	ВременнаяТаблицаВыпускФакт.Продукция КАК Продукция,
+	ВременнаяТаблицаВыпускФакт.СтатьяЗатрат КАК СтатьяЗатрат,
+	ВременнаяТаблицаВыпускФакт.Количество КАК Количество,
+	ВременнаяТаблицаВыпускФакт.СуммаЗатрат КАК СуммаЗатрат,
+	ВременнаяТаблицаВыпускФакт.СуммаЗатрат / ВременнаяТаблицаВыпускФакт.Количество КАК СебестоимостьЗаЕдиницу
 {ВЫБРАТЬ
 	Организация.*,
 	Подразделение.*,
 	НоменклатурнаяГруппа.*,
+	СтатьяЗатрат.*,
 	Продукция.*,
 	Количество,
 	СуммаЗатрат,
 	СебестоимостьЗаЕдиницу}
+
 ИЗ
-	РегистрНакопления.ВыпускПродукцииУслуг.Обороты(&amp;НачалоПериода, &amp;КонецПериода, , ) КАК ВыпускПродукцииУслугОбороты
+	ВременнаяТаблицаВыпускФакт КАК ВременнаяТаблицаВыпускФакт
 {ГДЕ
-	ВыпускПродукцииУслугОбороты.Подразделение.*,
-	ВыпускПродукцииУслугОбороты.НоменклатурнаяГруппа.*}</query>
+	ВременнаяТаблицаВыпускФакт.Подразделение.*,
+	ВременнаяТаблицаВыпускФакт.НоменклатурнаяГруппа.*}
+;</query>
 		<autoFillFields>false</autoFillFields>
 	</dataSet>
 	<totalField>
@@ -236,6 +313,24 @@
 		<value xsi:type="v8:ValueStorage">AQEIAAAAAAAAAO+7v3siVSJ9</value>
 		<useRestriction>false</useRestriction>
 		<use>Always</use>
+	</parameter>
+	<parameter>
+		<name>МассивКорСубконто</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Массив кор субконто</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:ChartOfCharacteristicTypesRef.ВидыСубконтоХозрасчетные</v8:Type>
+		</valueType>
+		<value xsi:type="dcscor:DesignTimeValue">ПланВидовХарактеристик.ВидыСубконтоХозрасчетные.Подразделения</value>
+		<value xsi:type="dcscor:DesignTimeValue">ПланВидовХарактеристик.ВидыСубконтоХозрасчетные.НоменклатурныеГруппы</value>
+		<value xsi:type="dcscor:DesignTimeValue">ПланВидовХарактеристик.ВидыСубконтоХозрасчетные.СтатьиЗатрат</value>
+		<useRestriction>true</useRestriction>
+		<valueListAllowed>true</valueListAllowed>
+		<availableAsField>false</availableAsField>
 	</parameter>
 	<settingsVariant>
 		<dcsset:name>ВыпускГотовойПродукции</dcsset:name>
@@ -372,6 +467,23 @@
 						<dcsset:selection>
 							<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
 						</dcsset:selection>
+						<dcsset:item xsi:type="dcsset:StructureItemGroup">
+							<dcsset:groupItems>
+								<dcsset:item xsi:type="dcsset:GroupItemField">
+									<dcsset:field>СтатьяЗатрат</dcsset:field>
+									<dcsset:groupType>Items</dcsset:groupType>
+									<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+									<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+									<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+								</dcsset:item>
+							</dcsset:groupItems>
+							<dcsset:order>
+								<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+							</dcsset:order>
+							<dcsset:selection>
+								<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+							</dcsset:selection>
+						</dcsset:item>
 					</dcsset:item>
 				</dcsset:item>
 			</dcsset:item>

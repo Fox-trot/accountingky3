@@ -449,6 +449,15 @@
 													<ContextMenu name="НадписьНакопленныйИзносКонтекстноеМеню" id="908"/>
 													<ExtendedTooltip name="НадписьНакопленныйИзносРасширеннаяПодсказка" id="909"/>
 												</LabelField>
+												<LabelField name="НадписьБазаАмортизации" id="1442">
+													<DataPath>НадписьБазаАмортизации</DataPath>
+													<TitleLocation>None</TitleLocation>
+													<Width>30</Width>
+													<AutoMaxWidth>false</AutoMaxWidth>
+													<MaxWidth>30</MaxWidth>
+													<ContextMenu name="НадписьБазаАмортизацииКонтекстноеМеню" id="1443"/>
+													<ExtendedTooltip name="НадписьБазаАмортизацииРасширеннаяПодсказка" id="1444"/>
+												</LabelField>
 											</ChildItems>
 										</UsualGroup>
 									</ChildItems>
@@ -558,7 +567,6 @@
 							</SearchControlAddition>
 							<Events>
 								<Event name="Selection">РасшифровкаПоСобытиямОСВыбор</Event>
-								<Event name="OnActivateRow">РасшифровкаПоСобытиямОСПриАктивизацииСтроки</Event>
 							</Events>
 							<ChildItems>
 								<InputField name="РасшифровкаПоСобытиямОСДата" id="241">
@@ -1070,18 +1078,18 @@
 											<ContextMenu name="АмортизацияПоОССтоимостьБУПриходКонтекстноеМеню" id="1405"/>
 											<ExtendedTooltip name="АмортизацияПоОССтоимостьБУПриходРасширеннаяПодсказка" id="1406"/>
 										</LabelField>
-										<LabelField name="АмортизацияПоОСИзносПриход" id="1380">
-											<DataPath>АмортизацияПоОС.ИзносПриход</DataPath>
+										<LabelField name="АмортизацияПоОСИзносРасход" id="1383">
+											<DataPath>АмортизацияПоОС.ИзносРасход</DataPath>
 											<Title>
 												<v8:item>
 													<v8:lang>ru</v8:lang>
-													<v8:content>Приход</v8:content>
+													<v8:content>Расход</v8:content>
 												</v8:item>
 											</Title>
 											<ShowInHeader>false</ShowInHeader>
 											<Width>10</Width>
-											<ContextMenu name="АмортизацияПоОСИзносПриходКонтекстноеМеню" id="1381"/>
-											<ExtendedTooltip name="АмортизацияПоОСИзносПриходРасширеннаяПодсказка" id="1382"/>
+											<ContextMenu name="АмортизацияПоОСИзносРасходКонтекстноеМеню" id="1384"/>
+											<ExtendedTooltip name="АмортизацияПоОСИзносРасходРасширеннаяПодсказка" id="1385"/>
 										</LabelField>
 									</ChildItems>
 								</ColumnGroup>
@@ -1114,18 +1122,18 @@
 											<ContextMenu name="АмортизацияПоОССтоимостьБУРасходКонтекстноеМеню" id="1408"/>
 											<ExtendedTooltip name="АмортизацияПоОССтоимостьБУРасходРасширеннаяПодсказка" id="1409"/>
 										</LabelField>
-										<LabelField name="АмортизацияПоОСИзносРасход" id="1383">
-											<DataPath>АмортизацияПоОС.ИзносРасход</DataPath>
+										<LabelField name="АмортизацияПоОСИзносПриход" id="1380">
+											<DataPath>АмортизацияПоОС.ИзносПриход</DataPath>
 											<Title>
 												<v8:item>
 													<v8:lang>ru</v8:lang>
-													<v8:content>Расход</v8:content>
+													<v8:content>Приход</v8:content>
 												</v8:item>
 											</Title>
 											<ShowInHeader>false</ShowInHeader>
 											<Width>10</Width>
-											<ContextMenu name="АмортизацияПоОСИзносРасходКонтекстноеМеню" id="1384"/>
-											<ExtendedTooltip name="АмортизацияПоОСИзносРасходРасширеннаяПодсказка" id="1385"/>
+											<ContextMenu name="АмортизацияПоОСИзносПриходКонтекстноеМеню" id="1381"/>
+											<ExtendedTooltip name="АмортизацияПоОСИзносПриходРасширеннаяПодсказка" id="1382"/>
 										</LabelField>
 									</ChildItems>
 								</ColumnGroup>
@@ -1236,6 +1244,16 @@
 									</ToolTip>
 									<ExtendedTooltip name="СтраницаМестонахождениеОСРасширеннаяПодсказка" id="653"/>
 									<ChildItems>
+										<CheckBoxField name="ВсеОсновныеСредства" id="1430">
+											<DataPath>ВсеОсновныеСредства</DataPath>
+											<TitleLocation>Right</TitleLocation>
+											<CheckBoxType>Auto</CheckBoxType>
+											<ContextMenu name="ВсеОсновныеСредстваКонтекстноеМеню" id="1431"/>
+											<ExtendedTooltip name="ВсеОсновныеСредстваРасширеннаяПодсказка" id="1432"/>
+											<Events>
+												<Event name="OnChange">ВсеОсновныеСредстваПриИзменении</Event>
+											</Events>
+										</CheckBoxField>
 										<Table name="МестонахождениеОС" id="610">
 											<UseAlternationRowColor>true</UseAlternationRowColor>
 											<EnableStartDrag>true</EnableStartDrag>
@@ -1333,6 +1351,16 @@
 									</ToolTip>
 									<ExtendedTooltip name="СтраницаСобытияОСРасширеннаяПодсказка" id="767"/>
 									<ChildItems>
+										<CheckBoxField name="ВсеОсновныеСредства1" id="1433">
+											<DataPath>ВсеОсновныеСредства</DataPath>
+											<TitleLocation>Right</TitleLocation>
+											<CheckBoxType>Auto</CheckBoxType>
+											<ContextMenu name="ВсеОсновныеСредства1КонтекстноеМеню" id="1434"/>
+											<ExtendedTooltip name="ВсеОсновныеСредства1РасширеннаяПодсказка" id="1435"/>
+											<Events>
+												<Event name="OnChange">ВсеОсновныеСредстваПриИзменении</Event>
+											</Events>
+										</CheckBoxField>
 										<Table name="СобытияОС" id="776">
 											<UseAlternationRowColor>true</UseAlternationRowColor>
 											<EnableStartDrag>true</EnableStartDrag>
@@ -1416,18 +1444,6 @@
 													<ContextMenu name="СобытияОСНомерДокументаКонтекстноеМеню" id="796"/>
 													<ExtendedTooltip name="СобытияОСНомерДокументаРасширеннаяПодсказка" id="797"/>
 												</LabelField>
-												<LabelField name="СобытияОССуммаЗатратБУ" id="819">
-													<DataPath>СобытияОС.СуммаЗатратБУ</DataPath>
-													<Width>10</Width>
-													<ContextMenu name="СобытияОССуммаЗатратБУКонтекстноеМеню" id="820"/>
-													<ExtendedTooltip name="СобытияОССуммаЗатратБУРасширеннаяПодсказка" id="821"/>
-												</LabelField>
-												<CheckBoxField name="СобытияОСПередачаСИзносом" id="807">
-													<DataPath>СобытияОС.ПередачаСИзносом</DataPath>
-													<CheckBoxType>Auto</CheckBoxType>
-													<ContextMenu name="СобытияОСПередачаСИзносомКонтекстноеМеню" id="808"/>
-													<ExtendedTooltip name="СобытияОСПередачаСИзносомРасширеннаяПодсказка" id="809"/>
-												</CheckBoxField>
 											</ChildItems>
 										</Table>
 									</ChildItems>
@@ -1447,6 +1463,16 @@
 									</ToolTip>
 									<ExtendedTooltip name="СтраницаСостояниеОСРасширеннаяПодсказка" id="771"/>
 									<ChildItems>
+										<CheckBoxField name="ВсеОсновныеСредства2" id="1436">
+											<DataPath>ВсеОсновныеСредства</DataPath>
+											<TitleLocation>Right</TitleLocation>
+											<CheckBoxType>Auto</CheckBoxType>
+											<ContextMenu name="ВсеОсновныеСредства2КонтекстноеМеню" id="1437"/>
+											<ExtendedTooltip name="ВсеОсновныеСредства2РасширеннаяПодсказка" id="1438"/>
+											<Events>
+												<Event name="OnChange">ВсеОсновныеСредстваПриИзменении</Event>
+											</Events>
+										</CheckBoxField>
 										<Table name="СостояниеОС" id="862">
 											<UseAlternationRowColor>true</UseAlternationRowColor>
 											<EnableStartDrag>true</EnableStartDrag>
@@ -1539,6 +1565,16 @@
 									</ToolTip>
 									<ExtendedTooltip name="СтраницаПараметрыУчетаОСРасширеннаяПодсказка" id="1208"/>
 									<ChildItems>
+										<CheckBoxField name="ВсеОсновныеСредства3" id="1439">
+											<DataPath>ВсеОсновныеСредства</DataPath>
+											<TitleLocation>Right</TitleLocation>
+											<CheckBoxType>Auto</CheckBoxType>
+											<ContextMenu name="ВсеОсновныеСредства3КонтекстноеМеню" id="1440"/>
+											<ExtendedTooltip name="ВсеОсновныеСредства3РасширеннаяПодсказка" id="1441"/>
+											<Events>
+												<Event name="OnChange">ВсеОсновныеСредстваПриИзменении</Event>
+											</Events>
+										</CheckBoxField>
 										<Table name="ПараметрыУчетаОС" id="1209">
 											<UseAlternationRowColor>true</UseAlternationRowColor>
 											<EnableStartDrag>true</EnableStartDrag>
@@ -2335,7 +2371,7 @@
 ИЗ
 	РегистрСведений.МестонахождениеОС КАК МестонахождениеОС
 ГДЕ
-	МестонахождениеОС.ОсновноеСредство = &amp;ОсновноеСредство</QueryText>
+	МестонахождениеОС.ОсновноеСредство В (&amp;ОсновноеСредство)</QueryText>
 				<MainTable>InformationRegister.МестонахождениеОС</MainTable>
 				<ListSettings>
 					<dcsset:filter>
@@ -2423,7 +2459,7 @@
 ИЗ
 	РегистрСведений.СобытияОС КАК СобытияОС
 ГДЕ
-	СобытияОС.ОсновноеСредство = &amp;ОсновноеСредство</QueryText>
+	СобытияОС.ОсновноеСредство В (&amp;ОсновноеСредство)</QueryText>
 				<MainTable>InformationRegister.СобытияОС</MainTable>
 				<ListSettings>
 					<dcsset:filter>
@@ -2466,7 +2502,7 @@
 ИЗ
 	РегистрСведений.СостоянияОС КАК СостоянияОС
 ГДЕ
-	СостоянияОС.ОсновноеСредство = &amp;ОсновноеСредство</QueryText>
+	СостоянияОС.ОсновноеСредство В (&amp;ОсновноеСредство)</QueryText>
 				<MainTable>InformationRegister.СостоянияОС</MainTable>
 				<ListSettings>
 					<dcsset:filter>
@@ -2773,6 +2809,9 @@
 			<Type>
 				<v8:Type>cfg:DynamicList</v8:Type>
 			</Type>
+			<UseAlways>
+				<Field>АмортизацияПоОС.ОсновноеСредство</Field>
+			</UseAlways>
 			<Settings xsi:type="DynamicList">
 				<ManualQuery>true</ManualQuery>
 				<DynamicDataRead>false</DynamicDataRead>
@@ -2783,9 +2822,7 @@
 	ПараметрыУчетаОССрезПоследних.ОсновноеСредство КАК ОсновноеСредство
 ПОМЕСТИТЬ ВременнаяТаблицаПараметрыУчетаОС
 ИЗ
-	РегистрСведений.ПараметрыУчетаОС.СрезПоследних(
-			&amp;ДатаОкончания,
-			Организация = &amp;Организация) КАК ПараметрыУчетаОССрезПоследних
+	РегистрСведений.ПараметрыУчетаОС.СрезПоследних(&amp;ДатаОкончания, Организация = &amp;Организация) КАК ПараметрыУчетаОССрезПоследних
 ;
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -2839,6 +2876,10 @@
 						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
 					</dcsset:filter>
 					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemField">
+							<dcsset:field>ИнвентарныйНомер</dcsset:field>
+							<dcsset:orderType>Asc</dcsset:orderType>
+						</dcsset:item>
 						<dcsset:viewMode>Normal</dcsset:viewMode>
 						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
 					</dcsset:order>
@@ -2924,7 +2965,7 @@
 			</Type>
 			<Settings xsi:type="DynamicList">
 				<ManualQuery>true</ManualQuery>
-				<DynamicDataRead>true</DynamicDataRead>
+				<DynamicDataRead>false</DynamicDataRead>
 				<QueryText>ВЫБРАТЬ
 	ПараметрыУчетаОС.Период КАК Период,
 	ПараметрыУчетаОС.Регистратор КАК Регистратор,
@@ -2947,7 +2988,7 @@
 ИЗ
 	РегистрСведений.ПараметрыУчетаОС КАК ПараметрыУчетаОС
 ГДЕ
-	ПараметрыУчетаОС.ОсновноеСредство = &amp;ОсновноеСредство</QueryText>
+	ПараметрыУчетаОС.ОсновноеСредство В (&amp;ОсновноеСредство)</QueryText>
 				<MainTable>InformationRegister.ПараметрыУчетаОС</MainTable>
 				<ListSettings>
 					<dcsset:filter>
@@ -3155,6 +3196,22 @@
 						<v8:Type>cfg:EnumRef.ВидыСобытийОС</v8:Type>
 					</Type>
 				</Column>
+				<Column name="БазаАмортизации" id="14">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>База амортизации</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>15</v8:Digits>
+							<v8:FractionDigits>2</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
 			</Columns>
 		</Attribute>
 		<Attribute name="ИтогАмортизацияЗаМесяц" id="66">
@@ -3182,6 +3239,32 @@
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ВсеОсновныеСредства" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Все ОС</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="НадписьБазаАмортизации" id="68">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Надпись база амортизации</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
 			</Type>
 		</Attribute>
 	</Attributes>
