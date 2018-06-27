@@ -168,16 +168,79 @@
 			<Representation>NormalSeparation</Representation>
 			<ExtendedTooltip name="ГруппаПараметрыРегистрацииККТРасширеннаяПодсказка" id="67"/>
 			<ChildItems>
-				<InputField name="СпособФорматоЛогическогоКонтроля" id="104">
-					<DataPath>Объект.СпособФорматоЛогическогоКонтроля</DataPath>
-					<ContextMenu name="СпособФорматоЛогическогоКонтроляКонтекстноеМеню" id="105"/>
-					<ExtendedTooltip name="СпособФорматоЛогическогоКонтроляРасширеннаяПодсказка" id="106"/>
+				<InputField name="СпособФорматноЛогическогоКонтроля" id="104">
+					<DataPath>Объект.СпособФорматноЛогическогоКонтроля</DataPath>
+					<ContextMenu name="СпособФорматноЛогическогоКонтроляКонтекстноеМеню" id="105"/>
+					<ExtendedTooltip name="СпособФорматноЛогическогоКонтроляРасширеннаяПодсказка" id="106"/>
 				</InputField>
-				<InputField name="ДопустимоеРасхождениеФорматоЛогическогоКонтроля" id="107">
-					<DataPath>Объект.ДопустимоеРасхождениеФорматоЛогическогоКонтроля</DataPath>
-					<ContextMenu name="ДопустимоеРасхождениеФорматоЛогическогоКонтроляКонтекстноеМеню" id="108"/>
-					<ExtendedTooltip name="ДопустимоеРасхождениеФорматоЛогическогоКонтроляРасширеннаяПодсказка" id="109"/>
+				<InputField name="ДопустимоеРасхождениеФорматноЛогическогоКонтроля" id="107">
+					<DataPath>Объект.ДопустимоеРасхождениеФорматноЛогическогоКонтроля</DataPath>
+					<Width>5</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ListChoiceMode>true</ListChoiceMode>
+					<ChoiceList>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>0,00</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xs:decimal">0</Value>
+							</xr:Value>
+						</xr:Item>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>0,01</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xs:decimal">0.01</Value>
+							</xr:Value>
+						</xr:Item>
+					</ChoiceList>
+					<ContextMenu name="ДопустимоеРасхождениеФорматноЛогическогоКонтроляКонтекстноеМеню" id="108"/>
+					<ExtendedTooltip name="ДопустимоеРасхождениеФорматноЛогическогоКонтроляРасширеннаяПодсказка" id="109"/>
 				</InputField>
+				<UsualGroup name="ГруппаДополнительныеРеквизиты" id="116">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа дополнительные реквизиты</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа дополнительные реквизиты</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Horizontal</Group>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаДополнительныеРеквизитыРасширеннаяПодсказка" id="117"/>
+					<ChildItems>
+						<CheckBoxField name="ВыводитьПризнакСпособаРасчета" id="113">
+							<DataPath>Объект.ВыводитьПризнакСпособаРасчета</DataPath>
+							<TitleLocation>Left</TitleLocation>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="ВыводитьПризнакСпособаРасчетаКонтекстноеМеню" id="114"/>
+							<ExtendedTooltip name="ВыводитьПризнакСпособаРасчетаРасширеннаяПодсказка" id="115"/>
+						</CheckBoxField>
+						<CheckBoxField name="ВыводитьПризнакПредметаРасчета" id="118">
+							<DataPath>Объект.ВыводитьПризнакПредметаРасчета</DataPath>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="ВыводитьПризнакПредметаРасчетаКонтекстноеМеню" id="119"/>
+							<ExtendedTooltip name="ВыводитьПризнакПредметаРасчетаРасширеннаяПодсказка" id="120"/>
+						</CheckBoxField>
+					</ChildItems>
+				</UsualGroup>
 				<Table name="ПараметрыРегистрацииККТ" id="85">
 					<Representation>List</Representation>
 					<CommandBarLocation>None</CommandBarLocation>
@@ -338,6 +401,17 @@
 				<v8:item>
 					<v8:lang>ru</v8:lang>
 					<v8:content>Использовать снятые с поддержки драйвера</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ПравоДоступаСохранениеДанныхПользователя" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Право доступа сохранение данных пользователя</v8:content>
 				</v8:item>
 			</Title>
 			<Type>

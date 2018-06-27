@@ -38,6 +38,9 @@
 				<dcscom:dimension>true</dcscom:dimension>
 				<dcscom:ignoreNullValues>true</dcscom:ignoreNullValues>
 			</role>
+			<valueType>
+				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:CatalogRef.ПодразделенияОрганизаций</v8:Type>
+			</valueType>
 			<appearance>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 					<dcscor:parameter>МаксимальнаяШирина</dcscor:parameter>
@@ -52,6 +55,9 @@
 				<dcscom:dimension>true</dcscom:dimension>
 				<dcscom:ignoreNullValues>true</dcscom:ignoreNullValues>
 			</role>
+			<valueType>
+				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:CatalogRef.Номенклатура</v8:Type>
+			</valueType>
 			<appearance>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 					<dcscor:parameter>МаксимальнаяШирина</dcscor:parameter>
@@ -66,6 +72,9 @@
 				<dcscom:dimension>true</dcscom:dimension>
 				<dcscom:ignoreNullValues>true</dcscom:ignoreNullValues>
 			</role>
+			<valueType>
+				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:CatalogRef.НоменклатурныеГруппы</v8:Type>
+			</valueType>
 			<appearance>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 					<dcscor:parameter>МаксимальнаяШирина</dcscor:parameter>
@@ -149,6 +158,9 @@
 				<dcscom:dimension>true</dcscom:dimension>
 				<dcscom:ignoreNullValues>true</dcscom:ignoreNullValues>
 			</role>
+			<valueType>
+				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:CatalogRef.СтатьиЗатрат</v8:Type>
+			</valueType>
 			<appearance>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 					<dcscor:parameter>МаксимальнаяШирина</dcscor:parameter>
@@ -162,15 +174,13 @@
 	ВыпускПродукцииУслугОбороты.Подразделение КАК Подразделение,
 	ВыпускПродукцииУслугОбороты.НоменклатурнаяГруппа КАК НоменклатурнаяГруппа,
 	ВыпускПродукцииУслугОбороты.Продукция КАК Продукция,
-	ВыпускПродукцииУслугОбороты.КоличествоОборот КАК Количество,
-	ВыпускПродукцииУслугОбороты.ПлановаяСтоимостьОборот КАК СуммаЗатрат,
-	ВыпускПродукцииУслугОбороты.ПлановаяСтоимостьОборот / ВыпускПродукцииУслугОбороты.КоличествоОборот КАК СебестоимостьЗаЕдиницу,
 	ВыпускПродукцииУслугОбороты.СчетЗатрат КАК СчетЗатрат,
 	ВыпускПродукцииУслугОбороты.СчетСписания КАК СчетСписания
 ПОМЕСТИТЬ ВременнаяТаблицаВыпускГП
 ИЗ
 	РегистрНакопления.ВыпускПродукцииУслуг.Обороты(&amp;НачалоПериода, &amp;КонецПериода, , ) КАК ВыпускПродукцииУслугОбороты
 ;
+
 ////////////////////////////////////////////////////////////////////////////////
 ВЫБРАТЬ РАЗРЕШЕННЫЕ
 	ХозрасчетныйОбороты.Счет КАК Счет,
@@ -206,6 +216,7 @@
 					ВременнаяТаблицаВыпускГП КАК ВременнаяТаблицаВыпускГП),
 			&amp;МассивКорСубконто) КАК ХозрасчетныйОбороты
 ;
+
 ////////////////////////////////////////////////////////////////////////////////
 ВЫБРАТЬ
 	ВременнаяТаблицаВыпускФакт.Организация КАК Организация,
@@ -215,7 +226,11 @@
 	ВременнаяТаблицаВыпускФакт.СтатьяЗатрат КАК СтатьяЗатрат,
 	ВременнаяТаблицаВыпускФакт.Количество КАК Количество,
 	ВременнаяТаблицаВыпускФакт.СуммаЗатрат КАК СуммаЗатрат,
-	ВременнаяТаблицаВыпускФакт.СуммаЗатрат / ВременнаяТаблицаВыпускФакт.Количество КАК СебестоимостьЗаЕдиницу
+	ВременнаяТаблицаВыпускФакт.СуммаЗатрат / ВЫБОР
+		КОГДА ВременнаяТаблицаВыпускФакт.Количество = 0
+			ТОГДА 1
+		ИНАЧЕ ВременнаяТаблицаВыпускФакт.Количество
+	КОНЕЦ КАК СебестоимостьЗаЕдиницу
 {ВЫБРАТЬ
 	Организация.*,
 	Подразделение.*,
@@ -225,13 +240,11 @@
 	Количество,
 	СуммаЗатрат,
 	СебестоимостьЗаЕдиницу}
-
 ИЗ
 	ВременнаяТаблицаВыпускФакт КАК ВременнаяТаблицаВыпускФакт
 {ГДЕ
 	ВременнаяТаблицаВыпускФакт.Подразделение.*,
-	ВременнаяТаблицаВыпускФакт.НоменклатурнаяГруппа.*}
-;</query>
+	ВременнаяТаблицаВыпускФакт.НоменклатурнаяГруппа.*}</query>
 		<autoFillFields>false</autoFillFields>
 	</dataSet>
 	<totalField>

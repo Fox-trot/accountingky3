@@ -55,14 +55,47 @@
 					<ShowTitle>false</ShowTitle>
 					<ExtendedTooltip name="ГруппаПериодExtendedTooltip" id="338"/>
 					<ChildItems>
-						<InputField name="Период" id="285">
-							<DataPath>Отчет.Период</DataPath>
-							<ContextMenu name="ПериодКонтекстноеМеню" id="286"/>
-							<ExtendedTooltip name="ПериодРасширеннаяПодсказка" id="342"/>
+						<InputField name="НачалоПериода" id="285">
+							<DataPath>Отчет.НачалоПериода</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Период</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="НачалоПериодаКонтекстноеМеню" id="286"/>
+							<ExtendedTooltip name="НачалоПериодаExtendedTooltip" id="342"/>
 							<Events>
-								<Event name="OnChange">ПериодПриИзменении</Event>
+								<Event name="OnChange">НачалоПериодаПриИзменении</Event>
 							</Events>
 						</InputField>
+						<LabelDecoration name="ДекорацияТире" id="287">
+							<HorizontalStretch>false</HorizontalStretch>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>–</v8:content>
+								</v8:item>
+							</Title>
+							<HorizontalAlign>Center</HorizontalAlign>
+							<VerticalAlign>Center</VerticalAlign>
+							<ContextMenu name="ДекорацияТиреКонтекстноеМеню" id="288"/>
+							<ExtendedTooltip name="ДекорацияТиреExtendedTooltip" id="343"/>
+						</LabelDecoration>
+						<InputField name="КонецПериода" id="289">
+							<DataPath>Отчет.КонецПериода</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<ContextMenu name="КонецПериодаКонтекстноеМеню" id="290"/>
+							<ExtendedTooltip name="КонецПериодаExtendedTooltip" id="344"/>
+							<Events>
+								<Event name="OnChange">КонецПериодаПриИзменении</Event>
+							</Events>
+						</InputField>
+						<Button name="ВыбратьПериод" id="435">
+							<Type>UsualButton</Type>
+							<CommandName>Form.Command.ВыбратьПериод</CommandName>
+							<ExtendedTooltip name="ВыбратьПериодРасширеннаяПодсказка" id="436"/>
+						</Button>
 					</ChildItems>
 				</UsualGroup>
 				<InputField name="ПолеОрганизация" id="335">
@@ -490,6 +523,7 @@
 									<ExtendedTooltip name="СтраницыПанельНастроекExtendedTooltip" id="369"/>
 									<ChildItems>
 										<Page name="ГруппаГруппировка" id="95">
+											<Visible>false</Visible>
 											<Title>
 												<v8:item>
 													<v8:lang>ru</v8:lang>
@@ -930,6 +964,7 @@
 											</ChildItems>
 										</Page>
 										<Page name="ГруппаДополнительныеДанные" id="97">
+											<Visible>false</Visible>
 											<Title>
 												<v8:item>
 													<v8:lang>ru</v8:lang>
@@ -1108,6 +1143,7 @@
 											</ChildItems>
 										</Page>
 										<Page name="ГруппаСортировка" id="56">
+											<Visible>false</Visible>
 											<Title>
 												<v8:item>
 													<v8:lang>ru</v8:lang>
@@ -1802,6 +1838,26 @@
 			</Picture>
 			<Action>ДополнительныеПоляСнятьФлажки</Action>
 		</Command>
+		<Command name="ВыбратьПериод" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выбрать период</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выбрать период</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Select</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ВыбратьПериод</Action>
+			<Representation>Picture</Representation>
+		</Command>
 		<Command name="ЗакрытьНастройки" id="7">
 			<Title>
 				<v8:item>
@@ -1860,7 +1916,7 @@
 			</Picture>
 			<Action>ОтправитьПоЭлектроннойПочте</Action>
 		</Command>
-		<Command name="НастроитьРассылкуОтчета" id="6">
+		<Command name="НастроитьРассылкуОтчета" id="9">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
