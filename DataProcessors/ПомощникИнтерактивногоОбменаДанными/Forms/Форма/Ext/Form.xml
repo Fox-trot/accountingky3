@@ -1391,7 +1391,7 @@
 									<v8:content>Регистрация данных</v8:content>
 								</v8:item>
 							</Title>
-							<Group>Horizontal</Group>
+							<Group>AlwaysHorizontal</Group>
 							<VerticalAlign>Center</VerticalAlign>
 							<Representation>NormalSeparation</Representation>
 							<ExtendedTooltip name="ЗаголовокСтраницыРегистрацияИзмененийРасширеннаяПодсказка" id="971"/>
@@ -2219,7 +2219,7 @@
 									<v8:content>Страница навигации начало</v8:content>
 								</v8:item>
 							</Title>
-							<Group>HorizontalIfPossible</Group>
+							<Group>AlwaysHorizontal</Group>
 							<ExtendedTooltip name="СтраницаНавигацииНачалоExtendedTooltip" id="888"/>
 							<ChildItems>
 								<CommandBar name="КоманднаяПанель1" id="431">
@@ -2261,7 +2261,7 @@
 									<v8:content>Страница навигации продолжение</v8:content>
 								</v8:item>
 							</Title>
-							<Group>HorizontalIfPossible</Group>
+							<Group>AlwaysHorizontal</Group>
 							<ExtendedTooltip name="СтраницаНавигацииПродолжениеExtendedTooltip" id="893"/>
 							<ChildItems>
 								<CommandBar name="КоманднаяПанель2" id="437">
@@ -2302,7 +2302,7 @@
 									<v8:content>Страница навигации окончание</v8:content>
 								</v8:item>
 							</Title>
-							<Group>HorizontalIfPossible</Group>
+							<Group>AlwaysHorizontal</Group>
 							<ExtendedTooltip name="СтраницаНавигацииОкончаниеExtendedTooltip" id="898"/>
 							<ChildItems>
 								<CommandBar name="КоманднаяПанель3" id="443">
@@ -2337,7 +2337,7 @@
 									<v8:content>Страница навигации ожидание</v8:content>
 								</v8:item>
 							</Title>
-							<Group>HorizontalIfPossible</Group>
+							<Group>AlwaysHorizontal</Group>
 							<ExtendedTooltip name="СтраницаНавигацииОжиданиеExtendedTooltip" id="902"/>
 							<ChildItems>
 								<CommandBar name="КоманднаяПанель4" id="449">
@@ -2374,6 +2374,7 @@
 									<v8:content>Страница навигации ошибка расхождения версий</v8:content>
 								</v8:item>
 							</Title>
+							<Group>AlwaysHorizontal</Group>
 							<ExtendedTooltip name="СтраницаНавигацииОшибкаРасхожденияВерсийРасширеннаяПодсказка" id="926"/>
 							<ChildItems>
 								<CommandBar name="КоманднаяПанель5" id="927">
@@ -2400,6 +2401,46 @@
 								</CommandBar>
 							</ChildItems>
 						</Page>
+						<Page name="СтраницаНавигацииИнформацииСтатистики" id="978">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Страница навигации информации статистики</v8:content>
+								</v8:item>
+							</Title>
+							<Group>AlwaysHorizontal</Group>
+							<ExtendedTooltip name="СтраницаНавигацииИнформацииСтатистикиРасширеннаяПодсказка" id="979"/>
+							<ChildItems>
+								<CommandBar name="КоманднаяПанель6" id="980">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Командная панель6</v8:content>
+										</v8:item>
+									</Title>
+									<HorizontalLocation>Right</HorizontalLocation>
+									<ExtendedTooltip name="КоманднаяПанель6РасширеннаяПодсказка" id="981"/>
+									<ChildItems>
+										<Button name="КомандаДалее1" id="982">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Command.КомандаДалее</CommandName>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Закончить сопоставление</v8:content>
+												</v8:item>
+											</Title>
+											<ExtendedTooltip name="КомандаДалее1РасширеннаяПодсказка" id="983"/>
+										</Button>
+										<Button name="КомандаОтмена2" id="984">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Command.КомандаОтмена</CommandName>
+											<ExtendedTooltip name="КомандаОтмена2РасширеннаяПодсказка" id="985"/>
+										</Button>
+									</ChildItems>
+								</CommandBar>
+							</ChildItems>
+						</Page>
 					</ChildItems>
 				</Pages>
 			</ChildItems>
@@ -2411,21 +2452,6 @@
 				<v8:Type>cfg:DataProcessorObject.ПомощникИнтерактивногоОбменаДанными</v8:Type>
 			</Type>
 			<MainAttribute>true</MainAttribute>
-		</Attribute>
-		<Attribute name="ВариантРаботыМастера" id="3">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Вариант работы мастера</v8:content>
-				</v8:item>
-			</Title>
-			<Type>
-				<v8:Type>xs:string</v8:Type>
-				<v8:StringQualifiers>
-					<v8:Length>50</v8:Length>
-					<v8:AllowedLength>Variable</v8:AllowedLength>
-				</v8:StringQualifiers>
-			</Type>
 		</Attribute>
 		<Attribute name="ВыполнитьСопоставлениеПриОткрытии" id="4">
 			<Title>
@@ -3359,6 +3385,33 @@
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="МодельСервиса" id="54">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Модель сервиса</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ОбластьДанныхКорреспондента" id="55">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Область данных корреспондента</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
 			</Type>
 		</Attribute>
 	</Attributes>

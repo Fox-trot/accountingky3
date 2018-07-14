@@ -7,6 +7,75 @@
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 	</Events>
 	<ChildItems>
+		<CommandBar name="ГруппаКоманднаяПанель" id="298">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа командная панель</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа командная панель</v8:content>
+				</v8:item>
+			</ToolTip>
+			<ExtendedTooltip name="ГруппаКоманднаяПанельРасширеннаяПодсказка" id="299"/>
+			<ChildItems>
+				<Popup name="ГруппаПодменю" id="300">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Отчеты</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа подменю</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="ГруппаПодменюРасширеннаяПодсказка" id="301"/>
+					<ChildItems>
+						<Button name="ОткрытьОтчетМатериальнаяВедомость" id="302">
+							<Type>CommandBarButton</Type>
+							<CommandName>Form.Command.ОткрытьОтчетМатериальнаяВедомость</CommandName>
+							<ExtendedTooltip name="ОткрытьОтчетМатериальнаяВедомостьРасширеннаяПодсказка" id="303"/>
+						</Button>
+						<Button name="ОткрытьОтчетОборотнаяВедомостьТоварыПоГруппам" id="304">
+							<Type>CommandBarButton</Type>
+							<CommandName>Form.Command.ОткрытьОтчетОборотнаяВедомостьТоварыПоГруппам</CommandName>
+							<ExtendedTooltip name="ОткрытьОтчетОборотнаяВедомостьТоварыПоГруппамРасширеннаяПодсказка" id="305"/>
+						</Button>
+						<Button name="ОткрытьОтчетОборотноСальдоваяВедомостьПоТоварам" id="306">
+							<Type>CommandBarButton</Type>
+							<CommandName>Form.Command.ОткрытьОтчетОборотноСальдоваяВедомостьПоТоварам</CommandName>
+							<ExtendedTooltip name="ОткрытьОтчетОборотноСальдоваяВедомостьПоТоварамРасширеннаяПодсказка" id="307"/>
+						</Button>
+						<Button name="ОткрытьОтчетОстаткиТоваров" id="308">
+							<Type>CommandBarButton</Type>
+							<CommandName>Form.Command.ОткрытьОтчетОстаткиТоваров</CommandName>
+							<ExtendedTooltip name="ОткрытьОтчетОстаткиТоваровРасширеннаяПодсказка" id="309"/>
+						</Button>
+						<Button name="ОткрытьОтчетКонтрольОтрицательныхОстатков" id="314">
+							<Type>CommandBarButton</Type>
+							<CommandName>Form.Command.ОткрытьОтчетКонтрольОтрицательныхОстатков</CommandName>
+							<ExtendedTooltip name="ОткрытьОтчетКонтрольОтрицательныхОстатковРасширеннаяПодсказка" id="315"/>
+						</Button>
+						<Button name="ОткрытьОтчетСводПоТоварам" id="310">
+							<Type>CommandBarButton</Type>
+							<CommandName>Form.Command.ОткрытьОтчетСводПоТоварам</CommandName>
+							<ExtendedTooltip name="ОткрытьОтчетСводПоТоварамРасширеннаяПодсказка" id="311"/>
+						</Button>
+						<Button name="ОткрытьОтчетОборотноСальдоваяВедомостьПоСчету" id="312">
+							<Type>CommandBarButton</Type>
+							<CommandName>Form.Command.ОткрытьОтчетОборотноСальдоваяВедомостьПоСчету</CommandName>
+							<ExtendedTooltip name="ОткрытьОтчетОборотноСальдоваяВедомостьПоСчетуРасширеннаяПодсказка" id="313"/>
+						</Button>
+					</ChildItems>
+				</Popup>
+			</ChildItems>
+		</CommandBar>
 		<UsualGroup name="ГруппаШапка" id="224">
 			<Title>
 				<v8:item>
@@ -851,6 +920,7 @@
 				<DynamicDataRead>false</DynamicDataRead>
 				<QueryText>ВЫБРАТЬ
 	Номенклатура.Ссылка КАК Номенклатура,
+	Номенклатура.Наименование КАК НаименованиеНоменклатуры,
 	ХозрасчетныйОстаткиИОбороты.СуммаНачальныйОстаток КАК СальдоН,
 	ХозрасчетныйОстаткиИОбороты.СуммаКонечныйОстаток КАК СальдоК,
 	ХозрасчетныйОстаткиИОбороты.СуммаОборот КАК ОборотСумма,
@@ -875,7 +945,7 @@
 			ИЛИ ХозрасчетныйОстаткиИОбороты.КоличествоОборотКт &lt;&gt; 0)
 
 УПОРЯДОЧИТЬ ПО
-	Номенклатура,
+	Номенклатура.Наименование,
 	Склад,
 	Счет</QueryText>
 				<ListSettings>
@@ -1438,6 +1508,111 @@
 			</ToolTip>
 			<Action>ПоказатьТаблицуРасшифровкаПоСобытиямОС</Action>
 			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ОткрытьОтчетМатериальнаяВедомость" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Материальная ведомость</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть отчет материальная ведомость</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ОткрытьОтчетМатериальнаяВедомость</Action>
+		</Command>
+		<Command name="ОткрытьОтчетОборотнаяВедомостьТоварыПоГруппам" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Оборотная ведомость товары по группам</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть отчет оборотная ведомость товары по группам</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ОткрытьОтчетОборотнаяВедомостьТоварыПоГруппам</Action>
+		</Command>
+		<Command name="ОткрытьОтчетОборотноСальдоваяВедомостьПоТоварам" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Оборотно сальдовая ведомость по товарам</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть отчет оборотно сальдовая ведомость по товарам</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ОткрытьОтчетОборотноСальдоваяВедомостьПоТоварам</Action>
+		</Command>
+		<Command name="ОткрытьОтчетОстаткиТоваров" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Остатки товаров</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть отчет остатки товаров</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ОткрытьОтчетОстаткиТоваров</Action>
+		</Command>
+		<Command name="ОткрытьОтчетСводПоТоварам" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Свод по товарам</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть отчет свод по товарам</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ОткрытьОтчетСводПоТоварам</Action>
+		</Command>
+		<Command name="ОткрытьОтчетОборотноСальдоваяВедомостьПоСчету" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Оборотно сальдовая ведомость по счету</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть отчет оборотно сальдовая ведомость по счету</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ОткрытьОтчетОборотноСальдоваяВедомостьПоСчету</Action>
+		</Command>
+		<Command name="ОткрытьОтчетКонтрольОтрицательныхОстатков" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Контроль отрицательных остатков</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть отчет контроль отрицательных остатков</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ОткрытьОтчетКонтрольОтрицательныхОстатков</Action>
 		</Command>
 	</Commands>
 </Form>
