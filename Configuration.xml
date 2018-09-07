@@ -49,7 +49,7 @@
 				<xr:Item xsi:type="xr:MDObjectRef">Role.ИнтерактивноеОткрытиеВнешнихОтчетовИОбработок</xr:Item>
 			</DefaultRoles>
 			<Vendor>Фирма "1С"</Vendor>
-			<Version>3.0.10.9</Version>
+			<Version>3.0.11.14</Version>
 			<UpdateCatalogAddress>http://downloads.v8.1c.ru/tmplts/</UpdateCatalogAddress>
 			<IncludeHelpInContents>true</IncludeHelpInContents>
 			<UseManagedFormInOrdinaryApplication>false</UseManagedFormInOrdinaryApplication>
@@ -293,6 +293,8 @@
 			<CommonPicture>ВидСравнения</CommonPicture>
 			<CommonPicture>ВидыКонтактнойИнформации</CommonPicture>
 			<CommonPicture>ВидыОпераций</CommonPicture>
+			<CommonPicture>ВнешняяКомпонентаДоступна</CommonPicture>
+			<CommonPicture>ВнешняяКомпонентаНеДоступна</CommonPicture>
 			<CommonPicture>ВниманиеКрасный</CommonPicture>
 			<CommonPicture>Вопрос32</CommonPicture>
 			<CommonPicture>ВосклицательныйЗнакКрасный</CommonPicture>
@@ -727,7 +729,6 @@
 			<SessionParameter>ВсеВидыДоступаКромеСпециальных</SessionParameter>
 			<SessionParameter>ВыполняетсяЗаписьОбъекта</SessionParameter>
 			<SessionParameter>ВыполняетсяОбновлениеИБ</SessionParameter>
-			<SessionParameter>ГруппыДоступаАвторизованногоПользователя</SessionParameter>
 			<SessionParameter>ДатаОбновленияПовторноИспользуемыхЗначенийМРО</SessionParameter>
 			<SessionParameter>ДействующиеДатыЗапретаИзменения</SessionParameter>
 			<SessionParameter>ИдентификаторыТаблицСОтдельнымиНастройкамиПрав</SessionParameter>
@@ -735,14 +736,15 @@
 			<SessionParameter>ОбновитьВерсиюДатЗапретаИзмененияПослеЗагрузкиДанных</SessionParameter>
 			<SessionParameter>ОграничениеДоступаНаУровнеЗаписейВключено</SessionParameter>
 			<SessionParameter>ОграничениеДоступаНаУровнеЗаписейУниверсально</SessionParameter>
+			<SessionParameter>ОтключениеОбновленияКлючейДоступа</SessionParameter>
 			<SessionParameter>ОтмененныеДлительныеОперации</SessionParameter>
 			<SessionParameter>ОшибкаРасхожденияВерсийПриПолученииДанных</SessionParameter>
 			<SessionParameter>ПараметрыКлиентаНаСервере</SessionParameter>
-			<SessionParameter>ПараметрыКлиентаНаСервереБИП</SessionParameter>
 			<SessionParameter>ПараметрыОбработчикаОбновления</SessionParameter>
+			<SessionParameter>ПараметрыКлиентаНаСервереБИП</SessionParameter>
 			<SessionParameter>ПараметрыОграниченияДоступа</SessionParameter>
-			<SessionParameter>ПараметрыОкруженияБИП_Новости</SessionParameter>
 			<SessionParameter>ПараметрыСеансаСинхронизацииДанных</SessionParameter>
+			<SessionParameter>ПараметрыОкруженияБИП_Новости</SessionParameter>
 			<SessionParameter>ПаролиСинхронизацииДанных</SessionParameter>
 			<SessionParameter>ПодключенныеРасширения</SessionParameter>
 			<SessionParameter>ПравилаВыборочнойРегистрацииОбъектов</SessionParameter>
@@ -750,7 +752,11 @@
 			<SessionParameter>ПриоритетныеДанныеОбмена</SessionParameter>
 			<SessionParameter>ПропуститьПроверкуЗапретаИзменения</SessionParameter>
 			<SessionParameter>РаботаСВнешнимиРесурсамиЗаблокирована</SessionParameter>
+			<SessionParameter>РазрешенныйНаборГруппДоступа</SessionParameter>
 			<SessionParameter>РабочееМестоКлиента</SessionParameter>
+			<SessionParameter>РазрешенныйНаборГруппПользователей</SessionParameter>
+			<SessionParameter>РазрешенныйПользователь</SessionParameter>
+			<SessionParameter>РазрешенныйПустойНаборГруппДоступа</SessionParameter>
 			<SessionParameter>РежимЗагрузкиСообщенияОбменаДаннымиПередЗапуском</SessionParameter>
 			<SessionParameter>СессииОбменСБанками</SessionParameter>
 			<SessionParameter>СпискиСОграничениемЧерезКлючиДоступаГруппДоступа</SessionParameter>
@@ -808,7 +814,6 @@
 			<Role>ИзменениеМакетовПечатныхФорм</Role>
 			<Role>ИзменениеУчастниковГруппДоступа</Role>
 			<Role>ИнтерактивноеОткрытиеВнешнихОтчетовИОбработок</Role>
-			<Role>ИспользованиеГлобальныхДополнительныхОтчетовИОбработок</Role>
 			<Role>ИспользованиеОбработкиТекущиеДела</Role>
 			<Role>ИспользованиеУниверсальногоОтчета</Role>
 			<Role>НастройкаСинхронизацииФайлов</Role>
@@ -1362,6 +1367,7 @@
 			<XDTOPackage>ImportStatement</XDTOPackage>
 			<XDTOPackage>iso20022_camt053_001_02</XDTOPackage>
 			<XDTOPackage>iso20022_pain001_001_03</XDTOPackage>
+			<XDTOPackage>MonthlySocialFund</XDTOPackage>
 			<XDTOPackage>OPML_2_0</XDTOPackage>
 			<XDTOPackage>Patch</XDTOPackage>
 			<XDTOPackage>ReportNDS</XDTOPackage>
@@ -1501,13 +1507,13 @@
 			<FunctionalOption>ИспользоватьДатыЗапретаЗагрузки</FunctionalOption>
 			<FunctionalOption>ИспользоватьДатыЗапретаИзменения</FunctionalOption>
 			<FunctionalOption>ИспользоватьДополнительныеОбработкиСозданияСвязанныхОбъектов</FunctionalOption>
-			<FunctionalOption>ИспользоватьНесколькоОрганизацийБЭД</FunctionalOption>
 			<FunctionalOption>ИспользоватьДополнительныеОтчетыИОбработки</FunctionalOption>
 			<FunctionalOption>ИспользоватьДополнительныеРеквизитыИСведения</FunctionalOption>
 			<FunctionalOption>ИспользоватьЗаметки</FunctionalOption>
-			<FunctionalOption>ИспользоватьНесколькоНоменклатурныхГрупп</FunctionalOption>
-			<FunctionalOption>ИспользоватьОбменСБанками</FunctionalOption>
 			<FunctionalOption>ИспользоватьНапоминанияПользователя</FunctionalOption>
+			<FunctionalOption>ИспользоватьНесколькоНоменклатурныхГрупп</FunctionalOption>
+			<FunctionalOption>ИспользоватьНесколькоОрганизацийБЭД</FunctionalOption>
+			<FunctionalOption>ИспользоватьОбменСБанками</FunctionalOption>
 			<FunctionalOption>ИспользоватьОбщиеДополнительныеЗначения</FunctionalOption>
 			<FunctionalOption>ИспользоватьОбщиеДополнительныеРеквизитыИСведения</FunctionalOption>
 			<FunctionalOption>ИспользоватьОнлайнПоддержку</FunctionalOption>
@@ -1520,9 +1526,9 @@
 			<FunctionalOption>ИспользоватьУдалениеПомеченныхОбъектов</FunctionalOption>
 			<FunctionalOption>ИспользоватьШифрование</FunctionalOption>
 			<FunctionalOption>ИспользоватьШифрованиеБП</FunctionalOption>
-			<FunctionalOption>ИспользоватьЭлектронныеПодписиЭД</FunctionalOption>
-			<FunctionalOption>ИспользоватьЭлектронныеПодписиБП</FunctionalOption>
 			<FunctionalOption>ИспользоватьЭлектронныеПодписи</FunctionalOption>
+			<FunctionalOption>ИспользоватьЭлектронныеПодписиБП</FunctionalOption>
+			<FunctionalOption>ИспользоватьЭлектронныеПодписиЭД</FunctionalOption>
 			<FunctionalOption>ИспользуютсяПрофилиБезопасности</FunctionalOption>
 			<FunctionalOption>НеВестиУчетПоОрганизациям</FunctionalOption>
 			<FunctionalOption>НеИспользоватьСтатьиДвиженияДенежныхСредств</FunctionalOption>
@@ -1530,6 +1536,7 @@
 			<FunctionalOption>ОграничиватьДоступНаУровнеЗаписейУниверсально</FunctionalOption>
 			<FunctionalOption>ОтложенноеОбновлениеВГлавномУзлеЗавершеноУспешно</FunctionalOption>
 			<FunctionalOption>ОтложенноеОбновлениеЗавершеноУспешно</FunctionalOption>
+			<FunctionalOption>ПисьмаОбменСБанками</FunctionalOption>
 			<FunctionalOption>ПлательщикЕН</FunctionalOption>
 			<FunctionalOption>ПлательщикНДС</FunctionalOption>
 			<FunctionalOption>ПлательщикНСП</FunctionalOption>
@@ -1549,18 +1556,18 @@
 			<FunctionalOption>УказыватьПризнакЗачетаНДС</FunctionalOption>
 			<FunctionalOption>УчетДвиженияОСПоМОЛ</FunctionalOption>
 			<FunctionalOption>УчетДвиженияОСПоПодразделениям</FunctionalOption>
-			<FunctionalOption>УчетЗаработнойПлатыПоСтатьямЗатрат</FunctionalOption>
+			<FunctionalOption>УчетЗаработнойПлатыВВалюте</FunctionalOption>
 			<FunctionalOption>УчетПоНесколькимОрганизациям</FunctionalOption>
 			<FunctionalOption>УчетПроизводстваПоЗаказам</FunctionalOption>
 			<FunctionalOption>УчетПроизводстваПоНоменклатурнымГруппам</FunctionalOption>
 			<FunctionalOption>ХранитьФайлыВТомахНаДиске</FunctionalOption>
-			<FunctionalOption>ПисьмаОбменСБанками</FunctionalOption>
+			<FunctionalOption>ИспользоватьПрефиксКассыИБанковскогоСчета</FunctionalOption>
 			<FunctionalOptionsParameter>ДополнительныеОтчетыИОбработкиОбъектНазначения</FunctionalOptionsParameter>
 			<FunctionalOptionsParameter>ДополнительныеОтчетыИОбработкиТипФормы</FunctionalOptionsParameter>
 			<FunctionalOptionsParameter>Организация</FunctionalOptionsParameter>
 			<FunctionalOptionsParameter>ТипВерсионируемогоОбъекта</FunctionalOptionsParameter>
-			<DefinedType>БанкОбменСБанками</DefinedType>
 			<DefinedType>АдресатЗапретаИзменения</DefinedType>
+			<DefinedType>БанкОбменСБанками</DefinedType>
 			<DefinedType>БезопасныйРежим</DefinedType>
 			<DefinedType>ВерсионируемыеДанные</DefinedType>
 			<DefinedType>ВерсионируемыеДанныеОбъект</DefinedType>
@@ -1573,9 +1580,10 @@
 			<DefinedType>ВладелецЗначенийКлючейДоступаОбъект</DefinedType>
 			<DefinedType>ВладелецКонтактнойИнформации</DefinedType>
 			<DefinedType>ВладелецНаборовЗначенийДоступаОбъект</DefinedType>
-			<DefinedType>ВладелецОбменСБанками</DefinedType>
 			<DefinedType>ВладелецНастроекПрав</DefinedType>
 			<DefinedType>ВладелецНастроекПравОбъект</DefinedType>
+			<DefinedType>ВладелецОбменСБанками</DefinedType>
+			<DefinedType>ВладелецОбъектОбменСБанками</DefinedType>
 			<DefinedType>ВладелецПрисоединенныхФайлов</DefinedType>
 			<DefinedType>ВладелецПрисоединенныхФайловОбъект</DefinedType>
 			<DefinedType>ВладелецСОграничениемПоНаборамЗначенийДоступаОбъект</DefinedType>
@@ -1583,18 +1591,18 @@
 			<DefinedType>ВнешнийПользователь</DefinedType>
 			<DefinedType>ВнешнийПользовательОбъект</DefinedType>
 			<DefinedType>ЗначениеДоступа</DefinedType>
-			<DefinedType>КассаБПО</DefinedType>
 			<DefinedType>ЗначениеДоступаСГруппамиЗначенийДоступаОбъект</DefinedType>
+			<DefinedType>КассаБПО</DefinedType>
 			<DefinedType>КонтактВзаимодействия</DefinedType>
+			<DefinedType>КонтекстПроверокВеденияУчета</DefinedType>
 			<DefinedType>КонтрагентБИП</DefinedType>
 			<DefinedType>КонтрагентБИПОбъект</DefinedType>
-			<DefinedType>КонтекстПроверокВеденияУчета</DefinedType>
 			<DefinedType>МестоХраненияФункциональныхОпций</DefinedType>
 			<DefinedType>ОбъектСДополнительнымиКомандами</DefinedType>
 			<DefinedType>ОбъектСклонения</DefinedType>
 			<DefinedType>ОбъектСНастраиваемымПорядком</DefinedType>
-			<DefinedType>ОрганизацияБПО</DefinedType>
 			<DefinedType>Организация</DefinedType>
+			<DefinedType>ОрганизацияБПО</DefinedType>
 			<DefinedType>ПодписанныйОбъект</DefinedType>
 			<DefinedType>Подразделение</DefinedType>
 			<DefinedType>ПолеРегистраКлючейДоступаКРегистрам</DefinedType>
@@ -1608,10 +1616,9 @@
 			<DefinedType>ПрисоединенныйФайл</DefinedType>
 			<DefinedType>ПрисоединенныйФайлОбъект</DefinedType>
 			<DefinedType>Респондент</DefinedType>
+			<DefinedType>СчетОрганизацииОбменСБанками</DefinedType>
 			<DefinedType>УточнениеКонтекстаПроверокВеденияУчета</DefinedType>
 			<DefinedType>ФизическоеЛицо</DefinedType>
-			<DefinedType>ВладелецОбъектОбменСБанками</DefinedType>
-			<DefinedType>СчетОрганизацииОбменСБанками</DefinedType>
 			<CommonCommand>ВерсииФайла</CommonCommand>
 			<CommonCommand>ВремяТекущегоСеанса</CommonCommand>
 			<CommonCommand>ВсеФайлы</CommonCommand>
@@ -1697,9 +1704,7 @@
 			<CommandGroup>СинхронизацияДанных</CommandGroup>
 			<Constant>АвтоматическиНастраиватьРазрешенияВПрофиляхБезопасности</Constant>
 			<Constant>АдресПубликацииИнформационнойБазыВИнтернете</Constant>
-			<Constant>АдресПубликацииИнформационнойБазыВЛокальнойСети</Constant>
 			<Constant>ВалютаРегламентированногоУчета</Constant>
-			<Constant>ВвестиКонтрольЗапретаПоШтатномуРасписанию</Constant>
 			<Constant>ВерсияДатЗапретаИзменения</Constant>
 			<Constant>ВнешниеФайлыОбменСБанками</Constant>
 			<Constant>ВремяПечатиПКО</Constant>
@@ -1769,6 +1774,7 @@
 			<Constant>ПараметрыБлокировкиРаботыСВнешнимиРесурсами</Constant>
 			<Constant>ПараметрыИтоговИАгрегатов</Constant>
 			<Constant>ПараметрыРезервногоКопирования</Constant>
+			<Constant>ПечататьСчетаФактурыСГоловнымКонтрагентом</Constant>
 			<Constant>ПисьмаОбменСБанками</Constant>
 			<Constant>ПовторитьЗагрузкуСообщенияОбменаДаннымиПередЗапуском</Constant>
 			<Constant>ПодключениеКСервисуИППССервера</Constant>
@@ -1808,12 +1814,15 @@
 			<Constant>ФункциональнаяОпцияИспользоватьПодключаемоеОборудование</Constant>
 			<Constant>ФункциональнаяОпцияУчетДвиженияОСПоМОЛ</Constant>
 			<Constant>ФункциональнаяОпцияУчетДвиженияОСПоПодразделениям</Constant>
-			<Constant>ФункциональнаяОпцияУчетЗаработнойПлатыПоСтатьямЗатрат</Constant>
+			<Constant>АдресПубликацииИнформационнойБазыВЛокальнойСети</Constant>
 			<Constant>ФункциональнаяОпцияУчетПоНесколькимОрганизациям</Constant>
 			<Constant>ФункциональнаяОпцияУчетПроизводстваПоЗаказам</Constant>
 			<Constant>ФункциональнаяОпцияУчетПроизводстваПоНоменклатурнымГруппам</Constant>
 			<Constant>ХранитьФайлыВТомахНаДиске</Constant>
 			<Constant>ЭтоАвтономноеРабочееМесто</Constant>
+			<Constant>ВвестиКонтрольЗапретаПоШтатномуРасписанию</Constant>
+			<Constant>ФункциональнаяОпцияУчетЗаработнойПлатыВВалюте</Constant>
+			<Constant>ФункциональнаяОпцияПрефиксКассыИБанковскогоСчета</Constant>
 			<CommonForm>БлокировкаРаботыСВнешнимиРесурсами</CommonForm>
 			<CommonForm>ВводЗначенийСпискомСФлажками</CommonForm>
 			<CommonForm>ВводМестаРождения</CommonForm>
@@ -1842,7 +1851,6 @@
 			<CommonForm>ДополнительноеОписание</CommonForm>
 			<CommonForm>ДополнительныеОтчетыИОбработки</CommonForm>
 			<CommonForm>ДополнительныеПараметрыПроксиСервера</CommonForm>
-			<CommonForm>ДоступныеВидыКлиентовВнешнейКомпоненты</CommonForm>
 			<CommonForm>ЗаписьПароляСертификата</CommonForm>
 			<CommonForm>ЗаполнениеСправочниковИзКлассификаторов</CommonForm>
 			<CommonForm>ИнформационнаяПанель</CommonForm>
@@ -1871,6 +1879,7 @@
 			<CommonForm>ПараметрыПроксиСервера</CommonForm>
 			<CommonForm>ПечатьДокументов</CommonForm>
 			<CommonForm>ПодготовкаНовогоПисьма</CommonForm>
+			<CommonForm>ПоддерживаемыеКлиентскиеПриложения</CommonForm>
 			<CommonForm>ПодключениеИнтернетПоддержки</CommonForm>
 			<CommonForm>ПоискИсполняемогоФайлаОнлайнПоддержки</CommonForm>
 			<CommonForm>ПоказателиВыделенныхЯчеек</CommonForm>
@@ -1897,6 +1906,7 @@
 			<CommonForm>СравнениеТабличныхДокументов</CommonForm>
 			<CommonForm>СрокОплаты</CommonForm>
 			<CommonForm>СтруктураПодчиненности</CommonForm>
+			<CommonForm>УстановкаВнешнейКомпонентыНевозможна</CommonForm>
 			<CommonForm>УстановленныеИсправления</CommonForm>
 			<CommonForm>ФайлыВТоме</CommonForm>
 			<CommonForm>ФормаВариантаОтчета</CommonForm>
@@ -1957,7 +1967,6 @@
 			<Catalog>Должности</Catalog>
 			<Catalog>ДополнительныеВнешниеКомпоненты</Catalog>
 			<Catalog>Заметки</Catalog>
-			<Catalog>Доходы</Catalog>
 			<Catalog>ДрайверыОборудования</Catalog>
 			<Catalog>ЗначенияСвойствОбъектов</Catalog>
 			<Catalog>ЗначенияКатегорийНовостей</Catalog>
@@ -1988,6 +1997,7 @@
 			<Catalog>МаршрутыПодписания</Catalog>
 			<Catalog>МетодыРасчетаБольничногоЛиста</Catalog>
 			<Catalog>МетодыРасчетаОтпуска</Catalog>
+			<Catalog>НаборыГруппДоступа</Catalog>
 			<Catalog>НаборыДополнительныхРеквизитовИСведений</Catalog>
 			<Catalog>НастройкиОбменСБанками</Catalog>
 			<Catalog>НастройкиРегламентированныхОтчетов</Catalog>
@@ -2032,6 +2042,7 @@
 			<Catalog>СоставыВоеннослужащих</Catalog>
 			<Catalog>СостояниеВБраке</Catalog>
 			<Catalog>СпецификацииНоменклатуры</Catalog>
+			<Catalog>СпособыОтраженияЗаработнойПлаты</Catalog>
 			<Catalog>СпособыОтраженияРасходовПоАмортизации</Catalog>
 			<Catalog>СтавкиНДС</Catalog>
 			<Catalog>СтавкиНСП</Catalog>
@@ -2050,6 +2061,7 @@
 			<Catalog>ТипыПисемОбменСБанками</Catalog>
 			<Catalog>ТипыЦенНоменклатуры</Catalog>
 			<Catalog>ТомаХраненияФайлов</Catalog>
+			<Catalog>Участки</Catalog>
 			<Catalog>УчебныеЗаведения</Catalog>
 			<Catalog>УченыеЗвания</Catalog>
 			<Catalog>УченыеСтепени</Catalog>
@@ -2087,6 +2099,7 @@
 			<Document>КадровоеПеремещение</Document>
 			<Document>КассоваяСмена</Document>
 			<Document>Командировка</Document>
+			<Document>КомплектацияОС</Document>
 			<Document>Конвертация</Document>
 			<Document>КорректировкаНУ</Document>
 			<Document>МодернизацияОС</Document>
@@ -2156,6 +2169,7 @@
 			<Enum>ВариантыВерсионированияОбъектов</Enum>
 			<Enum>ВариантыВыводаМесяцаВДатеДокумента</Enum>
 			<Enum>ВариантыИспользованияВнешнихКомпонент</Enum>
+			<Enum>ВариантыОтчетаНалогаНаИмущество</Enum>
 			<Enum>ВариантыОчисткиФайлов</Enum>
 			<Enum>ВариантыПечатиПрайсЛиста</Enum>
 			<Enum>ВариантыПубликацииДополнительныхОтчетовИОбработок</Enum>
@@ -2179,6 +2193,7 @@
 			<Enum>ВидыНалоговПоЗаработнойПлате</Enum>
 			<Enum>ВидыОперацийВозвратТоваровПоставщику</Enum>
 			<Enum>ВидыОперацийДвижениеМБП</Enum>
+			<Enum>ВидыОперацийКомплектацияОС</Enum>
 			<Enum>ВидыОперацийПКО</Enum>
 			<Enum>ВидыОперацийПоступлениеТоваровУслуг</Enum>
 			<Enum>ВидыОперацийППВ</Enum>
@@ -2258,7 +2273,9 @@
 			<Enum>СпособыПоворотаИзображения</Enum>
 			<Enum>СпособыПоступленияАктивов</Enum>
 			<Enum>СпособыПризнанияКурсовойРазницы</Enum>
+			<Enum>СпособыПризнанияРасходов</Enum>
 			<Enum>СпособыРаспределенияДопРасходов</Enum>
+			<Enum>СпособыРаспределенияПошлины</Enum>
 			<Enum>СпособыРасчетаНачислений</Enum>
 			<Enum>СпособыРасчетаУдержаний</Enum>
 			<Enum>СпособыРедактированияЭлектронныхПисем</Enum>
@@ -2300,8 +2317,6 @@
 			<Enum>ЦветаЗаметок</Enum>
 			<Enum>ЦветностиИзображения</Enum>
 			<Enum>ЮридическоеФизическоеЛицо</Enum>
-			<Enum>СпособыРаспределенияПошлины</Enum>
-			<Enum>СпособыПризнанияРасходов</Enum>
 			<Report>АвансовыйОтчетЗаМесяц</Report>
 			<Report>АнализВерсийОбъектов</Report>
 			<Report>АнализДвиженийДенежныхСредств</Report>
@@ -2366,7 +2381,6 @@
 			<Report>ОстаткиДенежныхСредств</Report>
 			<Report>ОстаткиТоваров</Report>
 			<Report>ОтчетОНаличииОС</Report>
-			<Report>ОтчетОСписанииОСЗаГод</Report>
 			<Report>ОтчетПоВидамНачисленийИУдержаний</Report>
 			<Report>ОтчетПоПроводкам</Report>
 			<Report>ОтчетПоПродажам</Report>
@@ -2385,7 +2399,6 @@
 			<Report>РеестрДокументов</Report>
 			<Report>РеестрЗакупок</Report>
 			<Report>РеестрПоСписаниюОС</Report>
-			<Report>РеестрПоУскореннойАмортизацииОС</Report>
 			<Report>РеестрПродаж</Report>
 			<Report>РезультатыПроверкиУчета</Report>
 			<Report>СведенияОВыписанныхСчетахФактурахНДСПоОблагаемымПоставкам</Report>
@@ -2533,10 +2546,13 @@
 			<InformationRegister>КлючиДоступаГруппДоступа</InformationRegister>
 			<InformationRegister>КлючиДоступаКОбъектам</InformationRegister>
 			<InformationRegister>КлючиДоступаКРегистрам</InformationRegister>
+			<InformationRegister>КлючиДоступаКРегиструРезультатыПроверкиУчета</InformationRegister>
+			<InformationRegister>КлючиДоступаНаборовГруппДоступа</InformationRegister>
 			<InformationRegister>КлючиДоступаПользователей</InformationRegister>
 			<InformationRegister>КодировкиФайлов</InformationRegister>
 			<InformationRegister>КоэффициентыНалогаНаИмущество</InformationRegister>
 			<InformationRegister>КурсыВалют</InformationRegister>
+			<InformationRegister>КурсыВалютЗаработнаяПлата</InformationRegister>
 			<InformationRegister>КэшПрограммныхИнтерфейсов</InformationRegister>
 			<InformationRegister>КэшТестовыхПериодов</InformationRegister>
 			<InformationRegister>МестонахождениеОС</InformationRegister>
@@ -2616,6 +2632,7 @@
 			<InformationRegister>СведенияОбИмуществе</InformationRegister>
 			<InformationRegister>СведенияОВвозимыхТоварах</InformationRegister>
 			<InformationRegister>СведенияОГруппахОсновныхСредств</InformationRegister>
+			<InformationRegister>СведенияОНДСНаИмпорт</InformationRegister>
 			<InformationRegister>СведенияОПодакционыхТоварах</InformationRegister>
 			<InformationRegister>СведенияОПользователях</InformationRegister>
 			<InformationRegister>СведенияОПоступлении</InformationRegister>
@@ -2632,6 +2649,7 @@
 			<InformationRegister>СобытияОС</InformationRegister>
 			<InformationRegister>СообщенияОбменаДанными</InformationRegister>
 			<InformationRegister>СоответствияОбъектовИнформационныхБаз</InformationRegister>
+			<InformationRegister>СоставОС</InformationRegister>
 			<InformationRegister>СоставыГруппПользователей</InformationRegister>
 			<InformationRegister>СоставыСемейФизическихЛиц</InformationRegister>
 			<InformationRegister>СостояниеЗаказов</InformationRegister>
@@ -2654,7 +2672,6 @@
 			<InformationRegister>СтатусыСинхронизацииФайловСОблачнымСервисом</InformationRegister>
 			<InformationRegister>СтатусыСотрудников</InformationRegister>
 			<InformationRegister>СчетаРасчетовСКонтрагентами</InformationRegister>
-			<InformationRegister>СчетаУчетаЗП</InformationRegister>
 			<InformationRegister>СчетаУчетаНоменклатуры</InformationRegister>
 			<InformationRegister>СчетаУчетаСОсобымПорядкомПереоценки</InformationRegister>
 			<InformationRegister>СчетаФактурыВыписанные</InformationRegister>
@@ -2671,6 +2688,7 @@
 			<InformationRegister>УдалитьНастройкиТранспортаОбмена</InformationRegister>
 			<InformationRegister>УдалитьПараметрыИнтернетПоддержкиПользователей</InformationRegister>
 			<InformationRegister>УдалитьПраваПоЗначениямДоступа</InformationRegister>
+			<InformationRegister>удалитьСчетаУчетаЗП</InformationRegister>
 			<InformationRegister>УдалитьХранимыеФайлыВерсий</InformationRegister>
 			<InformationRegister>УченыеЗванияФизическихЛиц</InformationRegister>
 			<InformationRegister>УченыеСтепениФизическихЛиц</InformationRegister>
@@ -2682,7 +2700,6 @@
 			<InformationRegister>ШтатноеРасписание</InformationRegister>
 			<InformationRegister>ШтрихкодыНоменклатуры</InformationRegister>
 			<InformationRegister>ЭлектронныеПодписи</InformationRegister>
-			<InformationRegister>СведенияОНДСНаИмпорт</InformationRegister>
 			<AccumulationRegister>АвансыДоотгрузка</AccumulationRegister>
 			<AccumulationRegister>БланкиСчетовФактур</AccumulationRegister>
 			<AccumulationRegister>ВозвратДенежныхСредствПодотчетником</AccumulationRegister>

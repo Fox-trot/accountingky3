@@ -53,6 +53,17 @@
 					<v8:content>Дата СФ</v8:content>
 				</v8:item>
 			</title>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ДФ=dd.MM.yyyy</v8:content>
+						</v8:item>
+					</dcscor:value>
+				</dcscor:item>
+			</appearance>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>СерияБланкаСФ</dataPath>
@@ -91,6 +102,17 @@
 		<field xsi:type="DataSetFieldField">
 			<dataPath>ДатаПоставки</dataPath>
 			<field>ДатаПоставки</field>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ДФ=dd.MM.yyyy</v8:content>
+						</v8:item>
+					</dcscor:value>
+				</dcscor:item>
+			</appearance>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>ИНН</dataPath>
@@ -165,6 +187,16 @@
 				</v8:item>
 			</title>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Количество</dataPath>
+			<field>Количество</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Количество</v8:content>
+				</v8:item>
+			</title>
+		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ
 	ПоступлениеТоваровОбороты.Контрагент.ПризнакСтраны КАК ВидСтраны,
@@ -173,6 +205,7 @@
 	ПоступлениеТоваровОбороты.Контрагент.ИНН КАК ИНН,
 	ПоступлениеТоваровОбороты.Контрагент КАК Контрагент,
 	ПоступлениеТоваровОбороты.Номенклатура КАК Номенклатура,
+	ПоступлениеТоваровОбороты.КоличествоОборот КАК Количество,
 	ПоступлениеТоваровОбороты.СуммаНДСОборот КАК СуммаНДС,
 	ПоступлениеТоваровОбороты.СуммаОборот КАК Сумма,
 	ПоступлениеТоваровОбороты.СуммаНСПОборот КАК СуммаНСП,
@@ -187,6 +220,7 @@
 	СведенияОНДСНаИмпорт.СтавкаНДС КАК СтавкаНДС,
 	СведенияОНДСНаИмпорт.Документ КАК Документ,
 	СведенияОНДСНаИмпорт.Номенклатура КАК Номенклатура,
+	СведенияОНДСНаИмпорт.Количество КАК Количество,
 	СведенияОНДСНаИмпорт.СуммаНДС КАК СуммаНДС,
 	СведенияОНДСНаИмпорт.Сумма КАК Сумма,
 	СведенияОНДСНаИмпорт.Сумма + СведенияОНДСНаИмпорт.СуммаНДС КАК Всего
@@ -210,6 +244,7 @@
 	ПоступлениеТоваровОбороты.СуммаНДС КАК СуммаНДС,
 	ПоступлениеТоваровОбороты.Сумма КАК Сумма,
 	ПоступлениеТоваровОбороты.СуммаНСП КАК СуммаНСП,
+	ПоступлениеТоваровОбороты.Количество КАК Количество,
 	ВЫБОР
 		КОГДА ЕСТЬNULL(СведенияОПоступлении.СерияБланкаСФ, "") &lt;&gt; ""
 			ТОГДА СведенияОПоступлении.ДатаСФ
@@ -265,6 +300,7 @@
 	СведенияОНДСНаИмпорт.СуммаНДС,
 	СведенияОНДСНаИмпорт.Сумма,
 	0,
+	СведенияОНДСНаИмпорт.Количество,
 	ДАТАВРЕМЯ(1, 1, 1),
 	"",
 	"",
@@ -293,7 +329,8 @@
 	ВременнаяТаблицаДанные.Сумма КАК Сумма,
 	ВременнаяТаблицаДанные.СуммаНДС КАК СуммаНДС,
 	ВременнаяТаблицаДанные.СуммаНСП КАК СуммаНСП,
-	ВременнаяТаблицаДанные.Всего КАК Всего
+	ВременнаяТаблицаДанные.Всего КАК Всего,
+	ВременнаяТаблицаДанные.Всего КАК Количество
 ИЗ
 	ВременнаяТаблицаДанные КАК ВременнаяТаблицаДанные
 ГДЕ
@@ -333,6 +370,10 @@
 	<totalField>
 		<dataPath>СуммаНСП</dataPath>
 		<expression>Сумма(СуммаНСП)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>Количество</dataPath>
+		<expression>Сумма(Количество)</expression>
 	</totalField>
 	<parameter>
 		<name>НастройкиОтчета</name>
@@ -462,6 +503,10 @@
 					<dcscor:parameter>ВыводитьОтбор</dcscor:parameter>
 					<dcscor:value xsi:type="dcsset:DataCompositionTextOutputType">DontOutput</dcscor:value>
 				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>АвтоПозицияРесурсов</dcscor:parameter>
+					<dcscor:value xsi:type="dcsset:DataCompositionResourcesAutoPosition">DontUse</dcscor:value>
+				</dcscor:item>
 			</dcsset:outputParameters>
 			<dcsset:item xsi:type="dcsset:StructureItemGroup">
 				<dcsset:order>
@@ -469,31 +514,10 @@
 				</dcsset:order>
 				<dcsset:selection>
 					<dcsset:item xsi:type="dcsset:SelectedItemField">
-						<dcsset:field>ДатаСФ</dcsset:field>
-					</dcsset:item>
-					<dcsset:item xsi:type="dcsset:SelectedItemField">
-						<dcsset:field>СерияБланкаСФ</dcsset:field>
-					</dcsset:item>
-					<dcsset:item xsi:type="dcsset:SelectedItemField">
-						<dcsset:field>НомерБланкаСФ</dcsset:field>
-					</dcsset:item>
-					<dcsset:item xsi:type="dcsset:SelectedItemField">
-						<dcsset:field>Документ</dcsset:field>
-					</dcsset:item>
-					<dcsset:item xsi:type="dcsset:SelectedItemField">
 						<dcsset:field>ДатаПоставки</dcsset:field>
 					</dcsset:item>
 					<dcsset:item xsi:type="dcsset:SelectedItemField">
-						<dcsset:field>Контрагент</dcsset:field>
-					</dcsset:item>
-					<dcsset:item xsi:type="dcsset:SelectedItemField">
-						<dcsset:field>ИНН</dcsset:field>
-					</dcsset:item>
-					<dcsset:item xsi:type="dcsset:SelectedItemField">
-						<dcsset:field>ВидСтраны</dcsset:field>
-					</dcsset:item>
-					<dcsset:item xsi:type="dcsset:SelectedItemField">
-						<dcsset:field>СтавкаНДС</dcsset:field>
+						<dcsset:field>Количество</dcsset:field>
 					</dcsset:item>
 					<dcsset:item xsi:type="dcsset:SelectedItemField">
 						<dcsset:field>Сумма</dcsset:field>
@@ -506,6 +530,30 @@
 					</dcsset:item>
 					<dcsset:item xsi:type="dcsset:SelectedItemField">
 						<dcsset:field>Всего</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>Контрагент</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ИНН</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>Документ</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ДатаСФ</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>СерияБланкаСФ</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>НомерБланкаСФ</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ВидСтраны</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>СтавкаНДС</dcsset:field>
 					</dcsset:item>
 				</dcsset:selection>
 			</dcsset:item>
@@ -540,28 +588,13 @@
 				</dcsset:order>
 				<dcsset:selection>
 					<dcsset:item xsi:type="dcsset:SelectedItemField">
-						<dcsset:field>ДатаСФ</dcsset:field>
-					</dcsset:item>
-					<dcsset:item xsi:type="dcsset:SelectedItemField">
-						<dcsset:field>СерияБланкаСФ</dcsset:field>
-					</dcsset:item>
-					<dcsset:item xsi:type="dcsset:SelectedItemField">
-						<dcsset:field>НомерБланкаСФ</dcsset:field>
-					</dcsset:item>
-					<dcsset:item xsi:type="dcsset:SelectedItemField">
-						<dcsset:field>Документ</dcsset:field>
-					</dcsset:item>
-					<dcsset:item xsi:type="dcsset:SelectedItemField">
 						<dcsset:field>ДатаПоставки</dcsset:field>
-					</dcsset:item>
-					<dcsset:item xsi:type="dcsset:SelectedItemField">
-						<dcsset:field>ВидСтраны</dcsset:field>
 					</dcsset:item>
 					<dcsset:item xsi:type="dcsset:SelectedItemField">
 						<dcsset:field>Номенклатура</dcsset:field>
 					</dcsset:item>
 					<dcsset:item xsi:type="dcsset:SelectedItemField">
-						<dcsset:field>СтавкаНДС</dcsset:field>
+						<dcsset:field>Количество</dcsset:field>
 					</dcsset:item>
 					<dcsset:item xsi:type="dcsset:SelectedItemField">
 						<dcsset:field>Сумма</dcsset:field>
@@ -575,7 +608,37 @@
 					<dcsset:item xsi:type="dcsset:SelectedItemField">
 						<dcsset:field>Всего</dcsset:field>
 					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>Контрагент</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ИНН</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>Документ</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ДатаСФ</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>СерияБланкаСФ</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>НомерБланкаСФ</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ВидСтраны</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>СтавкаНДС</dcsset:field>
+					</dcsset:item>
 				</dcsset:selection>
+				<dcsset:outputParameters>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>АвтоПозицияРесурсов</dcscor:parameter>
+						<dcscor:value xsi:type="dcsset:DataCompositionResourcesAutoPosition">DontUse</dcscor:value>
+					</dcscor:item>
+				</dcsset:outputParameters>
 			</dcsset:item>
 		</dcsset:settings>
 	</settingsVariant>
