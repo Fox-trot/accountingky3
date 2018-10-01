@@ -1,9 +1,11 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.6">
+	<AutoSaveDataInSettings>Use</AutoSaveDataInSettings>
 	<CommandBarLocation>None</CommandBarLocation>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
 	<Events>
 		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="BeforeClose">ПередЗакрытием</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 	</Events>
 	<ChildItems>
@@ -339,6 +341,9 @@
 				</v8:item>
 			</ToolTip>
 			<ExtendedTooltip name="СтраницыОбработкиРасширеннаяПодсказка" id="2"/>
+			<Events>
+				<Event name="OnCurrentPageChange">СтраницыОбработкиПриСменеСтраницы</Event>
+			</Events>
 			<ChildItems>
 				<Page name="СтраницаГлавная" id="3">
 					<Title>
@@ -369,7 +374,9 @@
 							<AllowRootChoice>false</AllowRootChoice>
 							<UpdateOnDataChange>Auto</UpdateOnDataChange>
 							<ContextMenu name="СписокТМЗ_ГлавныйКонтекстноеМеню" id="6"/>
-							<AutoCommandBar name="СписокТМЗ_ГлавныйКоманднаяПанель" id="7"/>
+							<AutoCommandBar name="СписокТМЗ_ГлавныйКоманднаяПанель" id="7">
+								<Autofill>false</Autofill>
+							</AutoCommandBar>
 							<ExtendedTooltip name="СписокТМЗ_ГлавныйРасширеннаяПодсказка" id="8"/>
 							<SearchStringAddition name="СписокТМЗ_ГлавныйСтрокаПоиска" id="9">
 								<AdditionSource>
@@ -687,293 +694,6 @@
 						</SpreadSheetDocumentField>
 					</ChildItems>
 				</Page>
-				<Page name="СтраницаСвод" id="222">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Свод</v8:content>
-						</v8:item>
-					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Страница свод</v8:content>
-						</v8:item>
-					</ToolTip>
-					<ExtendedTooltip name="СтраницаСводРасширеннаяПодсказка" id="223"/>
-					<ChildItems>
-						<Table name="СписокТМЗ_ПоСкладам" id="52">
-							<CommandBarLocation>None</CommandBarLocation>
-							<HeightInTableRows>4</HeightInTableRows>
-							<UseAlternationRowColor>true</UseAlternationRowColor>
-							<EnableStartDrag>true</EnableStartDrag>
-							<DataPath>СписокТМЗ_ПоСкладам</DataPath>
-							<RowPictureDataPath>СписокТМЗ_ПоСкладам.DefaultPicture</RowPictureDataPath>
-							<ViewStatusLocation>None</ViewStatusLocation>
-							<AutoRefresh>false</AutoRefresh>
-							<AutoRefreshPeriod>60</AutoRefreshPeriod>
-							<Period>
-								<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
-								<v8:startDate>0001-01-01T00:00:00</v8:startDate>
-								<v8:endDate>0001-01-01T00:00:00</v8:endDate>
-							</Period>
-							<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
-							<RestoreCurrentRow>false</RestoreCurrentRow>
-							<TopLevelParent xsi:nil="true"/>
-							<ShowRoot>true</ShowRoot>
-							<AllowRootChoice>false</AllowRootChoice>
-							<UpdateOnDataChange>Auto</UpdateOnDataChange>
-							<ContextMenu name="СписокТМЗ_ПоСкладамКонтекстноеМеню" id="53"/>
-							<AutoCommandBar name="СписокТМЗ_ПоСкладамКоманднаяПанель" id="54"/>
-							<ExtendedTooltip name="СписокТМЗ_ПоСкладамРасширеннаяПодсказка" id="55"/>
-							<SearchStringAddition name="СписокТМЗ_ПоСкладамСтрокаПоиска" id="56">
-								<AdditionSource>
-									<Item>СписокТМЗ_ПоСкладам</Item>
-									<Type>SearchStringRepresentation</Type>
-								</AdditionSource>
-								<ContextMenu name="СписокТМЗ_ПоСкладамСтрокаПоискаКонтекстноеМеню" id="57"/>
-								<ExtendedTooltip name="СписокТМЗ_ПоСкладамСтрокаПоискаРасширеннаяПодсказка" id="58"/>
-							</SearchStringAddition>
-							<ViewStatusAddition name="СписокТМЗ_ПоСкладамСостояниеПросмотра" id="59">
-								<AdditionSource>
-									<Item>СписокТМЗ_ПоСкладам</Item>
-									<Type>ViewStatusRepresentation</Type>
-								</AdditionSource>
-								<ContextMenu name="СписокТМЗ_ПоСкладамСостояниеПросмотраКонтекстноеМеню" id="60"/>
-								<ExtendedTooltip name="СписокТМЗ_ПоСкладамСостояниеПросмотраРасширеннаяПодсказка" id="61"/>
-							</ViewStatusAddition>
-							<SearchControlAddition name="СписокТМЗ_ПоСкладамУправлениеПоиском" id="62">
-								<AdditionSource>
-									<Item>СписокТМЗ_ПоСкладам</Item>
-									<Type>SearchControl</Type>
-								</AdditionSource>
-								<ContextMenu name="СписокТМЗ_ПоСкладамУправлениеПоискомКонтекстноеМеню" id="63"/>
-								<ExtendedTooltip name="СписокТМЗ_ПоСкладамУправлениеПоискомРасширеннаяПодсказка" id="64"/>
-							</SearchControlAddition>
-							<ChildItems>
-								<LabelField name="СписокТМЗ_ПоСкладамСтандартнаяКартинка" id="80">
-									<DataPath>СписокТМЗ_ПоСкладам.DefaultPicture</DataPath>
-									<Visible>false</Visible>
-									<TitleLocation>None</TitleLocation>
-									<ContextMenu name="СписокТМЗ_ПоСкладамСтандартнаяКартинкаКонтекстноеМеню" id="81"/>
-									<ExtendedTooltip name="СписокТМЗ_ПоСкладамСтандартнаяКартинкаРасширеннаяПодсказка" id="82"/>
-								</LabelField>
-								<LabelField name="СписокТМЗ_ПоСкладамНоменклатура" id="71">
-									<DataPath>СписокТМЗ_ПоСкладам.Номенклатура</DataPath>
-									<Visible>false</Visible>
-									<ContextMenu name="СписокТМЗ_ПоСкладамНоменклатураКонтекстноеМеню" id="72"/>
-									<ExtendedTooltip name="СписокТМЗ_ПоСкладамНоменклатураРасширеннаяПодсказка" id="73"/>
-								</LabelField>
-								<LabelField name="СписокТМЗ_ПоСкладамСклад" id="77">
-									<DataPath>СписокТМЗ_ПоСкладам.Склад</DataPath>
-									<Width>10</Width>
-									<ContextMenu name="СписокТМЗ_ПоСкладамСкладКонтекстноеМеню" id="78"/>
-									<ExtendedTooltip name="СписокТМЗ_ПоСкладамСкладРасширеннаяПодсказка" id="79"/>
-								</LabelField>
-								<LabelField name="СписокТМЗ_ПоСкладамКоличествоН" id="68">
-									<DataPath>СписокТМЗ_ПоСкладам.КоличествоН</DataPath>
-									<Title>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Остаток Н</v8:content>
-										</v8:item>
-									</Title>
-									<Width>9</Width>
-									<ContextMenu name="СписокТМЗ_ПоСкладамКоличествоНКонтекстноеМеню" id="69"/>
-									<ExtendedTooltip name="СписокТМЗ_ПоСкладамКоличествоНРасширеннаяПодсказка" id="70"/>
-								</LabelField>
-								<LabelField name="СписокТМЗ_ПоСкладамПриход" id="134">
-									<DataPath>СписокТМЗ_ПоСкладам.Приход</DataPath>
-									<Width>9</Width>
-									<ContextMenu name="СписокТМЗ_ПоСкладамПриходКонтекстноеМеню" id="135"/>
-									<ExtendedTooltip name="СписокТМЗ_ПоСкладамПриходРасширеннаяПодсказка" id="136"/>
-								</LabelField>
-								<LabelField name="СписокТМЗ_ПоСкладамРасход" id="137">
-									<DataPath>СписокТМЗ_ПоСкладам.Расход</DataPath>
-									<Width>9</Width>
-									<ContextMenu name="СписокТМЗ_ПоСкладамРасходКонтекстноеМеню" id="138"/>
-									<ExtendedTooltip name="СписокТМЗ_ПоСкладамРасходРасширеннаяПодсказка" id="139"/>
-								</LabelField>
-								<LabelField name="СписокТМЗ_ПоСкладамКоличествоК" id="65">
-									<DataPath>СписокТМЗ_ПоСкладам.КоличествоК</DataPath>
-									<Title>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Остаток К</v8:content>
-										</v8:item>
-									</Title>
-									<Width>9</Width>
-									<ContextMenu name="СписокТМЗ_ПоСкладамКоличествоККонтекстноеМеню" id="66"/>
-									<ExtendedTooltip name="СписокТМЗ_ПоСкладамКоличествоКРасширеннаяПодсказка" id="67"/>
-								</LabelField>
-							</ChildItems>
-						</Table>
-						<Table name="СписокТМЗ_ПоСчетам" id="83">
-							<CommandBarLocation>None</CommandBarLocation>
-							<HeightInTableRows>4</HeightInTableRows>
-							<UseAlternationRowColor>true</UseAlternationRowColor>
-							<EnableStartDrag>true</EnableStartDrag>
-							<DataPath>СписокТМЗ_ПоСчетам</DataPath>
-							<RowPictureDataPath>СписокТМЗ_ПоСчетам.DefaultPicture</RowPictureDataPath>
-							<ViewStatusLocation>None</ViewStatusLocation>
-							<AutoRefresh>false</AutoRefresh>
-							<AutoRefreshPeriod>60</AutoRefreshPeriod>
-							<Period>
-								<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
-								<v8:startDate>0001-01-01T00:00:00</v8:startDate>
-								<v8:endDate>0001-01-01T00:00:00</v8:endDate>
-							</Period>
-							<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
-							<RestoreCurrentRow>false</RestoreCurrentRow>
-							<TopLevelParent xsi:nil="true"/>
-							<ShowRoot>true</ShowRoot>
-							<AllowRootChoice>false</AllowRootChoice>
-							<UpdateOnDataChange>Auto</UpdateOnDataChange>
-							<ContextMenu name="СписокТМЗ_ПоСчетамКонтекстноеМеню" id="84"/>
-							<AutoCommandBar name="СписокТМЗ_ПоСчетамКоманднаяПанель" id="85"/>
-							<ExtendedTooltip name="СписокТМЗ_ПоСчетамРасширеннаяПодсказка" id="86"/>
-							<SearchStringAddition name="СписокТМЗ_ПоСчетамСтрокаПоиска" id="87">
-								<AdditionSource>
-									<Item>СписокТМЗ_ПоСчетам</Item>
-									<Type>SearchStringRepresentation</Type>
-								</AdditionSource>
-								<ContextMenu name="СписокТМЗ_ПоСчетамСтрокаПоискаКонтекстноеМеню" id="88"/>
-								<ExtendedTooltip name="СписокТМЗ_ПоСчетамСтрокаПоискаРасширеннаяПодсказка" id="89"/>
-							</SearchStringAddition>
-							<ViewStatusAddition name="СписокТМЗ_ПоСчетамСостояниеПросмотра" id="90">
-								<AdditionSource>
-									<Item>СписокТМЗ_ПоСчетам</Item>
-									<Type>ViewStatusRepresentation</Type>
-								</AdditionSource>
-								<ContextMenu name="СписокТМЗ_ПоСчетамСостояниеПросмотраКонтекстноеМеню" id="91"/>
-								<ExtendedTooltip name="СписокТМЗ_ПоСчетамСостояниеПросмотраРасширеннаяПодсказка" id="92"/>
-							</ViewStatusAddition>
-							<SearchControlAddition name="СписокТМЗ_ПоСчетамУправлениеПоиском" id="93">
-								<AdditionSource>
-									<Item>СписокТМЗ_ПоСчетам</Item>
-									<Type>SearchControl</Type>
-								</AdditionSource>
-								<ContextMenu name="СписокТМЗ_ПоСчетамУправлениеПоискомКонтекстноеМеню" id="94"/>
-								<ExtendedTooltip name="СписокТМЗ_ПоСчетамУправлениеПоискомРасширеннаяПодсказка" id="95"/>
-							</SearchControlAddition>
-							<ChildItems>
-								<LabelField name="СписокТМЗ_ПоСчетамСчет" id="117">
-									<DataPath>СписокТМЗ_ПоСчетам.Счет</DataPath>
-									<ContextMenu name="СписокТМЗ_ПоСчетамСчетКонтекстноеМеню" id="118"/>
-									<ExtendedTooltip name="СписокТМЗ_ПоСчетамСчетРасширеннаяПодсказка" id="119"/>
-								</LabelField>
-								<LabelField name="СписокТМЗ_ПоСчетамСтандартнаяКартинка" id="120">
-									<DataPath>СписокТМЗ_ПоСчетам.DefaultPicture</DataPath>
-									<Visible>false</Visible>
-									<ContextMenu name="СписокТМЗ_ПоСчетамСтандартнаяКартинкаКонтекстноеМеню" id="121"/>
-									<ExtendedTooltip name="СписокТМЗ_ПоСчетамСтандартнаяКартинкаРасширеннаяПодсказка" id="122"/>
-								</LabelField>
-								<LabelField name="СписокТМЗ_ПоСчетамНоменклатура" id="102">
-									<DataPath>СписокТМЗ_ПоСчетам.Номенклатура</DataPath>
-									<Visible>false</Visible>
-									<ContextMenu name="СписокТМЗ_ПоСчетамНоменклатураКонтекстноеМеню" id="103"/>
-									<ExtendedTooltip name="СписокТМЗ_ПоСчетамНоменклатураРасширеннаяПодсказка" id="104"/>
-								</LabelField>
-								<LabelField name="СписокТМЗ_ПоСчетамКоличествоН" id="99">
-									<DataPath>СписокТМЗ_ПоСчетам.КоличествоН</DataPath>
-									<Title>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Остаток Н</v8:content>
-										</v8:item>
-									</Title>
-									<Width>9</Width>
-									<ContextMenu name="СписокТМЗ_ПоСчетамКоличествоНКонтекстноеМеню" id="100"/>
-									<ExtendedTooltip name="СписокТМЗ_ПоСчетамКоличествоНРасширеннаяПодсказка" id="101"/>
-								</LabelField>
-								<LabelField name="СписокТМЗ_ПоСчетамСальдоН" id="114">
-									<DataPath>СписокТМЗ_ПоСчетам.СальдоН</DataPath>
-									<Title>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Сумма Н</v8:content>
-										</v8:item>
-									</Title>
-									<Width>13</Width>
-									<ContextMenu name="СписокТМЗ_ПоСчетамСальдоНКонтекстноеМеню" id="115"/>
-									<ExtendedTooltip name="СписокТМЗ_ПоСчетамСальдоНРасширеннаяПодсказка" id="116"/>
-								</LabelField>
-								<LabelField name="СписокТМЗ_ПоСчетамКоличествоПриход" id="143">
-									<DataPath>СписокТМЗ_ПоСчетам.КоличествоПриход</DataPath>
-									<Title>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Кол приход</v8:content>
-										</v8:item>
-									</Title>
-									<Width>9</Width>
-									<ContextMenu name="СписокТМЗ_ПоСчетамКоличествоПриходКонтекстноеМеню" id="144"/>
-									<ExtendedTooltip name="СписокТМЗ_ПоСчетамКоличествоПриходРасширеннаяПодсказка" id="145"/>
-								</LabelField>
-								<LabelField name="СписокТМЗ_ПоСчетамСуммаПриход" id="140">
-									<DataPath>СписокТМЗ_ПоСчетам.СуммаПриход</DataPath>
-									<Title>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Сум приход</v8:content>
-										</v8:item>
-									</Title>
-									<Width>13</Width>
-									<ContextMenu name="СписокТМЗ_ПоСчетамСуммаПриходКонтекстноеМеню" id="141"/>
-									<ExtendedTooltip name="СписокТМЗ_ПоСчетамСуммаПриходРасширеннаяПодсказка" id="142"/>
-								</LabelField>
-								<LabelField name="СписокТМЗ_ПоСчетамКоличествоРасход" id="146">
-									<DataPath>СписокТМЗ_ПоСчетам.КоличествоРасход</DataPath>
-									<Title>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Кол расход</v8:content>
-										</v8:item>
-									</Title>
-									<Width>9</Width>
-									<ContextMenu name="СписокТМЗ_ПоСчетамКоличествоРасходКонтекстноеМеню" id="147"/>
-									<ExtendedTooltip name="СписокТМЗ_ПоСчетамКоличествоРасходРасширеннаяПодсказка" id="148"/>
-								</LabelField>
-								<LabelField name="СписокТМЗ_ПоСчетамСуммаРасход" id="149">
-									<DataPath>СписокТМЗ_ПоСчетам.СуммаРасход</DataPath>
-									<Title>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Сум расход</v8:content>
-										</v8:item>
-									</Title>
-									<Width>13</Width>
-									<ContextMenu name="СписокТМЗ_ПоСчетамСуммаРасходКонтекстноеМеню" id="150"/>
-									<ExtendedTooltip name="СписокТМЗ_ПоСчетамСуммаРасходРасширеннаяПодсказка" id="151"/>
-								</LabelField>
-								<LabelField name="СписокТМЗ_ПоСчетамКоличествоК" id="96">
-									<DataPath>СписокТМЗ_ПоСчетам.КоличествоК</DataPath>
-									<Title>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Остаток К</v8:content>
-										</v8:item>
-									</Title>
-									<Width>9</Width>
-									<ContextMenu name="СписокТМЗ_ПоСчетамКоличествоККонтекстноеМеню" id="97"/>
-									<ExtendedTooltip name="СписокТМЗ_ПоСчетамКоличествоКРасширеннаяПодсказка" id="98"/>
-								</LabelField>
-								<LabelField name="СписокТМЗ_ПоСчетамСальдоК" id="111">
-									<DataPath>СписокТМЗ_ПоСчетам.СальдоК</DataPath>
-									<Title>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Сумма К</v8:content>
-										</v8:item>
-									</Title>
-									<Width>13</Width>
-									<ContextMenu name="СписокТМЗ_ПоСчетамСальдоККонтекстноеМеню" id="112"/>
-									<ExtendedTooltip name="СписокТМЗ_ПоСчетамСальдоКРасширеннаяПодсказка" id="113"/>
-								</LabelField>
-							</ChildItems>
-						</Table>
-					</ChildItems>
-				</Page>
 				<Page name="СтраницаСводы" id="335">
 					<Title>
 						<v8:item>
@@ -997,6 +717,19 @@
 							<EnableStartDrag>true</EnableStartDrag>
 							<EnableDrag>true</EnableDrag>
 							<DataPath>СписокОбороты</DataPath>
+							<CommandSet>
+								<ExcludedCommand>Add</ExcludedCommand>
+								<ExcludedCommand>Change</ExcludedCommand>
+								<ExcludedCommand>Copy</ExcludedCommand>
+								<ExcludedCommand>CopyToClipboard</ExcludedCommand>
+								<ExcludedCommand>Delete</ExcludedCommand>
+								<ExcludedCommand>EndEdit</ExcludedCommand>
+								<ExcludedCommand>MoveDown</ExcludedCommand>
+								<ExcludedCommand>MoveUp</ExcludedCommand>
+								<ExcludedCommand>ShowRowRearrangement</ExcludedCommand>
+								<ExcludedCommand>SortListAsc</ExcludedCommand>
+								<ExcludedCommand>SortListDesc</ExcludedCommand>
+							</CommandSet>
 							<ContextMenu name="СписокОборотыКонтекстноеМеню" id="338"/>
 							<AutoCommandBar name="СписокОборотыКоманднаяПанель" id="339"/>
 							<ExtendedTooltip name="СписокОборотыРасширеннаяПодсказка" id="340"/>
@@ -1092,7 +825,7 @@
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>Остаток Н Количество/Сумма</v8:content>
+											<v8:content>Остаток Н: Количество/Сумма</v8:content>
 										</v8:item>
 									</Title>
 									<ToolTip>
@@ -1130,7 +863,7 @@
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>Приход Количество/Сумма</v8:content>
+											<v8:content>Приход: Количество/Сумма</v8:content>
 										</v8:item>
 									</Title>
 									<ToolTip>
@@ -1166,7 +899,7 @@
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>Расход Количество/Сумма</v8:content>
+											<v8:content>Расход: Количество/Сумма</v8:content>
 										</v8:item>
 									</Title>
 									<ToolTip>
@@ -1202,7 +935,7 @@
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>Остаток К Количество/Сумма</v8:content>
+											<v8:content>Остаток К: Количество/Сумма</v8:content>
 										</v8:item>
 									</Title>
 									<ToolTip>
@@ -1244,6 +977,21 @@
 							<EnableStartDrag>true</EnableStartDrag>
 							<EnableDrag>true</EnableDrag>
 							<DataPath>РасшифровкаОборотов</DataPath>
+							<CommandSet>
+								<ExcludedCommand>Add</ExcludedCommand>
+								<ExcludedCommand>CancelSearch</ExcludedCommand>
+								<ExcludedCommand>Change</ExcludedCommand>
+								<ExcludedCommand>Copy</ExcludedCommand>
+								<ExcludedCommand>CopyToClipboard</ExcludedCommand>
+								<ExcludedCommand>Delete</ExcludedCommand>
+								<ExcludedCommand>EndEdit</ExcludedCommand>
+								<ExcludedCommand>Find</ExcludedCommand>
+								<ExcludedCommand>MoveDown</ExcludedCommand>
+								<ExcludedCommand>MoveUp</ExcludedCommand>
+								<ExcludedCommand>ShowRowRearrangement</ExcludedCommand>
+								<ExcludedCommand>SortListAsc</ExcludedCommand>
+								<ExcludedCommand>SortListDesc</ExcludedCommand>
+							</CommandSet>
 							<RowFilter xsi:nil="true"/>
 							<ContextMenu name="РасшифровкаОборотовКонтекстноеМеню" id="473"/>
 							<AutoCommandBar name="РасшифровкаОборотовКоманднаяПанель" id="474"/>
@@ -1470,50 +1218,6 @@
 				<v8:Type>cfg:CatalogRef.Склады</v8:Type>
 			</Type>
 		</Attribute>
-		<Attribute name="СписокТМЗ_ПоСкладам" id="5">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Список ТМЗ по складам</v8:content>
-				</v8:item>
-			</Title>
-			<Type>
-				<v8:Type>cfg:DynamicList</v8:Type>
-			</Type>
-			<Settings xsi:type="DynamicList">
-				<ManualQuery>true</ManualQuery>
-				<DynamicDataRead>false</DynamicDataRead>
-				<QueryText>ВЫБРАТЬ
-	ХозрасчетныйОстаткиИОбороты.Субконто1 КАК Номенклатура,
-	ХозрасчетныйОстаткиИОбороты.КоличествоНачальныйОстаток КАК КоличествоН,
-	ХозрасчетныйОстаткиИОбороты.КоличествоКонечныйОстаток КАК КоличествоК,
-	ХозрасчетныйОстаткиИОбороты.Субконто2 КАК Склад,
-	ХозрасчетныйОстаткиИОбороты.КоличествоОборотДт КАК Приход,
-	ХозрасчетныйОстаткиИОбороты.КоличествоОборотКт КАК Расход
-ИЗ
-	РегистрБухгалтерии.Хозрасчетный.ОстаткиИОбороты(&amp;ДатаНачала, &amp;ДатаОкончания, , , , &amp;ВидыСубконто, {(Организация = &amp;Организация)}) КАК ХозрасчетныйОстаткиИОбороты
-
-УПОРЯДОЧИТЬ ПО
-	Номенклатура,
-	Склад</QueryText>
-				<ListSettings>
-					<dcsset:filter>
-						<dcsset:viewMode>Normal</dcsset:viewMode>
-						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
-					</dcsset:filter>
-					<dcsset:order>
-						<dcsset:viewMode>Normal</dcsset:viewMode>
-						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
-					</dcsset:order>
-					<dcsset:conditionalAppearance>
-						<dcsset:viewMode>Normal</dcsset:viewMode>
-						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
-					</dcsset:conditionalAppearance>
-					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
-					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
-				</ListSettings>
-			</Settings>
-		</Attribute>
 		<Attribute name="ОтборНоменклатура" id="6">
 			<Title>
 				<v8:item>
@@ -1524,54 +1228,6 @@
 			<Type>
 				<v8:Type>cfg:CatalogRef.Номенклатура</v8:Type>
 			</Type>
-		</Attribute>
-		<Attribute name="СписокТМЗ_ПоСчетам" id="7">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Список ТМЗ по счетам</v8:content>
-				</v8:item>
-			</Title>
-			<Type>
-				<v8:Type>cfg:DynamicList</v8:Type>
-			</Type>
-			<Settings xsi:type="DynamicList">
-				<ManualQuery>true</ManualQuery>
-				<DynamicDataRead>false</DynamicDataRead>
-				<QueryText>ВЫБРАТЬ
-	ХозрасчетныйОстаткиИОбороты.Субконто1 КАК Номенклатура,
-	ХозрасчетныйОстаткиИОбороты.СуммаНачальныйОстаток КАК СальдоН,
-	ХозрасчетныйОстаткиИОбороты.СуммаКонечныйОстаток КАК СальдоК,
-	ХозрасчетныйОстаткиИОбороты.КоличествоНачальныйОстаток КАК КоличествоН,
-	ХозрасчетныйОстаткиИОбороты.КоличествоКонечныйОстаток КАК КоличествоК,
-	ХозрасчетныйОстаткиИОбороты.Счет КАК Счет,
-	ХозрасчетныйОстаткиИОбороты.СуммаОборотДт КАК СуммаПриход,
-	ХозрасчетныйОстаткиИОбороты.СуммаОборотКт КАК СуммаРасход,
-	ХозрасчетныйОстаткиИОбороты.КоличествоОборотДт КАК КоличествоПриход,
-	ХозрасчетныйОстаткиИОбороты.КоличествоОборотКт КАК КоличествоРасход
-ИЗ
-	РегистрБухгалтерии.Хозрасчетный.ОстаткиИОбороты(&amp;ДатаНачала, &amp;ДатаОкончания, , , , &amp;ВидыСубконто, {(Организация = &amp;Организация)}) КАК ХозрасчетныйОстаткиИОбороты
-
-УПОРЯДОЧИТЬ ПО
-	Номенклатура,
-	Счет</QueryText>
-				<ListSettings>
-					<dcsset:filter>
-						<dcsset:viewMode>Normal</dcsset:viewMode>
-						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
-					</dcsset:filter>
-					<dcsset:order>
-						<dcsset:viewMode>Normal</dcsset:viewMode>
-						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
-					</dcsset:order>
-					<dcsset:conditionalAppearance>
-						<dcsset:viewMode>Normal</dcsset:viewMode>
-						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
-					</dcsset:conditionalAppearance>
-					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
-					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
-				</ListSettings>
-			</Settings>
 		</Attribute>
 		<Attribute name="АдресХранилища" id="10">
 			<Title>
@@ -1718,6 +1374,7 @@
 					<v8:DateFractions>Date</v8:DateFractions>
 				</v8:DateQualifiers>
 			</Type>
+			<SavedData>true</SavedData>
 		</Attribute>
 		<Attribute name="ДатаОкончания" id="22">
 			<Title>
@@ -1732,6 +1389,7 @@
 					<v8:DateFractions>Date</v8:DateFractions>
 				</v8:DateQualifiers>
 			</Type>
+			<SavedData>true</SavedData>
 		</Attribute>
 		<Attribute name="СписокДокументов" id="23">
 			<Title>
@@ -2179,6 +1837,7 @@
 					<v8:AllowedLength>Variable</v8:AllowedLength>
 				</v8:StringQualifiers>
 			</Type>
+			<SavedData>true</SavedData>
 		</Attribute>
 		<Attribute name="ВторойУровень" id="30">
 			<Title>
@@ -2194,6 +1853,7 @@
 					<v8:AllowedLength>Variable</v8:AllowedLength>
 				</v8:StringQualifiers>
 			</Type>
+			<SavedData>true</SavedData>
 		</Attribute>
 		<Attribute name="РасшифровкаОборотов" id="31">
 			<Title>
@@ -2214,7 +1874,12 @@
 						</v8:item>
 					</Title>
 					<Type>
+						<v8:Type>xs:string</v8:Type>
 						<v8:TypeSet>cfg:DocumentRef</v8:TypeSet>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
 					</Type>
 				</Column>
 				<Column name="СчетДт" id="2">
@@ -2431,6 +2096,39 @@
 				</Column>
 			</Columns>
 		</Attribute>
+		<Attribute name="ТекущаяНоменклатура" id="32">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Текущая номенклатура</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Номенклатура</v8:Type>
+			</Type>
+		</Attribute>
+		<ConditionalAppearance>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>РасшифровкаОборотов</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">РасшифровкаОборотов.Документ</dcsset:left>
+						<dcsset:comparisonType>Contains</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:string">Остаток</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ЦветФона</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">#7CC2C1</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+		</ConditionalAppearance>
 	</Attributes>
 	<Commands>
 		<Command name="ПерепровестиДокументы" id="1">

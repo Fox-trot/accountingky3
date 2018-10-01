@@ -12,6 +12,7 @@
 		<ChildItems>
 			<Button name="ОК" id="9">
 				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
 				<CommandName>Form.Command.ЗаполнитьТЧ</CommandName>
 				<Title>
 					<v8:item>
@@ -23,6 +24,9 @@
 			</Button>
 		</ChildItems>
 	</AutoCommandBar>
+	<Events>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
 	<ChildItems>
 		<UsualGroup name="ГруппаВидаНачислений" id="1">
 			<Title>
@@ -42,26 +46,36 @@
 			<ExtendedTooltip name="ГруппаВидаНачисленийРасширеннаяПодсказка" id="2"/>
 			<ChildItems>
 				<InputField name="ВидНачисления" id="14">
-					<DataPath>ВидНачисления</DataPath>
+					<DataPath>ВидРасчета</DataPath>
 					<ContextMenu name="ВидНачисленияКонтекстноеМеню" id="15"/>
 					<ExtendedTooltip name="ВидНачисленияРасширеннаяПодсказка" id="16"/>
+					<Events>
+						<Event name="OnChange">ВидНачисленияПриИзменении</Event>
+					</Events>
 				</InputField>
-				<InputField name="СуммаНачисления" id="11">
-					<DataPath>СуммаНачисления</DataPath>
+				<InputField name="Валюта" id="17">
+					<DataPath>Валюта</DataPath>
+					<Width>8</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ContextMenu name="ВалютаКонтекстноеМеню" id="18"/>
+					<ExtendedTooltip name="ВалютаРасширеннаяПодсказка" id="19"/>
+				</InputField>
+				<InputField name="Размер" id="11">
+					<DataPath>Размер</DataPath>
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
 							<v8:content>Размер</v8:content>
 						</v8:item>
 					</Title>
-					<ContextMenu name="СуммаНачисленияКонтекстноеМеню" id="12"/>
-					<ExtendedTooltip name="СуммаНачисленияРасширеннаяПодсказка" id="13"/>
+					<ContextMenu name="РазмерКонтекстноеМеню" id="12"/>
+					<ExtendedTooltip name="РазмерРасширеннаяПодсказка" id="13"/>
 				</InputField>
 			</ChildItems>
 		</UsualGroup>
 	</ChildItems>
 	<Attributes>
-		<Attribute name="ВидНачисления" id="2">
+		<Attribute name="ВидРасчета" id="2">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -72,11 +86,11 @@
 				<v8:Type>cfg:ChartOfCalculationTypesRef.ВидыНачислений</v8:Type>
 			</Type>
 		</Attribute>
-		<Attribute name="СуммаНачисления" id="3">
+		<Attribute name="Размер" id="3">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Сумма начисления</v8:content>
+					<v8:content>Размер</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -86,6 +100,31 @@
 					<v8:FractionDigits>2</v8:FractionDigits>
 					<v8:AllowedSign>Any</v8:AllowedSign>
 				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="Валюта" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Валюта</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Валюты</v8:Type>
+			</Type>
+			<FunctionalOptions>
+				<Item>FunctionalOption.УчетЗаработнойПлатыВВалюте</Item>
+			</FunctionalOptions>
+		</Attribute>
+		<Attribute name="ВалютаРегламентированногоУчета" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Валюта регламентированного учета</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Валюты</v8:Type>
 			</Type>
 		</Attribute>
 	</Attributes>

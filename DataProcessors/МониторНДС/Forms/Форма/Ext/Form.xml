@@ -345,6 +345,213 @@
 						</Table>
 					</ChildItems>
 				</Page>
+				<Page name="СтраницаАвансыДоотгрузки" id="121">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Авансы/Доотгрузки</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница авансы доотгрузки</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="СтраницаАвансыДоотгрузкиРасширеннаяПодсказка" id="122"/>
+					<ChildItems>
+						<UsualGroup name="ГруппаОтборы" id="169">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа отборы</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа отборы</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>AlwaysHorizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаОтборыРасширеннаяПодсказка" id="170"/>
+							<ChildItems>
+								<InputField name="КонтрагентОтбор" id="163">
+									<DataPath>КонтрагентОтбор</DataPath>
+									<ContextMenu name="КонтрагентОтборКонтекстноеМеню" id="164"/>
+									<ExtendedTooltip name="КонтрагентОтборРасширеннаяПодсказка" id="165"/>
+									<Events>
+										<Event name="OnChange">КонтрагентОтборПриИзменении</Event>
+									</Events>
+								</InputField>
+								<InputField name="ДоговорОтбор" id="166">
+									<DataPath>ДоговорОтбор</DataPath>
+									<ChoiceParameterLinks>
+										<xr:Link>
+											<xr:Name>Отбор.Владелец</xr:Name>
+											<xr:DataPath xsi:type="xs:string">КонтрагентОтбор</xr:DataPath>
+											<xr:ValueChange>Clear</xr:ValueChange>
+										</xr:Link>
+									</ChoiceParameterLinks>
+									<ChoiceParameters>
+										<app:item name="Отбор.ВидДоговора">
+											<app:value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="xr:DesignTimeRef">Enum.ВидыДоговоровКонтрагентов.EnumValue.СПокупателем</Value>
+											</app:value>
+										</app:item>
+									</ChoiceParameters>
+									<ContextMenu name="ДоговорОтборКонтекстноеМеню" id="167"/>
+									<ExtendedTooltip name="ДоговорОтборРасширеннаяПодсказка" id="168"/>
+									<Events>
+										<Event name="OnChange">ДоговорОтборПриИзменении</Event>
+									</Events>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+						<Table name="АвансыДоотгрузки" id="123">
+							<Representation>List</Representation>
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<DataPath>АвансыДоотгрузки</DataPath>
+							<CommandSet>
+								<ExcludedCommand>Add</ExcludedCommand>
+								<ExcludedCommand>Change</ExcludedCommand>
+								<ExcludedCommand>Copy</ExcludedCommand>
+								<ExcludedCommand>CopyToClipboard</ExcludedCommand>
+								<ExcludedCommand>Delete</ExcludedCommand>
+								<ExcludedCommand>EndEdit</ExcludedCommand>
+								<ExcludedCommand>MoveDown</ExcludedCommand>
+								<ExcludedCommand>MoveUp</ExcludedCommand>
+								<ExcludedCommand>ShowRowRearrangement</ExcludedCommand>
+								<ExcludedCommand>SortListAsc</ExcludedCommand>
+								<ExcludedCommand>SortListDesc</ExcludedCommand>
+							</CommandSet>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="АвансыДоотгрузкиКонтекстноеМеню" id="124">
+								<ChildItems>
+									<Button name="АвансыДоотгрузкиВывестиСписок" id="175">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Item.АвансыДоотгрузки.StandardCommand.OutputList</CommandName>
+										<ExtendedTooltip name="АвансыДоотгрузкиВывестиСписокРасширеннаяПодсказка" id="176"/>
+									</Button>
+									<Button name="АвансыДоотгрузкиОтменитьПоиск" id="173">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Item.АвансыДоотгрузки.StandardCommand.CancelSearch</CommandName>
+										<ExtendedTooltip name="АвансыДоотгрузкиОтменитьПоискРасширеннаяПодсказка" id="174"/>
+									</Button>
+									<Button name="АвансыДоотгрузкиНайти" id="171">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Item.АвансыДоотгрузки.StandardCommand.Find</CommandName>
+										<ExtendedTooltip name="АвансыДоотгрузкиНайтиРасширеннаяПодсказка" id="172"/>
+									</Button>
+									<Button name="АвансыДоотгрузкиВыделитьВсе" id="177">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Item.АвансыДоотгрузки.StandardCommand.SelectAll</CommandName>
+										<ExtendedTooltip name="АвансыДоотгрузкиВыделитьВсеРасширеннаяПодсказка" id="178"/>
+									</Button>
+								</ChildItems>
+							</ContextMenu>
+							<AutoCommandBar name="АвансыДоотгрузкиКоманднаяПанель" id="125">
+								<Autofill>false</Autofill>
+							</AutoCommandBar>
+							<ExtendedTooltip name="АвансыДоотгрузкиРасширеннаяПодсказка" id="126"/>
+							<SearchStringAddition name="АвансыДоотгрузкиСтрокаПоиска" id="127">
+								<AdditionSource>
+									<Item>АвансыДоотгрузки</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="АвансыДоотгрузкиСтрокаПоискаКонтекстноеМеню" id="128"/>
+								<ExtendedTooltip name="АвансыДоотгрузкиСтрокаПоискаРасширеннаяПодсказка" id="129"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="АвансыДоотгрузкиСостояниеПросмотра" id="130">
+								<AdditionSource>
+									<Item>АвансыДоотгрузки</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="АвансыДоотгрузкиСостояниеПросмотраКонтекстноеМеню" id="131"/>
+								<ExtendedTooltip name="АвансыДоотгрузкиСостояниеПросмотраРасширеннаяПодсказка" id="132"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="АвансыДоотгрузкиУправлениеПоиском" id="133">
+								<AdditionSource>
+									<Item>АвансыДоотгрузки</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="АвансыДоотгрузкиУправлениеПоискомКонтекстноеМеню" id="134"/>
+								<ExtendedTooltip name="АвансыДоотгрузкиУправлениеПоискомРасширеннаяПодсказка" id="135"/>
+							</SearchControlAddition>
+							<ChildItems>
+								<InputField name="АвансыДоотгрузкиДата" id="136">
+									<DataPath>АвансыДоотгрузки.Дата</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="АвансыДоотгрузкиДатаКонтекстноеМеню" id="137"/>
+									<ExtendedTooltip name="АвансыДоотгрузкиДатаРасширеннаяПодсказка" id="138"/>
+								</InputField>
+								<InputField name="АвансыДоотгрузкиКонтрагент" id="139">
+									<DataPath>АвансыДоотгрузки.Контрагент</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="АвансыДоотгрузкиКонтрагентКонтекстноеМеню" id="140"/>
+									<ExtendedTooltip name="АвансыДоотгрузкиКонтрагентРасширеннаяПодсказка" id="141"/>
+								</InputField>
+								<InputField name="АвансыДоотгрузкиДоговор" id="142">
+									<DataPath>АвансыДоотгрузки.Договор</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="АвансыДоотгрузкиДоговорКонтекстноеМеню" id="143"/>
+									<ExtendedTooltip name="АвансыДоотгрузкиДоговорРасширеннаяПодсказка" id="144"/>
+								</InputField>
+								<InputField name="АвансыДоотгрузкиОперация" id="145">
+									<DataPath>АвансыДоотгрузки.Операция</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="АвансыДоотгрузкиОперацияКонтекстноеМеню" id="146"/>
+									<ExtendedTooltip name="АвансыДоотгрузкиОперацияРасширеннаяПодсказка" id="147"/>
+								</InputField>
+								<InputField name="АвансыДоотгрузкиНомерАванса" id="148">
+									<DataPath>АвансыДоотгрузки.НомерАванса</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Док/Аванса</v8:content>
+										</v8:item>
+									</Title>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="АвансыДоотгрузкиНомерАвансаКонтекстноеМеню" id="149"/>
+									<ExtendedTooltip name="АвансыДоотгрузкиНомерАвансаРасширеннаяПодсказка" id="150"/>
+								</InputField>
+								<InputField name="АвансыДоотгрузкиСуммаДокумента" id="151">
+									<DataPath>АвансыДоотгрузки.СуммаДокумента</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>10</Width>
+									<ContextMenu name="АвансыДоотгрузкиСуммаДокументаКонтекстноеМеню" id="152"/>
+									<ExtendedTooltip name="АвансыДоотгрузкиСуммаДокументаРасширеннаяПодсказка" id="153"/>
+								</InputField>
+								<InputField name="АвансыДоотгрузкиАванс" id="154">
+									<DataPath>АвансыДоотгрузки.Аванс</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>10</Width>
+									<ContextMenu name="АвансыДоотгрузкиАвансКонтекстноеМеню" id="155"/>
+									<ExtendedTooltip name="АвансыДоотгрузкиАвансРасширеннаяПодсказка" id="156"/>
+								</InputField>
+								<InputField name="АвансыДоотгрузкиДоотгрузка" id="157">
+									<DataPath>АвансыДоотгрузки.Доотгрузка</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>10</Width>
+									<ContextMenu name="АвансыДоотгрузкиДоотгрузкаКонтекстноеМеню" id="158"/>
+									<ExtendedTooltip name="АвансыДоотгрузкиДоотгрузкаРасширеннаяПодсказка" id="159"/>
+								</InputField>
+								<InputField name="АвансыДоотгрузкиОстатокАванса" id="160">
+									<DataPath>АвансыДоотгрузки.ОстатокАванса</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>10</Width>
+									<ContextMenu name="АвансыДоотгрузкиОстатокАвансаКонтекстноеМеню" id="161"/>
+									<ExtendedTooltip name="АвансыДоотгрузкиОстатокАвансаРасширеннаяПодсказка" id="162"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
 			</ChildItems>
 		</Pages>
 	</ChildItems>
@@ -705,6 +912,254 @@
 				</v8:StringQualifiers>
 			</Type>
 		</Attribute>
+		<Attribute name="АвансыДоотгрузки" id="16">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Авансы доотгрузки</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Дата" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:Type>xs:dateTime</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+						<v8:DateQualifiers>
+							<v8:DateFractions>Date</v8:DateFractions>
+						</v8:DateQualifiers>
+					</Type>
+				</Column>
+				<Column name="Контрагент" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Контрагент</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.Контрагенты</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Договор" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Договор</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.ДоговорыКонтрагентов</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Операция" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Операция</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:TypeSet>cfg:DocumentRef</v8:TypeSet>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="НомерАванса" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Номер аванса</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:TypeSet>cfg:DocumentRef</v8:TypeSet>
+					</Type>
+				</Column>
+				<Column name="СуммаДокумента" id="6">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сумма документа</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>15</v8:Digits>
+							<v8:FractionDigits>2</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="Аванс" id="7">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Аванс</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>15</v8:Digits>
+							<v8:FractionDigits>2</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="Доотгрузка" id="8">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Доотгрузка</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>15</v8:Digits>
+							<v8:FractionDigits>2</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="ОстатокАванса" id="9">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ост/ аванса</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>15</v8:Digits>
+							<v8:FractionDigits>2</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="Уровень" id="10">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Уровень</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>3</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="КонтрагентДляОтбора" id="11">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Контрагент для отбора</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.Контрагенты</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ПоказыватьПриПустомОтборе" id="12">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Показывать при пустом отборе</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ДоговорДляОтбора" id="13">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Договор для отбора</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.ДоговорыКонтрагентов</v8:Type>
+					</Type>
+				</Column>
+				<Column name="УровеньАванса" id="14">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Уровень аванса</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>3</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="ОстатокТекущейДоогрузки" id="15">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Остаток текущей доогрузки</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>15</v8:Digits>
+							<v8:FractionDigits>2</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="КонтрагентОтбор" id="17">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Контрагент</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Контрагенты</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ДоговорОтбор" id="18">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Договор</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.ДоговорыКонтрагентов</v8:Type>
+			</Type>
+		</Attribute>
 		<ConditionalAppearance>
 			<dcsset:item>
 				<dcsset:selection>
@@ -723,6 +1178,54 @@
 					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 						<dcscor:parameter>ЦветФона</dcscor:parameter>
 						<dcscor:value xsi:type="v8ui:Color">style:ДобавленныйРеквизитФон</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>АвансыДоотгрузки</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">АвансыДоотгрузки.Контрагент</dcsset:left>
+						<dcsset:comparisonType>NotFilled</dcsset:comparisonType>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">АвансыДоотгрузки.Дата</dcsset:left>
+						<dcsset:comparisonType>NotContains</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:string">Авансы</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ЦветФона</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">#7CC2C1</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>АвансыДоотгрузки</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">АвансыДоотгрузки.Контрагент</dcsset:left>
+						<dcsset:comparisonType>NotFilled</dcsset:comparisonType>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">АвансыДоотгрузки.Дата</dcsset:left>
+						<dcsset:comparisonType>Contains</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:string">Авансы</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ЦветФона</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">#AEC29A</dcscor:value>
 					</dcscor:item>
 				</dcsset:appearance>
 			</dcsset:item>
