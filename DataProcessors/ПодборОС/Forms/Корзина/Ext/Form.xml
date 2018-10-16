@@ -697,6 +697,16 @@
 													<ContextMenu name="СписокОССостояниеКонтекстноеМеню" id="768"/>
 													<ExtendedTooltip name="СписокОССостояниеРасширеннаяПодсказка" id="769"/>
 												</LabelField>
+												<LabelField name="СписокОСКомплект" id="770">
+													<DataPath>СписокОС.Комплект</DataPath>
+													<ContextMenu name="СписокОСКомплектКонтекстноеМеню" id="771"/>
+													<ExtendedTooltip name="СписокОСКомплектРасширеннаяПодсказка" id="772"/>
+												</LabelField>
+												<LabelField name="СписокОСВСоставеКомплекта" id="773">
+													<DataPath>СписокОС.ВСоставеКомплекта</DataPath>
+													<ContextMenu name="СписокОСВСоставеКомплектаКонтекстноеМеню" id="774"/>
+													<ExtendedTooltip name="СписокОСВСоставеКомплектаРасширеннаяПодсказка" id="775"/>
+												</LabelField>
 											</ChildItems>
 										</Table>
 									</ChildItems>
@@ -1049,7 +1059,9 @@
 		КОГДА СправочникОсновныеСредства.Ссылка В (&amp;СписокПодобранных)
 			ТОГДА ИСТИНА
 		ИНАЧЕ ЛОЖЬ
-	КОНЕЦ КАК Подобран
+	КОНЕЦ КАК Подобран,
+	ЛОЖЬ КАК Комплект,
+	Значение(Справочник.ОсновныеСредства.ПустаяСсылка) КАК ВСоставеКомплекта
 ИЗ
 	Справочник.ОсновныеСредства КАК СправочникОсновныеСредства
 		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.ПараметрыУчетаОС.СрезПоследних(
@@ -1136,6 +1148,55 @@
 				</ListSettings>
 			</Settings>
 		</Attribute>
+		<ConditionalAppearance>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>СписокОС</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">СписокОС.Комплект</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ЦветФона</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">#FFCC99</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>СписокОС</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemGroup">
+						<dcsset:groupType>AndGroup</dcsset:groupType>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">СписокОС.ВСоставеКомплекта</dcsset:left>
+						<dcsset:comparisonType>NotEqual</dcsset:comparisonType>
+						<dcsset:right xsi:type="dcscor:DesignTimeValue">Справочник.ОсновныеСредства.ПустаяСсылка</dcsset:right>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">СписокОС.ВСоставеКомплекта</dcsset:left>
+						<dcsset:comparisonType>NotEqual</dcsset:comparisonType>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ЦветФона</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">#CCFFCC</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+		</ConditionalAppearance>
 	</Attributes>
 	<Commands>
 		<Command name="ВыполнитьПоиск" id="1">

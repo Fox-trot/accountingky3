@@ -145,6 +145,9 @@
 						<ContextMenu name="СписокУправлениеПоискомКонтекстноеМеню" id="14"/>
 						<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="15"/>
 					</SearchControlAddition>
+					<Events>
+						<Event name="OnActivateRow">СписокПриАктивизацииСтроки</Event>
+					</Events>
 					<ChildItems>
 						<LabelField name="Дата" id="16">
 							<DataPath>Список.Date</DataPath>
@@ -167,7 +170,7 @@
 							<ExtendedTooltip name="ОрганизацияРасширеннаяПодсказка" id="28"/>
 						</LabelField>
 						<LabelField name="ОсновноеСредство" id="133">
-							<DataPath>Список.ОсновноеСредство</DataPath>
+							<DataPath>Список.Комплект</DataPath>
 							<ContextMenu name="ОсновноеСредствоКонтекстноеМеню" id="134"/>
 							<ExtendedTooltip name="ОсновноеСредствоРасширеннаяПодсказка" id="135"/>
 						</LabelField>
@@ -332,82 +335,6 @@
 													<ExtendedTooltip name="ОтборОСРасширеннаяПодсказка" id="132"/>
 													<Events>
 														<Event name="ChoiceProcessing">ОтборОСОбработкаВыбора</Event>
-													</Events>
-												</InputField>
-											</ChildItems>
-										</UsualGroup>
-										<UsualGroup name="ГруппаОтборПараметр" id="136">
-											<Title>
-												<v8:item>
-													<v8:lang>ru</v8:lang>
-													<v8:content>Группа отбор параметр</v8:content>
-												</v8:item>
-											</Title>
-											<ToolTip>
-												<v8:item>
-													<v8:lang>ru</v8:lang>
-													<v8:content>Группа отбор параметр</v8:content>
-												</v8:item>
-											</ToolTip>
-											<Group>Vertical</Group>
-											<Representation>None</Representation>
-											<ShowTitle>false</ShowTitle>
-											<ExtendedTooltip name="ГруппаОтборПараметрРасширеннаяПодсказка" id="137"/>
-											<ChildItems>
-												<InputField name="ОтборПараметр" id="138">
-													<DataPath>ОтборОС</DataPath>
-													<TitleLocation>None</TitleLocation>
-													<OpenButton>false</OpenButton>
-													<CreateButton>false</CreateButton>
-													<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
-													<InputHint>
-														<v8:item>
-															<v8:lang>ru</v8:lang>
-															<v8:content>Параметр</v8:content>
-														</v8:item>
-													</InputHint>
-													<ContextMenu name="ОтборПараметрКонтекстноеМеню" id="139"/>
-													<ExtendedTooltip name="ОтборПараметрРасширеннаяПодсказка" id="140"/>
-													<Events>
-														<Event name="ChoiceProcessing">ОтборПараметрОбработкаВыбора</Event>
-													</Events>
-												</InputField>
-											</ChildItems>
-										</UsualGroup>
-										<UsualGroup name="ГруппаОтборСобытиеОС" id="141">
-											<Title>
-												<v8:item>
-													<v8:lang>ru</v8:lang>
-													<v8:content>Группа отбор событие ОС</v8:content>
-												</v8:item>
-											</Title>
-											<ToolTip>
-												<v8:item>
-													<v8:lang>ru</v8:lang>
-													<v8:content>Группа отбор событие ОС</v8:content>
-												</v8:item>
-											</ToolTip>
-											<Group>Vertical</Group>
-											<Representation>None</Representation>
-											<ShowTitle>false</ShowTitle>
-											<ExtendedTooltip name="ГруппаОтборСобытиеОСРасширеннаяПодсказка" id="142"/>
-											<ChildItems>
-												<InputField name="ОтборСобытиеОС" id="143">
-													<DataPath>ОтборСобытиеОС</DataPath>
-													<TitleLocation>None</TitleLocation>
-													<OpenButton>false</OpenButton>
-													<CreateButton>false</CreateButton>
-													<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
-													<InputHint>
-														<v8:item>
-															<v8:lang>ru</v8:lang>
-															<v8:content>Событие</v8:content>
-														</v8:item>
-													</InputHint>
-													<ContextMenu name="ОтборСобытиеОСКонтекстноеМеню" id="144"/>
-													<ExtendedTooltip name="ОтборСобытиеОСРасширеннаяПодсказка" id="145"/>
-													<Events>
-														<Event name="ChoiceProcessing">ОтборСобытиеОСОбработкаВыбора</Event>
 													</Events>
 												</InputField>
 											</ChildItems>
@@ -654,38 +581,6 @@
 			</Type>
 			<Save>
 				<Field>ОтборОС</Field>
-			</Save>
-		</Attribute>
-		<Attribute name="ОтборПараметр" id="9">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Отбор параметр</v8:content>
-				</v8:item>
-			</Title>
-			<Type>
-				<v8:Type>cfg:EnumRef.ПараметрыМодернизацииОС</v8:Type>
-			</Type>
-			<Save>
-				<Field>ОтборПараметр</Field>
-			</Save>
-		</Attribute>
-		<Attribute name="ОтборСобытиеОС" id="10">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Отбор событие ОС</v8:content>
-				</v8:item>
-			</Title>
-			<Type>
-				<v8:Type>xs:string</v8:Type>
-				<v8:StringQualifiers>
-					<v8:Length>0</v8:Length>
-					<v8:AllowedLength>Variable</v8:AllowedLength>
-				</v8:StringQualifiers>
-			</Type>
-			<Save>
-				<Field>ОтборСобытиеОС</Field>
 			</Save>
 		</Attribute>
 	</Attributes>
