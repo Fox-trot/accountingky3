@@ -74,18 +74,18 @@
           ret = runDeferredHandlers()
           break
         case endLoadStep:
-          setProgress('Разрешение подключения новых соединений')
-          break
-        case endLoadStep + 1:
-          ret = allowConnections()
-          break
-        case endLoadStep + 2:
           if (makeCompression) {
             setProgress('Сжатие таблиц информационной базы')
           }
           break
-        case endLoadStep + 3:
+        case endLoadStep + 1:
           ret = compressDB()
+          break
+        case endLoadStep + 2:
+          setProgress('Разрешение подключения новых соединений')
+          break
+        case endLoadStep + 3:
+          ret = allowConnections()
           break
         case endLoadStep + 4:
           setProgress('Завершение')
@@ -208,6 +208,7 @@
       try {
         oFileSystemObject.DeleteFile(thisFileDir + '\\main.js')
         oFileSystemObject.DeleteFile(thisFileDir + '\\helpers.js')
+        oFileSystemObject.DeleteFile(thisFileDir + '\\add-delete-patches.js')
         oFileSystemObject.DeleteFile(thisFileDir + '\\splash.png')
         oFileSystemObject.DeleteFile(thisFileDir + '\\splash.ico')
         oFileSystemObject.DeleteFile(thisFileDir + '\\progress.gif')

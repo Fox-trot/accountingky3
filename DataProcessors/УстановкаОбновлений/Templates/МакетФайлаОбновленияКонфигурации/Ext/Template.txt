@@ -89,27 +89,43 @@ function runApp (sFilePath, sFileArgs, show, bWaitOnReturn) {
     sFileArgs = ''
   }
   var ret = 1
-  log(format('Запускается: {0}; параметры: {1}; окно: {2}; ожидание: {3}',
-    sFilePath, hidePass(sFileArgs), SWtoString(show), bWaitOnReturn))
-  if (oFileSystemObject.FileExists(sFilePath)) {
-    try {
-      ret = oShell.Run(format('"{0}" {1}', sFilePath, sFileArgs), show, bWaitOnReturn)
-    } catch (e) {
-      log(format('Исключение в runApp: {0}, {1}.', e.name, e.message), true)
-      return 1
-    }
-    log(format('Код возврата: {0}', ret), ret !== 0)
-    return ret
-  } else {
-    log(format("Запускаемый файл не существует: {0}", sFilePath), true)
+  log(
+    format(
+      'Запускается: {0}; параметры: {1}; окно: {2}; ожидание: {3}',
+      sFilePath,
+      hidePass(sFileArgs),
+      SWtoString(show),
+      bWaitOnReturn))
+  try {
+    ret = oShell.Run(
+      format(
+        '"{0}" {1}',
+        sFilePath,
+        sFileArgs),
+      show,
+      bWaitOnReturn)
+  } catch (e) {
+    log(
+      format(
+        'Исключение в runApp: {0}, {1}.',
+        e.name,
+        e.message),
+      true)
+    return 1
   }
+  log(
+    format(
+      'Код возврата: {0}',
+      ret),
+    ret !== 0)
   return ret
 }
 
 function hidePass (text) {
-  var beforePass = text.substr(0, text.indexOf('/P') + 2)
-  var afterPass = text.substr(text.indexOf(' /WA-'))
-  return (beforePass + '"******"' + afterPass)
+  return text
+    .replace('/P"' + InfoBasePassword + '"', '/P"******"')
+    .replace('/P"' + ClusterPassword + '"', '/P"******"')
+    .replace('Pwd=\'' + InfoBasePassword + '\'', 'Pwd=\'******\'')
 }
 
 function clearLogFile () {
@@ -262,7 +278,7 @@ function doSetResult (success) {
 // Передать в приложение результат выполнения
 function setResult (success) {
   var result = doSetResult(success)
-  CollectGarbage() // освобождает соединения с COM-объектом
+  CollectGarbage()
   return result
 }
 
@@ -296,7 +312,7 @@ function backupDB () {
     oFileSystemObject.CopyFile(BaseFileName, backupFileName, true)
     log(format('Резервная копия базы создана', ret), ret !== 0)
   } catch (e) {
-    CollectGarbage() // предотвращает исключение out of memory
+    CollectGarbage()
     log(format('Исключение при создании резервной копии базы: {0}, {1}.', e.name, e.message), true)
     log(format('Трассировка:\nКопировали из: {0}\nКопировали в: {1}', BaseFileName, backupFileName), true)
     ret = 1
@@ -316,12 +332,8 @@ function restoreDB () {
   var ret = 0
   try {
     oFileSystemObject.CopyFile(backupFileName, BaseFileName, true)
-    connection = null
-    ComConnection = null
-    CollectGarbage() // освобождает соединения с COM-объектом
     log(format('База данных восстановлена из резервной копии', ret), ret !== 0)
   } catch (e) {
-    CollectGarbage() // предотвращает исключение out of memory
     log(format('Исключение при восстановлении базы из резервной копии', e.name, e.message), true)
     ret = -1
   }
@@ -338,9 +350,11 @@ function doAllowConnections () {
       log('Вызов через внешнее соединение СоединенияИБ.РазрешитьРаботуПользователей()')
       connection.СоединенияИБ.РазрешитьРаботуПользователей()
       connectionsDenied = false
+      connection = null
+      CollectGarbage()
     } catch (e) {
       connection = null
-      CollectGarbage() // предотвращает исключение out of memory
+      CollectGarbage()
       log(format('Исключение при вызове СоединенияИБ.РазрешитьРаботуПользователей: {0}, {1}.', e.name, e.message), true)
       return 3
     }
@@ -352,46 +366,48 @@ function doAllowConnections () {
 function allowConnections () {
   var result = doAllowConnections()
   ComConnection = null
-  CollectGarbage() // освобождает соединения с COM-объектом
+  CollectGarbage()
   return result
 }
 
 function doExecuteUpdate (lastVersion) {
   if (useComConnector && lastVersion) {
-    var connection = createConnection()
-    if (connection == null) {
-      return 1
-    }
     try {
-      var fixFileNamesString = fixFileNames.join('\n')
-      var removeFixNamesString = removeFixNames.join('\n')
-      log(format('Вызов через внешнее соединение ОбновлениеКонфигурации.ОбновлениеКонфигурации.ОбновитьИсправленияИзСкрипта({0}, {1})', fixFileNamesString, removeFixNamesString))
-      connection.ОбновлениеКонфигурации.ОбновитьИсправленияИзСкрипта(fixFileNamesString, removeFixNamesString)
+      addDeletePatches()
     } catch (e) {
-      connection = null
-      CollectGarbage() // предотвращает исключение out of memory
-      log(format('Исключение при вызове ОбновлениеКонфигурации.УстановитьИсправления: {0}, {1}.', e.name, e.message), true)
+      log(format('Исключение при вызове ОбновлениеКонфигурации.ОбновитьИсправленияИзСкрипта: {0}, {1}.', e.name, e.message), true)
       return 2
     }
   }
-  ComConnection = null
   if (useComConnector && doBlockUsers) {
     var connection = createConnection()
     if (connection == null) {
       return 1
     }
     try {
-      log(format('Вызов через внешнее соединение ОбновлениеИнформационнойБазыВызовСервера.ВыполнитьОбновлениеИнформационнойБазы({0})', !lastVersion))
+      log(
+        format(
+          'Вызов через внешнее соединение ОбновлениеИнформационнойБазыВызовСервера.ВыполнитьОбновлениеИнформационнойБазы({0})',
+          !lastVersion))
       connection.ОбновлениеИнформационнойБазыВызовСервера.ВыполнитьОбновлениеИнформационнойБазы(!lastVersion)
+      connection = null
+      CollectGarbage()
     } catch (e) {
       connection = null
-      CollectGarbage() // предотвращает исключение out of memory
+      CollectGarbage()
       log(format('Исключение при вызове ОбновлениеИнформационнойБазыВызовСервера.ВыполнитьОбновлениеИнформационнойБазы: {0}, {1}.', e.name, e.message), true)
       return 2
     }
     return 0
   } else {
-    var result = runApp(v8client, format('ENTERPRISE {0} {1} /CВыполнитьОбновлениеИЗавершитьРаботу', infoBasePath, infoBaseAuthorization), SW_SHOW, true)
+    var result = runApp(
+      v8client,
+      format(
+        'ENTERPRISE {0} {1} /AllowExecuteScheduledJobs -Off /C"ВыполнитьОбновлениеИЗавершитьРаботу;РегламентныеЗаданияОтключены"',
+        infoBasePath,
+        infoBaseAuthorization),
+      SW_SHOW,
+      true)
     if (result === 0 && oFileSystemObject.FileExists(errorFileName)) {
       result = 1
     }
@@ -403,7 +419,7 @@ function doExecuteUpdate (lastVersion) {
 function executeUpdate (lastVersion) {
   var result = doExecuteUpdate(lastVersion)
   ComConnection = null
-  CollectGarbage() // освобождает соединения с COM-объектом
+  CollectGarbage()
   return result
 }
 
@@ -475,7 +491,7 @@ function doDisconnectAndBlockUsersHTA (connection) {
       }
     }
   } catch (e) {
-    CollectGarbage() // предотвращает исключение out of memory
+    CollectGarbage()
     log(format('Исключение при вызове doDisconnectAndBlockUsersHTA: {0}, {1}.', e.name, e.message), true)
     result = 2
   }
@@ -505,7 +521,7 @@ function disconnectAndBlockUsersHTA () {
       if (result !== -1) {
         connection = null
         ComConnection = null
-        CollectGarbage() // освобождает соединения с COM-объектом
+        CollectGarbage()
         log('Завершен сеанс внешнего соединения с ИБ', false)
       }
     }
@@ -570,8 +586,13 @@ function doDisconnectAndBlockUsers () {
       return 3
     }
   } catch (e) {
-    CollectGarbage() // предотвращает исключение out of memory
-    log(format('Исключение при вызове doDisconnectAndBlockUsers: {0}, {1}.', e.name, e.message), true)
+    CollectGarbage()
+    log(
+      format(
+        'Исключение при вызове doDisconnectAndBlockUsers: {0}, {1}.',
+        e.name,
+        e.message),
+      true)
     return 2
   }
   return 0
@@ -595,7 +616,7 @@ function disconnectAndBlockUsers () {
   }
 
   ComConnection = null
-  CollectGarbage() // освобождает соединения с COM-объектом
+  CollectGarbage()
   WScript.Sleep(1000) // ждем 1 секунду (достаточно для завершения COM-соединения).
 
   if (result === 0 && doBlockUsers) {
@@ -607,8 +628,16 @@ function disconnectAndBlockUsers () {
 // Загрузка файла обновления в основную базу
 function loadCfg (fileName) {
   // /LoadCfg<имя cf файла> (для базовых версий не используется) загрузка конфигурации из файла
-  var ret = runApp(v8conf, format('CONFIG {0} {1} /LoadCfg "{2}" /Out "{3}" /UCПакетноеОбновлениеКонфигурацииИБ /DisableStartupMessages /DisableStartupDialogs',
-    infoBasePath, infoBaseAuthorization, fileName, tempLogFileName), SW_SHOW, true)
+  var ret = runApp(
+    v8conf,
+    format(
+      'CONFIG {0} {1} /LoadCfg "{2}" /Out "{3}" /UCПакетноеОбновлениеКонфигурацииИБ /DisableStartupMessages /DisableStartupDialogs',
+      infoBasePath,
+      infoBaseAuthorization,
+      fileName,
+      tempLogFileName),
+    SW_SHOW,
+    true)
   appendLog()
   return ret
 }
@@ -616,8 +645,16 @@ function loadCfg (fileName) {
 // Загрузка файла обновления в основную базу
 function updateCfg (fileName) {
   // /UpdateCfg<имя cf | cfu файла> обновление конфигурации, находящейся на поддержке
-  var ret = runApp(v8conf, format('CONFIG {0} {1} /UpdateCfg "{2}" /Out "{3}" /UCПакетноеОбновлениеКонфигурацииИБ /DisableStartupMessages /DisableStartupDialogs',
-    infoBasePath, infoBaseAuthorization, fileName, tempLogFileName), SW_SHOW, true)
+  var ret = runApp(
+    v8conf,
+    format(
+      'CONFIG {0} {1} /UpdateCfg "{2}" /Out "{3}" /UCПакетноеОбновлениеКонфигурацииИБ /DisableStartupMessages /DisableStartupDialogs',
+      infoBasePath,
+      infoBaseAuthorization,
+      fileName,
+      tempLogFileName),
+    SW_SHOW,
+    true)
   appendLog()
   return ret
 }
@@ -625,8 +662,15 @@ function updateCfg (fileName) {
 // Обновление конфигурации информационной базы
 function updateDbCfg () {
   // /UpdateDBCfg - обновление конфигурации базы данных
-  var ret = runApp(v8conf, format('CONFIG {0} {1} /UpdateDBCfg -server /Out "{2}" /UCПакетноеОбновлениеКонфигурацииИБ /DisableStartupMessages /DisableStartupDialogs',
-    infoBasePath, infoBaseAuthorization, tempLogFileName), SW_SHOW, true)
+  var ret = runApp(
+    v8conf,
+    format(
+      'CONFIG {0} {1} /UpdateDBCfg -server /Out "{2}" /UCПакетноеОбновлениеКонфигурацииИБ /DisableStartupMessages /DisableStartupDialogs',
+      infoBasePath,
+      infoBaseAuthorization,
+      tempLogFileName),
+    SW_SHOW,
+    true)
   appendLog()
   return ret
 }
@@ -637,8 +681,15 @@ function compressDB () {
     return 0
   }
 
-  var ret = runApp(v8conf, format('CONFIG {0} {1} /IBCheckAndRepair -IBCompression /Out "{2}" /DisableStartupMessages /DisableStartupDialogs',
-    infoBasePath, infoBaseAuthorization, tempLogFileName), SW_SHOW, true)
+  var ret = runApp(
+    v8conf, 
+    format(
+      'CONFIG {0} {1} /IBCheckAndRepair -IBCompression /Out "{2}" /UCПакетноеОбновлениеКонфигурацииИБ /DisableStartupMessages /DisableStartupDialogs',
+      infoBasePath,
+      infoBaseAuthorization,
+      tempLogFileName),
+    SW_SHOW,
+    true)
   appendLog()
   return ret
 }
@@ -656,10 +707,17 @@ function doDeferredHandlers () {
   try {
     log('Вызов через внешнее соединение ОбновлениеИнформационнойБазыСлужебный.ВыполнитьОтложенноеОбновлениеСейчас())')
     connection.ОбновлениеИнформационнойБазыСлужебный.ВыполнитьОтложенноеОбновлениеСейчас()
+    connection = null
+    CollectGarbage()
   } catch (e) {
     connection = null
-    CollectGarbage() // предотвращает исключение out of memory
-    log(format('Исключение при вызове ОбновлениеИнформационнойБазыСлужебный.ВыполнитьОтложенноеОбновлениеСейчас: {0}, {1}.', e.name, e.message), true)
+    CollectGarbage()
+    log(
+      format(
+        'Исключение при вызове ОбновлениеИнформационнойБазыСлужебный.ВыполнитьОтложенноеОбновлениеСейчас: {0}, {1}.',
+        e.name,
+        e.message),
+      true)
     return 2
   }
   return 0
@@ -670,7 +728,7 @@ function runDeferredHandlers () {
   var result = doDeferredHandlers()
   connection = null
   ComConnection = null
-  CollectGarbage() // освобождает соединения с COM-объектом
+  CollectGarbage()
   return result
 }
 
@@ -697,9 +755,35 @@ function fromUnicode (text) {
 // Интерактивный запуск "1С:Предприятие"
 function runEnterprise () {
   if (startEnterprise) {
-    return runApp(v8client, format('ENTERPRISE {0} {1}', infoBasePath, infoBaseAuthorization), SW_SHOW, false)
+    return runApp(
+      v8client,
+      format(
+        'ENTERPRISE {0} {1}',
+        infoBasePath,
+        infoBaseAuthorization),
+      SW_SHOW,
+      false)
   }
   return 0
+}
+
+function addDeletePatches () {
+  var fixFileNamesString = fixFileNames.join('\n')
+  var removeFixNamesString = removeFixNames.join('\n')
+
+  var result = runApp(
+    'wscript.exe',
+    format(
+      '{0}/add-delete-patches.js /ConnectionString:"{1}" /COMConnectorName:"{2}" /FixFileNames:"{3}" /RemoveFixNames:"{4}"',
+      thisFileDir,
+      connectionString.replace(/"/g, '\''),
+      comConnectorName,
+      fixFileNamesString,
+      removeFixNamesString
+    ),
+    SW_HIDE,
+    true)
+  return result
 }
 
 #КонецОбласти

@@ -54,6 +54,11 @@
 				</ToolTip>
 				<ExtendedTooltip name="ГруппаГлобальныеКомандыРасширеннаяПодсказка" id="539"/>
 			</ButtonGroup>
+			<Button name="ФормаОбщаяКомандаЗапуститьМонитор" id="2061">
+				<Type>CommandBarButton</Type>
+				<CommandName>CommonCommand.ЗапуститьМонитор</CommandName>
+				<ExtendedTooltip name="ФормаОбщаяКомандаЗапуститьМониторРасширеннаяПодсказка" id="2062"/>
+			</Button>
 		</ChildItems>
 	</AutoCommandBar>
 	<Events>
@@ -339,8 +344,8 @@
 												<Event name="OnChange">РасчетНДСПриИзменении</Event>
 											</Events>
 										</CheckBoxField>
-										<CheckBoxField name="РасчетСтоимостиПродукции" id="1967">
-											<DataPath>Объект.РасчетСтоимостиПродукции</DataPath>
+										<CheckBoxField name="РасчетСтоимостиПродукцииПоЗаказам" id="1616">
+											<DataPath>Объект.РасчетСтоимостиПродукцииПоЗаказам</DataPath>
 											<Title>
 												<v8:item>
 													<v8:lang>ru</v8:lang>
@@ -350,14 +355,14 @@
 											<TitleLocation>Right</TitleLocation>
 											<ToolTipRepresentation>Button</ToolTipRepresentation>
 											<CheckBoxType>Auto</CheckBoxType>
-											<ContextMenu name="РасчетСтоимостиПродукцииКонтекстноеМеню" id="1968"/>
-											<ExtendedTooltip name="РасчетСтоимостиПродукцииРасширеннаяПодсказка" id="1969"/>
+											<ContextMenu name="РасчетСтоимостиПродукцииПоЗаказамКонтекстноеМеню" id="1617"/>
+											<ExtendedTooltip name="РасчетСтоимостиПродукцииПоЗаказамРасширеннаяПодсказка" id="1618"/>
 											<Events>
-												<Event name="OnChange">РасчетСтоимостиПродукцииПриИзменении</Event>
+												<Event name="OnChange">РасчетСтоимостиПродукцииПоЗаказамПриИзменении</Event>
 											</Events>
 										</CheckBoxField>
-										<CheckBoxField name="РасчетСебестоимостиГотовойПродукции" id="1616">
-											<DataPath>Объект.РасчетСебестоимостиГотовойПродукции</DataPath>
+										<CheckBoxField name="РасчетСтоимостиПродукцииПоНоменклатурнымГруппам" id="1967">
+											<DataPath>Объект.РасчетСтоимостиПродукцииПоНоменклатурнымГруппам</DataPath>
 											<Title>
 												<v8:item>
 													<v8:lang>ru</v8:lang>
@@ -367,10 +372,10 @@
 											<TitleLocation>Right</TitleLocation>
 											<ToolTipRepresentation>Button</ToolTipRepresentation>
 											<CheckBoxType>Auto</CheckBoxType>
-											<ContextMenu name="РасчетСебестоимостиГотовойПродукцииКонтекстноеМеню" id="1617"/>
-											<ExtendedTooltip name="РасчетСебестоимостиГотовойПродукцииРасширеннаяПодсказка" id="1618"/>
+											<ContextMenu name="РасчетСтоимостиПродукцииПоНоменклатурнымГруппамКонтекстноеМеню" id="1968"/>
+											<ExtendedTooltip name="РасчетСтоимостиПродукцииПоНоменклатурнымГруппамРасширеннаяПодсказка" id="1969"/>
 											<Events>
-												<Event name="OnChange">РасчетСебестоимостиГотовойПродукцииПриИзменении</Event>
+												<Event name="OnChange">РасчетСтоимостиПродукцииПоНоменклатурнымГруппамПриИзменении</Event>
 											</Events>
 										</CheckBoxField>
 										<CheckBoxField name="РасчетНалогаНаИмущество" id="783">
@@ -472,6 +477,7 @@
 											<v8:content>Группа основная правая</v8:content>
 										</v8:item>
 									</ToolTip>
+									<HorizontalStretch>true</HorizontalStretch>
 									<VerticalStretch>true</VerticalStretch>
 									<Group>Vertical</Group>
 									<Representation>None</Representation>
@@ -482,66 +488,143 @@
 										<LabelField name="НадписьАмортизацияОС" id="1176">
 											<DataPath>Объект.НадписьАмортизацияОС</DataPath>
 											<TitleLocation>None</TitleLocation>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Краткий результат начисления амортизации</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Width>55</Width>
 											<ContextMenu name="НадписьАмортизацияОСКонтекстноеМеню" id="1177"/>
 											<ExtendedTooltip name="НадписьАмортизацияОСРасширеннаяПодсказка" id="1178"/>
 										</LabelField>
 										<LabelField name="НадписьПереоценкаВалютныхСредств" id="1179">
 											<DataPath>Объект.НадписьПереоценкаВалютныхСредств</DataPath>
 											<TitleLocation>None</TitleLocation>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Краткий результат переоценки валютных средств</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Width>55</Width>
 											<ContextMenu name="НадписьПереоценкаВалютныхСредствКонтекстноеМеню" id="1180"/>
 											<ExtendedTooltip name="НадписьПереоценкаВалютныхСредствРасширеннаяПодсказка" id="1181"/>
 										</LabelField>
 										<LabelField name="НадписьСписаниеРасходовБудущихПериодов" id="1203">
 											<DataPath>Объект.НадписьСписаниеРасходовБудущихПериодов</DataPath>
 											<TitleLocation>None</TitleLocation>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Краткий результат списания расходов будущих периодов</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Width>55</Width>
 											<ContextMenu name="НадписьСписаниеРасходовБудущихПериодовКонтекстноеМеню" id="1204"/>
 											<ExtendedTooltip name="НадписьСписаниеРасходовБудущихПериодовРасширеннаяПодсказка" id="1205"/>
 										</LabelField>
 										<LabelField name="НадписьНДС" id="1197">
 											<DataPath>Объект.НадписьНДС</DataPath>
 											<TitleLocation>None</TitleLocation>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Краткий результат расчета НДС</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Width>55</Width>
 											<ContextMenu name="НадписьНДСКонтекстноеМеню" id="1198"/>
 											<ExtendedTooltip name="НадписьНДСРасширеннаяПодсказка" id="1199"/>
 										</LabelField>
 										<LabelField name="НадписьСебестоимостиГотовойПродукции" id="1683">
 											<DataPath>Объект.НадписьСебестоимостиГотовойПродукции</DataPath>
 											<TitleLocation>None</TitleLocation>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Краткий результат расчета себестоимости готовой продукции</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Width>55</Width>
 											<ContextMenu name="НадписьСебестоимостиГотовойПродукцииКонтекстноеМеню" id="1684"/>
 											<ExtendedTooltip name="НадписьСебестоимостиГотовойПродукцииРасширеннаяПодсказка" id="1685"/>
 										</LabelField>
 										<LabelField name="НадписьНалогНаИмущество" id="1194">
 											<DataPath>Объект.НадписьНалогНаИмущество</DataPath>
 											<TitleLocation>None</TitleLocation>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Краткий результат расчета налога на имущество</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Width>55</Width>
 											<ContextMenu name="НадписьНалогНаИмуществоКонтекстноеМеню" id="1195"/>
 											<ExtendedTooltip name="НадписьНалогНаИмуществоРасширеннаяПодсказка" id="1196"/>
 										</LabelField>
 										<LabelField name="НадписьЗакрытиеВременныхСчетов" id="1188">
 											<DataPath>Объект.НадписьЗакрытиеВременныхСчетов</DataPath>
 											<TitleLocation>None</TitleLocation>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Краткий результат закрытия временных счетов</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Width>55</Width>
 											<ContextMenu name="НадписьЗакрытиеВременныхСчетовКонтекстноеМеню" id="1189"/>
 											<ExtendedTooltip name="НадписьЗакрытиеВременныхСчетовРасширеннаяПодсказка" id="1190"/>
 										</LabelField>
 										<LabelField name="НадписьНераспределеннаяПрибль" id="1766">
 											<DataPath>Объект.НадписьНераспределеннаяПрибль</DataPath>
 											<TitleLocation>None</TitleLocation>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Краткий результат по признанию нераспределенной прибыли</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Width>55</Width>
 											<ContextMenu name="НадписьНераспределеннаяПрибльКонтекстноеМеню" id="1767"/>
 											<ExtendedTooltip name="НадписьНераспределеннаяПрибльРасширеннаяПодсказка" id="1768"/>
 										</LabelField>
 										<LabelField name="НадписьНалогНаПрибль" id="1763">
 											<DataPath>Объект.НадписьНалогНаПрибль</DataPath>
 											<TitleLocation>None</TitleLocation>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Краткий результат по расчету налога на прибыль</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Width>55</Width>
 											<ContextMenu name="НадписьНалогНаПрибльКонтекстноеМеню" id="1764"/>
 											<ExtendedTooltip name="НадписьНалогНаПрибльРасширеннаяПодсказка" id="1765"/>
 										</LabelField>
 										<LabelField name="НадписьЕдиныйНалог" id="1948">
 											<DataPath>Объект.НадписьЕдиныйНалог</DataPath>
 											<TitleLocation>None</TitleLocation>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Краткий результат расчета единого налога</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Width>55</Width>
 											<ContextMenu name="НадписьЕдиныйНалогКонтекстноеМеню" id="1949"/>
 											<ExtendedTooltip name="НадписьЕдиныйНалогРасширеннаяПодсказка" id="1950"/>
 										</LabelField>
 										<LabelField name="НадписьЗакрытиеПарныхСчетов" id="1191">
 											<DataPath>Объект.НадписьЗакрытиеПарныхСчетов</DataPath>
 											<TitleLocation>None</TitleLocation>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Краткий результат закрытия парных счетов</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Width>55</Width>
 											<ContextMenu name="НадписьЗакрытиеПарныхСчетовКонтекстноеМеню" id="1192"/>
 											<ExtendedTooltip name="НадписьЗакрытиеПарныхСчетовРасширеннаяПодсказка" id="1193"/>
 										</LabelField>
@@ -1334,12 +1417,6 @@
 											<EditMode>EnterOnInput</EditMode>
 											<ContextMenu name="ТранспортОсновноеСредствоКонтекстноеМеню" id="815"/>
 											<ExtendedTooltip name="ТранспортОсновноеСредствоРасширеннаяПодсказка" id="816"/>
-										</InputField>
-										<InputField name="ТранспортДатаНачисленияНалогаНаИмущество" id="2058">
-											<DataPath>Объект.Транспорт.ДатаНачисленияНалогаНаИмущество</DataPath>
-											<EditMode>EnterOnInput</EditMode>
-											<ContextMenu name="ТранспортДатаНачисленияНалогаНаИмуществоКонтекстноеМеню" id="2059"/>
-											<ExtendedTooltip name="ТранспортДатаНачисленияНалогаНаИмуществоРасширеннаяПодсказка" id="2060"/>
 										</InputField>
 										<InputField name="ТранспортВидТранспорта" id="1158">
 											<DataPath>Объект.Транспорт.ВидТранспорта</DataPath>
@@ -2242,13 +2319,16 @@
 					<ExtendedTooltip name="СтраницаРасходыБудущихПериодовРасширеннаяПодсказка" id="1207"/>
 					<ChildItems>
 						<Table name="РасходыБП" id="1208">
+							<ReadOnly>true</ReadOnly>
 							<AutoInsertNewRow>true</AutoInsertNewRow>
 							<EnableStartDrag>true</EnableStartDrag>
 							<EnableDrag>true</EnableDrag>
 							<DataPath>Объект.РасходыБП</DataPath>
 							<RowFilter xsi:nil="true"/>
 							<ContextMenu name="РасходыБПКонтекстноеМеню" id="1209"/>
-							<AutoCommandBar name="РасходыБПКоманднаяПанель" id="1210"/>
+							<AutoCommandBar name="РасходыБПКоманднаяПанель" id="1210">
+								<Autofill>false</Autofill>
+							</AutoCommandBar>
 							<ExtendedTooltip name="РасходыБПРасширеннаяПодсказка" id="1211"/>
 							<SearchStringAddition name="РасходыБПСтрокаПоиска" id="1212">
 								<AdditionSource>
@@ -2323,6 +2403,7 @@
 						</v8:item>
 					</ToolTip>
 					<Group>HorizontalIfPossible</Group>
+					<TitleDataPath>Объект.НалоговаяАмортизация.RowsCount</TitleDataPath>
 					<ExtendedTooltip name="СтраницаНалогНаПрибыльРасширеннаяПодсказка" id="1276"/>
 					<ChildItems>
 						<Pages name="СтраницаВесьНалогНаПрибыль" id="1350">
@@ -2356,13 +2437,16 @@
 									<ExtendedTooltip name="СтраницаНалоговаяАмортизацияРасширеннаяПодсказка" id="1353"/>
 									<ChildItems>
 										<Table name="НалоговаяАмортизация" id="1277">
+											<ReadOnly>true</ReadOnly>
 											<AutoInsertNewRow>true</AutoInsertNewRow>
 											<EnableStartDrag>true</EnableStartDrag>
 											<EnableDrag>true</EnableDrag>
 											<DataPath>Объект.НалоговаяАмортизация</DataPath>
 											<RowFilter xsi:nil="true"/>
 											<ContextMenu name="НалоговаяАмортизацияКонтекстноеМеню" id="1278"/>
-											<AutoCommandBar name="НалоговаяАмортизацияКоманднаяПанель" id="1279"/>
+											<AutoCommandBar name="НалоговаяАмортизацияКоманднаяПанель" id="1279">
+												<Autofill>false</Autofill>
+											</AutoCommandBar>
 											<ExtendedTooltip name="НалоговаяАмортизацияРасширеннаяПодсказка" id="1280"/>
 											<SearchStringAddition name="НалоговаяАмортизацияСтрокаПоиска" id="1281">
 												<AdditionSource>
@@ -2392,6 +2476,8 @@
 												<LabelField name="НалоговаяАмортизацияНомерСтроки" id="1290">
 													<DataPath>Объект.НалоговаяАмортизация.LineNumber</DataPath>
 													<EditMode>EnterOnInput</EditMode>
+													<Width>4</Width>
+													<HorizontalStretch>false</HorizontalStretch>
 													<ContextMenu name="НалоговаяАмортизацияНомерСтрокиКонтекстноеМеню" id="1291"/>
 													<ExtendedTooltip name="НалоговаяАмортизацияНомерСтрокиРасширеннаяПодсказка" id="1292"/>
 												</LabelField>
@@ -2440,19 +2526,19 @@
 													<ExtendedTooltip name="ГруппаБалансоваяСтоимостьИАмортизацияРасширеннаяПодсказка" id="1357"/>
 													<ChildItems>
 														<InputField name="НалоговаяАмортизацияБалансоваяСтоимостьПГ" id="1299">
-															<DataPath>Объект.НалоговаяАмортизация.БалансоваяСтоимостьПГ</DataPath>
+															<DataPath>Объект.НалоговаяАмортизация.БалансоваяСтоимостьНаКонецПрошлыйГод</DataPath>
 															<EditMode>EnterOnInput</EditMode>
 															<ContextMenu name="НалоговаяАмортизацияБалансоваяСтоимостьПГКонтекстноеМеню" id="1300"/>
 															<ExtendedTooltip name="НалоговаяАмортизацияБалансоваяСтоимостьПГРасширеннаяПодсказка" id="1301"/>
 														</InputField>
 														<InputField name="НалоговаяАмортизацияАмортизацияПГ" id="1302">
-															<DataPath>Объект.НалоговаяАмортизация.АмортизацияПГ</DataPath>
+															<DataPath>Объект.НалоговаяАмортизация.АмортизацияЗаПрошлыйГод</DataPath>
 															<EditMode>EnterOnInput</EditMode>
 															<ContextMenu name="НалоговаяАмортизацияАмортизацияПГКонтекстноеМеню" id="1303"/>
 															<ExtendedTooltip name="НалоговаяАмортизацияАмортизацияПГРасширеннаяПодсказка" id="1304"/>
 														</InputField>
 														<InputField name="НалоговаяАмортизацияБалансоваяСтоимостьНаНГ" id="1305">
-															<DataPath>Объект.НалоговаяАмортизация.БалансоваяСтоимостьНаНГ</DataPath>
+															<DataPath>Объект.НалоговаяАмортизация.БалансоваяСтоимостьНаНачалоГода</DataPath>
 															<EditMode>EnterOnInput</EditMode>
 															<ContextMenu name="НалоговаяАмортизацияБалансоваяСтоимостьНаНГКонтекстноеМеню" id="1306"/>
 															<ExtendedTooltip name="НалоговаяАмортизацияБалансоваяСтоимостьНаНГРасширеннаяПодсказка" id="1307"/>
@@ -2487,7 +2573,7 @@
 															<ExtendedTooltip name="НалоговаяАмортизацияУвеличениеСтоимостиНУРасширеннаяПодсказка" id="1313"/>
 														</InputField>
 														<InputField name="НалоговаяАмортизацияПоступлениеПГ" id="1314">
-															<DataPath>Объект.НалоговаяАмортизация.ПоступлениеПГ</DataPath>
+															<DataPath>Объект.НалоговаяАмортизация.ПоступлениеПрошлыйГод</DataPath>
 															<EditMode>EnterOnInput</EditMode>
 															<ContextMenu name="НалоговаяАмортизацияПоступлениеПГКонтекстноеМеню" id="1315"/>
 															<ExtendedTooltip name="НалоговаяАмортизацияПоступлениеПГРасширеннаяПодсказка" id="1316"/>
@@ -2510,7 +2596,7 @@
 													<ExtendedTooltip name="ГруппаВыбытияРасширеннаяПодсказка" id="1363"/>
 													<ChildItems>
 														<InputField name="НалоговаяАмортизацияСуммаВыбытияОбщая" id="1317">
-															<DataPath>Объект.НалоговаяАмортизация.СуммаВыбытияОбщая</DataPath>
+															<DataPath>Объект.НалоговаяАмортизация.СуммаВыбытия</DataPath>
 															<EditMode>EnterOnInput</EditMode>
 															<ContextMenu name="НалоговаяАмортизацияСуммаВыбытияОбщаяКонтекстноеМеню" id="1318"/>
 															<ExtendedTooltip name="НалоговаяАмортизацияСуммаВыбытияОбщаяРасширеннаяПодсказка" id="1319"/>
@@ -2522,7 +2608,7 @@
 															<ExtendedTooltip name="НалоговаяАмортизацияСуммаВыбытияНУРасширеннаяПодсказка" id="1322"/>
 														</InputField>
 														<InputField name="НалоговаяАмортизацияВыбытиеПГ" id="1323">
-															<DataPath>Объект.НалоговаяАмортизация.ВыбытиеПГ</DataPath>
+															<DataPath>Объект.НалоговаяАмортизация.ВыбытиеПрошлыйГод</DataPath>
 															<EditMode>EnterOnInput</EditMode>
 															<ContextMenu name="НалоговаяАмортизацияВыбытиеПГКонтекстноеМеню" id="1324"/>
 															<ExtendedTooltip name="НалоговаяАмортизацияВыбытиеПГРасширеннаяПодсказка" id="1325"/>
@@ -2557,7 +2643,7 @@
 															<ExtendedTooltip name="НалоговаяАмортизацияНормаНаРемонтРасширеннаяПодсказка" id="1331"/>
 														</InputField>
 														<InputField name="НалоговаяАмортизацияПревышение" id="1332">
-															<DataPath>Объект.НалоговаяАмортизация.Превышение</DataPath>
+															<DataPath>Объект.НалоговаяАмортизация.ПревышениеНормыНаРемонт</DataPath>
 															<EditMode>EnterOnInput</EditMode>
 															<ContextMenu name="НалоговаяАмортизацияПревышениеКонтекстноеМеню" id="1333"/>
 															<ExtendedTooltip name="НалоговаяАмортизацияПревышениеРасширеннаяПодсказка" id="1334"/>
@@ -2580,7 +2666,7 @@
 													<ExtendedTooltip name="ГруппаБалансоваяСтоимостьРасширеннаяПодсказка" id="1365"/>
 													<ChildItems>
 														<InputField name="НалоговаяАмортизацияБалансоваяСтоимость" id="1335">
-															<DataPath>Объект.НалоговаяАмортизация.БалансоваяСтоимость</DataPath>
+															<DataPath>Объект.НалоговаяАмортизация.БалансоваяСтоимостьНаКонецГода</DataPath>
 															<EditMode>EnterOnInput</EditMode>
 															<ContextMenu name="НалоговаяАмортизацияБалансоваяСтоимостьКонтекстноеМеню" id="1336"/>
 															<ExtendedTooltip name="НалоговаяАмортизацияБалансоваяСтоимостьРасширеннаяПодсказка" id="1337"/>
@@ -2609,7 +2695,7 @@
 													<ExtendedTooltip name="ГруппаНормаАОАмортизацияИУвеличениеСОДРасширеннаяПодсказка" id="1367"/>
 													<ChildItems>
 														<InputField name="НалоговаяАмортизацияНормаАО" id="1341">
-															<DataPath>Объект.НалоговаяАмортизация.НормаАО</DataPath>
+															<DataPath>Объект.НалоговаяАмортизация.НормаАмортизации</DataPath>
 															<EditMode>EnterOnInput</EditMode>
 															<ContextMenu name="НалоговаяАмортизацияНормаАОКонтекстноеМеню" id="1342"/>
 															<ExtendedTooltip name="НалоговаяАмортизацияНормаАОРасширеннаяПодсказка" id="1343"/>
@@ -2630,6 +2716,20 @@
 												</ColumnGroup>
 											</ChildItems>
 										</Table>
+										<InputField name="КомментарийПоНалоговойАмортизации" id="2058">
+											<DataPath>Объект.КомментарийПоНалоговойАмортизации</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Комментарий</v8:content>
+												</v8:item>
+											</Title>
+											<Width>100</Width>
+											<Height>2</Height>
+											<ContextMenu name="КомментарийПоНалоговойАмортизацииКонтекстноеМеню" id="2059"/>
+											<ExtendedTooltip name="КомментарийПоНалоговойАмортизацииРасширеннаяПодсказка" id="2060"/>
+										</InputField>
 									</ChildItems>
 								</Page>
 								<Page name="СтраницаНалоговаяВыверка" id="1368">
@@ -2648,13 +2748,16 @@
 									<ExtendedTooltip name="СтраницаНалоговаяВыверкаРасширеннаяПодсказка" id="1369"/>
 									<ChildItems>
 										<Table name="НалоговаяВыверка" id="1370">
+											<ReadOnly>true</ReadOnly>
 											<AutoInsertNewRow>true</AutoInsertNewRow>
 											<EnableStartDrag>true</EnableStartDrag>
 											<EnableDrag>true</EnableDrag>
 											<DataPath>Объект.НалоговаяВыверка</DataPath>
 											<RowFilter xsi:nil="true"/>
 											<ContextMenu name="НалоговаяВыверкаКонтекстноеМеню" id="1371"/>
-											<AutoCommandBar name="НалоговаяВыверкаКоманднаяПанель" id="1372"/>
+											<AutoCommandBar name="НалоговаяВыверкаКоманднаяПанель" id="1372">
+												<Autofill>false</Autofill>
+											</AutoCommandBar>
 											<ExtendedTooltip name="НалоговаяВыверкаРасширеннаяПодсказка" id="1373"/>
 											<SearchStringAddition name="НалоговаяВыверкаСтрокаПоиска" id="1374">
 												<AdditionSource>
@@ -2684,6 +2787,8 @@
 												<LabelField name="НалоговаяВыверкаНомерСтроки" id="1383">
 													<DataPath>Объект.НалоговаяВыверка.LineNumber</DataPath>
 													<EditMode>EnterOnInput</EditMode>
+													<Width>4</Width>
+													<HorizontalStretch>false</HorizontalStretch>
 													<ContextMenu name="НалоговаяВыверкаНомерСтрокиКонтекстноеМеню" id="1384"/>
 													<ExtendedTooltip name="НалоговаяВыверкаНомерСтрокиРасширеннаяПодсказка" id="1385"/>
 												</LabelField>
@@ -2771,6 +2876,7 @@
 									</ChildItems>
 								</UsualGroup>
 								<Table name="РасходыНаПроизводство" id="1692">
+									<ReadOnly>true</ReadOnly>
 									<Height>1</Height>
 									<AutoInsertNewRow>true</AutoInsertNewRow>
 									<EnableStartDrag>true</EnableStartDrag>
@@ -2778,7 +2884,9 @@
 									<DataPath>Объект.РасходыНаПроизводство</DataPath>
 									<RowFilter xsi:nil="true"/>
 									<ContextMenu name="РасходыНаПроизводствоКонтекстноеМеню" id="1693"/>
-									<AutoCommandBar name="РасходыНаПроизводствоКоманднаяПанель" id="1694"/>
+									<AutoCommandBar name="РасходыНаПроизводствоКоманднаяПанель" id="1694">
+										<Autofill>false</Autofill>
+									</AutoCommandBar>
 									<ExtendedTooltip name="РасходыНаПроизводствоРасширеннаяПодсказка" id="1695"/>
 									<SearchStringAddition name="РасходыНаПроизводствоСтрокаПоиска" id="1696">
 										<AdditionSource>
