@@ -53,7 +53,7 @@
 			</valueType>
 		</field>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>Должность</dataPath>
+			<dataPath>ФизЛицо.Должность</dataPath>
 			<field>Должность</field>
 			<valueType>
 				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:CatalogRef.Должности</v8:Type>
@@ -100,6 +100,9 @@
 					<v8:content>Вид расчета</v8:content>
 				</v8:item>
 			</title>
+			<useRestriction>
+				<field>true</field>
+			</useRestriction>
 			<role>
 				<dcscom:dimension>true</dcscom:dimension>
 			</role>
@@ -214,6 +217,12 @@
 		<field xsi:type="DataSetFieldField">
 			<dataPath>ВидВыплаты</dataPath>
 			<field>ВидВыплаты</field>
+			<useRestriction>
+				<field>true</field>
+			</useRestriction>
+			<attributeUseRestriction>
+				<field>true</field>
+			</attributeUseRestriction>
 			<role>
 				<dcscom:dimension>true</dcscom:dimension>
 			</role>
@@ -227,6 +236,12 @@
 					<v8:content>Вид начисления</v8:content>
 				</v8:item>
 			</title>
+			<useRestriction>
+				<field>true</field>
+			</useRestriction>
+			<attributeUseRestriction>
+				<field>true</field>
+			</attributeUseRestriction>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>ВидУдержания</dataPath>
@@ -237,6 +252,12 @@
 					<v8:content>Вид удержания</v8:content>
 				</v8:item>
 			</title>
+			<useRestriction>
+				<field>true</field>
+			</useRestriction>
+			<attributeUseRestriction>
+				<field>true</field>
+			</attributeUseRestriction>
 			<orderExpression>
 				<dcscom:expression>Порядок</dcscom:expression>
 				<dcscom:orderType>Asc</dcscom:orderType>
@@ -258,6 +279,16 @@
 					<v8:content>Порядок</v8:content>
 				</v8:item>
 			</title>
+			<useRestriction>
+				<field>true</field>
+				<condition>true</condition>
+				<group>true</group>
+			</useRestriction>
+			<attributeUseRestriction>
+				<field>true</field>
+				<condition>true</condition>
+				<group>true</group>
+			</attributeUseRestriction>
 		</field>
 		<item xsi:type="DataSetQuery">
 			<name>Начисления</name>
@@ -1060,6 +1091,14 @@
 					<dcsset:cases/>
 				</dcsset:item>
 			</dcsset:userFields>
+			<dcsset:selection>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ФизЛицо.ТабельныйНомер</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ФизЛицо.Должность</dcsset:field>
+				</dcsset:item>
+			</dcsset:selection>
 			<dcsset:filter>
 				<dcsset:item xsi:type="dcsset:FilterItemComparison">
 					<dcsset:use>false</dcsset:use>

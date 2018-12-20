@@ -460,11 +460,13 @@
 										</ColumnGroup>
 										<InputField name="НачисленияРезультат" id="139">
 											<DataPath>Объект.Начисления.Результат</DataPath>
-											<ReadOnly>true</ReadOnly>
 											<EditMode>EnterOnInput</EditMode>
 											<Width>10</Width>
 											<ContextMenu name="НачисленияРезультатКонтекстноеМеню" id="140"/>
 											<ExtendedTooltip name="НачисленияРезультатРасширеннаяПодсказка" id="141"/>
+											<Events>
+												<Event name="OnChange">НачисленияРезультатПриИзменении</Event>
+											</Events>
 										</InputField>
 									</ChildItems>
 								</ColumnGroup>
@@ -547,19 +549,23 @@
 									<ChildItems>
 										<InputField name="НачисленияОтработаноДней" id="130">
 											<DataPath>Объект.Начисления.ОтработаноДней</DataPath>
-											<ReadOnly>true</ReadOnly>
 											<EditMode>EnterOnInput</EditMode>
 											<Width>10</Width>
 											<ContextMenu name="НачисленияОтработаноДнейКонтекстноеМеню" id="131"/>
 											<ExtendedTooltip name="НачисленияОтработаноДнейРасширеннаяПодсказка" id="132"/>
+											<Events>
+												<Event name="OnChange">НачисленияОтработаноДнейПриИзменении</Event>
+											</Events>
 										</InputField>
 										<InputField name="НачисленияОтработаноЧасов" id="133">
 											<DataPath>Объект.Начисления.ОтработаноЧасов</DataPath>
-											<ReadOnly>true</ReadOnly>
 											<EditMode>EnterOnInput</EditMode>
 											<Width>10</Width>
 											<ContextMenu name="НачисленияОтработаноЧасовКонтекстноеМеню" id="134"/>
 											<ExtendedTooltip name="НачисленияОтработаноЧасовРасширеннаяПодсказка" id="135"/>
+											<Events>
+												<Event name="OnChange">НачисленияОтработаноЧасовПриИзменении</Event>
+											</Events>
 										</InputField>
 									</ChildItems>
 								</ColumnGroup>
@@ -584,6 +590,13 @@
 											<ContextMenu name="НачисленияСпособОтраженияКонтекстноеМеню" id="278"/>
 											<ExtendedTooltip name="НачисленияСпособОтраженияРасширеннаяПодсказка" id="279"/>
 										</InputField>
+										<CheckBoxField name="НачисленияРучнаяКорректировка" id="285">
+											<DataPath>Объект.Начисления.РучнаяКорректировка</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<CheckBoxType>Auto</CheckBoxType>
+											<ContextMenu name="НачисленияРучнаяКорректировкаКонтекстноеМеню" id="286"/>
+											<ExtendedTooltip name="НачисленияРучнаяКорректировкаРасширеннаяПодсказка" id="287"/>
+										</CheckBoxField>
 									</ChildItems>
 								</ColumnGroup>
 							</ChildItems>
@@ -841,6 +854,28 @@
 				<v8:Type>cfg:CatalogRef.Валюты</v8:Type>
 			</Type>
 		</Attribute>
+		<ConditionalAppearance>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>Начисления</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Объект.Начисления.РучнаяКорректировка</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ЦветТекста</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:ИзмененноеЗначениеРеквизитаЦвет</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+		</ConditionalAppearance>
 	</Attributes>
 	<Commands>
 		<Command name="Заполнить" id="1">

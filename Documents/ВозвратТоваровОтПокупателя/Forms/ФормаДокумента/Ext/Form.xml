@@ -5,6 +5,33 @@
 	<RepostOnWrite>true</RepostOnWrite>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
 		<ChildItems>
+			<Popup name="Заполнить" id="663">
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Заполнить</v8:content>
+					</v8:item>
+				</Title>
+				<ToolTip>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Заполнить</v8:content>
+					</v8:item>
+				</ToolTip>
+				<ExtendedTooltip name="ЗаполнитьРасширеннаяПодсказка" id="664"/>
+				<ChildItems>
+					<Button name="ТоварыЗаполнитьПоРеализации" id="665">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.ЗаполнитьПоРеализации</CommandName>
+						<ExtendedTooltip name="ТоварыЗаполнитьПоРеализацииРасширеннаяПодсказка" id="666"/>
+					</Button>
+					<Button name="ТоварыДобавитьИзРеализации" id="667">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.ДобавитьИзРеализации</CommandName>
+						<ExtendedTooltip name="ТоварыДобавитьИзРеализацииРасширеннаяПодсказка" id="668"/>
+					</Button>
+				</ChildItems>
+			</Popup>
 			<ButtonGroup name="ГруппаВажныеКоманды" id="280">
 				<Title>
 					<v8:item>
@@ -380,33 +407,6 @@
 							<ContextMenu name="ТоварыКонтекстноеМеню" id="299"/>
 							<AutoCommandBar name="ТоварыКоманднаяПанель" id="300">
 								<ChildItems>
-									<Popup name="Заполнить" id="471">
-										<Title>
-											<v8:item>
-												<v8:lang>ru</v8:lang>
-												<v8:content>Заполнить</v8:content>
-											</v8:item>
-										</Title>
-										<ToolTip>
-											<v8:item>
-												<v8:lang>ru</v8:lang>
-												<v8:content>Заполнить</v8:content>
-											</v8:item>
-										</ToolTip>
-										<ExtendedTooltip name="ЗаполнитьРасширеннаяПодсказка" id="472"/>
-										<ChildItems>
-											<Button name="ТоварыЗаполнитьПоРеализации" id="473">
-												<Type>CommandBarButton</Type>
-												<CommandName>Form.Command.ЗаполнитьПоРеализации</CommandName>
-												<ExtendedTooltip name="ТоварыЗаполнитьПоРеализацииРасширеннаяПодсказка" id="474"/>
-											</Button>
-											<Button name="ТоварыДобавитьИзРеализации" id="475">
-												<Type>CommandBarButton</Type>
-												<CommandName>Form.Command.ДобавитьИзРеализации</CommandName>
-												<ExtendedTooltip name="ТоварыДобавитьИзРеализацииРасширеннаяПодсказка" id="476"/>
-											</Button>
-										</ChildItems>
-									</Popup>
 									<ButtonGroup name="ГруппаТорговоеОборудование" id="543">
 										<ToolTip>
 											<v8:item>
@@ -489,6 +489,10 @@
 								<ContextMenu name="ТоварыУправлениеПоискомКонтекстноеМеню" id="309"/>
 								<ExtendedTooltip name="ТоварыУправлениеПоискомРасширеннаяПодсказка" id="310"/>
 							</SearchControlAddition>
+							<Events>
+								<Event name="BeforeAddRow">ТоварыПередНачаломДобавления</Event>
+								<Event name="AfterDeleteRow">ТоварыПослеУдаления</Event>
+							</Events>
 							<ChildItems>
 								<LabelField name="ТоварыНомерСтроки" id="311">
 									<DataPath>Объект.Товары.LineNumber</DataPath>
@@ -655,6 +659,209 @@
 									<EditMode>EnterOnInput</EditMode>
 									<ContextMenu name="ТоварыСтатьяРасходаКонтекстноеМеню" id="478"/>
 									<ExtendedTooltip name="ТоварыСтатьяРасходаРасширеннаяПодсказка" id="479"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
+				<Page name="СтраницаУслуги" id="604">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Услуги</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница услуги</v8:content>
+						</v8:item>
+					</ToolTip>
+					<TitleDataPath>Объект.Услуги.RowsCount</TitleDataPath>
+					<ExtendedTooltip name="СтраницаУслугиРасширеннаяПодсказка" id="605"/>
+					<ChildItems>
+						<Table name="Услуги" id="606">
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<DataPath>Объект.Услуги</DataPath>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="УслугиКонтекстноеМеню" id="607"/>
+							<AutoCommandBar name="УслугиКоманднаяПанель" id="608">
+								<ChildItems>
+									<Button name="УслугиПоискПоШтрихкодуУслуги" id="655">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.ПоискПоШтрихкодуУслуги</CommandName>
+										<ExtendedTooltip name="УслугиПоискПоШтрихкодуУслугиРасширеннаяПодсказка" id="656"/>
+									</Button>
+									<ButtonGroup name="ГруппаКопированиеСтрокУслуги" id="657">
+										<Title>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Группа копирование строк</v8:content>
+											</v8:item>
+										</Title>
+										<ToolTip>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Группа копирование строк</v8:content>
+											</v8:item>
+										</ToolTip>
+										<Representation>Compact</Representation>
+										<ExtendedTooltip name="ГруппаКопированиеСтрокУслугиРасширеннаяПодсказка" id="658"/>
+										<ChildItems>
+											<Button name="УслугиКопироватьСтроки" id="659">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.УслугиКопироватьСтроки</CommandName>
+												<ExtendedTooltip name="УслугиКопироватьСтрокиРасширеннаяПодсказка" id="660"/>
+											</Button>
+											<Button name="УслугиВставитьСтроки" id="661">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.УслугиВставитьСтроки</CommandName>
+												<ExtendedTooltip name="УслугиВставитьСтрокиРасширеннаяПодсказка" id="662"/>
+											</Button>
+										</ChildItems>
+									</ButtonGroup>
+								</ChildItems>
+							</AutoCommandBar>
+							<ExtendedTooltip name="УслугиРасширеннаяПодсказка" id="609"/>
+							<SearchStringAddition name="УслугиСтрокаПоиска" id="610">
+								<AdditionSource>
+									<Item>Услуги</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="УслугиСтрокаПоискаКонтекстноеМеню" id="611"/>
+								<ExtendedTooltip name="УслугиСтрокаПоискаРасширеннаяПодсказка" id="612"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="УслугиСостояниеПросмотра" id="613">
+								<AdditionSource>
+									<Item>Услуги</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="УслугиСостояниеПросмотраКонтекстноеМеню" id="614"/>
+								<ExtendedTooltip name="УслугиСостояниеПросмотраРасширеннаяПодсказка" id="615"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="УслугиУправлениеПоиском" id="616">
+								<AdditionSource>
+									<Item>Услуги</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="УслугиУправлениеПоискомКонтекстноеМеню" id="617"/>
+								<ExtendedTooltip name="УслугиУправлениеПоискомРасширеннаяПодсказка" id="618"/>
+							</SearchControlAddition>
+							<Events>
+								<Event name="BeforeAddRow">УслугиПередНачаломДобавления</Event>
+								<Event name="AfterDeleteRow">УслугиПослеУдаления</Event>
+							</Events>
+							<ChildItems>
+								<LabelField name="УслугиНомерСтроки" id="619">
+									<DataPath>Объект.Услуги.LineNumber</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>4</Width>
+									<ContextMenu name="УслугиНомерСтрокиКонтекстноеМеню" id="620"/>
+									<ExtendedTooltip name="УслугиНомерСтрокиРасширеннаяПодсказка" id="621"/>
+								</LabelField>
+								<InputField name="УслугиНоменклатура" id="622">
+									<DataPath>Объект.Услуги.Номенклатура</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="УслугиНоменклатураКонтекстноеМеню" id="623"/>
+									<ExtendedTooltip name="УслугиНоменклатураРасширеннаяПодсказка" id="624"/>
+									<Events>
+										<Event name="OnChange">УслугиНоменклатураПриИзменении</Event>
+									</Events>
+								</InputField>
+								<InputField name="УслугиКоличество" id="625">
+									<DataPath>Объект.Услуги.Количество</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>10</Width>
+									<ContextMenu name="УслугиКоличествоКонтекстноеМеню" id="626"/>
+									<ExtendedTooltip name="УслугиКоличествоРасширеннаяПодсказка" id="627"/>
+									<Events>
+										<Event name="OnChange">УслугиКоличествоПриИзменении</Event>
+									</Events>
+								</InputField>
+								<InputField name="УслугиЦена" id="628">
+									<DataPath>Объект.Услуги.Цена</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>10</Width>
+									<ContextMenu name="УслугиЦенаКонтекстноеМеню" id="629"/>
+									<ExtendedTooltip name="УслугиЦенаРасширеннаяПодсказка" id="630"/>
+									<Events>
+										<Event name="OnChange">УслугиЦенаПриИзменении</Event>
+									</Events>
+								</InputField>
+								<InputField name="УслугиСумма" id="631">
+									<DataPath>Объект.Услуги.Сумма</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>10</Width>
+									<ContextMenu name="УслугиСуммаКонтекстноеМеню" id="632"/>
+									<ExtendedTooltip name="УслугиСуммаРасширеннаяПодсказка" id="633"/>
+									<Events>
+										<Event name="OnChange">УслугиСуммаПриИзменении</Event>
+									</Events>
+								</InputField>
+								<InputField name="УслугиСуммаНДС" id="634">
+									<DataPath>Объект.Услуги.СуммаНДС</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>10</Width>
+									<ContextMenu name="УслугиСуммаНДСКонтекстноеМеню" id="635"/>
+									<ExtendedTooltip name="УслугиСуммаНДСРасширеннаяПодсказка" id="636"/>
+									<Events>
+										<Event name="OnChange">УслугиСуммаНДСПриИзменении</Event>
+									</Events>
+								</InputField>
+								<InputField name="УслугиСуммаНСП" id="637">
+									<DataPath>Объект.Услуги.СуммаНСП</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>10</Width>
+									<ContextMenu name="УслугиСуммаНСПКонтекстноеМеню" id="638"/>
+									<ExtendedTooltip name="УслугиСуммаНСПРасширеннаяПодсказка" id="639"/>
+									<Events>
+										<Event name="OnChange">УслугиСуммаНСППриИзменении</Event>
+									</Events>
+								</InputField>
+								<InputField name="УслугиПроцентСкидкиНаценки" id="640">
+									<DataPath>Объект.Услуги.ПроцентСкидкиНаценки</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="УслугиПроцентСкидкиНаценкиКонтекстноеМеню" id="641"/>
+									<ExtendedTooltip name="УслугиПроцентСкидкиНаценкиРасширеннаяПодсказка" id="642"/>
+									<Events>
+										<Event name="OnChange">УслугиПроцентСкидкиНаценкиПриИзменении</Event>
+									</Events>
+								</InputField>
+								<InputField name="УслугиСуммаСкидки" id="643">
+									<DataPath>Объект.Услуги.СуммаСкидки</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>10</Width>
+									<ContextMenu name="УслугиСуммаСкидкиКонтекстноеМеню" id="644"/>
+									<ExtendedTooltip name="УслугиСуммаСкидкиРасширеннаяПодсказка" id="645"/>
+									<Events>
+										<Event name="OnChange">УслугиСуммаСкидкиПриИзменении</Event>
+									</Events>
+								</InputField>
+								<InputField name="УслугиСуммаДохода" id="646">
+									<DataPath>Объект.Услуги.СуммаДохода</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>10</Width>
+									<ContextMenu name="УслугиСуммаДоходаКонтекстноеМеню" id="647"/>
+									<ExtendedTooltip name="УслугиСуммаДоходаРасширеннаяПодсказка" id="648"/>
+								</InputField>
+								<InputField name="УслугиВсего" id="649">
+									<DataPath>Объект.Услуги.Всего</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>10</Width>
+									<ContextMenu name="УслугиВсегоКонтекстноеМеню" id="650"/>
+									<ExtendedTooltip name="УслугиВсегоРасширеннаяПодсказка" id="651"/>
+									<Events>
+										<Event name="OnChange">УслугиСуммаПриИзменении</Event>
+									</Events>
+								</InputField>
+								<InputField name="УслугиСчетДохода" id="652">
+									<DataPath>Объект.Услуги.СчетДохода</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>8</Width>
+									<ContextMenu name="УслугиСчетДоходаКонтекстноеМеню" id="653"/>
+									<ExtendedTooltip name="УслугиСчетДоходаРасширеннаяПодсказка" id="654"/>
 								</InputField>
 							</ChildItems>
 						</Table>
@@ -1072,7 +1279,7 @@
 					<ExtendedTooltip name="ГруппаИтогиРасширеннаяПодсказка" id="438"/>
 					<ChildItems>
 						<InputField name="ИтогСуммаСкидки" id="501">
-							<DataPath>Объект.Товары.TotalСуммаСкидки</DataPath>
+							<DataPath>ИтогСуммаСкидки</DataPath>
 							<ReadOnly>true</ReadOnly>
 							<Title>
 								<v8:item>
@@ -1087,7 +1294,7 @@
 							<ExtendedTooltip name="ИтогСуммаСкидкиРасширеннаяПодсказка" id="503"/>
 						</InputField>
 						<InputField name="ИтогСуммаНСП" id="504">
-							<DataPath>Объект.Товары.TotalСуммаНСП</DataPath>
+							<DataPath>ИтогСуммаНСП</DataPath>
 							<ReadOnly>true</ReadOnly>
 							<Title>
 								<v8:item>
@@ -1102,7 +1309,7 @@
 							<ExtendedTooltip name="ИтогСуммаНСПРасширеннаяПодсказка" id="506"/>
 						</InputField>
 						<InputField name="ИтогСуммаНДС" id="507">
-							<DataPath>Объект.Товары.TotalСуммаНДС</DataPath>
+							<DataPath>ИтогСуммаНДС</DataPath>
 							<ReadOnly>true</ReadOnly>
 							<Title>
 								<v8:item>
@@ -1117,7 +1324,7 @@
 							<ExtendedTooltip name="ИтогСуммаНДСРасширеннаяПодсказка" id="509"/>
 						</InputField>
 						<InputField name="ИтогВсего" id="510">
-							<DataPath>Объект.Товары.TotalВсего</DataPath>
+							<DataPath>ИтогВсего</DataPath>
 							<ReadOnly>true</ReadOnly>
 							<Title>
 								<v8:item>
@@ -1236,6 +1443,79 @@
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>
+		</Attribute>
+		<Attribute name="ИтогВсего" id="15">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Итог всего</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>15</v8:Digits>
+					<v8:FractionDigits>2</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ИтогСуммаНДС" id="16">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Итог сумма НДС</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>15</v8:Digits>
+					<v8:FractionDigits>2</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+			<FunctionalOptions>
+				<Item>FunctionalOption.ПлательщикНДС</Item>
+			</FunctionalOptions>
+		</Attribute>
+		<Attribute name="ИтогСуммаНСП" id="17">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Итог сумма НСП</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>15</v8:Digits>
+					<v8:FractionDigits>2</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+			<FunctionalOptions>
+				<Item>FunctionalOption.ПлательщикНСП</Item>
+			</FunctionalOptions>
+		</Attribute>
+		<Attribute name="ИтогСуммаСкидки" id="18">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Итог сумма скидки</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>15</v8:Digits>
+					<v8:FractionDigits>2</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+			<FunctionalOptions>
+				<Item>FunctionalOption.ПлательщикНСП</Item>
+			</FunctionalOptions>
 		</Attribute>
 	</Attributes>
 	<Commands>
@@ -1374,6 +1654,73 @@
 			<Action>ТоварыВставитьСтроки</Action>
 			<Representation>Picture</Representation>
 			<ModifiesSavedData>true</ModifiesSavedData>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ПоискПоШтрихкодуУслуги" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Поиск по штрихкоду услуги</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Поиск по штрихкоду товары</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Shortcut>F7</Shortcut>
+			<Picture>
+				<xr:Ref>CommonPicture.НовыйПоШтрихкоду</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ПоискПоШтрихкодуУслуги</Action>
+			<ModifiesSavedData>true</ModifiesSavedData>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="УслугиВставитьСтроки" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вставить строки</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вставить строки из буфера обмена</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Shortcut>Ctrl+Shift+V</Shortcut>
+			<Picture>
+				<xr:Ref>CommonPicture.ВставкаСтрок</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>УслугиВставитьСтроки</Action>
+			<Representation>Picture</Representation>
+			<ModifiesSavedData>true</ModifiesSavedData>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="УслугиКопироватьСтроки" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Копировать строки </v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Скопировать строки в буфер обмена</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Shortcut>Ctrl+Shift+C</Shortcut>
+			<Picture>
+				<xr:Ref>CommonPicture.КопированиеСтрок</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>УслугиКопироватьСтроки</Action>
+			<Representation>Picture</Representation>
 			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 	</Commands>

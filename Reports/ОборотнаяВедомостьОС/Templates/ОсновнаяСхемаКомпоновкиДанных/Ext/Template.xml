@@ -165,7 +165,7 @@
 	Организация.*,
 	ОсновноеСредство.*}
 ИЗ
-	РегистрСведений.СостоянияОС.СрезПоследних(&amp;ДатаНачала {(&amp;ДатаКонец)}, ) КАК СостоянияОССрезПоследних
+	РегистрСведений.СостоянияОС.СрезПоследних({(&amp;НачалоПериода)}, ) КАК СостоянияОССрезПоследних
 ГДЕ
 	(СостоянияОССрезПоследних.Состояние = ЗНАЧЕНИЕ(Перечисление.ВидыСостоянийОС.ПринятоКУчету)
 			ИЛИ СостоянияОССрезПоследних.Состояние = ЗНАЧЕНИЕ(Перечисление.ВидыСостоянийОС.Поступило))
@@ -176,11 +176,9 @@
 	СостоянияОССрезПоследних.Организация,
 	СостоянияОССрезПоследних.ОсновноеСредство
 ИЗ
-	РегистрСведений.СостоянияОС.СрезПоследних(
-			&amp;ДатаКонец,
-			Период &gt;= &amp;ДатаНачала
-				И (Состояние = ЗНАЧЕНИЕ(Перечисление.ВидыСостоянийОС.ПринятоКУчету)
-					ИЛИ Состояние = ЗНАЧЕНИЕ(Перечисление.ВидыСостоянийОС.Поступило))) КАК СостоянияОССрезПоследних
+	РегистрСведений.СостоянияОС.СрезПоследних({(&amp;КонецПериода)}, {(Период &gt; &amp;НачалоПериода
+			    И (Состояние = ЗНАЧЕНИЕ(Перечисление.ВидыСостоянийОС.ПринятоКУчету)
+			        ИЛИ Состояние = ЗНАЧЕНИЕ(Перечисление.ВидыСостоянийОС.Поступило)))}) КАК СостоянияОССрезПоследних
 
 ИНДЕКСИРОВАТЬ ПО
 	ОсновноеСредство
@@ -192,14 +190,12 @@
 	СУММА(1) КАК ВнутреннееПеремещение
 ПОМЕСТИТЬ ВременнаяТаблицаВнутреннееПеремещение
 ИЗ
-	РегистрСведений.СобытияОС.СрезПоследних(
-			,
-			ОсновноеСредство В
-					(ВЫБРАТЬ
-						ТаблицаСостоянияОССрезПоследних.ОсновноеСредство
-					ИЗ
-						ВременнаяТаблицаСостоянияОССрезПоследних КАК ТаблицаСостоянияОССрезПоследних)
-				И Период &gt;= &amp;ДатаНачала) КАК СобытияОССрезПоследних
+	РегистрСведений.СобытияОС.СрезПоследних({(&amp;КонецПериода)}, {(ОсновноеСредство В
+			        (ВЫБРАТЬ
+			            ТаблицаСостоянияОССрезПоследних.ОсновноеСредство
+			        ИЗ
+			            ВременнаяТаблицаСостоянияОССрезПоследних КАК ТаблицаСостоянияОССрезПоследних)
+			    И Период &gt;= &amp;НачалоПериода)}) КАК СобытияОССрезПоследних
 ГДЕ
 	СобытияОССрезПоследних.Событие = ЗНАЧЕНИЕ(Перечисление.ВидыСобытийОС.Перемещение)
 
@@ -252,7 +248,7 @@
 				{(&amp;КонецПериода)},
 				,
 				,
-				,
+				Счет В (&amp;СписокСчетовОС),
 				ЗНАЧЕНИЕ(ПланВидовХарактеристик.ВидыСубконтоХозрасчетные.ОсновныеСредства),
 				Субконто1 В
 					(ВЫБРАТЬ
@@ -266,7 +262,7 @@
 				{(&amp;КонецПериода)},
 				,
 				,
-				,
+				Счет В (&amp;СписокСчетовАмортизации),
 				ЗНАЧЕНИЕ(ПланВидовХарактеристик.ВидыСубконтоХозрасчетные.ОсновныеСредства),
 				Субконто1 В
 					(ВЫБРАТЬ
@@ -278,7 +274,9 @@
 		ЛЕВОЕ СОЕДИНЕНИЕ ВременнаяТаблицаВнутреннееПеремещение КАК ВременнаяТаблицаВнутреннееПеремещение
 		ПО ПараметрыУчетаОССрезПоследних.ОсновноеСредство = ВременнаяТаблицаВнутреннееПеремещение.ОсновноеСредство
 {ГДЕ
-	ПараметрыУчетаОССрезПоследних.Организация.*}</query>
+	ПараметрыУчетаОССрезПоследних.Организация.*,
+	ПараметрыУчетаОССрезПоследних.ОсновноеСредство.*,
+	ПараметрыУчетаОССрезПоследних.СчетУчета.*}</query>
 		<autoFillFields>false</autoFillFields>
 	</dataSet>
 	<totalField>
@@ -318,40 +316,6 @@
 		<expression>Сумма(ВнутреннееПеремещение)</expression>
 	</totalField>
 	<parameter>
-		<name>НастройкиОтчета</name>
-		<title xsi:type="v8:LocalStringType">
-			<v8:item>
-				<v8:lang>ru</v8:lang>
-				<v8:content>Настройки отчета</v8:content>
-			</v8:item>
-		</title>
-		<valueType>
-			<v8:Type>v8:ValueStorage</v8:Type>
-		</valueType>
-		<value xsi:type="v8:ValueStorage">AQEIAAAAAAAAAO+7v3siVSJ9</value>
-		<useRestriction>false</useRestriction>
-		<use>Always</use>
-	</parameter>
-	<parameter>
-		<name>ДатаНачала</name>
-		<title xsi:type="v8:LocalStringType">
-			<v8:item>
-				<v8:lang>ru</v8:lang>
-				<v8:content>Дата начала</v8:content>
-			</v8:item>
-		</title>
-		<valueType>
-			<v8:Type>xs:dateTime</v8:Type>
-			<v8:DateQualifiers>
-				<v8:DateFractions>DateTime</v8:DateFractions>
-			</v8:DateQualifiers>
-		</valueType>
-		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
-		<useRestriction>true</useRestriction>
-		<expression>&amp;СтандартныйПериод.ДатаНачала</expression>
-		<availableAsField>false</availableAsField>
-	</parameter>
-	<parameter>
 		<name>КонецПериода</name>
 		<title xsi:type="v8:LocalStringType">
 			<v8:item>
@@ -367,8 +331,6 @@
 		</valueType>
 		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
 		<useRestriction>true</useRestriction>
-		<expression>&amp;СтандартныйПериод.ДатаОкончания</expression>
-		<availableAsField>false</availableAsField>
 	</parameter>
 	<parameter>
 		<name>НачалоПериода</name>
@@ -386,45 +348,49 @@
 		</valueType>
 		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
 		<useRestriction>true</useRestriction>
-		<expression>&amp;СтандартныйПериод.ДатаНачала</expression>
-		<availableAsField>false</availableAsField>
 	</parameter>
 	<parameter>
-		<name>СтандартныйПериод</name>
+		<name>СписокСчетовОС</name>
 		<title xsi:type="v8:LocalStringType">
 			<v8:item>
 				<v8:lang>ru</v8:lang>
-				<v8:content>Стандартный период</v8:content>
+				<v8:content>Список счетов ОС</v8:content>
 			</v8:item>
 		</title>
 		<valueType>
-			<v8:Type>v8:StandardPeriod</v8:Type>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:ChartOfAccountsRef.Хозрасчетный</v8:Type>
 		</valueType>
-		<value xsi:type="v8:StandardPeriod">
-			<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
-			<v8:startDate>0001-01-01T00:00:00</v8:startDate>
-			<v8:endDate>0001-01-01T00:00:00</v8:endDate>
-		</value>
-		<useRestriction>false</useRestriction>
-	</parameter>
-	<parameter>
-		<name>ДатаКонец</name>
-		<title xsi:type="v8:LocalStringType">
-			<v8:item>
-				<v8:lang>ru</v8:lang>
-				<v8:content>Дата конец</v8:content>
-			</v8:item>
-		</title>
-		<valueType>
-			<v8:Type>xs:dateTime</v8:Type>
-			<v8:DateQualifiers>
-				<v8:DateFractions>DateTime</v8:DateFractions>
-			</v8:DateQualifiers>
-		</valueType>
-		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<value xsi:nil="true"/>
 		<useRestriction>true</useRestriction>
-		<expression>&amp;СтандартныйПериод.ДатаОкончания</expression>
-		<availableAsField>false</availableAsField>
+	</parameter>
+	<parameter>
+		<name>СписокСчетовАмортизации</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Список счетов амортизации</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:ChartOfAccountsRef.Хозрасчетный</v8:Type>
+		</valueType>
+		<value xsi:nil="true"/>
+		<useRestriction>true</useRestriction>
+	</parameter>
+	<parameter>
+		<name>НастройкиОтчета</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Настройки отчета</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>v8:ValueStorage</v8:Type>
+		</valueType>
+		<value xsi:type="v8:ValueStorage">AQEIAAAAAAAAAO+7v3siVSJ9</value>
+		<useRestriction>false</useRestriction>
+		<use>Always</use>
 	</parameter>
 	<settingsVariant>
 		<dcsset:name>ОборотнаяВедомостьОС</dcsset:name>
@@ -436,18 +402,6 @@
 		</dcsset:presentation>
 		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
 			<dcsset:selection>
-				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>СистемныеПоля.НомерПоПорядку</dcsset:field>
-				</dcsset:item>
-				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>ОсновноеСредство</dcsset:field>
-				</dcsset:item>
-				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>СчетУчета</dcsset:field>
-				</dcsset:item>
-				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>ГруппаНУ</dcsset:field>
-				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemFolder">
 					<dcsset:lwsTitle>
 						<v8:item>
@@ -581,15 +535,6 @@
 					<dcsset:viewMode>Normal</dcsset:viewMode>
 					<dcsset:userSettingID>b775d0e6-3ac4-4ddc-af56-2f0c41704682</dcsset:userSettingID>
 				</dcscor:item>
-				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-					<dcscor:parameter>СтандартныйПериод</dcscor:parameter>
-					<dcscor:value xsi:type="v8:StandardPeriod">
-						<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
-						<v8:startDate>0001-01-01T00:00:00</v8:startDate>
-						<v8:endDate>0001-01-01T00:00:00</v8:endDate>
-					</dcscor:value>
-					<dcsset:userSettingID>7f1a8cd5-13c4-4fc9-a777-5be69a54f1c0</dcsset:userSettingID>
-				</dcscor:item>
 			</dcsset:dataParameters>
 			<dcsset:order>
 				<dcsset:item xsi:type="dcsset:OrderItemField">
@@ -648,14 +593,8 @@
 					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
 				</dcsset:selection>
 				<dcsset:item xsi:type="dcsset:StructureItemGroup">
+					<dcsset:name>Группировка</dcsset:name>
 					<dcsset:groupItems>
-						<dcsset:item xsi:type="dcsset:GroupItemField">
-							<dcsset:field>ОсновноеСредство</dcsset:field>
-							<dcsset:groupType>Items</dcsset:groupType>
-							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
-							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
-							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
-						</dcsset:item>
 						<dcsset:item xsi:type="dcsset:GroupItemField">
 							<dcsset:field>СчетУчета</dcsset:field>
 							<dcsset:groupType>Items</dcsset:groupType>
@@ -670,6 +609,23 @@
 					<dcsset:selection>
 						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
 					</dcsset:selection>
+					<dcsset:item xsi:type="dcsset:StructureItemGroup">
+						<dcsset:groupItems>
+							<dcsset:item xsi:type="dcsset:GroupItemField">
+								<dcsset:field>ОсновноеСредство</dcsset:field>
+								<dcsset:groupType>Items</dcsset:groupType>
+								<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+								<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+								<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+							</dcsset:item>
+						</dcsset:groupItems>
+						<dcsset:order>
+							<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+						</dcsset:order>
+						<dcsset:selection>
+							<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+						</dcsset:selection>
+					</dcsset:item>
 				</dcsset:item>
 			</dcsset:item>
 		</dcsset:settings>

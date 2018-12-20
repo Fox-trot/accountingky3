@@ -52,7 +52,14 @@
 	ПодключаемыеКомандыКлиентСервер.ОбновитьКоманды(ЭтотОбъект, Объект);
 	// Конец СтандартныеПодсистемы.ПодключаемыеКоманды
 	
-КонецПроцедуры // ПриЧтенииНаСервере()
+	// СтандартныеПодсистемы.УправлениеДоступом
+	Если ОбщегоНазначения.ПодсистемаСуществует("СтандартныеПодсистемы.УправлениеДоступом") Тогда
+		МодульУправлениеДоступом = ОбщегоНазначения.ОбщийМодуль("УправлениеДоступом");
+		МодульУправлениеДоступом.ПриЧтенииНаСервере(ЭтотОбъект, ТекущийОбъект);
+	КонецЕсли;
+	// Конец СтандартныеПодсистемы.УправлениеДоступом 
+	
+КонецПроцедуры
 
 // Процедура - обработчик события ПриОткрытии.
 //
@@ -797,23 +804,26 @@
 	
 	СведенийОбОрганизации = ПолучитьДанныеОрганизации(Объект.Организация);
 	
+	ArrearsOfWages = 0;
+	AmountOfContributions = 0;
+	
+	Для Каждого СтрокаТабличнойЧасти Из Объект.СведенияОЗанятостиИЗаработнойПлате Цикл
+		
+		ArrearsOfWages = ArrearsOfWages + 
+			?(Объект.Округление, Окр(СтрокаТабличнойЧасти.НачисленыеСтраховыеВзносы), СтрокаТабличнойЧасти.НачисленыеСтраховыеВзносы)
+			+ СтрокаТабличнойЧасти.НачсиленыеВзносыПоНПФ;
+			
+		AmountOfContributions = AmountOfContributions +	СтрокаТабличнойЧасти.ФондОплатыТруда;
+	КонецЦикла;	
+		
 	PayerInfo.Year 					= Год(ДатаДокумента);
-	PayerInfo.Working 				= СведенийОбОрганизации.ВидДеятельности;
-	PayerInfo.Telephone 			= СведенийОбОрганизации.Телефон;
 	PayerInfo.TaxPayer 				= СведенийОбОрганизации.НаименованиеПолное;
-	PayerInfo.TariffType 			= "ОСН";
-	PayerInfo.SocFund 				= ?(Объект.Контрагент.НаименованиеПолное <> "", Объект.Контрагент.НаименованиеПолное, Объект.Контрагент.Наименование);
-	PayerInfo.RegNumber 			= Строка(СведенийОбОрганизации.РегНомерСоцФонда);
-	PayerInfo.Rayon	 				= "001";
+	PayerInfo.TariffType 			= "1";
 	PayerInfo.PIN 					= СведенийОбОрганизации.ИНН;
 	PayerInfo.OKPO 					= СведенийОбОрганизации.ОКПО;
-	PayerInfo.NullVedomost 			= "0";   
-	PayerInfo.Month 				= "--" + СтроковыеФункцииКлиентСервер.ДополнитьСтроку(Строка(Месяц(ДатаДокумента)), 2);
-	PayerInfo.Bank	 				= СведенийОбОрганизации.НаименованиеБанка;
-	PayerInfo.ArrearsOfWages 		= "0.0";
-	PayerInfo.AmountOfContributions = "0.00";
-	PayerInfo.Address 				= СведенийОбОрганизации.АдрЮР;
-	PayerInfo.Account 				= СведенийОбОрганизации.БанковскийСчет;
+	PayerInfo.Month 				= "--" + СтроковыеФункцииКлиентСервер.ДополнитьСтроку(Строка(Месяц(ДатаДокумента)), 2) + "--";
+	PayerInfo.ArrearsOfWages 		= Формат(ArrearsOfWages, "ЧЦ=15; ЧДЦ=2; ЧРД=.; ЧН=0.00; ЧГ=0");
+	PayerInfo.AmountOfContributions = Формат(AmountOfContributions, "ЧЦ=15; ЧДЦ=2; ЧРД=.; ЧН=0.00; ЧГ=0");
 
 	ОбъектXDTO.PayerInfo.Добавить(PayerInfo);
 	
@@ -844,7 +854,7 @@
 &НаСервере
 Функция СоздатьОбъектXDTO(ТипОбъекта)
 	УстановитьПривилегированныйРежим(Истина);
-	Возврат ФабрикаXDTO.Создать(ФабрикаXDTO.Тип("http://www.sample-package1.org", ТипОбъекта));
+	Возврат ФабрикаXDTO.Создать(ФабрикаXDTO.Тип("http://www.akforta.com/PaySheet", ТипОбъекта));
 КонецФункции // СоздатьОбъектXDTO()
 
 &НаСервере
@@ -870,17 +880,15 @@
 	ОбъектXDTO.ActivityCategoryCode 	= "";
 	ОбъектXDTO.BeginDate 				= Формат(СтрокаТабличнойЧасти.ДатаНачалаРаботы, "ДФ=yyyy-MM-dd");
 	ОбъектXDTO.Category 				= Строка(СтрокаТабличнойЧасти.Категория);
-	ОбъектXDTO.CoefficientOfHighland 	= "0.0";
+	ОбъектXDTO.CoefficientOfHighland 	= "";
 	ОбъектXDTO.Days 					= Строка(СтрокаТабличнойЧасти.Дней);
 	ОбъектXDTO.DaysActually 			= Строка(СтрокаТабличнойЧасти.ФактическиДней);
 	ОбъектXDTO.EndDate 					= Формат(СтрокаТабличнойЧасти.ДатаОкончанияРаботы, "ДФ=yyyy-MM-dd");
-	ОбъектXDTO.FromListNo1OrNo2 		= "0";
-	ОбъектXDTO.HighlandRateCode 		= "";
 	ОбъектXDTO.Name 					= СтрокаТабличнойЧасти.ФизЛицо.Наименование;
-	ОбъектXDTO.Sum 						= Строка(?(Объект.Округление, Окр(СтрокаТабличнойЧасти.НачисленыеСтраховыеВзносы), СтрокаТабличнойЧасти.НачисленыеСтраховыеВзносы));
-	ОбъектXDTO.SumNPF 					= Строка(СтрокаТабличнойЧасти.НачсиленыеВзносыПоНПФ);
-	ОбъектXDTO.SumOfAdditionalEarnings 	= Строка(?(Объект.Округление, Окр(СтрокаТабличнойЧасти.ДополнительныйФондОплатыТруда), СтрокаТабличнойЧасти.ДополнительныйФондОплатыТруда));
-	ОбъектXDTO.SumOfEarnings 			= Строка(СтрокаТабличнойЧасти.ФондОплатыТруда);
+	ОбъектXDTO.Sum 						= Формат(?(Объект.Округление, Окр(СтрокаТабличнойЧасти.НачисленыеСтраховыеВзносы), СтрокаТабличнойЧасти.НачисленыеСтраховыеВзносы), "ЧЦ=15; ЧДЦ=2; ЧРД=.; ЧН=0.00; ЧГ=0");
+	ОбъектXDTO.SumNPF 					= Формат(СтрокаТабличнойЧасти.НачсиленыеВзносыПоНПФ, "ЧЦ=15; ЧДЦ=2; ЧРД=.; ЧН=0.00; ЧГ=0");
+	ОбъектXDTO.SumOfAdditionalEarnings 	= Формат(?(Объект.Округление, Окр(СтрокаТабличнойЧасти.ДополнительныйФондОплатыТруда), СтрокаТабличнойЧасти.ДополнительныйФондОплатыТруда), "ЧЦ=15; ЧДЦ=2; ЧРД=.; ЧН=0.00; ЧГ=0");
+	ОбъектXDTO.SumOfEarnings 			= Формат(СтрокаТабличнойЧасти.ФондОплатыТруда, "ЧЦ=15; ЧДЦ=2; ЧРД=.; ЧН=0.00; ЧГ=0");
 	
 	Возврат ОбъектXDTO;
 КонецФункции
@@ -890,18 +898,19 @@
 	
 	ОбъектXDTO = СоздатьОбъектXDTO("PayerBalanceOfArrearsCollection");
 	
-	ОбъектXDTO.PayerBalanceOfArrears.Добавить(PayerBalanceOfArrears("ФОНД",  Объект.ОбязательстваПоСтраховымВзносам));
-	ОбъектXDTO.PayerBalanceOfArrears.Добавить(PayerBalanceOfArrears("НПФ",   Объект.ОбязательстваПоПенсионномуФонду));
-	ОбъектXDTO.PayerBalanceOfArrears.Добавить(PayerBalanceOfArrears("САНК",  0));
-	ОбъектXDTO.PayerBalanceOfArrears.Добавить(PayerBalanceOfArrears("ОТСФ",  0));
-	ОбъектXDTO.PayerBalanceOfArrears.Добавить(PayerBalanceOfArrears("ОНПФ",  0));
-	ОбъектXDTO.PayerBalanceOfArrears.Добавить(PayerBalanceOfArrears("ОСАНК", 0));
-	ОбъектXDTO.PayerBalanceOfArrears.Добавить(PayerBalanceOfArrears("ПРЕФ",  0));
-	ОбъектXDTO.PayerBalanceOfArrears.Добавить(PayerBalanceOfArrears("ПНПФ",  0));
-	ОбъектXDTO.PayerBalanceOfArrears.Добавить(PayerBalanceOfArrears("ПСАНК", 0));
-	ОбъектXDTO.PayerBalanceOfArrears.Добавить(PayerBalanceOfArrears("АВПФ",  0));
-	ОбъектXDTO.PayerBalanceOfArrears.Добавить(PayerBalanceOfArrears("ПСАНК", Объект.ПереплатаПоСтраховымВзносам));
-	ОбъектXDTO.PayerBalanceOfArrears.Добавить(PayerBalanceOfArrears("АВНПФ", Объект.ПереплатаПоПенсионномуФонду));
+	ОбъектXDTO.PayerBalanceOfArrears.Добавить(PayerBalanceOfArrears("Страховые взносы (кроме НПФ)",  Объект.ОбязательстваПоСтраховымВзносам));
+	ОбъектXDTO.PayerBalanceOfArrears.Добавить(PayerBalanceOfArrears("Накопительный пенсионный фонд",   Объект.ОбязательстваПоПенсионномуФонду));
+	ОбъектXDTO.PayerBalanceOfArrears.Добавить(PayerBalanceOfArrears("Пени и штрафы", 0));
+	ОбъектXDTO.PayerBalanceOfArrears.Добавить(PayerBalanceOfArrears("Отсроченные страховые взносы (кроме НПФ)", 0));
+	ОбъектXDTO.PayerBalanceOfArrears.Добавить(PayerBalanceOfArrears("Отсроченные страховые взносы - НПФ", 0));
+	ОбъектXDTO.PayerBalanceOfArrears.Добавить(PayerBalanceOfArrears("Отсроченные пени и штрафы", 0));
+	ОбъектXDTO.PayerBalanceOfArrears.Добавить(PayerBalanceOfArrears("Преемственная задолженность по взносам (кроме НПФ)", 0));
+	ОбъектXDTO.PayerBalanceOfArrears.Добавить(PayerBalanceOfArrears("Преемственная задолженность по взносам - НПФ", 0));
+	ОбъектXDTO.PayerBalanceOfArrears.Добавить(PayerBalanceOfArrears("Преемственная задолженность по пеням и штрафам", 0));
+	ОбъектXDTO.PayerBalanceOfArrears.Добавить(PayerBalanceOfArrears("Проценты по предоставлению отсрочки", 0));
+	ОбъектXDTO.PayerBalanceOfArrears.Добавить(PayerBalanceOfArrears("Переплата по страховым взносам (кроме НПФ)", Объект.ПереплатаПоСтраховымВзносам));
+	ОбъектXDTO.PayerBalanceOfArrears.Добавить(PayerBalanceOfArrears("Переплата по санкциям", 0));
+	ОбъектXDTO.PayerBalanceOfArrears.Добавить(PayerBalanceOfArrears("Переплата по НПФ", Объект.ПереплатаПоПенсионномуФонду));
 	
 	Возврат ОбъектXDTO;
 КонецФункции 
@@ -911,8 +920,8 @@
 
 	ОбъектXDTO = СоздатьОбъектXDTO("PayerBalanceOfArrears");
 	
+	ОбъектXDTO.Sum 				= Формат(Сумма, "ЧЦ=15; ЧДЦ=2; ЧРД=.; ЧН=0.00; ЧГ=0");
 	ОбъектXDTO.TypeOfObligation = Наименование;
-	ОбъектXDTO.Sum 				= Строка(Сумма);
 	
 	Возврат ОбъектXDTO;
 КонецФункции

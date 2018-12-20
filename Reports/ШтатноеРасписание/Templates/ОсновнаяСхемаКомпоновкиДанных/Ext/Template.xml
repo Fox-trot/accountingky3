@@ -183,21 +183,6 @@
 		<expression>Сумма(МинимальнаяТарифнаяСтавка)</expression>
 	</totalField>
 	<parameter>
-		<name>НастройкиОтчета</name>
-		<title xsi:type="v8:LocalStringType">
-			<v8:item>
-				<v8:lang>ru</v8:lang>
-				<v8:content>Настройки отчета</v8:content>
-			</v8:item>
-		</title>
-		<valueType>
-			<v8:Type>v8:ValueStorage</v8:Type>
-		</valueType>
-		<value xsi:type="v8:ValueStorage">AQEIAAAAAAAAAO+7v3siVSJ9</value>
-		<useRestriction>false</useRestriction>
-		<use>Always</use>
-	</parameter>
-	<parameter>
 		<name>Период</name>
 		<title xsi:type="v8:LocalStringType">
 			<v8:item>
@@ -214,6 +199,21 @@
 		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
 		<useRestriction>false</useRestriction>
 		<expression>ВЫБОР КОГДА &amp;Период = Неопределено ИЛИ &amp;Период = NULL ИЛИ &amp;Период = ДатаВремя(1,1,1) ТОГДА ДатаВремя(3999,12,31)  ИНАЧЕ КонецПериода(&amp;Период, "День") КОНЕЦ</expression>
+	</parameter>
+	<parameter>
+		<name>НастройкиОтчета</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Настройки отчета</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>v8:ValueStorage</v8:Type>
+		</valueType>
+		<value xsi:type="v8:ValueStorage">AQEIAAAAAAAAAO+7v3siVSJ9</value>
+		<useRestriction>false</useRestriction>
+		<use>Always</use>
 	</parameter>
 	<settingsVariant>
 		<dcsset:name>ШтатноеРасписание</dcsset:name>
@@ -251,25 +251,27 @@
 			</dcsset:filter>
 			<dcsset:dataParameters>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Период</dcscor:parameter>
+					<dcscor:value xsi:type="v8:StandardBeginningDate">
+						<v8:variant xsi:type="v8:StandardBeginningDateVariant">BeginningOfThisDay</v8:variant>
+					</dcscor:value>
+					<dcsset:viewMode>Normal</dcsset:viewMode>
+					<dcsset:userSettingID>a08804d7-685f-4736-b14c-3f902da2fe2e</dcsset:userSettingID>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 					<dcscor:parameter>НастройкиОтчета</dcscor:parameter>
 					<dcscor:value xsi:type="v8:ValueStorage">AQEIAAAAAAAAAO+7v3siVSJ9</dcscor:value>
 					<dcsset:viewMode>Normal</dcsset:viewMode>
 					<dcsset:userSettingID>484bda48-3d06-49b9-90bd-9423de35a3ab</dcsset:userSettingID>
 				</dcscor:item>
-				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-					<dcscor:parameter>Период</dcscor:parameter>
-					<dcscor:value xsi:type="v8:StandardBeginningDate">
-						<v8:variant xsi:type="v8:StandardBeginningDateVariant">BeginningOfThisDay</v8:variant>
-					</dcscor:value>
-				</dcscor:item>
 			</dcsset:dataParameters>
 			<dcsset:order>
 				<dcsset:item xsi:type="dcsset:OrderItemField">
-					<dcsset:field>Подразделение.РеквизитДопУпорядочивания</dcsset:field>
+					<dcsset:field>Подразделение.Порядок</dcsset:field>
 					<dcsset:orderType>Asc</dcsset:orderType>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:OrderItemField">
-					<dcsset:field>Должность.РеквизитДопУпорядочивания</dcsset:field>
+					<dcsset:field>Должность.Порядок</dcsset:field>
 					<dcsset:orderType>Asc</dcsset:orderType>
 				</dcsset:item>
 				<dcsset:viewMode>Normal</dcsset:viewMode>

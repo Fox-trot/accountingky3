@@ -376,21 +376,6 @@
 		<expression>Сумма(Количество)</expression>
 	</totalField>
 	<parameter>
-		<name>НастройкиОтчета</name>
-		<title xsi:type="v8:LocalStringType">
-			<v8:item>
-				<v8:lang>ru</v8:lang>
-				<v8:content>Настройки отчета</v8:content>
-			</v8:item>
-		</title>
-		<valueType>
-			<v8:Type>v8:ValueStorage</v8:Type>
-		</valueType>
-		<value xsi:type="v8:ValueStorage">AQEIAAAAAAAAAO+7v3siVSJ9</value>
-		<useRestriction>false</useRestriction>
-		<use>Always</use>
-	</parameter>
-	<parameter>
 		<name>НачалоПериода</name>
 		<title xsi:type="v8:LocalStringType">
 			<v8:item>
@@ -405,7 +390,7 @@
 			</v8:DateQualifiers>
 		</valueType>
 		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
-		<useRestriction>false</useRestriction>
+		<useRestriction>true</useRestriction>
 	</parameter>
 	<parameter>
 		<name>КонецПериода</name>
@@ -422,7 +407,7 @@
 			</v8:DateQualifiers>
 		</valueType>
 		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
-		<useRestriction>false</useRestriction>
+		<useRestriction>true</useRestriction>
 	</parameter>
 	<parameter>
 		<name>НеУчитыватьСФ</name>
@@ -436,7 +421,22 @@
 			<v8:Type>xs:boolean</v8:Type>
 		</valueType>
 		<value xsi:type="xs:boolean">false</value>
+		<useRestriction>true</useRestriction>
+	</parameter>
+	<parameter>
+		<name>НастройкиОтчета</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Настройки отчета</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>v8:ValueStorage</v8:Type>
+		</valueType>
+		<value xsi:type="v8:ValueStorage">AQEIAAAAAAAAAO+7v3siVSJ9</value>
 		<useRestriction>false</useRestriction>
+		<use>Always</use>
 	</parameter>
 	<settingsVariant>
 		<dcsset:name>РеестрЗакупокПоКонтрагентам</dcsset:name>
@@ -449,25 +449,25 @@
 		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
 			<dcsset:dataParameters>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>НачалоПериода</dcscor:parameter>
+					<dcscor:value xsi:type="xs:dateTime">0001-01-01T00:00:00</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>КонецПериода</dcscor:parameter>
+					<dcscor:value xsi:type="xs:dateTime">0001-01-01T00:00:00</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>НеУчитыватьСФ</dcscor:parameter>
+					<dcscor:value xsi:type="xs:boolean">false</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 					<dcscor:parameter>НастройкиОтчета</dcscor:parameter>
 					<dcscor:value xsi:type="v8:ValueStorage">AQEIAAAAAAAAAO+7v3siVSJ9</dcscor:value>
 					<dcsset:viewMode>Normal</dcsset:viewMode>
 					<dcsset:userSettingID>b775d0e6-3ac4-4ddc-af56-2f0c41704682</dcsset:userSettingID>
-				</dcscor:item>
-				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-					<dcscor:parameter>НачалоПериода</dcscor:parameter>
-					<dcscor:value xsi:type="xs:dateTime">0001-01-01T00:00:00</dcscor:value>
-					<dcsset:userSettingID>f6592985-e68e-451a-8ca0-9ff365acc802</dcsset:userSettingID>
-				</dcscor:item>
-				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-					<dcscor:parameter>КонецПериода</dcscor:parameter>
-					<dcscor:value xsi:type="xs:dateTime">0001-01-01T00:00:00</dcscor:value>
-					<dcsset:userSettingID>dbd4d65c-5083-4a33-852c-95f488156ac4</dcsset:userSettingID>
-				</dcscor:item>
-				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-					<dcscor:parameter>НеУчитыватьСФ</dcscor:parameter>
-					<dcscor:value xsi:type="xs:boolean">false</dcscor:value>
-					<dcsset:userSettingID>d0635158-9d88-4767-a2c0-48d9b6cfc102</dcsset:userSettingID>
 				</dcscor:item>
 			</dcsset:dataParameters>
 			<dcsset:outputParameters>
@@ -568,6 +568,14 @@
 			</v8:item>
 		</dcsset:presentation>
 		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
+			<dcsset:dataParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>НастройкиОтчета</dcscor:parameter>
+					<dcscor:value xsi:type="v8:ValueStorage">AQEIAAAAAAAAAO+7v3siVSJ9</dcscor:value>
+					<dcsset:viewMode>Normal</dcsset:viewMode>
+					<dcsset:userSettingID>21ae0485-8d74-4ff4-a588-0e192c19692f</dcsset:userSettingID>
+				</dcscor:item>
+			</dcsset:dataParameters>
 			<dcsset:outputParameters>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 					<dcscor:parameter>ВыводитьЗаголовок</dcscor:parameter>
