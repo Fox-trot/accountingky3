@@ -92,23 +92,6 @@
 			</valueType>
 		</field>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>ВидРасчета</dataPath>
-			<field>ВидРасчета</field>
-			<title xsi:type="v8:LocalStringType">
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Вид расчета</v8:content>
-				</v8:item>
-			</title>
-			<role>
-				<dcscom:dimension>true</dcscom:dimension>
-			</role>
-			<valueType>
-				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:ChartOfCalculationTypesRef.ВидыНачислений</v8:Type>
-				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:ChartOfCalculationTypesRef.ВидыУдержаний</v8:Type>
-			</valueType>
-		</field>
-		<field xsi:type="DataSetFieldField">
 			<dataPath>СуммаПФР</dataPath>
 			<field>СуммаПФР</field>
 			<title xsi:type="v8:LocalStringType">
@@ -252,6 +235,17 @@
 					<v8:content>Сумма налогов</v8:content>
 				</v8:item>
 			</title>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ЧЦ=15; ЧДЦ=2</v8:content>
+						</v8:item>
+					</dcscor:value>
+				</dcscor:item>
+			</appearance>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>СуммаНачальныйОстаток</dataPath>
@@ -298,15 +292,32 @@
 				</dcscor:item>
 			</appearance>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СуммаДопДоход</dataPath>
+			<field>СуммаДопДоход</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Доп.доход</v8:content>
+				</v8:item>
+			</title>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ЧЦ=15; ЧДЦ=2</v8:content>
+						</v8:item>
+					</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
 		<item xsi:type="DataSetQuery">
 			<name>Начисления</name>
 			<field xsi:type="DataSetFieldField">
 				<dataPath>ФизЛицо</dataPath>
 				<field>ФизЛицо</field>
-			</field>
-			<field xsi:type="DataSetFieldField">
-				<dataPath>ВидРасчета</dataPath>
-				<field>ВидРасчета</field>
 			</field>
 			<field xsi:type="DataSetFieldField">
 				<dataPath>СуммаНачисления</dataPath>
@@ -326,26 +337,44 @@
 				<dataPath>ОтработаноЧасов</dataPath>
 				<field>ОтработаноЧасов</field>
 			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>СуммаДопДоход</dataPath>
+				<field>СуммаДопДоход</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Сумма доп доход</v8:content>
+					</v8:item>
+				</title>
+			</field>
 			<dataSource>ИсточникДанных1</dataSource>
 			<query>ВЫБРАТЬ
 	Начисления.ФизЛицо КАК ФизЛицо,
-	Начисления.Результат КАК СуммаНачисления,
+	ВЫБОР
+		КОГДА Начисления.ВидРасчета.ДополнительныйДоход
+			ТОГДА 0
+		ИНАЧЕ Начисления.Результат
+	КОНЕЦ КАК СуммаНачисления,
 	Начисления.ОтработаноДней КАК ОтработаноДней,
 	Начисления.ОтработаноЧасов КАК ОтработаноЧасов,
-	Начисления.ВидРасчета КАК ВидРасчета
+	ВЫБОР
+		КОГДА Начисления.ВидРасчета.ДополнительныйДоход
+			ТОГДА Начисления.Результат
+		ИНАЧЕ 0
+	КОНЕЦ КАК СуммаДопДоход
 {ВЫБРАТЬ
 	ФизЛицо.*,
 	СуммаНачисления,
 	ОтработаноДней,
 	ОтработаноЧасов,
-	ВидРасчета.*}
+	СуммаДопДоход}
 ИЗ
 	РегистрРасчета.Начисления КАК Начисления
 ГДЕ
 	Начисления.ПериодРегистрации МЕЖДУ &amp;НачалоПериода И &amp;КонецПериода
 {ГДЕ
-	Начисления.ВидРасчета.*,
-	Начисления.Результат КАК СуммаНачисления}</query>
+	Начисления.Результат КАК СуммаНачисления,
+	Начисления.Результат КАК СуммаДопДоход}</query>
 			<autoFillFields>false</autoFillFields>
 		</item>
 		<item xsi:type="DataSetQuery">
@@ -353,10 +382,6 @@
 			<field xsi:type="DataSetFieldField">
 				<dataPath>ФизЛицо</dataPath>
 				<field>ФизЛицо</field>
-			</field>
-			<field xsi:type="DataSetFieldField">
-				<dataPath>ВидРасчета</dataPath>
-				<field>ВидРасчета</field>
 			</field>
 			<field xsi:type="DataSetFieldField">
 				<dataPath>СуммаУдержания</dataPath>
@@ -371,18 +396,15 @@
 			<dataSource>ИсточникДанных1</dataSource>
 			<query>ВЫБРАТЬ
 	Удержания.ФизЛицо КАК ФизЛицо,
-	Удержания.Результат КАК СуммаУдержания,
-	Удержания.ВидРасчета КАК ВидРасчета
+	Удержания.Результат КАК СуммаУдержания
 {ВЫБРАТЬ
 	ФизЛицо.*,
-	СуммаУдержания,
-	ВидРасчета.*}
+	СуммаУдержания}
 ИЗ
 	РегистрРасчета.Удержания КАК Удержания
 ГДЕ
 	Удержания.ПериодРегистрации МЕЖДУ &amp;НачалоПериода И &amp;КонецПериода
 {ГДЕ
-	Удержания.ВидРасчета.*,
 	Удержания.Результат КАК СуммаУдержания}</query>
 			<autoFillFields>false</autoFillFields>
 		</item>
@@ -703,6 +725,10 @@
 		<dataPath>СуммаКонечныйОстаток</dataPath>
 		<expression>Сумма(СуммаКонечныйОстаток)</expression>
 	</totalField>
+	<totalField>
+		<dataPath>СуммаДопДоход</dataPath>
+		<expression>Сумма(СуммаДопДоход)</expression>
+	</totalField>
 	<parameter>
 		<name>НачалоПериода</name>
 		<title xsi:type="v8:LocalStringType">
@@ -787,6 +813,9 @@
 					<dcsset:field>СуммаНачисления</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>СуммаДопДоход</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>СуммаУдержания</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
@@ -822,11 +851,6 @@
 					<dcsset:left xsi:type="dcscor:Field">Подразделение</dcsset:left>
 					<dcsset:comparisonType>Equal</dcsset:comparisonType>
 				</dcsset:item>
-				<dcsset:item xsi:type="dcsset:FilterItemComparison">
-					<dcsset:use>false</dcsset:use>
-					<dcsset:left xsi:type="dcscor:Field">ВидРасчета</dcsset:left>
-					<dcsset:comparisonType>Equal</dcsset:comparisonType>
-				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:FilterItemGroup">
 					<dcsset:groupType>OrGroup</dcsset:groupType>
 					<dcsset:item xsi:type="dcsset:FilterItemComparison">
@@ -851,6 +875,11 @@
 					</dcsset:item>
 					<dcsset:item xsi:type="dcsset:FilterItemComparison">
 						<dcsset:left xsi:type="dcscor:Field">СуммаВыплаты</dcsset:left>
+						<dcsset:comparisonType>NotEqual</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:decimal">0</dcsset:right>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">СуммаДопДоход</dcsset:left>
 						<dcsset:comparisonType>NotEqual</dcsset:comparisonType>
 						<dcsset:right xsi:type="xs:decimal">0</dcsset:right>
 					</dcsset:item>

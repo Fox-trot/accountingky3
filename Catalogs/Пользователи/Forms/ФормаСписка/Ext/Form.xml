@@ -1,6 +1,13 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.6">
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.7">
 	<AutoSaveDataInSettings>Use</AutoSaveDataInSettings>
+	<MobileDeviceCommandBarContent>
+		<xr:Item>
+			<xr:Presentation/>
+			<xr:CheckState>0</xr:CheckState>
+			<xr:Value xsi:type="xs:decimal">158</xr:Value>
+		</xr:Item>
+	</MobileDeviceCommandBarContent>
 	<CommandSet>
 		<ExcludedCommand>Create</ExcludedCommand>
 	</CommandSet>
@@ -38,8 +45,13 @@
 				<Button name="ЗавершитьИЗакрыть" id="95">
 					<Type>CommandBarButton</Type>
 					<Visible>false</Visible>
+					<Representation>Text</Representation>
 					<DefaultButton>true</DefaultButton>
 					<CommandName>Form.Command.ЗавершитьИЗакрыть</CommandName>
+					<Picture>
+						<xr:Ref>StdPicture.WriteAndClose</xr:Ref>
+						<xr:LoadTransparent>true</xr:LoadTransparent>
+					</Picture>
 					<ExtendedTooltip name="ЗавершитьИЗакрытьExtendedTooltip" id="98"/>
 				</Button>
 				<Button name="ВыбратьГруппуПользователей" id="68">
@@ -157,17 +169,17 @@
 				</Button>
 			</ChildItems>
 		</CommandBar>
-		<UsualGroup name="Группа" id="24">
+		<UsualGroup name="ГруппаСодержимое" id="24">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Группа</v8:content>
+					<v8:content>Содержимое</v8:content>
 				</v8:item>
 			</Title>
 			<Representation>None</Representation>
 			<ChildItemsWidth>Equal</ChildItemsWidth>
 			<ShowTitle>false</ShowTitle>
-			<ExtendedTooltip name="ГруппаExtendedTooltip" id="108"/>
+			<ExtendedTooltip name="ГруппаСодержимоеРасширеннаяПодсказка" id="108"/>
 			<ChildItems>
 				<UsualGroup name="ГруппыИПользователи" id="74">
 					<Title>
@@ -181,18 +193,18 @@
 					<ShowTitle>false</ShowTitle>
 					<ExtendedTooltip name="ГруппыИПользователиExtendedTooltip" id="109"/>
 					<ChildItems>
-						<UsualGroup name="ГруппаГруппы" id="75" DisplayImportance="VeryHigh">
+						<UsualGroup name="ГруппаГруппы" id="75" DisplayImportance="VeryLow">
 							<Title>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Группы</v8:content>
+									<v8:content>Группы пользователей</v8:content>
 								</v8:item>
 							</Title>
 							<Representation>None</Representation>
 							<ShowTitle>false</ShowTitle>
 							<ExtendedTooltip name="ГруппаГруппыExtendedTooltip" id="110"/>
 							<ChildItems>
-								<Table name="ГруппыПользователей" id="25">
+								<Table name="ГруппыПользователей" id="25" DisplayImportance="VeryHigh">
 									<Representation>Tree</Representation>
 									<CommandBarLocation>None</CommandBarLocation>
 									<SkipOnInput>false</SkipOnInput>
@@ -203,6 +215,7 @@
 									<HorizontalLines>false</HorizontalLines>
 									<VerticalLines>false</VerticalLines>
 									<EnableDrag>true</EnableDrag>
+									<FileDragMode>AsFile</FileDragMode>
 									<DataPath>ГруппыПользователей</DataPath>
 									<RowPictureDataPath>ГруппыПользователей.НомерКартинки</RowPictureDataPath>
 									<RowsPicture>
@@ -350,6 +363,7 @@
 									<HorizontalLines>false</HorizontalLines>
 									<VerticalLines>false</VerticalLines>
 									<EnableStartDrag>true</EnableStartDrag>
+									<FileDragMode>AsFile</FileDragMode>
 									<DataPath>ПользователиСписок</DataPath>
 									<RowPictureDataPath>ПользователиСписок.НомерКартинки</RowPictureDataPath>
 									<RowsPicture>
@@ -515,7 +529,7 @@
 						</UsualGroup>
 					</ChildItems>
 				</UsualGroup>
-				<UsualGroup name="ВыбранныеПользователиИГруппы" id="77">
+				<UsualGroup name="ВыбранныеПользователиИГруппы" id="77" DisplayImportance="VeryLow">
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -534,6 +548,7 @@
 							<HorizontalLines>false</HorizontalLines>
 							<VerticalLines>false</VerticalLines>
 							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<FileDragMode>AsFile</FileDragMode>
 							<DataPath>ВыбранныеПользователиИГруппы</DataPath>
 							<RowPictureDataPath>ВыбранныеПользователиИГруппы.НомерКартинки</RowPictureDataPath>
 							<RowsPicture>

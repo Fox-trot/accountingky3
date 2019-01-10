@@ -1,5 +1,12 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.6">
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.7">
+	<MobileDeviceCommandBarContent>
+		<xr:Item>
+			<xr:Presentation/>
+			<xr:CheckState>0</xr:CheckState>
+			<xr:Value xsi:type="xs:decimal">64</xr:Value>
+		</xr:Item>
+	</MobileDeviceCommandBarContent>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
 		<Autofill>false</Autofill>
 	</AutoCommandBar>
@@ -67,11 +74,22 @@
 					<CommandSource>Form</CommandSource>
 					<ExtendedTooltip name="КомандыФормыРасширеннаяПодсказка" id="80"/>
 				</ButtonGroup>
-				<Button name="ФормаЗагрузитьКурсыВалют" id="43">
-					<Type>CommandBarButton</Type>
-					<CommandName>Form.Command.ЗагрузитьКурсыВалют</CommandName>
-					<ExtendedTooltip name="ФормаЗагрузитьКурсыВалютExtendedTooltip" id="50"/>
-				</Button>
+				<ButtonGroup name="ГруппаЗагрузитьКурсыВалют" id="87">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Загрузить курсы валют</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="ГруппаЗагрузитьКурсыВалютРасширеннаяПодсказка" id="88"/>
+					<ChildItems>
+						<Button name="ФормаЗагрузитьКурсыВалют" id="43">
+							<Type>CommandBarButton</Type>
+							<CommandName>Form.Command.ЗагрузитьКурсыВалют</CommandName>
+							<ExtendedTooltip name="ФормаЗагрузитьКурсыВалютExtendedTooltip" id="50"/>
+						</Button>
+					</ChildItems>
+				</ButtonGroup>
 				<Button name="Справка" id="81">
 					<Type>CommandBarButton</Type>
 					<CommandName>Form.StandardCommand.Help</CommandName>
@@ -83,6 +101,7 @@
 			<CommandBarLocation>None</CommandBarLocation>
 			<SkipOnInput>false</SkipOnInput>
 			<UseAlternationRowColor>true</UseAlternationRowColor>
+			<FileDragMode>AsFile</FileDragMode>
 			<DataPath>Список</DataPath>
 			<RowPictureDataPath>Список.DefaultPicture</RowPictureDataPath>
 			<Title>
@@ -136,7 +155,7 @@
 				<Event name="OnGetDataAtServer">ВалютыПриПолученииДанныхНаСервере</Event>
 			</Events>
 			<ChildItems>
-				<InputField name="НаименованиеПолное" id="40">
+				<InputField name="НаименованиеПолное" id="40" DisplayImportance="VeryHigh">
 					<DataPath>Список.НаименованиеПолное</DataPath>
 					<Width>20</Width>
 					<Wrap>false</Wrap>
@@ -169,7 +188,7 @@
 					<ContextMenu name="НаименованиеКонтекстноеМеню" id="33"/>
 					<ExtendedTooltip name="НаименованиеExtendedTooltip" id="54"/>
 				</InputField>
-				<LabelField name="Курс" id="38">
+				<LabelField name="Курс" id="38" DisplayImportance="VeryHigh">
 					<DataPath>Список.Курс</DataPath>
 					<Title>
 						<v8:item>

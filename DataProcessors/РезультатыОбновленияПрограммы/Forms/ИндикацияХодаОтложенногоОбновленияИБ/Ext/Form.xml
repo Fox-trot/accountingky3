@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.6">
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.7">
 	<Title>
 		<v8:item>
 			<v8:lang>ru</v8:lang>
@@ -8,7 +8,7 @@
 	</Title>
 	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
 	<AutoTitle>false</AutoTitle>
-	<CommandBarLocation>None</CommandBarLocation>
+	<CommandBarLocation>Bottom</CommandBarLocation>
 	<CommandSet>
 		<ExcludedCommand>Abort</ExcludedCommand>
 		<ExcludedCommand>Cancel</ExcludedCommand>
@@ -25,6 +25,21 @@
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
 		<HorizontalAlign>Right</HorizontalAlign>
 		<Autofill>false</Autofill>
+		<ChildItems>
+			<Button name="ФормаЗакрыть" id="14">
+				<Type>CommandBarButton</Type>
+				<Representation>Text</Representation>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.StandardCommand.Close</CommandName>
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Закрыть</v8:content>
+					</v8:item>
+				</Title>
+				<ExtendedTooltip name="ФормаЗакрытьExtendedTooltip" id="127"/>
+			</Button>
+		</ChildItems>
 	</AutoCommandBar>
 	<Events>
 		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
@@ -70,6 +85,7 @@
 										<xr:Ref>CommonPicture.Успешно32</xr:Ref>
 										<xr:LoadTransparent>false</xr:LoadTransparent>
 									</Picture>
+									<FileDragMode>AsFile</FileDragMode>
 									<ContextMenu name="КартинкаИнформацияКонтекстноеМеню" id="84"/>
 									<ExtendedTooltip name="КартинкаИнформацияExtendedTooltip" id="129"/>
 								</PictureDecoration>
@@ -109,6 +125,7 @@
 										<xr:Ref>CommonPicture.Ошибка32</xr:Ref>
 										<xr:LoadTransparent>false</xr:LoadTransparent>
 									</Picture>
+									<FileDragMode>AsFile</FileDragMode>
 									<ContextMenu name="КартинкаОшибкаКонтекстноеМеню" id="189"/>
 									<ExtendedTooltip name="КартинкаОшибкаРасширеннаяПодсказка" id="190"/>
 								</PictureDecoration>
@@ -269,23 +286,49 @@
 							<v8:content>Обновление в файловой базе</v8:content>
 						</v8:item>
 					</Title>
-					<Group>HorizontalIfPossible</Group>
 					<ExtendedTooltip name="ОбновлениеВФайловойБазеExtendedTooltip" id="134"/>
 					<ChildItems>
-						<PictureDecoration name="КартинкаИнформацияФайловаяБаза" id="32">
-							<Title formatted="false">
+						<UsualGroup name="ГруппаШапкаФайловаяБаза" id="247">
+							<Title>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Картинка действие выполняется</v8:content>
+									<v8:content>Шапка файловая база</v8:content>
 								</v8:item>
 							</Title>
-							<Picture>
-								<xr:Ref>CommonPicture.Предупреждение32</xr:Ref>
-								<xr:LoadTransparent>false</xr:LoadTransparent>
-							</Picture>
-							<ContextMenu name="КартинкаИнформацияФайловаяБазаКонтекстноеМеню" id="33"/>
-							<ExtendedTooltip name="КартинкаИнформацияФайловаяБазаExtendedTooltip" id="136"/>
-						</PictureDecoration>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаШапкаФайловаяБазаРасширеннаяПодсказка" id="248"/>
+							<ChildItems>
+								<PictureDecoration name="КартинкаИнформацияФайловаяБаза" id="32">
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Картинка действие выполняется</v8:content>
+										</v8:item>
+									</Title>
+									<Picture>
+										<xr:Ref>CommonPicture.Предупреждение32</xr:Ref>
+										<xr:LoadTransparent>false</xr:LoadTransparent>
+									</Picture>
+									<FileDragMode>AsFile</FileDragMode>
+									<ContextMenu name="КартинкаИнформацияФайловаяБазаКонтекстноеМеню" id="33"/>
+									<ExtendedTooltip name="КартинкаИнформацияФайловаяБазаExtendedTooltip" id="136"/>
+								</PictureDecoration>
+								<LabelDecoration name="ЗаголовокИнформацииФайловаяБаза" id="35">
+									<AutoMaxWidth>false</AutoMaxWidth>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Необходимо выполнить дополнительные процедуры обработки данных.
+Работа с этими данными в программе временно ограничена.</v8:content>
+										</v8:item>
+									</Title>
+									<VerticalAlign>Center</VerticalAlign>
+									<ContextMenu name="ЗаголовокИнформацииФайловаяБазаКонтекстноеМеню" id="36"/>
+									<ExtendedTooltip name="ЗаголовокИнформацииФайловаяБазаExtendedTooltip" id="139"/>
+								</LabelDecoration>
+							</ChildItems>
+						</UsualGroup>
 						<UsualGroup name="ГруппаИнформацияФайловаяБаза" id="34">
 							<Title>
 								<v8:item>
@@ -310,19 +353,6 @@
 									<ShowTitle>false</ShowTitle>
 									<ExtendedTooltip name="ГруппаЗапуститьОтложенноеОбновлениеРасширеннаяПодсказка" id="138"/>
 									<ChildItems>
-										<LabelDecoration name="ЗаголовокИнформацииФайловаяБаза" id="35">
-											<AutoMaxWidth>false</AutoMaxWidth>
-											<Title formatted="false">
-												<v8:item>
-													<v8:lang>ru</v8:lang>
-													<v8:content>Необходимо выполнить дополнительные процедуры обработки данных.
-Работа с этими данными в программе временно ограничена.</v8:content>
-												</v8:item>
-											</Title>
-											<VerticalAlign>Center</VerticalAlign>
-											<ContextMenu name="ЗаголовокИнформацииФайловаяБазаКонтекстноеМеню" id="36"/>
-											<ExtendedTooltip name="ЗаголовокИнформацииФайловаяБазаExtendedTooltip" id="139"/>
-										</LabelDecoration>
 										<Button name="ОткрытьСписокОтложенныхОбработчиков1" id="81">
 											<Type>Hyperlink</Type>
 											<CommandName>Form.Command.ОткрытьСписокДополнительныхПроцедурОбработкиДанных</CommandName>
@@ -365,36 +395,35 @@
 							<v8:content>Статус обновления для пользователя</v8:content>
 						</v8:item>
 					</Title>
-					<Group>HorizontalIfPossible</Group>
 					<ShowTitle>false</ShowTitle>
 					<ExtendedTooltip name="СтатусОбновленияДляПользователяExtendedTooltip" id="145"/>
 					<ChildItems>
-						<PictureDecoration name="КартинкаИнформацияПользователю" id="121">
-							<Title formatted="false">
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Картинка действие выполняется</v8:content>
-								</v8:item>
-							</Title>
-							<Picture>
-								<xr:Ref>CommonPicture.Предупреждение32</xr:Ref>
-								<xr:LoadTransparent>false</xr:LoadTransparent>
-							</Picture>
-							<ContextMenu name="КартинкаИнформацияПользователюКонтекстноеМеню" id="122"/>
-							<ExtendedTooltip name="КартинкаИнформацияПользователюExtendedTooltip" id="146"/>
-						</PictureDecoration>
-						<UsualGroup name="ГруппаСодержаниеСтраницы" id="123">
+						<UsualGroup name="ГруппаШапкаМодельСервиса" id="249">
 							<Title>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Содержание страницы</v8:content>
+									<v8:content>Шапка модель сервиса</v8:content>
 								</v8:item>
 							</Title>
-							<Group>Vertical</Group>
 							<Representation>None</Representation>
 							<ShowTitle>false</ShowTitle>
-							<ExtendedTooltip name="ГруппаСодержаниеСтраницыExtendedTooltip" id="147"/>
+							<ExtendedTooltip name="ГруппаШапкаМодельСервисаРасширеннаяПодсказка" id="250"/>
 							<ChildItems>
+								<PictureDecoration name="КартинкаИнформацияПользователю" id="121">
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Картинка действие выполняется</v8:content>
+										</v8:item>
+									</Title>
+									<Picture>
+										<xr:Ref>CommonPicture.Предупреждение32</xr:Ref>
+										<xr:LoadTransparent>false</xr:LoadTransparent>
+									</Picture>
+									<FileDragMode>AsFile</FileDragMode>
+									<ContextMenu name="КартинкаИнформацияПользователюКонтекстноеМеню" id="122"/>
+									<ExtendedTooltip name="КартинкаИнформацияПользователюExtendedTooltip" id="146"/>
+								</PictureDecoration>
 								<LabelDecoration name="ЗаголовокИнформацииДляПользователя" id="124">
 									<AutoMaxWidth>false</AutoMaxWidth>
 									<Title formatted="false">
@@ -409,19 +438,19 @@
 									<ContextMenu name="ЗаголовокИнформацииДляПользователяКонтекстноеМеню" id="125"/>
 									<ExtendedTooltip name="ЗаголовокИнформацииДляПользователяExtendedTooltip" id="148"/>
 								</LabelDecoration>
-								<Button name="ОткрытьСписокОтложенныхОбработчиков2" id="126">
-									<Type>Hyperlink</Type>
-									<CommandName>Form.Command.ОткрытьСписокДополнительныхПроцедурОбработкиДанных</CommandName>
-									<Title>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Список процедур обработки данных</v8:content>
-										</v8:item>
-									</Title>
-									<ExtendedTooltip name="ОткрытьСписокОтложенныхОбработчиков2ExtendedTooltip" id="149"/>
-								</Button>
 							</ChildItems>
 						</UsualGroup>
+						<Button name="ОткрытьСписокОтложенныхОбработчиков2" id="126">
+							<Type>Hyperlink</Type>
+							<CommandName>Form.Command.ОткрытьСписокДополнительныхПроцедурОбработкиДанных</CommandName>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Список процедур обработки данных</v8:content>
+								</v8:item>
+							</Title>
+							<ExtendedTooltip name="ОткрытьСписокОтложенныхОбработчиков2ExtendedTooltip" id="149"/>
+						</Button>
 					</ChildItems>
 				</Page>
 				<Page name="ОбновлениеВыполняется" id="2">
@@ -441,36 +470,37 @@
 									<v8:content>Ход обновления</v8:content>
 								</v8:item>
 							</Title>
+							<Group>Vertical</Group>
 							<Representation>NormalSeparation</Representation>
 							<ShowTitle>false</ShowTitle>
 							<ExtendedTooltip name="ГруппаХодОбновленияExtendedTooltip" id="151"/>
 							<ChildItems>
-								<PictureDecoration name="КартинкаДействиеВыполняется" id="3">
-									<Title formatted="false">
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Картинка действие выполняется</v8:content>
-										</v8:item>
-									</Title>
-									<Picture>
-										<xr:Ref>CommonPicture.ДлительнаяОперация48</xr:Ref>
-										<xr:LoadTransparent>false</xr:LoadTransparent>
-									</Picture>
-									<ContextMenu name="КартинкаДействиеВыполняетсяКонтекстноеМеню" id="4"/>
-									<ExtendedTooltip name="КартинкаДействиеВыполняетсяExtendedTooltip" id="152"/>
-								</PictureDecoration>
-								<UsualGroup name="ГруппаИнформацияОПрогрессе" id="6">
+								<UsualGroup name="ГруппаШапкаКлиентСервер" id="251">
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>Информация о прогрессе</v8:content>
+											<v8:content>Шапка клиент сервер</v8:content>
 										</v8:item>
 									</Title>
-									<Group>Vertical</Group>
 									<Representation>None</Representation>
 									<ShowTitle>false</ShowTitle>
-									<ExtendedTooltip name="ГруппаИнформацияОПрогрессеExtendedTooltip" id="153"/>
+									<ExtendedTooltip name="ГруппаШапкаКлиентСерверРасширеннаяПодсказка" id="252"/>
 									<ChildItems>
+										<PictureDecoration name="КартинкаДействиеВыполняется" id="3">
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Картинка действие выполняется</v8:content>
+												</v8:item>
+											</Title>
+											<Picture>
+												<xr:Ref>CommonPicture.ДлительнаяОперация48</xr:Ref>
+												<xr:LoadTransparent>false</xr:LoadTransparent>
+											</Picture>
+											<FileDragMode>AsFile</FileDragMode>
+											<ContextMenu name="КартинкаДействиеВыполняетсяКонтекстноеМеню" id="4"/>
+											<ExtendedTooltip name="КартинкаДействиеВыполняетсяExtendedTooltip" id="152"/>
+										</PictureDecoration>
 										<LabelDecoration name="ЗаголовокИнформации" id="7">
 											<AutoMaxWidth>false</AutoMaxWidth>
 											<Title formatted="false">
@@ -483,6 +513,20 @@
 											<ContextMenu name="ЗаголовокИнформацииКонтекстноеМеню" id="8"/>
 											<ExtendedTooltip name="ЗаголовокИнформацииExtendedTooltip" id="154"/>
 										</LabelDecoration>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="ГруппаИнформацияОПрогрессе" id="6">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Информация о прогрессе</v8:content>
+										</v8:item>
+									</Title>
+									<Group>Vertical</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="ГруппаИнформацияОПрогрессеExtendedTooltip" id="153"/>
+									<ChildItems>
 										<LabelDecoration name="ИнформацияСтатусОбновления" id="9">
 											<AutoMaxWidth>false</AutoMaxWidth>
 											<Title formatted="false">
@@ -586,7 +630,7 @@
 										<LabelDecoration name="ИнформацияПодсказкаФайловаяБаза2" id="114">
 											<AutoMaxWidth>false</AutoMaxWidth>
 											<MaxWidth>60</MaxWidth>
-											<TextColor>style:ПоясняющийТекст</TextColor>
+											<TextColor>0:ad87bd29-0ad1-4da4-ac62-38e714e0cb9f</TextColor>
 											<Title formatted="false">
 												<v8:item>
 													<v8:lang>ru</v8:lang>
@@ -614,7 +658,7 @@
 												<LabelDecoration name="ПодсказкаПроПериодНаименьшейАктивностиПользователей" id="100">
 													<AutoMaxWidth>false</AutoMaxWidth>
 													<MaxWidth>60</MaxWidth>
-													<TextColor>style:ПоясняющийТекст</TextColor>
+													<TextColor>0:ad87bd29-0ad1-4da4-ac62-38e714e0cb9f</TextColor>
 													<Title formatted="false">
 														<v8:item>
 															<v8:lang>ru</v8:lang>
@@ -678,18 +722,58 @@
 									<v8:content>Отложенное обновление завершено</v8:content>
 								</v8:item>
 							</Title>
+							<Group>Vertical</Group>
 							<Representation>NormalSeparation</Representation>
 							<ShowTitle>false</ShowTitle>
 							<ExtendedTooltip name="ГруппаОтложенноеОбновлениеЗавершеноExtendedTooltip" id="164"/>
 							<ChildItems>
-								<PictureDecoration name="КартинкаЗавершено" id="43">
-									<Picture>
-										<xr:Ref>CommonPicture.Ошибка32</xr:Ref>
-										<xr:LoadTransparent>true</xr:LoadTransparent>
-									</Picture>
-									<ContextMenu name="КартинкаЗавершеноКонтекстноеМеню" id="44"/>
-									<ExtendedTooltip name="КартинкаЗавершеноРасширеннаяПодсказка" id="165"/>
-								</PictureDecoration>
+								<UsualGroup name="ГруппаШапкаЗавершено" id="253">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Шапка завершено</v8:content>
+										</v8:item>
+									</Title>
+									<Group>AlwaysHorizontal</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="ГруппаШапкаЗавершеноРасширеннаяПодсказка" id="254"/>
+									<ChildItems>
+										<PictureDecoration name="КартинкаЗавершено" id="43">
+											<Picture>
+												<xr:Ref>CommonPicture.Ошибка32</xr:Ref>
+												<xr:LoadTransparent>true</xr:LoadTransparent>
+											</Picture>
+											<FileDragMode>AsFile</FileDragMode>
+											<ContextMenu name="КартинкаЗавершеноКонтекстноеМеню" id="44"/>
+											<ExtendedTooltip name="КартинкаЗавершеноРасширеннаяПодсказка" id="165"/>
+										</PictureDecoration>
+										<LabelDecoration name="ИнформацияОтложенныеОбработчикиОтсутствуют" id="118">
+											<Visible>false</Visible>
+											<Height>2</Height>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Дополнительные процедуры обработки данных не предусмотрены.</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="ИнформацияОтложенныеОбработчикиОтсутствуютКонтекстноеМеню" id="119"/>
+											<ExtendedTooltip name="ИнформацияОтложенныеОбработчикиОтсутствуютExtendedTooltip" id="167"/>
+										</LabelDecoration>
+										<LabelDecoration name="ИнформацияОтложенноеОбновлениеЗавершено" id="50">
+											<MaxWidth>60</MaxWidth>
+											<Height>2</Height>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Дополнительные процедуры обработки данных не выполнялись</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="ИнформацияОтложенноеОбновлениеЗавершеноКонтекстноеМеню" id="51"/>
+											<ExtendedTooltip name="ИнформацияОтложенноеОбновлениеЗавершеноРасширеннаяПодсказка" id="169"/>
+										</LabelDecoration>
+									</ChildItems>
+								</UsualGroup>
 								<UsualGroup name="ГруппаИнформацияОбОбновлении1" id="45">
 									<Title>
 										<v8:item>
@@ -702,18 +786,6 @@
 									<ShowTitle>false</ShowTitle>
 									<ExtendedTooltip name="ГруппаИнформацияОбОбновлении1ExtendedTooltip" id="166"/>
 									<ChildItems>
-										<LabelDecoration name="ИнформацияОтложенныеОбработчикиОтсутствуют" id="118">
-											<Visible>false</Visible>
-											<AutoMaxWidth>false</AutoMaxWidth>
-											<Title formatted="false">
-												<v8:item>
-													<v8:lang>ru</v8:lang>
-													<v8:content>Дополнительные процедуры обработки данных не предусмотрены.</v8:content>
-												</v8:item>
-											</Title>
-											<ContextMenu name="ИнформацияОтложенныеОбработчикиОтсутствуютКонтекстноеМеню" id="119"/>
-											<ExtendedTooltip name="ИнформацияОтложенныеОбработчикиОтсутствуютExtendedTooltip" id="167"/>
-										</LabelDecoration>
 										<UsualGroup name="ГруппаПереходКСпискуОтложенныхОбработчиков" id="56">
 											<Title>
 												<v8:item>
@@ -726,32 +798,18 @@
 											<Representation>None</Representation>
 											<ShowTitle>false</ShowTitle>
 											<ExtendedTooltip name="ГруппаПереходКСпискуОтложенныхОбработчиковExtendedTooltip" id="168"/>
-											<ChildItems>
-												<LabelDecoration name="ИнформацияОтложенноеОбновлениеЗавершено" id="50">
-													<AutoMaxWidth>false</AutoMaxWidth>
-													<MaxWidth>60</MaxWidth>
-													<Title formatted="false">
-														<v8:item>
-															<v8:lang>ru</v8:lang>
-															<v8:content>Дополнительные процедуры обработки данных не выполнялись</v8:content>
-														</v8:item>
-													</Title>
-													<ContextMenu name="ИнформацияОтложенноеОбновлениеЗавершеноКонтекстноеМеню" id="51"/>
-													<ExtendedTooltip name="ИнформацияОтложенноеОбновлениеЗавершеноРасширеннаяПодсказка" id="169"/>
-												</LabelDecoration>
-												<Button name="ОткрытьСписокОтложенныхОбработчиков" id="57">
-													<Type>Hyperlink</Type>
-													<CommandName>Form.Command.ОткрытьСписокДополнительныхПроцедурОбработкиДанных</CommandName>
-													<Title>
-														<v8:item>
-															<v8:lang>ru</v8:lang>
-															<v8:content>Необходимо выполнить процедуры обработки данных</v8:content>
-														</v8:item>
-													</Title>
-													<ExtendedTooltip name="ОткрытьСписокОтложенныхОбработчиковExtendedTooltip" id="170"/>
-												</Button>
-											</ChildItems>
 										</UsualGroup>
+										<Button name="ОткрытьСписокОтложенныхОбработчиков" id="57">
+											<Type>Hyperlink</Type>
+											<CommandName>Form.Command.ОткрытьСписокДополнительныхПроцедурОбработкиДанных</CommandName>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Необходимо выполнить процедуры обработки данных</v8:content>
+												</v8:item>
+											</Title>
+											<ExtendedTooltip name="ОткрытьСписокОтложенныхОбработчиковExtendedTooltip" id="170"/>
+										</Button>
 										<LabelDecoration name="ГиперссылкаОсновноеОбновление" id="88">
 											<AutoMaxWidth>false</AutoMaxWidth>
 											<Title formatted="false">
@@ -786,7 +844,7 @@
 		<LabelDecoration name="ПодсказкаГдеНайтиЭтуФорму" id="74">
 			<Width>50</Width>
 			<AutoMaxWidth>false</AutoMaxWidth>
-			<TextColor>style:ПоясняющийТекст</TextColor>
+			<TextColor>0:ad87bd29-0ad1-4da4-ac62-38e714e0cb9f</TextColor>
 			<Title formatted="true">
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -798,48 +856,6 @@
 			<ContextMenu name="ПодсказкаГдеНайтиЭтуФормуКонтекстноеМеню" id="75"/>
 			<ExtendedTooltip name="ПодсказкаГдеНайтиЭтуФормуРасширеннаяПодсказка" id="172"/>
 		</LabelDecoration>
-		<UsualGroup name="ГруппаПодвал" id="180">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Подвал</v8:content>
-				</v8:item>
-			</Title>
-			<VerticalStretch>true</VerticalStretch>
-			<VerticalAlign>Bottom</VerticalAlign>
-			<Representation>NormalSeparation</Representation>
-			<ShowTitle>false</ShowTitle>
-			<ExtendedTooltip name="ГруппаПодвалРасширеннаяПодсказка" id="181"/>
-			<ChildItems>
-				<CommandBar name="ГруппаКоманднаяПанель" id="182">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Командная панель</v8:content>
-						</v8:item>
-					</Title>
-					<GroupVerticalAlign>Bottom</GroupVerticalAlign>
-					<HorizontalLocation>Right</HorizontalLocation>
-					<CommandSource>FormCommandPanelGlobalCommands</CommandSource>
-					<ExtendedTooltip name="ГруппаКоманднаяПанельРасширеннаяПодсказка" id="183"/>
-					<ChildItems>
-						<Button name="ФормаЗакрыть" id="14">
-							<Type>CommandBarButton</Type>
-							<Representation>Text</Representation>
-							<DefaultButton>true</DefaultButton>
-							<CommandName>Form.StandardCommand.Close</CommandName>
-							<Title>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Закрыть</v8:content>
-								</v8:item>
-							</Title>
-							<ExtendedTooltip name="ФормаЗакрытьExtendedTooltip" id="127"/>
-						</Button>
-					</ChildItems>
-				</CommandBar>
-			</ChildItems>
-		</UsualGroup>
 	</ChildItems>
 	<Attributes>
 		<Attribute name="Объект" id="1">

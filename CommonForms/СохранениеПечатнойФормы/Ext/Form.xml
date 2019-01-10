@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.6">
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.7">
 	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
 	<AutoSaveDataInSettings>Use</AutoSaveDataInSettings>
 	<CommandBarLocation>Bottom</CommandBarLocation>
@@ -21,9 +21,14 @@
 		<ChildItems>
 			<Button name="КнопкаСохранить" id="17">
 				<Type>CommandBarButton</Type>
+				<Representation>Text</Representation>
 				<DefaultButton>true</DefaultButton>
 				<SkipOnInput>false</SkipOnInput>
 				<CommandName>Form.Command.Сохранить</CommandName>
+				<Picture>
+					<xr:Ref>StdPicture.WriteAndClose</xr:Ref>
+					<xr:LoadTransparent>true</xr:LoadTransparent>
+				</Picture>
 				<Title>
 					<v8:item>
 						<v8:lang>ru</v8:lang>
@@ -45,7 +50,7 @@
 		<Event name="BeforeLoadDataFromSettingsAtServer">ПередЗагрузкойДанныхИзНастроекНаСервере</Event>
 	</Events>
 	<ChildItems>
-		<UsualGroup name="ВыборМестаСохраненияФайла" id="50">
+		<UsualGroup name="ВыборМестаСохраненияФайла" id="50" DisplayImportance="VeryHigh">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -57,10 +62,10 @@
 			<ShowTitle>false</ShowTitle>
 			<ExtendedTooltip name="ВыборМестаСохраненияФайлаExtendedTooltip" id="82"/>
 			<ChildItems>
-				<RadioButtonField name="ВариантСохранения" id="67">
+				<RadioButtonField name="ВариантСохранения" id="67" DisplayImportance="VeryHigh">
 					<DataPath>ВариантСохранения</DataPath>
 					<TitleLocation>None</TitleLocation>
-					<RadioButtonType>Auto</RadioButtonType>
+					<RadioButtonType>RadioButtons</RadioButtonType>
 					<ChoiceList>
 						<xr:Item>
 							<xr:Presentation/>
@@ -95,7 +100,7 @@
 						<Event name="OnChange">ВариантСохраненияПриИзменении</Event>
 					</Events>
 				</RadioButtonField>
-				<Pages name="ГруппаМестаСохранения" id="69">
+				<Pages name="ГруппаМестаСохранения" id="69" DisplayImportance="VeryHigh">
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -157,7 +162,7 @@
 				</Pages>
 			</ChildItems>
 		</UsualGroup>
-		<UsualGroup name="ГруппаВыборФорматов" id="77">
+		<UsualGroup name="ГруппаВыборФорматов" id="77" DisplayImportance="VeryHigh">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -174,6 +179,7 @@
 					<Header>false</Header>
 					<HorizontalLines>false</HorizontalLines>
 					<VerticalLines>false</VerticalLines>
+					<FileDragMode>AsFile</FileDragMode>
 					<DataPath>ВыбранныеФорматыСохранения</DataPath>
 					<RowPictureDataPath>ВыбранныеФорматыСохранения.Picture</RowPictureDataPath>
 					<Title>
@@ -243,7 +249,7 @@
 				</Table>
 			</ChildItems>
 		</UsualGroup>
-		<UsualGroup name="ГруппаДополнительныеПараметры" id="63">
+		<UsualGroup name="ГруппаДополнительныеПараметры" id="63" DisplayImportance="VeryHigh">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>

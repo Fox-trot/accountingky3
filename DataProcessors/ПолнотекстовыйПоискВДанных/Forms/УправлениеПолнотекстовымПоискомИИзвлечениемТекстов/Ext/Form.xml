@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.6">
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.7">
 	<Customizable>false</Customizable>
 	<CommandBarLocation>Top</CommandBarLocation>
 	<CommandSet>
@@ -19,6 +19,7 @@
 		<Autofill>false</Autofill>
 	</AutoCommandBar>
 	<Events>
+		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 		<Event name="OnClose">ПриЗакрытии</Event>
 	</Events>
@@ -64,6 +65,23 @@
 				</CommandBar>
 			</ChildItems>
 		</UsualGroup>
+		<UsualGroup name="Группа3" id="212">
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="Группа3РасширеннаяПодсказка" id="213"/>
+			<ChildItems>
+				<CheckBoxField name="ИспользоватьПолнотекстовыйПоиск" id="214">
+					<DataPath>ИспользоватьПолнотекстовыйПоиск</DataPath>
+					<TitleLocation>Right</TitleLocation>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="ИспользоватьПолнотекстовыйПоискКонтекстноеМеню" id="215"/>
+					<ExtendedTooltip name="ИспользоватьПолнотекстовыйПоискРасширеннаяПодсказка" id="216"/>
+					<Events>
+						<Event name="OnChange">ИспользоватьПолнотекстовыйПоискПриИзменении</Event>
+					</Events>
+				</CheckBoxField>
+			</ChildItems>
+		</UsualGroup>
 		<UsualGroup name="Группа1" id="151">
 			<Group>Vertical</Group>
 			<Representation>None</Representation>
@@ -87,6 +105,80 @@
 							<CommandName>DataProcessor.АктивныеПользователи.StandardCommand.Open</CommandName>
 							<ExtendedTooltip name="ОбработкаАктивныеПользователиExtendedTooltip" id="116"/>
 						</Button>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаМаксимальныйРазмерИндексируемыхДанных" id="193">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Максимальный размер индексируемых данных</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаМаксимальныйРазмерИндексируемыхДанныхРасширеннаяПодсказка" id="194"/>
+					<ChildItems>
+						<UsualGroup name="ГруппаМаксимальныйРазмерИндексируемыхДанныхЗначение" id="195">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Максимальный размер индексируемых данных значение</v8:content>
+								</v8:item>
+							</Title>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаМаксимальныйРазмерИндексируемыхДанныхЗначениеРасширеннаяПодсказка" id="196"/>
+							<ChildItems>
+								<CheckBoxField name="ОграничитьМаксимальныйРазмерИндексируемыхДанных" id="209">
+									<DataPath>ОграничитьМаксимальныйРазмерИндексируемыхДанных</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Ограничить максимальный размер индексируемых данных</v8:content>
+										</v8:item>
+									</Title>
+									<TitleLocation>Right</TitleLocation>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="ОграничитьМаксимальныйРазмерИндексируемыхДанныхКонтекстноеМеню" id="210"/>
+									<ExtendedTooltip name="ОграничитьМаксимальныйРазмерИндексируемыхДанныхРасширеннаяПодсказка" id="211"/>
+									<Events>
+										<Event name="OnChange">ОграничитьМаксимальныйРазмерИндексируемыхДанныхПриИзменении</Event>
+									</Events>
+								</CheckBoxField>
+								<InputField name="МаксимальныйРазмерИндексируемыхДанных" id="197">
+									<DataPath>МаксимальныйРазмерИндексируемыхДанных</DataPath>
+									<TitleLocation>None</TitleLocation>
+									<ContextMenu name="МаксимальныйРазмерИндексируемыхДанныхКонтекстноеМеню" id="198"/>
+									<ExtendedTooltip name="МаксимальныйРазмерИндексируемыхДанныхРасширеннаяПодсказка" id="199"/>
+									<Events>
+										<Event name="OnChange">МаксимальныйРазмерИндексируемыхДанныхПриИзменении</Event>
+									</Events>
+								</InputField>
+								<LabelDecoration name="ДекорацияМб" id="200">
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Мб</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="ДекорацияМбКонтекстноеМеню" id="201"/>
+									<ExtendedTooltip name="ДекорацияМбРасширеннаяПодсказка" id="202"/>
+								</LabelDecoration>
+							</ChildItems>
+						</UsualGroup>
+						<LabelDecoration name="МаксимальныйРазмерИндексируемыхДанныхПодсказка" id="203">
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<TextColor>0:ad87bd29-0ad1-4da4-ac62-38e714e0cb9f</TextColor>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Ограничение размера позволяет повысить скорость индексации и полнотекстового поиска.</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="МаксимальныйРазмерИндексируемыхДанныхПодсказкаКонтекстноеМеню" id="204"/>
+							<ExtendedTooltip name="МаксимальныйРазмерИндексируемыхДанныхПодсказкаРасширеннаяПодсказка" id="205"/>
+						</LabelDecoration>
 					</ChildItems>
 				</UsualGroup>
 				<UsualGroup name="ГруппаУправлениеПолнотекстовымПоиском" id="30">
@@ -150,73 +242,6 @@
 						</UsualGroup>
 					</ChildItems>
 				</UsualGroup>
-				<UsualGroup name="ГруппаМаксимальныйРазмерИндексируемыхДанных" id="193">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Максимальный размер индексируемых данных</v8:content>
-						</v8:item>
-					</Title>
-					<Group>Vertical</Group>
-					<Representation>None</Representation>
-					<ShowTitle>false</ShowTitle>
-					<ExtendedTooltip name="ГруппаМаксимальныйРазмерИндексируемыхДанныхРасширеннаяПодсказка" id="194"/>
-					<ChildItems>
-						<UsualGroup name="ГруппаМаксимальныйРазмерИндексируемыхДанныхЗначение" id="195">
-							<Title>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Максимальный размер индексируемых данных значение</v8:content>
-								</v8:item>
-							</Title>
-							<Representation>None</Representation>
-							<ShowTitle>false</ShowTitle>
-							<ExtendedTooltip name="ГруппаМаксимальныйРазмерИндексируемыхДанныхЗначениеРасширеннаяПодсказка" id="196"/>
-							<ChildItems>
-								<CheckBoxField name="ОграничитьМаксимальныйРазмерИндексируемыхДанных" id="209">
-									<DataPath>ОграничитьМаксимальныйРазмерИндексируемыхДанных</DataPath>
-									<TitleLocation>None</TitleLocation>
-									<CheckBoxType>Auto</CheckBoxType>
-									<ContextMenu name="ОграничитьМаксимальныйРазмерИндексируемыхДанныхКонтекстноеМеню" id="210"/>
-									<ExtendedTooltip name="ОграничитьМаксимальныйРазмерИндексируемыхДанныхРасширеннаяПодсказка" id="211"/>
-									<Events>
-										<Event name="OnChange">ОграничитьМаксимальныйРазмерИндексируемыхДанныхПриИзменении</Event>
-									</Events>
-								</CheckBoxField>
-								<InputField name="МаксимальныйРазмерИндексируемыхДанных" id="197">
-									<DataPath>МаксимальныйРазмерИндексируемыхДанных</DataPath>
-									<ContextMenu name="МаксимальныйРазмерИндексируемыхДанныхКонтекстноеМеню" id="198"/>
-									<ExtendedTooltip name="МаксимальныйРазмерИндексируемыхДанныхРасширеннаяПодсказка" id="199"/>
-									<Events>
-										<Event name="OnChange">МаксимальныйРазмерИндексируемыхДанныхПриИзменении</Event>
-									</Events>
-								</InputField>
-								<LabelDecoration name="ДекорацияМб" id="200">
-									<Title formatted="false">
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Мб</v8:content>
-										</v8:item>
-									</Title>
-									<ContextMenu name="ДекорацияМбКонтекстноеМеню" id="201"/>
-									<ExtendedTooltip name="ДекорацияМбРасширеннаяПодсказка" id="202"/>
-								</LabelDecoration>
-							</ChildItems>
-						</UsualGroup>
-						<LabelDecoration name="МаксимальныйРазмерИндексируемыхДанныхПодсказка" id="203">
-							<AutoMaxWidth>false</AutoMaxWidth>
-							<TextColor>style:ПоясняющийТекст</TextColor>
-							<Title formatted="false">
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Ограничение размера позволяет повысить скорость индексации и полнотекстового поиска.</v8:content>
-								</v8:item>
-							</Title>
-							<ContextMenu name="МаксимальныйРазмерИндексируемыхДанныхПодсказкаКонтекстноеМеню" id="204"/>
-							<ExtendedTooltip name="МаксимальныйРазмерИндексируемыхДанныхПодсказкаРасширеннаяПодсказка" id="205"/>
-						</LabelDecoration>
-					</ChildItems>
-				</UsualGroup>
 			</ChildItems>
 		</UsualGroup>
 		<UsualGroup name="ГруппаАвтоматическоеИзвлечениеТекстов" id="56">
@@ -234,7 +259,7 @@
 				<LabelDecoration name="ПояснениеИзвлекатьТекстыФайловНаСервере4" id="103">
 					<AutoMaxWidth>false</AutoMaxWidth>
 					<SkipOnInput>true</SkipOnInput>
-					<TextColor>style:ПоясняющийТекст</TextColor>
+					<TextColor>0:ad87bd29-0ad1-4da4-ac62-38e714e0cb9f</TextColor>
 					<Title formatted="false">
 						<v8:item>
 							<v8:lang>ru</v8:lang>

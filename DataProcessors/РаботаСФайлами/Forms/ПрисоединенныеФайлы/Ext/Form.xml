@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.6">
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.7">
 	<Title>
 		<v8:item>
 			<v8:lang>ru</v8:lang>
@@ -7,11 +7,459 @@
 		</v8:item>
 	</Title>
 	<AutoTitle>false</AutoTitle>
+	<AutoURL>false</AutoURL>
 	<CommandSet>
 		<ExcludedCommand>Refresh</ExcludedCommand>
 	</CommandSet>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
 		<Autofill>false</Autofill>
+		<ChildItems>
+			<Button name="ФормаВыбрать" id="220" DisplayImportance="VeryHigh">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.StandardCommand.Choose</CommandName>
+				<ExtendedTooltip name="ФормаВыбратьРасширеннаяПодсказка" id="221"/>
+			</Button>
+			<Button name="Добавить" id="261" DisplayImportance="VeryHigh">
+				<Type>CommandBarButton</Type>
+				<Visible>false</Visible>
+				<CommandName>Form.Command.Добавить</CommandName>
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Добавить файл с диска...</v8:content>
+					</v8:item>
+				</Title>
+				<ExtendedTooltip name="ДобавитьРасширеннаяПодсказка" id="262"/>
+			</Button>
+			<Popup name="ПодменюДобавить" id="257" DisplayImportance="VeryHigh">
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Добавить</v8:content>
+					</v8:item>
+				</Title>
+				<Picture>
+					<xr:Ref>StdPicture.CreateListItem</xr:Ref>
+					<xr:LoadTransparent>true</xr:LoadTransparent>
+				</Picture>
+				<ExtendedTooltip name="ПодменюДобавитьРасширеннаяПодсказка" id="258"/>
+				<ChildItems>
+					<Button name="ДобавитьИзФайлаНаДиске" id="1">
+						<Type>CommandBarButton</Type>
+						<Representation>Text</Representation>
+						<CommandName>Form.Command.Добавить</CommandName>
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Файл с диска...</v8:content>
+							</v8:item>
+						</Title>
+						<ExtendedTooltip name="ДобавитьИзФайлаНаДискеРасширеннаяПодсказка" id="103"/>
+					</Button>
+					<Button name="ДобавитьФайлПоШаблону" id="328">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.ДобавитьФайлПоШаблону</CommandName>
+						<ExtendedTooltip name="ДобавитьФайлПоШаблонуРасширеннаяПодсказка" id="329"/>
+					</Button>
+					<Button name="ДобавитьФайлСоСканера" id="259">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.ДобавитьФайлСоСканера</CommandName>
+						<ExtendedTooltip name="ДобавитьФайлСоСканераРасширеннаяПодсказка" id="260"/>
+					</Button>
+				</ChildItems>
+			</Popup>
+			<ButtonGroup name="ФормаГруппаИмпорт" id="352" DisplayImportance="Usual">
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Импорт</v8:content>
+					</v8:item>
+				</Title>
+				<ExtendedTooltip name="ФормаГруппаИмпортРасширеннаяПодсказка" id="353"/>
+				<ChildItems>
+					<Button name="ЗагрузитьФайлы" id="300">
+						<Type>CommandBarButton</Type>
+						<OnlyInAllActions>false</OnlyInAllActions>
+						<CommandName>Form.Command.ЗагрузитьФайлы</CommandName>
+						<ExtendedTooltip name="ЗагрузитьФайлыРасширеннаяПодсказка" id="301"/>
+					</Button>
+					<Button name="ЗагрузитьПапку" id="321">
+						<Type>CommandBarButton</Type>
+						<OnlyInAllActions>false</OnlyInAllActions>
+						<CommandName>Form.Command.ЗагрузитьПапку</CommandName>
+						<ExtendedTooltip name="ЗагрузитьПапкуРасширеннаяПодсказка" id="322"/>
+					</Button>
+				</ChildItems>
+			</ButtonGroup>
+			<Button name="СоздатьГруппу" id="298">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.СоздатьГруппу</CommandName>
+				<ExtendedTooltip name="СоздатьГруппуРасширеннаяПодсказка" id="299"/>
+			</Button>
+			<Button name="ФормаИзменить" id="102">
+				<Type>CommandBarButton</Type>
+				<OnlyInAllActions>false</OnlyInAllActions>
+				<CommandName>Form.Command.ОткрытьСвойстваФайла</CommandName>
+				<ExtendedTooltip name="ФормаИзменитьРасширеннаяПодсказка" id="122"/>
+			</Button>
+			<ButtonGroup name="ФормаГруппаКомандОсновные" id="33">
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Форма группа команд основные</v8:content>
+					</v8:item>
+				</Title>
+				<ExtendedTooltip name="ФормаГруппаКомандОсновныеРасширеннаяПодсказка" id="106"/>
+				<ChildItems>
+					<Button name="ФормаОткрыть" id="3">
+						<Type>CommandBarButton</Type>
+						<Representation>Text</Representation>
+						<CommandName>Form.Command.ОткрытьФайлДляПросмотра</CommandName>
+						<ExtendedTooltip name="ФормаОткрытьРасширеннаяПодсказка" id="105"/>
+					</Button>
+					<Button name="Занять" id="332">
+						<Type>CommandBarButton</Type>
+						<OnlyInAllActions>false</OnlyInAllActions>
+						<CommandName>Form.Command.Занять</CommandName>
+						<ExtendedTooltip name="ЗанятьРасширеннаяПодсказка" id="333"/>
+					</Button>
+					<Button name="ФормаРедактировать" id="34">
+						<Type>CommandBarButton</Type>
+						<Representation>Text</Representation>
+						<CommandName>Form.Command.Редактировать</CommandName>
+						<ExtendedTooltip name="ФормаРедактироватьExtendedTooltip" id="107"/>
+					</Button>
+					<Button name="ФормаЗакончитьРедактирование" id="43">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.ЗакончитьРедактирование</CommandName>
+						<ExtendedTooltip name="ФормаЗакончитьРедактированиеExtendedTooltip" id="108"/>
+					</Button>
+					<Popup name="ПодменюПечать" id="334">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Печать</v8:content>
+							</v8:item>
+						</Title>
+						<ExtendedTooltip name="ПодменюПечатьРасширеннаяПодсказка" id="335"/>
+						<ChildItems>
+							<Button name="Печать" id="265">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.Печать</CommandName>
+								<ExtendedTooltip name="ПечатьРасширеннаяПодсказка" id="266"/>
+							</Button>
+							<Button name="ПечатьСоШтампом" id="336">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.ПечатьСоШтампом</CommandName>
+								<ExtendedTooltip name="ПечатьСоШтампомРасширеннаяПодсказка" id="337"/>
+							</Button>
+						</ChildItems>
+					</Popup>
+					<Button name="Отправить" id="263">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.Отправить</CommandName>
+						<ExtendedTooltip name="ОтправитьРасширеннаяПодсказка" id="264"/>
+					</Button>
+					<Button name="СравнитьФайлы" id="323">
+						<Type>CommandBarButton</Type>
+						<OnlyInAllActions>false</OnlyInAllActions>
+						<CommandName>Form.Command.СравнитьФайлы</CommandName>
+						<ExtendedTooltip name="СравнитьФайлыРасширеннаяПодсказка" id="324"/>
+					</Button>
+				</ChildItems>
+			</ButtonGroup>
+			<ButtonGroup name="ФормаГлобальныеКоманды" id="218">
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Форма глобальные команды</v8:content>
+					</v8:item>
+				</Title>
+				<ToolTipRepresentation>None</ToolTipRepresentation>
+				<CommandSource>FormCommandPanelGlobalCommands</CommandSource>
+				<ExtendedTooltip name="ФормаГлобальныеКомандыРасширеннаяПодсказка" id="219"/>
+			</ButtonGroup>
+			<Popup name="ФормаГруппаКомандЭлектроннаяПодписьИШифрование" id="72">
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Электронная подпись и шифрование</v8:content>
+					</v8:item>
+				</Title>
+				<Picture>
+					<xr:Ref>CommonPicture.ПодписанЗашифрованЗаголовок</xr:Ref>
+					<xr:LoadTransparent>true</xr:LoadTransparent>
+				</Picture>
+				<Representation>Picture</Representation>
+				<ExtendedTooltip name="ФормаГруппаКомандЭлектроннаяПодписьИШифрованиеРасширеннаяПодсказка" id="110"/>
+				<ChildItems>
+					<ButtonGroup name="ФормаГруппаКомандЭлектроннаяПодпись" id="244">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Форма группа команд электронная подпись</v8:content>
+							</v8:item>
+						</Title>
+						<ExtendedTooltip name="ФормаГруппаКомандЭлектроннаяПодписьРасширеннаяПодсказка" id="245"/>
+						<ChildItems>
+							<Button name="ФормаЭППодписать" id="75">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.Подписать</CommandName>
+								<ExtendedTooltip name="ФормаЭППодписатьРасширеннаяПодсказка" id="111"/>
+							</Button>
+							<Button name="ФормаСохранитьВместеСЭП" id="73">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.СохранитьВместеСЭП</CommandName>
+								<ExtendedTooltip name="ФормаСохранитьВместеСЭПРасширеннаяПодсказка" id="112"/>
+							</Button>
+							<Button name="ФормаДобавитьЭПИзФайла" id="74">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.ДобавитьЭПИзФайла</CommandName>
+								<ExtendedTooltip name="ФормаДобавитьЭПИзФайлаРасширеннаяПодсказка" id="113"/>
+							</Button>
+						</ChildItems>
+					</ButtonGroup>
+					<ButtonGroup name="ФормаГруппаКомандШифрование" id="78">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Форма группа команд шифрование</v8:content>
+							</v8:item>
+						</Title>
+						<ExtendedTooltip name="ФормаГруппаКомандШифрованиеРасширеннаяПодсказка" id="114"/>
+						<ChildItems>
+							<Button name="ФормаЗашифровать" id="76">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.Зашифровать</CommandName>
+								<ExtendedTooltip name="ФормаЗашифроватьExtendedTooltip" id="115"/>
+							</Button>
+							<Button name="ФормаРасшифровать" id="77">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.Расшифровать</CommandName>
+								<ExtendedTooltip name="ФормаРасшифроватьExtendedTooltip" id="116"/>
+							</Button>
+						</ChildItems>
+					</ButtonGroup>
+				</ChildItems>
+			</Popup>
+			<ButtonGroup name="ФормаГруппаКомандДополнительные" id="18">
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Форма группа команд дополнительные</v8:content>
+					</v8:item>
+				</Title>
+				<ExtendedTooltip name="ФормаГруппаКомандДополнительныеРасширеннаяПодсказка" id="117"/>
+			</ButtonGroup>
+			<ButtonGroup name="ФормаГруппаКомандПоиска" id="12">
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Форма группа команд поиска</v8:content>
+					</v8:item>
+				</Title>
+				<ExtendedTooltip name="ФормаГруппаКомандПоискаРасширеннаяПодсказка" id="124"/>
+				<ChildItems>
+					<Button name="ФормаНайти" id="10">
+						<Type>CommandBarButton</Type>
+						<Visible>false</Visible>
+						<OnlyInAllActions>false</OnlyInAllActions>
+						<CommandName>Form.StandardCommand.Find</CommandName>
+						<ExtendedTooltip name="ФормаНайтиExtendedTooltip" id="125"/>
+					</Button>
+					<Button name="ФормаОтменитьПоиск" id="11">
+						<Type>CommandBarButton</Type>
+						<Visible>false</Visible>
+						<OnlyInAllActions>false</OnlyInAllActions>
+						<CommandName>Form.StandardCommand.CancelSearch</CommandName>
+						<ExtendedTooltip name="ФормаОтменитьПоискExtendedTooltip" id="126"/>
+					</Button>
+				</ChildItems>
+			</ButtonGroup>
+			<Button name="НастроитьСинхронизацию" id="283">
+				<Type>CommandBarButton</Type>
+				<OnlyInAllActions>false</OnlyInAllActions>
+				<CommandName>Form.Command.НастроитьСинхронизацию</CommandName>
+				<ExtendedTooltip name="НастроитьСинхронизациюРасширеннаяПодсказка" id="284"/>
+			</Button>
+			<Popup name="ФормаГруппаДополнительно" id="216">
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Дополнительно</v8:content>
+					</v8:item>
+				</Title>
+				<ToolTipRepresentation>None</ToolTipRepresentation>
+				<ExtendedTooltip name="ФормаГруппаДополнительноРасширеннаяПодсказка" id="217"/>
+				<ChildItems>
+					<Button name="ФормаИзменить82" id="238">
+						<Type>CommandBarButton</Type>
+						<Visible>false</Visible>
+						<CommandName>Form.Command.ОткрытьСвойстваФайла</CommandName>
+						<ExtendedTooltip name="ФормаИзменить82РасширеннаяПодсказка" id="239"/>
+					</Button>
+					<Button name="ФормаСкопировать" id="19">
+						<Type>CommandBarButton</Type>
+						<OnlyInAllActions>false</OnlyInAllActions>
+						<CommandName>Form.Command.Скопировать</CommandName>
+						<ExtendedTooltip name="ФормаСкопироватьExtendedTooltip" id="118"/>
+					</Button>
+					<Button name="УстановитьПометкуУдаления" id="21">
+						<Type>CommandBarButton</Type>
+						<OnlyInAllActions>false</OnlyInAllActions>
+						<CommandName>Form.Command.УстановитьПометкуУдаления</CommandName>
+						<ExtendedTooltip name="УстановитьПометкуУдаленияРасширеннаяПодсказка" id="119"/>
+					</Button>
+					<Button name="ФормаСохранитьКак" id="4">
+						<Type>CommandBarButton</Type>
+						<OnlyInAllActions>false</OnlyInAllActions>
+						<CommandName>Form.Command.СохранитьКак</CommandName>
+						<ExtendedTooltip name="ФормаСохранитьКакExtendedTooltip" id="120"/>
+					</Button>
+					<Popup name="ГруппаРежимПросмотра" id="311">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Режим просмотра</v8:content>
+							</v8:item>
+						</Title>
+						<Picture>
+							<xr:Ref>StdPicture.ListViewMode</xr:Ref>
+							<xr:LoadTransparent>true</xr:LoadTransparent>
+						</Picture>
+						<ExtendedTooltip name="ГруппаРежимПросмотраРасширеннаяПодсказка" id="312"/>
+						<ChildItems>
+							<Button name="РежимПросмотраСписок" id="313">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Item.Список.StandardCommand.List</CommandName>
+								<ExtendedTooltip name="РежимПросмотраСписокРасширеннаяПодсказка" id="314"/>
+							</Button>
+							<Button name="ИерархическийСписок" id="315">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Item.Список.StandardCommand.HierarchicalList</CommandName>
+								<ExtendedTooltip name="ИерархическийСписокРасширеннаяПодсказка" id="316"/>
+							</Button>
+							<Button name="Дерево" id="317">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Item.Список.StandardCommand.Tree</CommandName>
+								<ExtendedTooltip name="ДеревоРасширеннаяПодсказка" id="318"/>
+							</Button>
+						</ChildItems>
+					</Popup>
+					<Button name="ПеренестиВГруппу" id="338">
+						<Type>CommandBarButton</Type>
+						<OnlyInAllActions>false</OnlyInAllActions>
+						<CommandName>Form.Command.ПереместитьВГруппу</CommandName>
+						<ExtendedTooltip name="ПеренестиВГруппуРасширеннаяПодсказка" id="339"/>
+					</Button>
+					<Button name="ФормаОсвободить" id="49">
+						<Type>CommandBarButton</Type>
+						<Representation>Text</Representation>
+						<OnlyInAllActions>false</OnlyInAllActions>
+						<CommandName>Form.Command.Освободить</CommandName>
+						<ExtendedTooltip name="ФормаОсвободитьExtendedTooltip" id="109"/>
+					</Button>
+					<Button name="ФормаОбновитьИзФайлаНаДиске" id="51">
+						<Type>CommandBarButton</Type>
+						<OnlyInAllActions>false</OnlyInAllActions>
+						<CommandName>Form.Command.ОбновитьИзФайлаНаДиске</CommandName>
+						<Picture>
+							<xr:Ref>CommonPicture.ОбновитьФайлИзФайлаНаДиске</xr:Ref>
+							<xr:LoadTransparent>true</xr:LoadTransparent>
+						</Picture>
+						<ExtendedTooltip name="ФормаОбновитьИзФайлаНаДискеExtendedTooltip" id="121"/>
+					</Button>
+					<Button name="ФормаОткрытьКаталогФайла" id="2">
+						<Type>CommandBarButton</Type>
+						<OnlyInAllActions>false</OnlyInAllActions>
+						<CommandName>Form.Command.ОткрытьКаталогФайла</CommandName>
+						<ExtendedTooltip name="ФормаОткрытьКаталогФайлаExtendedTooltip" id="123"/>
+					</Button>
+				</ChildItems>
+			</Popup>
+			<Popup name="ФормаГруппаНастройки" id="348">
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Настройки</v8:content>
+					</v8:item>
+				</Title>
+				<ExtendedTooltip name="ФормаГруппаНастройкиРасширеннаяПодсказка" id="349"/>
+				<ChildItems>
+					<Button name="ФормаОбновить" id="222">
+						<Type>CommandBarButton</Type>
+						<OnlyInAllActions>false</OnlyInAllActions>
+						<CommandName>Form.Command.Обновить</CommandName>
+						<ExtendedTooltip name="ФормаОбновитьРасширеннаяПодсказка" id="223"/>
+					</Button>
+					<Button name="ФормаИзменитьФорму" id="232">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.StandardCommand.CustomizeForm</CommandName>
+						<ExtendedTooltip name="ФормаИзменитьФормуРасширеннаяПодсказка" id="233"/>
+					</Button>
+					<Button name="ФормаВывестиСписок" id="230">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.StandardCommand.OutputList</CommandName>
+						<ExtendedTooltip name="ФормаВывестиСписокРасширеннаяПодсказка" id="231"/>
+					</Button>
+					<ButtonGroup name="ФормаГруппаНастройкаСписка" id="236">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Форма группа настройка списка</v8:content>
+							</v8:item>
+						</Title>
+						<ExtendedTooltip name="ФормаГруппаНастройкаСпискаРасширеннаяПодсказка" id="237"/>
+						<ChildItems>
+							<Button name="ФормаНастройкаСписка" id="234">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.StandardCommand.ListSettings</CommandName>
+								<ExtendedTooltip name="ФормаНастройкаСпискаРасширеннаяПодсказка" id="235"/>
+							</Button>
+							<Button name="ФормаЗагрузитьНастройкиДинамическогоСписка" id="224">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.StandardCommand.LoadDynamicListSettings</CommandName>
+								<ExtendedTooltip name="ФормаЗагрузитьНастройкиДинамическогоСпискаРасширеннаяПодсказка" id="225"/>
+							</Button>
+							<Button name="ФормаСохранитьНастройкиДинамическогоСписка" id="226">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.StandardCommand.SaveDynamicListSettings</CommandName>
+								<ExtendedTooltip name="ФормаСохранитьНастройкиДинамическогоСпискаРасширеннаяПодсказка" id="227"/>
+							</Button>
+							<Button name="ФормаСтандартныеНастройкиДинамическогоСписка" id="228">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.StandardCommand.DynamicListStandardSettings</CommandName>
+								<ExtendedTooltip name="ФормаСтандартныеНастройкиДинамическогоСпискаРасширеннаяПодсказка" id="229"/>
+							</Button>
+						</ChildItems>
+					</ButtonGroup>
+				</ChildItems>
+			</Popup>
+			<Button name="СохранитьПапку" id="319">
+				<Type>CommandBarButton</Type>
+				<OnlyInAllActions>false</OnlyInAllActions>
+				<CommandName>Form.Command.СохранитьПапку</CommandName>
+				<ExtendedTooltip name="СохранитьПапкуРасширеннаяПодсказка" id="320"/>
+			</Button>
+			<Button name="Предпросмотр" id="272">
+				<Type>CommandBarButton</Type>
+				<OnlyInAllActions>false</OnlyInAllActions>
+				<CommandName>Form.Command.Предпросмотр</CommandName>
+				<ExtendedTooltip name="ПредпросмотрРасширеннаяПодсказка" id="273"/>
+			</Button>
+			<Button name="ПоказыватьСлужебныеФайлы" id="350">
+				<Type>CommandBarButton</Type>
+				<OnlyInAllActions>false</OnlyInAllActions>
+				<CommandName>Form.Command.ПоказыватьСлужебныеФайлы</CommandName>
+				<ExtendedTooltip name="ПоказыватьСлужебныеФайлыРасширеннаяПодсказка" id="351"/>
+			</Button>
+			<Button name="ФормаСправка" id="9">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.StandardCommand.Help</CommandName>
+				<ExtendedTooltip name="ФормаСправкаExtendedTooltip" id="131"/>
+			</Button>
+		</ChildItems>
 	</AutoCommandBar>
 	<Events>
 		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
@@ -46,427 +494,6 @@
 				</v8:item>
 			</Title>
 			<ExtendedTooltip name="КоманднаяПанельРасширеннаяПодсказка" id="243"/>
-			<ChildItems>
-				<Button name="ФормаВыбрать" id="220">
-					<Type>CommandBarButton</Type>
-					<DefaultButton>true</DefaultButton>
-					<CommandName>Form.StandardCommand.Choose</CommandName>
-					<ExtendedTooltip name="ФормаВыбратьРасширеннаяПодсказка" id="221"/>
-				</Button>
-				<Button name="Добавить" id="261">
-					<Type>CommandBarButton</Type>
-					<Visible>false</Visible>
-					<CommandName>Form.Command.Добавить</CommandName>
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Добавить файл с диска...</v8:content>
-						</v8:item>
-					</Title>
-					<ExtendedTooltip name="ДобавитьРасширеннаяПодсказка" id="262"/>
-				</Button>
-				<Popup name="ПодменюДобавить" id="257">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Добавить</v8:content>
-						</v8:item>
-					</Title>
-					<Picture>
-						<xr:Ref>StdPicture.CreateListItem</xr:Ref>
-						<xr:LoadTransparent>true</xr:LoadTransparent>
-					</Picture>
-					<ExtendedTooltip name="ПодменюДобавитьРасширеннаяПодсказка" id="258"/>
-					<ChildItems>
-						<Button name="ДобавитьИзФайлаНаДиске" id="1">
-							<Type>CommandBarButton</Type>
-							<Representation>Text</Representation>
-							<CommandName>Form.Command.Добавить</CommandName>
-							<Title>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Файл с диска...</v8:content>
-								</v8:item>
-							</Title>
-							<ExtendedTooltip name="ДобавитьИзФайлаНаДискеРасширеннаяПодсказка" id="103"/>
-						</Button>
-						<Button name="ДобавитьФайлПоШаблону" id="328">
-							<Type>CommandBarButton</Type>
-							<CommandName>Form.Command.ДобавитьФайлПоШаблону</CommandName>
-							<ExtendedTooltip name="ДобавитьФайлПоШаблонуРасширеннаяПодсказка" id="329"/>
-						</Button>
-						<Button name="ДобавитьФайлСоСканера" id="259">
-							<Type>CommandBarButton</Type>
-							<CommandName>Form.Command.ДобавитьФайлСоСканера</CommandName>
-							<ExtendedTooltip name="ДобавитьФайлСоСканераРасширеннаяПодсказка" id="260"/>
-						</Button>
-					</ChildItems>
-				</Popup>
-				<Button name="ЗагрузитьФайлы" id="300">
-					<Type>CommandBarButton</Type>
-					<OnlyInAllActions>false</OnlyInAllActions>
-					<CommandName>Form.Command.ЗагрузитьФайлы</CommandName>
-					<ExtendedTooltip name="ЗагрузитьФайлыРасширеннаяПодсказка" id="301"/>
-				</Button>
-				<Button name="ЗагрузитьПапку" id="321">
-					<Type>CommandBarButton</Type>
-					<OnlyInAllActions>false</OnlyInAllActions>
-					<CommandName>Form.Command.ЗагрузитьПапку</CommandName>
-					<ExtendedTooltip name="ЗагрузитьПапкуРасширеннаяПодсказка" id="322"/>
-				</Button>
-				<Button name="СоздатьГруппу" id="298">
-					<Type>CommandBarButton</Type>
-					<CommandName>Form.Command.СоздатьГруппу</CommandName>
-					<ExtendedTooltip name="СоздатьГруппуРасширеннаяПодсказка" id="299"/>
-				</Button>
-				<Button name="ФормаИзменить" id="102">
-					<Type>CommandBarButton</Type>
-					<OnlyInAllActions>false</OnlyInAllActions>
-					<CommandName>Form.Command.ОткрытьСвойстваФайла</CommandName>
-					<ExtendedTooltip name="ФормаИзменитьРасширеннаяПодсказка" id="122"/>
-				</Button>
-				<ButtonGroup name="ФормаГруппаКомандОсновные" id="33">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Форма группа команд основные</v8:content>
-						</v8:item>
-					</Title>
-					<ExtendedTooltip name="ФормаГруппаКомандОсновныеРасширеннаяПодсказка" id="106"/>
-					<ChildItems>
-						<Button name="ФормаОткрыть" id="3">
-							<Type>CommandBarButton</Type>
-							<Representation>Text</Representation>
-							<CommandName>Form.Command.ОткрытьФайлДляПросмотра</CommandName>
-							<ExtendedTooltip name="ФормаОткрытьРасширеннаяПодсказка" id="105"/>
-						</Button>
-						<Button name="Занять" id="332">
-							<Type>CommandBarButton</Type>
-							<OnlyInAllActions>false</OnlyInAllActions>
-							<CommandName>Form.Command.Занять</CommandName>
-							<ExtendedTooltip name="ЗанятьРасширеннаяПодсказка" id="333"/>
-						</Button>
-						<Button name="ФормаРедактировать" id="34">
-							<Type>CommandBarButton</Type>
-							<Representation>Text</Representation>
-							<CommandName>Form.Command.Редактировать</CommandName>
-							<ExtendedTooltip name="ФормаРедактироватьExtendedTooltip" id="107"/>
-						</Button>
-						<Button name="ФормаЗакончитьРедактирование" id="43">
-							<Type>CommandBarButton</Type>
-							<CommandName>Form.Command.ЗакончитьРедактирование</CommandName>
-							<ExtendedTooltip name="ФормаЗакончитьРедактированиеExtendedTooltip" id="108"/>
-						</Button>
-						<Popup name="ПодменюПечать" id="334">
-							<Title>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Печать</v8:content>
-								</v8:item>
-							</Title>
-							<ExtendedTooltip name="ПодменюПечатьРасширеннаяПодсказка" id="335"/>
-							<ChildItems>
-								<Button name="Печать" id="265">
-									<Type>CommandBarButton</Type>
-									<CommandName>Form.Command.Печать</CommandName>
-									<ExtendedTooltip name="ПечатьРасширеннаяПодсказка" id="266"/>
-								</Button>
-								<Button name="ПечатьСоШтампом" id="336">
-									<Type>CommandBarButton</Type>
-									<CommandName>Form.Command.ПечатьСоШтампом</CommandName>
-									<ExtendedTooltip name="ПечатьСоШтампомРасширеннаяПодсказка" id="337"/>
-								</Button>
-							</ChildItems>
-						</Popup>
-						<Button name="Отправить" id="263">
-							<Type>CommandBarButton</Type>
-							<CommandName>Form.Command.Отправить</CommandName>
-							<ExtendedTooltip name="ОтправитьРасширеннаяПодсказка" id="264"/>
-						</Button>
-						<Button name="СравнитьФайлы" id="323">
-							<Type>CommandBarButton</Type>
-							<OnlyInAllActions>false</OnlyInAllActions>
-							<CommandName>Form.Command.СравнитьФайлы</CommandName>
-							<ExtendedTooltip name="СравнитьФайлыРасширеннаяПодсказка" id="324"/>
-						</Button>
-					</ChildItems>
-				</ButtonGroup>
-				<ButtonGroup name="ФормаГлобальныеКоманды" id="218">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Форма глобальные команды</v8:content>
-						</v8:item>
-					</Title>
-					<ToolTipRepresentation>None</ToolTipRepresentation>
-					<CommandSource>FormCommandPanelGlobalCommands</CommandSource>
-					<ExtendedTooltip name="ФормаГлобальныеКомандыРасширеннаяПодсказка" id="219"/>
-				</ButtonGroup>
-				<Popup name="ФормаГруппаКомандЭлектроннаяПодписьИШифрование" id="72">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Электронная подпись и шифрование</v8:content>
-						</v8:item>
-					</Title>
-					<Picture>
-						<xr:Ref>CommonPicture.ПодписанЗашифрованЗаголовок</xr:Ref>
-						<xr:LoadTransparent>true</xr:LoadTransparent>
-					</Picture>
-					<Representation>Picture</Representation>
-					<ExtendedTooltip name="ФормаГруппаКомандЭлектроннаяПодписьИШифрованиеРасширеннаяПодсказка" id="110"/>
-					<ChildItems>
-						<ButtonGroup name="ФормаГруппаКомандЭлектроннаяПодпись" id="244">
-							<Title>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Форма группа команд электронная подпись</v8:content>
-								</v8:item>
-							</Title>
-							<ExtendedTooltip name="ФормаГруппаКомандЭлектроннаяПодписьРасширеннаяПодсказка" id="245"/>
-							<ChildItems>
-								<Button name="ФормаЭППодписать" id="75">
-									<Type>CommandBarButton</Type>
-									<CommandName>Form.Command.Подписать</CommandName>
-									<ExtendedTooltip name="ФормаЭППодписатьРасширеннаяПодсказка" id="111"/>
-								</Button>
-								<Button name="ФормаСохранитьВместеСЭП" id="73">
-									<Type>CommandBarButton</Type>
-									<CommandName>Form.Command.СохранитьВместеСЭП</CommandName>
-									<ExtendedTooltip name="ФормаСохранитьВместеСЭПРасширеннаяПодсказка" id="112"/>
-								</Button>
-								<Button name="ФормаДобавитьЭПИзФайла" id="74">
-									<Type>CommandBarButton</Type>
-									<CommandName>Form.Command.ДобавитьЭПИзФайла</CommandName>
-									<ExtendedTooltip name="ФормаДобавитьЭПИзФайлаРасширеннаяПодсказка" id="113"/>
-								</Button>
-							</ChildItems>
-						</ButtonGroup>
-						<ButtonGroup name="ФормаГруппаКомандШифрование" id="78">
-							<Title>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Форма группа команд шифрование</v8:content>
-								</v8:item>
-							</Title>
-							<ExtendedTooltip name="ФормаГруппаКомандШифрованиеРасширеннаяПодсказка" id="114"/>
-							<ChildItems>
-								<Button name="ФормаЗашифровать" id="76">
-									<Type>CommandBarButton</Type>
-									<CommandName>Form.Command.Зашифровать</CommandName>
-									<ExtendedTooltip name="ФормаЗашифроватьExtendedTooltip" id="115"/>
-								</Button>
-								<Button name="ФормаРасшифровать" id="77">
-									<Type>CommandBarButton</Type>
-									<CommandName>Form.Command.Расшифровать</CommandName>
-									<ExtendedTooltip name="ФормаРасшифроватьExtendedTooltip" id="116"/>
-								</Button>
-							</ChildItems>
-						</ButtonGroup>
-					</ChildItems>
-				</Popup>
-				<ButtonGroup name="ФормаГруппаКомандДополнительные" id="18">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Форма группа команд дополнительные</v8:content>
-						</v8:item>
-					</Title>
-					<ExtendedTooltip name="ФормаГруппаКомандДополнительныеРасширеннаяПодсказка" id="117"/>
-					<ChildItems>
-						<Button name="ФормаИзменить82" id="238">
-							<Type>CommandBarButton</Type>
-							<Visible>false</Visible>
-							<CommandName>Form.Command.ОткрытьСвойстваФайла</CommandName>
-							<ExtendedTooltip name="ФормаИзменить82РасширеннаяПодсказка" id="239"/>
-						</Button>
-						<Button name="ФормаСкопировать" id="19">
-							<Type>CommandBarButton</Type>
-							<OnlyInAllActions>false</OnlyInAllActions>
-							<CommandName>Form.Command.Скопировать</CommandName>
-							<ExtendedTooltip name="ФормаСкопироватьExtendedTooltip" id="118"/>
-						</Button>
-						<Button name="УстановитьПометкуУдаления" id="21">
-							<Type>CommandBarButton</Type>
-							<OnlyInAllActions>false</OnlyInAllActions>
-							<CommandName>Form.Command.УстановитьПометкуУдаления</CommandName>
-							<ExtendedTooltip name="УстановитьПометкуУдаленияРасширеннаяПодсказка" id="119"/>
-						</Button>
-						<Button name="ФормаСохранитьКак" id="4">
-							<Type>CommandBarButton</Type>
-							<OnlyInAllActions>false</OnlyInAllActions>
-							<CommandName>Form.Command.СохранитьКак</CommandName>
-							<ExtendedTooltip name="ФормаСохранитьКакExtendedTooltip" id="120"/>
-						</Button>
-						<Popup name="ГруппаРежимПросмотра" id="311">
-							<Title>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Режим просмотра</v8:content>
-								</v8:item>
-							</Title>
-							<Picture>
-								<xr:Ref>StdPicture.ListViewMode</xr:Ref>
-								<xr:LoadTransparent>true</xr:LoadTransparent>
-							</Picture>
-							<ExtendedTooltip name="ГруппаРежимПросмотраРасширеннаяПодсказка" id="312"/>
-							<ChildItems>
-								<Button name="РежимПросмотраСписок" id="313">
-									<Type>CommandBarButton</Type>
-									<CommandName>Form.Item.Список.StandardCommand.List</CommandName>
-									<ExtendedTooltip name="РежимПросмотраСписокРасширеннаяПодсказка" id="314"/>
-								</Button>
-								<Button name="ИерархическийСписок" id="315">
-									<Type>CommandBarButton</Type>
-									<CommandName>Form.Item.Список.StandardCommand.HierarchicalList</CommandName>
-									<ExtendedTooltip name="ИерархическийСписокРасширеннаяПодсказка" id="316"/>
-								</Button>
-								<Button name="Дерево" id="317">
-									<Type>CommandBarButton</Type>
-									<CommandName>Form.Item.Список.StandardCommand.Tree</CommandName>
-									<ExtendedTooltip name="ДеревоРасширеннаяПодсказка" id="318"/>
-								</Button>
-							</ChildItems>
-						</Popup>
-						<Button name="ПеренестиВГруппу" id="338">
-							<Type>CommandBarButton</Type>
-							<OnlyInAllActions>false</OnlyInAllActions>
-							<CommandName>Form.Command.ПереместитьВГруппу</CommandName>
-							<ExtendedTooltip name="ПеренестиВГруппуРасширеннаяПодсказка" id="339"/>
-						</Button>
-						<Button name="ФормаОсвободить" id="49">
-							<Type>CommandBarButton</Type>
-							<Representation>Text</Representation>
-							<OnlyInAllActions>false</OnlyInAllActions>
-							<CommandName>Form.Command.Освободить</CommandName>
-							<ExtendedTooltip name="ФормаОсвободитьExtendedTooltip" id="109"/>
-						</Button>
-						<Button name="ФормаОбновитьИзФайлаНаДиске" id="51">
-							<Type>CommandBarButton</Type>
-							<OnlyInAllActions>false</OnlyInAllActions>
-							<CommandName>Form.Command.ОбновитьИзФайлаНаДиске</CommandName>
-							<Picture>
-								<xr:Ref>CommonPicture.ОбновитьФайлИзФайлаНаДиске</xr:Ref>
-								<xr:LoadTransparent>true</xr:LoadTransparent>
-							</Picture>
-							<ExtendedTooltip name="ФормаОбновитьИзФайлаНаДискеExtendedTooltip" id="121"/>
-						</Button>
-						<Button name="ФормаОткрытьКаталогФайла" id="2">
-							<Type>CommandBarButton</Type>
-							<OnlyInAllActions>false</OnlyInAllActions>
-							<CommandName>Form.Command.ОткрытьКаталогФайла</CommandName>
-							<ExtendedTooltip name="ФормаОткрытьКаталогФайлаExtendedTooltip" id="123"/>
-						</Button>
-					</ChildItems>
-				</ButtonGroup>
-				<ButtonGroup name="ФормаГруппаКомандПоиска" id="12">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Форма группа команд поиска</v8:content>
-						</v8:item>
-					</Title>
-					<ExtendedTooltip name="ФормаГруппаКомандПоискаРасширеннаяПодсказка" id="124"/>
-					<ChildItems>
-						<Button name="ФормаНайти" id="10">
-							<Type>CommandBarButton</Type>
-							<Visible>false</Visible>
-							<OnlyInAllActions>false</OnlyInAllActions>
-							<CommandName>Form.StandardCommand.Find</CommandName>
-							<ExtendedTooltip name="ФормаНайтиExtendedTooltip" id="125"/>
-						</Button>
-						<Button name="ФормаОтменитьПоиск" id="11">
-							<Type>CommandBarButton</Type>
-							<Visible>false</Visible>
-							<OnlyInAllActions>false</OnlyInAllActions>
-							<CommandName>Form.StandardCommand.CancelSearch</CommandName>
-							<ExtendedTooltip name="ФормаОтменитьПоискExtendedTooltip" id="126"/>
-						</Button>
-					</ChildItems>
-				</ButtonGroup>
-				<Button name="Предпросмотр" id="272">
-					<Type>CommandBarButton</Type>
-					<OnlyInAllActions>false</OnlyInAllActions>
-					<CommandName>Form.Command.Предпросмотр</CommandName>
-					<ExtendedTooltip name="ПредпросмотрРасширеннаяПодсказка" id="273"/>
-				</Button>
-				<Button name="НастроитьСинхронизацию" id="283">
-					<Type>CommandBarButton</Type>
-					<OnlyInAllActions>false</OnlyInAllActions>
-					<CommandName>Form.Command.НастроитьСинхронизацию</CommandName>
-					<ExtendedTooltip name="НастроитьСинхронизациюРасширеннаяПодсказка" id="284"/>
-				</Button>
-				<Popup name="ФормаГруппаДополнительно" id="216">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Дополнительно</v8:content>
-						</v8:item>
-					</Title>
-					<ToolTipRepresentation>None</ToolTipRepresentation>
-					<ExtendedTooltip name="ФормаГруппаДополнительноРасширеннаяПодсказка" id="217"/>
-					<ChildItems>
-						<Button name="ФормаОбновить" id="222">
-							<Type>CommandBarButton</Type>
-							<OnlyInAllActions>false</OnlyInAllActions>
-							<CommandName>Form.Command.Обновить</CommandName>
-							<ExtendedTooltip name="ФормаОбновитьРасширеннаяПодсказка" id="223"/>
-						</Button>
-						<ButtonGroup name="ФормаГруппаНастройкаСписка" id="236">
-							<Title>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Форма группа настройка списка</v8:content>
-								</v8:item>
-							</Title>
-							<ExtendedTooltip name="ФормаГруппаНастройкаСпискаРасширеннаяПодсказка" id="237"/>
-							<ChildItems>
-								<Button name="ФормаНастройкаСписка" id="234">
-									<Type>CommandBarButton</Type>
-									<CommandName>Form.StandardCommand.ListSettings</CommandName>
-									<ExtendedTooltip name="ФормаНастройкаСпискаРасширеннаяПодсказка" id="235"/>
-								</Button>
-								<Button name="ФормаЗагрузитьНастройкиДинамическогоСписка" id="224">
-									<Type>CommandBarButton</Type>
-									<CommandName>Form.StandardCommand.LoadDynamicListSettings</CommandName>
-									<ExtendedTooltip name="ФормаЗагрузитьНастройкиДинамическогоСпискаРасширеннаяПодсказка" id="225"/>
-								</Button>
-								<Button name="ФормаСохранитьНастройкиДинамическогоСписка" id="226">
-									<Type>CommandBarButton</Type>
-									<CommandName>Form.StandardCommand.SaveDynamicListSettings</CommandName>
-									<ExtendedTooltip name="ФормаСохранитьНастройкиДинамическогоСпискаРасширеннаяПодсказка" id="227"/>
-								</Button>
-								<Button name="ФормаСтандартныеНастройкиДинамическогоСписка" id="228">
-									<Type>CommandBarButton</Type>
-									<CommandName>Form.StandardCommand.DynamicListStandardSettings</CommandName>
-									<ExtendedTooltip name="ФормаСтандартныеНастройкиДинамическогоСпискаРасширеннаяПодсказка" id="229"/>
-								</Button>
-							</ChildItems>
-						</ButtonGroup>
-						<Button name="ФормаВывестиСписок" id="230">
-							<Type>CommandBarButton</Type>
-							<CommandName>Form.StandardCommand.OutputList</CommandName>
-							<ExtendedTooltip name="ФормаВывестиСписокРасширеннаяПодсказка" id="231"/>
-						</Button>
-						<Button name="ФормаИзменитьФорму" id="232">
-							<Type>CommandBarButton</Type>
-							<CommandName>Form.StandardCommand.CustomizeForm</CommandName>
-							<ExtendedTooltip name="ФормаИзменитьФормуРасширеннаяПодсказка" id="233"/>
-						</Button>
-					</ChildItems>
-				</Popup>
-				<Button name="СохранитьПапку" id="319">
-					<Type>CommandBarButton</Type>
-					<OnlyInAllActions>false</OnlyInAllActions>
-					<CommandName>Form.Command.СохранитьПапку</CommandName>
-					<ExtendedTooltip name="СохранитьПапкуРасширеннаяПодсказка" id="320"/>
-				</Button>
-				<Button name="ФормаСправка" id="9">
-					<Type>CommandBarButton</Type>
-					<CommandName>Form.StandardCommand.Help</CommandName>
-					<ExtendedTooltip name="ФормаСправкаExtendedTooltip" id="131"/>
-				</Button>
-			</ChildItems>
 		</CommandBar>
 		<UsualGroup name="ГруппаОблачныйСервис" id="285">
 			<Title>
@@ -480,7 +507,7 @@
 			<ShowTitle>false</ShowTitle>
 			<ExtendedTooltip name="ГруппаОблачныйСервисРасширеннаяПодсказка" id="286"/>
 			<ChildItems>
-				<UsualGroup name="ГруппаПояснениеОблачногоСервиса" id="287">
+				<UsualGroup name="ГруппаПояснениеОблачногоСервиса" id="287" DisplayImportance="VeryHigh">
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -504,6 +531,7 @@
 								<xr:Ref>CommonPicture.ПапкаОблачногоСервиса</xr:Ref>
 								<xr:LoadTransparent>false</xr:LoadTransparent>
 							</Picture>
+							<FileDragMode>AsFile</FileDragMode>
 							<ContextMenu name="ДекорацияКартинкаОблачногоСервисаКонтекстноеМеню" id="296"/>
 							<ExtendedTooltip name="ДекорацияКартинкаОблачногоСервисаРасширеннаяПодсказка" id="297"/>
 						</PictureDecoration>
@@ -536,6 +564,7 @@
 								<xr:Ref>CommonPicture.Предупреждение</xr:Ref>
 								<xr:LoadTransparent>true</xr:LoadTransparent>
 							</Picture>
+							<FileDragMode>AsFile</FileDragMode>
 							<ContextMenu name="ДекорацияКартинкаСтатусСинхронизацииКонтекстноеМеню" id="343"/>
 							<ExtendedTooltip name="ДекорацияКартинкаСтатусСинхронизацииРасширеннаяПодсказка" id="344"/>
 						</PictureDecoration>
@@ -561,7 +590,7 @@
 						</LabelDecoration>
 					</ChildItems>
 				</UsualGroup>
-				<UsualGroup name="ГруппаФайлы" id="270">
+				<UsualGroup name="ГруппаФайлы" id="270" DisplayImportance="Usual">
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -579,6 +608,7 @@
 							<UseAlternationRowColor>true</UseAlternationRowColor>
 							<EnableStartDrag>true</EnableStartDrag>
 							<EnableDrag>true</EnableDrag>
+							<FileDragMode>AsFile</FileDragMode>
 							<DataPath>Список</DataPath>
 							<RowPictureDataPath>Список.ИндексКартинки</RowPictureDataPath>
 							<RowsPicture>
@@ -705,6 +735,12 @@
 											<Button name="СписокКонтекстноеМенюЗакончитьРедактирование" id="59">
 												<Type>CommandBarButton</Type>
 												<CommandName>Form.Command.ЗакончитьРедактирование</CommandName>
+												<Title>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Закончить редактирование</v8:content>
+													</v8:item>
+												</Title>
 												<ExtendedTooltip name="СписокКонтекстноеМенюЗакончитьРедактированиеExtendedTooltip" id="137"/>
 											</Button>
 										</ChildItems>
@@ -873,6 +909,7 @@
 								<Event name="OnActivateRow">СписокПриАктивизацииСтроки</Event>
 								<Event name="Drag">СписокПеретаскивание</Event>
 								<Event name="BeforeRowChange">СписокПередНачаломИзменения</Event>
+								<Event name="OnChange">СписокПриИзменении</Event>
 							</Events>
 							<ChildItems>
 								<PictureField name="СписокНомерКартинкиПодписанЗашифрован" id="206">
@@ -900,6 +937,7 @@
 										<xr:Ref>CommonPicture.ПодписанЗашифрованСостояния</xr:Ref>
 										<xr:LoadTransparent>true</xr:LoadTransparent>
 									</ValuesPicture>
+									<FileDragMode>AsFile</FileDragMode>
 									<ContextMenu name="СписокНомерКартинкиПодписанЗашифрованКонтекстноеМеню" id="207"/>
 									<ExtendedTooltip name="СписокНомерКартинкиПодписанЗашифрованРасширеннаяПодсказка" id="208"/>
 								</PictureField>
@@ -994,7 +1032,7 @@
 											<Title>
 												<v8:item>
 													<v8:lang>ru</v8:lang>
-													<v8:content>Изменил</v8:content>
+													<v8:content>Отредактировал</v8:content>
 												</v8:item>
 											</Title>
 											<ToolTip>
@@ -1128,6 +1166,7 @@
 									<v8:content>Выберите файл для предварительного просмотра</v8:content>
 								</v8:item>
 							</NonselectedPictureText>
+							<FileDragMode>AsFile</FileDragMode>
 							<ContextMenu name="АдресДанныхФайлаКонтекстноеМеню" id="268"/>
 							<ExtendedTooltip name="АдресДанныхФайлаРасширеннаяПодсказка" id="269"/>
 						</PictureField>
@@ -1189,6 +1228,7 @@
 	ЛОЖЬ КАК ФайлРедактируетДругойПользователь,
 	ЛОЖЬ КАК ХранитьВерсии,
 	ЛОЖЬ КАК ЭтоГруппа,
+	ЛОЖЬ КАК Служебный,
 	&amp;ВладелецФайла КАК ВладелецФайла,
 	НЕОПРЕДЕЛЕНО КАК Редактирует,
 	НЕОПРЕДЕЛЕНО КАК РедактируетПользователь
@@ -1447,7 +1487,8 @@
 			</Picture>
 			<Action>ОткрытьФайлДляПросмотра</Action>
 			<Representation>TextPicture</Representation>
-			<CurrentRowUse>DontUse</CurrentRowUse>
+			<CurrentRowUse>Use</CurrentRowUse>
+			<AssociatedTableElementId>6</AssociatedTableElementId>
 		</Command>
 		<Command name="СохранитьКак" id="4">
 			<Title>
@@ -1468,7 +1509,8 @@
 			</Picture>
 			<Action>СохранитьКак</Action>
 			<Representation>Picture</Representation>
-			<CurrentRowUse>DontUse</CurrentRowUse>
+			<CurrentRowUse>Use</CurrentRowUse>
+			<AssociatedTableElementId>6</AssociatedTableElementId>
 		</Command>
 		<Command name="ОткрытьКаталогФайла" id="3">
 			<Title>
@@ -1484,7 +1526,8 @@
 				</v8:item>
 			</ToolTip>
 			<Action>ОткрытьКаталогФайла</Action>
-			<CurrentRowUse>DontUse</CurrentRowUse>
+			<CurrentRowUse>Use</CurrentRowUse>
+			<AssociatedTableElementId>6</AssociatedTableElementId>
 		</Command>
 		<Command name="Подписать" id="5">
 			<Title>
@@ -1505,7 +1548,8 @@
 			</Picture>
 			<Action>Подписать</Action>
 			<Representation>TextPicture</Representation>
-			<CurrentRowUse>DontUse</CurrentRowUse>
+			<CurrentRowUse>Use</CurrentRowUse>
+			<AssociatedTableElementId>6</AssociatedTableElementId>
 		</Command>
 		<Command name="Редактировать" id="9">
 			<Title>
@@ -1527,7 +1571,8 @@
 			</Picture>
 			<Action>Редактировать</Action>
 			<Representation>TextPicture</Representation>
-			<CurrentRowUse>DontUse</CurrentRowUse>
+			<CurrentRowUse>Use</CurrentRowUse>
+			<AssociatedTableElementId>6</AssociatedTableElementId>
 		</Command>
 		<Command name="ЗакончитьРедактирование" id="10">
 			<Title>
@@ -1548,7 +1593,8 @@
 			</Picture>
 			<Action>ЗакончитьРедактирование</Action>
 			<Representation>Text</Representation>
-			<CurrentRowUse>DontUse</CurrentRowUse>
+			<CurrentRowUse>Use</CurrentRowUse>
+			<AssociatedTableElementId>6</AssociatedTableElementId>
 		</Command>
 		<Command name="Освободить" id="13">
 			<Title>
@@ -1569,7 +1615,8 @@
 			</Picture>
 			<Action>Освободить</Action>
 			<Representation>TextPicture</Representation>
-			<CurrentRowUse>DontUse</CurrentRowUse>
+			<CurrentRowUse>Use</CurrentRowUse>
+			<AssociatedTableElementId>6</AssociatedTableElementId>
 		</Command>
 		<Command name="ОбновитьИзФайлаНаДиске" id="14">
 			<Title>
@@ -1586,7 +1633,8 @@
 			</ToolTip>
 			<Action>ОбновитьИзФайлаНаДиске</Action>
 			<Representation>Text</Representation>
-			<CurrentRowUse>DontUse</CurrentRowUse>
+			<CurrentRowUse>Use</CurrentRowUse>
+			<AssociatedTableElementId>6</AssociatedTableElementId>
 		</Command>
 		<Command name="СохранитьВместеСЭП" id="11">
 			<Title>
@@ -1602,7 +1650,8 @@
 				</v8:item>
 			</ToolTip>
 			<Action>СохранитьВместеСЭП</Action>
-			<CurrentRowUse>DontUse</CurrentRowUse>
+			<CurrentRowUse>Use</CurrentRowUse>
+			<AssociatedTableElementId>6</AssociatedTableElementId>
 		</Command>
 		<Command name="ДобавитьЭПИзФайла" id="12">
 			<Title>
@@ -1618,7 +1667,8 @@
 				</v8:item>
 			</ToolTip>
 			<Action>ДобавитьЭПИзФайла</Action>
-			<CurrentRowUse>DontUse</CurrentRowUse>
+			<CurrentRowUse>Use</CurrentRowUse>
+			<AssociatedTableElementId>6</AssociatedTableElementId>
 		</Command>
 		<Command name="Зашифровать" id="15">
 			<Title>
@@ -1638,7 +1688,8 @@
 				<xr:LoadTransparent>false</xr:LoadTransparent>
 			</Picture>
 			<Action>Зашифровать</Action>
-			<CurrentRowUse>DontUse</CurrentRowUse>
+			<CurrentRowUse>Use</CurrentRowUse>
+			<AssociatedTableElementId>6</AssociatedTableElementId>
 		</Command>
 		<Command name="Расшифровать" id="16">
 			<Title>
@@ -1654,7 +1705,8 @@
 				</v8:item>
 			</ToolTip>
 			<Action>Расшифровать</Action>
-			<CurrentRowUse>DontUse</CurrentRowUse>
+			<CurrentRowUse>Use</CurrentRowUse>
+			<AssociatedTableElementId>6</AssociatedTableElementId>
 		</Command>
 		<Command name="ОткрытьСвойстваФайла" id="1">
 			<Title>
@@ -1676,7 +1728,8 @@
 			</Picture>
 			<Action>ОткрытьСвойстваФайла</Action>
 			<Representation>Picture</Representation>
-			<CurrentRowUse>DontUse</CurrentRowUse>
+			<CurrentRowUse>Use</CurrentRowUse>
+			<AssociatedTableElementId>6</AssociatedTableElementId>
 		</Command>
 		<Command name="Добавить" id="6">
 			<Title>
@@ -1714,7 +1767,8 @@
 				<xr:LoadTransparent>true</xr:LoadTransparent>
 			</Picture>
 			<Action>Скопировать</Action>
-			<CurrentRowUse>DontUse</CurrentRowUse>
+			<CurrentRowUse>Use</CurrentRowUse>
+			<AssociatedTableElementId>6</AssociatedTableElementId>
 		</Command>
 		<Command name="Обновить" id="17">
 			<Title>
@@ -1772,7 +1826,8 @@
 			</Picture>
 			<Action>Отправить</Action>
 			<Representation>TextPicture</Representation>
-			<CurrentRowUse>DontUse</CurrentRowUse>
+			<CurrentRowUse>Use</CurrentRowUse>
+			<AssociatedTableElementId>6</AssociatedTableElementId>
 		</Command>
 		<Command name="Печать" id="20">
 			<Title>
@@ -1793,7 +1848,8 @@
 			</Picture>
 			<Action>Печать</Action>
 			<Representation>TextPicture</Representation>
-			<CurrentRowUse>DontUse</CurrentRowUse>
+			<CurrentRowUse>Use</CurrentRowUse>
+			<AssociatedTableElementId>6</AssociatedTableElementId>
 		</Command>
 		<Command name="Предпросмотр" id="21">
 			<Title>
@@ -1884,7 +1940,8 @@
 				<xr:LoadTransparent>true</xr:LoadTransparent>
 			</Picture>
 			<Action>СохранитьПапку</Action>
-			<CurrentRowUse>DontUse</CurrentRowUse>
+			<CurrentRowUse>Use</CurrentRowUse>
+			<AssociatedTableElementId>6</AssociatedTableElementId>
 		</Command>
 		<Command name="ЗагрузитьПапку" id="25">
 			<Title>
@@ -1952,7 +2009,8 @@
 				<xr:LoadTransparent>true</xr:LoadTransparent>
 			</Picture>
 			<Action>Занять</Action>
-			<CurrentRowUse>DontUse</CurrentRowUse>
+			<CurrentRowUse>Use</CurrentRowUse>
+			<AssociatedTableElementId>6</AssociatedTableElementId>
 		</Command>
 		<Command name="ПечатьСоШтампом" id="29">
 			<Title>
@@ -1968,7 +2026,8 @@
 				</v8:item>
 			</ToolTip>
 			<Action>ПечатьСоШтампом</Action>
-			<CurrentRowUse>DontUse</CurrentRowUse>
+			<CurrentRowUse>Use</CurrentRowUse>
+			<AssociatedTableElementId>6</AssociatedTableElementId>
 		</Command>
 		<Command name="ПереместитьВГруппу" id="30">
 			<Title>
@@ -1989,7 +2048,8 @@
 				<xr:LoadTransparent>true</xr:LoadTransparent>
 			</Picture>
 			<Action>ПеренестиВГруппу</Action>
-			<CurrentRowUse>DontUse</CurrentRowUse>
+			<CurrentRowUse>Use</CurrentRowUse>
+			<AssociatedTableElementId>6</AssociatedTableElementId>
 		</Command>
 		<Command name="УстановитьПометкуУдаления" id="31">
 			<Title>
@@ -2009,6 +2069,23 @@
 				<xr:LoadTransparent>true</xr:LoadTransparent>
 			</Picture>
 			<Action>УстановитьПометкуУдаления</Action>
+			<CurrentRowUse>Use</CurrentRowUse>
+			<AssociatedTableElementId>6</AssociatedTableElementId>
+		</Command>
+		<Command name="ПоказыватьСлужебныеФайлы" id="32">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Показывать служебные файлы</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Показывать служебные файлы</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ПоказыватьСлужебныеФайлы</Action>
 		</Command>
 	</Commands>
 	<Parameters>
@@ -2042,6 +2119,11 @@
 					<v8:Length>0</v8:Length>
 					<v8:AllowedLength>Variable</v8:AllowedLength>
 				</v8:StringQualifiers>
+			</Type>
+		</Parameter>
+		<Parameter name="СкрыватьВладельца">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
 			</Type>
 		</Parameter>
 	</Parameters>

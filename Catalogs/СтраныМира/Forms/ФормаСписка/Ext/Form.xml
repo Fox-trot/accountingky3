@@ -1,25 +1,71 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.6">
-	<CommandBarLocation>None</CommandBarLocation>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.7">
 	<CommandSet>
 		<ExcludedCommand>Create</ExcludedCommand>
 	</CommandSet>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<Autofill>false</Autofill>
 		<ChildItems>
-			<Popup name="ГруппаДобавитьМобильныйКлиент" id="60">
+			<Button name="СписокВыбрать" id="16">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Item.Список.StandardCommand.Choose</CommandName>
+				<ExtendedTooltip name="СписокВыбратьExtendedTooltip" id="21"/>
+			</Button>
+			<ButtonGroup name="Создать" id="47">
 				<Title>
 					<v8:item>
 						<v8:lang>ru</v8:lang>
-						<v8:content>Добавить</v8:content>
+						<v8:content>Создать</v8:content>
 					</v8:item>
 				</Title>
-				<Picture>
-					<xr:Ref>StdPicture.CreateListItem</xr:Ref>
-					<xr:LoadTransparent>true</xr:LoadTransparent>
-				</Picture>
-				<Representation>Picture</Representation>
-				<ExtendedTooltip name="ГруппаДобавитьМобильныйКлиентРасширеннаяПодсказка" id="61"/>
-			</Popup>
+				<ExtendedTooltip name="СоздатьРасширеннаяПодсказка" id="48"/>
+				<ChildItems>
+					<Button name="СписокСоздать" id="55">
+						<Type>CommandBarButton</Type>
+						<OnlyInAllActions>false</OnlyInAllActions>
+						<CommandName>Form.Item.Список.StandardCommand.Create</CommandName>
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Добавить вручную</v8:content>
+							</v8:item>
+						</Title>
+						<ExtendedTooltip name="СписокСоздатьРасширеннаяПодсказка" id="56"/>
+					</Button>
+					<Button name="СписокВыбратьИзКлассификатора" id="53">
+						<Type>CommandBarButton</Type>
+						<DefaultButton>true</DefaultButton>
+						<CommandName>Form.Command.ВыбратьИзКлассификатора</CommandName>
+						<ExtendedTooltip name="СписокВыбратьИзКлассификатораРасширеннаяПодсказка" id="54"/>
+					</Button>
+				</ChildItems>
+			</ButtonGroup>
+			<ButtonGroup name="СписокКоманды" id="15">
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Команды списка</v8:content>
+					</v8:item>
+				</Title>
+				<CommandSource>Item.Список</CommandSource>
+				<ExtendedTooltip name="СписокКомандыExtendedTooltip" id="22"/>
+			</ButtonGroup>
+			<Button name="СписокКлассификатор" id="17">
+				<Type>CommandBarButton</Type>
+				<OnlyInAllActions>false</OnlyInAllActions>
+				<CommandName>Form.Command.ОткрытьКлассификатор</CommandName>
+				<ExtendedTooltip name="СписокКлассификаторExtendedTooltip" id="23"/>
+			</Button>
+			<Button name="СписокИзменитьФорму" id="19">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.StandardCommand.CustomizeForm</CommandName>
+				<ExtendedTooltip name="СписокИзменитьФормуExtendedTooltip" id="25"/>
+			</Button>
+			<Button name="СписокСправка" id="20">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.StandardCommand.Help</CommandName>
+				<ExtendedTooltip name="СписокСправкаExtendedTooltip" id="26"/>
+			</Button>
 		</ChildItems>
 	</AutoCommandBar>
 	<Events>
@@ -47,6 +93,7 @@
 			<UseAlternationRowColor>true</UseAlternationRowColor>
 			<InitialTreeView>ExpandTopLevel</InitialTreeView>
 			<EnableStartDrag>true</EnableStartDrag>
+			<FileDragMode>AsFile</FileDragMode>
 			<DataPath>Список</DataPath>
 			<RowPictureDataPath>Список.DefaultPicture</RowPictureDataPath>
 			<Title>
@@ -72,68 +119,6 @@
 			<ContextMenu name="СписокКонтекстноеМеню" id="2"/>
 			<AutoCommandBar name="СписокКоманднаяПанель" id="3">
 				<Autofill>false</Autofill>
-				<ChildItems>
-					<Button name="СписокВыбрать" id="16">
-						<Type>CommandBarButton</Type>
-						<CommandName>Form.Item.Список.StandardCommand.Choose</CommandName>
-						<ExtendedTooltip name="СписокВыбратьExtendedTooltip" id="21"/>
-					</Button>
-					<ButtonGroup name="Создать" id="47">
-						<Title>
-							<v8:item>
-								<v8:lang>ru</v8:lang>
-								<v8:content>Создать</v8:content>
-							</v8:item>
-						</Title>
-						<ExtendedTooltip name="СоздатьРасширеннаяПодсказка" id="48"/>
-						<ChildItems>
-							<Button name="СписокСоздать" id="55">
-								<Type>CommandBarButton</Type>
-								<OnlyInAllActions>false</OnlyInAllActions>
-								<CommandName>Form.Item.Список.StandardCommand.Create</CommandName>
-								<Title>
-									<v8:item>
-										<v8:lang>ru</v8:lang>
-										<v8:content>Добавить вручную</v8:content>
-									</v8:item>
-								</Title>
-								<ExtendedTooltip name="СписокСоздатьРасширеннаяПодсказка" id="56"/>
-							</Button>
-							<Button name="СписокВыбратьИзКлассификатора" id="53">
-								<Type>CommandBarButton</Type>
-								<DefaultButton>true</DefaultButton>
-								<CommandName>Form.Command.ВыбратьИзКлассификатора</CommandName>
-								<ExtendedTooltip name="СписокВыбратьИзКлассификатораРасширеннаяПодсказка" id="54"/>
-							</Button>
-						</ChildItems>
-					</ButtonGroup>
-					<ButtonGroup name="СписокКоманды" id="15">
-						<Title>
-							<v8:item>
-								<v8:lang>ru</v8:lang>
-								<v8:content>Команды списка</v8:content>
-							</v8:item>
-						</Title>
-						<CommandSource>Item.Список</CommandSource>
-						<ExtendedTooltip name="СписокКомандыExtendedTooltip" id="22"/>
-					</ButtonGroup>
-					<Button name="СписокКлассификатор" id="17">
-						<Type>CommandBarButton</Type>
-						<OnlyInAllActions>false</OnlyInAllActions>
-						<CommandName>Form.Command.ОткрытьКлассификатор</CommandName>
-						<ExtendedTooltip name="СписокКлассификаторExtendedTooltip" id="23"/>
-					</Button>
-					<Button name="СписокИзменитьФорму" id="19">
-						<Type>CommandBarButton</Type>
-						<CommandName>Form.StandardCommand.CustomizeForm</CommandName>
-						<ExtendedTooltip name="СписокИзменитьФормуExtendedTooltip" id="25"/>
-					</Button>
-					<Button name="СписокСправка" id="20">
-						<Type>CommandBarButton</Type>
-						<CommandName>Form.StandardCommand.Help</CommandName>
-						<ExtendedTooltip name="СписокСправкаExtendedTooltip" id="26"/>
-					</Button>
-				</ChildItems>
 			</AutoCommandBar>
 			<ExtendedTooltip name="СписокExtendedTooltip" id="27"/>
 			<SearchStringAddition name="СписокСтрокаПоиска" id="38">

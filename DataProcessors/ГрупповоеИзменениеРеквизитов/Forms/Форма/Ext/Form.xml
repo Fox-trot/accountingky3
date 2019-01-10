@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.6">
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.7">
 	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
 	<AutoTitle>false</AutoTitle>
 	<CommandBarLocation>Bottom</CommandBarLocation>
@@ -54,6 +54,7 @@
 									<ExtendedTooltip name="ПредставлениеИзменяемыхОбъектовРасширеннаяПодсказка" id="169"/>
 									<Events>
 										<Event name="OnChange">ПредставлениеИзменяемыхОбъектовПриИзменении</Event>
+										<Event name="AutoComplete">ПредставлениеИзменяемыхОбъектовАвтоПодбор</Event>
 										<Event name="StartChoice">ВидИзменяемыхОбъектовНачалоВыбора</Event>
 									</Events>
 								</InputField>
@@ -150,6 +151,7 @@
 															<AutoInsertNewRow>true</AutoInsertNewRow>
 															<EnableStartDrag>true</EnableStartDrag>
 															<EnableDrag>true</EnableDrag>
+															<FileDragMode>AsFile</FileDragMode>
 															<DataPath>РеквизитыОбъекта</DataPath>
 															<RowPictureDataPath>РеквизитыОбъекта.ВидОперации</RowPictureDataPath>
 															<RowsPicture>
@@ -255,6 +257,7 @@
 																		<xr:Ref>CommonPicture.Информация32</xr:Ref>
 																		<xr:LoadTransparent>false</xr:LoadTransparent>
 																	</Picture>
+																	<FileDragMode>AsFile</FileDragMode>
 																	<ContextMenu name="Декорация2КонтекстноеМеню" id="264"/>
 																	<ExtendedTooltip name="Декорация2РасширеннаяПодсказка" id="265"/>
 																</PictureDecoration>
@@ -406,6 +409,7 @@
 															<AutoInsertNewRow>true</AutoInsertNewRow>
 															<EnableStartDrag>true</EnableStartDrag>
 															<EnableDrag>true</EnableDrag>
+															<FileDragMode>AsFile</FileDragMode>
 															<DataPath>РеквизитыОбъекта</DataPath>
 															<RowPictureDataPath>РеквизитыОбъекта.ВидОперации</RowPictureDataPath>
 															<RowsPicture>
@@ -500,7 +504,7 @@
 																		<v8:content>Автоматически</v8:content>
 																	</v8:item>
 																</Presentation>
-																<Value xsi:type="xs:decimal">0</Value>
+																<Value xsi:type="xs:string">Записывать</Value>
 															</xr:Value>
 														</xr:Item>
 														<xr:Item>
@@ -513,7 +517,7 @@
 																		<v8:content>В коде алгоритма</v8:content>
 																	</v8:item>
 																</Presentation>
-																<Value xsi:type="xs:decimal">1</Value>
+																<Value xsi:type="xs:string">НеЗаписывать</Value>
 															</xr:Value>
 														</xr:Item>
 													</ChoiceList>
@@ -697,6 +701,7 @@
 									<AutoInsertNewRow>true</AutoInsertNewRow>
 									<EnableStartDrag>true</EnableStartDrag>
 									<EnableDrag>true</EnableDrag>
+									<FileDragMode>AsFile</FileDragMode>
 									<DataPath>ОбъектыКоторыеНеУдалосьИзменить</DataPath>
 									<Title>
 										<v8:item>
@@ -837,6 +842,7 @@
 										<xr:Ref>CommonPicture.ДлительнаяОперация48</xr:Ref>
 										<xr:LoadTransparent>false</xr:LoadTransparent>
 									</Picture>
+									<FileDragMode>AsFile</FileDragMode>
 									<ContextMenu name="ДекорацияДлительнаяОперацияКонтекстноеМеню" id="66"/>
 									<ExtendedTooltip name="ДекорацияДлительнаяОперацияExtendedTooltip" id="102"/>
 								</PictureDecoration>
@@ -882,6 +888,7 @@
 										<xr:Ref>CommonPicture.Успешно32</xr:Ref>
 										<xr:LoadTransparent>false</xr:LoadTransparent>
 									</Picture>
+									<FileDragMode>AsFile</FileDragMode>
 									<ContextMenu name="КартинкаУспешноЗавершеноКонтекстноеМеню" id="220"/>
 									<ExtendedTooltip name="КартинкаУспешноЗавершеноРасширеннаяПодсказка" id="221"/>
 								</PictureDecoration>

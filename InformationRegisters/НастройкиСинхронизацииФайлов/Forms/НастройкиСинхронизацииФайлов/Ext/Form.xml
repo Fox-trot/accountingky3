@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.6">
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.7">
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
 		<ChildItems>
 			<ButtonGroup name="ФормаГруппаРедактирование" id="108">
@@ -103,6 +103,7 @@
 			<UseAlternationRowColor>true</UseAlternationRowColor>
 			<AutoInsertNewRow>true</AutoInsertNewRow>
 			<InitialTreeView>ExpandAllLevels</InitialTreeView>
+			<FileDragMode>AsFile</FileDragMode>
 			<DataPath>ДеревоОбъектовМетаданных</DataPath>
 			<Title>
 				<v8:item>
@@ -187,35 +188,48 @@
 			</SearchControlAddition>
 			<Events>
 				<Event name="Selection">ДеревоОбъектовМетаданныхВыбор</Event>
+				<Event name="BeforeAddRow">ДеревоОбъектовМетаданныхПередНачаломДобавления</Event>
 				<Event name="BeforeDeleteRow">ДеревоОбъектовМетаданныхПередУдалением</Event>
 				<Event name="OnActivateRow">ДеревоОбъектовМетаданныхПриАктивизацииСтроки</Event>
 			</Events>
 			<ChildItems>
-				<CheckBoxField name="ДеревоОбъектовМетаданныхСинхронизировать" id="44">
-					<DataPath>ДеревоОбъектовМетаданных.Синхронизировать</DataPath>
-					<TitleLocation>None</TitleLocation>
-					<EditMode>EnterOnInput</EditMode>
-					<CheckBoxType>Auto</CheckBoxType>
-					<ContextMenu name="ДеревоОбъектовМетаданныхСинхронизироватьКонтекстноеМеню" id="45"/>
-					<ExtendedTooltip name="ДеревоОбъектовМетаданныхСинхронизироватьРасширеннаяПодсказка" id="46"/>
-					<Events>
-						<Event name="OnChange">ДеревоОбъектовМетаданныхСинхронизироватьПриИзменении</Event>
-					</Events>
-				</CheckBoxField>
-				<InputField name="ДеревоОбъектовМетаданныхСинонимНаименованияОбъекта" id="29">
-					<DataPath>ДеревоОбъектовМетаданных.СинонимНаименованияОбъекта</DataPath>
-					<ReadOnly>true</ReadOnly>
+				<ColumnGroup name="ДеревоОбъектовМетаданныхГруппа" id="117">
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
 							<v8:content>Объект с файлами</v8:content>
 						</v8:item>
 					</Title>
-					<EditMode>EnterOnInput</EditMode>
-					<ContextMenu name="ДеревоОбъектовМетаданныхСинонимНаименованияОбъектаКонтекстноеМеню" id="30"/>
-					<ExtendedTooltip name="ДеревоОбъектовМетаданныхСинонимНаименованияОбъектаРасширеннаяПодсказка" id="31"/>
-				</InputField>
-				<InputField name="ДеревоОбъектовМетаданныхТипВладельцаФайла" id="97">
+					<Group>InCell</Group>
+					<ExtendedTooltip name="ДеревоОбъектовМетаданныхГруппаРасширеннаяПодсказка" id="118"/>
+					<ChildItems>
+						<CheckBoxField name="ДеревоОбъектовМетаданныхСинхронизировать" id="44" DisplayImportance="VeryLow">
+							<DataPath>ДеревоОбъектовМетаданных.Синхронизировать</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<EditMode>EnterOnInput</EditMode>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="ДеревоОбъектовМетаданныхСинхронизироватьКонтекстноеМеню" id="45"/>
+							<ExtendedTooltip name="ДеревоОбъектовМетаданныхСинхронизироватьРасширеннаяПодсказка" id="46"/>
+							<Events>
+								<Event name="OnChange">ДеревоОбъектовМетаданныхСинхронизироватьПриИзменении</Event>
+							</Events>
+						</CheckBoxField>
+						<InputField name="ДеревоОбъектовМетаданныхСинонимНаименованияОбъекта" id="29" DisplayImportance="VeryHigh">
+							<DataPath>ДеревоОбъектовМетаданных.СинонимНаименованияОбъекта</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Объект с файлами</v8:content>
+								</v8:item>
+							</Title>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="ДеревоОбъектовМетаданныхСинонимНаименованияОбъектаКонтекстноеМеню" id="30"/>
+							<ExtendedTooltip name="ДеревоОбъектовМетаданныхСинонимНаименованияОбъектаРасширеннаяПодсказка" id="31"/>
+						</InputField>
+					</ChildItems>
+				</ColumnGroup>
+				<InputField name="ДеревоОбъектовМетаданныхТипВладельцаФайла" id="97" DisplayImportance="VeryLow">
 					<DataPath>ДеревоОбъектовМетаданных.ТипВладельцаФайла</DataPath>
 					<UserVisible>
 						<xr:Common>false</xr:Common>
@@ -224,7 +238,7 @@
 					<ContextMenu name="ДеревоОбъектовМетаданныхТипВладельцаФайлаКонтекстноеМеню" id="98"/>
 					<ExtendedTooltip name="ДеревоОбъектовМетаданныхТипВладельцаФайлаРасширеннаяПодсказка" id="99"/>
 				</InputField>
-				<InputField name="ДеревоОбъектовМетаданныхУчетнаяЗапись" id="47">
+				<InputField name="ДеревоОбъектовМетаданныхУчетнаяЗапись" id="47" DisplayImportance="VeryLow">
 					<DataPath>ДеревоОбъектовМетаданных.УчетнаяЗапись</DataPath>
 					<ReadOnly>true</ReadOnly>
 					<EditMode>EnterOnInput</EditMode>
@@ -234,7 +248,7 @@
 						<Event name="OnChange">ЗаписатьТекущиеНастройки</Event>
 					</Events>
 				</InputField>
-				<InputField name="ДеревоОбъектовМетаданныхПравилоОтбора" id="32">
+				<InputField name="ДеревоОбъектовМетаданныхПравилоОтбора" id="32" DisplayImportance="VeryLow">
 					<DataPath>ДеревоОбъектовМетаданных.ПравилоОтбора</DataPath>
 					<EditMode>EnterOnInput</EditMode>
 					<CellHyperlink>true</CellHyperlink>
@@ -266,6 +280,7 @@
 							<v8:content>Настройки синхронизации</v8:content>
 						</v8:item>
 					</Title>
+					<VerticalAlign>Center</VerticalAlign>
 					<Representation>None</Representation>
 					<ShowTitle>false</ShowTitle>
 					<ExtendedTooltip name="НастройкиСинхронизацииРасширеннаяПодсказка" id="4"/>
@@ -302,11 +317,11 @@
 											<v8:content>Синхронизация</v8:content>
 										</v8:item>
 									</Title>
+									<VerticalStretch>true</VerticalStretch>
 									<ExtendedTooltip name="СинхронизацияРасширеннаяПодсказка" id="91"/>
 									<ChildItems>
 										<Button name="Синхронизировать" id="80">
 											<Type>UsualButton</Type>
-											<OnlyInAllActions>false</OnlyInAllActions>
 											<CommandName>Form.Command.Синхронизировать</CommandName>
 											<Title>
 												<v8:item>
@@ -325,10 +340,21 @@
 											<v8:content>Статус фонового задания</v8:content>
 										</v8:item>
 									</Title>
+									<VerticalStretch>true</VerticalStretch>
+									<Group>AlwaysHorizontal</Group>
 									<ExtendedTooltip name="СтатусФоновогоЗаданияРасширеннаяПодсказка" id="93"/>
 									<ChildItems>
+										<PictureDecoration name="КартинкаФоновогоЗадания" id="114">
+											<Picture>
+												<xr:Ref>CommonPicture.ДлительнаяОперация16</xr:Ref>
+												<xr:LoadTransparent>true</xr:LoadTransparent>
+											</Picture>
+											<FileDragMode>AsFile</FileDragMode>
+											<ContextMenu name="КартинкаФоновогоЗаданияКонтекстноеМеню" id="115"/>
+											<ExtendedTooltip name="КартинкаФоновогоЗаданияРасширеннаяПодсказка" id="116"/>
+										</PictureDecoration>
 										<LabelDecoration name="ИнформацияОФоновомЗадании" id="94">
-											<AutoMaxWidth>false</AutoMaxWidth>
+											<VerticalStretch>false</VerticalStretch>
 											<Title formatted="false">
 												<v8:item>
 													<v8:lang>ru</v8:lang>
@@ -346,7 +372,7 @@
 				</UsualGroup>
 				<LabelDecoration name="Расписание" id="10">
 					<AutoMaxWidth>false</AutoMaxWidth>
-					<TextColor>style:ПоясняющийТекст</TextColor>
+					<TextColor>0:ad87bd29-0ad1-4da4-ac62-38e714e0cb9f</TextColor>
 					<Title formatted="false">
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -599,7 +625,7 @@
 			<ToolTip>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Синхронизировать</v8:content>
+					<v8:content>Синхронизировать файлы с облаком сейчас</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Picture>

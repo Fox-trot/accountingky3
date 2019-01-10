@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.6">
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.7">
 	<Title>
 		<v8:item>
 			<v8:lang>ru</v8:lang>
@@ -8,6 +8,13 @@
 	</Title>
 	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
 	<AutoTitle>false</AutoTitle>
+	<MobileDeviceCommandBarContent>
+		<xr:Item>
+			<xr:Presentation/>
+			<xr:CheckState>0</xr:CheckState>
+			<xr:Value xsi:type="xs:decimal">15</xr:Value>
+		</xr:Item>
+	</MobileDeviceCommandBarContent>
 	<CommandSet>
 		<ExcludedCommand>Abort</ExcludedCommand>
 		<ExcludedCommand>Cancel</ExcludedCommand>
@@ -44,12 +51,12 @@
 			<ShowTitle>false</ShowTitle>
 			<ExtendedTooltip name="ПанельКнопокExtendedTooltip" id="30"/>
 			<ChildItems>
-				<Button name="КнопкаОткрыть" id="11">
+				<Button name="КнопкаОткрыть" id="11" DisplayImportance="VeryLow">
 					<Type>UsualButton</Type>
 					<CommandName>Form.Command.Открыть</CommandName>
 					<ExtendedTooltip name="КнопкаОткрытьExtendedTooltip" id="31"/>
 				</Button>
-				<Button name="КнопкаПрекратить" id="9">
+				<Button name="КнопкаПрекратить" id="9" DisplayImportance="VeryLow">
 					<Type>UsualButton</Type>
 					<CommandName>Form.Command.Прекратить</CommandName>
 					<ExtendedTooltip name="КнопкаПрекратитьExtendedTooltip" id="32"/>
@@ -184,7 +191,7 @@
 						<Event name="OnChange">СрокПовторногоОповещенияПриИзменении</Event>
 					</Events>
 				</InputField>
-				<Button name="КнопкаОтложить" id="8">
+				<Button name="КнопкаОтложить" id="8" DisplayImportance="VeryHigh">
 					<Type>UsualButton</Type>
 					<SkipOnInput>false</SkipOnInput>
 					<CommandName>Form.Command.ОтложитьВсе</CommandName>
@@ -203,6 +210,7 @@
 			<AutoInsertNewRow>true</AutoInsertNewRow>
 			<EnableStartDrag>true</EnableStartDrag>
 			<EnableDrag>true</EnableDrag>
+			<FileDragMode>AsFile</FileDragMode>
 			<DataPath>Напоминания</DataPath>
 			<RowPictureDataPath>Напоминания.ИндексКартинки</RowPictureDataPath>
 			<RowsPicture>
@@ -552,10 +560,6 @@
 					<v8:content>Открыть предмет напоминания</v8:content>
 				</v8:item>
 			</ToolTip>
-			<Picture>
-				<xr:Ref>StdPicture.ShowData</xr:Ref>
-				<xr:LoadTransparent>true</xr:LoadTransparent>
-			</Picture>
 			<Action>КомандаОткрыть</Action>
 			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>

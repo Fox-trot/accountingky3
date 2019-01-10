@@ -1,4 +1,13 @@
 ﻿#Область ОбластьПараметров
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+// Copyright (c) 2018, ООО 1С-Софт
+// Все права защищены. Эта программа и сопроводительные материалы предоставляются 
+// в соответствии с условиями лицензии Attribution 4.0 International (CC BY 4.0)
+// Текст лицензии доступен по ссылке:
+// https://creativecommons.org/licenses/by/4.0/legalcode
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
 // Параметры процедуры обновления
 var now = new Date()
 var outFileName = 'log' + now.valueOf() + '.txt' // Путь к log-файлу
@@ -7,6 +16,7 @@ var fixFileNames = [ИменаФайловИсправлений] // Пути к
 var removeFixNames = [ИменаУдаляемыхИсправлений] // Имена исправлений, которые необходимо удалить
 var v8conf = [ИмяИсполняемогоФайлаКонфигуратора] // Путь к исполняемому файлу 1С:Предприятия 8
 var v8client = [ИмяИсполняемогоФайлаКлиента] // Путь к исполняемому файлу 1С:Предприятия 8
+var v8comcntr = [ПутьКCOMСоединителю] // Путь к comcntr.dll
 var infoBasePath = [ПараметрПутиКИнформационнойБазе]
 var BaseFileName = [СтрокаПутиКФайлуИнформационнойБазы]
 var connectionString = [СтрокаСоединенияИнформационнойБазы] + ';UC=ПакетноеОбновлениеКонфигурацииИБ'
@@ -25,45 +35,15 @@ var executeDeferredHandlers = [ВыполнитьОтложенныеОбраб�
 var tempLogFileName = 'templog.txt'
 var errorFileName = 'error.txt'
 var taskNameScheduleService = [ИмяЗадачиПланировщикаЗадач] // Если указано, то задача, которой запущен скрипт.
+var runAppAdditionalParams = [ПараметрыЗапускаПредприятия] // Аргументы командной строки, которые следует добавить к запуску 1С:Предприятия в режиме клиента.
 #КонецОбласти
 
 #Область ОбластьОбновленияКонфигурации
-if (useComConnector) {
-  var comConnectorCached = new ActiveXObject(comConnectorName) // для защиты от перерегистрации comConnector из других сеансов
-}
-
-// Инициализация
-var oFileSystemObject = new ActiveXObject('Scripting.FileSystemObject')
 
 var thisFileName
 var thisFileDir
 var InfoBasePassword
 var ClusterPassword
-
-if (oHTA != null) {
-  thisFileName = eval('oHTA.commandLine')
-  thisFileDir = thisFileName.substr(1, thisFileName.lastIndexOf('\\') - 1)
-  InfoBasePassword = thisFileName.substr(thisFileName.indexOf('[p1]') + 4, thisFileName.indexOf('[/p1]') - thisFileName.indexOf('[p1]') - 4)
-  ClusterPassword = thisFileName.substr(thisFileName.indexOf('[p2]') + 4, thisFileName.indexOf('[/p2]') - thisFileName.indexOf('[p2]') - 4)
-  thisFileName = thisFileName.substr(1, thisFileName.indexOf('[p1]') - 4)
-} else {
-  thisFileName = eval('WScript.ScriptFullName')
-  thisFileDir = thisFileName.substr(0, thisFileName.lastIndexOf('\\') + 1)
-  InfoBasePassword = eval('WScript.Arguments').Named.Item('p1')
-  ClusterPassword = eval('WScript.Arguments').Named.Item('p2')
-}
-
-adminName = adminName.replace(/"/g, '""')
-InfoBasePassword = fromUnicode(InfoBasePassword)
-ClusterPassword = fromUnicode(ClusterPassword)
-var infoBaseAuthorization = format('/N"{0}" /P"{1}" /WA-', adminName, InfoBasePassword)
-connectionString = format(connectionString, adminName, InfoBasePassword)
-
-var oShell = new ActiveXObject('WScript.Shell')
-oShell.CurrentDirectory = thisFileDir
-
-var errorMarker = '{ERR}'
-var successMarker = '{OK}'
 
 // Переменные состояния
 var backupCreated = false
@@ -150,7 +130,7 @@ function logFile (text, failed) {
     f = oFileSystemObject.OpenTextFile(outFileName, ForAppending, true, TristateTrue)
   } catch (e) { return }
   try {
-    var status = (failed === false ? successMarker : errorMarker)
+    var status = (failed === false ? '{OK}' : '{ERR}')
     f.WriteLine(format('{0} {1} {2}', now, status, text))
   } finally {
     try {
@@ -184,8 +164,6 @@ function appendLog () {
 
 // Инициализация
 function initialize () {
-  clearLogFile()
-  appendLog()
   log(format('Файл скрипта: {0}', thisFileName))
   log(format('Количество файлов обновления: {0}', cfgFileNames.length))
   for (var i = 0; i < cfgFileNames.length; i++) {
@@ -209,7 +187,8 @@ function finalize (success) {
 
   if (!success) {
     if (UseRestore) {
-      restoreDB() // Восстановление ИБ из временного архива
+      log('Восстановление ИБ из временного архива')
+      restoreDB()
     }
     allowConnections() // Разрешение подключений
   }
@@ -222,6 +201,7 @@ function finalize (success) {
 
 function deleteScheduleTask () {
   if (taskNameScheduleService !== '') {
+    log(format('Удаление задачи планировщика задач: "{0}"', taskNameScheduleService))
     try {
       var schedule = new ActiveXObject('Schedule.Service')
       schedule.Connect()
@@ -745,6 +725,9 @@ function GetRequired (filePath) {
 
 function fromUnicode (text) {
   var str = '';
+  if (typeof text !== 'string') {
+    return str
+  }
   for (var i = 0; i < text.length / 4; i++) {
     str = str + String.fromCharCode(text.slice(4 * i, 4 * i + 4))
   }
@@ -758,9 +741,10 @@ function runEnterprise () {
     return runApp(
       v8client,
       format(
-        'ENTERPRISE {0} {1}',
+        'ENTERPRISE {0} {1} {2}',
         infoBasePath,
-        infoBaseAuthorization),
+        infoBaseAuthorization,
+        runAppAdditionalParams),
       SW_SHOW,
       false)
   }
@@ -785,5 +769,45 @@ function addDeletePatches () {
     true)
   return result
 }
+
+function registerCOM() {
+  isSchedule = (taskNameScheduleService !== '')
+  param = isSchedule ? format('/s "{0}"', v8comcntr) : format('/n /i:user /s "{0}"', v8comcntr)
+  return runApp('regsvr32.exe', param, SW_HIDE, true)
+}
+
+if (oHTA != null) {
+  thisFileName = eval('oHTA.commandLine')
+  thisFileDir = thisFileName.substr(1, thisFileName.lastIndexOf('\\') - 1)
+  InfoBasePassword = thisFileName.substr(thisFileName.indexOf('[p1]') + 4, thisFileName.indexOf('[/p1]') - thisFileName.indexOf('[p1]') - 4)
+  ClusterPassword = thisFileName.substr(thisFileName.indexOf('[p2]') + 4, thisFileName.indexOf('[/p2]') - thisFileName.indexOf('[p2]') - 4)
+  thisFileName = thisFileName.substr(1, thisFileName.indexOf('[p1]') - 4)
+} else {
+  thisFileName = eval('WScript.ScriptFullName')
+  thisFileDir = thisFileName.substr(0, thisFileName.lastIndexOf('\\') + 1)
+  InfoBasePassword = eval('WScript.Arguments').Named.Item('p1')
+  ClusterPassword = eval('WScript.Arguments').Named.Item('p2')
+}
+
+var oShell = new ActiveXObject('WScript.Shell')
+oShell.CurrentDirectory = thisFileDir
+
+var oFileSystemObject = new ActiveXObject('Scripting.FileSystemObject')
+
+clearLogFile()
+appendLog()
+
+log(format('Используется COM соединение: {0}', useComConnector))
+
+if (useComConnector) {
+  registerCOM()
+  var comConnectorCached = new ActiveXObject(comConnectorName) // для защиты от перерегистрации comConnector из других сеансов
+}
+
+adminName = adminName.replace(/"/g, '""')
+InfoBasePassword = fromUnicode(InfoBasePassword)
+ClusterPassword = fromUnicode(ClusterPassword)
+var infoBaseAuthorization = format('/N"{0}" /P"{1}" /WA-', adminName, InfoBasePassword)
+connectionString = format(connectionString, adminName, InfoBasePassword)
 
 #КонецОбласти

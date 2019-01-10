@@ -1,7 +1,14 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.6">
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.7">
 	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
 	<CommandBarLocation>None</CommandBarLocation>
+	<MobileDeviceCommandBarContent>
+		<xr:Item>
+			<xr:Presentation/>
+			<xr:CheckState>0</xr:CheckState>
+			<xr:Value xsi:type="xs:decimal">1</xr:Value>
+		</xr:Item>
+	</MobileDeviceCommandBarContent>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
 	<Events>
 		<Event name="OnOpen">ПриОткрытии</Event>
@@ -80,7 +87,13 @@
 			<CommandBarLocation>None</CommandBarLocation>
 			<SkipOnInput>false</SkipOnInput>
 			<RowSelectionMode>Row</RowSelectionMode>
+			<FileDragMode>AsFile</FileDragMode>
 			<DataPath>Список</DataPath>
+			<RowPictureDataPath>Список.ИндексКартинки</RowPictureDataPath>
+			<RowsPicture>
+				<xr:Ref>CommonPicture.КоллекцияПиктограммФайлов</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</RowsPicture>
 			<BorderColor>style:BorderColor</BorderColor>
 			<Title>
 				<v8:item>
@@ -100,6 +113,7 @@
 			<SearchStringLocation>None</SearchStringLocation>
 			<ViewStatusLocation>None</ViewStatusLocation>
 			<SearchControlLocation>None</SearchControlLocation>
+			<CurrentRowUse>SelectionPresentationAndChoice</CurrentRowUse>
 			<RowFilter xsi:nil="true"/>
 			<ContextMenu name="СписокКонтекстноеМеню" id="3">
 				<Autofill>false</Autofill>
@@ -187,7 +201,7 @@
 				<Event name="BeforeRowChange">СписокПередНачаломИзменения</Event>
 			</Events>
 			<ChildItems>
-				<CheckBoxField name="СписокНаРедактирование" id="17">
+				<CheckBoxField name="СписокНаРедактирование" id="17" DisplayImportance="VeryLow">
 					<DataPath>Список.НаРедактирование</DataPath>
 					<ReadOnly>true</ReadOnly>
 					<TitleLocation>None</TitleLocation>
@@ -205,53 +219,25 @@
 					<ContextMenu name="СписокНаРедактированиеКонтекстноеМеню" id="18"/>
 					<ExtendedTooltip name="СписокНаРедактированиеРасширеннаяПодсказка" id="47"/>
 				</CheckBoxField>
-				<ColumnGroup name="СписокГруппаИмяИКартинка" id="19">
+				<InputField name="СписокИмяФайла" id="6" DisplayImportance="VeryHigh">
+					<DataPath>Список.ИмяФайла</DataPath>
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Список группа имя и картинка</v8:content>
+							<v8:content>Файл</v8:content>
 						</v8:item>
 					</Title>
-					<Group>InCell</Group>
-					<ExtendedTooltip name="СписокГруппаИмяИКартинкаРасширеннаяПодсказка" id="42"/>
-					<ChildItems>
-						<PictureField name="СписокИндексКартинки" id="4">
-							<DataPath>Список.ИндексКартинки</DataPath>
-							<TitleLocation>None</TitleLocation>
-							<FooterHorizontalAlign>Left</FooterHorizontalAlign>
-							<Width>2</Width>
-							<Height>1</Height>
-							<ValuesPicture>
-								<xr:Ref>CommonPicture.КоллекцияПиктограммФайлов</xr:Ref>
-								<xr:LoadTransparent>true</xr:LoadTransparent>
-								<xr:TransparentPixel x="10" y="10"/>
-							</ValuesPicture>
-							<Border width="1">
-								<v8ui:style xsi:type="v8ui:ControlBorderType">WithoutBorder</v8ui:style>
-							</Border>
-							<ContextMenu name="СписокИндексКартинкиКонтекстноеМеню" id="5"/>
-							<ExtendedTooltip name="СписокИндексКартинкиРасширеннаяПодсказка" id="43"/>
-						</PictureField>
-						<InputField name="СписокИмяФайла" id="6">
-							<DataPath>Список.ИмяФайла</DataPath>
-							<Title>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Файл</v8:content>
-								</v8:item>
-							</Title>
-							<AutoCellHeight>true</AutoCellHeight>
-							<FooterHorizontalAlign>Left</FooterHorizontalAlign>
-							<Width>40</Width>
-							<Wrap>false</Wrap>
-							<TextEdit>false</TextEdit>
-							<BorderColor>style:BorderColor</BorderColor>
-							<ContextMenu name="СписокИмяФайлаКонтекстноеМеню" id="7"/>
-							<ExtendedTooltip name="СписокИмяФайлаРасширеннаяПодсказка" id="44"/>
-						</InputField>
-					</ChildItems>
-				</ColumnGroup>
-				<InputField name="СписокРазмер" id="8">
+					<AutoCellHeight>true</AutoCellHeight>
+					<FooterHorizontalAlign>Left</FooterHorizontalAlign>
+					<Width>40</Width>
+					<HorizontalStretch>true</HorizontalStretch>
+					<Wrap>false</Wrap>
+					<TextEdit>false</TextEdit>
+					<BorderColor>style:BorderColor</BorderColor>
+					<ContextMenu name="СписокИмяФайлаКонтекстноеМеню" id="7"/>
+					<ExtendedTooltip name="СписокИмяФайлаРасширеннаяПодсказка" id="44"/>
+				</InputField>
+				<InputField name="СписокРазмер" id="8" DisplayImportance="Usual">
 					<DataPath>Список.Размер</DataPath>
 					<Title>
 						<v8:item>
@@ -267,7 +253,7 @@
 					<ContextMenu name="СписокРазмерКонтекстноеМеню" id="9"/>
 					<ExtendedTooltip name="СписокРазмерРасширеннаяПодсказка" id="45"/>
 				</InputField>
-				<InputField name="СписокДатаИзменения" id="10">
+				<InputField name="СписокДатаИзменения" id="10" DisplayImportance="Usual">
 					<DataPath>Список.ДатаИзменения</DataPath>
 					<Title>
 						<v8:item>
@@ -289,7 +275,7 @@
 					<ContextMenu name="СписокДатаИзмененияКонтекстноеМеню" id="11"/>
 					<ExtendedTooltip name="СписокДатаИзмененияРасширеннаяПодсказка" id="46"/>
 				</InputField>
-				<InputField name="СписокФайл" id="48">
+				<InputField name="СписокФайл" id="48" DisplayImportance="Usual">
 					<DataPath>Список.Файл</DataPath>
 					<UserVisible>
 						<xr:Common>false</xr:Common>
@@ -305,7 +291,7 @@
 					<ContextMenu name="СписокФайлКонтекстноеМеню" id="49"/>
 					<ExtendedTooltip name="СписокФайлРасширеннаяПодсказка" id="50"/>
 				</InputField>
-				<InputField name="СписокВерсия" id="51">
+				<InputField name="СписокВерсия" id="51" DisplayImportance="Usual">
 					<DataPath>Список.Версия</DataPath>
 					<UserVisible>
 						<xr:Common>false</xr:Common>

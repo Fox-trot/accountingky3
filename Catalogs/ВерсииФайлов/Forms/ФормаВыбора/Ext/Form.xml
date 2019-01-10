@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.6">
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.7">
 	<Title>
 		<v8:item>
 			<v8:lang>ru</v8:lang>
@@ -9,6 +9,13 @@
 	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
 	<AutoTitle>false</AutoTitle>
 	<CommandBarLocation>Top</CommandBarLocation>
+	<MobileDeviceCommandBarContent>
+		<xr:Item>
+			<xr:Presentation/>
+			<xr:CheckState>0</xr:CheckState>
+			<xr:Value xsi:type="xs:decimal">37</xr:Value>
+		</xr:Item>
+	</MobileDeviceCommandBarContent>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
 		<Autofill>false</Autofill>
 	</AutoCommandBar>
@@ -44,6 +51,8 @@
 			<HeightInTableRows>7</HeightInTableRows>
 			<ChoiceMode>true</ChoiceMode>
 			<SelectionMode>SingleRow</SelectionMode>
+			<UseAlternationRowColor>true</UseAlternationRowColor>
+			<FileDragMode>AsFile</FileDragMode>
 			<DataPath>Список</DataPath>
 			<BorderColor>style:BorderColor</BorderColor>
 			<Title>
@@ -97,41 +106,72 @@
 				<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="50"/>
 			</SearchControlAddition>
 			<ChildItems>
-				<LabelField name="СписокВладелец" id="39">
-					<DataPath>Список.Владелец</DataPath>
-					<ContextMenu name="СписокВладелецКонтекстноеМеню" id="40"/>
-					<ExtendedTooltip name="СписокВладелецРасширеннаяПодсказка" id="41"/>
-				</LabelField>
-				<InputField name="СписокНомерВерсии" id="19">
-					<DataPath>Список.НомерВерсии</DataPath>
-					<FooterHorizontalAlign>Left</FooterHorizontalAlign>
-					<Width>11</Width>
-					<Wrap>false</Wrap>
-					<BorderColor>style:BorderColor</BorderColor>
-					<ContextMenu name="СписокНомерВерсииКонтекстноеМеню" id="20"/>
-					<ExtendedTooltip name="СписокНомерВерсииРасширеннаяПодсказка" id="28"/>
-				</InputField>
-				<InputField name="СписокАвтор" id="21">
-					<DataPath>Список.Автор</DataPath>
-					<Width>15</Width>
-					<Wrap>false</Wrap>
-					<ContextMenu name="СписокАвторКонтекстноеМеню" id="22"/>
-					<ExtendedTooltip name="СписокАвторРасширеннаяПодсказка" id="29"/>
-				</InputField>
-				<InputField name="СписокДатаСоздания" id="23">
-					<DataPath>Список.ДатаСоздания</DataPath>
-					<Width>15</Width>
-					<HorizontalStretch>false</HorizontalStretch>
-					<Wrap>false</Wrap>
-					<ContextMenu name="СписокДатаСозданияКонтекстноеМеню" id="24"/>
-					<ExtendedTooltip name="СписокДатаСозданияРасширеннаяПодсказка" id="30"/>
-				</InputField>
-				<InputField name="СписокРазмер" id="25">
-					<DataPath>Список.Размер</DataPath>
-					<Wrap>false</Wrap>
-					<ContextMenu name="СписокРазмерКонтекстноеМеню" id="26"/>
-					<ExtendedTooltip name="СписокРазмерРасширеннаяПодсказка" id="31"/>
-				</InputField>
+				<ColumnGroup name="ГруппаВертикально" id="51">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Вертикально</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="ГруппаВертикальноРасширеннаяПодсказка" id="52"/>
+					<ChildItems>
+						<ColumnGroup name="ГруппаОсновное" id="53">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Основное</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Horizontal</Group>
+							<ExtendedTooltip name="ГруппаОсновноеРасширеннаяПодсказка" id="54"/>
+							<ChildItems>
+								<LabelField name="СписокВладелец" id="39" DisplayImportance="VeryHigh">
+									<DataPath>Список.Владелец</DataPath>
+									<ContextMenu name="СписокВладелецКонтекстноеМеню" id="40"/>
+									<ExtendedTooltip name="СписокВладелецРасширеннаяПодсказка" id="41"/>
+								</LabelField>
+								<InputField name="СписокНомерВерсии" id="19" DisplayImportance="VeryHigh">
+									<DataPath>Список.НомерВерсии</DataPath>
+									<FooterHorizontalAlign>Left</FooterHorizontalAlign>
+									<Width>11</Width>
+									<Wrap>false</Wrap>
+									<BorderColor>style:BorderColor</BorderColor>
+									<ContextMenu name="СписокНомерВерсииКонтекстноеМеню" id="20"/>
+									<ExtendedTooltip name="СписокНомерВерсииРасширеннаяПодсказка" id="28"/>
+								</InputField>
+								<InputField name="СписокАвтор" id="21">
+									<DataPath>Список.Автор</DataPath>
+									<Width>15</Width>
+									<Wrap>false</Wrap>
+									<ContextMenu name="СписокАвторКонтекстноеМеню" id="22"/>
+									<ExtendedTooltip name="СписокАвторРасширеннаяПодсказка" id="29"/>
+								</InputField>
+								<InputField name="СписокДатаСоздания" id="23">
+									<DataPath>Список.ДатаСоздания</DataPath>
+									<Width>15</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<Wrap>false</Wrap>
+									<ContextMenu name="СписокДатаСозданияКонтекстноеМеню" id="24"/>
+									<ExtendedTooltip name="СписокДатаСозданияРасширеннаяПодсказка" id="30"/>
+								</InputField>
+								<InputField name="СписокРазмер" id="25">
+									<DataPath>Список.Размер</DataPath>
+									<Wrap>false</Wrap>
+									<ContextMenu name="СписокРазмерКонтекстноеМеню" id="26"/>
+									<ExtendedTooltip name="СписокРазмерРасширеннаяПодсказка" id="31"/>
+								</InputField>
+							</ChildItems>
+						</ColumnGroup>
+						<LabelField name="Комментарий" id="55">
+							<DataPath>Список.Комментарий</DataPath>
+							<AutoCellHeight>true</AutoCellHeight>
+							<ShowInHeader>false</ShowInHeader>
+							<TextColor>0:ad87bd29-0ad1-4da4-ac62-38e714e0cb9f</TextColor>
+							<ContextMenu name="КомментарийКонтекстноеМеню" id="56"/>
+							<ExtendedTooltip name="КомментарийРасширеннаяПодсказка" id="57"/>
+						</LabelField>
+					</ChildItems>
+				</ColumnGroup>
 				<LabelField name="СписокСсылка" id="32">
 					<DataPath>Список.Ссылка</DataPath>
 					<UserVisible>
@@ -160,10 +200,11 @@
 	ВерсииФайлов.Ссылка КАК Ссылка,
 	ВерсииФайлов.Владелец КАК Владелец,
 	ВерсииФайлов.ПометкаУдаления КАК ПометкаУдаления,
-	ВерсииФайлов.НомерВерсии,
-	ВерсииФайлов.Размер,
-	ВерсииФайлов.Автор,
-	ВерсииФайлов.ДатаСоздания
+	ВерсииФайлов.НомерВерсии КАК НомерВерсии,
+	ВерсииФайлов.Размер КАК Размер,
+	ВерсииФайлов.Автор КАК Автор,
+	ВерсииФайлов.ДатаСоздания КАК ДатаСоздания,
+	ВерсииФайлов.Комментарий КАК Комментарий
 ИЗ
 	Справочник.ВерсииФайлов КАК ВерсииФайлов</QueryText>
 				<MainTable>Catalog.ВерсииФайлов</MainTable>

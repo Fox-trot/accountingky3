@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.6">
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.7">
 	<AutoSaveDataInSettings>Use</AutoSaveDataInSettings>
 	<AutoTitle>false</AutoTitle>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
@@ -39,7 +39,7 @@
 			<Group>AlwaysHorizontal</Group>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
-			<BackColor>style:БыстрыеОтборыФонГруппы</BackColor>
+			<BackColor>0:0b494888-3b64-41da-bf64-2f129ca8ad14</BackColor>
 			<ExtendedTooltip name="БыстрыеОтборыExtendedTooltip" id="2"/>
 			<ChildItems>
 				<InputField name="ОтборПериодРегистрации" id="3">
@@ -100,21 +100,6 @@
 						<Event name="OnChange">ОтборПодразделениеПриИзменении</Event>
 					</Events>
 				</InputField>
-				<InputField name="ОтборСотрудник" id="423">
-					<DataPath>ОтборСотрудник</DataPath>
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Сотрудник</v8:content>
-						</v8:item>
-					</Title>
-					<ClearButton>true</ClearButton>
-					<ContextMenu name="ОтборСотрудникКонтекстноеМеню" id="424"/>
-					<ExtendedTooltip name="ОтборСотрудникРасширеннаяПодсказка" id="425"/>
-					<Events>
-						<Event name="OnChange">ОтборСотрудникПриИзменении</Event>
-					</Events>
-				</InputField>
 			</ChildItems>
 		</UsualGroup>
 		<Pages name="ГруппаСтраницы" id="109">
@@ -161,16 +146,35 @@
 							<Representation>List</Representation>
 							<Height>1</Height>
 							<MultipleChoice>true</MultipleChoice>
-							<RowSelectionMode>Row</RowSelectionMode>
 							<AutoInsertNewRow>true</AutoInsertNewRow>
 							<SearchOnInput>Use</SearchOnInput>
 							<EnableStartDrag>true</EnableStartDrag>
 							<EnableDrag>true</EnableDrag>
+							<FileDragMode>AsFile</FileDragMode>
 							<DataPath>СписокСотрудников</DataPath>
+							<CommandSet>
+								<ExcludedCommand>MoveDown</ExcludedCommand>
+								<ExcludedCommand>MoveUp</ExcludedCommand>
+							</CommandSet>
 							<SearchStringLocation>CommandBar</SearchStringLocation>
 							<RowFilter xsi:nil="true"/>
 							<ContextMenu name="СписокСотрудниковКонтекстноеМеню" id="788"/>
-							<AutoCommandBar name="СписокСотрудниковКоманднаяПанель" id="789"/>
+							<AutoCommandBar name="СписокСотрудниковКоманднаяПанель" id="789">
+								<ChildItems>
+									<Button name="СписокСотрудниковСортироватьСписокПоВозрастанию" id="1835">
+										<Type>CommandBarButton</Type>
+										<OnlyInAllActions>true</OnlyInAllActions>
+										<CommandName>Form.Item.СписокСотрудников.StandardCommand.SortListAsc</CommandName>
+										<ExtendedTooltip name="СписокСотрудниковСортироватьСписокПоВозрастаниюРасширеннаяПодсказка" id="1836"/>
+									</Button>
+									<Button name="СписокСотрудниковСортироватьСписокПоУбыванию" id="1837">
+										<Type>CommandBarButton</Type>
+										<OnlyInAllActions>true</OnlyInAllActions>
+										<CommandName>Form.Item.СписокСотрудников.StandardCommand.SortListDesc</CommandName>
+										<ExtendedTooltip name="СписокСотрудниковСортироватьСписокПоУбываниюРасширеннаяПодсказка" id="1838"/>
+									</Button>
+								</ChildItems>
+							</AutoCommandBar>
 							<ExtendedTooltip name="СписокСотрудниковРасширеннаяПодсказка" id="790"/>
 							<SearchStringAddition name="СписокСотрудниковСтрокаПоиска" id="791">
 								<AdditionSource>
@@ -278,6 +282,7 @@
 						<Table name="ПриказыКадровые" id="1330">
 							<UseAlternationRowColor>true</UseAlternationRowColor>
 							<EnableStartDrag>true</EnableStartDrag>
+							<FileDragMode>AsFile</FileDragMode>
 							<DataPath>ПриказыКадровые</DataPath>
 							<RowPictureDataPath>ПриказыКадровые.DefaultPicture</RowPictureDataPath>
 							<AutoRefresh>false</AutoRefresh>
@@ -335,6 +340,12 @@
 							<ChildItems>
 								<LabelField name="ПриказыКадровыеДата" id="1376">
 									<DataPath>ПриказыКадровые.Дата</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Дата с</v8:content>
+										</v8:item>
+									</Title>
 									<ContextMenu name="ПриказыКадровыеДатаКонтекстноеМеню" id="1377"/>
 									<ExtendedTooltip name="ПриказыКадровыеДатаРасширеннаяПодсказка" id="1378"/>
 								</LabelField>
@@ -497,6 +508,7 @@
 						<Table name="СписокПлановыеНачисленияУдержания" id="1379">
 							<UseAlternationRowColor>true</UseAlternationRowColor>
 							<EnableStartDrag>true</EnableStartDrag>
+							<FileDragMode>AsFile</FileDragMode>
 							<DataPath>СписокПлановыеНачисленияУдержания</DataPath>
 							<RowPictureDataPath>СписокПлановыеНачисленияУдержания.DefaultPicture</RowPictureDataPath>
 							<AutoRefresh>false</AutoRefresh>
@@ -649,8 +661,10 @@
 							<Height>7</Height>
 							<AutoMaxHeight>false</AutoMaxHeight>
 							<MaxHeight>12</MaxHeight>
+							<Footer>true</Footer>
 							<UseAlternationRowColor>true</UseAlternationRowColor>
 							<EnableStartDrag>true</EnableStartDrag>
+							<FileDragMode>AsFile</FileDragMode>
 							<DataPath>СписокНачисленияУдержания</DataPath>
 							<RowPictureDataPath>СписокНачисленияУдержания.DefaultPicture</RowPictureDataPath>
 							<AutoRefresh>false</AutoRefresh>
@@ -717,6 +731,7 @@
 								</LabelField>
 								<LabelField name="СписокНачисленияУдержанияРазмер" id="1456">
 									<DataPath>СписокНачисленияУдержания.Размер</DataPath>
+									<FooterDataPath>РазмерНиУИтог</FooterDataPath>
 									<Width>10</Width>
 									<Format>
 										<v8:item>
@@ -752,6 +767,7 @@
 											<v8:content>Начислено</v8:content>
 										</v8:item>
 									</Title>
+									<FooterDataPath>НачисленоНиУИтог</FooterDataPath>
 									<Width>10</Width>
 									<Format>
 										<v8:item>
@@ -770,6 +786,7 @@
 											<v8:content>Удержано</v8:content>
 										</v8:item>
 									</Title>
+									<FooterDataPath>УдержаноНиУИтог</FooterDataPath>
 									<Width>10</Width>
 									<Format>
 										<v8:item>
@@ -849,6 +866,7 @@
 							<UseAlternationRowColor>true</UseAlternationRowColor>
 							<VerticalStretch>false</VerticalStretch>
 							<EnableStartDrag>true</EnableStartDrag>
+							<FileDragMode>AsFile</FileDragMode>
 							<DataPath>СписокНеявки</DataPath>
 							<RowPictureDataPath>СписокНеявки.DefaultPicture</RowPictureDataPath>
 							<AutoRefresh>false</AutoRefresh>
@@ -982,6 +1000,7 @@
 							<Height>1</Height>
 							<UseAlternationRowColor>true</UseAlternationRowColor>
 							<EnableStartDrag>true</EnableStartDrag>
+							<FileDragMode>AsFile</FileDragMode>
 							<DataPath>СписокВыплаты</DataPath>
 							<RowPictureDataPath>СписокВыплаты.DefaultPicture</RowPictureDataPath>
 							<AutoRefresh>false</AutoRefresh>
@@ -1134,6 +1153,7 @@
 							<MaxHeight>12</MaxHeight>
 							<UseAlternationRowColor>true</UseAlternationRowColor>
 							<EnableStartDrag>true</EnableStartDrag>
+							<FileDragMode>AsFile</FileDragMode>
 							<DataPath>СписокПодоходныйНалог</DataPath>
 							<RowPictureDataPath>СписокПодоходныйНалог.DefaultPicture</RowPictureDataPath>
 							<AutoRefresh>false</AutoRefresh>
@@ -1575,6 +1595,7 @@
 							<UseAlternationRowColor>true</UseAlternationRowColor>
 							<VerticalStretch>false</VerticalStretch>
 							<EnableStartDrag>true</EnableStartDrag>
+							<FileDragMode>AsFile</FileDragMode>
 							<DataPath>СписокВидовНачисления</DataPath>
 							<RowPictureDataPath>СписокВидовНачисления.DefaultPicture</RowPictureDataPath>
 							<AutoRefresh>false</AutoRefresh>
@@ -1695,6 +1716,7 @@
 							<MaxHeight>12</MaxHeight>
 							<UseAlternationRowColor>true</UseAlternationRowColor>
 							<EnableStartDrag>true</EnableStartDrag>
+							<FileDragMode>AsFile</FileDragMode>
 							<DataPath>СписокСоциальныйФонд</DataPath>
 							<RowPictureDataPath>СписокСоциальныйФонд.DefaultPicture</RowPictureDataPath>
 							<AutoRefresh>false</AutoRefresh>
@@ -1916,6 +1938,7 @@
 							<UseAlternationRowColor>true</UseAlternationRowColor>
 							<VerticalStretch>false</VerticalStretch>
 							<EnableStartDrag>true</EnableStartDrag>
+							<FileDragMode>AsFile</FileDragMode>
 							<DataPath>СписокВидовНачисления</DataPath>
 							<RowPictureDataPath>СписокВидовНачисления.DefaultPicture</RowPictureDataPath>
 							<AutoRefresh>false</AutoRefresh>
@@ -1997,7 +2020,39 @@
 					</ToolTip>
 					<ExtendedTooltip name="СтраницаРасчетныйЛистокРасширеннаяПодсказка" id="1774"/>
 					<ChildItems>
+						<UsualGroup name="ГруппаСальдо" id="1827">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа сальдо</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа сальдо</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаСальдоРасширеннаяПодсказка" id="1828"/>
+							<ChildItems>
+								<LabelField name="СальдоНаНачалоПоРасчетномуЛистку" id="1829">
+									<DataPath>СальдоНаНачалоПоРасчетномуЛистку</DataPath>
+									<TitleLocation>None</TitleLocation>
+									<ContextMenu name="СальдоНаНачалоПоРасчетномуЛисткуКонтекстноеМеню" id="1830"/>
+									<ExtendedTooltip name="СальдоНаНачалоПоРасчетномуЛисткуРасширеннаяПодсказка" id="1831"/>
+								</LabelField>
+								<LabelField name="СальдоНаКонецПоРасчетномуЛистку" id="1832">
+									<DataPath>СальдоНаКонецПоРасчетномуЛистку</DataPath>
+									<TitleLocation>None</TitleLocation>
+									<ContextMenu name="СальдоНаКонецПоРасчетномуЛисткуКонтекстноеМеню" id="1833"/>
+									<ExtendedTooltip name="СальдоНаКонецПоРасчетномуЛисткуРасширеннаяПодсказка" id="1834"/>
+								</LabelField>
+							</ChildItems>
+						</UsualGroup>
 						<Table name="СписокРасчетныеЛистки" id="1775">
+							<Footer>true</Footer>
 							<UseAlternationRowColor>true</UseAlternationRowColor>
 							<EnableStartDrag>true</EnableStartDrag>
 							<DataPath>СписокРасчетныеЛистки</DataPath>
@@ -2053,6 +2108,62 @@
 									<ContextMenu name="СписокРасчетныеЛисткиНачисленияИУдержанияКонтекстноеМеню" id="1801"/>
 									<ExtendedTooltip name="СписокРасчетныеЛисткиНачисленияИУдержанияРасширеннаяПодсказка" id="1802"/>
 								</LabelField>
+								<LabelField name="СписокРасчетныеЛисткиНачислено" id="1818">
+									<DataPath>СписокРасчетныеЛистки.Начислено</DataPath>
+									<FooterDataPath>НачисленияИтог</FooterDataPath>
+									<Width>10</Width>
+									<Format>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>ЧЦ=15; ЧДЦ=2</v8:content>
+										</v8:item>
+									</Format>
+									<ContextMenu name="СписокРасчетныеЛисткиНачисленоКонтекстноеМеню" id="1819"/>
+									<ExtendedTooltip name="СписокРасчетныеЛисткиНачисленоРасширеннаяПодсказка" id="1820"/>
+								</LabelField>
+								<LabelField name="СписокРасчетныеЛисткиУдержано" id="1815">
+									<DataPath>СписокРасчетныеЛистки.Удержано</DataPath>
+									<FooterDataPath>УдержанияИтог</FooterDataPath>
+									<Width>10</Width>
+									<Format>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>ЧЦ=15; ЧДЦ=2</v8:content>
+										</v8:item>
+									</Format>
+									<ContextMenu name="СписокРасчетныеЛисткиУдержаноКонтекстноеМеню" id="1816"/>
+									<ExtendedTooltip name="СписокРасчетныеЛисткиУдержаноРасширеннаяПодсказка" id="1817"/>
+								</LabelField>
+								<LabelField name="СписокРасчетныеЛисткиДопдоход" id="1839">
+									<DataPath>СписокРасчетныеЛистки.Допдоход</DataPath>
+									<FooterDataPath>ДопдоходИтог</FooterDataPath>
+									<Width>10</Width>
+									<Format>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>ЧЦ=15; ЧДЦ=2</v8:content>
+										</v8:item>
+									</Format>
+									<ContextMenu name="СписокРасчетныеЛисткиДопдоходКонтекстноеМеню" id="1840"/>
+									<ExtendedTooltip name="СписокРасчетныеЛисткиДопдоходРасширеннаяПодсказка" id="1841"/>
+								</LabelField>
+								<LabelField name="СписокРасчетныеЛисткиДокумент" id="1797">
+									<DataPath>СписокРасчетныеЛистки.Документ</DataPath>
+									<ContextMenu name="СписокРасчетныеЛисткиДокументКонтекстноеМеню" id="1798"/>
+									<ExtendedTooltip name="СписокРасчетныеЛисткиДокументРасширеннаяПодсказка" id="1799"/>
+								</LabelField>
+								<LabelField name="СписокРасчетныеЛисткиДни" id="1794">
+									<DataPath>СписокРасчетныеЛистки.Дни</DataPath>
+									<Width>8</Width>
+									<ContextMenu name="СписокРасчетныеЛисткиДниКонтекстноеМеню" id="1795"/>
+									<ExtendedTooltip name="СписокРасчетныеЛисткиДниРасширеннаяПодсказка" id="1796"/>
+								</LabelField>
+								<LabelField name="СписокРасчетныеЛисткиЧасы" id="1809">
+									<DataPath>СписокРасчетныеЛистки.Часы</DataPath>
+									<Width>8</Width>
+									<ContextMenu name="СписокРасчетныеЛисткиЧасыКонтекстноеМеню" id="1810"/>
+									<ExtendedTooltip name="СписокРасчетныеЛисткиЧасыРасширеннаяПодсказка" id="1811"/>
+								</LabelField>
 								<LabelField name="СписокРасчетныеЛисткиДатаНачала" id="1788">
 									<DataPath>СписокРасчетныеЛистки.ДатаНачала</DataPath>
 									<Title>
@@ -2088,29 +2199,6 @@
 									</Format>
 									<ContextMenu name="СписокРасчетныеЛисткиДатаОкончанияКонтекстноеМеню" id="1792"/>
 									<ExtendedTooltip name="СписокРасчетныеЛисткиДатаОкончанияРасширеннаяПодсказка" id="1793"/>
-								</LabelField>
-								<LabelField name="СписокРасчетныеЛисткиДни" id="1794">
-									<DataPath>СписокРасчетныеЛистки.Дни</DataPath>
-									<Width>8</Width>
-									<ContextMenu name="СписокРасчетныеЛисткиДниКонтекстноеМеню" id="1795"/>
-									<ExtendedTooltip name="СписокРасчетныеЛисткиДниРасширеннаяПодсказка" id="1796"/>
-								</LabelField>
-								<LabelField name="СписокРасчетныеЛисткиЧасы" id="1809">
-									<DataPath>СписокРасчетныеЛистки.Часы</DataPath>
-									<Width>8</Width>
-									<ContextMenu name="СписокРасчетныеЛисткиЧасыКонтекстноеМеню" id="1810"/>
-									<ExtendedTooltip name="СписокРасчетныеЛисткиЧасыРасширеннаяПодсказка" id="1811"/>
-								</LabelField>
-								<LabelField name="СписокРасчетныеЛисткиСумма" id="1803">
-									<DataPath>СписокРасчетныеЛистки.Сумма</DataPath>
-									<Width>10</Width>
-									<ContextMenu name="СписокРасчетныеЛисткиСуммаКонтекстноеМеню" id="1804"/>
-									<ExtendedTooltip name="СписокРасчетныеЛисткиСуммаРасширеннаяПодсказка" id="1805"/>
-								</LabelField>
-								<LabelField name="СписокРасчетныеЛисткиДокумент" id="1797">
-									<DataPath>СписокРасчетныеЛистки.Документ</DataPath>
-									<ContextMenu name="СписокРасчетныеЛисткиДокументКонтекстноеМеню" id="1798"/>
-									<ExtendedTooltip name="СписокРасчетныеЛисткиДокументРасширеннаяПодсказка" id="1799"/>
 								</LabelField>
 							</ChildItems>
 						</Table>
@@ -2158,17 +2246,6 @@
 			<FunctionalOptions>
 				<Item>d663bc58-63a6-40d8-8f52-a5cc5359d58f</Item>
 			</FunctionalOptions>
-		</Attribute>
-		<Attribute name="ОтборСотрудник" id="6">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Отбор сотрудник</v8:content>
-				</v8:item>
-			</Title>
-			<Type>
-				<v8:Type>cfg:CatalogRef.ФизическиеЛица</v8:Type>
-			</Type>
 		</Attribute>
 		<Attribute name="ОтборПериодРегистрации" id="7">
 			<Title>
@@ -2926,7 +3003,7 @@
 				<QueryText>ВЫБРАТЬ
 	СтатусыСотрудников.Регистратор КАК Регистратор,
 	СтатусыСотрудников.Организация КАК Организация,
-	СтатусыСотрудников.Физлицо КАК Физлицо,
+	СтатусыСотрудников.ФизЛицо КАК Физлицо,
 	СтатусыСотрудников.Статус КАК Статус,
 	СтатусыСотрудников.ДопВычет КАК ДопВычет,
 	СтатусыСотрудников.ГНС КАК ГНС,
@@ -2989,20 +3066,20 @@
 ОБЪЕДИНИТЬ ВСЕ
 
 ВЫБРАТЬ
-	ПлановыеНачисленияНачало.Период КАК Период,
-	ПлановыеНачисленияНачало.Регистратор.Номер КАК Номер,
-	ПлановыеНачисленияНачало.Регистратор КАК Регистратор,
-	ПлановыеНачисленияНачало.ФизЛицо КАК ФизЛицо,
-	ПлановыеНачисленияНачало.Подразделение КАК Подразделение,
-	ПлановыеНачисленияНачало.Должность КАК Должность,
-	ЗНАЧЕНИЕ(Перечисление.ВидыКадровыхСобытий.Перемещение) КАК ВидСобытия,
-	ВременнаяТаблицаСтатусыСотрудников.Статус КАК Статус,
-	ВременнаяТаблицаСтатусыСотрудников.Категория КАК Категория,
-	ВременнаяТаблицаСтатусыСотрудников.ДопВычет КАК ДополнительныйВычет,
-	ВременнаяТаблицаСтатусыСотрудников.ГНС КАК ГНС,
-	ПлановыеНачисленияНачало.Размер КАК Оклад,
-	ПлановыеНачисленияНачало.Валюта КАК Валюта,
-	ПлановыеНачисленияНачало.ГрафикРаботы КАК ГрафикРаботы
+	ПлановыеНачисленияНачало.Период,
+	ПлановыеНачисленияНачало.Регистратор.Номер,
+	ПлановыеНачисленияНачало.Регистратор,
+	ПлановыеНачисленияНачало.ФизЛицо,
+	ПлановыеНачисленияНачало.Подразделение,
+	ПлановыеНачисленияНачало.Должность,
+	ЗНАЧЕНИЕ(Перечисление.ВидыКадровыхСобытий.Перемещение),
+	ВременнаяТаблицаСтатусыСотрудников.Статус,
+	ВременнаяТаблицаСтатусыСотрудников.Категория,
+	ВременнаяТаблицаСтатусыСотрудников.ДопВычет,
+	ВременнаяТаблицаСтатусыСотрудников.ГНС,
+	ПлановыеНачисленияНачало.Размер,
+	ПлановыеНачисленияНачало.Валюта,
+	ПлановыеНачисленияНачало.ГрафикРаботы
 ИЗ
 	РегистрСведений.ПлановыеНачисленияНачало КАК ПлановыеНачисленияНачало
 		ЛЕВОЕ СОЕДИНЕНИЕ ВременнаяТаблицаСтатусыСотрудников КАК ВременнаяТаблицаСтатусыСотрудников
@@ -3110,6 +3187,34 @@
 			ИНАЧЕ ИСТИНА
 		КОНЕЦ
 	И ВременнаяТаблицаСтатусыСотрудников.Регистратор ССЫЛКА Документ.СправкиДляПН
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	ПлановыеУдержанияНачало.Период,
+	ПлановыеУдержанияНачало.Регистратор.Номер,
+	ПлановыеУдержанияНачало.Регистратор,
+	ПлановыеУдержанияНачало.ФизЛицо,
+	НЕОПРЕДЕЛЕНО,
+	НЕОПРЕДЕЛЕНО,
+	"Исполнительный лист",
+	НЕОПРЕДЕЛЕНО,
+	НЕОПРЕДЕЛЕНО,
+	НЕОПРЕДЕЛЕНО,
+	НЕОПРЕДЕЛЕНО,
+	0,
+	НЕОПРЕДЕЛЕНО,
+	НЕОПРЕДЕЛЕНО
+ИЗ
+	РегистрСведений.ПлановыеУдержанияНачало КАК ПлановыеУдержанияНачало
+ГДЕ
+	ПлановыеУдержанияНачало.Организация = &amp;Организация
+	И ВЫБОР
+			КОГДА &amp;физЛицо &lt;&gt; ЗНАЧЕНИЕ(Справочник.ФизическиеЛица.ПустаяСсылка)
+				ТОГДА ПлановыеУдержанияНачало.Физлицо = &amp;физЛицо
+			ИНАЧЕ ИСТИНА
+		КОНЕЦ
+	И ПлановыеУдержанияНачало.Регистратор ССЫЛКА Документ.ИсполнительныйЛист
 ;
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -3132,7 +3237,7 @@
 		КОГДА КурсыВалютЗаработнаяПлата.Валюта ЕСТЬ NULL
 				ИЛИ КурсыВалютЗаработнаяПлата.Курс = 0
 			ТОГДА 0
-		ИНАЧЕ ВременнаяТаблицаИтоговыеДанные.Оклад / КурсыВалютЗаработнаяПлата.Курс * КурсыВалютЗаработнаяПлата.Кратность
+		ИНАЧЕ ВременнаяТаблицаИтоговыеДанные.Оклад / ЕСТЬNULL(КурсыВалютЗаработнаяПлата.Курс, 1) * ЕСТЬNULL(КурсыВалютЗаработнаяПлата.Кратность, 1)
 	КОНЕЦ КАК Результат,
 	ЕСТЬNULL(КурсыВалютЗаработнаяПлата.Курс, 0) КАК Курс
 ИЗ
@@ -3530,7 +3635,12 @@
 ВЫБРАТЬ
 	ПлановыеУдержанияНачалоСрезПоследних.ВидРасчета КАК ВидРасчета,
 	ПлановыеУдержанияНачалоСрезПоследних.Регистратор КАК Регистратор,
-	ПлановыеУдержанияНачалоСрезПоследних.Период КАК Период
+	ПлановыеУдержанияНачалоСрезПоследних.Период КАК Период,
+	ВЫБОР
+		КОГДА ПлановыеУдержанияНачалоСрезПоследних.Регистратор ССЫЛКА Документ.ИсполнительныйЛист
+			ТОГДА ПлановыеУдержанияНачалоСрезПоследних.Регистратор.ДатаНачала
+		ИНАЧЕ НЕОПРЕДЕЛЕНО
+	КОНЕЦ КАК ДатаНачала	
 ПОМЕСТИТЬ ВременнаяТаблицаУдержания
 ИЗ
 	РегистрСведений.ПлановыеУдержанияНачало.СрезПоследних(
@@ -3649,7 +3759,17 @@
 	Начисления.ВидРасчета КАК НачисленияИУдержания,
 	Начисления.ОтработаноДней КАК Дни,
 	Начисления.ОтработаноЧасов КАК Часы,
-	Начисления.Результат КАК Сумма,
+	ВЫБОР
+		КОГДА Начисления.ВидРасчета.ДополнительныйДоход
+			ТОГДА 0
+		ИНАЧЕ Начисления.Результат
+	КОНЕЦ КАК Начислено,
+	ВЫБОР
+		КОГДА Начисления.ВидРасчета.ДополнительныйДоход
+			ТОГДА Начисления.Результат
+		ИНАЧЕ 0
+	КОНЕЦ КАК Допдоход, 	
+	0 КАК Удержано,
 	Начисления.ПериодДействияНачало КАК ДатаНачала,
 	Начисления.ПериодДействияКонец КАК ДатаОкончания,
 	ВЫБОР
@@ -3657,7 +3777,9 @@
 			ТОГДА ВЫБОР
 					КОГДА НЕ ВременнаяТаблицаРаботаСверхурочно.Регистратор ЕСТЬ NULL
 						ТОГДА ВременнаяТаблицаРаботаСверхурочно.Регистратор
-					ИНАЧЕ ВременнаяТаблицаНачисления.Регистратор
+					КОГДА НЕ ВременнаяТаблицаНачисления.Регистратор ЕСТЬ NULL
+						ТОГДА ВременнаяТаблицаНачисления.Регистратор	
+					ИНАЧЕ Начисления.Регистратор
 				КОНЕЦ
 		ИНАЧЕ Начисления.Регистратор
 	КОНЕЦ КАК Документ
@@ -3689,8 +3811,10 @@
 	Удержания.ВидРасчета,
 	0,
 	0,
+	0,
+	0,
 	Удержания.Результат,
-	NULL,
+	ВременнаяТаблицаУдержания.ДатаНачала,
 	Удержания.ПериодРегистрации,
 	ВЫБОР
 		КОГДА НЕ ВременнаяТаблицаУдержания.Регистратор ЕСТЬ NULL
@@ -3711,6 +3835,8 @@
 ВЫБРАТЬ
 	НалогиПоЗаработнойПлатеОбороты.ФизЛицо,
 	НалогиПоЗаработнойПлатеОбороты.ВидНалога,
+	0,
+	0,
 	0,
 	0,
 	НалогиПоЗаработнойПлатеОбороты.СуммаОборот,
@@ -3755,6 +3881,132 @@
 				</ListSettings>
 			</Settings>
 		</Attribute>
+		<Attribute name="НачисленияИтог" id="58">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Начисления итог</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>15</v8:Digits>
+					<v8:FractionDigits>2</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="УдержанияИтог" id="59">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Удержания итог</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>15</v8:Digits>
+					<v8:FractionDigits>2</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="СальдоНаНачалоПоРасчетномуЛистку" id="60">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сальдо на начало по расчетному листку</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="СальдоНаКонецПоРасчетномуЛистку" id="61">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сальдо на конец по расчетному листку</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ДопдоходИтог" id="62">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Допдоход итог</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>15</v8:Digits>
+					<v8:FractionDigits>2</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="РазмерНиУИтог" id="63">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Удержания итог</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>15</v8:Digits>
+					<v8:FractionDigits>2</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="НачисленоНиУИтог" id="64">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Удержания итог</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>15</v8:Digits>
+					<v8:FractionDigits>2</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="УдержаноНиУИтог" id="65">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Удержания итог</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>15</v8:Digits>
+					<v8:FractionDigits>2</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
 		<ConditionalAppearance>
 			<dcsset:item>
 				<dcsset:selection>
@@ -3772,7 +4024,7 @@
 				<dcsset:appearance>
 					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 						<dcscor:parameter>ЦветФона</dcscor:parameter>
-						<dcscor:value xsi:type="v8ui:Color">style:СобытиеОтказ</dcscor:value>
+						<dcscor:value xsi:type="v8ui:Color">0:a634d962-15cb-4736-aeb5-138d30ff1deb</dcscor:value>
 					</dcscor:item>
 				</dcsset:appearance>
 			</dcsset:item>

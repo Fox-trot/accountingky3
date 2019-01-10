@@ -7,8 +7,14 @@
 	<dataSet xsi:type="DataSetQuery">
 		<name>НаборДанных1</name>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>ИнвентарныйНомер</dataPath>
+			<dataPath>ОсновноеСредство.ИнвентарныйНомер</dataPath>
 			<field>ИнвентарныйНомер</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Инв.№</v8:content>
+				</v8:item>
+			</title>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>Организация</dataPath>
@@ -56,7 +62,7 @@
 			<title xsi:type="v8:LocalStringType">
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Стоимость для амортизации</v8:content>
+					<v8:content>База амортизации</v8:content>
 				</v8:item>
 			</title>
 			<appearance>
@@ -72,7 +78,7 @@
 			<title xsi:type="v8:LocalStringType">
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Амортизация/нач</v8:content>
+					<v8:content>НА/нач</v8:content>
 				</v8:item>
 			</title>
 			<role>
@@ -93,9 +99,14 @@
 			<title xsi:type="v8:LocalStringType">
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Стоимость на конец периода</v8:content>
+					<v8:content>ПС/кон</v8:content>
 				</v8:item>
 			</title>
+			<role>
+				<dcscom:balance>true</dcscom:balance>
+				<dcscom:balanceGroupName>СтоимостьНа</dcscom:balanceGroupName>
+				<dcscom:balanceType>ClosingBalance</dcscom:balanceType>
+			</role>
 			<appearance>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 					<dcscor:parameter>Формат</dcscor:parameter>
@@ -109,7 +120,7 @@
 			<title xsi:type="v8:LocalStringType">
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Амортизация/кон</v8:content>
+					<v8:content>НА/кон</v8:content>
 				</v8:item>
 			</title>
 			<role>
@@ -134,9 +145,14 @@
 			<title xsi:type="v8:LocalStringType">
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Стоимость на начало периода</v8:content>
+					<v8:content>ПС/нач</v8:content>
 				</v8:item>
 			</title>
+			<role>
+				<dcscom:balance>true</dcscom:balance>
+				<dcscom:balanceGroupName>СтоимостьНа</dcscom:balanceGroupName>
+				<dcscom:balanceType>OpeningBalance</dcscom:balanceType>
+			</role>
 			<appearance>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 					<dcscor:parameter>Формат</dcscor:parameter>
@@ -338,9 +354,9 @@
 	ПараметрыУчетаОССрезПоследних.СрокСлужбы КАК СрокСлужбы,
 	ПараметрыУчетаОССрезПоследних.ПервоначальнаяСтоимость КАК ПервоначальнаяСтоимость,
 	ПараметрыУчетаОССрезПоследних.ПервоначальнаяСтоимость - ПараметрыУчетаОССрезПоследних.ЛиквидационнаяСтоимость КАК СтоимостьДляНачисленияАмортизации,
-	ХозрасчетныйОстаткиИОбороты_БалансоваяСтоимость.СуммаНачальныйОстатокДт - ЕСТЬNULL(ХозрасчетныйОстаткиИОбороты_Амортизация.СуммаНачальныйОстатокКт, 0) КАК СтоимостьНаНачалоПериода,
+	ХозрасчетныйОстаткиИОбороты_БалансоваяСтоимость.СуммаНачальныйОстатокДт КАК СтоимостьНаНачалоПериода,
 	ХозрасчетныйОстаткиИОбороты_Амортизация.СуммаНачальныйОстатокКт КАК АмортизацияНаНачалоПериода,
-	ХозрасчетныйОстаткиИОбороты_БалансоваяСтоимость.СуммаКонечныйОстатокДт - ЕСТЬNULL(ХозрасчетныйОстаткиИОбороты_Амортизация.СуммаКонечныйОстатокКт, 0) КАК СтоимостьНаКонецПериода,
+	ХозрасчетныйОстаткиИОбороты_БалансоваяСтоимость.СуммаКонечныйОстатокДт КАК СтоимостьНаКонецПериода,
 	ХозрасчетныйОстаткиИОбороты_Амортизация.СуммаКонечныйОстатокКт КАК АмортизацияНаКонецПериода,
 	ХозрасчетныйОборотыДтКт_Модернизация.СуммаОборот КАК УвеличениеСтоимости,
 	0 КАК УменьшениеСтоимости,
@@ -486,8 +502,8 @@
 		<expression>Сумма(АмортизацияЗаПериод)</expression>
 	</totalField>
 	<totalField>
-		<dataPath>ИнвентарныйНомер</dataPath>
-		<expression>(ИнвентарныйНомер)</expression>
+		<dataPath>ОсновноеСредство.ИнвентарныйНомер</dataPath>
+		<expression>(ОсновноеСредство.ИнвентарныйНомер)</expression>
 		<group>ОсновноеСредство</group>
 	</totalField>
 	<totalField>
@@ -635,31 +651,22 @@
 					<dcsset:field>ОсновноеСредство</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>ИнвентарныйНомер</dcsset:field>
+					<dcsset:field>ОсновноеСредство.ИнвентарныйНомер</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>СпособНачисленияАмортизации</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>СрокСлужбы</dcsset:field>
-					<dcsset:lwsTitle>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Срок использования (для амортизации)</v8:content>
-						</v8:item>
-					</dcsset:lwsTitle>
-				</dcsset:item>
-				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>ПервоначальнаяСтоимость</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>СтоимостьДляНачисленияАмортизации</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>АмортизацияНаНачалоПериода</dcsset:field>
+					<dcsset:field>СтоимостьНаНачалоПериода</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>СтоимостьНаНачалоПериода</dcsset:field>
+					<dcsset:field>АмортизацияНаНачалоПериода</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>УвеличениеСтоимости</dcsset:field>
@@ -671,10 +678,10 @@
 					<dcsset:field>УменьшениеСтоимости</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>АмортизацияНаКонецПериода</dcsset:field>
+					<dcsset:field>СтоимостьНаКонецПериода</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>СтоимостьНаКонецПериода</dcsset:field>
+					<dcsset:field>АмортизацияНаКонецПериода</dcsset:field>
 				</dcsset:item>
 				<dcsset:viewMode>Normal</dcsset:viewMode>
 				<dcsset:userSettingID>a811a9a9-3093-48ce-b861-ad2377f6f3c3</dcsset:userSettingID>
@@ -718,6 +725,7 @@
 					<dcsset:userSettingID>dc5aee9e-ea26-4115-8122-ab0bcfa739cd</dcsset:userSettingID>
 				</dcscor:item>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
 					<dcscor:parameter>Все</dcscor:parameter>
 					<dcscor:value xsi:type="xs:boolean">false</dcscor:value>
 					<dcsset:userSettingID>8266d5ad-14a9-4dcc-bf91-a69f4a864308</dcsset:userSettingID>
@@ -837,7 +845,7 @@
 					<dcsset:field>ОСВСоставеКомплекта</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>ИнвентарныйНомер</dcsset:field>
+					<dcsset:field>ОсновноеСредство.ИнвентарныйНомер</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>СпособНачисленияАмортизации</dcsset:field>
@@ -852,16 +860,13 @@
 					</dcsset:lwsTitle>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>ПервоначальнаяСтоимость</dcsset:field>
-				</dcsset:item>
-				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>СтоимостьДляНачисленияАмортизации</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>АмортизацияНаНачалоПериода</dcsset:field>
+					<dcsset:field>СтоимостьНаНачалоПериода</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>СтоимостьНаНачалоПериода</dcsset:field>
+					<dcsset:field>АмортизацияНаНачалоПериода</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>УвеличениеСтоимости</dcsset:field>
@@ -873,10 +878,10 @@
 					<dcsset:field>УменьшениеСтоимости</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>АмортизацияНаКонецПериода</dcsset:field>
+					<dcsset:field>СтоимостьНаКонецПериода</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>СтоимостьНаКонецПериода</dcsset:field>
+					<dcsset:field>АмортизацияНаКонецПериода</dcsset:field>
 				</dcsset:item>
 				<dcsset:viewMode>Normal</dcsset:viewMode>
 				<dcsset:userSettingID>a811a9a9-3093-48ce-b861-ad2377f6f3c3</dcsset:userSettingID>
@@ -920,6 +925,7 @@
 					<dcsset:userSettingID>dc5aee9e-ea26-4115-8122-ab0bcfa739cd</dcsset:userSettingID>
 				</dcscor:item>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
 					<dcscor:parameter>Все</dcscor:parameter>
 					<dcscor:value xsi:type="xs:boolean">false</dcscor:value>
 					<dcsset:userSettingID>8266d5ad-14a9-4dcc-bf91-a69f4a864308</dcsset:userSettingID>

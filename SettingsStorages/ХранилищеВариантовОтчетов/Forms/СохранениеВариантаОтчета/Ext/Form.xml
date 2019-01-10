@@ -1,7 +1,24 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.6">
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.7">
 	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
 	<CommandBarLocation>Bottom</CommandBarLocation>
+	<MobileDeviceCommandBarContent>
+		<xr:Item>
+			<xr:Presentation/>
+			<xr:CheckState>0</xr:CheckState>
+			<xr:Value xsi:type="xs:decimal">55</xr:Value>
+		</xr:Item>
+		<xr:Item>
+			<xr:Presentation/>
+			<xr:CheckState>0</xr:CheckState>
+			<xr:Value xsi:type="xs:decimal">16</xr:Value>
+		</xr:Item>
+		<xr:Item>
+			<xr:Presentation/>
+			<xr:CheckState>0</xr:CheckState>
+			<xr:Value xsi:type="xs:decimal">151</xr:Value>
+		</xr:Item>
+	</MobileDeviceCommandBarContent>
 	<CommandSet>
 		<ExcludedCommand>Abort</ExcludedCommand>
 		<ExcludedCommand>Close</ExcludedCommand>
@@ -35,14 +52,14 @@
 			<PagesRepresentation>None</PagesRepresentation>
 			<ExtendedTooltip name="СтраницыExtendedTooltip" id="111"/>
 			<ChildItems>
-				<Page name="Страница1" id="25">
+				<Page name="Основное" id="25">
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Страница 1</v8:content>
+							<v8:content>Основное</v8:content>
 						</v8:item>
 					</Title>
-					<ExtendedTooltip name="Страница1ExtendedTooltip" id="112"/>
+					<ExtendedTooltip name="ОсновноеРасширеннаяПодсказка" id="112"/>
 					<ChildItems>
 						<Table name="ВариантыОтчета" id="1">
 							<Representation>List</Representation>
@@ -54,6 +71,7 @@
 							<AutoAddIncomplete>false</AutoAddIncomplete>
 							<AutoMarkIncomplete>false</AutoMarkIncomplete>
 							<SearchOnInput>Use</SearchOnInput>
+							<FileDragMode>AsFile</FileDragMode>
 							<DataPath>ВариантыОтчета</DataPath>
 							<RowPictureDataPath>ВариантыОтчета.ИндексКартинки</RowPictureDataPath>
 							<RowsPicture>
@@ -150,7 +168,7 @@
 							</ChildItems>
 						</Table>
 						<InputField name="Наименование" id="52">
-							<DataPath>ВариантНаименование</DataPath>
+							<DataPath>Объект.Description</DataPath>
 							<HorizontalStretch>true</HorizontalStretch>
 							<VerticalStretch>false</VerticalStretch>
 							<AutoMarkIncomplete>true</AutoMarkIncomplete>
@@ -158,6 +176,7 @@
 							<ExtendedTooltip name="НаименованиеExtendedTooltip" id="117"/>
 							<Events>
 								<Event name="OnChange">НаименованиеПриИзменении</Event>
+								<Event name="Opening">НаименованиеОткрытие</Event>
 							</Events>
 						</InputField>
 						<UsualGroup name="ГруппаДоступен" id="153">
@@ -226,7 +245,7 @@
 							</ChildItems>
 						</UsualGroup>
 						<InputField name="ОписаниеВнешнегоОтчета" id="95">
-							<DataPath>ВариантОписание</DataPath>
+							<DataPath>Объект.Описание</DataPath>
 							<Visible>false</Visible>
 							<SkipOnInput>false</SkipOnInput>
 							<TitleLocation>Left</TitleLocation>
@@ -243,7 +262,9 @@
 							<ContextMenu name="ОписаниеВнешнегоОтчетаКонтекстноеМеню" id="96"/>
 							<ExtendedTooltip name="ОписаниеВнешнегоОтчетаExtendedTooltip" id="118"/>
 							<Events>
+								<Event name="OnChange">ОписаниеПриИзменении</Event>
 								<Event name="StartChoice">ОписаниеНачалоВыбора</Event>
+								<Event name="Opening">ОписаниеВнешнегоОтчетаОткрытие</Event>
 							</Events>
 						</InputField>
 						<UsualGroup name="Страница1Подвал" id="190">
@@ -279,7 +300,7 @@
 											<ChildItems>
 												<LabelDecoration name="ДекорацияЧтоБудетДальшеНовый" id="187">
 													<AutoMaxWidth>false</AutoMaxWidth>
-													<TextColor>style:ПоясняющийТекст</TextColor>
+													<TextColor>0:ad87bd29-0ad1-4da4-ac62-38e714e0cb9f</TextColor>
 													<Title formatted="false">
 														<v8:item>
 															<v8:lang>ru</v8:lang>
@@ -304,7 +325,7 @@
 											<ChildItems>
 												<LabelDecoration name="ДекорацияЧтоБудетДальшеПерезапись" id="184">
 													<AutoMaxWidth>false</AutoMaxWidth>
-													<TextColor>style:ПоясняющийТекст</TextColor>
+													<TextColor>0:ad87bd29-0ad1-4da4-ac62-38e714e0cb9f</TextColor>
 													<Title formatted="false">
 														<v8:item>
 															<v8:lang>ru</v8:lang>
@@ -329,7 +350,7 @@
 											<ChildItems>
 												<LabelDecoration name="ДекорацияЧтоБудетДальшеПерезаписьНевозможна" id="203">
 													<AutoMaxWidth>false</AutoMaxWidth>
-													<TextColor>style:ПоясняющийОшибкуТекст</TextColor>
+													<TextColor>0:b9627855-6773-4a59-b7d3-f9e2e565cd9e</TextColor>
 													<Title formatted="false">
 														<v8:item>
 															<v8:lang>ru</v8:lang>
@@ -349,17 +370,17 @@
 						</UsualGroup>
 					</ChildItems>
 				</Page>
-				<Page name="Страница2" id="26">
+				<Page name="Дополнительно" id="26">
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Страница 2</v8:content>
+							<v8:content>Дополнительно</v8:content>
 						</v8:item>
 					</Title>
-					<ExtendedTooltip name="Страница2ExtendedTooltip" id="130"/>
+					<ExtendedTooltip name="ДополнительноРасширеннаяПодсказка" id="130"/>
 					<ChildItems>
 						<CheckBoxField name="ВариантВидимостьПоУмолчанию" id="160">
-							<DataPath>ВариантВидимостьПоУмолчанию</DataPath>
+							<DataPath>Объект.ВидимостьПоУмолчанию</DataPath>
 							<TitleLocation>Right</TitleLocation>
 							<CheckBoxType>Auto</CheckBoxType>
 							<ContextMenu name="ВариантВидимостьПоУмолчаниюКонтекстноеМеню" id="161"/>
@@ -374,6 +395,7 @@
 							<InitialTreeView>ExpandAllLevels</InitialTreeView>
 							<EnableStartDrag>true</EnableStartDrag>
 							<EnableDrag>true</EnableDrag>
+							<FileDragMode>AsFile</FileDragMode>
 							<DataPath>ДеревоПодсистем</DataPath>
 							<Title>
 								<v8:item>
@@ -459,7 +481,6 @@
 									<DataPath>ДеревоПодсистем.Важность</DataPath>
 									<EditMode>EnterOnInput</EditMode>
 									<Width>8</Width>
-									<ChoiceButton>true</ChoiceButton>
 									<ClearButton>true</ClearButton>
 									<SpinButton>false</SpinButton>
 									<OpenButton>false</OpenButton>
@@ -480,19 +501,25 @@
 									<CellHyperlink>true</CellHyperlink>
 									<Hiperlink>true</Hiperlink>
 									<PasswordMode>false</PasswordMode>
-									<TextColor>style:ГиперссылкаЦвет</TextColor>
+									<TextColor>0:757b547b-b79c-459a-a64a-eef19a09a38f</TextColor>
 									<ContextMenu name="ДеревоПодсистемПользователиПредставлениеКонтекстноеМеню" id="138"/>
 									<ExtendedTooltip name="ДеревоПодсистемПользователиПредставлениеРасширеннаяПодсказка" id="139"/>
 								</LabelField>
 							</ChildItems>
 						</Table>
-						<UsualGroup name="Группа1" id="143">
+						<UsualGroup name="ГруппаОписание" id="143">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Описание</v8:content>
+								</v8:item>
+							</Title>
 							<Group>Vertical</Group>
 							<ShowTitle>false</ShowTitle>
-							<ExtendedTooltip name="Группа1РасширеннаяПодсказка" id="144"/>
+							<ExtendedTooltip name="ГруппаОписаниеРасширеннаяПодсказка" id="144"/>
 							<ChildItems>
 								<InputField name="Описание" id="8">
-									<DataPath>ВариантОписание</DataPath>
+									<DataPath>Объект.Описание</DataPath>
 									<SkipOnInput>false</SkipOnInput>
 									<TitleLocation>Left</TitleLocation>
 									<ToolTip>
@@ -516,6 +543,7 @@
 									<Events>
 										<Event name="OnChange">ОписаниеПриИзменении</Event>
 										<Event name="StartChoice">ОписаниеНачалоВыбора</Event>
+										<Event name="Opening">ОписаниеОткрытие</Event>
 									</Events>
 								</InputField>
 							</ChildItems>
@@ -567,7 +595,7 @@
 							<CommandName>Form.Command.Далее</CommandName>
 							<ExtendedTooltip name="ДалееExtendedTooltip" id="108"/>
 						</Button>
-						<Button name="Сохранить" id="55">
+						<Button name="Сохранить" id="55" DisplayImportance="VeryHigh">
 							<Type>CommandBarButton</Type>
 							<DefaultButton>true</DefaultButton>
 							<CommandName>Form.Command.Сохранить</CommandName>
@@ -575,6 +603,7 @@
 						</Button>
 						<Button name="Отмена" id="16">
 							<Type>CommandBarButton</Type>
+							<OnlyInAllActions>true</OnlyInAllActions>
 							<CommandName>Form.StandardCommand.Cancel</CommandName>
 							<ExtendedTooltip name="ОтменаExtendedTooltip" id="110"/>
 						</Button>
@@ -770,48 +799,18 @@
 						<v8:Type>xs:boolean</v8:Type>
 					</Type>
 				</Column>
+				<Column name="Порядок" id="11">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Порядок</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
 			</Columns>
-		</Attribute>
-		<Attribute name="ВариантНаименование" id="6">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Наименование</v8:content>
-				</v8:item>
-			</Title>
-			<Type>
-				<v8:Type>xs:string</v8:Type>
-				<v8:StringQualifiers>
-					<v8:Length>0</v8:Length>
-					<v8:AllowedLength>Variable</v8:AllowedLength>
-				</v8:StringQualifiers>
-			</Type>
-		</Attribute>
-		<Attribute name="ВариантОписание" id="7">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Описание</v8:content>
-				</v8:item>
-			</Title>
-			<Type>
-				<v8:Type>xs:string</v8:Type>
-				<v8:StringQualifiers>
-					<v8:Length>0</v8:Length>
-					<v8:AllowedLength>Variable</v8:AllowedLength>
-				</v8:StringQualifiers>
-			</Type>
-		</Attribute>
-		<Attribute name="ВариантТолькоДляАвтора" id="8">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Только для автора:</v8:content>
-				</v8:item>
-			</Title>
-			<Type>
-				<v8:Type>xs:boolean</v8:Type>
-			</Type>
 		</Attribute>
 		<Attribute name="ВариантСсылка" id="9">
 			<Title>
@@ -1043,17 +1042,6 @@
 			</Title>
 			<Type/>
 		</Attribute>
-		<Attribute name="ВариантВидимостьПоУмолчанию" id="2">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>По умолчанию виден в панелях отчетов</v8:content>
-				</v8:item>
-			</Title>
-			<Type>
-				<v8:Type>xs:boolean</v8:Type>
-			</Type>
-		</Attribute>
 		<Attribute name="СброситьНастройки" id="20">
 			<Title>
 				<v8:item>
@@ -1096,6 +1084,17 @@
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="Объект" id="24">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Объект</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogObject.ВариантыОтчетов</v8:Type>
 			</Type>
 		</Attribute>
 	</Attributes>
