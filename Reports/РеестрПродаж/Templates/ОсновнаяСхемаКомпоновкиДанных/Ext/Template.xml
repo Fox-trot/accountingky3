@@ -155,22 +155,6 @@
 			</appearance>
 		</field>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>НомерБланкаСФ</dataPath>
-			<field>НомерБланкаСФ</field>
-			<title xsi:type="v8:LocalStringType">
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Номер бланка СФ</v8:content>
-				</v8:item>
-			</title>
-			<appearance>
-				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-					<dcscor:parameter>МаксимальнаяШирина</dcscor:parameter>
-					<dcscor:value xsi:type="xs:decimal">50</dcscor:value>
-				</dcscor:item>
-			</appearance>
-		</field>
-		<field xsi:type="DataSetFieldField">
 			<dataPath>Дата</dataPath>
 			<field>Дата</field>
 			<title xsi:type="v8:LocalStringType">
@@ -323,6 +307,26 @@
 				<dcscom:periodType>Main</dcscom:periodType>
 			</role>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДокументНомер</dataPath>
+			<field>ДокументНомер</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Документ номер</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>НомерБланкаСФ</dataPath>
+			<field>НомерБланкаСФ</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Номер бланка СФ</v8:content>
+				</v8:item>
+			</title>
+		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ
 	ПродажиОбороты.Организация КАК Организация,
@@ -359,11 +363,12 @@
 	КОНЕЦ КАК НСППрочее,
 	ПродажиОбороты.СуммаОборот + ПродажиОбороты.СуммаНДСОборот + ПродажиОбороты.СуммаНСПОборот КАК Всего,
 	ПродажиОбороты.ПериодСекунда КАК Дата,
-	ПродажиОбороты.Регистратор КАК Документ
+	ПродажиОбороты.Регистратор КАК Документ,
+	ПродажиОбороты.ДокументРеализации.Номер КАК ДокументНомер
 {ВЫБРАТЬ
 	Организация.*,
 	СерияБланкаСФ,
-	НомерБланкаСФ,
+	ДокументНомер,
 	НомерСчетаФактуры,
 	Дата,
 	Покупатель.*,
@@ -375,7 +380,8 @@
 	НСПТорговля,
 	НСППрочее,
 	Всего,
-	Документ.*}
+	Документ.*,
+	НомерБланкаСФ}
 ИЗ
 	РегистрНакопления.Продажи.Обороты({(&amp;НачалоПериода)}, {(&amp;КонецПериода)}, Авто, ) КАК ПродажиОбороты
 		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.СчетаФактурыВыписанные КАК СчетаФактурыВыписанные
@@ -386,6 +392,18 @@
 	ПродажиОбороты.Номенклатура.* КАК ОписаниеПоставки}</query>
 		<autoFillFields>false</autoFillFields>
 	</dataSet>
+	<calculatedField>
+		<dataPath>НомерСФ</dataPath>
+		<expression>Выбор Когда СерияБланкаСФ = "ДПБУ" И НомерБланкаСФ = "" Тогда ПрефиксацияОбъектовКлиентСервер.НомерНаПечать(ДокументНомер)
+Иначе НомерБланкаСФ
+Конец</expression>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Номер бланка СФ</v8:content>
+			</v8:item>
+		</title>
+	</calculatedField>
 	<totalField>
 		<dataPath>Всего</dataPath>
 		<expression>Сумма(Всего)</expression>
@@ -500,7 +518,7 @@
 		</template>
 		<parameter xmlns:dcsat="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="dcsat:ExpressionAreaTemplateParameter">
 			<dcsat:name>НомерСчетаФактуры</dcsat:name>
-			<dcsat:expression>НомерСчетаФактуры</dcsat:expression>
+			<dcsat:expression>НомерСФ</dcsat:expression>
 		</parameter>
 		<parameter xmlns:dcsat="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="dcsat:DetailsAreaTemplateParameter">
 			<dcsat:name>Расшифровка</dcsat:name>
@@ -518,6 +536,12 @@
 				<dcsat:tableCell>
 					<dcsat:item xsi:type="dcsat:Field">
 						<dcsat:value xsi:type="dcscor:Parameter">Дата</dcsat:value>
+						<dcsat:appearance>
+							<dcscor:item>
+								<dcscor:parameter>Формат</dcscor:parameter>
+								<dcscor:value xsi:type="xs:string">ДФ=dd.MM.yyyy</dcscor:value>
+							</dcscor:item>
+						</dcsat:appearance>
 					</dcsat:item>
 					<dcsat:appearance>
 						<dcscor:item>
