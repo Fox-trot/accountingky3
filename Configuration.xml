@@ -49,7 +49,7 @@
 				<xr:Item xsi:type="xr:MDObjectRef">Role.ИнтерактивноеОткрытиеВнешнихОтчетовИОбработок</xr:Item>
 			</DefaultRoles>
 			<Vendor>Фирма "1С"</Vendor>
-			<Version>3.0.15.14</Version>
+			<Version>3.0.16.1</Version>
 			<UpdateCatalogAddress>http://downloads.v8.1c.ru/tmplts/</UpdateCatalogAddress>
 			<IncludeHelpInContents>true</IncludeHelpInContents>
 			<UseManagedFormInOrdinaryApplication>false</UseManagedFormInOrdinaryApplication>
@@ -1049,6 +1049,7 @@
 			<CommonModule>МониторПортала1СИТСКлиентПереопределяемый</CommonModule>
 			<CommonModule>МониторПортала1СИТСПереопределяемый</CommonModule>
 			<CommonModule>МониторРуководителя</CommonModule>
+			<CommonModule>НалоговыйУчет</CommonModule>
 			<CommonModule>НапоминанияПользователя</CommonModule>
 			<CommonModule>НапоминанияПользователяВызовСервера</CommonModule>
 			<CommonModule>НапоминанияПользователяГлобальный</CommonModule>
@@ -1589,7 +1590,6 @@
 			<FunctionalOption>РаботаВМоделиСервиса</FunctionalOption>
 			<FunctionalOption>РазрешенаРаботаСНовостями</FunctionalOption>
 			<FunctionalOption>РазрешенаРаботаСНовостямиЧерезИнтернет</FunctionalOption>
-			<FunctionalOption>РасчетАмортизацииОтСтоимостиДляРасчетаАмортизации</FunctionalOption>
 			<FunctionalOption>СоздаватьЭлектронныеПодписиНаСервере</FunctionalOption>
 			<FunctionalOption>СпособОценкиТМЗ</FunctionalOption>
 			<FunctionalOption>СтандартныеПодсистемыВАвтономномРежиме</FunctionalOption>
@@ -1749,6 +1749,7 @@
 			<Constant>ВалютаРегламентированногоУчета</Constant>
 			<Constant>ВвестиКонтрольЗапретаПоШтатномуРасписанию</Constant>
 			<Constant>ВерсияДатЗапретаИзменения</Constant>
+			<Constant>ВычетНАПриМодернизации</Constant>
 			<Constant>ГлавныйУзел</Constant>
 			<Constant>ДанныеДляОтложенногоОбновления</Constant>
 			<Constant>ДатаОбновленияПовторноИспользуемыхЗначенийМРО</Constant>
@@ -1858,7 +1859,6 @@
 			<Constant>ФункциональнаяОпцияДопРасходыНаОдноПоступление</Constant>
 			<Constant>ФункциональнаяОпцияИспользоватьПодключаемоеОборудование</Constant>
 			<Constant>ФункциональнаяОпцияПрефиксКассыИБанковскогоСчета</Constant>
-			<Constant>ФункциональнаяОпцияРасчетАмортизацииОтСтоимостиДляРасчетаАмортизации</Constant>
 			<Constant>ФункциональнаяОпцияУчетДвиженияОСПоМОЛ</Constant>
 			<Constant>ФункциональнаяОпцияУчетДвиженияОСПоПодразделениям</Constant>
 			<Constant>ФункциональнаяОпцияУчетЗаработнойПлатыВВалюте</Constant>
@@ -2150,6 +2150,7 @@
 			<Document>Отработка</Document>
 			<Document>ОтчетВзаимнойОТорговлеЕАЭС</Document>
 			<Document>ОтчетПоБланкамСчетовФактур</Document>
+			<Document>ОтчетПоВыплатамИУдержаниямПН</Document>
 			<Document>ОтчетПоЕдиномуНалогу</Document>
 			<Document>ОтчетПоКосвеннымНалогам</Document>
 			<Document>ОтчетПоНалогуНаИмущество</Document>
@@ -2442,6 +2443,7 @@
 			<Report>УниверсальныйОтчетПоМетаданным</Report>
 			<Report>ШахматнаяВедомость</Report>
 			<Report>ШтатноеРасписание</Report>
+			<Report>ВедомостьПоСтатьямЗатрат</Report>
 			<DataProcessor>АвтоматическоеИзвлечениеТекстов</DataProcessor>
 			<DataProcessor>АктивныеПользователи</DataProcessor>
 			<DataProcessor>БлокировкаРаботыПользователей</DataProcessor>
@@ -2466,6 +2468,7 @@
 			<DataProcessor>КонвертацияОбъектовРаспределенныхИнформационныхБаз</DataProcessor>
 			<DataProcessor>ЛегальностьПолученияОбновлений</DataProcessor>
 			<DataProcessor>МетодическаяПоддержка</DataProcessor>
+			<DataProcessor>МониторВалютныхОпераций</DataProcessor>
 			<DataProcessor>МониторЗаработнойПлаты</DataProcessor>
 			<DataProcessor>МониторНалогаНаПрибыль</DataProcessor>
 			<DataProcessor>МониторНДС</DataProcessor>
@@ -2487,6 +2490,7 @@
 			<DataProcessor>ПеренумерацияДокументов</DataProcessor>
 			<DataProcessor>ПеренумерацияСправочников</DataProcessor>
 			<DataProcessor>ПереходИз17В30</DataProcessor>
+			<DataProcessor>ПечатьПараметровУчета</DataProcessor>
 			<DataProcessor>ПодборЗаказовНаПрозводство</DataProcessor>
 			<DataProcessor>ПодборНоменклатуры</DataProcessor>
 			<DataProcessor>ПодборОС</DataProcessor>
@@ -2516,7 +2520,6 @@
 			<DataProcessor>УдалениеПомеченныхОбъектов</DataProcessor>
 			<DataProcessor>УниверсальныйОбменДаннымиXML</DataProcessor>
 			<DataProcessor>УправлениеИтогамиИАгрегатами</DataProcessor>
-			<DataProcessor>УправлениеНастройками</DataProcessor>
 			<DataProcessor>УправлениеНовостями</DataProcessor>
 			<DataProcessor>УстановкаОбновлений</DataProcessor>
 			<DataProcessor>ФормированиеПрайсЛистов</DataProcessor>
@@ -2709,6 +2712,7 @@
 			<InformationRegister>УдалитьПараметрыИнтернетПоддержкиПользователей</InformationRegister>
 			<InformationRegister>УдалитьПраваПоЗначениямДоступа</InformationRegister>
 			<InformationRegister>удалитьРеестрПриобретенныхМатериальныхРесурсов</InformationRegister>
+			<InformationRegister>УдалитьРезультатыОбменаДанными</InformationRegister>
 			<InformationRegister>УдалитьСчетаФактурыВыписанные</InformationRegister>
 			<InformationRegister>УдалитьХранимыеФайлыВерсий</InformationRegister>
 			<InformationRegister>УченыеЗванияФизическихЛиц</InformationRegister>

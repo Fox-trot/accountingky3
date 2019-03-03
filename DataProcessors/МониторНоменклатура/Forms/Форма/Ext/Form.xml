@@ -108,6 +108,7 @@
 							<v8:content>Группа отборы</v8:content>
 						</v8:item>
 					</ToolTip>
+					<Group>AlwaysHorizontal</Group>
 					<Representation>None</Representation>
 					<ShowTitle>false</ShowTitle>
 					<ExtendedTooltip name="ГруппаОтборыРасширеннаяПодсказка" id="124"/>
@@ -130,6 +131,21 @@
 							<ShowTitle>false</ShowTitle>
 							<ExtendedTooltip name="ГруппаОтборыЛеваяРасширеннаяПодсказка" id="219"/>
 							<ChildItems>
+								<InputField name="ОтборОрганизация" id="212">
+									<DataPath>ОтборОрганизация</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Организация</v8:content>
+										</v8:item>
+									</Title>
+									<ClearButton>false</ClearButton>
+									<ContextMenu name="ОтборОрганизацияКонтекстноеМеню" id="213"/>
+									<ExtendedTooltip name="ОтборОрганизацияРасширеннаяПодсказка" id="214"/>
+									<Events>
+										<Event name="OnChange">ОтборОрганизацияПриИзменении</Event>
+									</Events>
+								</InputField>
 								<InputField name="ОтборНоменклатура" id="125">
 									<DataPath>ОтборНоменклатура</DataPath>
 									<Title>
@@ -145,21 +161,6 @@
 										<Event name="OnChange">ОтборНоменклатураПриИзменении</Event>
 									</Events>
 								</InputField>
-								<InputField name="ОтборСчет" id="131">
-									<DataPath>ОтборСчет</DataPath>
-									<Title>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Счет</v8:content>
-										</v8:item>
-									</Title>
-									<ClearButton>true</ClearButton>
-									<ContextMenu name="ОтборСчетКонтекстноеМеню" id="132"/>
-									<ExtendedTooltip name="ОтборСчетРасширеннаяПодсказка" id="133"/>
-									<Events>
-										<Event name="OnChange">ОтборСчетПриИзменении</Event>
-									</Events>
-								</InputField>
 								<UsualGroup name="ГруппаПериод" id="238">
 									<Title>
 										<v8:item>
@@ -173,6 +174,7 @@
 											<v8:content>Группа период</v8:content>
 										</v8:item>
 									</ToolTip>
+									<Group>AlwaysHorizontal</Group>
 									<Representation>None</Representation>
 									<ShowTitle>false</ShowTitle>
 									<ExtendedTooltip name="ГруппаПериодРасширеннаяПодсказка" id="239"/>
@@ -193,55 +195,11 @@
 												<Event name="OnChange">ДатаОкончанияПриИзменении</Event>
 											</Events>
 										</InputField>
-									</ChildItems>
-								</UsualGroup>
-								<UsualGroup name="ГруппаИсключений" id="327">
-									<Title>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Группа исключений</v8:content>
-										</v8:item>
-									</Title>
-									<ToolTip>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Группа исключений</v8:content>
-										</v8:item>
-									</ToolTip>
-									<Representation>None</Representation>
-									<ShowTitle>false</ShowTitle>
-									<ExtendedTooltip name="ГруппаИсключенийРасширеннаяПодсказка" id="328"/>
-									<ChildItems>
-										<CheckBoxField name="СвернутьПоПартиям" id="321">
-											<DataPath>СвернутьПоПартиям</DataPath>
-											<TitleLocation>Right</TitleLocation>
-											<CheckBoxType>Auto</CheckBoxType>
-											<ContextMenu name="СвернутьПоПартиямКонтекстноеМеню" id="322"/>
-											<ExtendedTooltip name="СвернутьПоПартиямРасширеннаяПодсказка" id="323"/>
-											<Events>
-												<Event name="OnChange">СвернутьПоПартиямПриИзменении</Event>
-											</Events>
-										</CheckBoxField>
-										<CheckBoxField name="СвернутьПоСкладам" id="324">
-											<DataPath>СвернутьПоСкладам</DataPath>
-											<TitleLocation>Right</TitleLocation>
-											<CheckBoxType>Auto</CheckBoxType>
-											<ContextMenu name="СвернутьПоСкладамКонтекстноеМеню" id="325"/>
-											<ExtendedTooltip name="СвернутьПоСкладамРасширеннаяПодсказка" id="326"/>
-											<Events>
-												<Event name="OnChange">СвернутьПоСкладамПриИзменении</Event>
-											</Events>
-										</CheckBoxField>
-										<CheckBoxField name="СвернутьПоСчетам" id="329">
-											<DataPath>СвернутьПоСчетам</DataPath>
-											<TitleLocation>Right</TitleLocation>
-											<CheckBoxType>Auto</CheckBoxType>
-											<ContextMenu name="СвернутьПоСчетамКонтекстноеМеню" id="330"/>
-											<ExtendedTooltip name="СвернутьПоСчетамРасширеннаяПодсказка" id="331"/>
-											<Events>
-												<Event name="OnChange">СвернутьПоСчетамПриИзменении</Event>
-											</Events>
-										</CheckBoxField>
+										<LabelDecoration name="ДекорацияПаритонныйУчет" id="332">
+											<VerticalAlign>Center</VerticalAlign>
+											<ContextMenu name="ДекорацияПаритонныйУчетКонтекстноеМеню" id="333"/>
+											<ExtendedTooltip name="ДекорацияПаритонныйУчетРасширеннаяПодсказка" id="334"/>
+										</LabelDecoration>
 									</ChildItems>
 								</UsualGroup>
 							</ChildItems>
@@ -264,58 +222,137 @@
 							<ShowTitle>false</ShowTitle>
 							<ExtendedTooltip name="ГруппаОтборыПраваяРасширеннаяПодсказка" id="221"/>
 							<ChildItems>
-								<InputField name="ОтборОрганизация" id="212">
-									<DataPath>ОтборОрганизация</DataPath>
+								<UsualGroup name="ГруппаСчетСклад" id="515">
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>Организация</v8:content>
+											<v8:content>Группа счет склад</v8:content>
 										</v8:item>
 									</Title>
-									<ClearButton>false</ClearButton>
-									<ContextMenu name="ОтборОрганизацияКонтекстноеМеню" id="213"/>
-									<ExtendedTooltip name="ОтборОрганизацияРасширеннаяПодсказка" id="214"/>
-									<Events>
-										<Event name="OnChange">ОтборОрганизацияПриИзменении</Event>
-									</Events>
-								</InputField>
-								<InputField name="ОтборСклад" id="128">
-									<DataPath>ОтборСклад</DataPath>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа счет склад</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>AlwaysHorizontal</Group>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="ГруппаСчетСкладРасширеннаяПодсказка" id="516"/>
+									<ChildItems>
+										<InputField name="ОтборСчет" id="131">
+											<DataPath>ОтборСчет</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Счет</v8:content>
+												</v8:item>
+											</Title>
+											<ClearButton>true</ClearButton>
+											<ContextMenu name="ОтборСчетКонтекстноеМеню" id="132"/>
+											<ExtendedTooltip name="ОтборСчетРасширеннаяПодсказка" id="133"/>
+											<Events>
+												<Event name="OnChange">ОтборСчетПриИзменении</Event>
+											</Events>
+										</InputField>
+										<InputField name="ОтборСклад" id="128">
+											<DataPath>ОтборСклад</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Склад</v8:content>
+												</v8:item>
+											</Title>
+											<ClearButton>true</ClearButton>
+											<ContextMenu name="ОтборСкладКонтекстноеМеню" id="129"/>
+											<ExtendedTooltip name="ОтборСкладРасширеннаяПодсказка" id="130"/>
+											<Events>
+												<Event name="OnChange">ОтборСкладПриИзменении</Event>
+											</Events>
+										</InputField>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="ГруппаУровни" id="517">
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>Склад</v8:content>
+											<v8:content>Группа уровни</v8:content>
 										</v8:item>
 									</Title>
-									<ClearButton>true</ClearButton>
-									<ContextMenu name="ОтборСкладКонтекстноеМеню" id="129"/>
-									<ExtendedTooltip name="ОтборСкладРасширеннаяПодсказка" id="130"/>
-									<Events>
-										<Event name="OnChange">ОтборСкладПриИзменении</Event>
-									</Events>
-								</InputField>
-								<LabelDecoration name="ДекорацияПаритонныйУчет" id="332">
-									<ContextMenu name="ДекорацияПаритонныйУчетКонтекстноеМеню" id="333"/>
-									<ExtendedTooltip name="ДекорацияПаритонныйУчетРасширеннаяПодсказка" id="334"/>
-								</LabelDecoration>
-								<InputField name="ПервыйУровень" id="434">
-									<DataPath>ПервыйУровень</DataPath>
-									<DropListButton>true</DropListButton>
-									<ContextMenu name="ПервыйУровеньКонтекстноеМеню" id="435"/>
-									<ExtendedTooltip name="ПервыйУровеньРасширеннаяПодсказка" id="436"/>
-									<Events>
-										<Event name="OnChange">ПервыйУровеньПриИзменении</Event>
-									</Events>
-								</InputField>
-								<InputField name="ВторойУровень" id="437">
-									<DataPath>ВторойУровень</DataPath>
-									<DropListButton>true</DropListButton>
-									<ContextMenu name="ВторойУровеньКонтекстноеМеню" id="438"/>
-									<ExtendedTooltip name="ВторойУровеньРасширеннаяПодсказка" id="439"/>
-									<Events>
-										<Event name="OnChange">ВторойУровеньПриИзменении</Event>
-									</Events>
-								</InputField>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа уровни</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>AlwaysHorizontal</Group>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="ГруппаУровниРасширеннаяПодсказка" id="518"/>
+									<ChildItems>
+										<InputField name="ПервыйУровень" id="434">
+											<DataPath>ПервыйУровень</DataPath>
+											<DropListButton>true</DropListButton>
+											<ClearButton>true</ClearButton>
+											<ContextMenu name="ПервыйУровеньКонтекстноеМеню" id="435"/>
+											<ExtendedTooltip name="ПервыйУровеньРасширеннаяПодсказка" id="436"/>
+											<Events>
+												<Event name="OnChange">ПервыйУровеньПриИзменении</Event>
+											</Events>
+										</InputField>
+										<InputField name="ВторойУровень" id="437">
+											<DataPath>ВторойУровень</DataPath>
+											<DropListButton>true</DropListButton>
+											<ClearButton>true</ClearButton>
+											<ContextMenu name="ВторойУровеньКонтекстноеМеню" id="438"/>
+											<ExtendedTooltip name="ВторойУровеньРасширеннаяПодсказка" id="439"/>
+											<Events>
+												<Event name="OnChange">ВторойУровеньПриИзменении</Event>
+											</Events>
+										</InputField>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="ГруппаИсключений" id="327">
+									<Visible>false</Visible>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа исключений</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа исключений</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>AlwaysHorizontal</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="ГруппаИсключенийРасширеннаяПодсказка" id="328"/>
+									<ChildItems>
+										<CheckBoxField name="СвернутьПоСкладам" id="519">
+											<DataPath>СвернутьПоСкладам</DataPath>
+											<CheckBoxType>Auto</CheckBoxType>
+											<ContextMenu name="СвернутьПоСкладамКонтекстноеМеню" id="520"/>
+											<ExtendedTooltip name="СвернутьПоСкладамРасширеннаяПодсказка" id="521"/>
+										</CheckBoxField>
+										<CheckBoxField name="СвернутьПоСчетам" id="522">
+											<DataPath>СвернутьПоСчетам</DataPath>
+											<CheckBoxType>Auto</CheckBoxType>
+											<ContextMenu name="СвернутьПоСчетамКонтекстноеМеню" id="523"/>
+											<ExtendedTooltip name="СвернутьПоСчетамРасширеннаяПодсказка" id="524"/>
+										</CheckBoxField>
+										<CheckBoxField name="СвернутьПоПартиям" id="321">
+											<DataPath>СвернутьПоПартиям</DataPath>
+											<TitleLocation>Right</TitleLocation>
+											<CheckBoxType>Auto</CheckBoxType>
+											<ContextMenu name="СвернутьПоПартиямКонтекстноеМеню" id="322"/>
+											<ExtendedTooltip name="СвернутьПоПартиямРасширеннаяПодсказка" id="323"/>
+											<Events>
+												<Event name="OnChange">СвернутьПоПартиямПриИзменении</Event>
+											</Events>
+										</CheckBoxField>
+									</ChildItems>
+								</UsualGroup>
 							</ChildItems>
 						</UsualGroup>
 					</ChildItems>
