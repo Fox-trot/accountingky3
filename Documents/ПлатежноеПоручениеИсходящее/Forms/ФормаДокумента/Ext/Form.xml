@@ -1133,6 +1133,59 @@
 								</InputField>
 							</ChildItems>
 						</UsualGroup>
+						<InputField name="ТипОперации" id="1090">
+							<DataPath>Объект.ТипОперации</DataPath>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Для обмена с ДиректБанк</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ListChoiceMode>true</ListChoiceMode>
+							<ChoiceList>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Между своими счетами</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xs:string">99</Value>
+									</xr:Value>
+								</xr:Item>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Другому клиенту Росинбанка</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xs:string">120</Value>
+									</xr:Value>
+								</xr:Item>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>В другой банк Кыргызстана</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xs:string">213</Value>
+									</xr:Value>
+								</xr:Item>
+							</ChoiceList>
+							<ContextMenu name="ТипОперацииКонтекстноеМеню" id="1091"/>
+							<ExtendedTooltip name="ТипОперацииРасширеннаяПодсказка" id="1092"/>
+						</InputField>
 						<UsualGroup name="ГруппаПечать" id="546">
 							<Title>
 								<v8:item>
@@ -1568,6 +1621,37 @@
 				</UsualGroup>
 			</ChildItems>
 		</UsualGroup>
+		<UsualGroup name="ГруппаСостояниеЭДО" id="1085">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа состояние ЭДО</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаСостояниеЭДОРасширеннаяПодсказка" id="1086"/>
+			<ChildItems>
+				<LabelField name="СостояниеЭДО" id="1087">
+					<DataPath>ДатаДокумента</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Состояние ЭДО</v8:content>
+						</v8:item>
+					</Title>
+					<TitleLocation>None</TitleLocation>
+					<Hiperlink>true</Hiperlink>
+					<ContextMenu name="СостояниеЭДОКонтекстноеМеню" id="1088"/>
+					<ExtendedTooltip name="СостояниеЭДОРасширеннаяПодсказка" id="1089"/>
+					<Events>
+						<Event name="Click">СостояниеЭДОНажатие</Event>
+					</Events>
+				</LabelField>
+			</ChildItems>
+		</UsualGroup>
 	</ChildItems>
 	<Attributes>
 		<Attribute name="Объект" id="1">
@@ -1796,6 +1880,24 @@
 					<v8:AllowedSign>Any</v8:AllowedSign>
 				</v8:NumberQualifiers>
 			</Type>
+		</Attribute>
+		<Attribute name="ТекстСостоянияЭД" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Состояние ЭД</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<FunctionalOptions>
+				<Item>FunctionalOption.ИспользоватьОбменСБанками</Item>
+			</FunctionalOptions>
 		</Attribute>
 		<ConditionalAppearance>
 			<dcsset:item>

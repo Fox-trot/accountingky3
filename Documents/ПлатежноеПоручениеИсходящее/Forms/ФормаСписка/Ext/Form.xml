@@ -73,6 +73,48 @@
 					<CommandName>Form.StandardCommand.Help</CommandName>
 					<ExtendedTooltip name="ФормаСправкаРасширеннаяПодсказка" id="111"/>
 				</Button>
+				<Popup name="КомандыЭДО" id="170">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>1С:ДиректБанк</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Прямой обмен с банком через сервис 1С:ДиректБанк</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="КомандыЭДОРасширеннаяПодсказка" id="171"/>
+					<ChildItems>
+						<Popup name="КомандыЭДОВажное" id="172">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>ЭДО (важное)</v8:content>
+								</v8:item>
+							</Title>
+							<ExtendedTooltip name="КомандыЭДОВажноеРасширеннаяПодсказка" id="173"/>
+						</Popup>
+						<ButtonGroup name="КомандыЭДОСервис" id="174">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>ЭДО (сервис)</v8:content>
+								</v8:item>
+							</Title>
+							<ExtendedTooltip name="КомандыЭДОСервисРасширеннаяПодсказка" id="175"/>
+							<ChildItems>
+								<Button name="ФормаСинхронизироватьСБанком" id="176">
+									<Type>CommandBarButton</Type>
+									<CommandName>Form.Command.СинхронизироватьСБанком</CommandName>
+									<ExtendedTooltip name="ФормаСинхронизироватьСБанкомРасширеннаяПодсказка" id="177"/>
+								</Button>
+							</ChildItems>
+						</ButtonGroup>
+					</ChildItems>
+				</Popup>
 			</ChildItems>
 		</CommandBar>
 		<UsualGroup name="ГруппаПанель" id="35">
@@ -155,6 +197,7 @@
 						<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="15"/>
 					</SearchControlAddition>
 					<Events>
+						<Event name="Selection">СписокВыбор</Event>
 						<Event name="OnActivateRow">СписокПриАктивизацииСтроки</Event>
 					</Events>
 					<ChildItems>
@@ -256,6 +299,46 @@
 							<ContextMenu name="АвторКонтекстноеМеню" id="33"/>
 							<ExtendedTooltip name="АвторРасширеннаяПодсказка" id="34"/>
 						</LabelField>
+						<ColumnGroup name="ГруппаДиректБанк" id="162">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа директ банк</v8:content>
+								</v8:item>
+							</Title>
+							<Group>InCell</Group>
+							<ExtendedTooltip name="ГруппаДиректБанкРасширеннаяПодсказка" id="163"/>
+							<ChildItems>
+								<PictureField name="КартинкаДиректБанк" id="164">
+									<DataPath>Список.КартинкаДиректБанк</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Картинка ДиректБанк</v8:content>
+										</v8:item>
+									</Title>
+									<TitleLocation>None</TitleLocation>
+									<ValuesPicture>
+										<xr:Ref>CommonPicture.СостоянияОбменСБанками</xr:Ref>
+										<xr:LoadTransparent>true</xr:LoadTransparent>
+									</ValuesPicture>
+									<ContextMenu name="КартинкаДиректБанкКонтекстноеМеню" id="165"/>
+									<ExtendedTooltip name="КартинкаДиректБанкРасширеннаяПодсказка" id="166"/>
+								</PictureField>
+								<LabelField name="Состояние" id="167">
+									<DataPath>Список.Состояние</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>1С:ДиректБанк</v8:content>
+										</v8:item>
+									</Title>
+									<Hiperlink>true</Hiperlink>
+									<ContextMenu name="СостояниеКонтекстноеМеню" id="168"/>
+									<ExtendedTooltip name="СостояниеРасширеннаяПодсказка" id="169"/>
+								</LabelField>
+							</ChildItems>
+						</ColumnGroup>
 					</ChildItems>
 				</Table>
 				<UsualGroup name="ПраваяПанель" id="68">
@@ -636,11 +719,33 @@
 	ДокументПлатежноеПоручениеИсходящее.Комментарий КАК Комментарий,
 	ДокументПлатежноеПоручениеИсходящее.Контрагент КАК Контрагент,
 	ДокументПлатежноеПоручениеИсходящее.ФизЛицо КАК ФизЛицо,
-	ДокументПлатежноеПоручениеИсходящее.Автор КАК Автор
+	ДокументПлатежноеПоручениеИсходящее.Автор КАК Автор,
+	СостоянияЭД.ПредставлениеСостояния КАК ПредставлениеСостояния,
+	СостоянияЭД.Состояние КАК Состояние,
+	ВЫБОР
+		КОГДА СостоянияЭД.Состояние = ЗНАЧЕНИЕ(Перечисление.СостоянияОбменСБанками.Аннулирован)
+				ИЛИ СостоянияЭД.Состояние = ЗНАЧЕНИЕ(Перечисление.СостоянияОбменСБанками.Отклонен)
+				ИЛИ СостоянияЭД.Состояние = ЗНАЧЕНИЕ(Перечисление.СостоянияОбменСБанками.ОшибкаПередачи)
+			ТОГДА 3
+		КОГДА СостоянияЭД.Состояние = ЗНАЧЕНИЕ(Перечисление.СостоянияОбменСБанками.НаПодписи)
+				ИЛИ СостоянияЭД.Состояние = ЗНАЧЕНИЕ(Перечисление.СостоянияОбменСБанками.НеСформирован)
+				ИЛИ СостоянияЭД.Состояние = ЗНАЧЕНИЕ(Перечисление.СостоянияОбменСБанками.ТребуетсяПодтверждение)
+				ИЛИ СостоянияЭД.Состояние = ЗНАЧЕНИЕ(Перечисление.СостоянияОбменСБанками.ТребуетсяОтправка)
+			ТОГДА 1
+		КОГДА СостоянияЭД.Состояние = ЗНАЧЕНИЕ(Перечисление.СостоянияОбменСБанками.ОжидаетсяВыписка)
+				ИЛИ СостоянияЭД.Состояние = ЗНАЧЕНИЕ(Перечисление.СостоянияОбменСБанками.ОжидаетсяИзвещениеОПолучении)
+				ИЛИ СостоянияЭД.Состояние = ЗНАЧЕНИЕ(Перечисление.СостоянияОбменСБанками.ОжидаетсяИсполнение)
+			ТОГДА 2
+		КОГДА СостоянияЭД.Состояние = ЗНАЧЕНИЕ(Перечисление.СостоянияОбменСБанками.ПлатежИсполнен)
+			ТОГДА 0
+		ИНАЧЕ 4
+	КОНЕЦ КАК КартинкаДиректБанк
 ИЗ
 	Документ.ПлатежноеПоручениеИсходящее КАК ДокументПлатежноеПоручениеИсходящее
 		ЛЕВОЕ СОЕДИНЕНИЕ ВременнаяТаблицаСубконто1 КАК ВременнаяТаблицаСубконто1
-		ПО ДокументПлатежноеПоручениеИсходящее.Ссылка = ВременнаяТаблицаСубконто1.Ссылка</QueryText>
+		ПО ДокументПлатежноеПоручениеИсходящее.Ссылка = ВременнаяТаблицаСубконто1.Ссылка
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.СостоянияОбменСБанками КАК СостоянияЭД
+		ПО (СостоянияЭД.СсылкаНаОбъект = ДокументПлатежноеПоручениеИсходящее.Ссылка)</QueryText>
 				<MainTable>Document.ПлатежноеПоручениеИсходящее</MainTable>
 				<ListSettings>
 					<dcsset:filter>
@@ -877,6 +982,30 @@
 				</v8:item>
 			</ToolTip>
 			<Action>ИзменитьВыделенные</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="СинхронизироватьСБанком" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Синхронизировать с банком</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Синхронизировать с банком</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.СинхронизацияДанныхПодсистема</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>СинхронизироватьСБанком</Action>
+			<FunctionalOptions>
+				<Item>FunctionalOption.ИспользоватьОбменСБанками</Item>
+			</FunctionalOptions>
+			<Representation>TextPicture</Representation>
 			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 	</Commands>
