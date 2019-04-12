@@ -140,28 +140,17 @@
 				</ToolTip>
 				<ExtendedTooltip name="ГруппаВажныеКомандыРасширеннаяПодсказка" id="152"/>
 				<ChildItems>
-					<Popup name="ПодменюЗаполнить1" id="441">
+					<Button name="ФормаЗаполнитьВзаиморасчеты" id="443">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.ЗаполнитьВзаиморасчеты</CommandName>
 						<Title>
 							<v8:item>
 								<v8:lang>ru</v8:lang>
-								<v8:content>Заполнить</v8:content>
+								<v8:content>Заполнить остатками по взаиморасчетам</v8:content>
 							</v8:item>
 						</Title>
-						<ToolTip>
-							<v8:item>
-								<v8:lang>ru</v8:lang>
-								<v8:content>Подменю дополнительных обработок заполнения</v8:content>
-							</v8:item>
-						</ToolTip>
-						<ExtendedTooltip name="ПодменюЗаполнить1РасширеннаяПодсказка" id="442"/>
-						<ChildItems>
-							<Button name="ФормаЗаполнитьВзаиморасчеты" id="443">
-								<Type>CommandBarButton</Type>
-								<CommandName>Form.Command.ЗаполнитьКредиторку</CommandName>
-								<ExtendedTooltip name="ФормаЗаполнитьВзаиморасчетыExtendedTooltip" id="444"/>
-							</Button>
-						</ChildItems>
-					</Popup>
+						<ExtendedTooltip name="ФормаЗаполнитьВзаиморасчетыExtendedTooltip" id="444"/>
+					</Button>
 				</ChildItems>
 			</ButtonGroup>
 			<ButtonGroup name="ГруппаГлобальныеКоманды" id="153">
@@ -248,32 +237,6 @@
 										<Presentation>
 											<v8:item>
 												<v8:lang>ru</v8:lang>
-												<v8:content>Зачет авансов</v8:content>
-											</v8:item>
-										</Presentation>
-										<Value xsi:type="xr:DesignTimeRef">Enum.ВидыОперацийКорректировкаДолга.EnumValue.ЗачетАвансов</Value>
-									</xr:Value>
-								</xr:Item>
-								<xr:Item>
-									<xr:Presentation/>
-									<xr:CheckState>0</xr:CheckState>
-									<xr:Value xsi:type="FormChoiceListDesTimeValue">
-										<Presentation>
-											<v8:item>
-												<v8:lang>ru</v8:lang>
-												<v8:content>Зачет задолженности</v8:content>
-											</v8:item>
-										</Presentation>
-										<Value xsi:type="xr:DesignTimeRef">Enum.ВидыОперацийКорректировкаДолга.EnumValue.ЗачетЗадолженности</Value>
-									</xr:Value>
-								</xr:Item>
-								<xr:Item>
-									<xr:Presentation/>
-									<xr:CheckState>0</xr:CheckState>
-									<xr:Value xsi:type="FormChoiceListDesTimeValue">
-										<Presentation>
-											<v8:item>
-												<v8:lang>ru</v8:lang>
 												<v8:content>Перенос задолженности</v8:content>
 											</v8:item>
 										</Presentation>
@@ -293,19 +256,6 @@
 										<Value xsi:type="xr:DesignTimeRef">Enum.ВидыОперацийКорректировкаДолга.EnumValue.СписаниеЗадолженности</Value>
 									</xr:Value>
 								</xr:Item>
-								<xr:Item>
-									<xr:Presentation/>
-									<xr:CheckState>0</xr:CheckState>
-									<xr:Value xsi:type="FormChoiceListDesTimeValue">
-										<Presentation>
-											<v8:item>
-												<v8:lang>ru</v8:lang>
-												<v8:content>Прочие корректировки</v8:content>
-											</v8:item>
-										</Presentation>
-										<Value xsi:type="xr:DesignTimeRef">Enum.ВидыОперацийКорректировкаДолга.EnumValue.Прочее</Value>
-									</xr:Value>
-								</xr:Item>
 							</ChoiceList>
 							<BackColor>0:5abc496c-5745-4220-9fdc-bac092717871</BackColor>
 							<ContextMenu name="ВидОперацииКонтекстноеМеню" id="198"/>
@@ -315,58 +265,9 @@
 								<Event name="StartChoice">ВидОперацииНачалоВыбора</Event>
 							</Events>
 						</InputField>
-						<InputField name="ВидАванса" id="445">
-							<DataPath>Объект.ВидАвансаЗадолженности</DataPath>
-							<Title>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Зачесть аванс</v8:content>
-								</v8:item>
-							</Title>
-							<ListChoiceMode>true</ListChoiceMode>
-							<BackColor>0:5abc496c-5745-4220-9fdc-bac092717871</BackColor>
-							<ContextMenu name="ВидАвансаКонтекстноеМеню" id="446"/>
-							<ExtendedTooltip name="ВидАвансаExtendedTooltip" id="447"/>
-							<Events>
-								<Event name="OnChange">ВидАвансаПриИзменении</Event>
-							</Events>
-						</InputField>
-						<InputField name="ТипАванса" id="448">
-							<DataPath>Объект.ТипАвансаЗадолженности</DataPath>
-							<Title>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>В счет задолженности</v8:content>
-								</v8:item>
-							</Title>
-							<ListChoiceMode>true</ListChoiceMode>
-							<ChoiceList>
-								<xr:Item>
-									<xr:Presentation/>
-									<xr:CheckState>0</xr:CheckState>
-									<xr:Value xsi:type="FormChoiceListDesTimeValue">
-										<Presentation/>
-										<Value xsi:type="xr:DesignTimeRef">Enum.ТипыЗадолженности.EnumValue.СамогоКонтрагента</Value>
-									</xr:Value>
-								</xr:Item>
-								<xr:Item>
-									<xr:Presentation/>
-									<xr:CheckState>0</xr:CheckState>
-									<xr:Value xsi:type="FormChoiceListDesTimeValue">
-										<Presentation/>
-										<Value xsi:type="xr:DesignTimeRef">Enum.ТипыЗадолженности.EnumValue.ТретьегоЛица</Value>
-									</xr:Value>
-								</xr:Item>
-							</ChoiceList>
-							<BackColor>0:5abc496c-5745-4220-9fdc-bac092717871</BackColor>
-							<ContextMenu name="ТипАвансаКонтекстноеМеню" id="449"/>
-							<ExtendedTooltip name="ТипАвансаExtendedTooltip" id="450"/>
-							<Events>
-								<Event name="OnChange">ТипАвансаПриИзменении</Event>
-							</Events>
-						</InputField>
 						<InputField name="ВидЗадолженностиДляПереноса" id="451">
 							<DataPath>Объект.ВидАвансаЗадолженности</DataPath>
+							<Visible>false</Visible>
 							<ListChoiceMode>true</ListChoiceMode>
 							<BackColor>0:5abc496c-5745-4220-9fdc-bac092717871</BackColor>
 							<ContextMenu name="ВидЗадолженностиДляПереносаКонтекстноеМеню" id="452"/>
@@ -384,6 +285,49 @@
 								<Event name="OnChange">КонтрагентДебиторПриИзменении</Event>
 							</Events>
 						</InputField>
+						<UsualGroup name="ГруппаВалютаКурс" id="200">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Валюта и курс</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа валюта курс</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаВалютаКурсExtendedTooltip" id="201"/>
+							<ChildItems>
+								<InputField name="ВалютаДокумента" id="202">
+									<DataPath>Объект.ВалютаДокумента</DataPath>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="ВалютаДокументаКонтекстноеМеню" id="203"/>
+									<ExtendedTooltip name="ВалютаДокументаExtendedTooltip" id="204"/>
+									<Events>
+										<Event name="OnChange">ВалютаДокументаПриИзменении</Event>
+									</Events>
+								</InputField>
+								<InputField name="КурсДокумента" id="205">
+									<DataPath>Объект.КурсДокумента</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Курс</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="КурсДокументаКонтекстноеМеню" id="206"/>
+									<ExtendedTooltip name="КурсДокументаExtendedTooltip" id="207"/>
+									<Events>
+										<Event name="OnChange">КурсДокументаПриИзменении</Event>
+									</Events>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
 						<InputField name="Кредитор" id="211">
 							<DataPath>Объект.КонтрагентКредитор</DataPath>
 							<AutoMarkIncomplete>true</AutoMarkIncomplete>
@@ -478,49 +422,6 @@
 								<Event name="OnChange">ОрганизацияПриИзменении</Event>
 							</Events>
 						</InputField>
-						<UsualGroup name="ГруппаВалютаКурс" id="200">
-							<Title>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Валюта и курс</v8:content>
-								</v8:item>
-							</Title>
-							<ToolTip>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Группа валюта курс</v8:content>
-								</v8:item>
-							</ToolTip>
-							<Group>Horizontal</Group>
-							<Representation>None</Representation>
-							<ShowTitle>false</ShowTitle>
-							<ExtendedTooltip name="ГруппаВалютаКурсExtendedTooltip" id="201"/>
-							<ChildItems>
-								<InputField name="ВалютаДокумента" id="202">
-									<DataPath>Объект.ВалютаДокумента</DataPath>
-									<HorizontalStretch>false</HorizontalStretch>
-									<ContextMenu name="ВалютаДокументаКонтекстноеМеню" id="203"/>
-									<ExtendedTooltip name="ВалютаДокументаExtendedTooltip" id="204"/>
-									<Events>
-										<Event name="OnChange">ВалютаДокументаПриИзменении</Event>
-									</Events>
-								</InputField>
-								<InputField name="КурсДокумента" id="205">
-									<DataPath>Объект.КурсДокумента</DataPath>
-									<Title>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Курс</v8:content>
-										</v8:item>
-									</Title>
-									<ContextMenu name="КурсДокументаКонтекстноеМеню" id="206"/>
-									<ExtendedTooltip name="КурсДокументаExtendedTooltip" id="207"/>
-									<Events>
-										<Event name="OnChange">КурсДокументаПриИзменении</Event>
-									</Events>
-								</InputField>
-							</ChildItems>
-						</UsualGroup>
 					</ChildItems>
 				</UsualGroup>
 			</ChildItems>
@@ -553,6 +454,7 @@
 							<v8:content>Дебиторская задолженность</v8:content>
 						</v8:item>
 					</ToolTip>
+					<TitleDataPath>Объект.ДебиторскаяЗадолженность.RowsCount</TitleDataPath>
 					<ExtendedTooltip name="ДебиторскаяЗадолженностьExtendedTooltip" id="218"/>
 					<ChildItems>
 						<Table name="ТаблицаДебиторскаяЗадолженность" id="219">
@@ -567,32 +469,7 @@
 							<SearchControlLocation>None</SearchControlLocation>
 							<RowFilter xsi:nil="true"/>
 							<ContextMenu name="ТаблицаДебиторскаяЗадолженностьКонтекстноеМеню" id="220"/>
-							<AutoCommandBar name="ТаблицаДебиторскаяЗадолженностьКоманднаяПанель" id="221">
-								<ChildItems>
-									<Popup name="ТаблицаДебиторскаяЗадолженностьЗаполнить" id="272">
-										<Title>
-											<v8:item>
-												<v8:lang>ru</v8:lang>
-												<v8:content>Заполнить</v8:content>
-											</v8:item>
-										</Title>
-										<ToolTip>
-											<v8:item>
-												<v8:lang>ru</v8:lang>
-												<v8:content>Таблица дебиторская задолженность заполнить</v8:content>
-											</v8:item>
-										</ToolTip>
-										<ExtendedTooltip name="ТаблицаДебиторскаяЗадолженностьЗаполнитьExtendedTooltip" id="273"/>
-										<ChildItems>
-											<Button name="ТаблицаДебиторскаяЗадолженностьЗаполнитьДебиторку" id="274">
-												<Type>CommandBarButton</Type>
-												<CommandName>Form.Command.ЗаполнитьДебиторку</CommandName>
-												<ExtendedTooltip name="ТаблицаДебиторскаяЗадолженностьЗаполнитьДебиторкуExtendedTooltip" id="275"/>
-											</Button>
-										</ChildItems>
-									</Popup>
-								</ChildItems>
-							</AutoCommandBar>
+							<AutoCommandBar name="ТаблицаДебиторскаяЗадолженностьКоманднаяПанель" id="221"/>
 							<ExtendedTooltip name="ТаблицаДебиторскаяЗадолженностьРасширеннаяПодсказка" id="222"/>
 							<SearchStringAddition name="ТаблицаДебиторскаяЗадолженностьСтрокаПоиска" id="223">
 								<AdditionSource>
@@ -648,6 +525,13 @@
 										<InputField name="ТаблицаДебиторскаяЗадолженностьДоговорКонтрагента" id="237">
 											<DataPath>Объект.ДебиторскаяЗадолженность.ДоговорКонтрагента</DataPath>
 											<EditMode>EnterOnInput</EditMode>
+											<ChoiceParameterLinks>
+												<xr:Link>
+													<xr:Name>Отбор.ВалютаРасчетов</xr:Name>
+													<xr:DataPath xsi:type="xs:string">Объект.ВалютаДокумента</xr:DataPath>
+													<xr:ValueChange>Clear</xr:ValueChange>
+												</xr:Link>
+											</ChoiceParameterLinks>
 											<ContextMenu name="ТаблицаДебиторскаяЗадолженностьДоговорКонтрагентаКонтекстноеМеню" id="238"/>
 											<ExtendedTooltip name="ТаблицаДебиторскаяЗадолженностьДоговорКонтрагентаExtendedTooltip" id="239"/>
 											<Events>
@@ -664,6 +548,13 @@
 											</Title>
 											<EditMode>EnterOnInput</EditMode>
 											<AutoMarkIncomplete>true</AutoMarkIncomplete>
+											<ChoiceParameterLinks>
+												<xr:Link>
+													<xr:Name>Отбор.ВалютаРасчетов</xr:Name>
+													<xr:DataPath xsi:type="xs:string">Items.ТаблицаДебиторскаяЗадолженность.CurrentData.ДоговорКонтрагентаВалютаВзаиморасчетов</xr:DataPath>
+													<xr:ValueChange>Clear</xr:ValueChange>
+												</xr:Link>
+											</ChoiceParameterLinks>
 											<ContextMenu name="ТаблицаДебиторскаяЗадолженностьКорДоговорКонтрагентаКонтекстноеМеню" id="241"/>
 											<ExtendedTooltip name="ТаблицаДебиторскаяЗадолженностьКорДоговорКонтрагентаExtendedTooltip" id="242"/>
 											<Events>
@@ -672,8 +563,8 @@
 										</InputField>
 									</ChildItems>
 								</ColumnGroup>
-								<InputField name="ТаблицаДебиторскаяЗадолженностьДоговорКонтрагентаВалютаВзаиморасчетов" id="243">
-									<DataPath>Объект.ДебиторскаяЗадолженность.ДоговорКонтрагента.ВалютаРасчетов</DataPath>
+								<InputField name="ТаблицаДебиторскаяЗадолженностьВалютаВзаиморасчетов" id="243">
+									<DataPath>Объект.ДебиторскаяЗадолженность.ВалютаДоговораКонтрагента</DataPath>
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
@@ -683,8 +574,8 @@
 									<EditMode>EnterOnInput</EditMode>
 									<Width>7</Width>
 									<HorizontalStretch>false</HorizontalStretch>
-									<ContextMenu name="ТаблицаДебиторскаяЗадолженностьДоговорКонтрагентаВалютаВзаиморасчетовКонтекстноеМеню" id="244"/>
-									<ExtendedTooltip name="ТаблицаДебиторскаяЗадолженностьДоговорКонтрагентаВалютаВзаиморасчетовExtendedTooltip" id="245"/>
+									<ContextMenu name="ТаблицаДебиторскаяЗадолженностьВалютаВзаиморасчетовКонтекстноеМеню" id="244"/>
+									<ExtendedTooltip name="ТаблицаДебиторскаяЗадолженностьВалютаВзаиморасчетовРасширеннаяПодсказка" id="245"/>
 								</InputField>
 								<InputField name="ТаблицаДебиторскаяЗадолженностьКурсВзаиморасчетов" id="246">
 									<DataPath>Объект.ДебиторскаяЗадолженность.КурсВзаиморасчетов</DataPath>
@@ -787,6 +678,7 @@
 							<v8:content>Кредиторская задолженность</v8:content>
 						</v8:item>
 					</ToolTip>
+					<TitleDataPath>Объект.КредиторскаяЗадолженность.RowsCount</TitleDataPath>
 					<ExtendedTooltip name="КредиторскаяЗадолженностьExtendedTooltip" id="277"/>
 					<ChildItems>
 						<Table name="ТаблицаКредиторскаяЗадолженность" id="278">
@@ -801,32 +693,7 @@
 							<SearchControlLocation>None</SearchControlLocation>
 							<RowFilter xsi:nil="true"/>
 							<ContextMenu name="ТаблицаКредиторскаяЗадолженностьКонтекстноеМеню" id="279"/>
-							<AutoCommandBar name="ТаблицаКредиторскаяЗадолженностьКоманднаяПанель" id="280">
-								<ChildItems>
-									<Popup name="ТаблицаКредиторскаяЗадолженностьЗаполнить" id="331">
-										<Title>
-											<v8:item>
-												<v8:lang>ru</v8:lang>
-												<v8:content>Заполнить</v8:content>
-											</v8:item>
-										</Title>
-										<ToolTip>
-											<v8:item>
-												<v8:lang>ru</v8:lang>
-												<v8:content>Таблица кредиторская задолженность заполнить</v8:content>
-											</v8:item>
-										</ToolTip>
-										<ExtendedTooltip name="ТаблицаКредиторскаяЗадолженностьЗаполнитьExtendedTooltip" id="332"/>
-										<ChildItems>
-											<Button name="ТаблицаКредиторскаяЗадолженностьЗаполнитьКредиторку" id="333">
-												<Type>CommandBarButton</Type>
-												<CommandName>Form.Command.ЗаполнитьКредиторку</CommandName>
-												<ExtendedTooltip name="ТаблицаКредиторскаяЗадолженностьЗаполнитьКредиторкуExtendedTooltip" id="334"/>
-											</Button>
-										</ChildItems>
-									</Popup>
-								</ChildItems>
-							</AutoCommandBar>
+							<AutoCommandBar name="ТаблицаКредиторскаяЗадолженностьКоманднаяПанель" id="280"/>
 							<ExtendedTooltip name="ТаблицаКредиторскаяЗадолженностьРасширеннаяПодсказка" id="281"/>
 							<SearchStringAddition name="ТаблицаКредиторскаяЗадолженностьСтрокаПоиска" id="282">
 								<AdditionSource>
@@ -882,6 +749,13 @@
 										<InputField name="ТаблицаКредиторскаяЗадолженностьДоговорКонтрагента" id="296">
 											<DataPath>Объект.КредиторскаяЗадолженность.ДоговорКонтрагента</DataPath>
 											<EditMode>EnterOnInput</EditMode>
+											<ChoiceParameterLinks>
+												<xr:Link>
+													<xr:Name>Отбор.ВалютаРасчетов</xr:Name>
+													<xr:DataPath xsi:type="xs:string">Объект.ВалютаДокумента</xr:DataPath>
+													<xr:ValueChange>Clear</xr:ValueChange>
+												</xr:Link>
+											</ChoiceParameterLinks>
 											<ContextMenu name="ТаблицаКредиторскаяЗадолженностьДоговорКонтрагентаКонтекстноеМеню" id="297"/>
 											<ExtendedTooltip name="ТаблицаКредиторскаяЗадолженностьДоговорКонтрагентаExtendedTooltip" id="298"/>
 											<Events>
@@ -898,6 +772,13 @@
 											</Title>
 											<EditMode>EnterOnInput</EditMode>
 											<AutoMarkIncomplete>true</AutoMarkIncomplete>
+											<ChoiceParameterLinks>
+												<xr:Link>
+													<xr:Name>_Отбор.ВалютаРасчетов</xr:Name>
+													<xr:DataPath xsi:type="xs:string">Items.ТаблицаКредиторскаяЗадолженность.CurrentData.ДоговорКонтрагентаВалютаВзаиморасчетов</xr:DataPath>
+													<xr:ValueChange>Clear</xr:ValueChange>
+												</xr:Link>
+											</ChoiceParameterLinks>
 											<ContextMenu name="ТаблицаКредиторскаяЗадолженностьКорДоговорКонтрагентаКонтекстноеМеню" id="300"/>
 											<ExtendedTooltip name="ТаблицаКредиторскаяЗадолженностьКорДоговорКонтрагентаExtendedTooltip" id="301"/>
 											<Events>
@@ -906,8 +787,8 @@
 										</InputField>
 									</ChildItems>
 								</ColumnGroup>
-								<InputField name="ТаблицаКредиторскаяЗадолженностьДоговорКонтрагентаВалютаВзаиморасчетов" id="302">
-									<DataPath>Объект.КредиторскаяЗадолженность.ДоговорКонтрагента.ВалютаРасчетов</DataPath>
+								<InputField name="ТаблицаКредиторскаяЗадолженностьВалютаВзаиморасчетов" id="302">
+									<DataPath>Объект.КредиторскаяЗадолженность.ВалютаДоговораКонтрагента</DataPath>
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
@@ -917,8 +798,8 @@
 									<EditMode>EnterOnInput</EditMode>
 									<Width>7</Width>
 									<HorizontalStretch>false</HorizontalStretch>
-									<ContextMenu name="ТаблицаКредиторскаяЗадолженностьДоговорКонтрагентаВалютаВзаиморасчетовКонтекстноеМеню" id="303"/>
-									<ExtendedTooltip name="ТаблицаКредиторскаяЗадолженностьДоговорКонтрагентаВалютаВзаиморасчетовExtendedTooltip" id="304"/>
+									<ContextMenu name="ТаблицаКредиторскаяЗадолженностьВалютаВзаиморасчетовКонтекстноеМеню" id="303"/>
+									<ExtendedTooltip name="ТаблицаКредиторскаяЗадолженностьВалютаВзаиморасчетовРасширеннаяПодсказка" id="304"/>
 								</InputField>
 								<InputField name="ТаблицаКредиторскаяЗадолженностьКурсВзаиморасчетов" id="305">
 									<DataPath>Объект.КредиторскаяЗадолженность.КурсВзаиморасчетов</DataPath>

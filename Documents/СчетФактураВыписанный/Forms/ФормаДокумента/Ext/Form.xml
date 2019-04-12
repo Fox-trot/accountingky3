@@ -392,6 +392,19 @@
 								<Event name="OnChange">ОрганизацияПриИзменении</Event>
 							</Events>
 						</InputField>
+						<InputField name="ВалютаДокумента" id="807">
+							<DataPath>Объект.ВалютаДокумента</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Валюта</v8:content>
+								</v8:item>
+							</Title>
+							<Width>10</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ContextMenu name="ВалютаДокументаКонтекстноеМеню" id="808"/>
+							<ExtendedTooltip name="ВалютаДокументаРасширеннаяПодсказка" id="809"/>
+						</InputField>
 						<UsualGroup name="ГруппаСтавки" id="636">
 							<Title>
 								<v8:item>
@@ -412,7 +425,6 @@
 							<ChildItems>
 								<InputField name="СтавкаНДС" id="638">
 									<DataPath>Объект.СтавкаНДС</DataPath>
-									<ReadOnly>true</ReadOnly>
 									<Width>15</Width>
 									<HorizontalStretch>false</HorizontalStretch>
 									<ContextMenu name="СтавкаНДСКонтекстноеМеню" id="639"/>
@@ -468,43 +480,20 @@
 							<EnableDrag>true</EnableDrag>
 							<FileDragMode>AsFile</FileDragMode>
 							<DataPath>Объект.ДокументыОснования</DataPath>
+							<CommandSet>
+								<ExcludedCommand>Add</ExcludedCommand>
+								<ExcludedCommand>Copy</ExcludedCommand>
+							</CommandSet>
 							<RowFilter xsi:nil="true"/>
 							<ContextMenu name="ДокументыКонтекстноеМеню" id="565"/>
 							<AutoCommandBar name="ДокументыКоманднаяПанель" id="566">
+								<Autofill>false</Autofill>
 								<ChildItems>
 									<Button name="ДокументыЗаполнить" id="586">
 										<Type>CommandBarButton</Type>
 										<CommandName>Form.Command.Заполнить</CommandName>
 										<ExtendedTooltip name="ДокументыЗаполнитьРасширеннаяПодсказка" id="587"/>
 									</Button>
-									<ButtonGroup name="ГруппаКопированиеСтрокТовары" id="771">
-										<Title>
-											<v8:item>
-												<v8:lang>ru</v8:lang>
-												<v8:content>Группа копирование строк</v8:content>
-											</v8:item>
-										</Title>
-										<ToolTip>
-											<v8:item>
-												<v8:lang>ru</v8:lang>
-												<v8:content>Группа копирование строк</v8:content>
-											</v8:item>
-										</ToolTip>
-										<Representation>Compact</Representation>
-										<ExtendedTooltip name="ГруппаКопированиеСтрокТоварыРасширеннаяПодсказка" id="772"/>
-										<ChildItems>
-											<Button name="ТоварыКопироватьСтроки" id="773">
-												<Type>CommandBarButton</Type>
-												<CommandName>Form.Command.ТоварыКопироватьСтроки</CommandName>
-												<ExtendedTooltip name="ТоварыКопироватьСтрокиРасширеннаяПодсказка" id="774"/>
-											</Button>
-											<Button name="ТоварыВставитьСтроки" id="775">
-												<Type>CommandBarButton</Type>
-												<CommandName>Form.Command.ТоварыВставитьСтроки</CommandName>
-												<ExtendedTooltip name="ТоварыВставитьСтрокиРасширеннаяПодсказка" id="776"/>
-											</Button>
-										</ChildItems>
-									</ButtonGroup>
 								</ChildItems>
 							</AutoCommandBar>
 							<ExtendedTooltip name="ДокументыРасширеннаяПодсказка" id="567"/>
@@ -538,6 +527,7 @@
 							<ChildItems>
 								<InputField name="ДокументыДокументОплаты" id="580">
 									<DataPath>Объект.ДокументыОснования.ДокументОснование</DataPath>
+									<ReadOnly>true</ReadOnly>
 									<EditMode>EnterOnInput</EditMode>
 									<DropListButton>false</DropListButton>
 									<ChoiceButton>true</ChoiceButton>
