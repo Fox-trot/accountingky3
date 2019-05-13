@@ -684,6 +684,13 @@
 									<ContextMenu name="ТоварыСуммаКонтекстноеМеню" id="81"/>
 									<ExtendedTooltip name="ТоварыСуммаРасширеннаяПодсказка" id="82"/>
 								</InputField>
+								<InputField name="ТоварыБазаНДС" id="479">
+									<DataPath>Объект.Товары.БазаНДС</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>10</Width>
+									<ContextMenu name="ТоварыБазаНДСКонтекстноеМеню" id="480"/>
+									<ExtendedTooltip name="ТоварыБазаНДСРасширеннаяПодсказка" id="481"/>
+								</InputField>
 								<InputField name="ТоварыСуммаНДС" id="86">
 									<DataPath>Объект.Товары.СуммаНДС</DataPath>
 									<EditMode>EnterOnInput</EditMode>
@@ -924,6 +931,13 @@
 									<ContextMenu name="УслугиСуммаКонтекстноеМеню" id="405"/>
 									<ExtendedTooltip name="УслугиСуммаРасширеннаяПодсказка" id="406"/>
 								</InputField>
+								<InputField name="УслугиБазаНДС" id="482">
+									<DataPath>Объект.Услуги.БазаНДС</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>10</Width>
+									<ContextMenu name="УслугиБазаНДСКонтекстноеМеню" id="483"/>
+									<ExtendedTooltip name="УслугиБазаНДСРасширеннаяПодсказка" id="484"/>
+								</InputField>
 								<InputField name="УслугиСуммаНДС" id="407">
 									<DataPath>Объект.Услуги.СуммаНДС</DataPath>
 									<EditMode>EnterOnInput</EditMode>
@@ -939,6 +953,13 @@
 									<HorizontalStretch>false</HorizontalStretch>
 									<ContextMenu name="УслугиСуммаНСПКонтекстноеМеню" id="411"/>
 									<ExtendedTooltip name="УслугиСуммаНСПРасширеннаяПодсказка" id="412"/>
+								</InputField>
+								<InputField name="УслугиСуммаАкциза" id="530">
+									<DataPath>Объект.Услуги.СуммаАкциза</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>10</Width>
+									<ContextMenu name="УслугиСуммаАкцизаКонтекстноеМеню" id="531"/>
+									<ExtendedTooltip name="УслугиСуммаАкцизаРасширеннаяПодсказка" id="532"/>
 								</InputField>
 								<InputField name="УслугиЗачетНДС" id="416">
 									<DataPath>Объект.Услуги.ЗачетНДС</DataPath>
@@ -986,6 +1007,153 @@
 										<Event name="OnChange">УслугиСубконто3ПриИзменении</Event>
 										<Event name="StartChoice">УслугиСубконто3НачалоВыбора</Event>
 									</Events>
+								</InputField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
+				<Page name="СтраницаОС" id="485">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Основные средства</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница ОС</v8:content>
+						</v8:item>
+					</ToolTip>
+					<TitleDataPath>Объект.ОС.RowsCount</TitleDataPath>
+					<ExtendedTooltip name="СтраницаОСРасширеннаяПодсказка" id="486"/>
+					<ChildItems>
+						<Table name="ОС" id="487">
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<FileDragMode>AsFile</FileDragMode>
+							<DataPath>Объект.ОС</DataPath>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="ОСКонтекстноеМеню" id="488"/>
+							<AutoCommandBar name="ОСКоманднаяПанель" id="489">
+								<ChildItems>
+									<Popup name="ВариантыЗаполненияОС" id="521">
+										<Title>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Заполнить</v8:content>
+											</v8:item>
+										</Title>
+										<ToolTip>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Варианты заполнения ОС</v8:content>
+											</v8:item>
+										</ToolTip>
+										<ExtendedTooltip name="ВариантыЗаполненияОСРасширеннаяПодсказка" id="522"/>
+										<ChildItems>
+											<Button name="ОСЗаполнитьПоПоступлению" id="523">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.ЗаполнитьПоПоступлению</CommandName>
+												<ExtendedTooltip name="ОСЗаполнитьПоПоступлениюРасширеннаяПодсказка" id="524"/>
+											</Button>
+											<Button name="ОСДобавитьИзПоступления" id="525">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.ДобавитьИзПоступления</CommandName>
+												<ExtendedTooltip name="ОСДобавитьИзПоступленияРасширеннаяПодсказка" id="526"/>
+											</Button>
+										</ChildItems>
+									</Popup>
+								</ChildItems>
+							</AutoCommandBar>
+							<ExtendedTooltip name="ОСРасширеннаяПодсказка" id="490"/>
+							<SearchStringAddition name="ОССтрокаПоиска" id="491">
+								<AdditionSource>
+									<Item>ОС</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ОССтрокаПоискаКонтекстноеМеню" id="492"/>
+								<ExtendedTooltip name="ОССтрокаПоискаРасширеннаяПодсказка" id="493"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="ОССостояниеПросмотра" id="494">
+								<AdditionSource>
+									<Item>ОС</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ОССостояниеПросмотраКонтекстноеМеню" id="495"/>
+								<ExtendedTooltip name="ОССостояниеПросмотраРасширеннаяПодсказка" id="496"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="ОСУправлениеПоиском" id="497">
+								<AdditionSource>
+									<Item>ОС</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="ОСУправлениеПоискомКонтекстноеМеню" id="498"/>
+								<ExtendedTooltip name="ОСУправлениеПоискомРасширеннаяПодсказка" id="499"/>
+							</SearchControlAddition>
+							<Events>
+								<Event name="BeforeAddRow">ОСПередНачаломДобавления</Event>
+								<Event name="OnStartEdit">ОСПриНачалеРедактирования</Event>
+								<Event name="AfterDeleteRow">ОСПослеУдаления</Event>
+							</Events>
+							<ChildItems>
+								<LabelField name="ОСНомерСтроки" id="500">
+									<DataPath>Объект.ОС.LineNumber</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>4</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="ОСНомерСтрокиКонтекстноеМеню" id="501"/>
+									<ExtendedTooltip name="ОСНомерСтрокиРасширеннаяПодсказка" id="502"/>
+								</LabelField>
+								<InputField name="ОСОсновноеСредство" id="503">
+									<DataPath>Объект.ОС.ОсновноеСредство</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ОСОсновноеСредствоКонтекстноеМеню" id="504"/>
+									<ExtendedTooltip name="ОСОсновноеСредствоРасширеннаяПодсказка" id="505"/>
+								</InputField>
+								<InputField name="ОСВсего" id="515">
+									<DataPath>Объект.ОС.Всего</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>10</Width>
+									<ContextMenu name="ОСВсегоКонтекстноеМеню" id="516"/>
+									<ExtendedTooltip name="ОСВсегоРасширеннаяПодсказка" id="517"/>
+									<Events>
+										<Event name="OnChange">ОСВсегоПриИзменении</Event>
+									</Events>
+								</InputField>
+								<InputField name="ОССумма" id="506">
+									<DataPath>Объект.ОС.Сумма</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>10</Width>
+									<ContextMenu name="ОССуммаКонтекстноеМеню" id="507"/>
+									<ExtendedTooltip name="ОССуммаРасширеннаяПодсказка" id="508"/>
+									<Events>
+										<Event name="OnChange">ОССуммаПриИзменении</Event>
+									</Events>
+								</InputField>
+								<InputField name="ОССуммаНДС" id="509">
+									<DataPath>Объект.ОС.СуммаНДС</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>10</Width>
+									<ContextMenu name="ОССуммаНДСКонтекстноеМеню" id="510"/>
+									<ExtendedTooltip name="ОССуммаНДСРасширеннаяПодсказка" id="511"/>
+									<Events>
+										<Event name="OnChange">ОССуммаНДСПриИзменении</Event>
+									</Events>
+								</InputField>
+								<InputField name="ОССуммаНСП" id="512">
+									<DataPath>Объект.ОС.СуммаНСП</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>10</Width>
+									<ContextMenu name="ОССуммаНСПКонтекстноеМеню" id="513"/>
+									<ExtendedTooltip name="ОССуммаНСПРасширеннаяПодсказка" id="514"/>
+								</InputField>
+								<InputField name="ОСЗачетНДС" id="518">
+									<DataPath>Объект.ОС.ЗачетНДС</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ОСЗачетНДСКонтекстноеМеню" id="519"/>
+									<ExtendedTooltip name="ОСЗачетНДСРасширеннаяПодсказка" id="520"/>
 								</InputField>
 							</ChildItems>
 						</Table>
@@ -1185,6 +1353,16 @@
 												<Event name="OnChange">ЗначениеСтавкиНСППриИзменении</Event>
 											</Events>
 										</InputField>
+										<InputField name="ЗначениеСтавкиНСПДляОС" id="527">
+											<DataPath>Объект.ЗначениеСтавкиНСПДляОС</DataPath>
+											<Width>10</Width>
+											<HorizontalStretch>false</HorizontalStretch>
+											<ContextMenu name="ЗначениеСтавкиНСПДляОСКонтекстноеМеню" id="528"/>
+											<ExtendedTooltip name="ЗначениеСтавкиНСПДляОСРасширеннаяПодсказка" id="529"/>
+											<Events>
+												<Event name="OnChange">ЗначениеСтавкиНСПДляОСПриИзменении</Event>
+											</Events>
+										</InputField>
 									</ChildItems>
 								</UsualGroup>
 							</ChildItems>
@@ -1242,7 +1420,7 @@
 									<Border width="1">
 										<v8ui:style xsi:type="v8ui:ControlBorderType">Single</v8ui:style>
 									</Border>
-									<TextColor>#993300</TextColor>
+									<TextColor>0:db2ebbf3-799d-405c-bcad-9932834c491f</TextColor>
 									<ContextMenu name="АвторДокументаКонтекстноеМеню" id="270"/>
 									<ExtendedTooltip name="АвторДокументаExtendedTooltip" id="271"/>
 								</LabelField>

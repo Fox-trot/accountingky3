@@ -13,6 +13,9 @@
 				<dcscom:dimension>true</dcscom:dimension>
 			</role>
 			<presentationExpression>Выбор Когда РозничныйПокупатель Тогда "Розничные покупатели" Иначе КонтрагентПредставление Конец</presentationExpression>
+			<valueType>
+				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:CatalogRef.Контрагенты</v8:Type>
+			</valueType>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>НоменклатурнаяГруппа</dataPath>
@@ -21,6 +24,9 @@
 				<dcscom:dimension>true</dcscom:dimension>
 				<dcscom:ignoreNullValues>true</dcscom:ignoreNullValues>
 			</role>
+			<valueType>
+				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:CatalogRef.НоменклатурныеГруппы</v8:Type>
+			</valueType>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>Организация</dataPath>
@@ -28,6 +34,9 @@
 			<role>
 				<dcscom:dimension>true</dcscom:dimension>
 			</role>
+			<valueType>
+				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:CatalogRef.Организации</v8:Type>
+			</valueType>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>Сумма</dataPath>
@@ -54,6 +63,9 @@
 				<dcscom:dimension>true</dcscom:dimension>
 				<dcscom:ignoreNullValues>true</dcscom:ignoreNullValues>
 			</role>
+			<valueType>
+				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:CatalogRef.Номенклатура</v8:Type>
+			</valueType>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>РозничныйПокупатель</dataPath>
@@ -106,6 +118,9 @@
 				<dcscom:ignoreNullValues>true</dcscom:ignoreNullValues>
 			</role>
 			<presentationExpression>Выбор Когда РозничныйПокупатель Тогда "Розничная продажа" Иначе ДоговорПредставление Конец</presentationExpression>
+			<valueType>
+				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:CatalogRef.ДоговорыКонтрагентов</v8:Type>
+			</valueType>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>ДоговорПредставление</dataPath>
@@ -274,7 +289,7 @@
 	ОптоваяПродажа.ПериодДень,
 	ОптоваяПродажа.КоличествоОборотКт
 ИЗ
-	РегистрБухгалтерии.Хозрасчетный.Обороты({(&amp;НачалоПериода)}, {(&amp;КонецПериода)}, Авто, Счет В (&amp;СчетаВыручки), &amp;СубконтоНоменклатура, НЕ &amp;ОпределятьСуммуПоОплате {(Организация).*, (ВЫРАЗИТЬ(Субконто1 КАК Справочник.НоменклатурныеГруппы)).* КАК НоменклатурнаяГруппа, (ВЫРАЗИТЬ(Субконто2 КАК Справочник.Номенклатура)).* КАК Номенклатура, (ВЫРАЗИТЬ(КорСубконто1 КАК Справочник.Контрагенты)).* КАК Контрагент}, НЕ КорСчет В (&amp;СчетаКассы), &amp;СубконтоКонтрагентДоговор) КАК ОптоваяПродажа
+	РегистрБухгалтерии.Хозрасчетный.Обороты({(&amp;НачалоПериода)}, {(&amp;КонецПериода)}, Авто, Счет В (&amp;СчетаВыручки), &amp;СубконтоНоменклатура, НЕ &amp;ОпределятьСуммуПоОплате {(Организация).*, (ВЫРАЗИТЬ(Субконто1 КАК Справочник.Номенклатура)).* КАК Номенклатура, (ВЫРАЗИТЬ(КорСубконто1 КАК Справочник.Контрагенты)).* КАК Контрагент}, НЕ КорСчет В (&amp;СчетаКассы), &amp;СубконтоКонтрагентДоговор) КАК ОптоваяПродажа
 ГДЕ
 	НЕ &amp;УчетПроизводстваПоНоменклатурнымГруппам
 {ГДЕ
@@ -300,7 +315,7 @@
 	РозничнаяПродажа.ПериодДень,
 	РозничнаяПродажа.КоличествоОборотКт
 ИЗ
-	РегистрБухгалтерии.Хозрасчетный.Обороты({(&amp;НачалоПериода)}, {(&amp;КонецПериода)}, Авто, Счет В (&amp;СчетаВыручки), &amp;СубконтоНоменклатура, {(Организация).*, (ВЫРАЗИТЬ(Субконто1 КАК Справочник.НоменклатурныеГруппы)).* КАК НоменклатурнаяГруппа, (ВЫРАЗИТЬ(Субконто2 КАК Справочник.Номенклатура)).* КАК Номенклатура, (ВЫРАЗИТЬ(КорСубконто1 КАК Справочник.Контрагенты)).* КАК Контрагент}, КорСчет В (&amp;СчетаКассы), ) КАК РозничнаяПродажа
+	РегистрБухгалтерии.Хозрасчетный.Обороты({(&amp;НачалоПериода)}, {(&amp;КонецПериода)}, Авто, Счет В (&amp;СчетаВыручки), &amp;СубконтоНоменклатура, {(Организация).*, (ВЫРАЗИТЬ(Субконто1 КАК Справочник.Номенклатура)).* КАК Номенклатура, (ВЫРАЗИТЬ(КорСубконто1 КАК Справочник.Контрагенты)).* КАК Контрагент}, КорСчет В (&amp;СчетаКассы), ) КАК РозничнаяПродажа
 ГДЕ
 	НЕ &amp;УчетПроизводстваПоНоменклатурнымГруппам
 {ГДЕ
