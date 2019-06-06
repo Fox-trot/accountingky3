@@ -821,12 +821,13 @@
 								</InputField>
 								<InputField name="ТоварыСуммаНСП" id="358">
 									<DataPath>Объект.Товары.СуммаНСП</DataPath>
-									<ReadOnly>true</ReadOnly>
-									<SkipOnInput>true</SkipOnInput>
 									<EditMode>EnterOnInput</EditMode>
 									<Width>10</Width>
 									<ContextMenu name="ТоварыСуммаНСПКонтекстноеМеню" id="359"/>
 									<ExtendedTooltip name="ТоварыСуммаНСПРасширеннаяПодсказка" id="360"/>
+									<Events>
+										<Event name="OnChange">ТоварыСуммаНСППриИзменении</Event>
+									</Events>
 								</InputField>
 								<InputField name="ТоварыВес" id="506">
 									<DataPath>Объект.Товары.Вес</DataPath>
@@ -1339,7 +1340,7 @@
 					<ChildItems>
 						<InputField name="СерияБланкаСФ" id="211">
 							<DataPath>Объект.СерияБланкаСФ</DataPath>
-							<Width>10</Width>
+							<Width>11</Width>
 							<HorizontalStretch>false</HorizontalStretch>
 							<ContextMenu name="СерияБланкаСФКонтекстноеМеню" id="212"/>
 							<ExtendedTooltip name="СерияБланкаСФРасширеннаяПодсказка" id="213"/>
@@ -1349,7 +1350,7 @@
 						</InputField>
 						<InputField name="НомерБланкаСФ" id="214">
 							<DataPath>Объект.НомерБланкаСФ</DataPath>
-							<Width>10</Width>
+							<Width>11</Width>
 							<HorizontalStretch>false</HorizontalStretch>
 							<ContextMenu name="НомерБланкаСФКонтекстноеМеню" id="215"/>
 							<ExtendedTooltip name="НомерБланкаСФРасширеннаяПодсказка" id="216"/>
@@ -2224,6 +2225,38 @@
 			</Title>
 			<Type>
 				<v8:Type>cfg:EnumRef.ПризнакиСтраны</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="КурсНБКР" id="34">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Курс НБКР</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>4</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="КратностьНБКР" id="35">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Кратность НБКР</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
 			</Type>
 		</Attribute>
 		<ConditionalAppearance>

@@ -12,7 +12,6 @@
 	</AutoCommandBar>
 	<Events>
 		<Event name="OnReadAtServer">ПриЧтенииНаСервере</Event>
-		<Event name="OnOpen">ПриОткрытии</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 	</Events>
 	<ChildItems>
@@ -38,9 +37,6 @@
 					<DataPath>Запись.Period</DataPath>
 					<ContextMenu name="ПериодКонтекстноеМеню" id="2"/>
 					<ExtendedTooltip name="ПериодРасширеннаяПодсказка" id="3"/>
-					<Events>
-						<Event name="OnChange">ПериодПриИзменении</Event>
-					</Events>
 				</InputField>
 				<InputField name="Организация" id="4">
 					<DataPath>Запись.Организация</DataPath>
@@ -82,17 +78,41 @@
 					<ContextMenu name="ВозвратОтрицательнойСуммойКонтекстноеМеню" id="11"/>
 					<ExtendedTooltip name="ВозвратОтрицательнойСуммойРасширеннаяПодсказка" id="12"/>
 				</CheckBoxField>
-				<CheckBoxField name="ПределыПоПодразделениям" id="7">
-					<DataPath>Запись.ПределыПоПодразделениям</DataPath>
-					<TitleLocation>Right</TitleLocation>
-					<ToolTipRepresentation>Button</ToolTipRepresentation>
-					<CheckBoxType>Auto</CheckBoxType>
-					<ContextMenu name="ПределыПоПодразделениямКонтекстноеМеню" id="8"/>
-					<ExtendedTooltip name="ПределыПоПодразделениямРасширеннаяПодсказка" id="9"/>
-					<Events>
-						<Event name="OnChange">ПределыПоПодразделениямПриИзменении</Event>
-					</Events>
-				</CheckBoxField>
+				<UsualGroup name="ГруппаПределы" id="201">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа пределы</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа пределы</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаПределыРасширеннаяПодсказка" id="202"/>
+					<ChildItems>
+						<CheckBoxField name="ПределыПоПодразделениям" id="7">
+							<DataPath>Запись.ПределыПоПодразделениям</DataPath>
+							<TitleLocation>Right</TitleLocation>
+							<ToolTipRepresentation>Button</ToolTipRepresentation>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="ПределыПоПодразделениямКонтекстноеМеню" id="8"/>
+							<ExtendedTooltip name="ПределыПоПодразделениямРасширеннаяПодсказка" id="9"/>
+							<Events>
+								<Event name="OnChange">ПределыПоПодразделениямПриИзменении</Event>
+							</Events>
+						</CheckBoxField>
+						<Button name="ОткрытьСписокПределов" id="199">
+							<Type>Hyperlink</Type>
+							<CommandName>Form.Command.ОткрытьСписокПределов</CommandName>
+							<ExtendedTooltip name="ОткрытьСписокПределовРасширеннаяПодсказка" id="200"/>
+						</Button>
+					</ChildItems>
+				</UsualGroup>
 			</ChildItems>
 		</UsualGroup>
 		<UsualGroup name="СтраницаПН" id="79">
@@ -472,159 +492,6 @@
 				</InputField>
 			</ChildItems>
 		</UsualGroup>
-		<UsualGroup name="СтраницаПределыПоПодразделениям" id="95">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Пределы</v8:content>
-				</v8:item>
-			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Страница пределы по подразделениям</v8:content>
-				</v8:item>
-			</ToolTip>
-			<Group>Vertical</Group>
-			<Behavior>Collapsible</Behavior>
-			<Collapsed>true</Collapsed>
-			<ControlRepresentation>Picture</ControlRepresentation>
-			<Representation>NormalSeparation</Representation>
-			<ExtendedTooltip name="СтраницаПределыПоПодразделениямРасширеннаяПодсказка" id="96"/>
-			<ChildItems>
-				<Table name="ПределыПоПодразделениямСписок" id="97">
-					<Height>1</Height>
-					<UseAlternationRowColor>true</UseAlternationRowColor>
-					<EnableStartDrag>true</EnableStartDrag>
-					<FileDragMode>AsFile</FileDragMode>
-					<DataPath>ПределыПоПодразделениямСписок</DataPath>
-					<RowPictureDataPath>ПределыПоПодразделениямСписок.DefaultPicture</RowPictureDataPath>
-					<AutoRefresh>false</AutoRefresh>
-					<AutoRefreshPeriod>60</AutoRefreshPeriod>
-					<Period>
-						<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
-						<v8:startDate>0001-01-01T00:00:00</v8:startDate>
-						<v8:endDate>0001-01-01T00:00:00</v8:endDate>
-					</Period>
-					<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
-					<RestoreCurrentRow>false</RestoreCurrentRow>
-					<TopLevelParent xsi:nil="true"/>
-					<ShowRoot>true</ShowRoot>
-					<AllowRootChoice>false</AllowRootChoice>
-					<UpdateOnDataChange>Auto</UpdateOnDataChange>
-					<ContextMenu name="ПределыПоПодразделениямСписокКонтекстноеМеню" id="98"/>
-					<AutoCommandBar name="ПределыПоПодразделениямСписокКоманднаяПанель" id="99"/>
-					<ExtendedTooltip name="ПределыПоПодразделениямСписокРасширеннаяПодсказка" id="100"/>
-					<SearchStringAddition name="ПределыПоПодразделениямСписокСтрокаПоиска" id="101">
-						<AdditionSource>
-							<Item>ПределыПоПодразделениямСписок</Item>
-							<Type>SearchStringRepresentation</Type>
-						</AdditionSource>
-						<ContextMenu name="ПределыПоПодразделениямСписокСтрокаПоискаКонтекстноеМеню" id="104"/>
-						<ExtendedTooltip name="ПределыПоПодразделениямСписокСтрокаПоискаРасширеннаяПодсказка" id="105"/>
-					</SearchStringAddition>
-					<ViewStatusAddition name="ПределыПоПодразделениямСписокСостояниеПросмотра" id="106">
-						<AdditionSource>
-							<Item>ПределыПоПодразделениямСписок</Item>
-							<Type>ViewStatusRepresentation</Type>
-						</AdditionSource>
-						<ContextMenu name="ПределыПоПодразделениямСписокСостояниеПросмотраКонтекстноеМеню" id="109"/>
-						<ExtendedTooltip name="ПределыПоПодразделениямСписокСостояниеПросмотраРасширеннаяПодсказка" id="110"/>
-					</ViewStatusAddition>
-					<SearchControlAddition name="ПределыПоПодразделениямСписокУправлениеПоиском" id="111">
-						<AdditionSource>
-							<Item>ПределыПоПодразделениямСписок</Item>
-							<Type>SearchControl</Type>
-						</AdditionSource>
-						<ContextMenu name="ПределыПоПодразделениямСписокУправлениеПоискомКонтекстноеМеню" id="114"/>
-						<ExtendedTooltip name="ПределыПоПодразделениямСписокУправлениеПоискомРасширеннаяПодсказка" id="115"/>
-					</SearchControlAddition>
-					<ChildItems>
-						<ColumnGroup name="ПределыПоПодразделениямСписокГруппаОбщие" id="134">
-							<Title>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Пределы по подразделениям список группа общие</v8:content>
-								</v8:item>
-							</Title>
-							<ToolTip>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Пределы по подразделениям список группа общие</v8:content>
-								</v8:item>
-							</ToolTip>
-							<ExtendedTooltip name="ПределыПоПодразделениямСписокГруппаОбщиеРасширеннаяПодсказка" id="135"/>
-							<ChildItems>
-								<LabelField name="ПределыПоПодразделениямСписокПериод" id="116">
-									<DataPath>ПределыПоПодразделениямСписок.Period</DataPath>
-									<ContextMenu name="ПределыПоПодразделениямСписокПериодКонтекстноеМеню" id="117"/>
-									<ExtendedTooltip name="ПределыПоПодразделениямСписокПериодРасширеннаяПодсказка" id="118"/>
-								</LabelField>
-								<LabelField name="ПределыПоПодразделениямСписокПодразделение" id="119">
-									<DataPath>ПределыПоПодразделениямСписок.Подразделение</DataPath>
-									<ContextMenu name="ПределыПоПодразделениямСписокПодразделениеКонтекстноеМеню" id="120"/>
-									<ExtendedTooltip name="ПределыПоПодразделениямСписокПодразделениеРасширеннаяПодсказка" id="121"/>
-								</LabelField>
-							</ChildItems>
-						</ColumnGroup>
-						<ColumnGroup name="ПределыПоПодразделениямСписокГруппаПределы" id="136">
-							<Title>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Пределы по подразделениям список группа пределы</v8:content>
-								</v8:item>
-							</Title>
-							<ToolTip>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Пределы по подразделениям список группа пределы</v8:content>
-								</v8:item>
-							</ToolTip>
-							<ExtendedTooltip name="ПределыПоПодразделениямСписокГруппаПределыРасширеннаяПодсказка" id="137"/>
-							<ChildItems>
-								<LabelField name="ПределыПоПодразделениямСписокМинимальныйРасчетныйДоход" id="122">
-									<DataPath>ПределыПоПодразделениямСписок.МинимальныйРасчетныйДоход</DataPath>
-									<ContextMenu name="ПределыПоПодразделениямСписокМинимальныйРасчетныйДоходКонтекстноеМеню" id="123"/>
-									<ExtendedTooltip name="ПределыПоПодразделениямСписокМинимальныйРасчетныйДоходРасширеннаяПодсказка" id="124"/>
-								</LabelField>
-								<LabelField name="ПределыПоПодразделениямСписокСреднемесячнаяЗПСФ" id="125">
-									<DataPath>ПределыПоПодразделениямСписок.СреднемесячнаяЗПСФ</DataPath>
-									<ContextMenu name="ПределыПоПодразделениямСписокСреднемесячнаяЗПСФКонтекстноеМеню" id="126"/>
-									<ExtendedTooltip name="ПределыПоПодразделениямСписокСреднемесячнаяЗПСФРасширеннаяПодсказка" id="127"/>
-								</LabelField>
-							</ChildItems>
-						</ColumnGroup>
-						<ColumnGroup name="ПределыПоПодразделениямСписокГруппаКонтрагенты" id="138">
-							<Title>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Пределы по подразделениям список группа контрагенты</v8:content>
-								</v8:item>
-							</Title>
-							<ToolTip>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Пределы по подразделениям список группа контрагенты</v8:content>
-								</v8:item>
-							</ToolTip>
-							<ExtendedTooltip name="ПределыПоПодразделениямСписокГруппаКонтрагентыРасширеннаяПодсказка" id="139"/>
-							<ChildItems>
-								<LabelField name="ПределыПоПодразделениямСписокОтделениеСФ" id="128">
-									<DataPath>ПределыПоПодразделениямСписок.ОтделениеСФ</DataPath>
-									<ContextMenu name="ПределыПоПодразделениямСписокОтделениеСФКонтекстноеМеню" id="129"/>
-									<ExtendedTooltip name="ПределыПоПодразделениямСписокОтделениеСФРасширеннаяПодсказка" id="130"/>
-								</LabelField>
-								<LabelField name="ПределыПоПодразделениямСписокУГНС" id="131">
-									<DataPath>ПределыПоПодразделениямСписок.УГНС</DataPath>
-									<ContextMenu name="ПределыПоПодразделениямСписокУГНСКонтекстноеМеню" id="132"/>
-									<ExtendedTooltip name="ПределыПоПодразделениямСписокУГНСРасширеннаяПодсказка" id="133"/>
-								</LabelField>
-							</ChildItems>
-						</ColumnGroup>
-					</ChildItems>
-				</Table>
-			</ChildItems>
-		</UsualGroup>
 	</ChildItems>
 	<Attributes>
 		<Attribute name="Запись" id="1">
@@ -700,6 +567,21 @@
 			</ToolTip>
 			<Action>ВключитьВозможностьРедактирования</Action>
 			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ОткрытьСписокПределов" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть список пределов</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть список пределов</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ОткрытьСписокПределов</Action>
 		</Command>
 	</Commands>
 </Form>
