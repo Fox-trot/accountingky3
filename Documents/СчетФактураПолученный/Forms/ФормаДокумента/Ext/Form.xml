@@ -188,6 +188,7 @@
 		</ChildItems>
 	</AutoCommandBar>
 	<Events>
+		<Event name="AfterWrite">ПослеЗаписи</Event>
 		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
 		<Event name="OnReadAtServer">ПриЧтенииНаСервере</Event>
 		<Event name="OnOpen">ПриОткрытии</Event>
@@ -276,42 +277,6 @@
 								<Event name="OnChange">ДоговорКонтрагентаПриИзменении</Event>
 							</Events>
 						</InputField>
-						<UsualGroup name="ГруппаЗначенияСтавок" id="299">
-							<Title>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Группа значения ставок</v8:content>
-								</v8:item>
-							</Title>
-							<ToolTip>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Группа значения ставок</v8:content>
-								</v8:item>
-							</ToolTip>
-							<Group>AlwaysHorizontal</Group>
-							<Representation>None</Representation>
-							<ShowTitle>false</ShowTitle>
-							<ExtendedTooltip name="ГруппаЗначенияСтавокРасширеннаяПодсказка" id="300"/>
-							<ChildItems>
-								<InputField name="ЗначениеСтавкиНДС" id="272">
-									<DataPath>Объект.ЗначениеСтавкиНДС</DataPath>
-									<ContextMenu name="ЗначениеСтавкиНДСКонтекстноеМеню" id="273"/>
-									<ExtendedTooltip name="ЗначениеСтавкиНДСРасширеннаяПодсказка" id="274"/>
-									<Events>
-										<Event name="OnChange">ЗначениеСтавкиНДСПриИзменении</Event>
-									</Events>
-								</InputField>
-								<InputField name="ЗначениеСтавкиНСП" id="275">
-									<DataPath>Объект.ЗначениеСтавкиНСП</DataPath>
-									<ContextMenu name="ЗначениеСтавкиНСПКонтекстноеМеню" id="276"/>
-									<ExtendedTooltip name="ЗначениеСтавкиНСПРасширеннаяПодсказка" id="277"/>
-									<Events>
-										<Event name="OnChange">ЗначениеСтавкиНСППриИзменении</Event>
-									</Events>
-								</InputField>
-							</ChildItems>
-						</UsualGroup>
 					</ChildItems>
 				</UsualGroup>
 				<UsualGroup name="Группа2" id="100">
@@ -328,6 +293,11 @@
 							<Events>
 								<Event name="OnChange">ОрганизацияПриИзменении</Event>
 							</Events>
+						</InputField>
+						<InputField name="ФормаОплаты" id="444">
+							<DataPath>Объект.ФормаОплаты</DataPath>
+							<ContextMenu name="ФормаОплатыКонтекстноеМеню" id="445"/>
+							<ExtendedTooltip name="ФормаОплатыРасширеннаяПодсказка" id="446"/>
 						</InputField>
 						<UsualGroup name="Группа21" id="109">
 							<Title>
@@ -408,16 +378,6 @@
 							<ShowTitle>false</ShowTitle>
 							<ExtendedTooltip name="Группа22РасширеннаяПодсказка" id="118"/>
 							<ChildItems>
-								<CheckBoxField name="БезналичныйРасчет" id="278">
-									<DataPath>Объект.БезналичныйРасчет</DataPath>
-									<TitleLocation>Right</TitleLocation>
-									<CheckBoxType>Auto</CheckBoxType>
-									<ContextMenu name="БезналичныйРасчетКонтекстноеМеню" id="279"/>
-									<ExtendedTooltip name="БезналичныйРасчетРасширеннаяПодсказка" id="280"/>
-									<Events>
-										<Event name="OnChange">БезналичныйРасчетПриИзменении</Event>
-									</Events>
-								</CheckBoxField>
 								<CheckBoxField name="Группировка" id="411">
 									<DataPath>Объект.Группировка</DataPath>
 									<TitleLocation>Right</TitleLocation>
@@ -617,6 +577,7 @@
 					<ChildItems>
 						<Table name="Товары" id="34">
 							<Representation>List</Representation>
+							<ReadOnly>true</ReadOnly>
 							<AutoInsertNewRow>true</AutoInsertNewRow>
 							<EnableStartDrag>true</EnableStartDrag>
 							<EnableDrag>true</EnableDrag>
@@ -628,6 +589,14 @@
 									<v8:content>НСП</v8:content>
 								</v8:item>
 							</Title>
+							<CommandSet>
+								<ExcludedCommand>Add</ExcludedCommand>
+								<ExcludedCommand>Change</ExcludedCommand>
+								<ExcludedCommand>Copy</ExcludedCommand>
+								<ExcludedCommand>Delete</ExcludedCommand>
+								<ExcludedCommand>MoveDown</ExcludedCommand>
+								<ExcludedCommand>MoveUp</ExcludedCommand>
+							</CommandSet>
 							<RowFilter xsi:nil="true"/>
 							<ContextMenu name="ТоварыКонтекстноеМеню" id="35"/>
 							<AutoCommandBar name="ТоварыКоманднаяПанель" id="36"/>
@@ -659,6 +628,7 @@
 							<ChildItems>
 								<LabelField name="ТоварыНомерСтроки" id="47">
 									<DataPath>Объект.Товары.LineNumber</DataPath>
+									<ReadOnly>true</ReadOnly>
 									<EditMode>EnterOnInput</EditMode>
 									<Width>4</Width>
 									<HorizontalStretch>false</HorizontalStretch>
@@ -667,12 +637,14 @@
 								</LabelField>
 								<InputField name="ТоварыНоменклатура" id="50">
 									<DataPath>Объект.Товары.Номенклатура</DataPath>
+									<ReadOnly>true</ReadOnly>
 									<EditMode>EnterOnInput</EditMode>
 									<ContextMenu name="ТоварыНоменклатураКонтекстноеМеню" id="51"/>
 									<ExtendedTooltip name="ТоварыНоменклатураРасширеннаяПодсказка" id="52"/>
 								</InputField>
 								<InputField name="ТоварыЕдиницаИзмерения" id="234">
 									<DataPath>Объект.Товары.Номенклатура.ЕдиницаИзмерения</DataPath>
+									<ReadOnly>true</ReadOnly>
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
@@ -687,6 +659,7 @@
 								</InputField>
 								<InputField name="ТоварыКоличество" id="56">
 									<DataPath>Объект.Товары.Количество</DataPath>
+									<ReadOnly>true</ReadOnly>
 									<EditMode>EnterOnInput</EditMode>
 									<Width>10</Width>
 									<ContextMenu name="ТоварыКоличествоКонтекстноеМеню" id="57"/>
@@ -694,6 +667,7 @@
 								</InputField>
 								<InputField name="ТоварыЦена" id="212">
 									<DataPath>Объект.Товары.Цена</DataPath>
+									<ReadOnly>true</ReadOnly>
 									<EditMode>EnterOnInput</EditMode>
 									<Width>10</Width>
 									<ContextMenu name="ТоварыЦенаКонтекстноеМеню" id="213"/>
@@ -701,6 +675,7 @@
 								</InputField>
 								<InputField name="ТоварыСумма" id="62">
 									<DataPath>Объект.Товары.Сумма</DataPath>
+									<ReadOnly>true</ReadOnly>
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
@@ -714,6 +689,7 @@
 								</InputField>
 								<InputField name="ТоварыСуммаНДС" id="71">
 									<DataPath>Объект.Товары.СуммаНДС</DataPath>
+									<ReadOnly>true</ReadOnly>
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
@@ -727,6 +703,7 @@
 								</InputField>
 								<InputField name="ТоварыСуммаНСП" id="77">
 									<DataPath>Объект.Товары.СуммаНСП</DataPath>
+									<ReadOnly>true</ReadOnly>
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
@@ -740,6 +717,7 @@
 								</InputField>
 								<InputField name="ТоварыВсего" id="83">
 									<DataPath>Объект.Товары.Всего</DataPath>
+									<ReadOnly>true</ReadOnly>
 									<EditMode>EnterOnInput</EditMode>
 									<Width>10</Width>
 									<ContextMenu name="ТоварыВсегоКонтекстноеМеню" id="84"/>
@@ -747,6 +725,7 @@
 								</InputField>
 								<InputField name="ТоварыДокументПоступления" id="193">
 									<DataPath>Объект.Товары.ДокументПоступления</DataPath>
+									<ReadOnly>true</ReadOnly>
 									<EditMode>EnterOnInput</EditMode>
 									<DropListButton>false</DropListButton>
 									<ChoiceButton>true</ChoiceButton>
@@ -774,11 +753,20 @@
 					<ExtendedTooltip name="СтраницаУслугиРасширеннаяПодсказка" id="305"/>
 					<ChildItems>
 						<Table name="Услуги" id="308">
+							<ReadOnly>true</ReadOnly>
 							<AutoInsertNewRow>true</AutoInsertNewRow>
 							<EnableStartDrag>true</EnableStartDrag>
 							<EnableDrag>true</EnableDrag>
 							<FileDragMode>AsFile</FileDragMode>
 							<DataPath>Объект.Услуги</DataPath>
+							<CommandSet>
+								<ExcludedCommand>Add</ExcludedCommand>
+								<ExcludedCommand>Change</ExcludedCommand>
+								<ExcludedCommand>Copy</ExcludedCommand>
+								<ExcludedCommand>Delete</ExcludedCommand>
+								<ExcludedCommand>MoveDown</ExcludedCommand>
+								<ExcludedCommand>MoveUp</ExcludedCommand>
+							</CommandSet>
 							<RowFilter xsi:nil="true"/>
 							<ContextMenu name="УслугиКонтекстноеМеню" id="309"/>
 							<AutoCommandBar name="УслугиКоманднаяПанель" id="310"/>
@@ -810,6 +798,7 @@
 							<ChildItems>
 								<LabelField name="УслугиНомерСтроки" id="321">
 									<DataPath>Объект.Услуги.LineNumber</DataPath>
+									<ReadOnly>true</ReadOnly>
 									<EditMode>EnterOnInput</EditMode>
 									<Width>4</Width>
 									<HorizontalStretch>false</HorizontalStretch>
@@ -818,12 +807,14 @@
 								</LabelField>
 								<InputField name="УслугиНоменклатура" id="324">
 									<DataPath>Объект.Услуги.Номенклатура</DataPath>
+									<ReadOnly>true</ReadOnly>
 									<EditMode>EnterOnInput</EditMode>
 									<ContextMenu name="УслугиНоменклатураКонтекстноеМеню" id="325"/>
 									<ExtendedTooltip name="УслугиНоменклатураРасширеннаяПодсказка" id="326"/>
 								</InputField>
 								<InputField name="УслугиКоличество" id="327">
 									<DataPath>Объект.Услуги.Количество</DataPath>
+									<ReadOnly>true</ReadOnly>
 									<EditMode>EnterOnInput</EditMode>
 									<Width>10</Width>
 									<ContextMenu name="УслугиКоличествоКонтекстноеМеню" id="328"/>
@@ -831,6 +822,7 @@
 								</InputField>
 								<InputField name="УслугиЦена" id="330">
 									<DataPath>Объект.Услуги.Цена</DataPath>
+									<ReadOnly>true</ReadOnly>
 									<EditMode>EnterOnInput</EditMode>
 									<Width>10</Width>
 									<ContextMenu name="УслугиЦенаКонтекстноеМеню" id="331"/>
@@ -838,6 +830,7 @@
 								</InputField>
 								<InputField name="УслугиСумма" id="333">
 									<DataPath>Объект.Услуги.Сумма</DataPath>
+									<ReadOnly>true</ReadOnly>
 									<EditMode>EnterOnInput</EditMode>
 									<Width>10</Width>
 									<ContextMenu name="УслугиСуммаКонтекстноеМеню" id="334"/>
@@ -845,6 +838,7 @@
 								</InputField>
 								<InputField name="УслугиСуммаНДС" id="336">
 									<DataPath>Объект.Услуги.СуммаНДС</DataPath>
+									<ReadOnly>true</ReadOnly>
 									<EditMode>EnterOnInput</EditMode>
 									<Width>10</Width>
 									<ContextMenu name="УслугиСуммаНДСКонтекстноеМеню" id="337"/>
@@ -852,6 +846,7 @@
 								</InputField>
 								<InputField name="УслугиСуммаНСП" id="339">
 									<DataPath>Объект.Услуги.СуммаНСП</DataPath>
+									<ReadOnly>true</ReadOnly>
 									<EditMode>EnterOnInput</EditMode>
 									<Width>10</Width>
 									<ContextMenu name="УслугиСуммаНСПКонтекстноеМеню" id="340"/>
@@ -859,6 +854,7 @@
 								</InputField>
 								<InputField name="УслугиВсего" id="342">
 									<DataPath>Объект.Услуги.Всего</DataPath>
+									<ReadOnly>true</ReadOnly>
 									<EditMode>EnterOnInput</EditMode>
 									<Width>10</Width>
 									<ContextMenu name="УслугиВсегоКонтекстноеМеню" id="343"/>
@@ -866,6 +862,7 @@
 								</InputField>
 								<InputField name="УслугиДокументПоступления" id="348">
 									<DataPath>Объект.Услуги.ДокументПоступления</DataPath>
+									<ReadOnly>true</ReadOnly>
 									<EditMode>EnterOnInput</EditMode>
 									<ContextMenu name="УслугиДокументПоступленияКонтекстноеМеню" id="349"/>
 									<ExtendedTooltip name="УслугиДокументПоступленияРасширеннаяПодсказка" id="350"/>
@@ -890,11 +887,20 @@
 					<ExtendedTooltip name="СтраницаОСРасширеннаяПодсказка" id="307"/>
 					<ChildItems>
 						<Table name="ОС" id="351">
+							<ReadOnly>true</ReadOnly>
 							<AutoInsertNewRow>true</AutoInsertNewRow>
 							<EnableStartDrag>true</EnableStartDrag>
 							<EnableDrag>true</EnableDrag>
 							<FileDragMode>AsFile</FileDragMode>
 							<DataPath>Объект.ОС</DataPath>
+							<CommandSet>
+								<ExcludedCommand>Add</ExcludedCommand>
+								<ExcludedCommand>Change</ExcludedCommand>
+								<ExcludedCommand>Copy</ExcludedCommand>
+								<ExcludedCommand>Delete</ExcludedCommand>
+								<ExcludedCommand>MoveDown</ExcludedCommand>
+								<ExcludedCommand>MoveUp</ExcludedCommand>
+							</CommandSet>
 							<RowFilter xsi:nil="true"/>
 							<ContextMenu name="ОСКонтекстноеМеню" id="352"/>
 							<AutoCommandBar name="ОСКоманднаяПанель" id="353"/>
@@ -926,6 +932,7 @@
 							<ChildItems>
 								<LabelField name="ОСНомерСтроки" id="364">
 									<DataPath>Объект.ОС.LineNumber</DataPath>
+									<ReadOnly>true</ReadOnly>
 									<EditMode>EnterOnInput</EditMode>
 									<Width>4</Width>
 									<HorizontalStretch>false</HorizontalStretch>
@@ -934,12 +941,14 @@
 								</LabelField>
 								<InputField name="ОСНоменклатура" id="367">
 									<DataPath>Объект.ОС.ОсновноеСредство</DataPath>
+									<ReadOnly>true</ReadOnly>
 									<EditMode>EnterOnInput</EditMode>
 									<ContextMenu name="ОСНоменклатураКонтекстноеМеню" id="368"/>
 									<ExtendedTooltip name="ОСНоменклатураРасширеннаяПодсказка" id="369"/>
 								</InputField>
 								<InputField name="ОСКоличество" id="408">
 									<DataPath>Объект.ОС.Количество</DataPath>
+									<ReadOnly>true</ReadOnly>
 									<EditMode>EnterOnInput</EditMode>
 									<Width>10</Width>
 									<ContextMenu name="ОСКоличествоКонтекстноеМеню" id="409"/>
@@ -947,6 +956,7 @@
 								</InputField>
 								<InputField name="ОСЦена" id="373">
 									<DataPath>Объект.ОС.Цена</DataPath>
+									<ReadOnly>true</ReadOnly>
 									<EditMode>EnterOnInput</EditMode>
 									<Width>10</Width>
 									<ContextMenu name="ОСЦенаКонтекстноеМеню" id="374"/>
@@ -954,6 +964,7 @@
 								</InputField>
 								<InputField name="ОССумма" id="376">
 									<DataPath>Объект.ОС.Сумма</DataPath>
+									<ReadOnly>true</ReadOnly>
 									<EditMode>EnterOnInput</EditMode>
 									<Width>10</Width>
 									<ContextMenu name="ОССуммаКонтекстноеМеню" id="377"/>
@@ -961,6 +972,7 @@
 								</InputField>
 								<InputField name="ОССуммаНДС" id="379">
 									<DataPath>Объект.ОС.СуммаНДС</DataPath>
+									<ReadOnly>true</ReadOnly>
 									<EditMode>EnterOnInput</EditMode>
 									<Width>10</Width>
 									<ContextMenu name="ОССуммаНДСКонтекстноеМеню" id="380"/>
@@ -968,6 +980,7 @@
 								</InputField>
 								<InputField name="ОССуммаНСП" id="382">
 									<DataPath>Объект.ОС.СуммаНСП</DataPath>
+									<ReadOnly>true</ReadOnly>
 									<EditMode>EnterOnInput</EditMode>
 									<Width>10</Width>
 									<ContextMenu name="ОССуммаНСПКонтекстноеМеню" id="383"/>
@@ -975,6 +988,7 @@
 								</InputField>
 								<InputField name="ОСВсего" id="385">
 									<DataPath>Объект.ОС.Всего</DataPath>
+									<ReadOnly>true</ReadOnly>
 									<EditMode>EnterOnInput</EditMode>
 									<Width>10</Width>
 									<ContextMenu name="ОСВсегоКонтекстноеМеню" id="386"/>
@@ -982,6 +996,7 @@
 								</InputField>
 								<InputField name="ОСДокументПоступления" id="391">
 									<DataPath>Объект.ОС.ДокументПоступления</DataPath>
+									<ReadOnly>true</ReadOnly>
 									<EditMode>EnterOnInput</EditMode>
 									<ContextMenu name="ОСДокументПоступленияКонтекстноеМеню" id="392"/>
 									<ExtendedTooltip name="ОСДокументПоступленияРасширеннаяПодсказка" id="393"/>
@@ -1005,16 +1020,6 @@
 					</ToolTip>
 					<ExtendedTooltip name="СтраницаДополнительноРасширеннаяПодсказка" id="155"/>
 					<ChildItems>
-						<CheckBoxField name="РучноеЗаполнениеСпецификаций" id="301">
-							<DataPath>Объект.РучноеЗаполнениеСпецификаций</DataPath>
-							<TitleLocation>Right</TitleLocation>
-							<CheckBoxType>Auto</CheckBoxType>
-							<ContextMenu name="РучноеЗаполнениеСпецификацийКонтекстноеМеню" id="302"/>
-							<ExtendedTooltip name="РучноеЗаполнениеСпецификацийРасширеннаяПодсказка" id="303"/>
-							<Events>
-								<Event name="OnChange">РучноеЗаполнениеСпецификацийПриИзменении</Event>
-							</Events>
-						</CheckBoxField>
 						<UsualGroup name="ГруппаИнформация" id="264">
 							<Title>
 								<v8:item>
