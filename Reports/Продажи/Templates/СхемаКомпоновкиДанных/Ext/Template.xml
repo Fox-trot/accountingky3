@@ -183,30 +183,6 @@
    ТОГДА Формат(Период, "ДФ = 'yyyy'")
 КОНЕЦ</presentationExpression>
 		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>Количество</dataPath>
-			<field>Количество</field>
-			<title xsi:type="v8:LocalStringType">
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Количество</v8:content>
-				</v8:item>
-			</title>
-			<useRestriction>
-				<group>true</group>
-			</useRestriction>
-			<appearance>
-				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-					<dcscor:parameter>Формат</dcscor:parameter>
-					<dcscor:value xsi:type="v8:LocalStringType">
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>ЧЦ=15; ЧДЦ=3</v8:content>
-						</v8:item>
-					</dcscor:value>
-				</dcscor:item>
-			</appearance>
-		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
 	ОптоваяПродажа.СуммаОборотКт КАК Сумма,
@@ -221,8 +197,7 @@
 	ОптоваяПродажа.КорСубконто2 КАК Договор,
 	ОптоваяПродажа.Регистратор КАК Документ,
 	ПРЕДСТАВЛЕНИЕССЫЛКИ(ОптоваяПродажа.КорСубконто2) КАК ДоговорПредставление,
-	ОптоваяПродажа.ПериодДень КАК Период,
-	ОптоваяПродажа.КоличествоОборотКт КАК Количество
+	ОптоваяПродажа.ПериодДень КАК Период
 ПОМЕСТИТЬ Продажи
 {ВЫБРАТЬ
 	Контрагент.*,
@@ -235,8 +210,7 @@
 	Договор.*,
 	Документ.*,
 	ДоговорПредставление.*,
-	Период,
-	Количество}
+	Период}
 ИЗ
 	РегистрБухгалтерии.Хозрасчетный.Обороты({(&amp;НачалоПериода)}, {(&amp;КонецПериода)}, Авто, Счет В (&amp;СчетаВыручки), &amp;Субконто, НЕ &amp;ОпределятьСуммуПоОплате {(Организация).*, (ВЫРАЗИТЬ(Субконто1 КАК Справочник.НоменклатурныеГруппы)).* КАК НоменклатурнаяГруппа, (ВЫРАЗИТЬ(Субконто2 КАК Справочник.Номенклатура)).* КАК Номенклатура, (ВЫРАЗИТЬ(КорСубконто1 КАК Справочник.Контрагенты)).* КАК Контрагент}, НЕ КорСчет В (&amp;СчетаКассы), &amp;СубконтоКонтрагентДоговор) КАК ОптоваяПродажа
 ГДЕ
@@ -261,8 +235,7 @@
 	НЕОПРЕДЕЛЕНО,
 	РозничнаяПродажа.Регистратор,
 	"",
-	РозничнаяПродажа.ПериодДень,
-	РозничнаяПродажа.КоличествоОборотКт
+	РозничнаяПродажа.ПериодДень
 ИЗ
 	РегистрБухгалтерии.Хозрасчетный.Обороты({(&amp;НачалоПериода)}, {(&amp;КонецПериода)}, Авто, Счет В (&amp;СчетаВыручки), &amp;Субконто, {(Организация).*, (ВЫРАЗИТЬ(Субконто1 КАК Справочник.НоменклатурныеГруппы)).* КАК НоменклатурнаяГруппа, (ВЫРАЗИТЬ(Субконто2 КАК Справочник.Номенклатура)).* КАК Номенклатура, (ВЫРАЗИТЬ(КорСубконто1 КАК Справочник.Контрагенты)).* КАК Контрагент}, КорСчет В (&amp;СчетаКассы), ) КАК РозничнаяПродажа
 ГДЕ
@@ -286,8 +259,7 @@
 	ОптоваяПродажа.КорСубконто2,
 	ОптоваяПродажа.Регистратор,
 	ПРЕДСТАВЛЕНИЕССЫЛКИ(ОптоваяПродажа.КорСубконто2),
-	ОптоваяПродажа.ПериодДень,
-	ОптоваяПродажа.КоличествоОборотКт
+	ОптоваяПродажа.ПериодДень
 ИЗ
 	РегистрБухгалтерии.Хозрасчетный.Обороты({(&amp;НачалоПериода)}, {(&amp;КонецПериода)}, Авто, Счет В (&amp;СчетаВыручки), &amp;СубконтоНоменклатура, НЕ &amp;ОпределятьСуммуПоОплате {(Организация).*, (ВЫРАЗИТЬ(Субконто1 КАК Справочник.Номенклатура)).* КАК Номенклатура, (ВЫРАЗИТЬ(КорСубконто1 КАК Справочник.Контрагенты)).* КАК Контрагент}, НЕ КорСчет В (&amp;СчетаКассы), &amp;СубконтоКонтрагентДоговор) КАК ОптоваяПродажа
 ГДЕ
@@ -312,8 +284,7 @@
 	НЕОПРЕДЕЛЕНО,
 	РозничнаяПродажа.Регистратор,
 	"",
-	РозничнаяПродажа.ПериодДень,
-	РозничнаяПродажа.КоличествоОборотКт
+	РозничнаяПродажа.ПериодДень
 ИЗ
 	РегистрБухгалтерии.Хозрасчетный.Обороты({(&amp;НачалоПериода)}, {(&amp;КонецПериода)}, Авто, Счет В (&amp;СчетаВыручки), &amp;СубконтоНоменклатура, {(Организация).*, (ВЫРАЗИТЬ(Субконто1 КАК Справочник.Номенклатура)).* КАК Номенклатура, (ВЫРАЗИТЬ(КорСубконто1 КАК Справочник.Контрагенты)).* КАК Контрагент}, КорСчет В (&amp;СчетаКассы), ) КАК РозничнаяПродажа
 ГДЕ
@@ -337,8 +308,7 @@
 	Продажи.Договор КАК Договор,
 	Продажи.Документ КАК Документ,
 	Продажи.ДоговорПредставление КАК ДоговорПредставление,
-	Продажи.Период КАК Период,
-	Продажи.Количество КАК Количество
+	Продажи.Период КАК Период
 {ВЫБРАТЬ
 	Сумма,
 	НоменклатурнаяГруппа.*,
@@ -350,8 +320,7 @@
 	Договор.*,
 	Документ.*,
 	ДоговорПредставление,
-	Период,
-	Количество}
+	Период}
 ИЗ
 	Продажи КАК Продажи
 {ГДЕ
@@ -361,8 +330,7 @@
 	Продажи.Контрагент.*,
 	Продажи.Организация.*,
 	Продажи.Договор.*,
-	Продажи.Период,
-	Продажи.Количество}</query>
+	Продажи.Период}</query>
 		<autoFillFields>false</autoFillFields>
 	</dataSet>
 	<dataSet xsi:type="DataSetQuery">
@@ -466,10 +434,6 @@
 	<totalField>
 		<dataPath>Сумма</dataPath>
 		<expression>Сумма(Сумма)</expression>
-	</totalField>
-	<totalField>
-		<dataPath>Количество</dataPath>
-		<expression>Сумма(Количество)</expression>
 	</totalField>
 	<parameter>
 		<name>НачалоПериода</name>
@@ -745,14 +709,6 @@
 						</dcscor:item>
 					</dcsat:appearance>
 				</dcsat:tableCell>
-				<dcsat:tableCell>
-					<dcsat:appearance>
-						<dcscor:item>
-							<dcscor:parameter>ОбъединятьПоГоризонтали</dcscor:parameter>
-							<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
-						</dcscor:item>
-					</dcsat:appearance>
-				</dcsat:tableCell>
 			</dcsat:item>
 			<dcsat:item xsi:type="dcsat:TableRow">
 				<dcsat:tableCell>
@@ -761,22 +717,6 @@
 							<v8:item>
 								<v8:lang>ru</v8:lang>
 								<v8:content>Сумма</v8:content>
-							</v8:item>
-						</dcsat:value>
-					</dcsat:item>
-					<dcsat:appearance>
-						<dcscor:item>
-							<dcscor:parameter>ГоризонтальноеПоложение</dcscor:parameter>
-							<dcscor:value xsi:type="v8ui:HorizontalAlign">Center</dcscor:value>
-						</dcscor:item>
-					</dcsat:appearance>
-				</dcsat:tableCell>
-				<dcsat:tableCell>
-					<dcsat:item xsi:type="dcsat:Field">
-						<dcsat:value xsi:type="v8:LocalStringType">
-							<v8:item>
-								<v8:lang>ru</v8:lang>
-								<v8:content>Количество</v8:content>
 							</v8:item>
 						</dcsat:value>
 					</dcsat:item>
@@ -844,14 +784,6 @@
 						</dcscor:item>
 					</dcsat:appearance>
 				</dcsat:tableCell>
-				<dcsat:tableCell>
-					<dcsat:appearance>
-						<dcscor:item>
-							<dcscor:parameter>ОбъединятьПоГоризонтали</dcscor:parameter>
-							<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
-						</dcscor:item>
-					</dcsat:appearance>
-				</dcsat:tableCell>
 			</dcsat:item>
 			<dcsat:item xsi:type="dcsat:TableRow">
 				<dcsat:tableCell>
@@ -860,22 +792,6 @@
 							<v8:item>
 								<v8:lang>ru</v8:lang>
 								<v8:content>Сумма</v8:content>
-							</v8:item>
-						</dcsat:value>
-					</dcsat:item>
-					<dcsat:appearance>
-						<dcscor:item>
-							<dcscor:parameter>ГоризонтальноеПоложение</dcscor:parameter>
-							<dcscor:value xsi:type="v8ui:HorizontalAlign">Center</dcscor:value>
-						</dcscor:item>
-					</dcsat:appearance>
-				</dcsat:tableCell>
-				<dcsat:tableCell>
-					<dcsat:item xsi:type="dcsat:Field">
-						<dcsat:value xsi:type="v8:LocalStringType">
-							<v8:item>
-								<v8:lang>ru</v8:lang>
-								<v8:content>Количество</v8:content>
 							</v8:item>
 						</dcsat:value>
 					</dcsat:item>
@@ -968,10 +884,6 @@
 					<dcsset:field>Сумма</dcsset:field>
 					<dcsset:orderType>Desc</dcsset:orderType>
 				</dcsset:item>
-				<dcsset:item xsi:type="dcsset:OrderItemField">
-					<dcsset:field>Количество</dcsset:field>
-					<dcsset:orderType>Desc</dcsset:orderType>
-				</dcsset:item>
 			</dcsset:order>
 			<dcsset:outputParameters>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
@@ -1054,65 +966,6 @@
 								<v8:content>###Сумма###</v8:content>
 							</v8:item>
 						</dcscor:value>
-					</dcscor:item>
-				</dcsset:outputParameters>
-			</dcsset:item>
-			<dcsset:item xsi:type="dcsset:StructureItemChart">
-				<dcsset:name>ДиаграммаКоличество</dcsset:name>
-				<dcsset:point>
-					<dcsset:groupItems>
-						<dcsset:item xsi:type="dcsset:GroupItemField">
-							<dcsset:field>Период</dcsset:field>
-							<dcsset:groupType>Items</dcsset:groupType>
-							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
-							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
-							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
-						</dcsset:item>
-					</dcsset:groupItems>
-					<dcsset:order>
-						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
-					</dcsset:order>
-					<dcsset:selection>
-						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
-					</dcsset:selection>
-				</dcsset:point>
-				<dcsset:series>
-					<dcsset:name>Группировка: 2</dcsset:name>
-					<dcsset:groupItems>
-						<dcsset:item xsi:type="dcsset:GroupItemField">
-							<dcsset:field>Контрагент</dcsset:field>
-							<dcsset:groupType>Items</dcsset:groupType>
-							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
-							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
-							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
-						</dcsset:item>
-					</dcsset:groupItems>
-					<dcsset:order>
-						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
-					</dcsset:order>
-					<dcsset:selection>
-						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
-					</dcsset:selection>
-				</dcsset:series>
-				<dcsset:selection>
-					<dcsset:item xsi:type="dcsset:SelectedItemField">
-						<dcsset:field>Количество</dcsset:field>
-					</dcsset:item>
-				</dcsset:selection>
-				<dcsset:outputParameters>
-					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-						<dcscor:parameter>ТипДиаграммы</dcscor:parameter>
-						<dcscor:value xsi:type="v8ui:ChartType">StackedColumn</dcscor:value>
-					</dcscor:item>
-					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-						<dcscor:use>false</dcscor:use>
-						<dcscor:parameter>ВыводитьЗаголовок</dcscor:parameter>
-						<dcscor:value xsi:type="dcsset:DataCompositionTextOutputType">Output</dcscor:value>
-					</dcscor:item>
-					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-						<dcscor:use>false</dcscor:use>
-						<dcscor:parameter>Заголовок</dcscor:parameter>
-						<dcscor:value xsi:type="v8:LocalStringType"/>
 					</dcscor:item>
 				</dcsset:outputParameters>
 			</dcsset:item>
@@ -1268,10 +1121,6 @@
 					<dcsset:field>Сумма</dcsset:field>
 					<dcsset:orderType>Desc</dcsset:orderType>
 				</dcsset:item>
-				<dcsset:item xsi:type="dcsset:OrderItemField">
-					<dcsset:field>Количество</dcsset:field>
-					<dcsset:orderType>Desc</dcsset:orderType>
-				</dcsset:item>
 			</dcsset:order>
 			<dcsset:outputParameters>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
@@ -1355,74 +1204,6 @@
 								<v8:content>###Сумма###</v8:content>
 							</v8:item>
 						</dcscor:value>
-					</dcscor:item>
-				</dcsset:outputParameters>
-			</dcsset:item>
-			<dcsset:item xsi:type="dcsset:StructureItemChart">
-				<dcsset:name>ДиаграммаКоличество</dcsset:name>
-				<dcsset:point>
-					<dcsset:groupItems>
-						<dcsset:item xsi:type="dcsset:GroupItemField">
-							<dcsset:field>Период</dcsset:field>
-							<dcsset:groupType>Items</dcsset:groupType>
-							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
-							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
-							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
-						</dcsset:item>
-					</dcsset:groupItems>
-					<dcsset:order>
-						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
-					</dcsset:order>
-					<dcsset:selection>
-						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
-					</dcsset:selection>
-				</dcsset:point>
-				<dcsset:series>
-					<dcsset:use>false</dcsset:use>
-					<dcsset:name>Группировка: 2</dcsset:name>
-					<dcsset:groupItems>
-						<dcsset:item xsi:type="dcsset:GroupItemField">
-							<dcsset:field>НоменклатурнаяГруппа</dcsset:field>
-							<dcsset:groupType>Items</dcsset:groupType>
-							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
-							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
-							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
-						</dcsset:item>
-					</dcsset:groupItems>
-					<dcsset:order>
-						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
-					</dcsset:order>
-					<dcsset:selection>
-						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
-					</dcsset:selection>
-				</dcsset:series>
-				<dcsset:selection>
-					<dcsset:item xsi:type="dcsset:SelectedItemField">
-						<dcsset:field>Количество</dcsset:field>
-					</dcsset:item>
-				</dcsset:selection>
-				<dcsset:outputParameters>
-					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-						<dcscor:parameter>ТипДиаграммы</dcscor:parameter>
-						<dcscor:value xsi:type="v8ui:ChartType">StackedColumn</dcscor:value>
-						<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-							<dcscor:parameter>ТипДиаграммы.БазовоеЗначение</dcscor:parameter>
-							<dcscor:value xsi:type="xs:decimal">0</dcscor:value>
-						</dcscor:item>
-						<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-							<dcscor:parameter>ТипДиаграммы.ПропускатьБазовоеЗначение</dcscor:parameter>
-							<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
-						</dcscor:item>
-					</dcscor:item>
-					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-						<dcscor:use>false</dcscor:use>
-						<dcscor:parameter>ВыводитьЗаголовок</dcscor:parameter>
-						<dcscor:value xsi:type="dcsset:DataCompositionTextOutputType">Output</dcscor:value>
-					</dcscor:item>
-					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-						<dcscor:use>false</dcscor:use>
-						<dcscor:parameter>Заголовок</dcscor:parameter>
-						<dcscor:value xsi:type="v8:LocalStringType"/>
 					</dcscor:item>
 				</dcsset:outputParameters>
 			</dcsset:item>
@@ -1589,10 +1370,6 @@
 					<dcsset:field>Сумма</dcsset:field>
 					<dcsset:orderType>Desc</dcsset:orderType>
 				</dcsset:item>
-				<dcsset:item xsi:type="dcsset:OrderItemField">
-					<dcsset:field>Количество</dcsset:field>
-					<dcsset:orderType>Desc</dcsset:orderType>
-				</dcsset:item>
 			</dcsset:order>
 			<dcsset:outputParameters>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
@@ -1680,65 +1457,6 @@
 								<v8:content>###Сумма###</v8:content>
 							</v8:item>
 						</dcscor:value>
-					</dcscor:item>
-				</dcsset:outputParameters>
-			</dcsset:item>
-			<dcsset:item xsi:type="dcsset:StructureItemChart">
-				<dcsset:name>ДиаграммаКоличество</dcsset:name>
-				<dcsset:point>
-					<dcsset:groupItems>
-						<dcsset:item xsi:type="dcsset:GroupItemField">
-							<dcsset:field>Период</dcsset:field>
-							<dcsset:groupType>Items</dcsset:groupType>
-							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
-							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
-							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
-						</dcsset:item>
-					</dcsset:groupItems>
-					<dcsset:order>
-						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
-					</dcsset:order>
-					<dcsset:selection>
-						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
-					</dcsset:selection>
-				</dcsset:point>
-				<dcsset:series>
-					<dcsset:name>Группировка: 2</dcsset:name>
-					<dcsset:groupItems>
-						<dcsset:item xsi:type="dcsset:GroupItemField">
-							<dcsset:field>Номенклатура</dcsset:field>
-							<dcsset:groupType>Items</dcsset:groupType>
-							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
-							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
-							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
-						</dcsset:item>
-					</dcsset:groupItems>
-					<dcsset:order>
-						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
-					</dcsset:order>
-					<dcsset:selection>
-						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
-					</dcsset:selection>
-				</dcsset:series>
-				<dcsset:selection>
-					<dcsset:item xsi:type="dcsset:SelectedItemField">
-						<dcsset:field>Количество</dcsset:field>
-					</dcsset:item>
-				</dcsset:selection>
-				<dcsset:outputParameters>
-					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-						<dcscor:parameter>ТипДиаграммы</dcscor:parameter>
-						<dcscor:value xsi:type="v8ui:ChartType">StackedColumn</dcscor:value>
-					</dcscor:item>
-					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-						<dcscor:use>false</dcscor:use>
-						<dcscor:parameter>ВыводитьЗаголовок</dcscor:parameter>
-						<dcscor:value xsi:type="dcsset:DataCompositionTextOutputType">Output</dcscor:value>
-					</dcscor:item>
-					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-						<dcscor:use>false</dcscor:use>
-						<dcscor:parameter>Заголовок</dcscor:parameter>
-						<dcscor:value xsi:type="v8:LocalStringType"/>
 					</dcscor:item>
 				</dcsset:outputParameters>
 			</dcsset:item>
@@ -1981,65 +1699,6 @@
 								<v8:content>###Сумма###</v8:content>
 							</v8:item>
 						</dcscor:value>
-					</dcscor:item>
-				</dcsset:outputParameters>
-			</dcsset:item>
-			<dcsset:item xsi:type="dcsset:StructureItemChart">
-				<dcsset:name>ДиаграммаКоличество</dcsset:name>
-				<dcsset:point>
-					<dcsset:groupItems>
-						<dcsset:item xsi:type="dcsset:GroupItemField">
-							<dcsset:field>Период</dcsset:field>
-							<dcsset:groupType>Items</dcsset:groupType>
-							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
-							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
-							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
-						</dcsset:item>
-					</dcsset:groupItems>
-					<dcsset:order>
-						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
-					</dcsset:order>
-					<dcsset:selection>
-						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
-					</dcsset:selection>
-				</dcsset:point>
-				<dcsset:series>
-					<dcsset:name>Группировка: 2</dcsset:name>
-					<dcsset:groupItems>
-						<dcsset:item xsi:type="dcsset:GroupItemField">
-							<dcsset:field>Контрагент</dcsset:field>
-							<dcsset:groupType>Items</dcsset:groupType>
-							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
-							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
-							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
-						</dcsset:item>
-					</dcsset:groupItems>
-					<dcsset:order>
-						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
-					</dcsset:order>
-					<dcsset:selection>
-						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
-					</dcsset:selection>
-				</dcsset:series>
-				<dcsset:selection>
-					<dcsset:item xsi:type="dcsset:SelectedItemField">
-						<dcsset:field>Количество</dcsset:field>
-					</dcsset:item>
-				</dcsset:selection>
-				<dcsset:outputParameters>
-					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-						<dcscor:parameter>ТипДиаграммы</dcscor:parameter>
-						<dcscor:value xsi:type="v8ui:ChartType">StackedColumn</dcscor:value>
-					</dcscor:item>
-					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-						<dcscor:use>false</dcscor:use>
-						<dcscor:parameter>ВыводитьЗаголовок</dcscor:parameter>
-						<dcscor:value xsi:type="dcsset:DataCompositionTextOutputType">Output</dcscor:value>
-					</dcscor:item>
-					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-						<dcscor:use>false</dcscor:use>
-						<dcscor:parameter>Заголовок</dcscor:parameter>
-						<dcscor:value xsi:type="v8:LocalStringType"/>
 					</dcscor:item>
 				</dcsset:outputParameters>
 			</dcsset:item>

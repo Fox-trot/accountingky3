@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.7">
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.9">
 	<Title>
 		<v8:item>
 			<v8:lang>ru</v8:lang>
@@ -168,6 +168,9 @@
 									</v8:item>
 								</Title>
 							</ExtendedTooltip>
+							<Events>
+								<Event name="OnChange">УскоритьУдалениеПомеченныхПриИзменении</Event>
+							</Events>
 						</CheckBoxField>
 						<UsualGroup name="ГруппаУдалениеПомеченныхОбъектовПоРасписанию" id="478">
 							<Title>
@@ -213,7 +216,7 @@
 											</Events>
 										</CheckBoxField>
 										<LabelDecoration name="УдалениеПомеченныхПредставлениеРасписания" id="487">
-											<TextColor>0:ad87bd29-0ad1-4da4-ac62-38e714e0cb9f</TextColor>
+											<TextColor>style:ПоясняющийТекст</TextColor>
 											<Title formatted="false">
 												<v8:item>
 													<v8:lang>ru</v8:lang>
@@ -282,6 +285,7 @@
 								<ExcludedCommand>SortListDesc</ExcludedCommand>
 								<ExcludedCommand>Tree</ExcludedCommand>
 							</CommandSet>
+							<TreeSpecialSearch>false</TreeSpecialSearch>
 							<ContextMenu name="ДеревоПомеченныхНаУдалениеКонтекстноеМеню" id="27">
 								<ChildItems>
 									<ButtonGroup name="КомандыВыбораИзМеню" id="363">
@@ -329,8 +333,8 @@
 										<ChildItems>
 											<Button name="ДеревоПомеченныхНаУдалениеОбновитьИзМеню" id="373">
 												<Type>CommandBarButton</Type>
-												<OnlyInAllActions>false</OnlyInAllActions>
 												<CommandName>Form.Command.ДеревоПомеченныхНаУдалениеОбновить</CommandName>
+												<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
 												<ExtendedTooltip name="ДеревоПомеченныхНаУдалениеОбновитьИзМенюРасширеннаяПодсказка" id="374"/>
 											</Button>
 											<Button name="СписокПомеченныхНаУдалениеВывестиСписокИзМеню" id="375">
@@ -390,8 +394,8 @@
 										<ChildItems>
 											<Button name="ДеревоПомеченныхНаУдалениеОбновить" id="70">
 												<Type>CommandBarButton</Type>
-												<OnlyInAllActions>false</OnlyInAllActions>
 												<CommandName>Form.Command.ДеревоПомеченныхНаУдалениеОбновить</CommandName>
+												<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
 												<ExtendedTooltip name="ДеревоПомеченныхНаУдалениеОбновитьРасширеннаяПодсказка" id="95"/>
 											</Button>
 											<Button name="СписокПомеченныхНаУдалениеВывестиСписок" id="65">
@@ -558,6 +562,7 @@
 												<ExcludedCommand>Tree</ExcludedCommand>
 											</CommandSet>
 											<ToolTipRepresentation>None</ToolTipRepresentation>
+											<TreeSpecialSearch>false</TreeSpecialSearch>
 											<ContextMenu name="НеУдаленныеКонтекстноеМеню" id="221">
 												<ChildItems>
 													<Button name="НеУдаленныеИзменитьИзМеню" id="348">
@@ -597,8 +602,8 @@
 													<Button name="НеУдаленныеИзменить" id="285">
 														<Type>CommandBarButton</Type>
 														<Representation>Picture</Representation>
-														<OnlyInAllActions>true</OnlyInAllActions>
 														<CommandName>Form.Item.НеУдаленные.StandardCommand.Change</CommandName>
+														<LocationInCommandBar>InCommandBarAndInAdditionalSubmenu</LocationInCommandBar>
 														<ExtendedTooltip name="НеУдаленныеИзменитьРасширеннаяПодсказка" id="286"/>
 													</Button>
 													<Button name="НеУдаленныеВывестиСписок" id="343">
@@ -816,8 +821,8 @@
 																	<Button name="СвязиНеУдаленныхИзменить" id="253">
 																		<Type>CommandBarButton</Type>
 																		<Representation>Picture</Representation>
-																		<OnlyInAllActions>true</OnlyInAllActions>
 																		<CommandName>Form.Item.СвязиНеУдаленных.StandardCommand.Change</CommandName>
+																		<LocationInCommandBar>InCommandBarAndInAdditionalSubmenu</LocationInCommandBar>
 																		<ExtendedTooltip name="СвязиНеУдаленныхИзменитьРасширеннаяПодсказка" id="254"/>
 																	</Button>
 																</ChildItems>
@@ -881,7 +886,7 @@
 						<LabelDecoration name="НадписьВПодвале" id="449">
 							<AutoMaxWidth>false</AutoMaxWidth>
 							<MaxWidth>80</MaxWidth>
-							<TextColor>0:ad87bd29-0ad1-4da4-ac62-38e714e0cb9f</TextColor>
+							<TextColor>style:ПоясняющийТекст</TextColor>
 							<Title formatted="false">
 								<v8:item>
 									<v8:lang>ru</v8:lang>
@@ -1308,12 +1313,6 @@
 					</Type>
 				</Column>
 				<Column name="Значение" id="2">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Значение</v8:content>
-						</v8:item>
-					</Title>
 					<Type/>
 				</Column>
 				<Column name="Представление" id="3">
@@ -1332,12 +1331,6 @@
 					</Type>
 				</Column>
 				<Column name="НомерКартинки" id="4">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Номер картинки</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:Type>xs:decimal</v8:Type>
 						<v8:NumberQualifiers>
@@ -1350,12 +1343,6 @@
 			</Columns>
 		</Attribute>
 		<Attribute name="ТекстОшибки" id="5">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Текст ошибки</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
 				<v8:StringQualifiers>
@@ -1376,21 +1363,9 @@
 			</Type>
 			<Columns>
 				<Column name="УдаляемыйСсылка" id="1">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Удаляемый ссылка</v8:content>
-						</v8:item>
-					</Title>
 					<Type/>
 				</Column>
 				<Column name="НомерКартинки" id="3">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Номер картинки</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:Type>xs:decimal</v8:Type>
 						<v8:NumberQualifiers>
@@ -1401,12 +1376,6 @@
 					</Type>
 				</Column>
 				<Column name="КоличествоСвязей" id="2">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Количество связей</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:Type>xs:decimal</v8:Type>
 						<v8:NumberQualifiers>
@@ -1432,12 +1401,6 @@
 					</Type>
 				</Column>
 				<Column name="ПометкаУдаления" id="5">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Пометка удаления</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:Type>xs:boolean</v8:Type>
 					</Type>
@@ -1456,30 +1419,12 @@
 			</Type>
 			<Columns>
 				<Column name="УдаляемыйСсылка" id="1">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Удаляемый ссылка</v8:content>
-						</v8:item>
-					</Title>
 					<Type/>
 				</Column>
 				<Column name="ОбнаруженныйСсылка" id="2">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Обнаруженный ссылка</v8:content>
-						</v8:item>
-					</Title>
 					<Type/>
 				</Column>
 				<Column name="НомерКартинки" id="3">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Номер картинки</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:Type>xs:decimal</v8:Type>
 						<v8:NumberQualifiers>
@@ -1505,67 +1450,31 @@
 					</Type>
 				</Column>
 				<Column name="Видимость" id="5">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Видимость</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:Type>xs:boolean</v8:Type>
 					</Type>
 				</Column>
 				<Column name="ПометкаУдаления" id="6">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Пометка удаления</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:Type>xs:boolean</v8:Type>
 					</Type>
 				</Column>
 				<Column name="СсылочногоТипа" id="7">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Ссылочного типа</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:Type>xs:boolean</v8:Type>
 					</Type>
 				</Column>
 				<Column name="ЭтоОшибка" id="8">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Это ошибка</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:Type>xs:boolean</v8:Type>
 					</Type>
 				</Column>
 				<Column name="ЭтоКонстанта" id="9">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Это константа</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:Type>xs:boolean</v8:Type>
 					</Type>
 				</Column>
 				<Column name="ПометкаУдаленияМодифицирована" id="10">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Пометка удаления модифицирована</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:Type>xs:boolean</v8:Type>
 					</Type>
@@ -1602,12 +1511,6 @@
 			</Save>
 		</Attribute>
 		<Attribute name="ПодробныйТекстОшибки" id="23">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Подробный текст ошибки</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
 				<v8:StringQualifiers>
@@ -1617,30 +1520,12 @@
 			</Type>
 		</Attribute>
 		<Attribute name="БыстрыйПоиск" id="24">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Быстрый поиск</v8:content>
-				</v8:item>
-			</Title>
 			<Type/>
 		</Attribute>
 		<Attribute name="НеУдаленныеИдентификаторТекущейСтроки" id="25">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Не удаленные идентификатор текущей строки</v8:content>
-				</v8:item>
-			</Title>
 			<Type/>
 		</Attribute>
 		<Attribute name="ПоказатьДиалогПередЗакрытием" id="26">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Показать диалог перед закрытием</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>
@@ -1678,12 +1563,6 @@
 			</Type>
 		</Attribute>
 		<Attribute name="УдалениеПомеченныхИдентификатор" id="29">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Удаление помеченных идентификатор</v8:content>
-				</v8:item>
-			</Title>
 			<Type/>
 		</Attribute>
 		<Attribute name="УдалениеПомеченныхИспользование" id="30">
@@ -1698,12 +1577,6 @@
 			</Type>
 		</Attribute>
 		<Attribute name="УдалениеПомеченныхРасписание" id="31">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Удаление помеченных расписание</v8:content>
-				</v8:item>
-			</Title>
 			<Type/>
 		</Attribute>
 	</Attributes>

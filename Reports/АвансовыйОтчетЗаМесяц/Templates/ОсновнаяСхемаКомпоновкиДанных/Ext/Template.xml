@@ -138,9 +138,16 @@
 	ХозрасчетныйОбороты.КорСчет КАК ПолученоСчетКт,
 	ХозрасчетныйОбороты.СуммаОборот КАК ПолученоСуммаОборот
 ИЗ
-	РегистрБухгалтерии.Хозрасчетный.Обороты(, , Авто, Счет = &amp;Счет, , Субконто1 = &amp;Подотчетник, КорСчет в иерархии (Значение(ПланСчетов.Хозрасчетный.ДенежныеСредстваВКассе)), ) КАК ХозрасчетныйОбороты
-	
-</query>
+	РегистрБухгалтерии.Хозрасчетный.Обороты(
+			,
+			,
+			Авто,
+			Счет = &amp;Счет,
+			,
+			Субконто1 = &amp;Подотчетник,
+			КорСчет В ИЕРАРХИИ (ЗНАЧЕНИЕ(ПланСчетов.Хозрасчетный.ДенежныеСредстваВКассе))
+				ИЛИ КорСчет В ИЕРАРХИИ (ЗНАЧЕНИЕ(ПланСчетов.Хозрасчетный.ДенежныеСредстваВБанке)),
+			) КАК ХозрасчетныйОбороты</query>
 	</dataSet>
 	<dataSet xsi:type="DataSetQuery">
 		<name>ТЗ_Израсходовано</name>
@@ -924,6 +931,8 @@
 			<v8:variant xsi:type="v8:StandardPeriodVariant">ThisMonth</v8:variant>
 		</value>
 		<useRestriction>false</useRestriction>
+		<denyIncompleteValues>true</denyIncompleteValues>
+		<use>Always</use>
 	</parameter>
 	<parameter>
 		<name>ВалютаРегламентированногоУчета</name>
@@ -988,6 +997,7 @@
 		<value xsi:nil="true"/>
 		<useRestriction>false</useRestriction>
 		<denyIncompleteValues>true</denyIncompleteValues>
+		<use>Always</use>
 	</parameter>
 	<parameter>
 		<name>Счет</name>
@@ -1003,6 +1013,7 @@
 		<value xsi:type="dcscor:DesignTimeValue">ПланСчетов.Хозрасчетный.РасчетыСПодотчетнымиЛицами</value>
 		<useRestriction>false</useRestriction>
 		<denyIncompleteValues>true</denyIncompleteValues>
+		<use>Always</use>
 	</parameter>
 	<parameter>
 		<name>ДатаК</name>
@@ -2514,7 +2525,7 @@
 		<template>Макет1</template>
 	</groupTemplate>
 	<settingsVariant>
-		<dcsset:name>Основной</dcsset:name>
+		<dcsset:name>АвансовыйОтчетЗаМесяц</dcsset:name>
 		<dcsset:presentation xsi:type="v8:LocalStringType">
 			<v8:item>
 				<v8:lang>ru</v8:lang>
@@ -2786,7 +2797,7 @@
 						<dcscor:value xsi:type="v8:LocalStringType">
 							<v8:item>
 								<v8:lang>ru</v8:lang>
-								<v8:content>Получено из кассы</v8:content>
+								<v8:content>Получено</v8:content>
 							</v8:item>
 						</dcscor:value>
 					</dcscor:item>

@@ -155,8 +155,48 @@
 				</dcscor:item>
 			</appearance>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ФизЛицо.Размер</dataPath>
+			<field>Размер</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ФизЛицо.ВидРасчета</dataPath>
+			<field>ВидРасчета</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вид начисления</v8:content>
+				</v8:item>
+			</title>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДокументСсылка</dataPath>
+			<field>ДокументСсылка</field>
+		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ
+	ПлановыеНачисленияНачалоСрезПоследних.ВидРасчета КАК ВидРасчета,
+	ПлановыеНачисленияНачалоСрезПоследних.Размер КАК Размер,
+	ПлановыеНачисленияНачалоСрезПоследних.Организация КАК Организация,
+	ПлановыеНачисленияНачалоСрезПоследних.ФизЛицо КАК ФизЛицо
+ПОМЕСТИТЬ ВременнаяТаблицаСрезПлановыеНачисленияНачалоАктуально
+ИЗ
+	РегистрСведений.ПлановыеНачисленияНачало.СрезПоследних(, ) КАК ПлановыеНачисленияНачалоСрезПоследних
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.ПлановыеНачисленияОкончание.СрезПоследних(, ) КАК ПлановыеНачисленияОкончаниеСрезПоследних
+		ПО ПлановыеНачисленияНачалоСрезПоследних.Организация = ПлановыеНачисленияОкончаниеСрезПоследних.Организация
+			И ПлановыеНачисленияНачалоСрезПоследних.ФизЛицо = ПлановыеНачисленияОкончаниеСрезПоследних.ФизЛицо
+			И ПлановыеНачисленияНачалоСрезПоследних.ВидРасчета = ПлановыеНачисленияОкончаниеСрезПоследних.ВидРасчета
+			И ПлановыеНачисленияНачалоСрезПоследних.Регистратор = ПлановыеНачисленияОкончаниеСрезПоследних.ДокументСсылка
+ГДЕ
+	ПлановыеНачисленияНачалоСрезПоследних.Основной
+	И ПлановыеНачисленияОкончаниеСрезПоследних.Организация ЕСТЬ NULL
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
 	СотрудникиСрезПоследних.ФизЛицо.Код КАК ТабельныйНомер,
 	СотрудникиСрезПоследних.Организация КАК Организация,
 	СотрудникиСрезПоследних.ФизЛицо КАК ФизЛицо,
@@ -165,13 +205,18 @@
 	СотрудникиСрезПоследних.Период КАК ДатаПриемаУвольнения,
 	ОбразованиеФизическихЛиц.ВидОбразования КАК ОбразованиеФизическихЛицВидОбразования,
 	ПоощренияИВзыскания.Награда КАК ПоощренияИВзысканияНаграда,
-	ПоощренияИВзыскания.ДатаПриказа КАК ПоощренияИВзысканияДатаПриказа
+	ПоощренияИВзыскания.ДатаПриказа КАК ПоощренияИВзысканияДатаПриказа,
+	ВременнаяТаблицаСрезПлановыеНачисленияНачалоАктуально.Размер КАК Размер,
+	ВременнаяТаблицаСрезПлановыеНачисленияНачалоАктуально.ВидРасчета КАК ВидРасчета
 ИЗ
 	РегистрСведений.Сотрудники.СрезПоследних(, ) КАК СотрудникиСрезПоследних
 		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.ОбразованиеФизическихЛиц КАК ОбразованиеФизическихЛиц
 		ПО СотрудникиСрезПоследних.ФизЛицо = ОбразованиеФизическихЛиц.ФизЛицо
 		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.ПоощренияИВзыскания КАК ПоощренияИВзыскания
 		ПО СотрудникиСрезПоследних.ФизЛицо = ПоощренияИВзыскания.ФизЛицо
+		ЛЕВОЕ СОЕДИНЕНИЕ ВременнаяТаблицаСрезПлановыеНачисленияНачалоАктуально КАК ВременнаяТаблицаСрезПлановыеНачисленияНачалоАктуально
+		ПО СотрудникиСрезПоследних.Организация = ВременнаяТаблицаСрезПлановыеНачисленияНачалоАктуально.Организация
+			И СотрудникиСрезПоследних.ФизЛицо = ВременнаяТаблицаСрезПлановыеНачисленияНачалоАктуально.ФизЛицо
 ГДЕ
 	ВЫБОР
 			КОГДА НЕ &amp;Уволенные
@@ -617,6 +662,12 @@
 					</dcsset:lwsTitle>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ФизЛицо.ВидРасчета</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ФизЛицо.Размер</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>ФизЛицо.ПаспортныеДанные</dcsset:field>
 					<dcsset:lwsTitle>
 						<v8:item>
@@ -765,7 +816,144 @@
 						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
 					</dcsset:order>
 					<dcsset:selection>
-						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>ФизЛицо</dcsset:field>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>ФизЛицо.ТабельныйНомер</dcsset:field>
+							<dcsset:lwsTitle>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Таб.№</v8:content>
+								</v8:item>
+							</dcsset:lwsTitle>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>ФизЛицо.ИНН</dcsset:field>
+							<dcsset:lwsTitle>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>ИНН</v8:content>
+								</v8:item>
+							</dcsset:lwsTitle>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>ФизЛицо.Национальность</dcsset:field>
+							<dcsset:lwsTitle>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Национальность</v8:content>
+								</v8:item>
+							</dcsset:lwsTitle>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>ФизЛицо.Пол</dcsset:field>
+							<dcsset:lwsTitle>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Пол</v8:content>
+								</v8:item>
+							</dcsset:lwsTitle>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>ФизЛицо.ДатаРождения</dcsset:field>
+							<dcsset:lwsTitle>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Дата рождения</v8:content>
+								</v8:item>
+							</dcsset:lwsTitle>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>ФизЛицо.МестоРождения</dcsset:field>
+							<dcsset:lwsTitle>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Место рождения</v8:content>
+								</v8:item>
+							</dcsset:lwsTitle>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>ФизЛицо.Гражданство</dcsset:field>
+							<dcsset:lwsTitle>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Гражданство</v8:content>
+								</v8:item>
+							</dcsset:lwsTitle>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>ФизЛицо.ДатаПриемаУвольнения</dcsset:field>
+							<dcsset:lwsTitle>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Дата приема/увольнения</v8:content>
+								</v8:item>
+							</dcsset:lwsTitle>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>ФизЛицо.Должность</dcsset:field>
+							<dcsset:lwsTitle>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Должность</v8:content>
+								</v8:item>
+							</dcsset:lwsTitle>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>ФизЛицо.ПаспортныеДанные</dcsset:field>
+							<dcsset:lwsTitle>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Паспортные данные</v8:content>
+								</v8:item>
+							</dcsset:lwsTitle>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>ФизЛицо.ДомашнийАдрес</dcsset:field>
+							<dcsset:lwsTitle>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Домашний адрес</v8:content>
+								</v8:item>
+							</dcsset:lwsTitle>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>ФизЛицо.ВоинскийУчет</dcsset:field>
+							<dcsset:lwsTitle>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Воинский учет</v8:content>
+								</v8:item>
+							</dcsset:lwsTitle>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>ФизЛицо.ПоощренияИВзыскания</dcsset:field>
+							<dcsset:lwsTitle>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Поощрения/взыскания</v8:content>
+								</v8:item>
+							</dcsset:lwsTitle>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>ФизЛицо.Образование</dcsset:field>
+							<dcsset:lwsTitle>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Образование</v8:content>
+								</v8:item>
+							</dcsset:lwsTitle>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>ФизЛицо.СоставСемьи</dcsset:field>
+							<dcsset:lwsTitle>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Состав семьи</v8:content>
+								</v8:item>
+							</dcsset:lwsTitle>
+						</dcsset:item>
 					</dcsset:selection>
 				</dcsset:item>
 			</dcsset:item>

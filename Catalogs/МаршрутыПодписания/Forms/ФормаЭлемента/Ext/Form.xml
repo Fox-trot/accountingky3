@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.7">
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.9">
 	<AutoFillCheck>false</AutoFillCheck>
 	<CommandSet>
 		<ExcludedCommand>WriteAndClose</ExcludedCommand>
@@ -29,6 +29,7 @@
 	</AutoCommandBar>
 	<Events>
 		<Event name="AfterWrite">ПослеЗаписи</Event>
+		<Event name="AfterWriteAtServer">ПослеЗаписиНаСервере</Event>
 		<Event name="OnReadAtServer">ПриЧтенииНаСервере</Event>
 		<Event name="OnOpen">ПриОткрытии</Event>
 		<Event name="BeforeWrite">ПередЗаписью</Event>
@@ -123,7 +124,7 @@
 					<Width>50</Width>
 					<AutoMaxWidth>false</AutoMaxWidth>
 					<HorizontalStretch>false</HorizontalStretch>
-					<TextColor>0:ad87bd29-0ad1-4da4-ac62-38e714e0cb9f</TextColor>
+					<TextColor>style:ПоясняющийТекст</TextColor>
 					<Title formatted="false">
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -147,7 +148,6 @@
 			<ChildItems>
 				<Table name="ДеревоТребований" id="50">
 					<Representation>Tree</Representation>
-					<ChangeRowSet>false</ChangeRowSet>
 					<SelectionMode>SingleRow</SelectionMode>
 					<InitialTreeView>ExpandAllLevels</InitialTreeView>
 					<FileDragMode>AsFile</FileDragMode>
@@ -172,6 +172,7 @@
 						<ExcludedCommand>SortListDesc</ExcludedCommand>
 						<ExcludedCommand>Tree</ExcludedCommand>
 					</CommandSet>
+					<TreeSpecialSearch>false</TreeSpecialSearch>
 					<ContextMenu name="ДеревоТребованийКонтекстноеМеню" id="51"/>
 					<AutoCommandBar name="ДеревоТребованийКоманднаяПанель" id="52">
 						<ChildItems>
@@ -262,6 +263,7 @@
 					</SearchControlAddition>
 					<Events>
 						<Event name="OnEditEnd">ДеревоТребованийПриОкончанииРедактирования</Event>
+						<Event name="BeforeAddRow">ДеревоТребованийПередНачаломДобавления</Event>
 						<Event name="BeforeDeleteRow">ДеревоТребованийПередУдалением</Event>
 						<Event name="OnStartEdit">ДеревоТребованийПриНачалеРедактирования</Event>
 						<Event name="AfterDeleteRow">ДеревоТребованийПослеУдаления</Event>

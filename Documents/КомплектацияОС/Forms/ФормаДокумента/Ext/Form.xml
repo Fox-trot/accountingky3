@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.7">
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.9">
 	<AutoTime>CurrentOrLast</AutoTime>
 	<UsePostingMode>Auto</UsePostingMode>
 	<RepostOnWrite>true</RepostOnWrite>
@@ -129,30 +129,18 @@
 				<Title>
 					<v8:item>
 						<v8:lang>ru</v8:lang>
-						<v8:content>Группа важные команды</v8:content>
+						<v8:content>Важные команды</v8:content>
 					</v8:item>
 				</Title>
-				<ToolTip>
-					<v8:item>
-						<v8:lang>ru</v8:lang>
-						<v8:content>Группа важные команды</v8:content>
-					</v8:item>
-				</ToolTip>
 				<ExtendedTooltip name="ГруппаВажныеКомандыРасширеннаяПодсказка" id="343"/>
 			</ButtonGroup>
 			<ButtonGroup name="ГруппаГлобальныеКоманды" id="344">
 				<Title>
 					<v8:item>
 						<v8:lang>ru</v8:lang>
-						<v8:content>Группа глобальные команды</v8:content>
+						<v8:content>Глобальные команды</v8:content>
 					</v8:item>
 				</Title>
-				<ToolTip>
-					<v8:item>
-						<v8:lang>ru</v8:lang>
-						<v8:content>Группа глобальные команды</v8:content>
-					</v8:item>
-				</ToolTip>
 				<ExtendedTooltip name="ГруппаГлобальныеКомандыРасширеннаяПодсказка" id="345"/>
 				<ChildItems>
 					<Button name="ФормаОбщаяКомандаЗапуститьМонитор" id="340">
@@ -174,13 +162,14 @@
 			</ButtonGroup>
 			<Button name="ФормаСправка" id="461">
 				<Type>CommandBarButton</Type>
-				<OnlyInAllActions>true</OnlyInAllActions>
 				<CommandName>Form.StandardCommand.Help</CommandName>
+				<LocationInCommandBar>InCommandBarAndInAdditionalSubmenu</LocationInCommandBar>
 				<ExtendedTooltip name="ФормаСправкаРасширеннаяПодсказка" id="462"/>
 			</Button>
 		</ChildItems>
 	</AutoCommandBar>
 	<Events>
+		<Event name="AfterWriteAtServer">ПослеЗаписиНаСервере</Event>
 		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
 		<Event name="OnReadAtServer">ПриЧтенииНаСервере</Event>
 		<Event name="OnOpen">ПриОткрытии</Event>
@@ -214,7 +203,7 @@
 					<ChildItems>
 						<InputField name="ВидОперации" id="392">
 							<DataPath>Объект.ВидОперации</DataPath>
-							<BackColor>0:5abc496c-5745-4220-9fdc-bac092717871</BackColor>
+							<BackColor>style:ФонУправляющегоПоля</BackColor>
 							<ContextMenu name="ВидОперацииКонтекстноеМеню" id="393"/>
 							<ExtendedTooltip name="ВидОперацииРасширеннаяПодсказка" id="394"/>
 							<Events>
@@ -252,15 +241,9 @@
 							<Title>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Группа номер дата</v8:content>
+									<v8:content>Номер дата</v8:content>
 								</v8:item>
 							</Title>
-							<ToolTip>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Группа номер дата</v8:content>
-								</v8:item>
-							</ToolTip>
 							<Group>Horizontal</Group>
 							<Representation>None</Representation>
 							<ShowTitle>false</ShowTitle>
@@ -341,12 +324,6 @@
 							<v8:content>Состав комплекта</v8:content>
 						</v8:item>
 					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Группа ОС</v8:content>
-						</v8:item>
-					</ToolTip>
 					<ExtendedTooltip name="ГруппаОСРасширеннаяПодсказка" id="34"/>
 					<ChildItems>
 						<Table name="ОС" id="398">
@@ -355,6 +332,12 @@
 							<EnableDrag>true</EnableDrag>
 							<FileDragMode>AsFile</FileDragMode>
 							<DataPath>Объект.ОС</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>ОС</v8:content>
+								</v8:item>
+							</Title>
 							<RowFilter xsi:nil="true"/>
 							<ContextMenu name="ОСКонтекстноеМеню" id="399"/>
 							<AutoCommandBar name="ОСКоманднаяПанель" id="400">
@@ -431,27 +414,15 @@
 							<v8:content>Дополнительно</v8:content>
 						</v8:item>
 					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Страница дополнительно</v8:content>
-						</v8:item>
-					</ToolTip>
 					<ExtendedTooltip name="СтраницаДополнительноРасширеннаяПодсказка" id="275"/>
 					<ChildItems>
 						<UsualGroup name="ГруппаИнформация" id="384">
 							<Title>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Группа информация</v8:content>
+									<v8:content>Информация</v8:content>
 								</v8:item>
 							</Title>
-							<ToolTip>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Группа информация</v8:content>
-								</v8:item>
-							</ToolTip>
 							<Group>Horizontal</Group>
 							<VerticalAlign>Bottom</VerticalAlign>
 							<Representation>None</Representation>
@@ -492,7 +463,7 @@
 									<Border width="1">
 										<v8ui:style xsi:type="v8ui:ControlBorderType">Single</v8ui:style>
 									</Border>
-									<TextColor>0:db2ebbf3-799d-405c-bcad-9932834c491f</TextColor>
+									<TextColor>style:ЦветТекстаАвтораДокумента</TextColor>
 									<ContextMenu name="АвторДокументаКонтекстноеМеню" id="390"/>
 									<ExtendedTooltip name="АвторДокументаExtendedTooltip" id="391"/>
 								</LabelField>
@@ -518,12 +489,6 @@
 			</Columns>
 		</Attribute>
 		<Attribute name="ДатаДокумента" id="2">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Дата документа</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:dateTime</v8:Type>
 				<v8:DateQualifiers>
@@ -532,12 +497,6 @@
 			</Type>
 		</Attribute>
 		<Attribute name="ПараметрыПодключаемыхКоманд" id="32">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Параметры подключаемых команд</v8:content>
-				</v8:item>
-			</Title>
 			<Type/>
 		</Attribute>
 		<ConditionalAppearance>

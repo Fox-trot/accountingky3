@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.7">
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.9">
 	<CommandSet>
 		<ExcludedCommand>Post</ExcludedCommand>
 		<ExcludedCommand>PostAndClose</ExcludedCommand>
@@ -28,8 +28,8 @@
 					</Button>
 					<Button name="ФормаЗаписать" id="1120">
 						<Type>CommandBarButton</Type>
-						<OnlyInAllActions>false</OnlyInAllActions>
 						<CommandName>Form.StandardCommand.Write</CommandName>
+						<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
 						<ExtendedTooltip name="ФормаЗаписатьРасширеннаяПодсказка" id="1121"/>
 					</Button>
 					<Button name="ФормаОтменаПроведения" id="2074">
@@ -128,30 +128,18 @@
 				<Title>
 					<v8:item>
 						<v8:lang>ru</v8:lang>
-						<v8:content>Группа важные команды</v8:content>
+						<v8:content>Важные команды</v8:content>
 					</v8:item>
 				</Title>
-				<ToolTip>
-					<v8:item>
-						<v8:lang>ru</v8:lang>
-						<v8:content>Группа важные команды</v8:content>
-					</v8:item>
-				</ToolTip>
 				<ExtendedTooltip name="ГруппаВажныеКомандыРасширеннаяПодсказка" id="537"/>
 			</ButtonGroup>
 			<ButtonGroup name="ГруппаГлобальныеКоманды" id="538">
 				<Title>
 					<v8:item>
 						<v8:lang>ru</v8:lang>
-						<v8:content>Группа глобальные команды</v8:content>
+						<v8:content>Глобальные команды</v8:content>
 					</v8:item>
 				</Title>
-				<ToolTip>
-					<v8:item>
-						<v8:lang>ru</v8:lang>
-						<v8:content>Группа глобальные команды</v8:content>
-					</v8:item>
-				</ToolTip>
 				<ExtendedTooltip name="ГруппаГлобальныеКомандыРасширеннаяПодсказка" id="539"/>
 			</ButtonGroup>
 			<Button name="ФормаОбщаяКомандаЗапуститьМонитор" id="2061">
@@ -171,13 +159,14 @@
 			</ButtonGroup>
 			<Button name="ФормаСправка" id="2094">
 				<Type>CommandBarButton</Type>
-				<OnlyInAllActions>true</OnlyInAllActions>
 				<CommandName>Form.StandardCommand.Help</CommandName>
+				<LocationInCommandBar>InCommandBarAndInAdditionalSubmenu</LocationInCommandBar>
 				<ExtendedTooltip name="ФормаСправкаРасширеннаяПодсказка" id="2095"/>
 			</Button>
 		</ChildItems>
 	</AutoCommandBar>
 	<Events>
+		<Event name="AfterWriteAtServer">ПослеЗаписиНаСервере</Event>
 		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
 		<Event name="OnReadAtServer">ПриЧтенииНаСервере</Event>
 		<Event name="OnOpen">ПриОткрытии</Event>
@@ -213,15 +202,9 @@
 							<Title>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Группа номер дата</v8:content>
+									<v8:content>Номер дата</v8:content>
 								</v8:item>
 							</Title>
-							<ToolTip>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Группа номер дата</v8:content>
-								</v8:item>
-							</ToolTip>
 							<Group>Horizontal</Group>
 							<Representation>None</Representation>
 							<ShowTitle>false</ShowTitle>
@@ -297,12 +280,6 @@
 					<v8:content>Страницы</v8:content>
 				</v8:item>
 			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Страницы</v8:content>
-				</v8:item>
-			</ToolTip>
 			<ExtendedTooltip name="СтраницыРасширеннаяПодсказка" id="22"/>
 			<ChildItems>
 				<Page name="СтраницаОсновная" id="23">
@@ -312,27 +289,15 @@
 							<v8:content>Основная</v8:content>
 						</v8:item>
 					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Страница основная</v8:content>
-						</v8:item>
-					</ToolTip>
 					<ExtendedTooltip name="СтраницаОсновнаяРасширеннаяПодсказка" id="24"/>
 					<ChildItems>
 						<UsualGroup name="ГруппаФлажки" id="1161">
 							<Title>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Группа флажки</v8:content>
+									<v8:content>Флажки</v8:content>
 								</v8:item>
 							</Title>
-							<ToolTip>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Группа флажки</v8:content>
-								</v8:item>
-							</ToolTip>
 							<Group>Horizontal</Group>
 							<Representation>None</Representation>
 							<ShowTitle>false</ShowTitle>
@@ -354,15 +319,9 @@
 							<Title>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Группа основная</v8:content>
+									<v8:content>Основная</v8:content>
 								</v8:item>
 							</Title>
-							<ToolTip>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Группа основная</v8:content>
-								</v8:item>
-							</ToolTip>
 							<VerticalStretch>true</VerticalStretch>
 							<GroupHorizontalAlign>Center</GroupHorizontalAlign>
 							<GroupVerticalAlign>Center</GroupVerticalAlign>
@@ -377,15 +336,9 @@
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>Группа основная левая</v8:content>
+											<v8:content>Основная левая</v8:content>
 										</v8:item>
 									</Title>
-									<ToolTip>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Группа основная левая</v8:content>
-										</v8:item>
-									</ToolTip>
 									<VerticalStretch>true</VerticalStretch>
 									<GroupVerticalAlign>Center</GroupVerticalAlign>
 									<Group>Vertical</Group>
@@ -586,15 +539,9 @@
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>Группа основная правая</v8:content>
+											<v8:content>Основная правая</v8:content>
 										</v8:item>
 									</Title>
-									<ToolTip>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Группа основная правая</v8:content>
-										</v8:item>
-									</ToolTip>
 									<HorizontalStretch>true</HorizontalStretch>
 									<VerticalStretch>true</VerticalStretch>
 									<Group>Vertical</Group>
@@ -759,12 +706,6 @@
 							<v8:content>НДС</v8:content>
 						</v8:item>
 					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Страница НДС</v8:content>
-						</v8:item>
-					</ToolTip>
 					<ExtendedTooltip name="СтраницаНДСРасширеннаяПодсказка" id="589"/>
 					<ChildItems>
 						<Button name="ОткрытьМониторНДС" id="2018">
@@ -779,12 +720,6 @@
 									<v8:content>Страницы весь НДС</v8:content>
 								</v8:item>
 							</Title>
-							<ToolTip>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Страницы весь НДС</v8:content>
-								</v8:item>
-							</ToolTip>
 							<ExtendedTooltip name="СтраницыВесьНДСРасширеннаяПодсказка" id="1090"/>
 							<ChildItems>
 								<Page name="СтраницаАвансыИДоотгрузка" id="1091">
@@ -794,12 +729,6 @@
 											<v8:content>Авансы и доотгрузка</v8:content>
 										</v8:item>
 									</Title>
-									<ToolTip>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Страница авансы и доотгрузка</v8:content>
-										</v8:item>
-									</ToolTip>
 									<ExtendedTooltip name="СтраницаАвансыИДоотгрузкаРасширеннаяПодсказка" id="1092"/>
 									<ChildItems>
 										<Table name="АвансыИДоотгрузка" id="1786">
@@ -811,6 +740,12 @@
 											<EnableDrag>true</EnableDrag>
 											<FileDragMode>AsFile</FileDragMode>
 											<DataPath>Объект.АвансыИДоотгрузка</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Авансы и доотгрузка</v8:content>
+												</v8:item>
+											</Title>
 											<CommandSet>
 												<ExcludedCommand>Add</ExcludedCommand>
 												<ExcludedCommand>Change</ExcludedCommand>
@@ -824,8 +759,8 @@
 												<ChildItems>
 													<Button name="АвансыИДоотгрузкаКонтекстноеМенюВывестиСписок" id="2100">
 														<Type>CommandBarButton</Type>
-														<OnlyInAllActions>true</OnlyInAllActions>
 														<CommandName>Form.Item.АвансыИДоотгрузка.StandardCommand.OutputList</CommandName>
+														<LocationInCommandBar>InCommandBarAndInAdditionalSubmenu</LocationInCommandBar>
 														<ExtendedTooltip name="АвансыИДоотгрузкаКонтекстноеМенюВывестиСписокРасширеннаяПодсказка" id="2101"/>
 													</Button>
 												</ChildItems>
@@ -930,12 +865,6 @@
 											<v8:content>Расшифровки</v8:content>
 										</v8:item>
 									</Title>
-									<ToolTip>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Страница расшифровки</v8:content>
-										</v8:item>
-									</ToolTip>
 									<ExtendedTooltip name="СтраницаРасшифровкиРасширеннаяПодсказка" id="1785"/>
 									<ChildItems>
 										<Table name="ДоотгрузкаРасшифровка" id="1826">
@@ -968,8 +897,8 @@
 												<ChildItems>
 													<Button name="ДоотгрузкаРасшифровкаКонтекстноеМенюВывестиСписок" id="2102">
 														<Type>CommandBarButton</Type>
-														<OnlyInAllActions>true</OnlyInAllActions>
 														<CommandName>Form.Item.ДоотгрузкаРасшифровка.StandardCommand.OutputList</CommandName>
+														<LocationInCommandBar>InCommandBarAndInAdditionalSubmenu</LocationInCommandBar>
 														<ExtendedTooltip name="ДоотгрузкаРасшифровкаКонтекстноеМенюВывестиСписокРасширеннаяПодсказка" id="2103"/>
 													</Button>
 												</ChildItems>
@@ -1080,8 +1009,8 @@
 												<ChildItems>
 													<Button name="АвансыРасшифровкаКонтекстноеМенюВывестиСписок" id="2104">
 														<Type>CommandBarButton</Type>
-														<OnlyInAllActions>true</OnlyInAllActions>
 														<CommandName>Form.Item.АвансыРасшифровка.StandardCommand.OutputList</CommandName>
+														<LocationInCommandBar>InCommandBarAndInAdditionalSubmenu</LocationInCommandBar>
 														<ExtendedTooltip name="АвансыРасшифровкаКонтекстноеМенюВывестиСписокРасширеннаяПодсказка" id="2105"/>
 													</Button>
 												</ChildItems>
@@ -1176,12 +1105,6 @@
 											<v8:content>Отчет</v8:content>
 										</v8:item>
 									</Title>
-									<ToolTip>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Страница НДСОтчет</v8:content>
-										</v8:item>
-									</ToolTip>
 									<Group>Horizontal</Group>
 									<ExtendedTooltip name="СтраницаНДСОтчетРасширеннаяПодсказка" id="1094"/>
 									<ChildItems>
@@ -1191,13 +1114,19 @@
 											<EnableDrag>true</EnableDrag>
 											<FileDragMode>AsFile</FileDragMode>
 											<DataPath>Объект.НДС</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>НДС</v8:content>
+												</v8:item>
+											</Title>
 											<RowFilter xsi:nil="true"/>
 											<ContextMenu name="НДСКонтекстноеМеню" id="1096">
 												<ChildItems>
 													<Button name="НДСКонтекстноеМенюВывестиСписок" id="2106">
 														<Type>CommandBarButton</Type>
-														<OnlyInAllActions>true</OnlyInAllActions>
 														<CommandName>Form.Item.НДС.StandardCommand.OutputList</CommandName>
+														<LocationInCommandBar>InCommandBarAndInAdditionalSubmenu</LocationInCommandBar>
 														<ExtendedTooltip name="НДСКонтекстноеМенюВывестиСписокРасширеннаяПодсказка" id="2107"/>
 													</Button>
 												</ChildItems>
@@ -1277,12 +1206,6 @@
 							<v8:content>Основные средства</v8:content>
 						</v8:item>
 					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Страница амортизация ОС</v8:content>
-						</v8:item>
-					</ToolTip>
 					<TitleDataPath>Объект.АмортизацияОС.RowsCount</TitleDataPath>
 					<ExtendedTooltip name="СтраницаАмортизацияОСРасширеннаяПодсказка" id="29"/>
 					<ChildItems>
@@ -1298,13 +1221,19 @@
 							<EnableDrag>true</EnableDrag>
 							<FileDragMode>AsFile</FileDragMode>
 							<DataPath>Объект.АмортизацияОС</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Амортизация ОС</v8:content>
+								</v8:item>
+							</Title>
 							<RowFilter xsi:nil="true"/>
 							<ContextMenu name="АмортизацияОСКонтекстноеМеню" id="31">
 								<ChildItems>
 									<Button name="АмортизацияОСКонтекстноеМенюВывестиСписок" id="2108">
 										<Type>CommandBarButton</Type>
-										<OnlyInAllActions>true</OnlyInAllActions>
 										<CommandName>Form.Item.АмортизацияОС.StandardCommand.OutputList</CommandName>
+										<LocationInCommandBar>InCommandBarAndInAdditionalSubmenu</LocationInCommandBar>
 										<ExtendedTooltip name="АмортизацияОСКонтекстноеМенюВывестиСписокРасширеннаяПодсказка" id="2109"/>
 									</Button>
 								</ChildItems>
@@ -1442,12 +1371,6 @@
 									<v8:content>Подвал амортизация ОС</v8:content>
 								</v8:item>
 							</Title>
-							<ToolTip>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Подвал амортизация ОС</v8:content>
-								</v8:item>
-							</ToolTip>
 							<HorizontalStretch>true</HorizontalStretch>
 							<VerticalStretch>false</VerticalStretch>
 							<Group>Horizontal</Group>
@@ -1462,18 +1385,12 @@
 											<v8:content>Итоги</v8:content>
 										</v8:item>
 									</Title>
-									<ToolTip>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Группа итоги амортизация ОС</v8:content>
-										</v8:item>
-									</ToolTip>
 									<GroupHorizontalAlign>Right</GroupHorizontalAlign>
 									<Group>Horizontal</Group>
 									<HorizontalAlign>Right</HorizontalAlign>
 									<Representation>None</Representation>
 									<ShowTitle>false</ShowTitle>
-									<BackColor>0:346a1c2f-1b75-4d7e-ba85-bbc142b72b33</BackColor>
+									<BackColor>style:ИтогиФонГруппы</BackColor>
 									<ExtendedTooltip name="ГруппаИтогиАмортизацияОСРасширеннаяПодсказка" id="1251"/>
 									<ChildItems>
 										<InputField name="АмортизацияОСИтогСумма" id="572">
@@ -1504,12 +1421,6 @@
 							<v8:content>Налог на имущество</v8:content>
 						</v8:item>
 					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Страница налог на имущество</v8:content>
-						</v8:item>
-					</ToolTip>
 					<TitleDataPath>Объект.Недвижимость.RowsCount</TitleDataPath>
 					<ExtendedTooltip name="СтраницаНалогНаИмуществоРасширеннаяПодсказка" id="131"/>
 					<ChildItems>
@@ -1520,12 +1431,6 @@
 									<v8:content>Транспорт</v8:content>
 								</v8:item>
 							</Title>
-							<ToolTip>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Группа налог на имущество транспорт</v8:content>
-								</v8:item>
-							</ToolTip>
 							<Group>Horizontal</Group>
 							<ExtendedTooltip name="ГруппаНалогНаИмуществоТранспортРасширеннаяПодсказка" id="833"/>
 							<ChildItems>
@@ -1538,13 +1443,19 @@
 									<EnableDrag>true</EnableDrag>
 									<FileDragMode>AsFile</FileDragMode>
 									<DataPath>Объект.Транспорт</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Транспорт</v8:content>
+										</v8:item>
+									</Title>
 									<RowFilter xsi:nil="true"/>
 									<ContextMenu name="ТранспортКонтекстноеМеню" id="799">
 										<ChildItems>
 											<Button name="ТранспортКонтекстноеМенюВывестиСписок" id="2110">
 												<Type>CommandBarButton</Type>
-												<OnlyInAllActions>true</OnlyInAllActions>
 												<CommandName>Form.Item.Транспорт.StandardCommand.OutputList</CommandName>
+												<LocationInCommandBar>InCommandBarAndInAdditionalSubmenu</LocationInCommandBar>
 												<ExtendedTooltip name="ТранспортКонтекстноеМенюВывестиСписокРасширеннаяПодсказка" id="2111"/>
 											</Button>
 										</ChildItems>
@@ -1644,12 +1555,6 @@
 									<v8:content>Недвижимость</v8:content>
 								</v8:item>
 							</Title>
-							<ToolTip>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Группа налог на имущество недвижимость</v8:content>
-								</v8:item>
-							</ToolTip>
 							<Group>Horizontal</Group>
 							<ExtendedTooltip name="ГруппаНалогНаИмуществоНедвижимостьРасширеннаяПодсказка" id="835"/>
 							<ChildItems>
@@ -1662,13 +1567,19 @@
 									<EnableDrag>true</EnableDrag>
 									<FileDragMode>AsFile</FileDragMode>
 									<DataPath>Объект.Недвижимость</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Недвижимость</v8:content>
+										</v8:item>
+									</Title>
 									<RowFilter xsi:nil="true"/>
 									<ContextMenu name="НедвижимостьКонтекстноеМеню" id="837">
 										<ChildItems>
 											<Button name="НедвижимостьКонтекстноеМенюВывестиСписок" id="2112">
 												<Type>CommandBarButton</Type>
-												<OnlyInAllActions>true</OnlyInAllActions>
 												<CommandName>Form.Item.Недвижимость.StandardCommand.OutputList</CommandName>
+												<LocationInCommandBar>InCommandBarAndInAdditionalSubmenu</LocationInCommandBar>
 												<ExtendedTooltip name="НедвижимостьКонтекстноеМенюВывестиСписокРасширеннаяПодсказка" id="2113"/>
 											</Button>
 										</ChildItems>
@@ -1840,12 +1751,6 @@
 							<v8:content>Переоценка валюты</v8:content>
 						</v8:item>
 					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Страница переоценка валюты</v8:content>
-						</v8:item>
-					</ToolTip>
 					<TitleDataPath>Объект.ПереоценкаВалюты.RowsCount</TitleDataPath>
 					<ExtendedTooltip name="СтраницаПереоценкаВалютыРасширеннаяПодсказка" id="504"/>
 					<ChildItems>
@@ -1856,13 +1761,19 @@
 							<EnableDrag>true</EnableDrag>
 							<FileDragMode>AsFile</FileDragMode>
 							<DataPath>Объект.ПереоценкаВалюты</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Переоценка валюты</v8:content>
+								</v8:item>
+							</Title>
 							<RowFilter xsi:nil="true"/>
 							<ContextMenu name="ПереоценкаВалютыКонтекстноеМеню" id="506">
 								<ChildItems>
 									<Button name="ПереоценкаВалютыКонтекстноеМенюВывестиСписок" id="2114">
 										<Type>CommandBarButton</Type>
-										<OnlyInAllActions>true</OnlyInAllActions>
 										<CommandName>Form.Item.ПереоценкаВалюты.StandardCommand.OutputList</CommandName>
+										<LocationInCommandBar>InCommandBarAndInAdditionalSubmenu</LocationInCommandBar>
 										<ExtendedTooltip name="ПереоценкаВалютыКонтекстноеМенюВывестиСписокРасширеннаяПодсказка" id="2115"/>
 									</Button>
 								</ChildItems>
@@ -1961,12 +1872,6 @@
 									<v8:content>Подвал переоценка валюты</v8:content>
 								</v8:item>
 							</Title>
-							<ToolTip>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Подвал переоценка валюты</v8:content>
-								</v8:item>
-							</ToolTip>
 							<HorizontalStretch>true</HorizontalStretch>
 							<VerticalStretch>false</VerticalStretch>
 							<Group>Horizontal</Group>
@@ -1981,18 +1886,12 @@
 											<v8:content>Итоги</v8:content>
 										</v8:item>
 									</Title>
-									<ToolTip>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Группа итоги</v8:content>
-										</v8:item>
-									</ToolTip>
 									<GroupHorizontalAlign>Right</GroupHorizontalAlign>
 									<Group>Horizontal</Group>
 									<HorizontalAlign>Right</HorizontalAlign>
 									<Representation>None</Representation>
 									<ShowTitle>false</ShowTitle>
-									<BackColor>0:346a1c2f-1b75-4d7e-ba85-bbc142b72b33</BackColor>
+									<BackColor>style:ИтогиФонГруппы</BackColor>
 									<ExtendedTooltip name="ГруппаИтогиПереоценкаВалютыРасширеннаяПодсказка" id="1255"/>
 									<ChildItems>
 										<InputField name="ПереоценкаВалютыИтогСуммаДоход" id="559">
@@ -2038,12 +1937,6 @@
 							<v8:content>Парные счета</v8:content>
 						</v8:item>
 					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Страница парные счета учета</v8:content>
-						</v8:item>
-					</ToolTip>
 					<TitleDataPath>Объект.ПарныеСчетаУчета.RowsCount</TitleDataPath>
 					<ExtendedTooltip name="СтраницаПарныеСчетаУчетаРасширеннаяПодсказка" id="868"/>
 					<ChildItems>
@@ -2054,13 +1947,19 @@
 							<EnableDrag>true</EnableDrag>
 							<FileDragMode>AsFile</FileDragMode>
 							<DataPath>Объект.ПарныеСчетаУчета</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Парные счета учета</v8:content>
+								</v8:item>
+							</Title>
 							<RowFilter xsi:nil="true"/>
 							<ContextMenu name="ПарныеСчетаУчетаКонтекстноеМеню" id="920">
 								<ChildItems>
 									<Button name="ПарныеСчетаУчетаКонтекстноеМенюВывестиСписок" id="2116">
 										<Type>CommandBarButton</Type>
-										<OnlyInAllActions>true</OnlyInAllActions>
 										<CommandName>Form.Item.ПарныеСчетаУчета.StandardCommand.OutputList</CommandName>
+										<LocationInCommandBar>InCommandBarAndInAdditionalSubmenu</LocationInCommandBar>
 										<ExtendedTooltip name="ПарныеСчетаУчетаКонтекстноеМенюВывестиСписокРасширеннаяПодсказка" id="2117"/>
 									</Button>
 								</ChildItems>
@@ -2121,12 +2020,6 @@
 											<v8:content>Парные счета учета группа счета учета</v8:content>
 										</v8:item>
 									</Title>
-									<ToolTip>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Парные счета учета группа счета учета</v8:content>
-										</v8:item>
-									</ToolTip>
 									<ExtendedTooltip name="ПарныеСчетаУчетаГруппаСчетаУчетаРасширеннаяПодсказка" id="975"/>
 									<ChildItems>
 										<InputField name="ПарныеСчетаУчетаСчетДт" id="935">
@@ -2154,12 +2047,6 @@
 											<v8:content>Парные счета учета группа субконто</v8:content>
 										</v8:item>
 									</Title>
-									<ToolTip>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Парные счета учета группа субконто</v8:content>
-										</v8:item>
-									</ToolTip>
 									<ExtendedTooltip name="ПарныеСчетаУчетаГруппаСубконтоРасширеннаяПодсказка" id="983"/>
 									<ChildItems>
 										<InputField name="ПарныеСчетаУчетаСубконто1" id="941">
@@ -2189,12 +2076,6 @@
 											<v8:content>Парные счета учета группа сальдо</v8:content>
 										</v8:item>
 									</Title>
-									<ToolTip>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Парные счета учета группа сальдо</v8:content>
-										</v8:item>
-									</ToolTip>
 									<ExtendedTooltip name="ПарныеСчетаУчетаГруппаСальдоРасширеннаяПодсказка" id="977"/>
 									<ChildItems>
 										<InputField name="ПарныеСчетаУчетаСальдоАктивный" id="1149">
@@ -2226,12 +2107,6 @@
 											<v8:content>Парные счета учета группа сальдо валютное</v8:content>
 										</v8:item>
 									</Title>
-									<ToolTip>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Парные счета учета группа сальдо валютное</v8:content>
-										</v8:item>
-									</ToolTip>
 									<ExtendedTooltip name="ПарныеСчетаУчетаГруппаСальдоВалютноеРасширеннаяПодсказка" id="979"/>
 									<ChildItems>
 										<InputField name="ПарныеСчетаУчетаСальдоДтВалютное" id="959">
@@ -2257,12 +2132,6 @@
 											<v8:content>Парные счета учета группа сумма</v8:content>
 										</v8:item>
 									</Title>
-									<ToolTip>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Парные счета учета группа сумма</v8:content>
-										</v8:item>
-									</ToolTip>
 									<ExtendedTooltip name="ПарныеСчетаУчетаГруппаСуммаРасширеннаяПодсказка" id="981"/>
 									<ChildItems>
 										<InputField name="ПарныеСчетаУчетаСумма" id="965">
@@ -2290,12 +2159,6 @@
 									<v8:content>Подвал парные счета учета</v8:content>
 								</v8:item>
 							</Title>
-							<ToolTip>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Подвал парные счета учета</v8:content>
-								</v8:item>
-							</ToolTip>
 							<HorizontalStretch>true</HorizontalStretch>
 							<VerticalStretch>false</VerticalStretch>
 							<Group>Horizontal</Group>
@@ -2310,18 +2173,12 @@
 											<v8:content>Итоги</v8:content>
 										</v8:item>
 									</Title>
-									<ToolTip>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Группа итоги</v8:content>
-										</v8:item>
-									</ToolTip>
 									<GroupHorizontalAlign>Right</GroupHorizontalAlign>
 									<Group>Horizontal</Group>
 									<HorizontalAlign>Right</HorizontalAlign>
 									<Representation>None</Representation>
 									<ShowTitle>false</ShowTitle>
-									<BackColor>0:346a1c2f-1b75-4d7e-ba85-bbc142b72b33</BackColor>
+									<BackColor>style:ИтогиФонГруппы</BackColor>
 									<ExtendedTooltip name="ГруппаИтогиПарныеСчетаУчетаРасширеннаяПодсказка" id="1259"/>
 									<ChildItems>
 										<InputField name="ПарныеСчетаУчетаИтогСумма" id="971">
@@ -2352,12 +2209,6 @@
 							<v8:content>Временные счета</v8:content>
 						</v8:item>
 					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Страница временные счета учета</v8:content>
-						</v8:item>
-					</ToolTip>
 					<TitleDataPath>Объект.ВременныеСчетаУчета.RowsCount</TitleDataPath>
 					<ExtendedTooltip name="СтраницаВременныеСчетаУчетаРасширеннаяПодсказка" id="985"/>
 					<ChildItems>
@@ -2368,13 +2219,19 @@
 							<EnableDrag>true</EnableDrag>
 							<FileDragMode>AsFile</FileDragMode>
 							<DataPath>Объект.ВременныеСчетаУчета</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Временные счета учета</v8:content>
+								</v8:item>
+							</Title>
 							<RowFilter xsi:nil="true"/>
 							<ContextMenu name="ВременныеСчетаУчетаКонтекстноеМеню" id="1059">
 								<ChildItems>
 									<Button name="ВременныеСчетаУчетаКонтекстноеМенюВывестиСписок" id="2118">
 										<Type>CommandBarButton</Type>
-										<OnlyInAllActions>true</OnlyInAllActions>
 										<CommandName>Form.Item.ВременныеСчетаУчета.StandardCommand.OutputList</CommandName>
+										<LocationInCommandBar>InCommandBarAndInAdditionalSubmenu</LocationInCommandBar>
 										<ExtendedTooltip name="ВременныеСчетаУчетаКонтекстноеМенюВывестиСписокРасширеннаяПодсказка" id="2119"/>
 									</Button>
 								</ChildItems>
@@ -2447,12 +2304,6 @@
 									<v8:content>Подвал временные счета учета</v8:content>
 								</v8:item>
 							</Title>
-							<ToolTip>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Подвал временные счета учета</v8:content>
-								</v8:item>
-							</ToolTip>
 							<HorizontalStretch>true</HorizontalStretch>
 							<VerticalStretch>false</VerticalStretch>
 							<Group>Horizontal</Group>
@@ -2467,18 +2318,12 @@
 											<v8:content>Итоги</v8:content>
 										</v8:item>
 									</Title>
-									<ToolTip>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Группа итоги</v8:content>
-										</v8:item>
-									</ToolTip>
 									<GroupHorizontalAlign>Right</GroupHorizontalAlign>
 									<Group>Horizontal</Group>
 									<HorizontalAlign>Right</HorizontalAlign>
 									<Representation>None</Representation>
 									<ShowTitle>false</ShowTitle>
-									<BackColor>0:346a1c2f-1b75-4d7e-ba85-bbc142b72b33</BackColor>
+									<BackColor>style:ИтогиФонГруппы</BackColor>
 									<ExtendedTooltip name="ГруппаИтогиВременныеСчетаУчетаРасширеннаяПодсказка" id="1263"/>
 									<ChildItems>
 										<InputField name="ВременныеСчетаУчетаИтогСуммаДт" id="1055">
@@ -2524,12 +2369,6 @@
 							<v8:content>Расходы будущих периодов</v8:content>
 						</v8:item>
 					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Страница расходы будущих периодов</v8:content>
-						</v8:item>
-					</ToolTip>
 					<TitleDataPath>Объект.РасходыБП.RowsCount</TitleDataPath>
 					<ExtendedTooltip name="СтраницаРасходыБудущихПериодовРасширеннаяПодсказка" id="1207"/>
 					<ChildItems>
@@ -2540,13 +2379,19 @@
 							<EnableDrag>true</EnableDrag>
 							<FileDragMode>AsFile</FileDragMode>
 							<DataPath>Объект.РасходыБП</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Расходы БП</v8:content>
+								</v8:item>
+							</Title>
 							<RowFilter xsi:nil="true"/>
 							<ContextMenu name="РасходыБПКонтекстноеМеню" id="1209">
 								<ChildItems>
 									<Button name="РасходыБПКонтекстноеМенюВывестиСписок" id="2120">
 										<Type>CommandBarButton</Type>
-										<OnlyInAllActions>true</OnlyInAllActions>
 										<CommandName>Form.Item.РасходыБП.StandardCommand.OutputList</CommandName>
+										<LocationInCommandBar>InCommandBarAndInAdditionalSubmenu</LocationInCommandBar>
 										<ExtendedTooltip name="РасходыБПКонтекстноеМенюВывестиСписокРасширеннаяПодсказка" id="2121"/>
 									</Button>
 								</ChildItems>
@@ -2621,12 +2466,6 @@
 							<v8:content>Налог на прибыль</v8:content>
 						</v8:item>
 					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Страница налог на прибыль</v8:content>
-						</v8:item>
-					</ToolTip>
 					<Group>HorizontalIfPossible</Group>
 					<TitleDataPath>Объект.НалоговаяАмортизация.RowsCount</TitleDataPath>
 					<ExtendedTooltip name="СтраницаНалогНаПрибыльРасширеннаяПодсказка" id="1276"/>
@@ -2638,12 +2477,6 @@
 									<v8:content>Весь налог на прибыль</v8:content>
 								</v8:item>
 							</Title>
-							<ToolTip>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Страница весь налог на прибыль</v8:content>
-								</v8:item>
-							</ToolTip>
 							<ExtendedTooltip name="СтраницаВесьНалогНаПрибыльРасширеннаяПодсказка" id="1351"/>
 							<ChildItems>
 								<Page name="СтраницаНалоговаяАмортизация" id="1352">
@@ -2653,12 +2486,6 @@
 											<v8:content>Налоговая амортизация</v8:content>
 										</v8:item>
 									</Title>
-									<ToolTip>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Страница налоговая амортизация</v8:content>
-										</v8:item>
-									</ToolTip>
 									<ExtendedTooltip name="СтраницаНалоговаяАмортизацияРасширеннаяПодсказка" id="1353"/>
 									<ChildItems>
 										<Table name="НалоговаяАмортизация" id="1277">
@@ -2668,13 +2495,19 @@
 											<EnableDrag>true</EnableDrag>
 											<FileDragMode>AsFile</FileDragMode>
 											<DataPath>Объект.НалоговаяАмортизация</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Налоговая амортизация</v8:content>
+												</v8:item>
+											</Title>
 											<RowFilter xsi:nil="true"/>
 											<ContextMenu name="НалоговаяАмортизацияКонтекстноеМеню" id="1278">
 												<ChildItems>
 													<Button name="НалоговаяАмортизацияКонтекстноеМенюВывестиСписок" id="2096">
 														<Type>CommandBarButton</Type>
-														<OnlyInAllActions>true</OnlyInAllActions>
 														<CommandName>Form.Item.НалоговаяАмортизация.StandardCommand.OutputList</CommandName>
+														<LocationInCommandBar>InCommandBarAndInAdditionalSubmenu</LocationInCommandBar>
 														<ExtendedTooltip name="НалоговаяАмортизацияКонтекстноеМенюВывестиСписокРасширеннаяПодсказка" id="2097"/>
 													</Button>
 												</ChildItems>
@@ -2720,15 +2553,9 @@
 													<Title>
 														<v8:item>
 															<v8:lang>ru</v8:lang>
-															<v8:content>Группа основное средство</v8:content>
+															<v8:content>Основное средство</v8:content>
 														</v8:item>
 													</Title>
-													<ToolTip>
-														<v8:item>
-															<v8:lang>ru</v8:lang>
-															<v8:content>Группа основное средство</v8:content>
-														</v8:item>
-													</ToolTip>
 													<ExtendedTooltip name="ГруппаОсновноеСредствоРасширеннаяПодсказка" id="1355"/>
 													<ChildItems>
 														<InputField name="НалоговаяАмортизацияГруппаНУ" id="1293">
@@ -2749,15 +2576,9 @@
 													<Title>
 														<v8:item>
 															<v8:lang>ru</v8:lang>
-															<v8:content>Группа балансовая стоимость и амортизация</v8:content>
+															<v8:content>Балансовая стоимость и амортизация</v8:content>
 														</v8:item>
 													</Title>
-													<ToolTip>
-														<v8:item>
-															<v8:lang>ru</v8:lang>
-															<v8:content>Группа балансовая стоимость и амортизация</v8:content>
-														</v8:item>
-													</ToolTip>
 													<ExtendedTooltip name="ГруппаБалансоваяСтоимостьИАмортизацияРасширеннаяПодсказка" id="1357"/>
 													<ChildItems>
 														<InputField name="НалоговаяАмортизацияБалансоваяСтоимостьПГ" id="1299">
@@ -2784,15 +2605,9 @@
 													<Title>
 														<v8:item>
 															<v8:lang>ru</v8:lang>
-															<v8:content>Группа увеличение стоимости и поступление</v8:content>
+															<v8:content>Увеличение стоимости и поступление</v8:content>
 														</v8:item>
 													</Title>
-													<ToolTip>
-														<v8:item>
-															<v8:lang>ru</v8:lang>
-															<v8:content>Группа увеличение стоимости и поступление</v8:content>
-														</v8:item>
-													</ToolTip>
 													<ExtendedTooltip name="ГруппаУвеличениеСтоимостиИПоступлениеРасширеннаяПодсказка" id="1359"/>
 													<ChildItems>
 														<InputField name="НалоговаяАмортизацияУвеличениеСтоимости" id="1308">
@@ -2819,15 +2634,9 @@
 													<Title>
 														<v8:item>
 															<v8:lang>ru</v8:lang>
-															<v8:content>Группа выбытия</v8:content>
+															<v8:content>Выбытия</v8:content>
 														</v8:item>
 													</Title>
-													<ToolTip>
-														<v8:item>
-															<v8:lang>ru</v8:lang>
-															<v8:content>Группа выбытия</v8:content>
-														</v8:item>
-													</ToolTip>
 													<ExtendedTooltip name="ГруппаВыбытияРасширеннаяПодсказка" id="1363"/>
 													<ChildItems>
 														<InputField name="НалоговаяАмортизацияСуммаВыбытияОбщая" id="1317">
@@ -2854,15 +2663,9 @@
 													<Title>
 														<v8:item>
 															<v8:lang>ru</v8:lang>
-															<v8:content>Группа ремонт</v8:content>
+															<v8:content>Ремонт</v8:content>
 														</v8:item>
 													</Title>
-													<ToolTip>
-														<v8:item>
-															<v8:lang>ru</v8:lang>
-															<v8:content>Группа ремонт</v8:content>
-														</v8:item>
-													</ToolTip>
 													<ExtendedTooltip name="ГруппаРемонтРасширеннаяПодсказка" id="1361"/>
 													<ChildItems>
 														<InputField name="НалоговаяАмортизацияЗатратыНаРемонт" id="1326">
@@ -2889,15 +2692,9 @@
 													<Title>
 														<v8:item>
 															<v8:lang>ru</v8:lang>
-															<v8:content>Группа балансовая стоимость</v8:content>
+															<v8:content>Балансовая стоимость</v8:content>
 														</v8:item>
 													</Title>
-													<ToolTip>
-														<v8:item>
-															<v8:lang>ru</v8:lang>
-															<v8:content>Группа балансовая стоимость</v8:content>
-														</v8:item>
-													</ToolTip>
 													<ExtendedTooltip name="ГруппаБалансоваяСтоимостьРасширеннаяПодсказка" id="1365"/>
 													<ChildItems>
 														<InputField name="НалоговаяАмортизацияБалансоваяСтоимость" id="1335">
@@ -2918,15 +2715,9 @@
 													<Title>
 														<v8:item>
 															<v8:lang>ru</v8:lang>
-															<v8:content>Группа норма АОАмортизация и увеличение СОД</v8:content>
+															<v8:content>Норма АО амортизация и увеличение СОД</v8:content>
 														</v8:item>
 													</Title>
-													<ToolTip>
-														<v8:item>
-															<v8:lang>ru</v8:lang>
-															<v8:content>Группа норма АОАмортизация и увеличение СОД</v8:content>
-														</v8:item>
-													</ToolTip>
 													<ExtendedTooltip name="ГруппаНормаАОАмортизацияИУвеличениеСОДРасширеннаяПодсказка" id="1367"/>
 													<ChildItems>
 														<InputField name="НалоговаяАмортизацияНормаАО" id="1341">
@@ -2966,12 +2757,6 @@
 											<v8:content>Налоговая выверка</v8:content>
 										</v8:item>
 									</Title>
-									<ToolTip>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Страница налоговая выверка</v8:content>
-										</v8:item>
-									</ToolTip>
 									<ExtendedTooltip name="СтраницаНалоговаяВыверкаРасширеннаяПодсказка" id="1369"/>
 									<ChildItems>
 										<Table name="НалоговаяВыверка" id="1370">
@@ -2981,13 +2766,19 @@
 											<EnableDrag>true</EnableDrag>
 											<FileDragMode>AsFile</FileDragMode>
 											<DataPath>Объект.НалоговаяВыверка</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Налоговая выверка</v8:content>
+												</v8:item>
+											</Title>
 											<RowFilter xsi:nil="true"/>
 											<ContextMenu name="НалоговаяВыверкаКонтекстноеМеню" id="1371">
 												<ChildItems>
 													<Button name="НалоговаяВыверкаКонтекстноеМенюВывестиСписок" id="2098">
 														<Type>CommandBarButton</Type>
-														<OnlyInAllActions>true</OnlyInAllActions>
 														<CommandName>Form.Item.НалоговаяВыверка.StandardCommand.OutputList</CommandName>
+														<LocationInCommandBar>InCommandBarAndInAdditionalSubmenu</LocationInCommandBar>
 														<ExtendedTooltip name="НалоговаяВыверкаКонтекстноеМенюВывестиСписокРасширеннаяПодсказка" id="2099"/>
 													</Button>
 												</ChildItems>
@@ -3061,38 +2852,26 @@
 							<v8:content>Производство</v8:content>
 						</v8:item>
 					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Страница производство</v8:content>
-						</v8:item>
-					</ToolTip>
 					<ExtendedTooltip name="СтраницаПроизводствоРасширеннаяПодсказка" id="1512"/>
 					<ChildItems>
 						<UsualGroup name="ГруппаПроизводствоПоЗаказам" id="1970">
 							<Title>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Группа производство по заказам</v8:content>
+									<v8:content>Производство по заказам</v8:content>
 								</v8:item>
 							</Title>
-							<ToolTip>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Группа производство по заказам</v8:content>
-								</v8:item>
-							</ToolTip>
 							<Representation>None</Representation>
 							<ShowTitle>false</ShowTitle>
 							<ExtendedTooltip name="ГруппаПроизводствоПоЗаказамРасширеннаяПодсказка" id="1971"/>
 							<ChildItems>
 								<UsualGroup name="ГруппаОХРиВП" id="1559">
-									<ToolTip>
+									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>Группа ОХРи ВП</v8:content>
+											<v8:content>ОХ ри ВП</v8:content>
 										</v8:item>
-									</ToolTip>
+									</Title>
 									<Group>Horizontal</Group>
 									<Representation>None</Representation>
 									<ShowTitle>false</ShowTitle>
@@ -3120,13 +2899,19 @@
 									<EnableDrag>true</EnableDrag>
 									<FileDragMode>AsFile</FileDragMode>
 									<DataPath>Объект.РасходыНаПроизводство</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Расходы на производство</v8:content>
+										</v8:item>
+									</Title>
 									<RowFilter xsi:nil="true"/>
 									<ContextMenu name="РасходыНаПроизводствоКонтекстноеМеню" id="1693">
 										<ChildItems>
 											<Button name="РасходыНаПроизводствоКонтекстноеМенюВывестиСписок" id="2122">
 												<Type>CommandBarButton</Type>
-												<OnlyInAllActions>true</OnlyInAllActions>
 												<CommandName>Form.Item.РасходыНаПроизводство.StandardCommand.OutputList</CommandName>
+												<LocationInCommandBar>InCommandBarAndInAdditionalSubmenu</LocationInCommandBar>
 												<ExtendedTooltip name="РасходыНаПроизводствоКонтекстноеМенюВывестиСписокРасширеннаяПодсказка" id="2123"/>
 											</Button>
 										</ChildItems>
@@ -3302,15 +3087,9 @@
 							<Title>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Группа производство по номенклатурным группам</v8:content>
+									<v8:content>Производство по номенклатурным группам</v8:content>
 								</v8:item>
 							</Title>
-							<ToolTip>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Группа производство по номенклатурным группам</v8:content>
-								</v8:item>
-							</ToolTip>
 							<Representation>None</Representation>
 							<ShowTitle>false</ShowTitle>
 							<ExtendedTooltip name="ГруппаПроизводствоПоНоменклатурнымГруппамРасширеннаяПодсказка" id="1973"/>
@@ -3323,13 +3102,19 @@
 									<EnableDrag>true</EnableDrag>
 									<FileDragMode>AsFile</FileDragMode>
 									<DataPath>Объект.НакладныеРасходы</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Накладные расходы</v8:content>
+										</v8:item>
+									</Title>
 									<RowFilter xsi:nil="true"/>
 									<ContextMenu name="НакладныеРасходыКонтекстноеМеню" id="1975">
 										<ChildItems>
 											<Button name="НакладныеРасходыКонтекстноеМенюВывестиСписок" id="2124">
 												<Type>CommandBarButton</Type>
-												<OnlyInAllActions>true</OnlyInAllActions>
 												<CommandName>Form.Item.НакладныеРасходы.StandardCommand.OutputList</CommandName>
+												<LocationInCommandBar>InCommandBarAndInAdditionalSubmenu</LocationInCommandBar>
 												<ExtendedTooltip name="НакладныеРасходыКонтекстноеМенюВывестиСписокРасширеннаяПодсказка" id="2125"/>
 											</Button>
 										</ChildItems>
@@ -3422,12 +3207,6 @@
 									<v8:content>Подвал производство</v8:content>
 								</v8:item>
 							</Title>
-							<ToolTip>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Подвал производство</v8:content>
-								</v8:item>
-							</ToolTip>
 							<HorizontalStretch>true</HorizontalStretch>
 							<VerticalStretch>false</VerticalStretch>
 							<Group>Horizontal</Group>
@@ -3442,18 +3221,12 @@
 											<v8:content>Итоги</v8:content>
 										</v8:item>
 									</Title>
-									<ToolTip>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Группа итоги</v8:content>
-										</v8:item>
-									</ToolTip>
 									<GroupHorizontalAlign>Right</GroupHorizontalAlign>
 									<Group>Horizontal</Group>
 									<HorizontalAlign>Right</HorizontalAlign>
 									<Representation>None</Representation>
 									<ShowTitle>false</ShowTitle>
-									<BackColor>0:346a1c2f-1b75-4d7e-ba85-bbc142b72b33</BackColor>
+									<BackColor>style:ИтогиФонГруппы</BackColor>
 									<ExtendedTooltip name="ГруппаИтогиПроизводствоРасширеннаяПодсказка" id="2014"/>
 									<ChildItems>
 										<InputField name="НакладныеРасходыИтогСумма" id="2015">
@@ -3484,12 +3257,6 @@
 							<v8:content>Единый налог</v8:content>
 						</v8:item>
 					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Страница единый налог</v8:content>
-						</v8:item>
-					</ToolTip>
 					<ExtendedTooltip name="СтраницаЕдиныйНалогРасширеннаяПодсказка" id="1916"/>
 					<ChildItems>
 						<Table name="ЕдиныйНалог" id="1917">
@@ -3499,13 +3266,19 @@
 							<EnableDrag>true</EnableDrag>
 							<FileDragMode>AsFile</FileDragMode>
 							<DataPath>Объект.ЕдиныйНалог</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Единый налог</v8:content>
+								</v8:item>
+							</Title>
 							<RowFilter xsi:nil="true"/>
 							<ContextMenu name="ЕдиныйНалогКонтекстноеМеню" id="1918">
 								<ChildItems>
 									<Button name="ЕдиныйНалогКонтекстноеМенюВывестиСписок" id="2126">
 										<Type>CommandBarButton</Type>
-										<OnlyInAllActions>true</OnlyInAllActions>
 										<CommandName>Form.Item.ЕдиныйНалог.StandardCommand.OutputList</CommandName>
+										<LocationInCommandBar>InCommandBarAndInAdditionalSubmenu</LocationInCommandBar>
 										<ExtendedTooltip name="ЕдиныйНалогКонтекстноеМенюВывестиСписокРасширеннаяПодсказка" id="2127"/>
 									</Button>
 								</ChildItems>
@@ -3590,12 +3363,6 @@
 									<v8:content>Подвал единый налог</v8:content>
 								</v8:item>
 							</Title>
-							<ToolTip>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Подвал единый налог</v8:content>
-								</v8:item>
-							</ToolTip>
 							<HorizontalStretch>true</HorizontalStretch>
 							<Group>Horizontal</Group>
 							<Representation>None</Representation>
@@ -3606,20 +3373,14 @@
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>Группа итоги единый налог</v8:content>
+											<v8:content>Итоги единый налог</v8:content>
 										</v8:item>
 									</Title>
-									<ToolTip>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Группа итоги единый налог</v8:content>
-										</v8:item>
-									</ToolTip>
 									<GroupHorizontalAlign>Right</GroupHorizontalAlign>
 									<HorizontalAlign>Right</HorizontalAlign>
 									<Representation>None</Representation>
 									<ShowTitle>false</ShowTitle>
-									<BackColor>0:346a1c2f-1b75-4d7e-ba85-bbc142b72b33</BackColor>
+									<BackColor>style:ИтогиФонГруппы</BackColor>
 									<ExtendedTooltip name="ГруппаИтогиЕдиныйНалогРасширеннаяПодсказка" id="1954"/>
 									<ChildItems>
 										<InputField name="ЕдиныйНалогИтогСуммаНаличнаяЕдиныйНалог" id="1955">
@@ -3653,12 +3414,6 @@
 							<v8:content>Дополнительно</v8:content>
 						</v8:item>
 					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Страница дополнительно</v8:content>
-						</v8:item>
-					</ToolTip>
 					<ExtendedTooltip name="СтраницаДополнительноРасширеннаяПодсказка" id="394"/>
 					<ChildItems>
 						<CheckBoxField name="РучнойВводКомментариев" id="1167">
@@ -3690,15 +3445,9 @@
 							<Title>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Группа информация</v8:content>
+									<v8:content>Информация</v8:content>
 								</v8:item>
 							</Title>
-							<ToolTip>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Группа информация</v8:content>
-								</v8:item>
-							</ToolTip>
 							<Group>Horizontal</Group>
 							<VerticalAlign>Bottom</VerticalAlign>
 							<Representation>None</Representation>
@@ -3739,7 +3488,7 @@
 									<Border width="1">
 										<v8ui:style xsi:type="v8ui:ControlBorderType">Single</v8ui:style>
 									</Border>
-									<TextColor>0:db2ebbf3-799d-405c-bcad-9932834c491f</TextColor>
+									<TextColor>style:ЦветТекстаАвтораДокумента</TextColor>
 									<ContextMenu name="АвторДокументаКонтекстноеМеню" id="1509"/>
 									<ExtendedTooltip name="АвторДокументаExtendedTooltip" id="1510"/>
 								</LabelField>
@@ -3765,12 +3514,6 @@
 			</Columns>
 		</Attribute>
 		<Attribute name="ДатаДокумента" id="2">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Дата документа</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:dateTime</v8:Type>
 				<v8:DateQualifiers>
@@ -3779,41 +3522,17 @@
 			</Type>
 		</Attribute>
 		<Attribute name="ПараметрыПодключаемыхКоманд" id="4">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Параметры подключаемых команд</v8:content>
-				</v8:item>
-			</Title>
 			<Type/>
 		</Attribute>
 		<Attribute name="ДанныеУчетнойПолитики" id="5">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Данные учетной политики</v8:content>
-				</v8:item>
-			</Title>
 			<Type/>
 		</Attribute>
 		<Attribute name="РасчетЕдиногоНалогаЗаКвартал" id="6">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Расчет единого налога за квартал</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>
 		</Attribute>
 		<Attribute name="БазаРаспределенияКорректировкиСебестоимости" id="7">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>База распределения корректировки себестоимости</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>cfg:EnumRef.БазыРаспределенияКосвенныхРасходов</v8:Type>
 			</Type>
@@ -3896,7 +3615,7 @@
 					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 						<dcscor:use>false</dcscor:use>
 						<dcscor:parameter>ЦветФона</dcscor:parameter>
-						<dcscor:value xsi:type="v8ui:Color">0:a6602c0a-449f-4d52-a1f6-8c281da8abdd</dcscor:value>
+						<dcscor:value xsi:type="v8ui:Color">style:ЦветРамкиГруппыЦеныИВалюты</dcscor:value>
 					</dcscor:item>
 					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 						<dcscor:parameter>ТолькоПросмотр</dcscor:parameter>
@@ -3921,7 +3640,7 @@
 					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 						<dcscor:use>false</dcscor:use>
 						<dcscor:parameter>ЦветФона</dcscor:parameter>
-						<dcscor:value xsi:type="v8ui:Color">0:7f6f8982-e1be-4bcb-962c-2b98fc57198f</dcscor:value>
+						<dcscor:value xsi:type="v8ui:Color">style:БыстрыеНастройкиФонГруппы</dcscor:value>
 					</dcscor:item>
 					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 						<dcscor:parameter>ТолькоПросмотр</dcscor:parameter>
@@ -3946,7 +3665,7 @@
 					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 						<dcscor:use>false</dcscor:use>
 						<dcscor:parameter>ЦветФона</dcscor:parameter>
-						<dcscor:value xsi:type="v8ui:Color">0:42544966-445d-41b8-b6a0-a52c64758232</dcscor:value>
+						<dcscor:value xsi:type="v8ui:Color">style:ДобавленныйРеквизитФон</dcscor:value>
 					</dcscor:item>
 					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 						<dcscor:parameter>ТолькоПросмотр</dcscor:parameter>
@@ -3971,7 +3690,7 @@
 					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 						<dcscor:use>false</dcscor:use>
 						<dcscor:parameter>ЦветФона</dcscor:parameter>
-						<dcscor:value xsi:type="v8ui:Color">0:574e3492-b15d-4478-9edb-be083471231d</dcscor:value>
+						<dcscor:value xsi:type="v8ui:Color">style:ВыборСтандартногоПериодаФонКнопки</dcscor:value>
 					</dcscor:item>
 					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 						<dcscor:parameter>ТолькоПросмотр</dcscor:parameter>
@@ -3995,7 +3714,7 @@
 				<dcsset:appearance>
 					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 						<dcscor:parameter>ЦветФона</dcscor:parameter>
-						<dcscor:value xsi:type="v8ui:Color">0:42544966-445d-41b8-b6a0-a52c64758232</dcscor:value>
+						<dcscor:value xsi:type="v8ui:Color">style:ДобавленныйРеквизитФон</dcscor:value>
 					</dcscor:item>
 				</dcsset:appearance>
 			</dcsset:item>
@@ -4015,7 +3734,7 @@
 				<dcsset:appearance>
 					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 						<dcscor:parameter>ЦветФона</dcscor:parameter>
-						<dcscor:value xsi:type="v8ui:Color">0:42544966-445d-41b8-b6a0-a52c64758232</dcscor:value>
+						<dcscor:value xsi:type="v8ui:Color">style:ДобавленныйРеквизитФон</dcscor:value>
 					</dcscor:item>
 				</dcsset:appearance>
 			</dcsset:item>
@@ -4038,7 +3757,7 @@
 				<dcsset:appearance>
 					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 						<dcscor:parameter>ЦветТекста</dcscor:parameter>
-						<dcscor:value xsi:type="v8ui:Color">0:0d0ada8a-09bb-4634-bf50-199f3779dad5</dcscor:value>
+						<dcscor:value xsi:type="v8ui:Color">style:НедоступныеДанныеЦвет</dcscor:value>
 					</dcscor:item>
 				</dcsset:appearance>
 			</dcsset:item>

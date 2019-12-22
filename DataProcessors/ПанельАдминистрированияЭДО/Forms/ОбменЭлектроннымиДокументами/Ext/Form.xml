@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.7">
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.9">
 	<Customizable>false</Customizable>
 	<VerticalScroll>useIfNecessary</VerticalScroll>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
@@ -7,6 +7,7 @@
 	</AutoCommandBar>
 	<Events>
 		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
+		<Event name="OnOpen">ПриОткрытии</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 		<Event name="OnClose">ПриЗакрытии</Event>
 	</Events>
@@ -258,7 +259,7 @@
 					</Title>
 					<Width>43</Width>
 					<HorizontalStretch>false</HorizontalStretch>
-					<Group>Horizontal</Group>
+					<Group>Vertical</Group>
 					<Representation>None</Representation>
 					<ShowTitle>false</ShowTitle>
 					<ExtendedTooltip name="ГруппаОбменСБанкамиПравоРасширеннаяПодсказка" id="1823"/>
@@ -280,6 +281,20 @@
 								<AutoMaxHeight>false</AutoMaxHeight>
 							</ExtendedTooltip>
 						</Button>
+						<LabelDecoration name="ИнструкцияДиректБанк" id="2094">
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Инструкция по настройке 1С:ДиректБанк</v8:content>
+								</v8:item>
+							</Title>
+							<Hyperlink>true</Hyperlink>
+							<ContextMenu name="ИнструкцияДиректБанкКонтекстноеМеню" id="2095"/>
+							<ExtendedTooltip name="ИнструкцияДиректБанкРасширеннаяПодсказка" id="2096"/>
+							<Events>
+								<Event name="Click">ИнструкцияДиректБанкНажатие</Event>
+							</Events>
+						</LabelDecoration>
 					</ChildItems>
 				</UsualGroup>
 			</ChildItems>
@@ -402,26 +417,35 @@
 					<ShowTitle>false</ShowTitle>
 					<ExtendedTooltip name="ГруппаНастроекЭДОРасширеннаяПодсказка" id="1961"/>
 					<ChildItems>
-						<UsualGroup name="ГруппаОткрытьПомощникПодключенияКСервису1СЭДО" id="1790">
+						<UsualGroup name="ГруппаФлагСоздаватьКонтрагентов" id="2097">
 							<Title>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Группа открыть помощник подключения к сервису 1С-ЭДО</v8:content>
+									<v8:content>Группа флаг создавать контрагентов</v8:content>
 								</v8:item>
 							</Title>
 							<Width>43</Width>
-							<HorizontalStretch>false</HorizontalStretch>
-							<Group>Vertical</Group>
 							<Representation>None</Representation>
 							<ShowTitle>false</ShowTitle>
-							<ExtendedTooltip name="ГруппаОткрытьПомощникПодключенияКСервису1СЭДОРасширеннаяПодсказка" id="1791"/>
+							<ExtendedTooltip name="ГруппаФлагСоздаватьКонтрагентовРасширеннаяПодсказка" id="2098"/>
 							<ChildItems>
-								<Button name="ОткрытьПомощникПодключенияКСервису1СЭДО" id="1792">
-									<Type>Hyperlink</Type>
-									<CommandName>Form.Command.ОткрытьПомощникПодключенияКСервису1СЭДО</CommandName>
+								<CheckBoxField name="Константа_СоздаватьКонтрагентовАвтоматически" id="2099">
+									<DataPath>Константа_СоздаватьКонтрагентовАвтоматическиБЭД</DataPath>
+									<TitleLocation>Right</TitleLocation>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>При получении документов или приеме приглашений от контрагентов не найденных в информационной базе, контрагент будет создаваться автоматически</v8:content>
+										</v8:item>
+									</ToolTip>
 									<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
-									<ExtendedTooltip name="ОткрытьПомощникПодключенияКСервису1СЭДОРасширеннаяПодсказка" id="1793"/>
-								</Button>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="Константа_СоздаватьКонтрагентовАвтоматическиКонтекстноеМеню" id="2100"/>
+									<ExtendedTooltip name="Константа_СоздаватьКонтрагентовАвтоматическиРасширеннаяПодсказка" id="2101"/>
+									<Events>
+										<Event name="OnChange">Константа_СоздаватьКонтрагентовАвтоматическиПриИзменении</Event>
+									</Events>
+								</CheckBoxField>
 							</ChildItems>
 						</UsualGroup>
 						<UsualGroup name="ГруппаОткрытьТиповыеСоглашенияОбИспользованииЭД" id="1260">
@@ -459,11 +483,11 @@
 					<ShowTitle>false</ShowTitle>
 					<ExtendedTooltip name="ГруппаНастроекТакскомРасширеннаяПодсказка" id="1963"/>
 					<ChildItems>
-						<UsualGroup name="ГруппаОткрытьПомощникПодключенияКСервису1СТакском" id="1721">
+						<UsualGroup name="ГруппаОткрытьПомощникПодключенияКСервису1СЭДО" id="1790">
 							<Title>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Группа открыть типовые соглашения об использовании ЭД</v8:content>
+									<v8:content>Группа открыть помощник подключения к сервису 1С-ЭДО</v8:content>
 								</v8:item>
 							</Title>
 							<Width>43</Width>
@@ -471,13 +495,13 @@
 							<Group>Vertical</Group>
 							<Representation>None</Representation>
 							<ShowTitle>false</ShowTitle>
-							<ExtendedTooltip name="ГруппаОткрытьПомощникПодключенияКСервису1СТакскомExtendedTooltip" id="1755"/>
+							<ExtendedTooltip name="ГруппаОткрытьПомощникПодключенияКСервису1СЭДОРасширеннаяПодсказка" id="1791"/>
 							<ChildItems>
-								<Button name="ОткрытьПомощникПодключенияКСервису1СТакском" id="1722">
+								<Button name="ОткрытьПомощникПодключенияКСервису1СЭДО" id="1792">
 									<Type>Hyperlink</Type>
-									<CommandName>Form.Command.ОткрытьПомощникПодключенияКСервису1СТакском</CommandName>
+									<CommandName>Form.Command.ОткрытьПомощникПодключенияКСервису1СЭДО</CommandName>
 									<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
-									<ExtendedTooltip name="ОткрытьПомощникПодключенияКСервису1СТакскомExtendedTooltip" id="1756"/>
+									<ExtendedTooltip name="ОткрытьПомощникПодключенияКСервису1СЭДОРасширеннаяПодсказка" id="1793"/>
 								</Button>
 							</ChildItems>
 						</UsualGroup>
@@ -543,10 +567,17 @@
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>Автоматическая отправка электронных документов</v8:content>
+											<v8:content>Отправлять электронные документы автоматически</v8:content>
 										</v8:item>
 									</Title>
 									<TitleLocation>Right</TitleLocation>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Электронные документы будут отправляться автоматически по расписанию.</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
 									<CheckBoxType>Auto</CheckBoxType>
 									<ContextMenu name="ИспользоватьАвтоматическуюОтправкуЭДКонтекстноеМеню" id="1879"/>
 									<ExtendedTooltip name="ИспользоватьАвтоматическуюОтправкуЭДРасширеннаяПодсказка" id="1880"/>
@@ -554,17 +585,44 @@
 										<Event name="OnChange">ИспользоватьАвтоматическуюОтправкуЭДПриИзменении</Event>
 									</Events>
 								</CheckBoxField>
-								<Button name="ОтправкаЭлектронныхДокументов" id="1881">
-									<Type>Hyperlink</Type>
-									<CommandName>Form.Command.НастроитьОтправкуЭД</CommandName>
+								<UsualGroup name="ГруппаНастройкаРегламентногоЗаданияОтправка" id="2069">
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>Настроить расписание</v8:content>
+											<v8:content>Группа настройка регламентного задания отправка</v8:content>
 										</v8:item>
 									</Title>
-									<ExtendedTooltip name="ОтправкаЭлектронныхДокументовРасширеннаяПодсказка" id="1882"/>
-								</Button>
+									<Group>AlwaysHorizontal</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="ГруппаНастройкаРегламентногоЗаданияОтправкаРасширеннаяПодсказка" id="2070"/>
+									<ChildItems>
+										<Button name="ОтправкаЭлектронныхДокументов" id="1881">
+											<Type>Hyperlink</Type>
+											<CommandName>Form.Command.НастроитьОтправкуЭД</CommandName>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Настроить расписание</v8:content>
+												</v8:item>
+											</Title>
+											<ExtendedTooltip name="ОтправкаЭлектронныхДокументовРасширеннаяПодсказка" id="1882"/>
+										</Button>
+										<Button name="КнопкаЕстьПроблемаОтправка" id="2071">
+											<Type>Hyperlink</Type>
+											<Visible>false</Visible>
+											<CommandName>Form.Command.ОткрытьПомощникНастроекРегламентногоЗадания</CommandName>
+											<TextColor>style:SpecialTextColor</TextColor>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>есть проблема</v8:content>
+												</v8:item>
+											</Title>
+											<ExtendedTooltip name="КнопкаЕстьПроблемаОтправкаРасширеннаяПодсказка" id="2072"/>
+										</Button>
+									</ChildItems>
+								</UsualGroup>
 							</ChildItems>
 						</UsualGroup>
 						<UsualGroup name="ГруппаПолучениеЭД" id="1883">
@@ -585,10 +643,17 @@
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>Автоматическое получение электронных документов</v8:content>
+											<v8:content>Получать электронные документы автоматически</v8:content>
 										</v8:item>
 									</Title>
 									<TitleLocation>Right</TitleLocation>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Электронные документы будут получаться автоматически по расписанию.</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
 									<CheckBoxType>Auto</CheckBoxType>
 									<ContextMenu name="ИспользоватьАвтоматическоеПолучениеЭДКонтекстноеМеню" id="1886"/>
 									<ExtendedTooltip name="ИспользоватьАвтоматическоеПолучениеЭДРасширеннаяПодсказка" id="1887"/>
@@ -596,17 +661,44 @@
 										<Event name="OnChange">ИспользоватьАвтоматическоеПолучениеЭДПриИзменении</Event>
 									</Events>
 								</CheckBoxField>
-								<Button name="ПолучениеЭлектронныхДокументов" id="1888">
-									<Type>Hyperlink</Type>
-									<CommandName>Form.Command.НастроитьПолученияЭД</CommandName>
+								<UsualGroup name="ГруппаНастройкаРегламентногоЗаданияПолучение" id="2073">
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>Настроить расписание</v8:content>
+											<v8:content>Группа настройка регламентного задания получение</v8:content>
 										</v8:item>
 									</Title>
-									<ExtendedTooltip name="ПолучениеЭлектронныхДокументовРасширеннаяПодсказка" id="1889"/>
-								</Button>
+									<Group>AlwaysHorizontal</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="ГруппаНастройкаРегламентногоЗаданияПолучениеРасширеннаяПодсказка" id="2074"/>
+									<ChildItems>
+										<Button name="ПолучениеЭлектронныхДокументов" id="1888">
+											<Type>Hyperlink</Type>
+											<CommandName>Form.Command.НастроитьПолученияЭД</CommandName>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Настроить расписание</v8:content>
+												</v8:item>
+											</Title>
+											<ExtendedTooltip name="ПолучениеЭлектронныхДокументовРасширеннаяПодсказка" id="1889"/>
+										</Button>
+										<Button name="КнопкаЕстьПроблемаПолучение" id="2075">
+											<Type>Hyperlink</Type>
+											<Visible>false</Visible>
+											<CommandName>Form.Command.ОткрытьПомощникНастроекРегламентногоЗадания</CommandName>
+											<TextColor>style:SpecialTextColor</TextColor>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>есть проблема</v8:content>
+												</v8:item>
+											</Title>
+											<ExtendedTooltip name="КнопкаЕстьПроблемаПолучениеРасширеннаяПодсказка" id="2076"/>
+										</Button>
+									</ChildItems>
+								</UsualGroup>
 							</ChildItems>
 						</UsualGroup>
 					</ChildItems>
@@ -647,7 +739,7 @@
 									<ToolTip>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>При получении новых документов в сервисе 1С-ЭДО будет показано всплывающее сообщение</v8:content>
+											<v8:content>При появлении в сервисе новых документов к получению будет показано всплывающее сообщение. Только для сервиса 1С-ЭДО.</v8:content>
 										</v8:item>
 									</ToolTip>
 									<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
@@ -671,6 +763,136 @@
 								</Button>
 							</ChildItems>
 						</UsualGroup>
+						<UsualGroup name="ГруппаПомечатьНаУдалениеПакетыЭД" id="2079">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа помечать на удаление пакеты ЭД</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Vertical</Group>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаПомечатьНаУдалениеПакетыЭДРасширеннаяПодсказка" id="2080"/>
+							<ChildItems>
+								<CheckBoxField name="ПомечатьНаУдалениеПакетыЭД" id="2081">
+									<DataPath>ПомечатьНаУдалениеПакетыЭД</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Помечать на удаление обработанные пакеты автоматически</v8:content>
+										</v8:item>
+									</Title>
+									<TitleLocation>Right</TitleLocation>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Пакеты электронных документов, которые распакованы или отправлены, будут помечаться на удаление.</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="ПомечатьНаУдалениеПакетыЭДКонтекстноеМеню" id="2082"/>
+									<ExtendedTooltip name="ПомечатьНаУдалениеПакетыЭДРасширеннаяПодсказка" id="2083"/>
+									<Events>
+										<Event name="OnChange">ПомечатьНаУдалениеПакетыЭДПриИзменении</Event>
+									</Events>
+								</CheckBoxField>
+								<Button name="ПометкаНаУдалениеПакетовЭД" id="2084">
+									<Type>Hyperlink</Type>
+									<CommandName>Form.Command.НастроитьПометкуНаУдалениеПакетовЭД</CommandName>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Настроить расписание</v8:content>
+										</v8:item>
+									</Title>
+									<ExtendedTooltip name="ПометкаНаУдалениеПакетовЭДРасширеннаяПодсказка" id="2085"/>
+								</Button>
+								<UsualGroup name="ГруппаСрокХраненияПакетов" id="2092">
+									<Group>AlwaysHorizontal</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="ГруппаСрокХраненияПакетовРасширеннаяПодсказка" id="2093"/>
+									<ChildItems>
+										<InputField name="СрокХраненияПакетаЭД" id="2086">
+											<DataPath>Константа_СрокХраненияПакетаЭД</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Хранить пакеты после обработки</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="СрокХраненияПакетаЭДКонтекстноеМеню" id="2087"/>
+											<ExtendedTooltip name="СрокХраненияПакетаЭДРасширеннаяПодсказка" id="2088"/>
+											<Events>
+												<Event name="OnChange">СрокХраненияПакетаЭДПриИзменении</Event>
+											</Events>
+										</InputField>
+										<LabelDecoration name="НадписьДней" id="2089">
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>дней</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="НадписьДнейКонтекстноеМеню" id="2090"/>
+											<ExtendedTooltip name="НадписьДнейРасширеннаяПодсказка" id="2091"/>
+										</LabelDecoration>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаДополнительныеОпции1" id="2077">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа дополнительные опции1</v8:content>
+						</v8:item>
+					</Title>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаДополнительныеОпции1РасширеннаяПодсказка" id="2078"/>
+					<ChildItems>
+						<UsualGroup name="ГруппаОзнакомлениеЭД" id="2064">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа ознакомление ЭД</v8:content>
+								</v8:item>
+							</Title>
+							<Width>43</Width>
+							<Group>Vertical</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаОзнакомлениеЭДРасширеннаяПодсказка" id="2065"/>
+							<ChildItems>
+								<CheckBoxField name="ИспользоватьОзнакомлениеСЭлектроннымиДокументами" id="2066">
+									<DataPath>Константа_ИспользоватьОзнакомлениеСЭлектроннымиДокументами</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Отправлять документы на ознакомление</v8:content>
+										</v8:item>
+									</Title>
+									<TitleLocation>Right</TitleLocation>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Отображение в текущих делах  раздела с электронными документами, документооборот по которым завершился при выполнении обмена.</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="ИспользоватьОзнакомлениеСЭлектроннымиДокументамиКонтекстноеМеню" id="2067"/>
+									<ExtendedTooltip name="ИспользоватьОзнакомлениеСЭлектроннымиДокументамиРасширеннаяПодсказка" id="2068"/>
+									<Events>
+										<Event name="OnChange">ИспользоватьОзнакомлениеСЭлектроннымиДокументамиПриИзменении</Event>
+									</Events>
+								</CheckBoxField>
+							</ChildItems>
+						</UsualGroup>
 						<UsualGroup name="ГруппаОтключитьНемедленнуюОтправкуЭД" id="1693">
 							<Title>
 								<v8:item>
@@ -678,7 +900,6 @@
 									<v8:content>Группа отключить немедленную отправку ЭД</v8:content>
 								</v8:item>
 							</Title>
-							<Width>43</Width>
 							<HorizontalStretch>false</HorizontalStretch>
 							<Group>Vertical</Group>
 							<Representation>None</Representation>
@@ -711,42 +932,6 @@
 								</CheckBoxField>
 							</ChildItems>
 						</UsualGroup>
-					</ChildItems>
-				</UsualGroup>
-				<UsualGroup name="ГруппаОзнакомлениеЭД" id="2064">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Группа ознакомление ЭД</v8:content>
-						</v8:item>
-					</Title>
-					<Representation>None</Representation>
-					<ShowTitle>false</ShowTitle>
-					<ExtendedTooltip name="ГруппаОзнакомлениеЭДРасширеннаяПодсказка" id="2065"/>
-					<ChildItems>
-						<CheckBoxField name="ИспользоватьОзнакомлениеСЭлектроннымиДокументами" id="2066">
-							<DataPath>Константа_ИспользоватьОзнакомлениеСЭлектроннымиДокументами</DataPath>
-							<Title>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Отправлять документы на ознакомление</v8:content>
-								</v8:item>
-							</Title>
-							<TitleLocation>Right</TitleLocation>
-							<ToolTip>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Отображение в текущих делах  раздела с электронными документами, документооборот по которым завершился при выполнении обмена.</v8:content>
-								</v8:item>
-							</ToolTip>
-							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
-							<CheckBoxType>Auto</CheckBoxType>
-							<ContextMenu name="ИспользоватьОзнакомлениеСЭлектроннымиДокументамиКонтекстноеМеню" id="2067"/>
-							<ExtendedTooltip name="ИспользоватьОзнакомлениеСЭлектроннымиДокументамиРасширеннаяПодсказка" id="2068"/>
-							<Events>
-								<Event name="OnChange">ИспользоватьОзнакомлениеСЭлектроннымиДокументамиПриИзменении</Event>
-							</Events>
-						</CheckBoxField>
 					</ChildItems>
 				</UsualGroup>
 				<UsualGroup name="Идея" id="2041">
@@ -824,7 +1009,7 @@
 					<ToolTip>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Обмен документами без электронной подписи, публикация и поиск торговых предложений в сервисе 1С:Бизнес-сеть.</v8:content>
+							<v8:content>Обмен документами без электронной подписи, публикация и поиск торговых предложений в сервисе 1С:Торговая площадка.</v8:content>
 						</v8:item>
 					</ToolTip>
 					<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
@@ -877,7 +1062,14 @@
 											<Width>43</Width>
 											<CommandName>Form.Command.ОткрытьПомощникПодключенияКСервисуБизнесСеть</CommandName>
 											<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
-											<ExtendedTooltip name="ОткрытьПомощникПодключенияКСервисуБизнесСетьРасширеннаяПодсказка" id="1895"/>
+											<ExtendedTooltip name="ОткрытьПомощникПодключенияКСервисуБизнесСетьРасширеннаяПодсказка" id="1895">
+												<Title formatted="false">
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Обмен электронными документами без электронной подписи, работа с торговыми предложениями.</v8:content>
+													</v8:item>
+												</Title>
+											</ExtendedTooltip>
 										</Button>
 									</ChildItems>
 								</UsualGroup>
@@ -947,7 +1139,7 @@
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Торговые предложения</v8:content>
+							<v8:content>Торговая площадка</v8:content>
 						</v8:item>
 					</Title>
 					<Group>Vertical</Group>
@@ -986,35 +1178,11 @@
 												<Title formatted="false">
 													<v8:item>
 														<v8:lang>ru</v8:lang>
-														<v8:content>Рабочее место публикации торговых предложений в сервисе 1С:Бизнес-сеть.</v8:content>
+														<v8:content>Рабочее место публикации торговых предложений в сервисе 1С:Торговая площадка.</v8:content>
 													</v8:item>
 												</Title>
 											</ExtendedTooltip>
 										</Button>
-										<CheckBoxField name="ИспользоватьРубрикаторБизнесСеть" id="2057">
-											<DataPath>Константа_ИспользоватьРубрикаторБизнесСеть</DataPath>
-											<Title>
-												<v8:item>
-													<v8:lang>ru</v8:lang>
-													<v8:content>Использовать рубрикатор 1С:Бизнес-сеть</v8:content>
-												</v8:item>
-											</Title>
-											<TitleLocation>Right</TitleLocation>
-											<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
-											<CheckBoxType>Auto</CheckBoxType>
-											<ContextMenu name="ИспользоватьРубрикаторБизнесСетьКонтекстноеМеню" id="2058"/>
-											<ExtendedTooltip name="ИспользоватьРубрикаторБизнесСетьРасширеннаяПодсказка" id="2059">
-												<Title formatted="false">
-													<v8:item>
-														<v8:lang>ru</v8:lang>
-														<v8:content>Возможность сопоставления номенклатуры с рубрикатором 1С:Бизнес-сети для указания в какую категорию сервиса должны публиковаться торговые предложения. Все не рубрицированные предложения публикуются в категорию "Разное".</v8:content>
-													</v8:item>
-												</Title>
-											</ExtendedTooltip>
-											<Events>
-												<Event name="OnChange">ИспользоватьРубрикаторБизнесСетьПриИзменении</Event>
-											</Events>
-										</CheckBoxField>
 									</ChildItems>
 								</UsualGroup>
 								<UsualGroup name="ГруппаНастройкиБизнесСетьТорговыеПредложенияАвтоматическаяПубликация" id="2013">
@@ -1361,11 +1529,6 @@
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>
 		</Attribute>
-		<Attribute name="Константа_ИспользоватьРубрикаторБизнесСеть" id="1">
-			<Type>
-				<v8:Type>xs:boolean</v8:Type>
-			</Type>
-		</Attribute>
 		<Attribute name="ИспользоватьАвтоматическоеПолучениеУведомленияОтЯндексКассы" id="24">
 			<Title>
 				<v8:item>
@@ -1373,11 +1536,6 @@
 					<v8:content>Использовать автоматическое получение уведомления от яндекс кассы</v8:content>
 				</v8:item>
 			</Title>
-			<Type>
-				<v8:Type>xs:boolean</v8:Type>
-			</Type>
-		</Attribute>
-		<Attribute name="Константа_ИспользоватьТорговыеПредложения" id="25">
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>
@@ -1393,13 +1551,69 @@
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>
 		</Attribute>
+		<Attribute name="ПроверкаНастроекОтправкиПолученияЭД" id="27">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Длительная операция по проверке настроек регламентных заданий автоматической отправки и получения ЭД</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="РезультатПроверкиНастроекОтправкиПолученияЭД" id="28">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Результат длительной операции проверки настроек регламентных заданий автоматического получения и отправки ЭД</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="ПомечатьНаУдалениеПакетыЭД" id="29">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Помечать на удаление пакеты ЭД</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="Константа_СрокХраненияПакетаЭД" id="30">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Константа срок хранения пакета ЭД</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>3</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="Константа_СоздаватьКонтрагентовАвтоматическиБЭД" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Создавать контрагентов автоматически</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
 	</Attributes>
 	<Commands>
 		<Command name="ОткрытьНастройкиПрофилейЭДО" id="34">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Профили настроек ЭДО</v8:content>
+					<v8:content>Учетные записи ЭДО</v8:content>
 				</v8:item>
 			</Title>
 			<ToolTip>
@@ -1427,22 +1641,6 @@
 			<Action>ОткрытьСоглашенияОбИспользованииЭД</Action>
 			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
-		<Command name="ОткрытьПомощникПодключенияКСервису1СТакском" id="1">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Подключиться к сервису 1С-Такском</v8:content>
-				</v8:item>
-			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Обмен юридически значимыми электронными документами с контрагентами через сервис 1С-Такском.</v8:content>
-				</v8:item>
-			</ToolTip>
-			<Action>ОткрытьПомощникПодключенияКСервису1СТакском</Action>
-			<CurrentRowUse>DontUse</CurrentRowUse>
-		</Command>
 		<Command name="НастройкиЭлектроннойПодписиИШифрования" id="3">
 			<Title>
 				<v8:item>
@@ -1463,13 +1661,13 @@
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Подключиться к сервису 1С-ЭДО</v8:content>
+					<v8:content>Подключиться к сервису ЭДО</v8:content>
 				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Обмен юридически значимыми электронными документами с контрагентами через сервис 1С-ЭДО.</v8:content>
+					<v8:content>Обмен юридически значимыми электронными документами с контрагентами через сервис ЭДО.</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>ОткрытьПомощникПодключенияКПорталу1СЭДО</Action>
@@ -1530,12 +1728,6 @@
 					<v8:content>Зарегистрироваться в сервисе 1C:Бизнес-сеть</v8:content>
 				</v8:item>
 			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Обмен электронными документами без электронной подписи, работа с торговыми предложениями.</v8:content>
-				</v8:item>
-			</ToolTip>
 			<Action>ОткрытьПомощникПодключенияКСервисуБизнесСеть</Action>
 			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
@@ -1676,6 +1868,36 @@
 			</ToolTip>
 			<Action>ОткрытьПрофильАбонента1СБизнесСеть</Action>
 			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ОткрытьПомощникНастроекРегламентногоЗадания" id="13">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть помощник настроек регламентного задания</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть помощник настроек регламентного задания</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ОткрытьПомощникНастроекАвтоматическойОтправкиПолученияЭД</Action>
+		</Command>
+		<Command name="НастроитьПометкуНаУдалениеПакетовЭД" id="14">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Настроить пометку на удаление пакетов ЭД</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Настроить пометку на удаление пакетов ЭД</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>НастроитьПометкуНаУдалениеПакетовЭД</Action>
 		</Command>
 	</Commands>
 </Form>

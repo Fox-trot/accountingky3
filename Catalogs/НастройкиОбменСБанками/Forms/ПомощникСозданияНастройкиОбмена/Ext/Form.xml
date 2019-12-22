@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.7">
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.9">
 	<Title>
 		<v8:item>
 			<v8:lang>ru</v8:lang>
@@ -170,7 +170,7 @@
 					<ChildItems>
 						<LabelDecoration name="ТекстСтраницыВыборОрганизацииИБанка" id="671">
 							<AutoMaxWidth>false</AutoMaxWidth>
-							<TextColor>0:ad87bd29-0ad1-4da4-ac62-38e714e0cb9f</TextColor>
+							<TextColor>style:ПоясняющийТекст</TextColor>
 							<Title formatted="true">
 								<v8:item>
 									<v8:lang>ru</v8:lang>
@@ -246,7 +246,6 @@
 									<v8:content>Выберите способ создания настройки обмена с сервисом 1С:ДиректБанк:</v8:content>
 								</v8:item>
 							</Title>
-							<TitleFont ref="style:NormalTextFont" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
 							<Width>50</Width>
 							<Group>Vertical</Group>
 							<Representation>NormalSeparation</Representation>
@@ -389,7 +388,6 @@
 									<v8:content>Параметры входа на сервер банка:</v8:content>
 								</v8:item>
 							</Title>
-							<TitleFont ref="style:NormalTextFont" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
 							<GroupHorizontalAlign>Left</GroupHorizontalAlign>
 							<Group>Vertical</Group>
 							<HorizontalAlign>Left</HorizontalAlign>
@@ -571,7 +569,7 @@
 							<Group>Horizontal</Group>
 							<Representation>None</Representation>
 							<ShowTitle>false</ShowTitle>
-							<BackColor>0:671afc3e-7589-49d8-95a5-1cf195c3b2f8</BackColor>
+							<BackColor>style:УдаленныйРеквизитФон</BackColor>
 							<ExtendedTooltip name="ГруппаПредупреждениеЗагрузкаНастроекРасширеннаяПодсказка" id="1106"/>
 							<ChildItems>
 								<PictureDecoration name="КартинкаПредупреждение34" id="1107">
@@ -767,7 +765,17 @@
 													<ContextMenu name="ПредставлениеВнешнейКомпонентыКонтекстноеМеню" id="1324"/>
 													<ExtendedTooltip name="ПредставлениеВнешнейКомпонентыРасширеннаяПодсказка" id="1325"/>
 												</LabelField>
+												<InputField name="ВнешняяКомпонента" id="1342">
+													<DataPath>ВнешняяКомпонента</DataPath>
+													<TitleLocation>None</TitleLocation>
+													<ContextMenu name="ВнешняяКомпонентаКонтекстноеМеню" id="1343"/>
+													<ExtendedTooltip name="ВнешняяКомпонентаРасширеннаяПодсказка" id="1344"/>
+													<Events>
+														<Event name="OnChange">ВнешняяКомпонентаПриИзменении</Event>
+													</Events>
+												</InputField>
 												<LabelDecoration name="ДекорацияЗагрузитьВКИзФайла" id="1320">
+													<Visible>false</Visible>
 													<Title formatted="false">
 														<v8:item>
 															<v8:lang>ru</v8:lang>
@@ -1031,6 +1039,45 @@
 								</LabelDecoration>
 							</ChildItems>
 						</UsualGroup>
+						<UsualGroup name="ГруппаАльфаБанк" id="1345">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа альфа банк</v8:content>
+								</v8:item>
+							</Title>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаАльфаБанкРасширеннаяПодсказка" id="1346"/>
+							<ChildItems>
+								<LabelDecoration name="ОписаниеАльфаБанк" id="1347">
+									<AutoMaxWidth>false</AutoMaxWidth>
+									<AutoMaxHeight>false</AutoMaxHeight>
+									<HorizontalStretch>true</HorizontalStretch>
+									<VerticalStretch>true</VerticalStretch>
+									<Title formatted="true">
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>&lt;font Arial&gt;&lt;fontsize 10&gt;&lt;b&gt;&lt;bgcolor #ffffff&gt;&lt;color #000000&gt;Порядок действий при подключении к сервису (обязательные условия):&lt;/&gt;&lt;/&gt;&lt;/&gt;&lt;/&gt;&lt;/&gt;
+&lt;font Arial&gt;&lt;fontsize 10&gt;&lt;bgcolor #ffffff&gt;&lt;color #000000&gt;1. Заключить договор с менеджером на подключение услуги Альфа-Линк.&lt;fontsize 10&gt; На сайте банка предоставлены все документы для подключения &lt;/&gt;&lt;fontsize 10&gt;.&lt;/&gt;&lt;link https://alfabank.ru/corporate/rko/alfa-link/&gt;&lt;fontsize 10&gt;&lt;bgcolor #ffffff&gt;https://alfabank.ru/corporate/rko/alfa-link/&lt;/&gt;&lt;/&gt;&lt;/&gt;&lt;fontsize 10&gt; &lt;/&gt;&lt;/&gt;&lt;/&gt;&lt;/&gt;&lt;/&gt;
+&lt;font Arial&gt;&lt;fontsize 10&gt;&lt;bgcolor #ffffff&gt;&lt;color #000000&gt;&lt;fontsize 10&gt;2. Установить программу криптографии и создать сертификат электронной подписи. После получения от менеджера подтверждения о подключении к услуге на контактную почту клиентов, указанную в договоре, поступит инструкция по созданию сертификата подписи и настройке 1С. &lt;/&gt;&lt;/&gt;&lt;/&gt;&lt;/&gt;&lt;/&gt;
+&lt;font Arial&gt;&lt;fontsize 10&gt;&lt;bgcolor #ffffff&gt;&lt;color #000000&gt;&lt;/&gt;&lt;/&gt;&lt;/&gt;&lt;/&gt;
+&lt;font Arial&gt;&lt;fontsize 10&gt;&lt;bgcolor #ffffff&gt;&lt;color #000000&gt;&lt;font Arial&gt;&lt;fontsize 10&gt;&lt;b&gt;&lt;bgcolor #ffffff&gt;&lt;color #000000&gt;Требования к программному и аппаратному обеспечению&lt;/&gt;&lt;/&gt;&lt;/&gt;&lt;/&gt;&lt;/&gt;: &lt;bgcolor #ffffff&gt;
+&lt;/&gt;Необходимо сертифицированное программное обеспечение средств криптографической защиты информации, установленное в соответствии с руководством для данного ПО на автоматизированное рабочее место, где установлена учетная система клиента.&lt;/&gt;&lt;/&gt;&lt;/&gt;&lt;/&gt;
+&lt;font Arial&gt;&lt;fontsize 10&gt;&lt;bgcolor #ffffff&gt;&lt;color #000000&gt;&lt;/&gt;&lt;/&gt;&lt;/&gt;&lt;/&gt;
+&lt;font Arial&gt;&lt;fontsize 10&gt;&lt;bgcolor #ffffff&gt;&lt;color #000000&gt;&lt;fontsize 10&gt;На сайте &lt;/&gt;&lt;link https://alfabank.ru/corporate/rko/alfa-link/&gt;&lt;fontsize 10&gt;https://alfabank.ru/corporate/rko/alfa-link/&lt;/&gt;&lt;/&gt;&lt;fontsize 10&gt; присутствует комплект для подключения  тестовой среде. Перед подключением услуги клиенты могут протестировать свою 1С.&lt;/&gt;&lt;/&gt;&lt;/&gt;&lt;/&gt;&lt;/&gt;
+</v8:content>
+										</v8:item>
+									</Title>
+									<VerticalAlign>Top</VerticalAlign>
+									<Border width="1">
+										<v8ui:style xsi:type="v8ui:ControlBorderType">Single</v8ui:style>
+									</Border>
+									<ContextMenu name="ОписаниеАльфаБанкКонтекстноеМеню" id="1348"/>
+									<ExtendedTooltip name="ОписаниеАльфаБанкРасширеннаяПодсказка" id="1349"/>
+								</LabelDecoration>
+							</ChildItems>
+						</UsualGroup>
 						<UsualGroup name="ГруппаСертификаты" id="965">
 							<Title>
 								<v8:item>
@@ -1038,7 +1085,6 @@
 									<v8:content>Сертификаты ключей электронной подписи, которые будут использоваться при обмене:</v8:content>
 								</v8:item>
 							</Title>
-							<TitleFont ref="style:NormalTextFont" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
 							<Group>Vertical</Group>
 							<Representation>None</Representation>
 							<ExtendedTooltip name="ГруппаСертификатыРасширеннаяПодсказка" id="966"/>
@@ -1363,7 +1409,7 @@
 									<ChildItems>
 										<LabelDecoration name="ДекорацияУспешноеПодключение" id="1018">
 											<AutoMaxWidth>false</AutoMaxWidth>
-											<TextColor>0:0da019ca-1fc7-4aff-8998-3ddcccf10872</TextColor>
+											<TextColor>style:РезультатУспехЦвет</TextColor>
 											<Font ref="style:LargeTextFont" kind="StyleItem"/>
 											<Title formatted="false">
 												<v8:item>
@@ -1387,7 +1433,7 @@
 									<ChildItems>
 										<LabelDecoration name="ДекорацияНеПодключено" id="1023">
 											<AutoMaxWidth>false</AutoMaxWidth>
-											<TextColor>0:b9627855-6773-4a59-b7d3-f9e2e565cd9e</TextColor>
+											<TextColor>style:ПоясняющийОшибкуТекст</TextColor>
 											<Font ref="style:LargeTextFont" kind="StyleItem"/>
 											<Title formatted="false">
 												<v8:item>
@@ -2082,7 +2128,7 @@
 											<ChildItems>
 												<LabelDecoration name="ДекорацияУспешноеПодключениеУРН" id="1246">
 													<AutoMaxWidth>false</AutoMaxWidth>
-													<TextColor>0:0da019ca-1fc7-4aff-8998-3ddcccf10872</TextColor>
+													<TextColor>style:РезультатУспехЦвет</TextColor>
 													<Font ref="style:LargeTextFont" kind="StyleItem"/>
 													<Title formatted="false">
 														<v8:item>
@@ -2106,7 +2152,7 @@
 											<ChildItems>
 												<LabelDecoration name="ДекорацияНеПодключеноУРН" id="1251">
 													<AutoMaxWidth>false</AutoMaxWidth>
-													<TextColor>0:b9627855-6773-4a59-b7d3-f9e2e565cd9e</TextColor>
+													<TextColor>style:ПоясняющийОшибкуТекст</TextColor>
 													<Font ref="style:LargeTextFont" kind="StyleItem"/>
 													<Title formatted="false">
 														<v8:item>
@@ -2234,7 +2280,6 @@
 							<DefaultItem>true</DefaultItem>
 							<GroupHorizontalAlign>Right</GroupHorizontalAlign>
 							<CommandName>Form.Command.Далее</CommandName>
-							<Font ref="sys:DefaultGUIFont" height="10" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
 							<Title>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
@@ -2291,7 +2336,6 @@
 						<Button name="ДалееВторая" id="688">
 							<Type>UsualButton</Type>
 							<CommandName>Form.Command.Далее</CommandName>
-							<Font ref="sys:DefaultGUIFont" height="10" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
 							<Title>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
@@ -2345,7 +2389,6 @@
 						<Button name="ГотовоПервая" id="1038">
 							<Type>UsualButton</Type>
 							<CommandName>Form.Command.Готово</CommandName>
-							<Font ref="sys:DefaultGUIFont" height="10" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
 							<ExtendedTooltip name="ГотовоПерваяРасширеннаяПодсказка" id="1039"/>
 						</Button>
 					</ChildItems>
@@ -2432,7 +2475,6 @@
 						<Button name="ГотовоВторая" id="1045">
 							<Type>UsualButton</Type>
 							<CommandName>Form.Command.Готово</CommandName>
-							<Font ref="sys:DefaultGUIFont" height="10" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
 							<ExtendedTooltip name="ГотовоВтораяРасширеннаяПодсказка" id="1046"/>
 						</Button>
 					</ChildItems>
@@ -3227,6 +3269,17 @@
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ВнешняяКомпонента" id="81">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Внешняя компонента</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.ВнешниеКомпоненты</v8:Type>
 			</Type>
 		</Attribute>
 	</Attributes>
