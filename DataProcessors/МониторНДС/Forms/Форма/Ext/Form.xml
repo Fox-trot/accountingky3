@@ -297,13 +297,6 @@
 									<ContextMenu name="ДетальныеЗаписиКонтрагентКонтекстноеМеню" id="86"/>
 									<ExtendedTooltip name="ДетальныеЗаписиКонтрагентРасширеннаяПодсказка" id="87"/>
 								</InputField>
-								<InputField name="ДетальныеЗаписиВсего" id="88">
-									<DataPath>ДетальныеЗаписи.Всего</DataPath>
-									<EditMode>EnterOnInput</EditMode>
-									<Width>10</Width>
-									<ContextMenu name="ДетальныеЗаписиВсегоКонтекстноеМеню" id="89"/>
-									<ExtendedTooltip name="ДетальныеЗаписиВсегоРасширеннаяПодсказка" id="90"/>
-								</InputField>
 								<InputField name="ДетальныеЗаписиСумма" id="91">
 									<DataPath>ДетальныеЗаписи.Сумма</DataPath>
 									<EditMode>EnterOnInput</EditMode>
@@ -324,6 +317,27 @@
 									<Width>10</Width>
 									<ContextMenu name="ДетальныеЗаписиСуммаНСПКонтекстноеМеню" id="113"/>
 									<ExtendedTooltip name="ДетальныеЗаписиСуммаНСПРасширеннаяПодсказка" id="114"/>
+								</InputField>
+								<InputField name="ДетальныеЗаписиДоход" id="223">
+									<DataPath>ДетальныеЗаписи.Доход</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>10</Width>
+									<ContextMenu name="ДетальныеЗаписиДоходКонтекстноеМеню" id="224"/>
+									<ExtendedTooltip name="ДетальныеЗаписиДоходРасширеннаяПодсказка" id="225"/>
+								</InputField>
+								<InputField name="ДетальныеЗаписиАванс" id="226">
+									<DataPath>ДетальныеЗаписи.Аванс</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>10</Width>
+									<ContextMenu name="ДетальныеЗаписиАвансКонтекстноеМеню" id="227"/>
+									<ExtendedTooltip name="ДетальныеЗаписиАвансРасширеннаяПодсказка" id="228"/>
+								</InputField>
+								<InputField name="ДетальныеЗаписиДоотгрузка" id="229">
+									<DataPath>ДетальныеЗаписи.Доотгрузка</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>10</Width>
+									<ContextMenu name="ДетальныеЗаписиДоотгрузкаКонтекстноеМеню" id="230"/>
+									<ExtendedTooltip name="ДетальныеЗаписиДоотгрузкаРасширеннаяПодсказка" id="231"/>
 								</InputField>
 								<CheckBoxField name="ДетальныеЗаписиНДСНеПодтвержден" id="103">
 									<DataPath>ДетальныеЗаписи.НДСНеПодтвержден</DataPath>
@@ -583,15 +597,15 @@
 							<ContextMenu name="СтавкаНСПДляРасчетаНДСНаАвансыКонтекстноеМеню" id="203"/>
 							<ExtendedTooltip name="СтавкаНСПДляРасчетаНДСНаАвансыРасширеннаяПодсказка" id="204"/>
 						</LabelDecoration>
-						<LabelDecoration name="УказыватьПризнкаЗачетаНДС" id="205">
+						<LabelDecoration name="УказыватьПризнакЗачетаНДС" id="205">
 							<Title formatted="false">
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Указывать признка зачета НДС</v8:content>
+									<v8:content>Указывать признак зачета НДС</v8:content>
 								</v8:item>
 							</Title>
-							<ContextMenu name="УказыватьПризнкаЗачетаНДСКонтекстноеМеню" id="206"/>
-							<ExtendedTooltip name="УказыватьПризнкаЗачетаНДСРасширеннаяПодсказка" id="207"/>
+							<ContextMenu name="УказыватьПризнакЗачетаНДСКонтекстноеМеню" id="206"/>
+							<ExtendedTooltip name="УказыватьПризнакЗачетаНДСРасширеннаяПодсказка" id="207"/>
 						</LabelDecoration>
 						<LabelDecoration name="ПороговыйПроцентОсвобожденныхПоставок" id="208">
 							<Title formatted="false">
@@ -840,7 +854,12 @@
 						</v8:item>
 					</Title>
 					<Type>
+						<v8:Type>xs:string</v8:Type>
 						<v8:TypeSet>cfg:DocumentRef</v8:TypeSet>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
 					</Type>
 				</Column>
 				<Column name="Контрагент" id="2">
@@ -947,6 +966,54 @@
 							<v8:Length>0</v8:Length>
 							<v8:AllowedLength>Variable</v8:AllowedLength>
 						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Доход" id="7">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Доход</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>15</v8:Digits>
+							<v8:FractionDigits>2</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="Аванс" id="11">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Аванс</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>15</v8:Digits>
+							<v8:FractionDigits>2</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="Доотгрузка" id="12">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Доотгрузка</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>15</v8:Digits>
+							<v8:FractionDigits>2</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
 					</Type>
 				</Column>
 			</Columns>

@@ -103,12 +103,12 @@
 					<ContextMenu name="ОбластьДанныхВспомогательныеДанныеКонтекстноеМеню" id="44"/>
 					<ExtendedTooltip name="ОбластьДанныхВспомогательныеДанныеРасширеннаяПодсказка" id="45"/>
 				</LabelField>
-				<LabelField name="Имя" id="19">
-					<DataPath>Список.Имя</DataPath>
+				<LabelField name="ИмяФайла" id="19">
+					<DataPath>Список.ИмяФайла</DataPath>
 					<DefaultItem>true</DefaultItem>
 					<Width>15</Width>
-					<ContextMenu name="ИмяКонтекстноеМеню" id="20"/>
-					<ExtendedTooltip name="ИмяРасширеннаяПодсказка" id="21"/>
+					<ContextMenu name="ИмяФайлаКонтекстноеМеню" id="20"/>
+					<ExtendedTooltip name="ИмяФайлаРасширеннаяПодсказка" id="21"/>
 				</LabelField>
 				<LabelField name="Размер" id="25">
 					<DataPath>Список.Размер</DataPath>
@@ -123,38 +123,10 @@
 					<ExtendedTooltip name="ДатаФайлаРасширеннаяПодсказка" id="36"/>
 				</LabelField>
 				<LabelField name="Идентификатор" id="16">
-					<DataPath>Список.Идентификатор</DataPath>
+					<DataPath>Список.ИдентификаторФайла</DataPath>
 					<DefaultItem>true</DefaultItem>
 					<ContextMenu name="ИдентификаторКонтекстноеМеню" id="17"/>
 					<ExtendedTooltip name="ИдентификаторРасширеннаяПодсказка" id="18"/>
-				</LabelField>
-				<CheckBoxField name="ХранитьНаДиске" id="31">
-					<DataPath>Список.ХранитьНаДиске</DataPath>
-					<UserVisible>
-						<xr:Common>false</xr:Common>
-					</UserVisible>
-					<DefaultItem>true</DefaultItem>
-					<CheckBoxType>Auto</CheckBoxType>
-					<ContextMenu name="ХранитьНаДискеКонтекстноеМеню" id="32"/>
-					<ExtendedTooltip name="ХранитьНаДискеРасширеннаяПодсказка" id="33"/>
-				</CheckBoxField>
-				<LabelField name="ТомНаДиске" id="28">
-					<DataPath>Список.ТомНаДиске</DataPath>
-					<UserVisible>
-						<xr:Common>false</xr:Common>
-					</UserVisible>
-					<DefaultItem>true</DefaultItem>
-					<ContextMenu name="ТомНаДискеКонтекстноеМеню" id="29"/>
-					<ExtendedTooltip name="ТомНаДискеРасширеннаяПодсказка" id="30"/>
-				</LabelField>
-				<LabelField name="ПутьКФайлу" id="22">
-					<DataPath>Список.ПутьКФайлу</DataPath>
-					<UserVisible>
-						<xr:Common>false</xr:Common>
-					</UserVisible>
-					<DefaultItem>true</DefaultItem>
-					<ContextMenu name="ПутьКФайлуКонтекстноеМеню" id="23"/>
-					<ExtendedTooltip name="ПутьКФайлуРасширеннаяПодсказка" id="24"/>
 				</LabelField>
 				<CheckBoxField name="Временный" id="37">
 					<DataPath>Список.Временный</DataPath>
@@ -167,6 +139,12 @@
 					<UserVisible>
 						<xr:Common>false</xr:Common>
 					</UserVisible>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>CRC32</v8:content>
+						</v8:item>
+					</Title>
 					<ContextMenu name="ФайлCRC32КонтекстноеМеню" id="41"/>
 					<ExtendedTooltip name="ФайлCRC32РасширеннаяПодсказка" id="42"/>
 				</LabelField>
@@ -179,9 +157,25 @@
 				<v8:Type>cfg:DynamicList</v8:Type>
 			</Type>
 			<MainAttribute>true</MainAttribute>
+			<UseAlways>
+				<Field>~Список.Имя</Field>
+				<Field>Список.ИдентификаторФайла</Field>
+			</UseAlways>
 			<Settings xsi:type="DynamicList">
-				<ManualQuery>false</ManualQuery>
+				<ManualQuery>true</ManualQuery>
 				<DynamicDataRead>true</DynamicDataRead>
+				<QueryText>ВЫБРАТЬ
+	ФайлыОбластейДанных.Идентификатор КАК ИдентификаторФайла,
+	ФайлыОбластейДанных.Временный КАК Временный,
+	ФайлыОбластейДанных.ДатаФайла КАК ДатаФайла,
+	ФайлыОбластейДанных.Имя КАК ИмяФайла,
+	ФайлыОбластейДанных.Размер КАК Размер,
+	ФайлыОбластейДанных.УстановитьВременныйПриПолучении КАК УстановитьВременныйПриПолучении,
+	ФайлыОбластейДанных.Файл КАК Файл,
+	ФайлыОбластейДанных.ФайлCRC32 КАК ФайлCRC32,
+	ФайлыОбластейДанных.ОбластьДанныхВспомогательныеДанные КАК ОбластьДанныхВспомогательныеДанные
+ИЗ
+	РегистрСведений.ФайлыОбластейДанных КАК ФайлыОбластейДанных</QueryText>
 				<MainTable>InformationRegister.ФайлыОбластейДанных</MainTable>
 				<ListSettings>
 					<dcsset:filter>

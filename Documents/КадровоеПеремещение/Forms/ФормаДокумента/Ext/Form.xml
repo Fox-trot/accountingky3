@@ -169,7 +169,9 @@
 		</ChildItems>
 	</AutoCommandBar>
 	<Events>
+		<Event name="AfterWrite">ПослеЗаписи</Event>
 		<Event name="AfterWriteAtServer">ПослеЗаписиНаСервере</Event>
+		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
 		<Event name="OnReadAtServer">ПриЧтенииНаСервере</Event>
 		<Event name="OnOpen">ПриОткрытии</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
@@ -217,6 +219,13 @@
 					<ContextMenu name="ДекорацияНадписьСообщенияОНевозможностиИзмененияДокументаКонтекстноеМеню" id="314"/>
 					<ExtendedTooltip name="ДекорацияНадписьСообщенияОНевозможностиИзмененияДокументаРасширеннаяПодсказка" id="315"/>
 				</LabelDecoration>
+				<LabelField name="БлокирующийДокумент" id="399">
+					<DataPath>БлокирующийДокумент</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<Hiperlink>true</Hiperlink>
+					<ContextMenu name="БлокирующийДокументКонтекстноеМеню" id="400"/>
+					<ExtendedTooltip name="БлокирующийДокументРасширеннаяПодсказка" id="401"/>
+				</LabelField>
 			</ChildItems>
 		</UsualGroup>
 		<UsualGroup name="Шапка" id="1">
@@ -937,67 +946,6 @@
 				<v8:Type>cfg:ChartOfCalculationTypesRef.ВидыНачислений</v8:Type>
 			</Type>
 		</Attribute>
-		<Attribute name="ГражданствоФизическихЛицНаборЗаписейПрочитан" id="18">
-			<Type>
-				<v8:Type>xs:boolean</v8:Type>
-			</Type>
-		</Attribute>
-		<Attribute name="ГражданствоФизическихЛицНаборЗаписей" id="19">
-			<Type>
-				<v8:Type>cfg:InformationRegisterRecordSet.ГражданствоФизическихЛиц</v8:Type>
-			</Type>
-			<View>
-				<xr:Common>false</xr:Common>
-				<xr:Value name="Role.ПолныеПрава">true</xr:Value>
-			</View>
-			<Edit>
-				<xr:Common>true</xr:Common>
-				<xr:Value name="Role.ПолныеПрава">true</xr:Value>
-			</Edit>
-			<SavedData>true</SavedData>
-		</Attribute>
-		<Attribute name="ГражданствоФизическихЛицПрежняя" id="20">
-			<Type/>
-		</Attribute>
-		<Attribute name="ГражданствоФизическихЛицПериод" id="21">
-			<Type>
-				<v8:Type>xs:dateTime</v8:Type>
-				<v8:DateQualifiers>
-					<v8:DateFractions>Date</v8:DateFractions>
-				</v8:DateQualifiers>
-			</Type>
-			<Edit>
-				<xr:Common>false</xr:Common>
-				<xr:Value name="Role.ПолныеПрава">true</xr:Value>
-			</Edit>
-			<FunctionalOptions>
-				<Item/>
-				<Item/>
-			</FunctionalOptions>
-		</Attribute>
-		<Attribute name="ГражданствоФизическихЛицНоваяЗапись" id="22">
-			<Type>
-				<v8:Type>xs:boolean</v8:Type>
-			</Type>
-		</Attribute>
-		<Attribute name="ГражданствоФизическихЛиц" id="23">
-			<Type>
-				<v8:Type>cfg:InformationRegisterRecordManager.ГражданствоФизическихЛиц</v8:Type>
-			</Type>
-			<View>
-				<xr:Common>true</xr:Common>
-				<xr:Value name="Role.ПолныеПрава">true</xr:Value>
-			</View>
-			<Edit>
-				<xr:Common>true</xr:Common>
-				<xr:Value name="Role.ПолныеПрава">true</xr:Value>
-			</Edit>
-			<SavedData>true</SavedData>
-			<FunctionalOptions>
-				<Item/>
-				<Item/>
-			</FunctionalOptions>
-		</Attribute>
 		<Attribute name="ПараметрыПодключаемыхКоманд" id="24">
 			<Type/>
 		</Attribute>
@@ -1018,6 +966,17 @@
 		<Attribute name="ВалютаРегламентированногоУчета" id="26">
 			<Type>
 				<v8:Type>cfg:CatalogRef.Валюты</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="БлокирующийДокумент" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Блокирующий документ</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:TypeSet>cfg:DocumentRef</v8:TypeSet>
 			</Type>
 		</Attribute>
 	</Attributes>

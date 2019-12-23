@@ -151,7 +151,7 @@
 					</Button>
 					<Button name="ОбщаяКомандаСтруктураПодчиненности" id="553">
 						<Type>CommandBarButton</Type>
-						<CommandName>CommonCommand.СтруктураПодчиненности</CommandName>
+						<CommandName>CommonCommand.СвязанныеДокументы</CommandName>
 						<DataPath>Объект.Ref</DataPath>
 						<ExtendedTooltip name="ОбщаяКомандаСтруктураПодчиненностиРасширеннаяПодсказка" id="554"/>
 					</Button>
@@ -286,6 +286,16 @@
 								<Event name="OnChange">ДоговорКонтрагентаПриИзменении</Event>
 							</Events>
 						</InputField>
+						<CheckBoxField name="ПоГоловномуКонтрагенту" id="816">
+							<DataPath>Объект.ПоГоловномуКонтрагенту</DataPath>
+							<TitleLocation>Right</TitleLocation>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="ПоГоловномуКонтрагентуКонтекстноеМеню" id="817"/>
+							<ExtendedTooltip name="ПоГоловномуКонтрагентуРасширеннаяПодсказка" id="818"/>
+							<Events>
+								<Event name="OnChange">ПоГоловномуКонтрагентуПриИзменении</Event>
+							</Events>
+						</CheckBoxField>
 					</ChildItems>
 				</UsualGroup>
 				<UsualGroup name="ПраваяКолонка" id="25">
@@ -892,12 +902,12 @@
 										<Event name="OnChange">ПечатьВРегламентированнойВалютеПриИзменении</Event>
 									</Events>
 								</CheckBoxField>
-								<CheckBoxField name="НеГруппироватьПоНоменклатуре" id="739">
-									<DataPath>Объект.НеГруппироватьПоНоменклатуре</DataPath>
+								<CheckBoxField name="ГруппироватьПоНоменклатуре" id="739">
+									<DataPath>Объект.ГруппироватьПоНоменклатуре</DataPath>
 									<TitleLocation>Right</TitleLocation>
 									<CheckBoxType>Auto</CheckBoxType>
-									<ContextMenu name="НеГруппироватьПоНоменклатуреКонтекстноеМеню" id="740"/>
-									<ExtendedTooltip name="НеГруппироватьПоНоменклатуреРасширеннаяПодсказка" id="741"/>
+									<ContextMenu name="ГруппироватьПоНоменклатуреКонтекстноеМеню" id="740"/>
+									<ExtendedTooltip name="ГруппироватьПоНоменклатуреРасширеннаяПодсказка" id="741"/>
 								</CheckBoxField>
 								<CheckBoxField name="ПечататьКурсИСуммуВРегламентированнойВалюте" id="742">
 									<DataPath>Объект.ПечататьКурсИСуммуВРегламентированнойВалюте</DataPath>
@@ -1141,6 +1151,15 @@
 				</v8:StringQualifiers>
 			</Type>
 		</Attribute>
+		<Attribute name="ДанныеУчетнойПолитики" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Данные учетной политики</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
 	</Attributes>
 	<Commands>
 		<Command name="Заполнить" id="1">
@@ -1224,7 +1243,7 @@
 	<CommandInterface>
 		<NavigationPanel>
 			<Item>
-				<Command>CommonCommand.СтруктураПодчиненности</Command>
+				<Command>CommonCommand.СвязанныеДокументы</Command>
 				<Type>Auto</Type>
 				<DefaultVisible>false</DefaultVisible>
 				<Visible>

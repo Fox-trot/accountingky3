@@ -273,11 +273,35 @@
 				</UsualGroup>
 			</ChildItems>
 		</UsualGroup>
-		<Button name="РедактироватьСписком" id="237">
-			<Type>UsualButton</Type>
-			<CommandName>Form.Command.РедактироватьСписком</CommandName>
-			<ExtendedTooltip name="РедактироватьСпискомРасширеннаяПодсказка" id="238"/>
-		</Button>
+		<UsualGroup name="ГруппаКоманд" id="417">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа команд</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа команд</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаКомандРасширеннаяПодсказка" id="418"/>
+			<ChildItems>
+				<Button name="РедактироватьСписком" id="237">
+					<Type>UsualButton</Type>
+					<CommandName>Form.Command.РедактироватьСписком</CommandName>
+					<ExtendedTooltip name="РедактироватьСпискомРасширеннаяПодсказка" id="238"/>
+				</Button>
+				<Button name="Рассчитать" id="415">
+					<Type>UsualButton</Type>
+					<CommandName>Form.Command.Рассчитать</CommandName>
+					<ExtendedTooltip name="РассчитатьРасширеннаяПодсказка" id="416"/>
+				</Button>
+			</ChildItems>
+		</UsualGroup>
 		<Pages name="Страницы" id="59">
 			<Title>
 				<v8:item>
@@ -425,7 +449,7 @@
 																	<ExtendedTooltip name="СотрудникиСтрокаЧасовРасширеннаяПодсказка" id="268"/>
 																</InputField>
 																<InputField name="СотрудникиСтрокаРазмер" id="355">
-																	<DataPath>Items.Сотрудники.CurrentData.РазмерОсновногоВидаРасчета</DataPath>
+																	<DataPath>Items.Сотрудники.CurrentData.Размер</DataPath>
 																	<SkipOnInput>true</SkipOnInput>
 																	<ToolTipRepresentation>Button</ToolTipRepresentation>
 																	<Width>10</Width>
@@ -433,8 +457,21 @@
 																	<ContextMenu name="СотрудникиСтрокаРазмерКонтекстноеМеню" id="356"/>
 																	<ExtendedTooltip name="СотрудникиСтрокаРазмерРасширеннаяПодсказка" id="357"/>
 																</InputField>
+																<InputField name="СотрудникиСтрокаРезультат" id="407">
+																	<DataPath>Items.Сотрудники.CurrentData.Результат</DataPath>
+																	<SkipOnInput>true</SkipOnInput>
+																	<Width>10</Width>
+																	<HorizontalStretch>false</HorizontalStretch>
+																	<ContextMenu name="СотрудникиСтрокаРезультатКонтекстноеМеню" id="408"/>
+																	<ExtendedTooltip name="СотрудникиСтрокаРезультатРасширеннаяПодсказка" id="409"/>
+																</InputField>
 															</ChildItems>
 														</UsualGroup>
+														<InputField name="СотрудникиСтрокаСпособОтражения" id="419">
+															<DataPath>Items.Сотрудники.CurrentData.СпособОтражения</DataPath>
+															<ContextMenu name="СотрудникиСтрокаСпособОтраженияКонтекстноеМеню" id="420"/>
+															<ExtendedTooltip name="СотрудникиСтрокаСпособОтраженияРасширеннаяПодсказка" id="421"/>
+														</InputField>
 													</ChildItems>
 												</UsualGroup>
 											</ChildItems>
@@ -490,7 +527,15 @@
 											</Title>
 											<RowFilter xsi:nil="true"/>
 											<ContextMenu name="СотрудникиКонтекстноеМеню" id="187"/>
-											<AutoCommandBar name="СотрудникиКоманднаяПанель" id="188"/>
+											<AutoCommandBar name="СотрудникиКоманднаяПанель" id="188">
+												<ChildItems>
+													<Button name="СотрудникиРассчитать" id="413">
+														<Type>CommandBarButton</Type>
+														<CommandName>Form.Command.Рассчитать</CommandName>
+														<ExtendedTooltip name="СотрудникиРассчитатьРасширеннаяПодсказка" id="414"/>
+													</Button>
+												</ChildItems>
+											</AutoCommandBar>
 											<ExtendedTooltip name="СотрудникиРасширеннаяПодсказка" id="189"/>
 											<SearchStringAddition name="СотрудникиСтрокаПоиска" id="190">
 												<AdditionSource>
@@ -552,8 +597,14 @@
 													<ContextMenu name="СотрудникиГрафикРаботыКонтекстноеМеню" id="235"/>
 													<ExtendedTooltip name="СотрудникиГрафикРаботыРасширеннаяПодсказка" id="236"/>
 												</InputField>
+												<InputField name="СотрудникиОтработаноЧасов" id="223">
+													<DataPath>Объект.Сотрудники.Часов</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="СотрудникиОтработаноЧасовКонтекстноеМеню" id="224"/>
+													<ExtendedTooltip name="СотрудникиОтработаноЧасовРасширеннаяПодсказка" id="225"/>
+												</InputField>
 												<InputField name="СотрудникиРазмер" id="364">
-													<DataPath>Объект.Сотрудники.РазмерОсновногоВидаРасчета</DataPath>
+													<DataPath>Объект.Сотрудники.Размер</DataPath>
 													<SkipOnInput>true</SkipOnInput>
 													<EditMode>EnterOnInput</EditMode>
 													<Width>10</Width>
@@ -567,6 +618,14 @@
 													<ContextMenu name="СотрудникиВидРасчетаКонтекстноеМеню" id="212"/>
 													<ExtendedTooltip name="СотрудникиВидРасчетаРасширеннаяПодсказка" id="213"/>
 												</InputField>
+												<InputField name="СотрудникиРезультат" id="410">
+													<DataPath>Объект.Сотрудники.Результат</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<Width>10</Width>
+													<HorizontalStretch>false</HorizontalStretch>
+													<ContextMenu name="СотрудникиРезультатКонтекстноеМеню" id="411"/>
+													<ExtendedTooltip name="СотрудникиРезультатРасширеннаяПодсказка" id="412"/>
+												</InputField>
 												<InputField name="СотрудникиВалюта" id="372">
 													<DataPath>Объект.Сотрудники.Валюта</DataPath>
 													<EditMode>EnterOnInput</EditMode>
@@ -575,11 +634,11 @@
 													<ContextMenu name="СотрудникиВалютаКонтекстноеМеню" id="373"/>
 													<ExtendedTooltip name="СотрудникиВалютаРасширеннаяПодсказка" id="374"/>
 												</InputField>
-												<InputField name="СотрудникиОтработаноЧасов" id="223">
-													<DataPath>Объект.Сотрудники.Часов</DataPath>
+												<InputField name="СотрудникиСпособОтражения" id="422">
+													<DataPath>Объект.Сотрудники.СпособОтражения</DataPath>
 													<EditMode>EnterOnInput</EditMode>
-													<ContextMenu name="СотрудникиОтработаноЧасовКонтекстноеМеню" id="224"/>
-													<ExtendedTooltip name="СотрудникиОтработаноЧасовРасширеннаяПодсказка" id="225"/>
+													<ContextMenu name="СотрудникиСпособОтраженияКонтекстноеМеню" id="423"/>
+													<ExtendedTooltip name="СотрудникиСпособОтраженияРасширеннаяПодсказка" id="424"/>
 												</InputField>
 											</ChildItems>
 										</Table>
@@ -749,6 +808,21 @@
 			</ToolTip>
 			<Action>РедактироватьСписком</Action>
 			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="Рассчитать" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Рассчитать</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Рассчитать</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Рассчитать</Action>
 		</Command>
 	</Commands>
 </Form>
