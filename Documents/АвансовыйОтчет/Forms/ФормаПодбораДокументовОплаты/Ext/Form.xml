@@ -76,6 +76,13 @@
 				<ExtendedTooltip name="ТаблицаДокументовУправлениеПоискомРасширеннаяПодсказка" id="13"/>
 			</SearchControlAddition>
 			<ChildItems>
+				<CheckBoxField name="ТаблицаДокументовПодобрать" id="17">
+					<DataPath>ТаблицаДокументов.Подобрать</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="ТаблицаДокументовПодобратьКонтекстноеМеню" id="18"/>
+					<ExtendedTooltip name="ТаблицаДокументовПодобратьРасширеннаяПодсказка" id="19"/>
+				</CheckBoxField>
 				<InputField name="ТаблицаДокументовВидДокВходящий" id="26">
 					<DataPath>ТаблицаДокументов.ВидДокВходящий</DataPath>
 					<Title>
@@ -91,13 +98,32 @@
 					<ContextMenu name="ТаблицаДокументовВидДокВходящийКонтекстноеМеню" id="27"/>
 					<ExtendedTooltip name="ТаблицаДокументовВидДокВходящийРасширеннаяПодсказка" id="28"/>
 				</InputField>
-				<CheckBoxField name="ТаблицаДокументовПодобрать" id="17">
-					<DataPath>ТаблицаДокументов.Подобрать</DataPath>
+				<InputField name="ТаблицаДокументовКонтрагент" id="29">
+					<DataPath>ТаблицаДокументов.Контрагент</DataPath>
 					<EditMode>EnterOnInput</EditMode>
-					<CheckBoxType>Auto</CheckBoxType>
-					<ContextMenu name="ТаблицаДокументовПодобратьКонтекстноеМеню" id="18"/>
-					<ExtendedTooltip name="ТаблицаДокументовПодобратьРасширеннаяПодсказка" id="19"/>
-				</CheckBoxField>
+					<ContextMenu name="ТаблицаДокументовКонтрагентКонтекстноеМеню" id="30"/>
+					<ExtendedTooltip name="ТаблицаДокументовКонтрагентРасширеннаяПодсказка" id="31"/>
+				</InputField>
+				<InputField name="ТаблицаДокументовДоговорКонтрагента" id="32">
+					<DataPath>ТаблицаДокументов.ДоговорКонтрагента</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Договор</v8:content>
+						</v8:item>
+					</Title>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ТаблицаДокументовДоговорКонтрагентаКонтекстноеМеню" id="33"/>
+					<ExtendedTooltip name="ТаблицаДокументовДоговорКонтрагентаРасширеннаяПодсказка" id="34"/>
+				</InputField>
+				<InputField name="ТаблицаДокументовСумма" id="35">
+					<DataPath>ТаблицаДокументов.Сумма</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<Width>10</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ContextMenu name="ТаблицаДокументовСуммаКонтекстноеМеню" id="36"/>
+					<ExtendedTooltip name="ТаблицаДокументовСуммаРасширеннаяПодсказка" id="37"/>
+				</InputField>
 			</ChildItems>
 		</Table>
 	</ChildItems>
@@ -208,32 +234,6 @@
 				</Column>
 			</Columns>
 		</Attribute>
-		<ConditionalAppearance>
-			<dcsset:item>
-				<dcsset:selection>
-					<dcsset:item>
-						<dcsset:field>ТаблицаДокументов</dcsset:field>
-					</dcsset:item>
-				</dcsset:selection>
-				<dcsset:filter>
-					<dcsset:item xsi:type="dcsset:FilterItemComparison">
-						<dcsset:left xsi:type="dcscor:Field">ТаблицаДокументов.УжеПодобран</dcsset:left>
-						<dcsset:comparisonType>Equal</dcsset:comparisonType>
-						<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
-					</dcsset:item>
-				</dcsset:filter>
-				<dcsset:appearance>
-					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-						<dcscor:parameter>ЦветТекста</dcscor:parameter>
-						<dcscor:value xsi:type="v8ui:Color">style:НедоступныеДанныеЦвет</dcscor:value>
-					</dcscor:item>
-					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-						<dcscor:parameter>ТолькоПросмотр</dcscor:parameter>
-						<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
-					</dcscor:item>
-				</dcsset:appearance>
-			</dcsset:item>
-		</ConditionalAppearance>
 	</Attributes>
 	<Commands>
 		<Command name="УстановитьВсеФлажки" id="1">

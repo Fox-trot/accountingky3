@@ -222,14 +222,20 @@
 						</Table>
 					</ChildItems>
 				</Page>
-				<Page name="СтраницаДетальныеЗаписи" id="20">
+				<Page name="СтраницаРасшифровкаСтрокиОтчета" id="20">
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Детальные записи</v8:content>
+							<v8:content>Расшифровка строки отчета</v8:content>
 						</v8:item>
 					</Title>
-					<ExtendedTooltip name="СтраницаДетальныеЗаписиРасширеннаяПодсказка" id="21"/>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница расшифровка строки отчета</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="СтраницаРасшифровкаСтрокиОтчетаРасширеннаяПодсказка" id="21"/>
 					<ChildItems>
 						<Table name="ДетальныеЗаписи" id="69">
 							<Representation>List</Representation>
@@ -1151,6 +1157,22 @@
 						</v8:NumberQualifiers>
 					</Type>
 				</Column>
+				<Column name="УровеньОтгрузок" id="16">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Уровень отгрузок</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>10</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
 			</Columns>
 		</Attribute>
 		<Attribute name="КонтрагентОтбор" id="17">
@@ -1175,76 +1197,6 @@
 				<v8:Type>cfg:CatalogRef.ДоговорыКонтрагентов</v8:Type>
 			</Type>
 		</Attribute>
-		<ConditionalAppearance>
-			<dcsset:item>
-				<dcsset:selection>
-					<dcsset:item>
-						<dcsset:field>Расшифровка</dcsset:field>
-					</dcsset:item>
-				</dcsset:selection>
-				<dcsset:filter>
-					<dcsset:item xsi:type="dcsset:FilterItemComparison">
-						<dcsset:left xsi:type="dcscor:Field">Расшифровка.ВыделитьСтроку</dcsset:left>
-						<dcsset:comparisonType>Equal</dcsset:comparisonType>
-						<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
-					</dcsset:item>
-				</dcsset:filter>
-				<dcsset:appearance>
-					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-						<dcscor:parameter>ЦветФона</dcscor:parameter>
-						<dcscor:value xsi:type="v8ui:Color">style:ДобавленныйРеквизитФон</dcscor:value>
-					</dcscor:item>
-				</dcsset:appearance>
-			</dcsset:item>
-			<dcsset:item>
-				<dcsset:selection>
-					<dcsset:item>
-						<dcsset:field>АвансыДоотгрузки</dcsset:field>
-					</dcsset:item>
-				</dcsset:selection>
-				<dcsset:filter>
-					<dcsset:item xsi:type="dcsset:FilterItemComparison">
-						<dcsset:left xsi:type="dcscor:Field">АвансыДоотгрузки.Контрагент</dcsset:left>
-						<dcsset:comparisonType>NotFilled</dcsset:comparisonType>
-					</dcsset:item>
-					<dcsset:item xsi:type="dcsset:FilterItemComparison">
-						<dcsset:left xsi:type="dcscor:Field">АвансыДоотгрузки.Дата</dcsset:left>
-						<dcsset:comparisonType>NotContains</dcsset:comparisonType>
-						<dcsset:right xsi:type="xs:string">Авансы</dcsset:right>
-					</dcsset:item>
-				</dcsset:filter>
-				<dcsset:appearance>
-					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-						<dcscor:parameter>ЦветФона</dcscor:parameter>
-						<dcscor:value xsi:type="v8ui:Color">#7CC2C1</dcscor:value>
-					</dcscor:item>
-				</dcsset:appearance>
-			</dcsset:item>
-			<dcsset:item>
-				<dcsset:selection>
-					<dcsset:item>
-						<dcsset:field>АвансыДоотгрузки</dcsset:field>
-					</dcsset:item>
-				</dcsset:selection>
-				<dcsset:filter>
-					<dcsset:item xsi:type="dcsset:FilterItemComparison">
-						<dcsset:left xsi:type="dcscor:Field">АвансыДоотгрузки.Контрагент</dcsset:left>
-						<dcsset:comparisonType>NotFilled</dcsset:comparisonType>
-					</dcsset:item>
-					<dcsset:item xsi:type="dcsset:FilterItemComparison">
-						<dcsset:left xsi:type="dcscor:Field">АвансыДоотгрузки.Дата</dcsset:left>
-						<dcsset:comparisonType>Contains</dcsset:comparisonType>
-						<dcsset:right xsi:type="xs:string">Авансы</dcsset:right>
-					</dcsset:item>
-				</dcsset:filter>
-				<dcsset:appearance>
-					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-						<dcscor:parameter>ЦветФона</dcscor:parameter>
-						<dcscor:value xsi:type="v8ui:Color">#AEC29A</dcscor:value>
-					</dcscor:item>
-				</dcsset:appearance>
-			</dcsset:item>
-		</ConditionalAppearance>
 	</Attributes>
 	<Commands>
 		<Command name="Сформировать" id="1">

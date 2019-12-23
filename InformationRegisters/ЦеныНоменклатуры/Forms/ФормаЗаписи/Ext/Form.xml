@@ -4,6 +4,7 @@
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
 	<Events>
 		<Event name="AfterWrite">ПослеЗаписи</Event>
+		<Event name="OnOpen">ПриОткрытии</Event>
 		<Event name="BeforeClose">ПередЗакрытием</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 	</Events>
@@ -76,6 +77,59 @@
 					<DataPath>Запись.Номенклатура</DataPath>
 					<ContextMenu name="НоменклатураКонтекстноеМеню" id="11"/>
 					<ExtendedTooltip name="НоменклатураРасширеннаяПодсказка" id="12"/>
+				</InputField>
+				<InputField name="ТочностьЦены" id="28">
+					<DataPath>Запись.ТочностьЦены</DataPath>
+					<Width>9</Width>
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<MaxWidth>9</MaxWidth>
+					<ListChoiceMode>true</ListChoiceMode>
+					<ChoiceList>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>2 знака</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xs:decimal">2</Value>
+							</xr:Value>
+						</xr:Item>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>3 знака</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xs:decimal">3</Value>
+							</xr:Value>
+						</xr:Item>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>4 знака</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xs:decimal">4</Value>
+							</xr:Value>
+						</xr:Item>
+					</ChoiceList>
+					<ContextMenu name="ТочностьЦеныКонтекстноеМеню" id="29"/>
+					<ExtendedTooltip name="ТочностьЦеныРасширеннаяПодсказка" id="30"/>
+					<Events>
+						<Event name="OnChange">ТочностьЦеныПриИзменении</Event>
+					</Events>
 				</InputField>
 				<InputField name="Цена" id="16">
 					<DataPath>Запись.Цена</DataPath>

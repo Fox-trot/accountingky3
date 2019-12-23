@@ -1108,7 +1108,7 @@
 						<Title formatted="true">
 							<v8:item>
 								<v8:lang>ru</v8:lang>
-								<v8:content>Включает возможность использовать розничные продажи, получать данные из Розницы в БП при помощи плана обмена и документа "Свод по рознице"</v8:content>
+								<v8:content>Включает возможность получать данные из Розницы при помощи плана обмена и документа "Свод по рознице"</v8:content>
 							</v8:item>
 						</Title>
 					</ExtendedTooltip>
@@ -1552,6 +1552,28 @@
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>
 		</Attribute>
+		<ConditionalAppearance>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>НастройкаДляРозничныхПродаж</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">НаборКонстант.ФункциональнаяОпцияВестиРозничныеПродажи</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Видимость</dcscor:parameter>
+						<dcscor:value xsi:type="xs:boolean">false</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+		</ConditionalAppearance>
 	</Attributes>
 	<Commands>
 		<Command name="СправочникОрганизации" id="1">
@@ -1779,7 +1801,7 @@
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Настройка для розничных продаж</v8:content>
+					<v8:content>Настройки обмена с розницей</v8:content>
 				</v8:item>
 			</Title>
 			<ToolTip>

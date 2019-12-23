@@ -186,11 +186,45 @@
 							</Button>
 						</ChildItems>
 					</Popup>
-					<Button name="ФормаСохранитьВЭлектроннойФорме" id="889">
-						<Type>CommandBarButton</Type>
-						<CommandName>Form.Command.СохранитьВЭлектроннойФорме</CommandName>
-						<ExtendedTooltip name="ФормаСохранитьВЭлектроннойФормеРасширеннаяПодсказка" id="890"/>
-					</Button>
+					<Popup name="ВыгрузкаВXML" id="928">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Выгрузка в xml</v8:content>
+							</v8:item>
+						</Title>
+						<ToolTip>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Выгрузка ВXML</v8:content>
+							</v8:item>
+						</ToolTip>
+						<ExtendedTooltip name="ВыгрузкаВXMLРасширеннаяПодсказка" id="929"/>
+						<ChildItems>
+							<Button name="ФормаСохранитьВЭлектроннойФорме_UBR" id="923">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.СохранитьВЭлектроннойФорме_UBR</CommandName>
+								<Title>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Сохранить в xml UBR</v8:content>
+									</v8:item>
+								</Title>
+								<ExtendedTooltip name="ФормаСохранитьВЭлектроннойФорме_UBRРасширеннаяПодсказка" id="924"/>
+							</Button>
+							<Button name="ФормаСохранитьВЭлектроннойФорме" id="889">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.СохранитьВЭлектроннойФорме</CommandName>
+								<Title>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Сохранить в xml</v8:content>
+									</v8:item>
+								</Title>
+								<ExtendedTooltip name="ФормаСохранитьВЭлектроннойФормеРасширеннаяПодсказка" id="890"/>
+							</Button>
+						</ChildItems>
+					</Popup>
 				</ChildItems>
 			</ButtonGroup>
 			<ButtonGroup name="ГруппаГлобальныеКоманды" id="282">
@@ -241,7 +275,6 @@
 				</v8:item>
 			</Title>
 			<HorizontalStretch>true</HorizontalStretch>
-			<Group>Horizontal</Group>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
 			<ExtendedTooltip name="ШапкаExtendedTooltip" id="2"/>
@@ -257,22 +290,6 @@
 					<Representation>None</Representation>
 					<ShowTitle>false</ShowTitle>
 					<ExtendedTooltip name="ЛеваяКолонкаExtendedTooltip" id="4"/>
-					<ChildItems>
-						<InputField name="ПериодОтчета" id="397">
-							<DataPath>МесяцСтрокой</DataPath>
-							<ChoiceButton>true</ChoiceButton>
-							<SpinButton>true</SpinButton>
-							<ContextMenu name="ПериодОтчетаКонтекстноеМеню" id="398"/>
-							<ExtendedTooltip name="ПериодОтчетаРасширеннаяПодсказка" id="399"/>
-							<Events>
-								<Event name="OnChange">ПериодОтчетаПриИзменении</Event>
-								<Event name="AutoComplete">ПериодОтчетаАвтоПодбор</Event>
-								<Event name="StartChoice">ПериодОтчетаНачалоВыбора</Event>
-								<Event name="Tuning">ПериодОтчетаРегулирование</Event>
-								<Event name="TextEditEnd">ПериодОтчетаОкончаниеВводаТекста</Event>
-							</Events>
-						</InputField>
-					</ChildItems>
 				</UsualGroup>
 				<UsualGroup name="ПраваяКолонка" id="25">
 					<Title>
@@ -285,19 +302,36 @@
 					<Representation>None</Representation>
 					<ShowTitle>false</ShowTitle>
 					<ExtendedTooltip name="ПраваяКолонкаExtendedTooltip" id="26"/>
-					<ChildItems>
-						<InputField name="Организация" id="38">
-							<DataPath>Объект.Организация</DataPath>
-							<SkipOnInput>true</SkipOnInput>
-							<Wrap>false</Wrap>
-							<ContextMenu name="ОрганизацияКонтекстноеМеню" id="39"/>
-							<ExtendedTooltip name="ОрганизацияExtendedTooltip" id="40"/>
-							<Events>
-								<Event name="OnChange">ОрганизацияПриИзменении</Event>
-							</Events>
-						</InputField>
-					</ChildItems>
 				</UsualGroup>
+				<InputField name="ПериодОтчета" id="397">
+					<DataPath>МесяцСтрокой</DataPath>
+					<ChoiceButton>true</ChoiceButton>
+					<SpinButton>true</SpinButton>
+					<ContextMenu name="ПериодОтчетаКонтекстноеМеню" id="398"/>
+					<ExtendedTooltip name="ПериодОтчетаРасширеннаяПодсказка" id="399"/>
+					<Events>
+						<Event name="OnChange">ПериодОтчетаПриИзменении</Event>
+						<Event name="AutoComplete">ПериодОтчетаАвтоПодбор</Event>
+						<Event name="StartChoice">ПериодОтчетаНачалоВыбора</Event>
+						<Event name="Tuning">ПериодОтчетаРегулирование</Event>
+						<Event name="TextEditEnd">ПериодОтчетаОкончаниеВводаТекста</Event>
+					</Events>
+				</InputField>
+				<InputField name="Организация" id="38">
+					<DataPath>Объект.Организация</DataPath>
+					<SkipOnInput>true</SkipOnInput>
+					<Wrap>false</Wrap>
+					<ContextMenu name="ОрганизацияКонтекстноеМеню" id="39"/>
+					<ExtendedTooltip name="ОрганизацияExtendedTooltip" id="40"/>
+					<Events>
+						<Event name="OnChange">ОрганизацияПриИзменении</Event>
+					</Events>
+				</InputField>
+				<InputField name="ВидОтчета" id="925">
+					<DataPath>Объект.ВидОтчета</DataPath>
+					<ContextMenu name="ВидОтчетаКонтекстноеМеню" id="926"/>
+					<ExtendedTooltip name="ВидОтчетаРасширеннаяПодсказка" id="927"/>
+				</InputField>
 			</ChildItems>
 		</UsualGroup>
 		<Pages name="Страницы" id="59">
@@ -2059,6 +2093,25 @@
 			<Action>СохранитьВЭлектроннойФорме</Action>
 			<Representation>Picture</Representation>
 			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="СохранитьВЭлектроннойФорме_UBR" id="15">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сохранить в электронной форме UBR</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сохранить в электронной форме UBR</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.ВыгрузитьДанныеИзИнформационнойБазыВXMLФайл</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>СохранитьВЭлектроннойФорме_UBR</Action>
 		</Command>
 	</Commands>
 </Form>

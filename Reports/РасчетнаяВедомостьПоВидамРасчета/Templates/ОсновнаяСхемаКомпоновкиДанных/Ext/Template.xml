@@ -304,6 +304,16 @@
 				<group>true</group>
 			</attributeUseRestriction>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДополнительныйДоход</dataPath>
+			<field>ДополнительныйДоход</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дополнительный доход</v8:content>
+				</v8:item>
+			</title>
+		</field>
 		<item xsi:type="DataSetQuery">
 			<name>Начисления</name>
 			<field xsi:type="DataSetFieldField">
@@ -342,19 +352,31 @@
 					</v8:item>
 				</title>
 			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ДополнительныйДоход</dataPath>
+				<field>ДополнительныйДоход</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Дополнительный доход</v8:content>
+					</v8:item>
+				</title>
+			</field>
 			<dataSource>ИсточникДанных1</dataSource>
 			<query>ВЫБРАТЬ
 	Начисления.ФизЛицо КАК ФизЛицо,
 	Начисления.Результат КАК СуммаНачисления,
 	Начисления.ОтработаноДней КАК ОтработаноДней,
 	Начисления.ОтработаноЧасов КАК ОтработаноЧасов,
-	Начисления.ВидРасчета КАК ВидНачисления
+	Начисления.ВидРасчета КАК ВидНачисления,
+	Начисления.ВидРасчета.ДополнительныйДоход КАК ДополнительныйДоход
 {ВЫБРАТЬ
 	ФизЛицо.*,
 	СуммаНачисления,
 	ОтработаноДней,
 	ОтработаноЧасов,
-	ВидНачисления.*}
+	ВидНачисления.*,
+	ДополнительныйДоход}
 ИЗ
 	РегистрРасчета.Начисления КАК Начисления
 ГДЕ
@@ -615,6 +637,16 @@
 		<sourceExpression>ФизЛицо</sourceExpression>
 		<destinationExpression>ФизЛицо</destinationExpression>
 	</dataSetLink>
+	<calculatedField>
+		<dataPath>СуммаНачисленияБезДопДохода</dataPath>
+		<expression>Выбор когда ДополнительныйДоход Тогда 0 Иначе СуммаНачисления Конец</expression>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Сумма начисления без доп дохода</v8:content>
+			</v8:item>
+		</title>
+	</calculatedField>
 	<totalField>
 		<dataPath>ОтработаноДней</dataPath>
 		<expression>Сумма(ОтработаноДней)</expression>
@@ -642,6 +674,10 @@
 	<totalField>
 		<dataPath>СуммаКонечныйОстаток</dataPath>
 		<expression>Сумма(СуммаКонечныйОстаток)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>СуммаНачисленияБезДопДохода</dataPath>
+		<expression>Сумма(СуммаНачисленияБезДопДохода)</expression>
 	</totalField>
 	<parameter>
 		<name>НачалоПериода</name>
@@ -1299,7 +1335,7 @@
 					<dcsset:selection>
 						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
 						<dcsset:item xsi:type="dcsset:SelectedItemField">
-							<dcsset:field>СуммаНачисления</dcsset:field>
+							<dcsset:field>СуммаНачисленияБезДопДохода</dcsset:field>
 						</dcsset:item>
 					</dcsset:selection>
 					<dcsset:item>
@@ -1324,7 +1360,9 @@
 							<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
 						</dcsset:order>
 						<dcsset:selection>
-							<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+							<dcsset:item xsi:type="dcsset:SelectedItemField">
+								<dcsset:field>СуммаНачисления</dcsset:field>
+							</dcsset:item>
 						</dcsset:selection>
 					</dcsset:item>
 				</dcsset:column>

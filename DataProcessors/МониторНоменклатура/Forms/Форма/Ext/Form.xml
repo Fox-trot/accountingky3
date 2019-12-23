@@ -396,7 +396,7 @@
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>Список ТМЗ главный склад</v8:content>
+											<v8:content>Склад</v8:content>
 										</v8:item>
 									</Title>
 									<ContextMenu name="СписокТМЗ_ГлавныйСкладКонтекстноеМеню" id="227"/>
@@ -407,7 +407,7 @@
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>Список ТМЗ главный партия</v8:content>
+											<v8:content>Партия</v8:content>
 										</v8:item>
 									</Title>
 									<ContextMenu name="СписокТМЗ_ГлавныйПартияКонтекстноеМеню" id="296"/>
@@ -438,7 +438,7 @@
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>Список ТМЗ главный приход</v8:content>
+											<v8:content>Приход</v8:content>
 										</v8:item>
 									</Title>
 									<Width>9</Width>
@@ -451,7 +451,7 @@
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>Список ТМЗ главный расход</v8:content>
+											<v8:content>Расход</v8:content>
 										</v8:item>
 									</Title>
 									<Width>9</Width>
@@ -1170,10 +1170,9 @@
 ГДЕ
 	НЕ Номенклатура.ЭтоГруппа
 	И НЕ Номенклатура.Услуга
-	И (ХозрасчетныйОстаткиИОбороты.СуммаНачальныйОстаток &lt;&gt; 0
-			ИЛИ ХозрасчетныйОстаткиИОбороты.КоличествоНачальныйОстаток &lt;&gt; 0
-			ИЛИ ХозрасчетныйОстаткиИОбороты.КоличествоОборотДт &lt;&gt; 0
-			ИЛИ ХозрасчетныйОстаткиИОбороты.КоличествоОборотКт &lt;&gt; 0)
+	И ХозрасчетныйОстаткиИОбороты.КоличествоНачальныйОстаток &lt;&gt; 0
+	И ХозрасчетныйОстаткиИОбороты.КоличествоОборотДт &lt;&gt; 0
+	И ХозрасчетныйОстаткиИОбороты.КоличествоОборотКт &lt;&gt; 0
 
 УПОРЯДОЧИТЬ ПО
 	Номенклатура.Наименование,
@@ -1982,28 +1981,6 @@
 				<v8:Type>cfg:CatalogRef.Номенклатура</v8:Type>
 			</Type>
 		</Attribute>
-		<ConditionalAppearance>
-			<dcsset:item>
-				<dcsset:selection>
-					<dcsset:item>
-						<dcsset:field>РасшифровкаОборотов</dcsset:field>
-					</dcsset:item>
-				</dcsset:selection>
-				<dcsset:filter>
-					<dcsset:item xsi:type="dcsset:FilterItemComparison">
-						<dcsset:left xsi:type="dcscor:Field">РасшифровкаОборотов.Документ</dcsset:left>
-						<dcsset:comparisonType>Contains</dcsset:comparisonType>
-						<dcsset:right xsi:type="xs:string">Остаток</dcsset:right>
-					</dcsset:item>
-				</dcsset:filter>
-				<dcsset:appearance>
-					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-						<dcscor:parameter>ЦветФона</dcscor:parameter>
-						<dcscor:value xsi:type="v8ui:Color">#7CC2C1</dcscor:value>
-					</dcscor:item>
-				</dcsset:appearance>
-			</dcsset:item>
-		</ConditionalAppearance>
 	</Attributes>
 	<Commands>
 		<Command name="ПерепровестиДокументы" id="1">
