@@ -405,31 +405,7 @@
 	ИЗ
 		РегистрБухгалтерии.Хозрасчетный.ОборотыДтКт(&amp;НачалоПериода, &amp;КонецПериода, Регистратор, СчетДт В (&amp;СчетаСебестоимости), ЗНАЧЕНИЕ(ПланВидовХарактеристик.ВидыСубконтоХозрасчетные.Номенклатура), СчетКт В (&amp;СчетУчетаНоменклатурыСПартиями), &amp;СубконтоНоменклатураСкладПартии, {(Организация).* КАК Организация, (СубконтоКт1).* КАК Номенклатура}) КАК ХозрасчетныйОборотыДтКт
 	
-	ОБЪЕДИНИТЬ ВСЕ
-	
-	ВЫБРАТЬ
-		ХозрасчетныйОборотыДтКт.Регистратор,
-		ХозрасчетныйОборотыДтКт.СубконтоКт1,
-		ХозрасчетныйОборотыДтКт.Организация,
-		ХозрасчетныйОборотыДтКт.КоличествоОборотКт,
-		ХозрасчетныйОборотыДтКт.СуммаОборот,
-		&amp;ПустойСклад,
-		НЕОПРЕДЕЛЕНО
-	ИЗ
-		РегистрБухгалтерии.Хозрасчетный.ОборотыДтКт(&amp;НачалоПериода, &amp;КонецПериода, Регистратор, СчетДт В (&amp;СчетаСебестоимости), ЗНАЧЕНИЕ(ПланВидовХарактеристик.ВидыСубконтоХозрасчетные.Номенклатура), СчетКт В (&amp;СчетУчетаНоменклатурыБезСкладаБезПартии), &amp;СубконтоНоменклатура, {(Организация).* КАК Организация, (СубконтоКт1).* КАК Номенклатура}) КАК ХозрасчетныйОборотыДтКт
-	
-	ОБЪЕДИНИТЬ ВСЕ
-	
-	ВЫБРАТЬ
-		ХозрасчетныйОборотыДтКт.Регистратор,
-		ХозрасчетныйОборотыДтКт.СубконтоКт1,
-		ХозрасчетныйОборотыДтКт.Организация,
-		ХозрасчетныйОборотыДтКт.КоличествоОборотКт,
-		ХозрасчетныйОборотыДтКт.СуммаОборот,
-		&amp;ПустойСклад,
-		ХозрасчетныйОборотыДтКт.СубконтоКт2
-	ИЗ
-		РегистрБухгалтерии.Хозрасчетный.ОборотыДтКт(&amp;НачалоПериода, &amp;КонецПериода, Регистратор, СчетДт В (&amp;СчетаСебестоимости), ЗНАЧЕНИЕ(ПланВидовХарактеристик.ВидыСубконтоХозрасчетные.Номенклатура), СчетКт В (&amp;СчетУчетаНоменклатурыСПартиямиБезСклада), &amp;СубконтоНоменклатураПартии, {(Организация).* КАК Организация, (СубконтоКт1).* КАК Номенклатура}) КАК ХозрасчетныйОборотыДтКт) КАК ХозрасчетныйОбороты
+	) КАК ХозрасчетныйОбороты
 
 СГРУППИРОВАТЬ ПО
 	ХозрасчетныйОбороты.Регистратор,
@@ -923,20 +899,6 @@
 		<useRestriction>false</useRestriction>
 	</parameter>
 	<parameter>
-		<name>СубконтоНоменклатура</name>
-		<title xsi:type="v8:LocalStringType">
-			<v8:item>
-				<v8:lang>ru</v8:lang>
-				<v8:content>Субконто номенклатура</v8:content>
-			</v8:item>
-		</title>
-		<valueType>
-			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:ChartOfCharacteristicTypesRef.ВидыСубконтоХозрасчетные</v8:Type>
-		</valueType>
-		<value xsi:type="dcscor:DesignTimeValue">ПланВидовХарактеристик.ВидыСубконтоХозрасчетные.Номенклатура</value>
-		<useRestriction>true</useRestriction>
-	</parameter>
-	<parameter>
 		<name>СчетУчетаНоменклатурыСПартиями</name>
 		<title xsi:type="v8:LocalStringType">
 			<v8:item>
@@ -1065,48 +1027,6 @@
 			<v8:item>
 				<v8:lang>ru</v8:lang>
 				<v8:content>Счет торговой наценки с партиями</v8:content>
-			</v8:item>
-		</title>
-		<valueType>
-			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:ChartOfAccountsRef.Хозрасчетный</v8:Type>
-		</valueType>
-		<value xsi:nil="true"/>
-		<useRestriction>true</useRestriction>
-	</parameter>
-	<parameter>
-		<name>СубконтоНоменклатураПартии</name>
-		<title xsi:type="v8:LocalStringType">
-			<v8:item>
-				<v8:lang>ru</v8:lang>
-				<v8:content>Субконто номенклатура партии</v8:content>
-			</v8:item>
-		</title>
-		<valueType>
-			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:ChartOfCharacteristicTypesRef.ВидыСубконтоХозрасчетные</v8:Type>
-		</valueType>
-		<value xsi:nil="true"/>
-		<useRestriction>true</useRestriction>
-	</parameter>
-	<parameter>
-		<name>СчетУчетаНоменклатурыБезСкладаБезПартии</name>
-		<title xsi:type="v8:LocalStringType">
-			<v8:item>
-				<v8:lang>ru</v8:lang>
-				<v8:content>Счет учета номенклатуры без склада без партии</v8:content>
-			</v8:item>
-		</title>
-		<valueType>
-			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:ChartOfAccountsRef.Хозрасчетный</v8:Type>
-		</valueType>
-		<value xsi:nil="true"/>
-		<useRestriction>true</useRestriction>
-	</parameter>
-	<parameter>
-		<name>СчетУчетаНоменклатурыСПартиямиБезСклада</name>
-		<title xsi:type="v8:LocalStringType">
-			<v8:item>
-				<v8:lang>ru</v8:lang>
-				<v8:content>Счет учета номенклатуры с партиями без склада</v8:content>
 			</v8:item>
 		</title>
 		<valueType>

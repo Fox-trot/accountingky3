@@ -169,6 +169,7 @@
 		</ChildItems>
 	</AutoCommandBar>
 	<Events>
+		<Event name="ChoiceProcessing">ОбработкаВыбора</Event>
 		<Event name="AfterWriteAtServer">ПослеЗаписиНаСервере</Event>
 		<Event name="OnReadAtServer">ПриЧтенииНаСервере</Event>
 		<Event name="OnOpen">ПриОткрытии</Event>
@@ -350,6 +351,7 @@
 							<ExtendedTooltip name="ОсновноеСредствоРасширеннаяПодсказка" id="15"/>
 							<Events>
 								<Event name="OnChange">ОсновноеСредствоПриИзменении</Event>
+								<Event name="StartChoice">ОсновноеСредствоНачалоВыбора</Event>
 							</Events>
 						</InputField>
 						<UsualGroup name="ГруппаСтоимостьОС" id="330">
@@ -420,6 +422,14 @@
 									<ContextMenu name="АмортизацияЗаМесяцКонтекстноеМеню" id="367"/>
 									<ExtendedTooltip name="АмортизацияЗаМесяцРасширеннаяПодсказка" id="368"/>
 								</LabelField>
+								<LabelField name="АмортизацияЗаМесяцПослеМодернизации" id="468">
+									<DataPath>Объект.АмортизацияЗаМесяцПослеМодернизации</DataPath>
+									<TitleLocation>None</TitleLocation>
+									<GroupHorizontalAlign>Right</GroupHorizontalAlign>
+									<Width>29</Width>
+									<ContextMenu name="АмортизацияЗаМесяцПослеМодернизацииКонтекстноеМеню" id="469"/>
+									<ExtendedTooltip name="АмортизацияЗаМесяцПослеМодернизацииРасширеннаяПодсказка" id="470"/>
+								</LabelField>
 							</ChildItems>
 						</UsualGroup>
 						<UsualGroup name="ГруппаНакопленнаяАмортизация" id="417">
@@ -437,13 +447,6 @@
 									<DataPath>Объект.НакопленнаяАмортизация</DataPath>
 									<ContextMenu name="НакопленнаяАмортизацияКонтекстноеМеню" id="407"/>
 									<ExtendedTooltip name="НакопленнаяАмортизацияРасширеннаяПодсказка" id="408"/>
-								</LabelField>
-								<LabelField name="НакопленнаяАмортизацияПослеМодернизации" id="432">
-									<DataPath>Объект.НакопленнаяАмортизацияПослеМодернизации</DataPath>
-									<TitleLocation>None</TitleLocation>
-									<Width>29</Width>
-									<ContextMenu name="НакопленнаяАмортизацияПослеМодернизацииКонтекстноеМеню" id="433"/>
-									<ExtendedTooltip name="НакопленнаяАмортизацияПослеМодернизацииРасширеннаяПодсказка" id="434"/>
 								</LabelField>
 							</ChildItems>
 						</UsualGroup>
@@ -708,6 +711,19 @@
 												<Value xsi:type="xr:DesignTimeRef">Enum.ПараметрыМодернизацииОС.EnumValue.ГруппаНУ</Value>
 											</xr:Value>
 										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Консервация</v8:content>
+													</v8:item>
+												</Presentation>
+												<Value xsi:type="xr:DesignTimeRef">Enum.ПараметрыМодернизацииОС.EnumValue.Консервация</Value>
+											</xr:Value>
+										</xr:Item>
 									</ChoiceList>
 									<ChoiceHistoryOnInput>DontUse</ChoiceHistoryOnInput>
 									<ContextMenu name="ПараметрыПараметрКонтекстноеМеню" id="319"/>
@@ -732,6 +748,12 @@
 									<ContextMenu name="ПараметрыСтароеЗначениеКонтекстноеМеню" id="325"/>
 									<ExtendedTooltip name="ПараметрыСтароеЗначениеРасширеннаяПодсказка" id="326"/>
 								</InputField>
+								<CheckBoxField name="ПараметрыОСКонсервация" id="465">
+									<EditMode>EnterOnInput</EditMode>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="ПараметрыОСКонсервацияКонтекстноеМеню" id="466"/>
+									<ExtendedTooltip name="ПараметрыОСКонсервацияРасширеннаяПодсказка" id="467"/>
+								</CheckBoxField>
 							</ChildItems>
 						</Table>
 					</ChildItems>
@@ -892,4 +914,16 @@
 			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 	</Commands>
+	<CommandInterface>
+		<NavigationPanel>
+			<Item>
+				<Command>CommonCommand.ЖурналПроводокБухгалтерскогоУчета</Command>
+				<Type>Auto</Type>
+				<CommandGroup>FormNavigationPanelGoTo</CommandGroup>
+				<Visible>
+					<xr:Common>false</xr:Common>
+				</Visible>
+			</Item>
+		</NavigationPanel>
+	</CommandInterface>
 </Form>
