@@ -82,6 +82,79 @@
 			<ShowTitle>false</ShowTitle>
 			<ExtendedTooltip name="ШапкаРасширеннаяПодсказка" id="125"/>
 			<ChildItems>
+				<UsualGroup name="ГруппаЗаполнениеПоДаннымЕГР" id="267">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа заполнение по данным ЕГР</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ThroughAlign>Use</ThroughAlign>
+					<ExtendedTooltip name="ГруппаЗаполнениеПоДаннымЕГРРасширеннаяПодсказка" id="268"/>
+					<ChildItems>
+						<PictureDecoration name="ДекорацияСтрелка" id="269">
+							<Width>17</Width>
+							<Height>3</Height>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Декорация стрелка</v8:content>
+								</v8:item>
+							</Title>
+							<Picture>
+								<xr:Ref>CommonPicture.НачнитеОтсюда</xr:Ref>
+								<xr:LoadTransparent>true</xr:LoadTransparent>
+							</Picture>
+							<FileDragMode>AsFile</FileDragMode>
+							<ContextMenu name="ДекорацияСтрелкаКонтекстноеМеню" id="270"/>
+							<ExtendedTooltip name="ДекорацияСтрелкаРасширеннаяПодсказка" id="271"/>
+						</PictureDecoration>
+						<UsualGroup name="ГруппаЦветФона" id="272">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа цвет фона</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<BackColor>style:БыстрыеНастройкиФонГруппы</BackColor>
+							<ExtendedTooltip name="ГруппаЦветФонаРасширеннаяПодсказка" id="273"/>
+							<ChildItems>
+								<InputField name="ПолеПоискаИНННаименование" id="274">
+									<DataPath>ПолеПоискаИНННаименование</DataPath>
+									<TitleLocation>Top</TitleLocation>
+									<AutoMaxWidth>false</AutoMaxWidth>
+									<MaxWidth>35</MaxWidth>
+									<InputHint>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Введите ИНН контрагента</v8:content>
+										</v8:item>
+									</InputHint>
+									<ContextMenu name="ПолеПоискаИНННаименованиеКонтекстноеМеню" id="275"/>
+									<ExtendedTooltip name="ПолеПоискаИНННаименованиеРасширеннаяПодсказка" id="276"/>
+								</InputField>
+								<Button name="ЗаполнитьРеквизитыПоДаннымЕГР" id="277">
+									<Type>UsualButton</Type>
+									<CommandName>Form.Command.ЗаполнитьРеквизитыПоДаннымЕГР</CommandName>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Заполнить</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTipRepresentation>Button</ToolTipRepresentation>
+									<ExtendedTooltip name="ЗаполнитьРеквизитыПоДаннымЕГРРасширеннаяПодсказка" id="278"/>
+								</Button>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
 				<UsualGroup name="ГруппаНаименование" id="126">
 					<Title>
 						<v8:item>
@@ -326,6 +399,13 @@
 									<ContextMenu name="ПризнакСтраныКонтекстноеМеню" id="262"/>
 									<ExtendedTooltip name="ПризнакСтраныРасширеннаяПодсказка" id="263"/>
 								</LabelField>
+								<CheckBoxField name="СЭЗ" id="264">
+									<DataPath>Объект.СЭЗ</DataPath>
+									<TitleLocation>Right</TitleLocation>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="СЭЗКонтекстноеМеню" id="265"/>
+									<ExtendedTooltip name="СЭЗРасширеннаяПодсказка" id="266"/>
+								</CheckBoxField>
 							</ChildItems>
 						</UsualGroup>
 						<Pages name="СтраницыИНН" id="161">
@@ -562,6 +642,21 @@
 		<Attribute name="ПараметрыПодключаемыхКоманд" id="7">
 			<Type/>
 		</Attribute>
+		<Attribute name="ПолеПоискаИНННаименование" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Автоматическое заполнение реквизитов</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
 	</Attributes>
 	<Commands>
 		<Command name="ОтправитьEmailКонтрагенту" id="1">
@@ -582,6 +677,28 @@
 				<xr:LoadTransparent>true</xr:LoadTransparent>
 			</Picture>
 			<Action>ОтправитьEmailКонтрагенту</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ЗаполнитьРеквизитыПоДаннымЕГР" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполнить по ИНН или наименованию</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Автоматическое заполнение реквизитов по данным государственных реестров ЕГРЮЛ/ЕГРИП</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.MoveRight</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ЗаполнитьРеквизитыПоДаннымЕГР</Action>
+			<Representation>Text</Representation>
+			<ModifiesSavedData>true</ModifiesSavedData>
 			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 	</Commands>

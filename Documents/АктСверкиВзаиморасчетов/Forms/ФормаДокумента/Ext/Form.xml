@@ -391,9 +391,17 @@
 									<v8:content>По данным организации</v8:content>
 								</v8:item>
 							</Title>
+							<CommandSet>
+								<ExcludedCommand>Add</ExcludedCommand>
+								<ExcludedCommand>Change</ExcludedCommand>
+								<ExcludedCommand>Copy</ExcludedCommand>
+								<ExcludedCommand>Delete</ExcludedCommand>
+								<ExcludedCommand>EndEdit</ExcludedCommand>
+							</CommandSet>
 							<RowFilter xsi:nil="true"/>
 							<ContextMenu name="ПоДаннымОрганизацииКонтекстноеМеню" id="366"/>
 							<AutoCommandBar name="ПоДаннымОрганизацииКоманднаяПанель" id="367">
+								<Autofill>false</Autofill>
 								<ChildItems>
 									<Button name="ПоДаннымОрганизацииЗаполнить" id="499">
 										<Type>CommandBarButton</Type>
@@ -427,6 +435,9 @@
 								<ContextMenu name="ПоДаннымОрганизацииУправлениеПоискомКонтекстноеМеню" id="376"/>
 								<ExtendedTooltip name="ПоДаннымОрганизацииУправлениеПоискомРасширеннаяПодсказка" id="377"/>
 							</SearchControlAddition>
+							<Events>
+								<Event name="Selection">ПоДаннымОрганизацииВыбор</Event>
+							</Events>
 							<ChildItems>
 								<LabelField name="ПоДаннымОрганизацииНомерСтроки" id="378">
 									<DataPath>Объект.ПоДаннымОрганизации.LineNumber</DataPath>
@@ -441,9 +452,8 @@
 									<DataPath>Объект.ПоДаннымОрганизации.ДокументСверки</DataPath>
 									<EditMode>EnterOnInput</EditMode>
 									<ShowInFooter>false</ShowInFooter>
-									<DropListButton>false</DropListButton>
-									<ChoiceButton>true</ChoiceButton>
 									<ChoiceButtonRepresentation>ShowInInputField</ChoiceButtonRepresentation>
+									<OpenButton>true</OpenButton>
 									<ContextMenu name="ПоДаннымОрганизацииДокументКонтекстноеМеню" id="385"/>
 									<ExtendedTooltip name="ПоДаннымОрганизацииДокументРасширеннаяПодсказка" id="386"/>
 								</InputField>
@@ -454,9 +464,6 @@
 									<HorizontalStretch>false</HorizontalStretch>
 									<ContextMenu name="ПоДаннымОрганизацииДебетКонтекстноеМеню" id="388"/>
 									<ExtendedTooltip name="ПоДаннымОрганизацииДебетРасширеннаяПодсказка" id="389"/>
-									<Events>
-										<Event name="OnChange">ПоДаннымОрганизацииДебетПриИзменении</Event>
-									</Events>
 								</InputField>
 								<InputField name="ПоДаннымОрганизацииКредит" id="390">
 									<DataPath>Объект.ПоДаннымОрганизации.СуммаКт</DataPath>
@@ -465,9 +472,6 @@
 									<HorizontalStretch>false</HorizontalStretch>
 									<ContextMenu name="ПоДаннымОрганизацииКредитКонтекстноеМеню" id="391"/>
 									<ExtendedTooltip name="ПоДаннымОрганизацииКредитРасширеннаяПодсказка" id="392"/>
-									<Events>
-										<Event name="OnChange">ПоДаннымОрганизацииКредитПриИзменении</Event>
-									</Events>
 								</InputField>
 							</ChildItems>
 						</Table>
@@ -779,30 +783,6 @@
 					<TitleFont ref="sys:DefaultGUIFont" kind="WindowsFont"/>
 					<ExtendedTooltip name="СтраницаДополнительноРасширеннаяПодсказка" id="107"/>
 					<ChildItems>
-						<UsualGroup name="ПредставителиСторон" id="111">
-							<Title>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Представители сторон</v8:content>
-								</v8:item>
-							</Title>
-							<TitleFont ref="style:NormalTextFont" kind="StyleItem"/>
-							<Group>Vertical</Group>
-							<Representation>None</Representation>
-							<ExtendedTooltip name="ПредставителиСторонРасширеннаяПодсказка" id="112"/>
-							<ChildItems>
-								<InputField name="ПредставительОрганизации" id="447">
-									<DataPath>Объект.ПредставительОрганизации</DataPath>
-									<ContextMenu name="ПредставительОрганизацииКонтекстноеМеню" id="448"/>
-									<ExtendedTooltip name="ПредставительОрганизацииРасширеннаяПодсказка" id="449"/>
-								</InputField>
-								<InputField name="ПредставительКонтрагента" id="450">
-									<DataPath>Объект.ПредставительКонтрагента</DataPath>
-									<ContextMenu name="ПредставительКонтрагентаКонтекстноеМеню" id="451"/>
-									<ExtendedTooltip name="ПредставительКонтрагентаРасширеннаяПодсказка" id="452"/>
-								</InputField>
-							</ChildItems>
-						</UsualGroup>
 						<UsualGroup name="ДополнительнаяАналитика" id="453">
 							<Title>
 								<v8:item>
@@ -870,6 +850,15 @@
 								</UsualGroup>
 							</ChildItems>
 						</UsualGroup>
+						<InputField name="Разногласие" id="648">
+							<DataPath>Объект.Разногласие</DataPath>
+							<MultiLine>true</MultiLine>
+							<ContextMenu name="РазногласиеКонтекстноеМеню" id="649"/>
+							<ExtendedTooltip name="РазногласиеРасширеннаяПодсказка" id="650"/>
+							<Events>
+								<Event name="OnChange">РазногласиеПриИзменении</Event>
+							</Events>
+						</InputField>
 						<UsualGroup name="ГруппаИнформация" id="513">
 							<Title>
 								<v8:item>

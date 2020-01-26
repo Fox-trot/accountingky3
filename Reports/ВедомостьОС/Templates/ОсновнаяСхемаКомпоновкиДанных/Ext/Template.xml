@@ -200,10 +200,16 @@
 		<field xsi:type="DataSetFieldField">
 			<dataPath>ОсновноеСредство</dataPath>
 			<field>ОсновноеСредство</field>
+			<valueType>
+				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:CatalogRef.ОсновныеСредства</v8:Type>
+			</valueType>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>Подразделение</dataPath>
 			<field>Подразделение</field>
+			<valueType>
+				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:CatalogRef.ПодразделенияОрганизаций</v8:Type>
+			</valueType>
 			<inputParameters>
 				<dcscor:item>
 					<dcscor:parameter>СвязиПараметровВыбора</dcscor:parameter>
@@ -217,17 +223,27 @@
 				</dcscor:item>
 			</inputParameters>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>МОЛ</dataPath>
+			<field>МОЛ</field>
+			<valueType>
+				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:CatalogRef.ФизическиеЛица</v8:Type>
+			</valueType>
+		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ
 	МестонахождениеОССрезПоследних.ОсновноеСредство КАК ОсновноеСредство,
-	МестонахождениеОССрезПоследних.Подразделение КАК Подразделение
+	МестонахождениеОССрезПоследних.Подразделение КАК Подразделение,
+	МестонахождениеОССрезПоследних.МОЛ КАК МОЛ
 {ВЫБРАТЬ
 	ОсновноеСредство.*,
-	Подразделение.*}
+	Подразделение.*,
+	МОЛ.*}
 ИЗ
-	РегистрСведений.МестонахождениеОС.СрезПоследних(, ) КАК МестонахождениеОССрезПоследних
+	РегистрСведений.МестонахождениеОС.СрезПоследних({(&amp;Период)}, ) КАК МестонахождениеОССрезПоследних
 {ГДЕ
-	МестонахождениеОССрезПоследних.Подразделение.*}</query>
+	МестонахождениеОССрезПоследних.Подразделение.*,
+	МестонахождениеОССрезПоследних.МОЛ.*}</query>
 		<autoFillFields>false</autoFillFields>
 	</dataSet>
 	<dataSetLink>
@@ -235,7 +251,7 @@
 		<destinationDataSet>МестонахождениеОС</destinationDataSet>
 		<sourceExpression>ОсновноеСредство</sourceExpression>
 		<destinationExpression>ОсновноеСредство</destinationExpression>
-		<parameter>КонецПериода</parameter>
+		<parameter>Период</parameter>
 		<parameterListAllowed>false</parameterListAllowed>
 	</dataSetLink>
 	<totalField>
