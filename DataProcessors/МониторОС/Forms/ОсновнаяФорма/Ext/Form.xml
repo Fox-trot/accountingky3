@@ -94,6 +94,11 @@
 				</Title>
 				<ExtendedTooltip name="ГруппаНалогНаИмуществоСсылкиРасширеннаяПодсказка" id="1976"/>
 				<ChildItems>
+					<Button name="ФормаОткрытьСправочникГруппыИмущества" id="3374">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.ОткрытьСправочникГруппыИмущества</CommandName>
+						<ExtendedTooltip name="ФормаОткрытьСправочникГруппыИмуществаРасширеннаяПодсказка" id="3375"/>
+					</Button>
 					<Button name="ФормаОткрытьРегистрСтавкиНалогаНаИмущество" id="1977">
 						<Type>CommandBarButton</Type>
 						<CommandName>Form.Command.ОткрытьРегистрСтавкиНалогаНаИмущество</CommandName>
@@ -145,6 +150,7 @@
 	</AutoCommandBar>
 	<Events>
 		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="BeforeClose">ПередЗакрытием</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 	</Events>
 	<ChildItems>
@@ -1073,6 +1079,7 @@
 						</v8:item>
 					</Title>
 					<Group>Horizontal</Group>
+					<TitleDataPath>СуммаНалогаНаИмущество</TitleDataPath>
 					<ExtendedTooltip name="СтраницаНалогНаИмуществоРасширеннаяПодсказка" id="447"/>
 					<ChildItems>
 						<Pages name="СтраницыНИ" id="1861">
@@ -1092,10 +1099,12 @@
 										</v8:item>
 									</Title>
 									<Group>AlwaysHorizontal</Group>
+									<TitleDataPath>Объект.Транспорт.TotalСуммаНалога</TitleDataPath>
 									<ExtendedTooltip name="СтраницаТранспортРасширеннаяПодсказка" id="1864"/>
 									<ChildItems>
 										<Table name="СписокОСТранспорт" id="1867">
 											<Representation>List</Representation>
+											<CommandBarLocation>None</CommandBarLocation>
 											<AutoInsertNewRow>true</AutoInsertNewRow>
 											<EnableStartDrag>true</EnableStartDrag>
 											<EnableDrag>true</EnableDrag>
@@ -1155,76 +1164,173 @@
 													<ContextMenu name="СписокОСТранспортОсновноеСредствоКонтекстноеМеню" id="1881"/>
 													<ExtendedTooltip name="СписокОСТранспортОсновноеСредствоРасширеннаяПодсказка" id="1882"/>
 												</InputField>
+												<InputField name="СписокОСТранспортСуммаНалога" id="3406">
+													<DataPath>СписокОСТранспорт.СуммаНалога</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<Width>10</Width>
+													<ContextMenu name="СписокОСТранспортСуммаНалогаКонтекстноеМеню" id="3407"/>
+													<ExtendedTooltip name="СписокОСТранспортСуммаНалогаРасширеннаяПодсказка" id="3408"/>
+												</InputField>
+												<InputField name="СписокОСТранспортБалансоваяСтоимость" id="3409">
+													<DataPath>СписокОСТранспорт.БалансоваяСтоимость</DataPath>
+													<Title>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Стоимость</v8:content>
+														</v8:item>
+													</Title>
+													<EditMode>EnterOnInput</EditMode>
+													<Width>10</Width>
+													<ContextMenu name="СписокОСТранспортБалансоваяСтоимостьКонтекстноеМеню" id="3410"/>
+													<ExtendedTooltip name="СписокОСТранспортБалансоваяСтоимостьРасширеннаяПодсказка" id="3411"/>
+												</InputField>
+												<InputField name="СписокОСТранспортОбъемДвигателя" id="3421">
+													<DataPath>СписокОСТранспорт.ОбъемДвигателя</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<Width>10</Width>
+													<ContextMenu name="СписокОСТранспортОбъемДвигателяКонтекстноеМеню" id="3422"/>
+													<ExtendedTooltip name="СписокОСТранспортОбъемДвигателяРасширеннаяПодсказка" id="3423"/>
+												</InputField>
+												<InputField name="СписокОСТранспортДатаВводаВЭксплуатацию" id="3412">
+													<DataPath>СписокОСТранспорт.ДатаВводаВЭксплуатацию</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="СписокОСТранспортДатаВводаВЭксплуатациюКонтекстноеМеню" id="3413"/>
+													<ExtendedTooltip name="СписокОСТранспортДатаВводаВЭксплуатациюРасширеннаяПодсказка" id="3414"/>
+												</InputField>
+												<InputField name="СписокОСТранспортДатаВыбытия" id="3415">
+													<DataPath>СписокОСТранспорт.ДатаВыбытия</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="СписокОСТранспортДатаВыбытияКонтекстноеМеню" id="3416"/>
+													<ExtendedTooltip name="СписокОСТранспортДатаВыбытияРасширеннаяПодсказка" id="3417"/>
+												</InputField>
+												<InputField name="СписокОСТранспортДатаНачисленияНалогаНаИмущество" id="3418">
+													<DataPath>СписокОСТранспорт.НачислениеНИСДаты</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="СписокОСТранспортДатаНачисленияНалогаНаИмуществоКонтекстноеМеню" id="3419"/>
+													<ExtendedTooltip name="СписокОСТранспортДатаНачисленияНалогаНаИмуществоРасширеннаяПодсказка" id="3420"/>
+												</InputField>
 											</ChildItems>
 										</Table>
-										<Table name="СписокПараметровТранспорт" id="1883">
-											<Representation>List</Representation>
-											<AutoInsertNewRow>true</AutoInsertNewRow>
-											<EnableStartDrag>true</EnableStartDrag>
-											<EnableDrag>true</EnableDrag>
-											<FileDragMode>AsFile</FileDragMode>
-											<DataPath>СписокПараметровТранспорт</DataPath>
+										<UsualGroup name="ГруппаПараметрыТранспорт" id="3358">
 											<Title>
 												<v8:item>
 													<v8:lang>ru</v8:lang>
-													<v8:content>Список параметров транспорт</v8:content>
+													<v8:content>Группа параметры транспорт</v8:content>
 												</v8:item>
 											</Title>
-											<CommandSet>
-												<ExcludedCommand>Add</ExcludedCommand>
-												<ExcludedCommand>Change</ExcludedCommand>
-												<ExcludedCommand>Copy</ExcludedCommand>
-												<ExcludedCommand>Delete</ExcludedCommand>
-												<ExcludedCommand>MoveDown</ExcludedCommand>
-												<ExcludedCommand>MoveUp</ExcludedCommand>
-											</CommandSet>
-											<RowFilter xsi:nil="true"/>
-											<ContextMenu name="СписокПараметровТранспортКонтекстноеМеню" id="1884"/>
-											<AutoCommandBar name="СписокПараметровТранспортКоманднаяПанель" id="1885"/>
-											<ExtendedTooltip name="СписокПараметровТранспортРасширеннаяПодсказка" id="1886"/>
-											<SearchStringAddition name="СписокПараметровТранспортСтрокаПоиска" id="1887">
-												<AdditionSource>
-													<Item>СписокПараметровТранспорт</Item>
-													<Type>SearchStringRepresentation</Type>
-												</AdditionSource>
-												<ContextMenu name="СписокПараметровТранспортСтрокаПоискаКонтекстноеМеню" id="1888"/>
-												<ExtendedTooltip name="СписокПараметровТранспортСтрокаПоискаРасширеннаяПодсказка" id="1889"/>
-											</SearchStringAddition>
-											<ViewStatusAddition name="СписокПараметровТранспортСостояниеПросмотра" id="1890">
-												<AdditionSource>
-													<Item>СписокПараметровТранспорт</Item>
-													<Type>ViewStatusRepresentation</Type>
-												</AdditionSource>
-												<ContextMenu name="СписокПараметровТранспортСостояниеПросмотраКонтекстноеМеню" id="1891"/>
-												<ExtendedTooltip name="СписокПараметровТранспортСостояниеПросмотраРасширеннаяПодсказка" id="1892"/>
-											</ViewStatusAddition>
-											<SearchControlAddition name="СписокПараметровТранспортУправлениеПоиском" id="1893">
-												<AdditionSource>
-													<Item>СписокПараметровТранспорт</Item>
-													<Type>SearchControl</Type>
-												</AdditionSource>
-												<ContextMenu name="СписокПараметровТранспортУправлениеПоискомКонтекстноеМеню" id="1894"/>
-												<ExtendedTooltip name="СписокПараметровТранспортУправлениеПоискомРасширеннаяПодсказка" id="1895"/>
-											</SearchControlAddition>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Группа параметры транспорт</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Group>Vertical</Group>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="ГруппаПараметрыТранспортРасширеннаяПодсказка" id="3359"/>
 											<ChildItems>
-												<InputField name="СписокПараметровТранспортПараметр" id="1896">
-													<DataPath>СписокПараметровТранспорт.Параметр</DataPath>
-													<ReadOnly>true</ReadOnly>
-													<EditMode>EnterOnInput</EditMode>
-													<ContextMenu name="СписокПараметровТранспортПараметрКонтекстноеМеню" id="1897"/>
-													<ExtendedTooltip name="СписокПараметровТранспортПараметрРасширеннаяПодсказка" id="1898"/>
-												</InputField>
-												<InputField name="СписокПараметровТранспортЗначение" id="1899">
-													<DataPath>СписокПараметровТранспорт.Значение</DataPath>
-													<ReadOnly>true</ReadOnly>
-													<EditMode>EnterOnInput</EditMode>
-													<ContextMenu name="СписокПараметровТранспортЗначениеКонтекстноеМеню" id="1900"/>
-													<ExtendedTooltip name="СписокПараметровТранспортЗначениеРасширеннаяПодсказка" id="1901"/>
-												</InputField>
+												<Table name="СписокПараметровТранспорт" id="1883">
+													<Representation>List</Representation>
+													<CommandBarLocation>None</CommandBarLocation>
+													<AutoInsertNewRow>true</AutoInsertNewRow>
+													<EnableStartDrag>true</EnableStartDrag>
+													<EnableDrag>true</EnableDrag>
+													<FileDragMode>AsFile</FileDragMode>
+													<DataPath>СписокПараметровТранспорт</DataPath>
+													<Title>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Список параметров транспорт</v8:content>
+														</v8:item>
+													</Title>
+													<CommandSet>
+														<ExcludedCommand>Add</ExcludedCommand>
+														<ExcludedCommand>Change</ExcludedCommand>
+														<ExcludedCommand>Copy</ExcludedCommand>
+														<ExcludedCommand>Delete</ExcludedCommand>
+														<ExcludedCommand>MoveDown</ExcludedCommand>
+														<ExcludedCommand>MoveUp</ExcludedCommand>
+													</CommandSet>
+													<RowFilter xsi:nil="true"/>
+													<ContextMenu name="СписокПараметровТранспортКонтекстноеМеню" id="1884"/>
+													<AutoCommandBar name="СписокПараметровТранспортКоманднаяПанель" id="1885"/>
+													<ExtendedTooltip name="СписокПараметровТранспортРасширеннаяПодсказка" id="1886"/>
+													<SearchStringAddition name="СписокПараметровТранспортСтрокаПоиска" id="1887">
+														<AdditionSource>
+															<Item>СписокПараметровТранспорт</Item>
+															<Type>SearchStringRepresentation</Type>
+														</AdditionSource>
+														<ContextMenu name="СписокПараметровТранспортСтрокаПоискаКонтекстноеМеню" id="1888"/>
+														<ExtendedTooltip name="СписокПараметровТранспортСтрокаПоискаРасширеннаяПодсказка" id="1889"/>
+													</SearchStringAddition>
+													<ViewStatusAddition name="СписокПараметровТранспортСостояниеПросмотра" id="1890">
+														<AdditionSource>
+															<Item>СписокПараметровТранспорт</Item>
+															<Type>ViewStatusRepresentation</Type>
+														</AdditionSource>
+														<ContextMenu name="СписокПараметровТранспортСостояниеПросмотраКонтекстноеМеню" id="1891"/>
+														<ExtendedTooltip name="СписокПараметровТранспортСостояниеПросмотраРасширеннаяПодсказка" id="1892"/>
+													</ViewStatusAddition>
+													<SearchControlAddition name="СписокПараметровТранспортУправлениеПоиском" id="1893">
+														<AdditionSource>
+															<Item>СписокПараметровТранспорт</Item>
+															<Type>SearchControl</Type>
+														</AdditionSource>
+														<ContextMenu name="СписокПараметровТранспортУправлениеПоискомКонтекстноеМеню" id="1894"/>
+														<ExtendedTooltip name="СписокПараметровТранспортУправлениеПоискомРасширеннаяПодсказка" id="1895"/>
+													</SearchControlAddition>
+													<ChildItems>
+														<InputField name="СписокПараметровТранспортПараметр" id="1896">
+															<DataPath>СписокПараметровТранспорт.Параметр</DataPath>
+															<ReadOnly>true</ReadOnly>
+															<EditMode>EnterOnInput</EditMode>
+															<ContextMenu name="СписокПараметровТранспортПараметрКонтекстноеМеню" id="1897"/>
+															<ExtendedTooltip name="СписокПараметровТранспортПараметрРасширеннаяПодсказка" id="1898"/>
+														</InputField>
+														<InputField name="СписокПараметровТранспортЗначение" id="1899">
+															<DataPath>СписокПараметровТранспорт.Значение</DataPath>
+															<ReadOnly>true</ReadOnly>
+															<EditMode>EnterOnInput</EditMode>
+															<ContextMenu name="СписокПараметровТранспортЗначениеКонтекстноеМеню" id="1900"/>
+															<ExtendedTooltip name="СписокПараметровТранспортЗначениеРасширеннаяПодсказка" id="1901"/>
+														</InputField>
+													</ChildItems>
+												</Table>
+												<LabelDecoration name="ДекорацияСуммаНалогаКатегорияА" id="3360">
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Сумма налога = Объем двигателя * Ставка за 1 куб.см 	(для категории А)</v8:content>
+														</v8:item>
+													</Title>
+													<ContextMenu name="ДекорацияСуммаНалогаКатегорияАКонтекстноеМеню" id="3361"/>
+													<ExtendedTooltip name="ДекорацияСуммаНалогаКатегорияАРасширеннаяПодсказка" id="3362"/>
+												</LabelDecoration>
+												<LabelDecoration name="ДекорацияСуммаНалогаКатегорияБиВ" id="3363">
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Сумма налога = Балансовая стоимость*0,5% 		(для категорий Б и В)</v8:content>
+														</v8:item>
+													</Title>
+													<ContextMenu name="ДекорацияСуммаНалогаКатегорияБиВКонтекстноеМеню" id="3364"/>
+													<ExtendedTooltip name="ДекорацияСуммаНалогаКатегорияБиВРасширеннаяПодсказка" id="3365"/>
+												</LabelDecoration>
+												<LabelDecoration name="ДекорацияСтавка" id="3403">
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Ставка - из справочника "Виды траспорта"</v8:content>
+														</v8:item>
+													</Title>
+													<ContextMenu name="ДекорацияСтавкаКонтекстноеМеню" id="3404"/>
+													<ExtendedTooltip name="ДекорацияСтавкаРасширеннаяПодсказка" id="3405"/>
+												</LabelDecoration>
 											</ChildItems>
-										</Table>
+										</UsualGroup>
 										<Table name="СписокДокументовТранспорт" id="1902">
 											<Representation>List</Representation>
+											<CommandBarLocation>None</CommandBarLocation>
 											<AutoInsertNewRow>true</AutoInsertNewRow>
 											<EnableStartDrag>true</EnableStartDrag>
 											<EnableDrag>true</EnableDrag>
@@ -1301,10 +1407,12 @@
 										</v8:item>
 									</Title>
 									<Group>AlwaysHorizontal</Group>
+									<TitleDataPath>Объект.Недвижимость.TotalСуммаНалога</TitleDataPath>
 									<ExtendedTooltip name="СтраницаНедвижимостьРасширеннаяПодсказка" id="1866"/>
 									<ChildItems>
 										<Table name="СписокОСНедвижимость" id="1918">
 											<Representation>List</Representation>
+											<CommandBarLocation>None</CommandBarLocation>
 											<AutoInsertNewRow>true</AutoInsertNewRow>
 											<EnableStartDrag>true</EnableStartDrag>
 											<EnableDrag>true</EnableDrag>
@@ -1364,76 +1472,160 @@
 													<ContextMenu name="СписокОСНедвижимостьОсновноеСредствоКонтекстноеМеню" id="1932"/>
 													<ExtendedTooltip name="СписокОСНедвижимостьОсновноеСредствоРасширеннаяПодсказка" id="1933"/>
 												</InputField>
+												<InputField name="СписокОСНедвижимостьСуммаНалога" id="3424">
+													<DataPath>СписокОСНедвижимость.СуммаНалога</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<Width>10</Width>
+													<ContextMenu name="СписокОСНедвижимостьСуммаНалогаКонтекстноеМеню" id="3425"/>
+													<ExtendedTooltip name="СписокОСНедвижимостьСуммаНалогаРасширеннаяПодсказка" id="3426"/>
+												</InputField>
+												<InputField name="СписокОСНедвижимостьСтоимостьНУ" id="3427">
+													<DataPath>СписокОСНедвижимость.СтоимостьНУ</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<Width>10</Width>
+													<ContextMenu name="СписокОСНедвижимостьСтоимостьНУКонтекстноеМеню" id="3428"/>
+													<ExtendedTooltip name="СписокОСНедвижимостьСтоимостьНУРасширеннаяПодсказка" id="3429"/>
+												</InputField>
+												<InputField name="СписокОСНедвижимостьДатаВводаВЭксплуатацию" id="3430">
+													<DataPath>СписокОСНедвижимость.ДатаВводаВЭксплуатацию</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="СписокОСНедвижимостьДатаВводаВЭксплуатациюКонтекстноеМеню" id="3431"/>
+													<ExtendedTooltip name="СписокОСНедвижимостьДатаВводаВЭксплуатациюРасширеннаяПодсказка" id="3432"/>
+												</InputField>
+												<InputField name="СписокОСНедвижимостьДатаВыбытия" id="3433">
+													<DataPath>СписокОСНедвижимость.ДатаВыбытия</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="СписокОСНедвижимостьДатаВыбытияКонтекстноеМеню" id="3434"/>
+													<ExtendedTooltip name="СписокОСНедвижимостьДатаВыбытияРасширеннаяПодсказка" id="3435"/>
+												</InputField>
+												<InputField name="СписокОСНедвижимостьДатаНачисленияНалогаНаИмущество" id="3436">
+													<DataPath>СписокОСНедвижимость.ДатаНачисленияНалогаНаИмущество</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="СписокОСНедвижимостьДатаНачисленияНалогаНаИмуществоКонтекстноеМеню" id="3437"/>
+													<ExtendedTooltip name="СписокОСНедвижимостьДатаНачисленияНалогаНаИмуществоРасширеннаяПодсказка" id="3438"/>
+												</InputField>
 											</ChildItems>
 										</Table>
-										<Table name="СписокПараметровНедвижимость" id="1934">
-											<Representation>List</Representation>
-											<AutoInsertNewRow>true</AutoInsertNewRow>
-											<EnableStartDrag>true</EnableStartDrag>
-											<EnableDrag>true</EnableDrag>
-											<FileDragMode>AsFile</FileDragMode>
-											<DataPath>СписокПараметровНедвижимость</DataPath>
+										<UsualGroup name="ГруппаПараметрыНедвижимость" id="3366">
 											<Title>
 												<v8:item>
 													<v8:lang>ru</v8:lang>
-													<v8:content>Список параметров недвижимость</v8:content>
+													<v8:content>Группа параметры недвижимость</v8:content>
 												</v8:item>
 											</Title>
-											<CommandSet>
-												<ExcludedCommand>Add</ExcludedCommand>
-												<ExcludedCommand>Change</ExcludedCommand>
-												<ExcludedCommand>Copy</ExcludedCommand>
-												<ExcludedCommand>Delete</ExcludedCommand>
-												<ExcludedCommand>MoveDown</ExcludedCommand>
-												<ExcludedCommand>MoveUp</ExcludedCommand>
-											</CommandSet>
-											<RowFilter xsi:nil="true"/>
-											<ContextMenu name="СписокПараметровНедвижимостьКонтекстноеМеню" id="1935"/>
-											<AutoCommandBar name="СписокПараметровНедвижимостьКоманднаяПанель" id="1936"/>
-											<ExtendedTooltip name="СписокПараметровНедвижимостьРасширеннаяПодсказка" id="1937"/>
-											<SearchStringAddition name="СписокПараметровНедвижимостьСтрокаПоиска" id="1938">
-												<AdditionSource>
-													<Item>СписокПараметровНедвижимость</Item>
-													<Type>SearchStringRepresentation</Type>
-												</AdditionSource>
-												<ContextMenu name="СписокПараметровНедвижимостьСтрокаПоискаКонтекстноеМеню" id="1939"/>
-												<ExtendedTooltip name="СписокПараметровНедвижимостьСтрокаПоискаРасширеннаяПодсказка" id="1940"/>
-											</SearchStringAddition>
-											<ViewStatusAddition name="СписокПараметровНедвижимостьСостояниеПросмотра" id="1941">
-												<AdditionSource>
-													<Item>СписокПараметровНедвижимость</Item>
-													<Type>ViewStatusRepresentation</Type>
-												</AdditionSource>
-												<ContextMenu name="СписокПараметровНедвижимостьСостояниеПросмотраКонтекстноеМеню" id="1942"/>
-												<ExtendedTooltip name="СписокПараметровНедвижимостьСостояниеПросмотраРасширеннаяПодсказка" id="1943"/>
-											</ViewStatusAddition>
-											<SearchControlAddition name="СписокПараметровНедвижимостьУправлениеПоиском" id="1944">
-												<AdditionSource>
-													<Item>СписокПараметровНедвижимость</Item>
-													<Type>SearchControl</Type>
-												</AdditionSource>
-												<ContextMenu name="СписокПараметровНедвижимостьУправлениеПоискомКонтекстноеМеню" id="1945"/>
-												<ExtendedTooltip name="СписокПараметровНедвижимостьУправлениеПоискомРасширеннаяПодсказка" id="1946"/>
-											</SearchControlAddition>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Группа параметры недвижимость</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Group>Vertical</Group>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="ГруппаПараметрыНедвижимостьРасширеннаяПодсказка" id="3367"/>
 											<ChildItems>
-												<InputField name="СписокПараметровНедвижимостьПараметр" id="1947">
-													<DataPath>СписокПараметровНедвижимость.Параметр</DataPath>
-													<ReadOnly>true</ReadOnly>
-													<EditMode>EnterOnInput</EditMode>
-													<ContextMenu name="СписокПараметровНедвижимостьПараметрКонтекстноеМеню" id="1948"/>
-													<ExtendedTooltip name="СписокПараметровНедвижимостьПараметрРасширеннаяПодсказка" id="1949"/>
-												</InputField>
-												<InputField name="СписокПараметровНедвижимостьЗначение" id="1950">
-													<DataPath>СписокПараметровНедвижимость.Значение</DataPath>
-													<ReadOnly>true</ReadOnly>
-													<EditMode>EnterOnInput</EditMode>
-													<ContextMenu name="СписокПараметровНедвижимостьЗначениеКонтекстноеМеню" id="1951"/>
-													<ExtendedTooltip name="СписокПараметровНедвижимостьЗначениеРасширеннаяПодсказка" id="1952"/>
-												</InputField>
+												<Table name="СписокПараметровНедвижимость" id="1934">
+													<Representation>List</Representation>
+													<CommandBarLocation>None</CommandBarLocation>
+													<AutoInsertNewRow>true</AutoInsertNewRow>
+													<EnableStartDrag>true</EnableStartDrag>
+													<EnableDrag>true</EnableDrag>
+													<FileDragMode>AsFile</FileDragMode>
+													<DataPath>СписокПараметровНедвижимость</DataPath>
+													<Title>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Список параметров недвижимость</v8:content>
+														</v8:item>
+													</Title>
+													<CommandSet>
+														<ExcludedCommand>Add</ExcludedCommand>
+														<ExcludedCommand>Change</ExcludedCommand>
+														<ExcludedCommand>Copy</ExcludedCommand>
+														<ExcludedCommand>Delete</ExcludedCommand>
+														<ExcludedCommand>MoveDown</ExcludedCommand>
+														<ExcludedCommand>MoveUp</ExcludedCommand>
+													</CommandSet>
+													<RowFilter xsi:nil="true"/>
+													<ContextMenu name="СписокПараметровНедвижимостьКонтекстноеМеню" id="1935"/>
+													<AutoCommandBar name="СписокПараметровНедвижимостьКоманднаяПанель" id="1936"/>
+													<ExtendedTooltip name="СписокПараметровНедвижимостьРасширеннаяПодсказка" id="1937"/>
+													<SearchStringAddition name="СписокПараметровНедвижимостьСтрокаПоиска" id="1938">
+														<AdditionSource>
+															<Item>СписокПараметровНедвижимость</Item>
+															<Type>SearchStringRepresentation</Type>
+														</AdditionSource>
+														<ContextMenu name="СписокПараметровНедвижимостьСтрокаПоискаКонтекстноеМеню" id="1939"/>
+														<ExtendedTooltip name="СписокПараметровНедвижимостьСтрокаПоискаРасширеннаяПодсказка" id="1940"/>
+													</SearchStringAddition>
+													<ViewStatusAddition name="СписокПараметровНедвижимостьСостояниеПросмотра" id="1941">
+														<AdditionSource>
+															<Item>СписокПараметровНедвижимость</Item>
+															<Type>ViewStatusRepresentation</Type>
+														</AdditionSource>
+														<ContextMenu name="СписокПараметровНедвижимостьСостояниеПросмотраКонтекстноеМеню" id="1942"/>
+														<ExtendedTooltip name="СписокПараметровНедвижимостьСостояниеПросмотраРасширеннаяПодсказка" id="1943"/>
+													</ViewStatusAddition>
+													<SearchControlAddition name="СписокПараметровНедвижимостьУправлениеПоиском" id="1944">
+														<AdditionSource>
+															<Item>СписокПараметровНедвижимость</Item>
+															<Type>SearchControl</Type>
+														</AdditionSource>
+														<ContextMenu name="СписокПараметровНедвижимостьУправлениеПоискомКонтекстноеМеню" id="1945"/>
+														<ExtendedTooltip name="СписокПараметровНедвижимостьУправлениеПоискомРасширеннаяПодсказка" id="1946"/>
+													</SearchControlAddition>
+													<ChildItems>
+														<InputField name="СписокПараметровНедвижимостьПараметр" id="1947">
+															<DataPath>СписокПараметровНедвижимость.Параметр</DataPath>
+															<ReadOnly>true</ReadOnly>
+															<EditMode>EnterOnInput</EditMode>
+															<ContextMenu name="СписокПараметровНедвижимостьПараметрКонтекстноеМеню" id="1948"/>
+															<ExtendedTooltip name="СписокПараметровНедвижимостьПараметрРасширеннаяПодсказка" id="1949"/>
+														</InputField>
+														<InputField name="СписокПараметровНедвижимостьЗначение" id="1950">
+															<DataPath>СписокПараметровНедвижимость.Значение</DataPath>
+															<ReadOnly>true</ReadOnly>
+															<EditMode>EnterOnInput</EditMode>
+															<ContextMenu name="СписокПараметровНедвижимостьЗначениеКонтекстноеМеню" id="1951"/>
+															<ExtendedTooltip name="СписокПараметровНедвижимостьЗначениеРасширеннаяПодсказка" id="1952"/>
+														</InputField>
+													</ChildItems>
+												</Table>
+												<LabelDecoration name="ДекорацияСуммаНалога" id="3368">
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Сумма налога (НИ) = Стоимость * Ставка/100</v8:content>
+														</v8:item>
+													</Title>
+													<ContextMenu name="ДекорацияСуммаНалогаКонтекстноеМеню" id="3369"/>
+													<ExtendedTooltip name="ДекорацияСуммаНалогаРасширеннаяПодсказка" id="3370"/>
+												</LabelDecoration>
+												<LabelDecoration name="ДекорацияСтоимость" id="3371">
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Стоимость = (Общая площадь* Оценочная стоимость*Кр*Кз*Ко)/12*количество месяцев эксплуатации</v8:content>
+														</v8:item>
+													</Title>
+													<ContextMenu name="ДекорацияСтоимостьКонтекстноеМеню" id="3372"/>
+													<ExtendedTooltip name="ДекорацияСтоимостьРасширеннаяПодсказка" id="3373"/>
+												</LabelDecoration>
+												<LabelDecoration name="ДекорацияОценочнаяСтомость" id="3400">
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Оценочная стомость - из справочника "Виды материалов стен"</v8:content>
+														</v8:item>
+													</Title>
+													<ContextMenu name="ДекорацияОценочнаяСтомостьКонтекстноеМеню" id="3401"/>
+													<ExtendedTooltip name="ДекорацияОценочнаяСтомостьРасширеннаяПодсказка" id="3402"/>
+												</LabelDecoration>
 											</ChildItems>
-										</Table>
+										</UsualGroup>
 										<Table name="СписокДокументовНедвижимость" id="1953">
 											<Representation>List</Representation>
+											<CommandBarLocation>None</CommandBarLocation>
 											<AutoInsertNewRow>true</AutoInsertNewRow>
 											<EnableStartDrag>true</EnableStartDrag>
 											<EnableDrag>true</EnableDrag>
@@ -1497,6 +1689,79 @@
 													<EditMode>EnterOnInput</EditMode>
 													<ContextMenu name="СписокДокументовНедвижимостьДатаКонтекстноеМеню" id="1970"/>
 													<ExtendedTooltip name="СписокДокументовНедвижимостьДатаРасширеннаяПодсказка" id="1971"/>
+												</InputField>
+											</ChildItems>
+										</Table>
+									</ChildItems>
+								</Page>
+								<Page name="СтраницаПроверки" id="3376">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Проверки</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Страница проверки</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ExtendedTooltip name="СтраницаПроверкиРасширеннаяПодсказка" id="3377"/>
+									<ChildItems>
+										<Table name="Проверки" id="3378">
+											<Representation>List</Representation>
+											<CommandBarLocation>None</CommandBarLocation>
+											<AutoInsertNewRow>true</AutoInsertNewRow>
+											<EnableStartDrag>true</EnableStartDrag>
+											<EnableDrag>true</EnableDrag>
+											<DataPath>Проверки</DataPath>
+											<RowFilter xsi:nil="true"/>
+											<ContextMenu name="ПроверкиКонтекстноеМеню" id="3379"/>
+											<AutoCommandBar name="ПроверкиКоманднаяПанель" id="3380"/>
+											<ExtendedTooltip name="ПроверкиРасширеннаяПодсказка" id="3381"/>
+											<SearchStringAddition name="ПроверкиСтрокаПоиска" id="3382">
+												<AdditionSource>
+													<Item>Проверки</Item>
+													<Type>SearchStringRepresentation</Type>
+												</AdditionSource>
+												<ContextMenu name="ПроверкиСтрокаПоискаКонтекстноеМеню" id="3383"/>
+												<ExtendedTooltip name="ПроверкиСтрокаПоискаРасширеннаяПодсказка" id="3384"/>
+											</SearchStringAddition>
+											<ViewStatusAddition name="ПроверкиСостояниеПросмотра" id="3385">
+												<AdditionSource>
+													<Item>Проверки</Item>
+													<Type>ViewStatusRepresentation</Type>
+												</AdditionSource>
+												<ContextMenu name="ПроверкиСостояниеПросмотраКонтекстноеМеню" id="3386"/>
+												<ExtendedTooltip name="ПроверкиСостояниеПросмотраРасширеннаяПодсказка" id="3387"/>
+											</ViewStatusAddition>
+											<SearchControlAddition name="ПроверкиУправлениеПоиском" id="3388">
+												<AdditionSource>
+													<Item>Проверки</Item>
+													<Type>SearchControl</Type>
+												</AdditionSource>
+												<ContextMenu name="ПроверкиУправлениеПоискомКонтекстноеМеню" id="3389"/>
+												<ExtendedTooltip name="ПроверкиУправлениеПоискомРасширеннаяПодсказка" id="3390"/>
+											</SearchControlAddition>
+											<ChildItems>
+												<InputField name="ПроверкиОсновноеСредство" id="3391">
+													<DataPath>Проверки.ОсновноеСредство</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="ПроверкиОсновноеСредствоКонтекстноеМеню" id="3392"/>
+													<ExtendedTooltip name="ПроверкиОсновноеСредствоРасширеннаяПодсказка" id="3393"/>
+												</InputField>
+												<InputField name="ПроверкиПараметр" id="3394">
+													<DataPath>Проверки.Параметр</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="ПроверкиПараметрКонтекстноеМеню" id="3395"/>
+													<ExtendedTooltip name="ПроверкиПараметрРасширеннаяПодсказка" id="3396"/>
+												</InputField>
+												<InputField name="ПроверкиВидОшибки" id="3397">
+													<DataPath>Проверки.ВидОшибки</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="ПроверкиВидОшибкиКонтекстноеМеню" id="3398"/>
+													<ExtendedTooltip name="ПроверкиВидОшибкиРасширеннаяПодсказка" id="3399"/>
 												</InputField>
 											</ChildItems>
 										</Table>
@@ -2069,7 +2334,7 @@
 													<ExtendedTooltip name="ПараметрыУчетаОСОбъемПродукцииРасширеннаяПодсказка" id="2853"/>
 												</LabelField>
 												<LabelField name="ПараметрыУчетаОСКоэффициентАмортизации" id="2854">
-													<DataPath>ПараметрыУчетаОС.КоэффициентАмортизации</DataPath>
+													<DataPath>~ПараметрыУчетаОС.КоэффициентАмортизации</DataPath>
 													<ContextMenu name="ПараметрыУчетаОСКоэффициентАмортизацииКонтекстноеМеню" id="2855"/>
 													<ExtendedTooltip name="ПараметрыУчетаОСКоэффициентАмортизацииРасширеннаяПодсказка" id="2856"/>
 												</LabelField>
@@ -5063,6 +5328,96 @@
 						<v8:Type>cfg:CatalogRef.ОсновныеСредства</v8:Type>
 					</Type>
 				</Column>
+				<Column name="СуммаНалога" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сумма налога</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>15</v8:Digits>
+							<v8:FractionDigits>2</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="БалансоваяСтоимость" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Балансовая стоимость</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>15</v8:Digits>
+							<v8:FractionDigits>2</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="ДатаВводаВЭксплуатацию" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата ввода в эксплуатацию</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:dateTime</v8:Type>
+						<v8:DateQualifiers>
+							<v8:DateFractions>Date</v8:DateFractions>
+						</v8:DateQualifiers>
+					</Type>
+				</Column>
+				<Column name="ДатаВыбытия" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата выбытия</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:dateTime</v8:Type>
+						<v8:DateQualifiers>
+							<v8:DateFractions>Date</v8:DateFractions>
+						</v8:DateQualifiers>
+					</Type>
+				</Column>
+				<Column name="НачислениеНИСДаты" id="6">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Начисление НИ с даты</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:dateTime</v8:Type>
+						<v8:DateQualifiers>
+							<v8:DateFractions>Date</v8:DateFractions>
+						</v8:DateQualifiers>
+					</Type>
+				</Column>
+				<Column name="ОбъемДвигателя" id="7">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Объем двигателя</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>10</v8:Digits>
+							<v8:FractionDigits>2</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
 			</Columns>
 		</Attribute>
 		<Attribute name="СписокПараметровТранспорт" id="10">
@@ -5214,6 +5569,80 @@
 					</Title>
 					<Type>
 						<v8:Type>cfg:CatalogRef.ОсновныеСредства</v8:Type>
+					</Type>
+				</Column>
+				<Column name="СуммаНалога" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сумма налога</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>15</v8:Digits>
+							<v8:FractionDigits>2</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="СтоимостьНУ" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Стоимость НУ</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>15</v8:Digits>
+							<v8:FractionDigits>2</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="ДатаВводаВЭксплуатацию" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата ввода в эксплуатацию</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:dateTime</v8:Type>
+						<v8:DateQualifiers>
+							<v8:DateFractions>Date</v8:DateFractions>
+						</v8:DateQualifiers>
+					</Type>
+				</Column>
+				<Column name="ДатаВыбытия" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата выбытия</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:dateTime</v8:Type>
+						<v8:DateQualifiers>
+							<v8:DateFractions>Date</v8:DateFractions>
+						</v8:DateQualifiers>
+					</Type>
+				</Column>
+				<Column name="ДатаНачисленияНалогаНаИмущество" id="6">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Начисление НИ с даты</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:dateTime</v8:Type>
+						<v8:DateQualifiers>
+							<v8:DateFractions>Date</v8:DateFractions>
+						</v8:DateQualifiers>
 					</Type>
 				</Column>
 			</Columns>
@@ -5798,6 +6227,102 @@
 				</ListSettings>
 			</Settings>
 		</Attribute>
+		<Attribute name="Проверки" id="23">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Проверки</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="ОсновноеСредство" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Основное средство</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.ОсновныеСредства</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Параметр" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Параметр</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="ВидОшибки" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Вид ошибки</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="ИмяПредыдущейСтраницы" id="41">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Имя предыдущей страницы</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ДатаРасчетаНИИзменилась" id="42">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дата расчета НИИзменилась</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="СуммаНалогаНаИмущество" id="43">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сумма налога на имущество</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>15</v8:Digits>
+					<v8:FractionDigits>2</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
 	</Attributes>
 	<Commands>
 		<Command name="ПерепровестиДокументы" id="2">
@@ -6162,6 +6687,21 @@
 				</v8:item>
 			</ToolTip>
 			<Action>ОсновноеСредство</Action>
+		</Command>
+		<Command name="ОткрытьСправочникГруппыИмущества" id="25">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группы имущества</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть справочник группы имущества</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ОткрытьСправочникГруппыИмущества</Action>
 		</Command>
 	</Commands>
 </Form>

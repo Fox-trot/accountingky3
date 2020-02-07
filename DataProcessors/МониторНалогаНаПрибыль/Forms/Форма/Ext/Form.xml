@@ -17,6 +17,7 @@
 		</ChildItems>
 	</AutoCommandBar>
 	<Events>
+		<Event name="BeforeClose">ПередЗакрытием</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 	</Events>
 	<ChildItems>
@@ -1408,6 +1409,35 @@
 																			<EditMode>EnterOnInput</EditMode>
 																			<ContextMenu name="НалоговаяАмортизацияЗакрытиеМесяцаВыбытиеПрошлыйГодКонтекстноеМеню" id="582"/>
 																			<ExtendedTooltip name="НалоговаяАмортизацияЗакрытиеМесяцаВыбытиеПрошлыйГодРасширеннаяПодсказка" id="583"/>
+																		</InputField>
+																	</ChildItems>
+																</ColumnGroup>
+																<ColumnGroup name="ГруппаБудущийГод" id="1489">
+																	<Title>
+																		<v8:item>
+																			<v8:lang>ru</v8:lang>
+																			<v8:content>Группа будущий год</v8:content>
+																		</v8:item>
+																	</Title>
+																	<ToolTip>
+																		<v8:item>
+																			<v8:lang>ru</v8:lang>
+																			<v8:content>Группа будущий год</v8:content>
+																		</v8:item>
+																	</ToolTip>
+																	<ExtendedTooltip name="ГруппаБудущийГодРасширеннаяПодсказка" id="1490"/>
+																	<ChildItems>
+																		<InputField name="НалоговаяАмортизацияЗакрытиеМесяцаПоступлениеБудущийГод" id="1491">
+																			<DataPath>Объект.НалоговаяАмортизация.ПоступлениеБудущийГод</DataPath>
+																			<EditMode>EnterOnInput</EditMode>
+																			<ContextMenu name="НалоговаяАмортизацияЗакрытиеМесяцаПоступлениеБудущийГодКонтекстноеМеню" id="1492"/>
+																			<ExtendedTooltip name="НалоговаяАмортизацияЗакрытиеМесяцаПоступлениеБудущийГодРасширеннаяПодсказка" id="1493"/>
+																		</InputField>
+																		<InputField name="НалоговаяАмортизацияЗакрытиеМесяцаВыбытиеБудущийГод" id="1494">
+																			<DataPath>Объект.НалоговаяАмортизация.ВыбытиеБудущийГод</DataPath>
+																			<EditMode>EnterOnInput</EditMode>
+																			<ContextMenu name="НалоговаяАмортизацияЗакрытиеМесяцаВыбытиеБудущийГодКонтекстноеМеню" id="1495"/>
+																			<ExtendedTooltip name="НалоговаяАмортизацияЗакрытиеМесяцаВыбытиеБудущийГодРасширеннаяПодсказка" id="1496"/>
 																		</InputField>
 																	</ChildItems>
 																</ColumnGroup>
@@ -3262,6 +3292,8 @@
 													<ChildItems>
 														<Table name="НалоговаяВыверкаИтоги11" id="1135">
 															<Height>3</Height>
+															<AutoMaxHeight>false</AutoMaxHeight>
+															<Footer>true</Footer>
 															<AutoInsertNewRow>true</AutoInsertNewRow>
 															<EnableStartDrag>true</EnableStartDrag>
 															<EnableDrag>true</EnableDrag>
@@ -3324,25 +3356,41 @@
 																	<ContextMenu name="НалоговаяВыверкаИтоги11НомерСтрокиКонтекстноеМеню" id="1149"/>
 																	<ExtendedTooltip name="НалоговаяВыверкаИтоги11НомерСтрокиРасширеннаяПодсказка" id="1150"/>
 																</LabelField>
-																<InputField name="НалоговаяВыверкаИтоги11Счет" id="1151">
-																	<DataPath>Объект.НалоговаяВыверкаИтоги11.Счет</DataPath>
+																<InputField name="НалоговаяВыверкаИтоги11СчетДт" id="1474">
+																	<DataPath>Объект.НалоговаяВыверкаИтоги11.СчетДт</DataPath>
 																	<EditMode>EnterOnInput</EditMode>
 																	<Width>6</Width>
-																	<HorizontalStretch>false</HorizontalStretch>
-																	<ContextMenu name="НалоговаяВыверкаИтоги11СчетКонтекстноеМеню" id="1152"/>
-																	<ExtendedTooltip name="НалоговаяВыверкаИтоги11СчетРасширеннаяПодсказка" id="1153"/>
+																	<ContextMenu name="НалоговаяВыверкаИтоги11СчетДтКонтекстноеМеню" id="1475"/>
+																	<ExtendedTooltip name="НалоговаяВыверкаИтоги11СчетДтРасширеннаяПодсказка" id="1476"/>
 																</InputField>
-																<LabelField name="НалоговаяВыверкаИтоги11СчетНаименование" id="1185">
-																	<DataPath>Объект.НалоговаяВыверкаИтоги11.Счет.Description</DataPath>
+																<InputField name="НалоговаяВыверкаИтоги11СчетКт" id="1471">
+																	<DataPath>Объект.НалоговаяВыверкаИтоги11.СчетКт</DataPath>
 																	<EditMode>EnterOnInput</EditMode>
-																	<ContextMenu name="НалоговаяВыверкаИтоги11СчетНаименованиеКонтекстноеМеню" id="1186"/>
-																	<ExtendedTooltip name="НалоговаяВыверкаИтоги11СчетНаименованиеРасширеннаяПодсказка" id="1187"/>
+																	<Width>6</Width>
+																	<ContextMenu name="НалоговаяВыверкаИтоги11СчетКтКонтекстноеМеню" id="1472"/>
+																	<ExtendedTooltip name="НалоговаяВыверкаИтоги11СчетКтРасширеннаяПодсказка" id="1473"/>
+																</InputField>
+																<LabelField name="НалоговаяВыверкаИтоги11СчетКтНаименование" id="1185">
+																	<DataPath>Объект.НалоговаяВыверкаИтоги11.СчетКт.Description</DataPath>
+																	<EditMode>EnterOnInput</EditMode>
+																	<ContextMenu name="НалоговаяВыверкаИтоги11СчетКтНаименованиеКонтекстноеМеню" id="1186"/>
+																	<ExtendedTooltip name="НалоговаяВыверкаИтоги11СчетКтНаименованиеРасширеннаяПодсказка" id="1187"/>
 																</LabelField>
-																<InputField name="НалоговаяВыверкаИтоги11Сумма" id="1154">
+																<InputField name="НалоговаяВыверкаИтоги11СуммаОборотДт" id="1453">
 																	<DataPath>Объект.НалоговаяВыверкаИтоги11.Сумма</DataPath>
 																	<EditMode>EnterOnInput</EditMode>
-																	<ContextMenu name="НалоговаяВыверкаИтоги11СуммаКонтекстноеМеню" id="1155"/>
-																	<ExtendedTooltip name="НалоговаяВыверкаИтоги11СуммаРасширеннаяПодсказка" id="1156"/>
+																	<FooterDataPath>Объект.НалоговаяВыверкаИтоги11.TotalСумма</FooterDataPath>
+																	<Width>10</Width>
+																	<ContextMenu name="НалоговаяВыверкаИтоги11СуммаОборотДтКонтекстноеМеню" id="1454"/>
+																	<ExtendedTooltip name="НалоговаяВыверкаИтоги11СуммаОборотДтРасширеннаяПодсказка" id="1455"/>
+																</InputField>
+																<InputField name="НалоговаяВыверкаИтоги11СуммаОборотКт" id="1456">
+																	<DataPath>Объект.НалоговаяВыверкаИтоги11.СуммаУменьшение</DataPath>
+																	<EditMode>EnterOnInput</EditMode>
+																	<FooterDataPath>Объект.НалоговаяВыверкаИтоги11.TotalСуммаУменьшение</FooterDataPath>
+																	<Width>10</Width>
+																	<ContextMenu name="НалоговаяВыверкаИтоги11СуммаОборотКтКонтекстноеМеню" id="1457"/>
+																	<ExtendedTooltip name="НалоговаяВыверкаИтоги11СуммаОборотКтРасширеннаяПодсказка" id="1458"/>
 																</InputField>
 															</ChildItems>
 														</Table>
@@ -3389,13 +3437,19 @@
 																	<ContextMenu name="НалоговаяВыверка11НомерСтрокиКонтекстноеМеню" id="1171"/>
 																	<ExtendedTooltip name="НалоговаяВыверка11НомерСтрокиРасширеннаяПодсказка" id="1172"/>
 																</LabelField>
-																<InputField name="НалоговаяВыверка11Счет" id="1173">
-																	<DataPath>Объект.НалоговаяВыверка11.Счет</DataPath>
+																<InputField name="НалоговаяВыверка11СчетДт" id="1459">
+																	<DataPath>Объект.НалоговаяВыверка11.СчетДт</DataPath>
 																	<EditMode>EnterOnInput</EditMode>
 																	<Width>6</Width>
-																	<HorizontalStretch>false</HorizontalStretch>
-																	<ContextMenu name="НалоговаяВыверка11СчетКонтекстноеМеню" id="1174"/>
-																	<ExtendedTooltip name="НалоговаяВыверка11СчетРасширеннаяПодсказка" id="1175"/>
+																	<ContextMenu name="НалоговаяВыверка11СчетДтКонтекстноеМеню" id="1460"/>
+																	<ExtendedTooltip name="НалоговаяВыверка11СчетДтРасширеннаяПодсказка" id="1461"/>
+																</InputField>
+																<InputField name="НалоговаяВыверка11СчетКт" id="1462">
+																	<DataPath>Объект.НалоговаяВыверка11.СчетКт</DataPath>
+																	<EditMode>EnterOnInput</EditMode>
+																	<Width>6</Width>
+																	<ContextMenu name="НалоговаяВыверка11СчетКтКонтекстноеМеню" id="1463"/>
+																	<ExtendedTooltip name="НалоговаяВыверка11СчетКтРасширеннаяПодсказка" id="1464"/>
 																</InputField>
 																<InputField name="НалоговаяВыверка11ОсновноеСредство" id="1246">
 																	<DataPath>Объект.НалоговаяВыверка11.ОсновноеСредство</DataPath>
@@ -3409,11 +3463,19 @@
 																	<ContextMenu name="НалоговаяВыверка11ДокументКонтекстноеМеню" id="1177"/>
 																	<ExtendedTooltip name="НалоговаяВыверка11ДокументРасширеннаяПодсказка" id="1178"/>
 																</InputField>
-																<InputField name="НалоговаяВыверка11Сумма" id="1182">
+																<InputField name="НалоговаяВыверка11СуммаОборотДт" id="1465">
 																	<DataPath>Объект.НалоговаяВыверка11.Сумма</DataPath>
 																	<EditMode>EnterOnInput</EditMode>
-																	<ContextMenu name="НалоговаяВыверка11СуммаКонтекстноеМеню" id="1183"/>
-																	<ExtendedTooltip name="НалоговаяВыверка11СуммаРасширеннаяПодсказка" id="1184"/>
+																	<Width>10</Width>
+																	<ContextMenu name="НалоговаяВыверка11СуммаОборотДтКонтекстноеМеню" id="1466"/>
+																	<ExtendedTooltip name="НалоговаяВыверка11СуммаОборотДтРасширеннаяПодсказка" id="1467"/>
+																</InputField>
+																<InputField name="НалоговаяВыверка11СуммаОборотКт" id="1468">
+																	<DataPath>Объект.НалоговаяВыверка11.СуммаУменьшение</DataPath>
+																	<EditMode>EnterOnInput</EditMode>
+																	<Width>10</Width>
+																	<ContextMenu name="НалоговаяВыверка11СуммаОборотКтКонтекстноеМеню" id="1469"/>
+																	<ExtendedTooltip name="НалоговаяВыверка11СуммаОборотКтРасширеннаяПодсказка" id="1470"/>
 																</InputField>
 															</ChildItems>
 														</Table>
@@ -3436,6 +3498,7 @@
 													<ChildItems>
 														<Table name="НалоговаяВыверкаИтоги13" id="977">
 															<Height>3</Height>
+															<Footer>true</Footer>
 															<AutoInsertNewRow>true</AutoInsertNewRow>
 															<EnableStartDrag>true</EnableStartDrag>
 															<EnableDrag>true</EnableDrag>
@@ -3515,13 +3578,31 @@
 																<InputField name="НалоговаяВыверкаИтоги13Сумма" id="996">
 																	<DataPath>Объект.НалоговаяВыверкаИтоги13.Сумма</DataPath>
 																	<EditMode>EnterOnInput</EditMode>
+																	<Width>10</Width>
 																	<ContextMenu name="НалоговаяВыверкаИтоги13СуммаКонтекстноеМеню" id="997"/>
 																	<ExtendedTooltip name="НалоговаяВыверкаИтоги13СуммаРасширеннаяПодсказка" id="998"/>
+																</InputField>
+																<InputField name="НалоговаяВыверкаИтоги13Доходы" id="1477">
+																	<DataPath>Объект.НалоговаяВыверкаИтоги13.Доходы</DataPath>
+																	<EditMode>EnterOnInput</EditMode>
+																	<FooterDataPath>Объект.НалоговаяВыверкаИтоги13.TotalДоходы</FooterDataPath>
+																	<Width>10</Width>
+																	<ContextMenu name="НалоговаяВыверкаИтоги13ДоходыКонтекстноеМеню" id="1478"/>
+																	<ExtendedTooltip name="НалоговаяВыверкаИтоги13ДоходыРасширеннаяПодсказка" id="1479"/>
+																</InputField>
+																<InputField name="НалоговаяВыверкаИтоги13Расходы" id="1480">
+																	<DataPath>Объект.НалоговаяВыверкаИтоги13.Расходы</DataPath>
+																	<EditMode>EnterOnInput</EditMode>
+																	<FooterDataPath>Объект.НалоговаяВыверкаИтоги13.TotalРасходы</FooterDataPath>
+																	<Width>10</Width>
+																	<ContextMenu name="НалоговаяВыверкаИтоги13РасходыКонтекстноеМеню" id="1481"/>
+																	<ExtendedTooltip name="НалоговаяВыверкаИтоги13РасходыРасширеннаяПодсказка" id="1482"/>
 																</InputField>
 															</ChildItems>
 														</Table>
 														<Table name="НалоговаяВыверка13" id="267">
 															<CommandBarLocation>None</CommandBarLocation>
+															<Footer>true</Footer>
 															<AutoInsertNewRow>true</AutoInsertNewRow>
 															<EnableStartDrag>true</EnableStartDrag>
 															<EnableDrag>true</EnableDrag>
@@ -3597,6 +3678,22 @@
 																	<ContextMenu name="НалоговаяВыверка13СуммаКонтекстноеМеню" id="293"/>
 																	<ExtendedTooltip name="НалоговаяВыверка13СуммаРасширеннаяПодсказка" id="294"/>
 																</InputField>
+																<InputField name="НалоговаяВыверка13Доходы" id="1483">
+																	<DataPath>Объект.НалоговаяВыверка13.Доходы</DataPath>
+																	<EditMode>EnterOnInput</EditMode>
+																	<FooterDataPath>Объект.НалоговаяВыверка13.TotalДоходы</FooterDataPath>
+																	<Width>10</Width>
+																	<ContextMenu name="НалоговаяВыверка13ДоходыКонтекстноеМеню" id="1484"/>
+																	<ExtendedTooltip name="НалоговаяВыверка13ДоходыРасширеннаяПодсказка" id="1485"/>
+																</InputField>
+																<InputField name="НалоговаяВыверка13Расходы" id="1486">
+																	<DataPath>Объект.НалоговаяВыверка13.Расходы</DataPath>
+																	<EditMode>EnterOnInput</EditMode>
+																	<FooterDataPath>Объект.НалоговаяВыверка13.TotalРасходы</FooterDataPath>
+																	<Width>10</Width>
+																	<ContextMenu name="НалоговаяВыверка13РасходыКонтекстноеМеню" id="1487"/>
+																	<ExtendedTooltip name="НалоговаяВыверка13РасходыРасширеннаяПодсказка" id="1488"/>
+																</InputField>
 															</ChildItems>
 														</Table>
 													</ChildItems>
@@ -3618,6 +3715,7 @@
 													<ChildItems>
 														<Table name="НалоговаяВыверкаИтоги19" id="1252">
 															<Height>3</Height>
+															<Footer>true</Footer>
 															<AutoInsertNewRow>true</AutoInsertNewRow>
 															<EnableStartDrag>true</EnableStartDrag>
 															<EnableDrag>true</EnableDrag>
@@ -3704,6 +3802,7 @@
 																<InputField name="НалоговаяВыверкаИтоги19Доходы" id="1274">
 																	<DataPath>Объект.НалоговаяВыверкаИтоги19.Доходы</DataPath>
 																	<EditMode>EnterOnInput</EditMode>
+																	<FooterDataPath>Объект.НалоговаяВыверкаИтоги19.TotalДоходы</FooterDataPath>
 																	<Width>10</Width>
 																	<ContextMenu name="НалоговаяВыверкаИтоги19ДоходыКонтекстноеМеню" id="1275"/>
 																	<ExtendedTooltip name="НалоговаяВыверкаИтоги19ДоходыРасширеннаяПодсказка" id="1276"/>
@@ -3711,6 +3810,7 @@
 																<InputField name="НалоговаяВыверкаИтоги19Расходы" id="1277">
 																	<DataPath>Объект.НалоговаяВыверкаИтоги19.Расходы</DataPath>
 																	<EditMode>EnterOnInput</EditMode>
+																	<FooterDataPath>Объект.НалоговаяВыверкаИтоги19.TotalРасходы</FooterDataPath>
 																	<Width>10</Width>
 																	<ContextMenu name="НалоговаяВыверкаИтоги19РасходыКонтекстноеМеню" id="1278"/>
 																	<ExtendedTooltip name="НалоговаяВыверкаИтоги19РасходыРасширеннаяПодсказка" id="1279"/>
@@ -3719,6 +3819,7 @@
 														</Table>
 														<Table name="НалоговаяВыверка19" id="1212">
 															<CommandBarLocation>None</CommandBarLocation>
+															<Footer>true</Footer>
 															<AutoInsertNewRow>true</AutoInsertNewRow>
 															<EnableStartDrag>true</EnableStartDrag>
 															<EnableDrag>true</EnableDrag>
@@ -3784,6 +3885,7 @@
 																<InputField name="НалоговаяВыверка19Доходы" id="1237">
 																	<DataPath>Объект.НалоговаяВыверка19.Доходы</DataPath>
 																	<EditMode>EnterOnInput</EditMode>
+																	<FooterDataPath>Объект.НалоговаяВыверка19.TotalДоходы</FooterDataPath>
 																	<Width>10</Width>
 																	<ContextMenu name="НалоговаяВыверка19ДоходыКонтекстноеМеню" id="1238"/>
 																	<ExtendedTooltip name="НалоговаяВыверка19ДоходыРасширеннаяПодсказка" id="1239"/>
@@ -3791,6 +3893,7 @@
 																<InputField name="НалоговаяВыверка19Расходы" id="1240">
 																	<DataPath>Объект.НалоговаяВыверка19.Расходы</DataPath>
 																	<EditMode>EnterOnInput</EditMode>
+																	<FooterDataPath>Объект.НалоговаяВыверка19.TotalРасходы</FooterDataPath>
 																	<Width>10</Width>
 																	<ContextMenu name="НалоговаяВыверка19РасходыКонтекстноеМеню" id="1241"/>
 																	<ExtendedTooltip name="НалоговаяВыверка19РасходыРасширеннаяПодсказка" id="1242"/>
