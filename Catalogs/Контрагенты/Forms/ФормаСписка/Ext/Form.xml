@@ -42,7 +42,11 @@
 			<EnableDrag>true</EnableDrag>
 			<FileDragMode>AsFile</FileDragMode>
 			<DataPath>Список</DataPath>
-			<RowPictureDataPath>Список.DefaultPicture</RowPictureDataPath>
+			<RowPictureDataPath>Список.ИндексПиктограммы</RowPictureDataPath>
+			<RowsPicture>
+				<xr:Ref>CommonPicture.КолекцияКонтрагенты</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</RowsPicture>
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -106,21 +110,15 @@
 			</Events>
 			<ChildItems>
 				<LabelField name="Код" id="19">
-					<DataPath>Список.Code</DataPath>
+					<DataPath>Список.Код</DataPath>
 					<ContextMenu name="КодКонтекстноеМеню" id="20"/>
 					<ExtendedTooltip name="КодРасширеннаяПодсказка" id="21"/>
 				</LabelField>
 				<LabelField name="Наименование" id="16">
-					<DataPath>Список.Description</DataPath>
+					<DataPath>Список.Наименование</DataPath>
 					<DefaultItem>true</DefaultItem>
 					<ContextMenu name="НаименованиеКонтекстноеМеню" id="17"/>
 					<ExtendedTooltip name="НаименованиеРасширеннаяПодсказка" id="18"/>
-				</LabelField>
-				<LabelField name="Ссылка" id="48">
-					<DataPath>Список.Ref</DataPath>
-					<Visible>false</Visible>
-					<ContextMenu name="СсылкаКонтекстноеМеню" id="49"/>
-					<ExtendedTooltip name="СсылкаРасширеннаяПодсказка" id="50"/>
 				</LabelField>
 				<LabelField name="ИНН" id="22">
 					<DataPath>Список.ИНН</DataPath>
@@ -152,11 +150,53 @@
 			</Type>
 			<MainAttribute>true</MainAttribute>
 			<UseAlways>
-				<Field>Список.Ref</Field>
+				<Field>Список.Ссылка</Field>
 			</UseAlways>
 			<Settings xsi:type="DynamicList">
-				<ManualQuery>false</ManualQuery>
-				<DynamicDataRead>true</DynamicDataRead>
+				<ManualQuery>true</ManualQuery>
+				<DynamicDataRead>false</DynamicDataRead>
+				<QueryText>ВЫБРАТЬ
+	СправочникКонтрагенты.Ссылка КАК Ссылка,
+	СправочникКонтрагенты.Родитель КАК Родитель,
+	СправочникКонтрагенты.ЭтоГруппа КАК ЭтоГруппа,
+	СправочникКонтрагенты.Код КАК Код,
+	СправочникКонтрагенты.Наименование КАК Наименование,
+	СправочникКонтрагенты.НаименованиеПолное КАК НаименованиеПолное,
+	СправочникКонтрагенты.ГоловнойКонтрагент КАК ГоловнойКонтрагент,
+	СправочникКонтрагенты.КодПравовойФормы КАК КодПравовойФормы,
+	СправочникКонтрагенты.ИНН КАК ИНН,
+	СправочникКонтрагенты.КодПоОКПО КАК КодПоОКПО,
+	СправочникКонтрагенты.ЮрФизЛицо КАК ЮрФизЛицо,
+	СправочникКонтрагенты.ОсновнойБанковскийСчет КАК ОсновнойБанковскийСчет,
+	СправочникКонтрагенты.ФизЛицо КАК ФизЛицо,
+	СправочникКонтрагенты.ГНС КАК ГНС,
+	СправочникКонтрагенты.Комментарий КАК Комментарий,
+	СправочникКонтрагенты.СтранаРезидентства КАК СтранаРезидентства,
+	СправочникКонтрагенты.ПризнакСтраны КАК ПризнакСтраны,
+	СправочникКонтрагенты.СЭЗ КАК СЭЗ,
+	ВЫБОР
+		КОГДА СправочникКонтрагенты.ЭтоГруппа
+			ТОГДА ВЫБОР
+					КОГДА СправочникКонтрагенты.ПометкаУдаления
+						ТОГДА 5
+					КОГДА СправочникКонтрагенты.Предопределенный
+						ТОГДА 6
+					ИНАЧЕ 4
+				КОНЕЦ
+		КОГДА СправочникКонтрагенты.ЮрФизЛицо = ЗНАЧЕНИЕ(Перечисление.ЮридическоеФизическоеЛицо.ФизическоеЛицо)
+			ТОГДА ВЫБОР
+					КОГДА СправочникКонтрагенты.ПометкаУдаления
+						ТОГДА 3
+					ИНАЧЕ 1
+				КОНЕЦ
+		ИНАЧЕ ВЫБОР
+				КОГДА СправочникКонтрагенты.ПометкаУдаления
+					ТОГДА 2
+				ИНАЧЕ 0
+			КОНЕЦ
+	КОНЕЦ КАК ИндексПиктограммы
+ИЗ
+	Справочник.Контрагенты КАК СправочникКонтрагенты</QueryText>
 				<MainTable>Catalog.Контрагенты</MainTable>
 				<ListSettings>
 					<dcsset:filter>
