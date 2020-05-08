@@ -133,30 +133,6 @@
 					</v8:item>
 				</Title>
 				<ExtendedTooltip name="ГруппаВажныеКомандыРасширеннаяПодсказка" id="537"/>
-				<ChildItems>
-					<Popup name="ВыгрузкаВXML" id="1415">
-						<Title>
-							<v8:item>
-								<v8:lang>ru</v8:lang>
-								<v8:content>Выгрузка в xml</v8:content>
-							</v8:item>
-						</Title>
-						<ToolTip>
-							<v8:item>
-								<v8:lang>ru</v8:lang>
-								<v8:content>Выгрузка ВXML</v8:content>
-							</v8:item>
-						</ToolTip>
-						<ExtendedTooltip name="ВыгрузкаВXMLРасширеннаяПодсказка" id="1416"/>
-						<ChildItems>
-							<Button name="ФормаСохранитьВЭлектроннойФорме" id="1417">
-								<Type>CommandBarButton</Type>
-								<CommandName>Form.Command.СохранитьВЭлектроннойФорме</CommandName>
-								<ExtendedTooltip name="ФормаСохранитьВЭлектроннойФормеРасширеннаяПодсказка" id="1418"/>
-							</Button>
-						</ChildItems>
-					</Popup>
-				</ChildItems>
 			</ButtonGroup>
 			<ButtonGroup name="ГруппаГлобальныеКоманды" id="538">
 				<Title>
@@ -1917,12 +1893,12 @@
 											<ContextMenu name="ВидПлатежаКонтекстноеМеню" id="451"/>
 											<ExtendedTooltip name="ВидПлатежаРасширеннаяПодсказка" id="452"/>
 										</InputField>
-										<InputField name="ВидПоставкиНДС" id="480">
-											<DataPath>Объект.ВидПоставкиНДС</DataPath>
+										<InputField name="КодПоставкиНДС" id="480">
+											<DataPath>Объект.КодПоставкиНДС</DataPath>
 											<Width>20</Width>
 											<HorizontalStretch>false</HorizontalStretch>
-											<ContextMenu name="ВидПоставкиНДСКонтекстноеМеню" id="481"/>
-											<ExtendedTooltip name="ВидПоставкиНДСРасширеннаяПодсказка" id="482"/>
+											<ContextMenu name="КодПоставкиНДСКонтекстноеМеню" id="481"/>
+											<ExtendedTooltip name="КодПоставкиНДСРасширеннаяПодсказка" id="482"/>
 										</InputField>
 										<CheckBoxField name="БезвозмезднаяПоставка" id="1404">
 											<DataPath>Объект.БезвозмезднаяПоставка</DataPath>
@@ -2261,6 +2237,30 @@
 				</Page>
 			</ChildItems>
 		</Pages>
+		<UsualGroup name="ГруппаЭСФ" id="1494">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Электронные счета-фактуры</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаЭСФРасширеннаяПодсказка" id="1495"/>
+			<ChildItems>
+				<LabelField name="ПредставлениеЭСФ" id="1499">
+					<DataPath>ПредставлениеЭСФ</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<Hiperlink>true</Hiperlink>
+					<ContextMenu name="ПредставлениеЭСФКонтекстноеМеню" id="1500"/>
+					<ExtendedTooltip name="ПредставлениеЭСФРасширеннаяПодсказка" id="1501"/>
+					<Events>
+						<Event name="Click">ПредставлениеЭСФНажатие</Event>
+					</Events>
+				</LabelField>
+			</ChildItems>
+		</UsualGroup>
 		<UsualGroup name="Подвал" id="1049">
 			<Title>
 				<v8:item>
@@ -2891,6 +2891,25 @@
 				</v8:StringQualifiers>
 			</Type>
 		</Attribute>
+		<Attribute name="ПредставлениеЭСФ" id="24">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>ПредставлениеЭСФ</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DocumentRef.ЭлектронныйСчетФактура</v8:Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<FunctionalOptions>
+				<Item>FunctionalOption.ЭСФ</Item>
+			</FunctionalOptions>
+		</Attribute>
 	</Attributes>
 	<Commands>
 		<Command name="ПодборНоменклатуры" id="3">
@@ -3133,21 +3152,6 @@
 			<Action>ЗагрузитьТоварыИзФайла</Action>
 			<ModifiesSavedData>true</ModifiesSavedData>
 			<CurrentRowUse>DontUse</CurrentRowUse>
-		</Command>
-		<Command name="СохранитьВЭлектроннойФорме" id="13">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Сохранить в xml</v8:content>
-				</v8:item>
-			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Сохранить в электронной форме</v8:content>
-				</v8:item>
-			</ToolTip>
-			<Action>СохранитьВЭлектроннойФорме</Action>
 		</Command>
 		<Command name="ИзменениеСтрокТоварыИзменитьСтроки" id="14">
 			<Title>

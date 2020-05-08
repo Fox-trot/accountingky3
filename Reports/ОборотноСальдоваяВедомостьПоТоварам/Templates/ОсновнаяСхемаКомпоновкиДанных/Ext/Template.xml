@@ -36,6 +36,9 @@
 					<v8:content>Счет учета</v8:content>
 				</v8:item>
 			</title>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+			</role>
 			<valueType>
 				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:ChartOfAccountsRef.Хозрасчетный</v8:Type>
 			</valueType>
@@ -267,6 +270,11 @@
 					<v8:content>Документ</v8:content>
 				</v8:item>
 			</title>
+			<role>
+				<dcscom:periodNumber>1</dcscom:periodNumber>
+				<dcscom:periodType>Main</dcscom:periodType>
+				<dcscom:ignoreNullValues>true</dcscom:ignoreNullValues>
+			</role>
 			<valueType>
 				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:DocumentRef.ПоступлениеТоваровУслуг</v8:Type>
 				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:DocumentRef.РеализацияТоваровУслуг</v8:Type>
@@ -555,6 +563,10 @@
 					<v8:content>Ед изм</v8:content>
 				</v8:item>
 			</title>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+				<dcscom:parentDimension>Субконто1</dcscom:parentDimension>
+			</role>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>Дата</dataPath>
@@ -565,6 +577,10 @@
 					<v8:content>Дата</v8:content>
 				</v8:item>
 			</title>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+				<dcscom:parentDimension>Документ</dcscom:parentDimension>
+			</role>
 			<appearance>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 					<dcscor:use>false</dcscor:use>
@@ -587,34 +603,8 @@
 				<order>true</order>
 			</useRestriction>
 			<role>
-				<dcscom:periodNumber>1</dcscom:periodNumber>
-				<dcscom:periodType>Main</dcscom:periodType>
-			</role>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>ПериодМинута</dataPath>
-			<field>ПериодМинута</field>
-			<useRestriction>
-				<field>true</field>
-				<group>true</group>
-				<order>true</order>
-			</useRestriction>
-			<role>
 				<dcscom:periodNumber>2</dcscom:periodNumber>
-				<dcscom:periodType>Additional</dcscom:periodType>
-			</role>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>ПериодЧас</dataPath>
-			<field>ПериодЧас</field>
-			<useRestriction>
-				<field>true</field>
-				<group>true</group>
-				<order>true</order>
-			</useRestriction>
-			<role>
-				<dcscom:periodNumber>3</dcscom:periodNumber>
-				<dcscom:periodType>Additional</dcscom:periodType>
+				<dcscom:periodType>Main</dcscom:periodType>
 			</role>
 		</field>
 		<field xsi:type="DataSetFieldField">
@@ -636,6 +626,10 @@
 					<v8:content>Контрагент</v8:content>
 				</v8:item>
 			</title>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+				<dcscom:parentDimension>Документ</dcscom:parentDimension>
+			</role>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>Склад</dataPath>
@@ -697,12 +691,14 @@
 		ИНАЧЕ ХозрасчетныйОстаткиИОбороты.СуммаОборотКт / ХозрасчетныйОстаткиИОбороты.КоличествоОборотКт
 	КОНЕЦ КАК ЦенаОборотыКт,
 	ЕСТЬNULL(ХозрасчетныйОстаткиИОбороты.Субконто1.ЕдиницаИзмерения, "шт") КАК ЕдИзм,
-	ХозрасчетныйОстаткиИОбороты.Регистратор.Ссылка КАК Документ,
+	ВЫБОР
+		КОГДА ХозрасчетныйОстаткиИОбороты.Регистратор = НЕОПРЕДЕЛЕНО
+			ТОГДА NULL
+		ИНАЧЕ ХозрасчетныйОстаткиИОбороты.Регистратор
+	КОНЕЦ КАК Документ,
 	ХозрасчетныйОстаткиИОбороты.Регистратор.Дата КАК Дата,
 	ХозрасчетныйОстаткиИОбороты.Регистратор.Контрагент КАК Контрагент,
-	ХозрасчетныйОстаткиИОбороты.ПериодСекунда КАК ПериодСекунда,
-	ХозрасчетныйОстаткиИОбороты.ПериодМинута КАК ПериодМинута,
-	ХозрасчетныйОстаткиИОбороты.ПериодЧас КАК ПериодЧас
+	ХозрасчетныйОстаткиИОбороты.ПериодСекунда КАК ПериодСекунда
 {ВЫБРАТЬ
 	Счет.*,
 	Субконто1.*,
@@ -731,11 +727,9 @@
 	Документ.*,
 	Дата,
 	Контрагент.* КАК Контрагент,
-	ПериодСекунда,
-	ПериодМинута,
-	ПериодЧас}
+	ПериодСекунда}
 ИЗ
-	РегистрБухгалтерии.Хозрасчетный.ОстаткиИОбороты(&amp;НачалоПериода, &amp;КонецПериода, Авто, ДвиженияИГраницыПериода, , , ) КАК ХозрасчетныйОстаткиИОбороты
+	РегистрБухгалтерии.Хозрасчетный.ОстаткиИОбороты({(&amp;НачалоПериода)}, {(&amp;КонецПериода)}, Авто, ДвиженияИГраницыПериода, , , ) КАК ХозрасчетныйОстаткиИОбороты
 ГДЕ
 	(ВЫРАЗИТЬ(ХозрасчетныйОстаткиИОбороты.Субконто2 КАК Справочник.Склады)) &lt;&gt; ЗНАЧЕНИЕ(Справочник.Склады.ПустаяСсылка)
 {ГДЕ

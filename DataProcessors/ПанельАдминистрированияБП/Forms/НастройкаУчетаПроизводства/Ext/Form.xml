@@ -95,23 +95,57 @@
 				<Event name="OnChange">УчетПроизводстваПоЗаказамПриИзменении</Event>
 			</Events>
 		</CheckBoxField>
-		<CheckBoxField name="УчетПроизводстваПоНоменклатурнымГруппам" id="107">
-			<DataPath>УчетПроизводстваПоНоменклатурнымГруппам</DataPath>
+		<UsualGroup name="ГруппаПроизводствоПоНоменклатурнымГруппам" id="126">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа производство по номенклатурным группам</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа производство по номенклатурным группам</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаПроизводствоПоНоменклатурнымГруппамРасширеннаяПодсказка" id="127"/>
+			<ChildItems>
+				<CheckBoxField name="УчетПроизводстваПоНоменклатурнымГруппам" id="107">
+					<DataPath>УчетПроизводстваПоНоменклатурнымГруппам</DataPath>
+					<TitleLocation>Right</TitleLocation>
+					<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="УчетПроизводстваПоНоменклатурнымГруппамКонтекстноеМеню" id="108"/>
+					<ExtendedTooltip name="УчетПроизводстваПоНоменклатурнымГруппамРасширеннаяПодсказка" id="109">
+						<Title formatted="false">
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Включает возможности для ведения производства по номенклатурным группам (Не совместимо с позаказным производством).</v8:content>
+							</v8:item>
+						</Title>
+					</ExtendedTooltip>
+					<Events>
+						<Event name="OnChange">УчетПроизводстваПоНоменклатурнымГруппамПриИзменении</Event>
+					</Events>
+				</CheckBoxField>
+			</ChildItems>
+		</UsualGroup>
+		<CheckBoxField name="ПроизводствоИзДавальческогоСырья" id="123">
+			<DataPath>ПроизводствоИзДавальческогоСырья</DataPath>
 			<TitleLocation>Right</TitleLocation>
 			<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
 			<CheckBoxType>Auto</CheckBoxType>
-			<ContextMenu name="УчетПроизводстваПоНоменклатурнымГруппамКонтекстноеМеню" id="108"/>
-			<ExtendedTooltip name="УчетПроизводстваПоНоменклатурнымГруппамРасширеннаяПодсказка" id="109">
-				<Title formatted="false">
+			<ContextMenu name="ПроизводствоИзДавальческогоСырьяКонтекстноеМеню" id="124"/>
+			<ExtendedTooltip name="ПроизводствоИзДавальческогоСырьяРасширеннаяПодсказка" id="125">
+				<Title formatted="true">
 					<v8:item>
 						<v8:lang>ru</v8:lang>
-						<v8:content>Включает возможности для ведения производства по номенклатурным группам (Не совместимо с позаказным производством).</v8:content>
+						<v8:content>Включает возможность использовать давальческое сырье при производстве.</v8:content>
 					</v8:item>
 				</Title>
 			</ExtendedTooltip>
-			<Events>
-				<Event name="OnChange">УчетПроизводстваПоНоменклатурнымГруппамПриИзменении</Event>
-			</Events>
 		</CheckBoxField>
 		<UsualGroup name="ГруппаПроизводстваУчетПономенклатурнымГруппам" id="113">
 			<Title>
@@ -156,49 +190,36 @@
 				</CheckBoxField>
 			</ChildItems>
 		</UsualGroup>
-		<UsualGroup name="ГруппаБазаРаспределенияКорректировкиСебестоимости" id="118">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>База распределения корректировки себестоимости</v8:content>
-				</v8:item>
-			</Title>
-			<Representation>None</Representation>
-			<ShowTitle>false</ShowTitle>
-			<ExtendedTooltip name="ГруппаБазаРаспределенияКорректировкиСебестоимостиРасширеннаяПодсказка" id="119"/>
-			<ChildItems>
-				<InputField name="БазаРаспределенияКорректировкиСебестоимости" id="120">
-					<DataPath>БазаРаспределенияКорректировкиСебестоимости</DataPath>
-					<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
-					<ChoiceParameters>
-						<app:item name="Отбор.Ссылка">
-							<app:value xsi:type="FormChoiceListDesTimeValue">
+		<InputField name="БазаРаспределенияКорректировкиСебестоимости" id="120">
+			<DataPath>БазаРаспределенияКорректировкиСебестоимости</DataPath>
+			<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+			<ChoiceParameters>
+				<app:item name="Отбор.Ссылка">
+					<app:value xsi:type="FormChoiceListDesTimeValue">
+						<Presentation/>
+						<Value xsi:type="v8:FixedArray">
+							<v8:Value xsi:type="FormChoiceListDesTimeValue">
 								<Presentation/>
-								<Value xsi:type="v8:FixedArray">
-									<v8:Value xsi:type="FormChoiceListDesTimeValue">
-										<Presentation/>
-										<Value xsi:type="xr:DesignTimeRef">Enum.БазыРаспределенияКосвенныхРасходов.EnumValue.ПлановаяСебестоимость</Value>
-									</v8:Value>
-									<v8:Value xsi:type="FormChoiceListDesTimeValue">
-										<Presentation/>
-										<Value xsi:type="xr:DesignTimeRef">Enum.БазыРаспределенияКосвенныхРасходов.EnumValue.МатериальныеЗатраты</Value>
-									</v8:Value>
-								</Value>
-							</app:value>
-						</app:item>
-					</ChoiceParameters>
-					<ContextMenu name="БазаРаспределенияКорректировкиСебестоимостиКонтекстноеМеню" id="121"/>
-					<ExtendedTooltip name="БазаРаспределенияКорректировкиСебестоимостиРасширеннаяПодсказка" id="122">
-						<Title formatted="false">
-							<v8:item>
-								<v8:lang>ru</v8:lang>
-								<v8:content>Выбор базы для распределения. При распределении по способу "Материальные затраты" списание материалов и выпуск готовой продукции оформляется в одном месяце.</v8:content>
-							</v8:item>
-						</Title>
-					</ExtendedTooltip>
-				</InputField>
-			</ChildItems>
-		</UsualGroup>
+								<Value xsi:type="xr:DesignTimeRef">Enum.БазыРаспределенияКосвенныхРасходов.EnumValue.ПлановаяСебестоимость</Value>
+							</v8:Value>
+							<v8:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation/>
+								<Value xsi:type="xr:DesignTimeRef">Enum.БазыРаспределенияКосвенныхРасходов.EnumValue.МатериальныеЗатраты</Value>
+							</v8:Value>
+						</Value>
+					</app:value>
+				</app:item>
+			</ChoiceParameters>
+			<ContextMenu name="БазаРаспределенияКорректировкиСебестоимостиКонтекстноеМеню" id="121"/>
+			<ExtendedTooltip name="БазаРаспределенияКорректировкиСебестоимостиРасширеннаяПодсказка" id="122">
+				<Title formatted="false">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Выбор базы для распределения. При распределении по способу "Материальные затраты" списание материалов и выпуск готовой продукции оформляется в одном месяце.</v8:content>
+					</v8:item>
+				</Title>
+			</ExtendedTooltip>
+		</InputField>
 		<LabelDecoration name="Примечание" id="96">
 			<AutoMaxWidth>false</AutoMaxWidth>
 			<TextColor>style:ПоясняющийТекст</TextColor>
@@ -296,6 +317,17 @@
 			</Title>
 			<Type>
 				<v8:Type>cfg:EnumRef.БазыРаспределенияКосвенныхРасходов</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ПроизводствоИзДавальческогоСырья" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Производство из давальческого сырья</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
 			</Type>
 		</Attribute>
 	</Attributes>
