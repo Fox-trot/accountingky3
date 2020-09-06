@@ -22,16 +22,15 @@
 			<field>Номенклатура</field>
 			<role>
 				<dcscom:dimension>true</dcscom:dimension>
-				<dcscom:required>true</dcscom:required>
 			</role>
 		</field>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>ДатаСФ</dataPath>
+			<dataPath>Документ.ДатаСФ</dataPath>
 			<field>ДатаСФ</field>
 			<title xsi:type="v8:LocalStringType">
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Дата СФ</v8:content>
+					<v8:content>Дата СФ (Реестр)</v8:content>
 				</v8:item>
 			</title>
 			<appearance>
@@ -47,22 +46,22 @@
 			</appearance>
 		</field>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>СерияБланкаСФ</dataPath>
+			<dataPath>Документ.СерияБланкаСФ</dataPath>
 			<field>СерияБланкаСФ</field>
 			<title xsi:type="v8:LocalStringType">
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Серия бланка СФ</v8:content>
+					<v8:content>Серия бланка СФ (Реестр)</v8:content>
 				</v8:item>
 			</title>
 		</field>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>НомерБланкаСФ</dataPath>
+			<dataPath>Документ.НомерБланкаСФ</dataPath>
 			<field>НомерБланкаСФ</field>
 			<title xsi:type="v8:LocalStringType">
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Номер бланка СФ</v8:content>
+					<v8:content>Номер бланка СФ (Реестр)</v8:content>
 				</v8:item>
 			</title>
 		</field>
@@ -81,8 +80,14 @@
 			</role>
 		</field>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>ДатаПоставки</dataPath>
+			<dataPath>Документ.ДатаПоставки</dataPath>
 			<field>ДатаПоставки</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дата поставки (Реестр)</v8:content>
+				</v8:item>
+			</title>
 			<appearance>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 					<dcscor:parameter>Формат</dcscor:parameter>
@@ -96,32 +101,22 @@
 			</appearance>
 		</field>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>ИНН</dataPath>
-			<field>ИНН</field>
-			<title xsi:type="v8:LocalStringType">
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>ИНН</v8:content>
-				</v8:item>
-			</title>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>ВидСтраны</dataPath>
+			<dataPath>Контрагент.ВидСтраны</dataPath>
 			<field>ВидСтраны</field>
 			<title xsi:type="v8:LocalStringType">
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Вид страны</v8:content>
+					<v8:content>Контрагент.Вид страны</v8:content>
 				</v8:item>
 			</title>
 		</field>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>СтавкаНДС</dataPath>
+			<dataPath>Документ.СтавкаНДС</dataPath>
 			<field>СтавкаНДС</field>
 			<title xsi:type="v8:LocalStringType">
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Ставка НДС</v8:content>
+					<v8:content>Ставка НДС (Реестр)</v8:content>
 				</v8:item>
 			</title>
 			<role>
@@ -190,11 +185,10 @@
 			</appearance>
 		</field>
 		<dataSource>ИсточникДанных1</dataSource>
-		<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
+		<query>ВЫБРАТЬ
 	РеестрЗакупокОбороты.Контрагент.ПризнакСтраны КАК ВидСтраны,
 	РеестрЗакупокОбороты.ЗначениеСтавкиНДС КАК СтавкаНДС,
 	РеестрЗакупокОбороты.Регистратор КАК Документ,
-	РеестрЗакупокОбороты.Контрагент.ИНН КАК ИНН,
 	РеестрЗакупокОбороты.Контрагент КАК Контрагент,
 	РеестрЗакупокОбороты.Номенклатура КАК Номенклатура,
 	РеестрЗакупокОбороты.КоличествоОборот КАК Количество,
@@ -210,7 +204,7 @@
 ;
 
 ////////////////////////////////////////////////////////////////////////////////
-ВЫБРАТЬ РАЗРЕШЕННЫЕ
+ВЫБРАТЬ
 	СведенияОНДСНаИмпорт.СтавкаНДС КАК СтавкаНДС,
 	СведенияОНДСНаИмпорт.Документ КАК Документ,
 	СведенияОНДСНаИмпорт.Номенклатура КАК Номенклатура,
@@ -231,17 +225,25 @@
 ;
 
 ////////////////////////////////////////////////////////////////////////////////
-ВЫБРАТЬ РАЗРЕШЕННЫЕ
-	РеестрЗакупокОбороты.ВидСтраны КАК ВидСтраны,
-	РеестрЗакупокОбороты.СтавкаНДС КАК СтавкаНДС,
-	РеестрЗакупокОбороты.Документ КАК Документ,
-	РеестрЗакупокОбороты.ИНН КАК ИНН,
-	РеестрЗакупокОбороты.Контрагент КАК Контрагент,
-	РеестрЗакупокОбороты.Номенклатура КАК Номенклатура,
-	СУММА(РеестрЗакупокОбороты.СуммаНДС) КАК СуммаНДС,
-	СУММА(РеестрЗакупокОбороты.Сумма) КАК Сумма,
-	СУММА(РеестрЗакупокОбороты.СуммаНСП) КАК СуммаНСП,
-	СУММА(РеестрЗакупокОбороты.Количество) КАК Количество,
+ВЫБРАТЬ
+	ДанныеЗакупочныхАктовОбороты.Регистратор КАК Документ,
+	ИСТИНА КАК ЭтоЗакупочныйАкт
+ПОМЕСТИТЬ ВременнаяТаблицаДанныеЗакупочныхАктовОбороты
+ИЗ
+	РегистрНакопления.ДанныеЗакупочныхАктов.Обороты({(&amp;НачалоПериода)}, {(&amp;КонецПериода)}, Авто, {(Организация).*}) КАК ДанныеЗакупочныхАктовОбороты
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	ВременнаяТаблицаРеестрЗакупокОбороты.ВидСтраны КАК ВидСтраны,
+	ВременнаяТаблицаРеестрЗакупокОбороты.СтавкаНДС КАК СтавкаНДС,
+	ВременнаяТаблицаРеестрЗакупокОбороты.Документ КАК Документ,
+	ВременнаяТаблицаРеестрЗакупокОбороты.Контрагент КАК Контрагент,
+	ВременнаяТаблицаРеестрЗакупокОбороты.Номенклатура КАК Номенклатура,
+	СУММА(ВременнаяТаблицаРеестрЗакупокОбороты.СуммаНДС) КАК СуммаНДС,
+	СУММА(ВременнаяТаблицаРеестрЗакупокОбороты.Сумма) КАК Сумма,
+	СУММА(ВременнаяТаблицаРеестрЗакупокОбороты.СуммаНСП) КАК СуммаНСП,
+	СУММА(ВременнаяТаблицаРеестрЗакупокОбороты.Количество) КАК Количество,
 	ВЫБОР
 		КОГДА ЕСТЬNULL(СведенияОПоступлении.СерияБланкаСФ, "") &lt;&gt; ""
 			ТОГДА СведенияОПоступлении.ДатаСФ
@@ -268,38 +270,40 @@
 			ТОГДА СведенияОПоступлении.ДатаПоставки
 		КОГДА ЕСТЬNULL(СчетаФактурыПолученные.СерияБланкаСФ, "") &lt;&gt; ""
 			ТОГДА СчетаФактурыПолученные.ДатаСФ
-		КОГДА ТИПЗНАЧЕНИЯ(РеестрЗакупокОбороты.Документ) = ТИП(Документ.ДополнительныеРасходы)
-			ТОГДА РеестрЗакупокОбороты.ПериодДень
+		КОГДА ТИПЗНАЧЕНИЯ(ВременнаяТаблицаРеестрЗакупокОбороты.Документ) = ТИП(Документ.ДополнительныеРасходы)
+			ТОГДА ВременнаяТаблицаРеестрЗакупокОбороты.ПериодДень
 		ИНАЧЕ ДАТАВРЕМЯ(1, 1, 1)
 	КОНЕЦ КАК ДатаПоставки,
-	СУММА(РеестрЗакупокОбороты.Всего) КАК Всего
+	СУММА(ВременнаяТаблицаРеестрЗакупокОбороты.Всего) КАК Всего,
+	ЕСТЬNULL(ВременнаяТаблицаДанныеЗакупочныхАктовОбороты.ЭтоЗакупочныйАкт, ЛОЖЬ) КАК ЭтоЗакупочныйАкт
 ПОМЕСТИТЬ ВременнаяТаблицаДанные
 ИЗ
-	ВременнаяТаблицаРеестрЗакупокОбороты КАК РеестрЗакупокОбороты
+	ВременнаяТаблицаРеестрЗакупокОбороты КАК ВременнаяТаблицаРеестрЗакупокОбороты
 		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.СведенияОПоступлении КАК СведенияОПоступлении
-		ПО РеестрЗакупокОбороты.Документ = СведенияОПоступлении.Регистратор
+		ПО ВременнаяТаблицаРеестрЗакупокОбороты.Документ = СведенияОПоступлении.Регистратор
 			И (ВЫБОР
 				КОГДА СведенияОПоступлении.ДокументСсылка ССЫЛКА Документ.СводПоРознице
-					ТОГДА РеестрЗакупокОбороты.НомерСтроки = СведенияОПоступлении.НомерСтроки
+					ТОГДА ВременнаяТаблицаРеестрЗакупокОбороты.НомерСтроки = СведенияОПоступлении.НомерСтроки
 				ИНАЧЕ ИСТИНА
 			КОНЕЦ)
-			И РеестрЗакупокОбороты.Контрагент = СведенияОПоступлении.Контрагент
+			И ВременнаяТаблицаРеестрЗакупокОбороты.Контрагент = СведенияОПоступлении.Контрагент
 		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.СчетаФактурыПолученные КАК СчетаФактурыПолученные
-		ПО РеестрЗакупокОбороты.Документ = СчетаФактурыПолученные.Документ
-			И РеестрЗакупокОбороты.Контрагент = СчетаФактурыПолученные.Контрагент
+		ПО ВременнаяТаблицаРеестрЗакупокОбороты.Документ = СчетаФактурыПолученные.Документ
+			И ВременнаяТаблицаРеестрЗакупокОбороты.Контрагент = СчетаФактурыПолученные.Контрагент
+		ЛЕВОЕ СОЕДИНЕНИЕ ВременнаяТаблицаДанныеЗакупочныхАктовОбороты КАК ВременнаяТаблицаДанныеЗакупочныхАктовОбороты
+		ПО ВременнаяТаблицаРеестрЗакупокОбороты.Документ = ВременнаяТаблицаДанныеЗакупочныхАктовОбороты.Документ
 ГДЕ
-	НЕ РеестрЗакупокОбороты.Документ В
+	НЕ ВременнаяТаблицаРеестрЗакупокОбороты.Документ В
 				(ВЫБРАТЬ
 					ВременнаяТаблицаСведенияОНДСНаИмпорт.Документ
 				ИЗ
 					ВременнаяТаблицаСведенияОНДСНаИмпорт КАК ВременнаяТаблицаСведенияОНДСНаИмпорт)
 
 СГРУППИРОВАТЬ ПО
-	РеестрЗакупокОбороты.Номенклатура,
-	РеестрЗакупокОбороты.Документ,
-	РеестрЗакупокОбороты.ИНН,
-	РеестрЗакупокОбороты.Контрагент,
-	РеестрЗакупокОбороты.ВидСтраны,
+	ВременнаяТаблицаРеестрЗакупокОбороты.Номенклатура,
+	ВременнаяТаблицаРеестрЗакупокОбороты.Документ,
+	ВременнаяТаблицаРеестрЗакупокОбороты.Контрагент,
+	ВременнаяТаблицаРеестрЗакупокОбороты.ВидСтраны,
 	ВЫБОР
 		КОГДА ЕСТЬNULL(СведенияОПоступлении.СерияБланкаСФ, "") &lt;&gt; ""
 			ТОГДА СведенияОПоступлении.СерияБланкаСФ
@@ -321,51 +325,54 @@
 			ТОГДА СчетаФактурыПолученные.ДатаДокумента
 		ИНАЧЕ ДАТАВРЕМЯ(1, 1, 1)
 	КОНЕЦ,
-	РеестрЗакупокОбороты.СтавкаНДС,
+	ВременнаяТаблицаРеестрЗакупокОбороты.СтавкаНДС,
 	ВЫБОР
 		КОГДА ЕСТЬNULL(СведенияОПоступлении.СерияБланкаСФ, "") &lt;&gt; ""
 			ТОГДА СведенияОПоступлении.ДатаПоставки
 		КОГДА ЕСТЬNULL(СчетаФактурыПолученные.СерияБланкаСФ, "") &lt;&gt; ""
 			ТОГДА СчетаФактурыПолученные.ДатаСФ
-		КОГДА ТИПЗНАЧЕНИЯ(РеестрЗакупокОбороты.Документ) = ТИП(Документ.ДополнительныеРасходы)
-			ТОГДА РеестрЗакупокОбороты.ПериодДень
+		КОГДА ТИПЗНАЧЕНИЯ(ВременнаяТаблицаРеестрЗакупокОбороты.Документ) = ТИП(Документ.ДополнительныеРасходы)
+			ТОГДА ВременнаяТаблицаРеестрЗакупокОбороты.ПериодДень
 		ИНАЧЕ ДАТАВРЕМЯ(1, 1, 1)
-	КОНЕЦ
+	КОНЕЦ,
+	ЕСТЬNULL(ВременнаяТаблицаДанныеЗакупочныхАктовОбороты.ЭтоЗакупочныйАкт, ЛОЖЬ)
 
 ОБЪЕДИНИТЬ ВСЕ
 
 ВЫБРАТЬ
 	ЗНАЧЕНИЕ(Перечисление.ПризнакиСтраны.ИмпортЭкспорт),
-	СведенияОНДСНаИмпорт.СтавкаНДС,
-	СведенияОНДСНаИмпорт.Документ,
-	ЕСТЬNULL(СведенияОПоступлении.Контрагент.ИНН, НЕОПРЕДЕЛЕНО),
+	ВременнаяТаблицаСведенияОНДСНаИмпорт.СтавкаНДС,
+	ВременнаяТаблицаСведенияОНДСНаИмпорт.Документ,
 	ЕСТЬNULL(СведенияОПоступлении.Контрагент, НЕОПРЕДЕЛЕНО),
-	СведенияОНДСНаИмпорт.Номенклатура,
-	СведенияОНДСНаИмпорт.СуммаНДС,
-	СведенияОНДСНаИмпорт.Сумма,
+	ВременнаяТаблицаСведенияОНДСНаИмпорт.Номенклатура,
+	ВременнаяТаблицаСведенияОНДСНаИмпорт.СуммаНДС,
+	ВременнаяТаблицаСведенияОНДСНаИмпорт.Сумма,
 	0,
-	СведенияОНДСНаИмпорт.Количество,
+	ВременнаяТаблицаСведенияОНДСНаИмпорт.Количество,
 	ДАТАВРЕМЯ(1, 1, 1),
 	"",
-	СведенияОНДСНаИмпорт.ДатаГТД,
-	СведенияОНДСНаИмпорт.НомерГТД,
-	СведенияОНДСНаИмпорт.Всего
+	ВременнаяТаблицаСведенияОНДСНаИмпорт.ДатаГТД,
+	ВременнаяТаблицаСведенияОНДСНаИмпорт.НомерГТД,
+	ВременнаяТаблицаСведенияОНДСНаИмпорт.Всего,
+	ЕСТЬNULL(ВременнаяТаблицаДанныеЗакупочныхАктовОбороты.ЭтоЗакупочныйАкт, ЛОЖЬ)
 ИЗ
-	ВременнаяТаблицаСведенияОНДСНаИмпорт КАК СведенияОНДСНаИмпорт
-		ЛЕВОЕ СОЕДИНЕНИЕ ВременнаяТаблицаРеестрЗакупокОбороты КАК РеестрЗакупокОбороты
-		ПО СведенияОНДСНаИмпорт.Документ = РеестрЗакупокОбороты.Документ
-			И СведенияОНДСНаИмпорт.Номенклатура = РеестрЗакупокОбороты.Номенклатура
+	ВременнаяТаблицаСведенияОНДСНаИмпорт КАК ВременнаяТаблицаСведенияОНДСНаИмпорт
+		ЛЕВОЕ СОЕДИНЕНИЕ ВременнаяТаблицаРеестрЗакупокОбороты КАК ВременнаяТаблицаРеестрЗакупокОбороты
+			ЛЕВОЕ СОЕДИНЕНИЕ ВременнаяТаблицаДанныеЗакупочныхАктовОбороты КАК ВременнаяТаблицаДанныеЗакупочныхАктовОбороты
+			ПО ВременнаяТаблицаРеестрЗакупокОбороты.Документ = ВременнаяТаблицаДанныеЗакупочныхАктовОбороты.Документ
+		ПО ВременнаяТаблицаСведенияОНДСНаИмпорт.Документ = ВременнаяТаблицаРеестрЗакупокОбороты.Документ
+			И ВременнаяТаблицаСведенияОНДСНаИмпорт.Номенклатура = ВременнаяТаблицаРеестрЗакупокОбороты.Номенклатура
 		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.СведенияОПоступлении КАК СведенияОПоступлении
-		ПО СведенияОНДСНаИмпорт.Документ = СведенияОПоступлении.Регистратор
+		ПО ВременнаяТаблицаСведенияОНДСНаИмпорт.Документ = СведенияОПоступлении.Регистратор
 			И (ВЫБОР
 				КОГДА СведенияОПоступлении.ДокументСсылка ССЫЛКА Документ.СводПоРознице
-					ТОГДА СведенияОНДСНаИмпорт.НомерСтроки = СведенияОПоступлении.НомерСтроки
+					ТОГДА ВременнаяТаблицаСведенияОНДСНаИмпорт.НомерСтроки = СведенияОПоступлении.НомерСтроки
 				ИНАЧЕ ИСТИНА
 			КОНЕЦ)
 ;
 
 ////////////////////////////////////////////////////////////////////////////////
-ВЫБРАТЬ РАЗРЕШЕННЫЕ РАЗЛИЧНЫЕ
+ВЫБРАТЬ
 	ВременнаяТаблицаДанные.ДатаСФ КАК ДатаСФ,
 	ВременнаяТаблицаДанные.СерияБланкаСФ КАК СерияБланкаСФ,
 	ВременнаяТаблицаДанные.НомерБланкаСФ КАК НомерБланкаСФ,
@@ -373,7 +380,6 @@
 	ВременнаяТаблицаДанные.ДатаПоставки КАК ДатаПоставки,
 	ВременнаяТаблицаДанные.Номенклатура КАК Номенклатура,
 	ВременнаяТаблицаДанные.Контрагент КАК Контрагент,
-	ВременнаяТаблицаДанные.ИНН КАК ИНН,
 	ВременнаяТаблицаДанные.ВидСтраны КАК ВидСтраны,
 	ВременнаяТаблицаДанные.СтавкаНДС КАК СтавкаНДС,
 	ВременнаяТаблицаДанные.Сумма КАК Сумма,
@@ -389,7 +395,6 @@
 	ДатаПоставки,
 	Номенклатура.*,
 	Контрагент.*,
-	ИНН,
 	ВидСтраны.*,
 	СтавкаНДС,
 	Сумма,
@@ -406,18 +411,17 @@
 			КОГДА &amp;ВидОтчета = 2
 				ТОГДА ВременнаяТаблицаДанные.ВидСтраны = ЗНАЧЕНИЕ(Перечисление.ПризнакиСтраны.КР)
 						И ВременнаяТаблицаДанные.СерияБланкаСФ &lt;&gt; ""
+						И НЕ ВременнаяТаблицаДанные.ЭтоЗакупочныйАкт
 			КОГДА &amp;ВидОтчета = 3
 				ТОГДА ВременнаяТаблицаДанные.ВидСтраны = ЗНАЧЕНИЕ(Перечисление.ПризнакиСтраны.КР)
 			КОГДА &amp;ВидОтчета = 4
 				ТОГДА ВременнаяТаблицаДанные.ВидСтраны = ЗНАЧЕНИЕ(Перечисление.ПризнакиСтраны.ИмпортЭкспорт)
 						ИЛИ ВременнаяТаблицаДанные.ВидСтраны = ЗНАЧЕНИЕ(Перечисление.ПризнакиСтраны.ЕАЭС)
 		КОНЕЦ
-	И НЕ &amp;ПоКонтрагентам
 {ГДЕ
 	ВременнаяТаблицаДанные.ВидСтраны.*,
 	ВременнаяТаблицаДанные.СтавкаНДС,
 	ВременнаяТаблицаДанные.Документ.*,
-	ВременнаяТаблицаДанные.ИНН,
 	ВременнаяТаблицаДанные.Контрагент.*,
 	ВременнаяТаблицаДанные.Номенклатура.*,
 	ВременнаяТаблицаДанные.СуммаНДС,
@@ -428,69 +432,7 @@
 	ВременнаяТаблицаДанные.НомерБланкаСФ,
 	ВременнаяТаблицаДанные.ДатаПоставки,
 	ВременнаяТаблицаДанные.Всего,
-	ВременнаяТаблицаДанные.Количество}
-
-ОБЪЕДИНИТЬ ВСЕ
-
-ВЫБРАТЬ
-	ВременнаяТаблицаДанные.ДатаСФ,
-	ВременнаяТаблицаДанные.СерияБланкаСФ,
-	ВременнаяТаблицаДанные.НомерБланкаСФ,
-	ВременнаяТаблицаДанные.Документ,
-	ВременнаяТаблицаДанные.ДатаПоставки,
-	НЕОПРЕДЕЛЕНО,
-	ВременнаяТаблицаДанные.Контрагент,
-	ВременнаяТаблицаДанные.ИНН,
-	ВременнаяТаблицаДанные.ВидСтраны,
-	ВременнаяТаблицаДанные.СтавкаНДС,
-	СУММА(ВременнаяТаблицаДанные.Сумма),
-	СУММА(ВременнаяТаблицаДанные.СуммаНДС),
-	СУММА(ВременнаяТаблицаДанные.СуммаНСП),
-	СУММА(ВременнаяТаблицаДанные.Всего),
-	СУММА(ВременнаяТаблицаДанные.Количество)
-ИЗ
-	ВременнаяТаблицаДанные КАК ВременнаяТаблицаДанные
-ГДЕ
-	ВЫБОР
-			КОГДА &amp;ВидОтчета = 1
-				ТОГДА ИСТИНА
-			КОГДА &amp;ВидОтчета = 2
-				ТОГДА ВременнаяТаблицаДанные.ВидСтраны = ЗНАЧЕНИЕ(Перечисление.ПризнакиСтраны.КР)
-						И ВременнаяТаблицаДанные.СерияБланкаСФ &lt;&gt; ""
-			КОГДА &amp;ВидОтчета = 3
-				ТОГДА ВременнаяТаблицаДанные.ВидСтраны = ЗНАЧЕНИЕ(Перечисление.ПризнакиСтраны.КР)
-			КОГДА &amp;ВидОтчета = 4
-				ТОГДА ВременнаяТаблицаДанные.ВидСтраны = ЗНАЧЕНИЕ(Перечисление.ПризнакиСтраны.ИмпортЭкспорт)
-						ИЛИ ВременнаяТаблицаДанные.ВидСтраны = ЗНАЧЕНИЕ(Перечисление.ПризнакиСтраны.ЕАЭС)
-		КОНЕЦ
-	И &amp;ПоКонтрагентам
-{ГДЕ
-	ВременнаяТаблицаДанные.ВидСтраны.*,
-	ВременнаяТаблицаДанные.СтавкаНДС,
-	ВременнаяТаблицаДанные.Документ.*,
-	ВременнаяТаблицаДанные.ИНН,
-	ВременнаяТаблицаДанные.Контрагент.*,
-	ВременнаяТаблицаДанные.Номенклатура.*,
-	ВременнаяТаблицаДанные.СуммаНДС,
-	ВременнаяТаблицаДанные.Сумма,
-	ВременнаяТаблицаДанные.СуммаНСП,
-	ВременнаяТаблицаДанные.ДатаСФ,
-	ВременнаяТаблицаДанные.СерияБланкаСФ,
-	ВременнаяТаблицаДанные.НомерБланкаСФ,
-	ВременнаяТаблицаДанные.ДатаПоставки,
-	ВременнаяТаблицаДанные.Всего,
-	ВременнаяТаблицаДанные.Количество}
-
-СГРУППИРОВАТЬ ПО
-	ВременнаяТаблицаДанные.ДатаСФ,
-	ВременнаяТаблицаДанные.СерияБланкаСФ,
-	ВременнаяТаблицаДанные.НомерБланкаСФ,
-	ВременнаяТаблицаДанные.Документ,
-	ВременнаяТаблицаДанные.ДатаПоставки,
-	ВременнаяТаблицаДанные.Контрагент,
-	ВременнаяТаблицаДанные.ИНН,
-	ВременнаяТаблицаДанные.ВидСтраны,
-	ВременнаяТаблицаДанные.СтавкаНДС</query>
+	ВременнаяТаблицаДанные.Количество}</query>
 		<autoFillFields>false</autoFillFields>
 	</dataSet>
 	<totalField>
@@ -563,20 +505,6 @@
 		<use>Always</use>
 	</parameter>
 	<parameter>
-		<name>ПоКонтрагентам</name>
-		<title xsi:type="v8:LocalStringType">
-			<v8:item>
-				<v8:lang>ru</v8:lang>
-				<v8:content>По контрагентам</v8:content>
-			</v8:item>
-		</title>
-		<valueType>
-			<v8:Type>xs:boolean</v8:Type>
-		</valueType>
-		<value xsi:type="xs:boolean">false</value>
-		<useRestriction>true</useRestriction>
-	</parameter>
-	<parameter>
 		<name>ВидОтчета</name>
 		<title xsi:type="v8:LocalStringType">
 			<v8:item>
@@ -596,14 +524,31 @@
 		<useRestriction>true</useRestriction>
 	</parameter>
 	<settingsVariant>
-		<dcsset:name>РеестрЗакупокПоКонтрагентам</dcsset:name>
+		<dcsset:name>РеестрЗакупок</dcsset:name>
 		<dcsset:presentation xsi:type="v8:LocalStringType">
 			<v8:item>
 				<v8:lang>ru</v8:lang>
-				<v8:content>Реестр закупок по контрагентам</v8:content>
+				<v8:content>Реестр закупок</v8:content>
 			</v8:item>
 		</dcsset:presentation>
 		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
+			<dcsset:selection>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Всего</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Количество</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Сумма</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>СуммаНДС</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>СуммаНСП</dcsset:field>
+				</dcsset:item>
+			</dcsset:selection>
 			<dcsset:dataParameters>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 					<dcscor:parameter>НастройкиОтчета</dcscor:parameter>
@@ -646,149 +591,62 @@
 					<dcscor:value xsi:type="dcsset:DataCompositionTextOutputType">DontOutput</dcscor:value>
 				</dcscor:item>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
 					<dcscor:parameter>АвтоПозицияРесурсов</dcscor:parameter>
 					<dcscor:value xsi:type="dcsset:DataCompositionResourcesAutoPosition">DontUse</dcscor:value>
 				</dcscor:item>
 			</dcsset:outputParameters>
 			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:name>Группировка</dcsset:name>
+				<dcsset:groupItems>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>Контрагент</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+				</dcsset:groupItems>
 				<dcsset:order>
 					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
 				</dcsset:order>
 				<dcsset:selection>
-					<dcsset:item xsi:type="dcsset:SelectedItemField">
-						<dcsset:field>ДатаПоставки</dcsset:field>
-					</dcsset:item>
-					<dcsset:item xsi:type="dcsset:SelectedItemField">
-						<dcsset:field>Количество</dcsset:field>
-					</dcsset:item>
-					<dcsset:item xsi:type="dcsset:SelectedItemField">
-						<dcsset:field>Сумма</dcsset:field>
-					</dcsset:item>
-					<dcsset:item xsi:type="dcsset:SelectedItemField">
-						<dcsset:field>СуммаНДС</dcsset:field>
-					</dcsset:item>
-					<dcsset:item xsi:type="dcsset:SelectedItemField">
-						<dcsset:field>СуммаНСП</dcsset:field>
-					</dcsset:item>
-					<dcsset:item xsi:type="dcsset:SelectedItemField">
-						<dcsset:field>Всего</dcsset:field>
-					</dcsset:item>
-					<dcsset:item xsi:type="dcsset:SelectedItemField">
-						<dcsset:field>Контрагент</dcsset:field>
-					</dcsset:item>
-					<dcsset:item xsi:type="dcsset:SelectedItemField">
-						<dcsset:field>ИНН</dcsset:field>
-					</dcsset:item>
-					<dcsset:item xsi:type="dcsset:SelectedItemField">
-						<dcsset:field>Документ</dcsset:field>
-					</dcsset:item>
-					<dcsset:item xsi:type="dcsset:SelectedItemField">
-						<dcsset:field>ДатаСФ</dcsset:field>
-					</dcsset:item>
-					<dcsset:item xsi:type="dcsset:SelectedItemField">
-						<dcsset:field>СерияБланкаСФ</dcsset:field>
-					</dcsset:item>
-					<dcsset:item xsi:type="dcsset:SelectedItemField">
-						<dcsset:field>НомерБланкаСФ</dcsset:field>
-					</dcsset:item>
-					<dcsset:item xsi:type="dcsset:SelectedItemField">
-						<dcsset:field>ВидСтраны</dcsset:field>
-					</dcsset:item>
-					<dcsset:item xsi:type="dcsset:SelectedItemField">
-						<dcsset:field>СтавкаНДС</dcsset:field>
-					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
 				</dcsset:selection>
-			</dcsset:item>
-		</dcsset:settings>
-	</settingsVariant>
-	<settingsVariant>
-		<dcsset:name>РеестрЗакупокПоНоменклатуре</dcsset:name>
-		<dcsset:presentation xsi:type="v8:LocalStringType">
-			<v8:item>
-				<v8:lang>ru</v8:lang>
-				<v8:content>Реестр закупок по номенклатуре</v8:content>
-			</v8:item>
-		</dcsset:presentation>
-		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
-			<dcsset:dataParameters>
-				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-					<dcscor:parameter>НастройкиОтчета</dcscor:parameter>
-					<dcscor:value xsi:type="v8:ValueStorage">AQEIAAAAAAAAAO+7v3siVSJ9</dcscor:value>
-					<dcsset:viewMode>Normal</dcsset:viewMode>
-					<dcsset:userSettingID>21ae0485-8d74-4ff4-a588-0e192c19692f</dcsset:userSettingID>
-				</dcscor:item>
-			</dcsset:dataParameters>
-			<dcsset:outputParameters>
-				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-					<dcscor:parameter>ВыводитьЗаголовок</dcscor:parameter>
-					<dcscor:value xsi:type="dcsset:DataCompositionTextOutputType">DontOutput</dcscor:value>
-				</dcscor:item>
-				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-					<dcscor:parameter>ВыводитьПараметрыДанных</dcscor:parameter>
-					<dcscor:value xsi:type="dcsset:DataCompositionTextOutputType">DontOutput</dcscor:value>
-				</dcscor:item>
-				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-					<dcscor:parameter>ВыводитьОтбор</dcscor:parameter>
-					<dcscor:value xsi:type="dcsset:DataCompositionTextOutputType">DontOutput</dcscor:value>
-				</dcscor:item>
-			</dcsset:outputParameters>
-			<dcsset:item xsi:type="dcsset:StructureItemGroup">
-				<dcsset:order>
-					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
-				</dcsset:order>
-				<dcsset:selection>
-					<dcsset:item xsi:type="dcsset:SelectedItemField">
-						<dcsset:field>ДатаПоставки</dcsset:field>
+				<dcsset:item xsi:type="dcsset:StructureItemGroup">
+					<dcsset:groupItems>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>Документ</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+					</dcsset:groupItems>
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+					</dcsset:order>
+					<dcsset:selection>
+						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+					</dcsset:selection>
+					<dcsset:item xsi:type="dcsset:StructureItemGroup">
+						<dcsset:groupItems>
+							<dcsset:item xsi:type="dcsset:GroupItemField">
+								<dcsset:field>Номенклатура</dcsset:field>
+								<dcsset:groupType>Items</dcsset:groupType>
+								<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+								<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+								<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+							</dcsset:item>
+						</dcsset:groupItems>
+						<dcsset:order>
+							<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+						</dcsset:order>
+						<dcsset:selection>
+							<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+						</dcsset:selection>
 					</dcsset:item>
-					<dcsset:item xsi:type="dcsset:SelectedItemField">
-						<dcsset:field>Номенклатура</dcsset:field>
-					</dcsset:item>
-					<dcsset:item xsi:type="dcsset:SelectedItemField">
-						<dcsset:field>Количество</dcsset:field>
-					</dcsset:item>
-					<dcsset:item xsi:type="dcsset:SelectedItemField">
-						<dcsset:field>Сумма</dcsset:field>
-					</dcsset:item>
-					<dcsset:item xsi:type="dcsset:SelectedItemField">
-						<dcsset:field>СуммаНДС</dcsset:field>
-					</dcsset:item>
-					<dcsset:item xsi:type="dcsset:SelectedItemField">
-						<dcsset:field>СуммаНСП</dcsset:field>
-					</dcsset:item>
-					<dcsset:item xsi:type="dcsset:SelectedItemField">
-						<dcsset:field>Всего</dcsset:field>
-					</dcsset:item>
-					<dcsset:item xsi:type="dcsset:SelectedItemField">
-						<dcsset:field>Контрагент</dcsset:field>
-					</dcsset:item>
-					<dcsset:item xsi:type="dcsset:SelectedItemField">
-						<dcsset:field>ИНН</dcsset:field>
-					</dcsset:item>
-					<dcsset:item xsi:type="dcsset:SelectedItemField">
-						<dcsset:field>Документ</dcsset:field>
-					</dcsset:item>
-					<dcsset:item xsi:type="dcsset:SelectedItemField">
-						<dcsset:field>ДатаСФ</dcsset:field>
-					</dcsset:item>
-					<dcsset:item xsi:type="dcsset:SelectedItemField">
-						<dcsset:field>СерияБланкаСФ</dcsset:field>
-					</dcsset:item>
-					<dcsset:item xsi:type="dcsset:SelectedItemField">
-						<dcsset:field>НомерБланкаСФ</dcsset:field>
-					</dcsset:item>
-					<dcsset:item xsi:type="dcsset:SelectedItemField">
-						<dcsset:field>ВидСтраны</dcsset:field>
-					</dcsset:item>
-					<dcsset:item xsi:type="dcsset:SelectedItemField">
-						<dcsset:field>СтавкаНДС</dcsset:field>
-					</dcsset:item>
-				</dcsset:selection>
-				<dcsset:outputParameters>
-					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-						<dcscor:parameter>АвтоПозицияРесурсов</dcscor:parameter>
-						<dcscor:value xsi:type="dcsset:DataCompositionResourcesAutoPosition">DontUse</dcscor:value>
-					</dcscor:item>
-				</dcsset:outputParameters>
+				</dcsset:item>
 			</dcsset:item>
 		</dcsset:settings>
 	</settingsVariant>

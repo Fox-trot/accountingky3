@@ -517,6 +517,30 @@
 						</UsualGroup>
 					</ChildItems>
 				</UsualGroup>
+				<CheckBoxField name="ИспользоватьОплатуПоПлатежнымКартам" id="542">
+					<DataPath>НаборКонстант.ИспользоватьОплатуПоПлатежнымКартам</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Использовать оплату по платежным картам</v8:content>
+						</v8:item>
+					</Title>
+					<TitleLocation>Right</TitleLocation>
+					<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="ИспользоватьОплатуПоПлатежнымКартамКонтекстноеМеню" id="543"/>
+					<ExtendedTooltip name="ИспользоватьОплатуПоПлатежнымКартамРасширеннаяПодсказка" id="544">
+						<Title formatted="true">
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Включает возможность использовать префикс кассы и банковского счет в документах.</v8:content>
+							</v8:item>
+						</Title>
+					</ExtendedTooltip>
+					<Events>
+						<Event name="OnChange">ИспользоватьОплатуПоПлатежнымКартамПриИзменении</Event>
+					</Events>
+				</CheckBoxField>
 				<CheckBoxField name="ФункциональнаяОпцияПрефиксКассыИБанковскогоСчета" id="431">
 					<DataPath>НаборКонстант.ФункциональнаяОпцияПрефиксКассыИБанковскогоСчета</DataPath>
 					<Title>
@@ -533,7 +557,7 @@
 						<Title formatted="true">
 							<v8:item>
 								<v8:lang>ru</v8:lang>
-								<v8:content>Включает возможность использовать префикс кассы и банковского счет в документах.</v8:content>
+								<v8:content>Возможность оплаты товаров и услуг покупателями при помощи платежных карт и банковских кредитов.</v8:content>
 							</v8:item>
 						</Title>
 					</ExtendedTooltip>
@@ -1127,7 +1151,7 @@
 								<Title formatted="false">
 									<v8:item>
 										<v8:lang>ru</v8:lang>
-										<v8:content>Позволяет указывать точность цены (2, 3, 4 знака) в документах "Поступление товаров и услуг", "Реализация товаров и услуг" и "Установка цен номенклатуры".</v8:content>
+										<v8:content>Позволяет указывать точность цены (2, 3, 4 ... 8 знаков) в документах "Поступление товаров и услуг", "Реализация товаров и услуг", "Установка цен номенклатуры" и т.д.</v8:content>
 									</v8:item>
 								</Title>
 							</ExtendedTooltip>
@@ -1172,47 +1196,6 @@
 									<Width>9</Width>
 									<HorizontalStretch>false</HorizontalStretch>
 									<ListChoiceMode>true</ListChoiceMode>
-									<ChoiceList>
-										<xr:Item>
-											<xr:Presentation/>
-											<xr:CheckState>0</xr:CheckState>
-											<xr:Value xsi:type="FormChoiceListDesTimeValue">
-												<Presentation>
-													<v8:item>
-														<v8:lang>ru</v8:lang>
-														<v8:content>2 знака</v8:content>
-													</v8:item>
-												</Presentation>
-												<Value xsi:type="xs:decimal">2</Value>
-											</xr:Value>
-										</xr:Item>
-										<xr:Item>
-											<xr:Presentation/>
-											<xr:CheckState>0</xr:CheckState>
-											<xr:Value xsi:type="FormChoiceListDesTimeValue">
-												<Presentation>
-													<v8:item>
-														<v8:lang>ru</v8:lang>
-														<v8:content>3 знака</v8:content>
-													</v8:item>
-												</Presentation>
-												<Value xsi:type="xs:decimal">3</Value>
-											</xr:Value>
-										</xr:Item>
-										<xr:Item>
-											<xr:Presentation/>
-											<xr:CheckState>0</xr:CheckState>
-											<xr:Value xsi:type="FormChoiceListDesTimeValue">
-												<Presentation>
-													<v8:item>
-														<v8:lang>ru</v8:lang>
-														<v8:content>4 знака</v8:content>
-													</v8:item>
-												</Presentation>
-												<Value xsi:type="xs:decimal">4</Value>
-											</xr:Value>
-										</xr:Item>
-									</ChoiceList>
 									<ContextMenu name="ТочностьЦеныКонтекстноеМеню" id="511"/>
 									<ExtendedTooltip name="ТочностьЦеныРасширеннаяПодсказка" id="512"/>
 									<Events>
@@ -1241,6 +1224,24 @@
 						<Event name="OnChange">ФункциональнаяОпцияКомплектацияПриИзменении</Event>
 					</Events>
 				</CheckBoxField>
+				<CheckBoxField name="ОтдельнаяПроводкаПоСкидке" id="536">
+					<DataPath>НаборКонстант.ОтдельнаяПроводкаПоСкидке</DataPath>
+					<TitleLocation>Right</TitleLocation>
+					<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="ОтдельнаяПроводкаПоСкидкеКонтекстноеМеню" id="537"/>
+					<ExtendedTooltip name="ОтдельнаяПроводкаПоСкидкеРасширеннаяПодсказка" id="538">
+						<Title formatted="false">
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Формирует отдельную проводку дохода по скидке в документах "Реализация товаров и услуг" и "Возврат от покупателя".</v8:content>
+							</v8:item>
+						</Title>
+					</ExtendedTooltip>
+					<Events>
+						<Event name="OnChange">ОтдельнаяПроводкаПоСкидкеПриИзменении</Event>
+					</Events>
+				</CheckBoxField>
 			</ChildItems>
 		</UsualGroup>
 		<UsualGroup name="ГруппаПокупкаИПродажа" id="363">
@@ -1258,6 +1259,19 @@
 			<ChildItemsWidth>Equal</ChildItemsWidth>
 			<ExtendedTooltip name="ГруппаПокупкаИПродажаРасширеннаяПодсказка" id="364"/>
 			<ChildItems>
+				<Button name="НастройкаЗаполненияЦен" id="534">
+					<Type>Hyperlink</Type>
+					<CommandName>Form.Command.НастройкаЗаполненияЦен</CommandName>
+					<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+					<ExtendedTooltip name="НастройкаЗаполненияЦенРасширеннаяПодсказка" id="535">
+						<Title formatted="false">
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Настройка расчета себестоимости товаров в разрезе складов (мест хранения).</v8:content>
+							</v8:item>
+						</Title>
+					</ExtendedTooltip>
+				</Button>
 				<UsualGroup name="ГруппаСрокиОплатыПокупателей" id="373">
 					<Title>
 						<v8:item>
@@ -1375,30 +1389,106 @@
 						<Event name="OnChange">ПечататьСчетаФактурыСГоловнымКонтрагентомПриИзменении</Event>
 					</Events>
 				</CheckBoxField>
-				<CheckBoxField name="РозничныеПродажи" id="500">
-					<DataPath>НаборКонстант.ФункциональнаяОпцияВестиРозничныеПродажи</DataPath>
-					<TitleLocation>Right</TitleLocation>
-					<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
-					<CheckBoxType>Auto</CheckBoxType>
-					<ContextMenu name="РозничныеПродажиКонтекстноеМеню" id="501"/>
-					<ExtendedTooltip name="РозничныеПродажиРасширеннаяПодсказка" id="502">
-						<Width>75</Width>
-						<Title formatted="true">
-							<v8:item>
-								<v8:lang>ru</v8:lang>
-								<v8:content>Включает возможность получать данные из Розницы при помощи плана обмена и документа "Свод по рознице"</v8:content>
-							</v8:item>
-						</Title>
-					</ExtendedTooltip>
+				<UsualGroup name="ГруппаРозничныеПродажи" id="548">
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа розничные продажи</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Width>82</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<Group>Horizontal</Group>
+					<Representation>NormalSeparation</Representation>
+					<ChildItemsWidth>Equal</ChildItemsWidth>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаРозничныеПродажиРасширеннаяПодсказка" id="549"/>
+					<ChildItems>
+						<UsualGroup name="ГруппаОбменСРозницей" id="550">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа обмен с розницей</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа обмен с розницей</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Vertical</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаОбменСРозницейРасширеннаяПодсказка" id="551"/>
+							<ChildItems>
+								<CheckBoxField name="РозничныеПродажи" id="500">
+									<DataPath>НаборКонстант.ФункциональнаяОпцияВестиРозничныеПродажи</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Розничные продажи</v8:content>
+										</v8:item>
+									</Title>
+									<TitleLocation>Right</TitleLocation>
+									<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="РозничныеПродажиКонтекстноеМеню" id="501"/>
+									<ExtendedTooltip name="РозничныеПродажиРасширеннаяПодсказка" id="502">
+										<Width>75</Width>
+										<Title formatted="true">
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Включает возможность получать данные из Розницы при помощи плана обмена и документа "Свод по рознице"</v8:content>
+											</v8:item>
+										</Title>
+									</ExtendedTooltip>
+									<Events>
+										<Event name="OnChange">РозничныеПродажиПриИзменении</Event>
+									</Events>
+								</CheckBoxField>
+								<Button name="НастройкаДляРозничныхПродаж" id="503">
+									<Type>Hyperlink</Type>
+									<CommandName>Form.Command.НастройкаДляРозничныхПродаж</CommandName>
+									<ExtendedTooltip name="НастройкаДляРозничныхПродажРасширеннаяПодсказка" id="504"/>
+								</Button>
+							</ChildItems>
+						</UsualGroup>
+						<CheckBoxField name="ИспользуютсяПодарочныеСертификаты" id="545">
+							<DataPath>НаборКонстант.ИспользуютсяПодарочныеСертификаты</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Подарочные сертификаты</v8:content>
+								</v8:item>
+							</Title>
+							<TitleLocation>Right</TitleLocation>
+							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="ИспользуютсяПодарочныеСертификатыКонтекстноеМеню" id="546"/>
+							<ExtendedTooltip name="ИспользуютсяПодарочныеСертификатыРасширеннаяПодсказка" id="547">
+								<Width>75</Width>
+								<Title formatted="true">
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Продаются и принимаются к оплате подарочные сертификаты.</v8:content>
+									</v8:item>
+								</Title>
+							</ExtendedTooltip>
+							<Events>
+								<Event name="OnChange">ИспользуютсяПодарочныеСертификатыПриИзменении</Event>
+							</Events>
+						</CheckBoxField>
+					</ChildItems>
+				</UsualGroup>
+				<InputField name="СистемаНалогооблажения" id="539">
+					<DataPath>НаборКонстант.СистемаНалогооблажения</DataPath>
+					<ContextMenu name="СистемаНалогооблаженияКонтекстноеМеню" id="540"/>
+					<ExtendedTooltip name="СистемаНалогооблаженияРасширеннаяПодсказка" id="541"/>
 					<Events>
-						<Event name="OnChange">РозничныеПродажиПриИзменении</Event>
+						<Event name="OnChange">СистемаНалогооблаженияПриИзменении</Event>
 					</Events>
-				</CheckBoxField>
-				<Button name="НастройкаДляРозничныхПродаж" id="503">
-					<Type>Hyperlink</Type>
-					<CommandName>Form.Command.НастройкаДляРозничныхПродаж</CommandName>
-					<ExtendedTooltip name="НастройкаДляРозничныхПродажРасширеннаяПодсказка" id="504"/>
-				</Button>
+				</InputField>
 			</ChildItems>
 		</UsualGroup>
 		<UsualGroup name="ГруппаПроизводство" id="395">
@@ -1799,8 +1889,11 @@
 				<Field>НаборКонстант.ВвестиКонтрольЗапретаСтавкиПоШтатномуРасписанию</Field>
 				<Field>НаборКонстант.ВычетНАПриМодернизации</Field>
 				<Field>НаборКонстант.ИспользоватьНесколькоНоменклатурныхГрупп</Field>
+				<Field>НаборКонстант.ИспользоватьОплатуПоПлатежнымКартам</Field>
+				<Field>НаборКонстант.ИспользуютсяПодарочныеСертификаты</Field>
 				<Field>НаборКонстант.КонтролироватьОстаткиПриПроведении</Field>
 				<Field>НаборКонстант.МакетОформленияОтчетов</Field>
+				<Field>НаборКонстант.НастройкаЗаполненияЦены</Field>
 				<Field>НаборКонстант.НеВестиУчетПоОрганизациям</Field>
 				<Field>НаборКонстант.РазрешитьДублированиеНоменклатуры</Field>
 				<Field>НаборКонстант.РаспределятьРасходыСобственныхПодразделений</Field>
@@ -1958,12 +2051,6 @@
 					<v8:content>Настройка счетов учета с особым порядком переоценки</v8:content>
 				</v8:item>
 			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Настройка учета по организациям</v8:content>
-				</v8:item>
-			</ToolTip>
 			<Action>НастройкаСчетовУчетаСОсобымПорядкомПереоценки</Action>
 			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
@@ -1974,12 +2061,6 @@
 					<v8:content>Настройка учета по складам</v8:content>
 				</v8:item>
 			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Настройка учета по организациям</v8:content>
-				</v8:item>
-			</ToolTip>
 			<Action>НастройкаУчетаПоСкладам</Action>
 			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
@@ -1990,12 +2071,6 @@
 					<v8:content>Настройка учета по статьям движения денежных средств</v8:content>
 				</v8:item>
 			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Настройка учета по организациям</v8:content>
-				</v8:item>
-			</ToolTip>
 			<Action>НастройкаУчетаПоСтатьямДДС</Action>
 			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
@@ -2006,12 +2081,6 @@
 					<v8:content>Настройка учета производства</v8:content>
 				</v8:item>
 			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Настройка учета по организациям</v8:content>
-				</v8:item>
-			</ToolTip>
 			<Action>НастройкаУчетаПроизводства</Action>
 			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
@@ -2090,6 +2159,22 @@
 				</v8:item>
 			</ToolTip>
 			<Action>НастройкаДляРозничныхПродаж</Action>
+		</Command>
+		<Command name="НастройкаЗаполненияЦен" id="16">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Настройка заполнения цен</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Настройка заполнения цен</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>НастройкаЗаполненияЦен</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 	</Commands>
 </Form>

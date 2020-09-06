@@ -594,7 +594,20 @@
 							</Title>
 							<RowFilter xsi:nil="true"/>
 							<ContextMenu name="МатериалыЗаказчикаКонтекстноеМеню" id="396"/>
-							<AutoCommandBar name="МатериалыЗаказчикаКоманднаяПанель" id="397"/>
+							<AutoCommandBar name="МатериалыЗаказчикаКоманднаяПанель" id="397">
+								<ChildItems>
+									<Button name="МатериалыЗаказчикаПодборНоменклатурыЗаказчика" id="498">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.ПодборНоменклатурыЗаказчика</CommandName>
+										<ExtendedTooltip name="МатериалыЗаказчикаПодборНоменклатурыЗаказчикаРасширеннаяПодсказка" id="499"/>
+									</Button>
+									<Button name="МатериалыЗаказчикаЗаполнитьМатериалыЗаказчикаПоОстаткам" id="500">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.ЗаполнитьМатериалыЗаказчикаПоОстаткам</CommandName>
+										<ExtendedTooltip name="МатериалыЗаказчикаЗаполнитьМатериалыЗаказчикаПоОстаткамРасширеннаяПодсказка" id="501"/>
+									</Button>
+								</ChildItems>
+							</AutoCommandBar>
 							<ExtendedTooltip name="МатериалыЗаказчикаРасширеннаяПодсказка" id="398"/>
 							<SearchStringAddition name="МатериалыЗаказчикаСтрокаПоиска" id="399">
 								<AdditionSource>
@@ -634,6 +647,9 @@
 									<EditMode>EnterOnInput</EditMode>
 									<ContextMenu name="МатериалыЗаказчикаНоменклатураКонтекстноеМеню" id="412"/>
 									<ExtendedTooltip name="МатериалыЗаказчикаНоменклатураРасширеннаяПодсказка" id="413"/>
+									<Events>
+										<Event name="OnChange">МатериалыЗаказчикаНоменклатураПриИзменении</Event>
+									</Events>
 								</InputField>
 								<InputField name="МатериалыЗаказчикаКоличествоМест" id="414">
 									<EditMode>EnterOnInput</EditMode>
@@ -660,12 +676,16 @@
 								<InputField name="МатериалыЗаказчикаСчет" id="423">
 									<DataPath>Объект.МатериалыЗаказчика.СчетУчета</DataPath>
 									<EditMode>EnterOnInput</EditMode>
+									<Width>8</Width>
+									<HorizontalStretch>false</HorizontalStretch>
 									<ContextMenu name="МатериалыЗаказчикаСчетКонтекстноеМеню" id="424"/>
 									<ExtendedTooltip name="МатериалыЗаказчикаСчетРасширеннаяПодсказка" id="425"/>
 								</InputField>
 								<InputField name="МатериалыЗаказчикаСчетПередачи" id="426">
 									<DataPath>Объект.МатериалыЗаказчика.СчетПередачи</DataPath>
 									<EditMode>EnterOnInput</EditMode>
+									<Width>8</Width>
+									<HorizontalStretch>false</HorizontalStretch>
 									<ContextMenu name="МатериалыЗаказчикаСчетПередачиКонтекстноеМеню" id="427"/>
 									<ExtendedTooltip name="МатериалыЗаказчикаСчетПередачиРасширеннаяПодсказка" id="428"/>
 								</InputField>
@@ -1001,6 +1021,39 @@
 			</Picture>
 			<Action>МатериалыКопироватьСтроки</Action>
 			<Representation>Picture</Representation>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ПодборНоменклатурыЗаказчика" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подбор</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подбор номенклатуры</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ПодборНоменклатурыЗаказчика</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ЗаполнитьМатериалыЗаказчикаПоОстаткам" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполнить по остаткам</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполнить материалы заказчика по спецификации</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ЗаполнитьМатериалыЗаказчикаПоОстаткам</Action>
+			<ModifiesSavedData>true</ModifiesSavedData>
 			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 	</Commands>

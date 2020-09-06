@@ -7,6 +7,15 @@
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 	</Events>
 	<ChildItems>
+		<CheckBoxField name="ВсеСтроки" id="32">
+			<DataPath>ВсеСтроки</DataPath>
+			<CheckBoxType>Auto</CheckBoxType>
+			<ContextMenu name="ВсеСтрокиКонтекстноеМеню" id="33"/>
+			<ExtendedTooltip name="ВсеСтрокиРасширеннаяПодсказка" id="34"/>
+			<Events>
+				<Event name="OnChange">ВсеСтрокиПриИзменении</Event>
+			</Events>
+		</CheckBoxField>
 		<Table name="Список" id="1">
 			<Representation>List</Representation>
 			<AutoInsertNewRow>true</AutoInsertNewRow>
@@ -91,8 +100,37 @@
 					<ContextMenu name="СписокНСПКонтекстноеМеню" id="27"/>
 					<ExtendedTooltip name="СписокНСПРасширеннаяПодсказка" id="28"/>
 				</InputField>
+				<InputField name="СписокПроводка" id="29">
+					<DataPath>Список.Проводка</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<Width>30</Width>
+					<ContextMenu name="СписокПроводкаКонтекстноеМеню" id="30"/>
+					<ExtendedTooltip name="СписокПроводкаРасширеннаяПодсказка" id="31"/>
+				</InputField>
 			</ChildItems>
 		</Table>
+		<LabelDecoration name="Примечание" id="35">
+			<Title formatted="false">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>По каждой строке – номенклатуре:
+
+(для варианта Включает налоги – по договору)
+Сумма включает налоги
+•	Для Всего считаем НДС, НСП и Доход из Всего
+•	Для скидки считаем НДС, НСП и Доход из Скидка
+•	Итоговые НДС и НСП как разница 
+
+(для варианта Налоги сверху – по договору)
+Налоги сверху
+•	На доход считаем НДС, НСП сверху
+•	Для скидки считаем НДС, НСП и Доход из Скидка (в том числе)
+•	Итоговые НДС и НСП как разница </v8:content>
+				</v8:item>
+			</Title>
+			<ContextMenu name="ПримечаниеКонтекстноеМеню" id="36"/>
+			<ExtendedTooltip name="ПримечаниеРасширеннаяПодсказка" id="37"/>
+		</LabelDecoration>
 	</ChildItems>
 	<Attributes>
 		<Attribute name="Список" id="1">
@@ -187,7 +225,71 @@
 						</v8:NumberQualifiers>
 					</Type>
 				</Column>
+				<Column name="Проводка" id="6">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Проводка</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="ТекущаяСтрокаДокумента" id="7">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Текущая строка документа</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ИтоговаяСтрока" id="8">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Итоговая строка</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
 			</Columns>
+		</Attribute>
+		<Attribute name="ВсеСтроки" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Все строки</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="НомерСтроки" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Номер строки</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
 		</Attribute>
 	</Attributes>
 </Form>

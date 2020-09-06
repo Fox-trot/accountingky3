@@ -1086,6 +1086,7 @@
 					<v8:content>Обсуждения</v8:content>
 				</v8:item>
 			</Title>
+			<Group>AlwaysHorizontal</Group>
 			<Behavior>Collapsible</Behavior>
 			<Collapsed>true</Collapsed>
 			<ControlRepresentation>Picture</ControlRepresentation>
@@ -1107,6 +1108,7 @@
 					<ExtendedTooltip name="ГруппаПодключениеОбсужденийРасширеннаяПодсказка" id="1821"/>
 					<ChildItems>
 						<LabelDecoration name="СостояниеПодключенияОбсуждений" id="1822">
+							<Visible>false</Visible>
 							<Title formatted="false">
 								<v8:item>
 									<v8:lang>ru</v8:lang>
@@ -1140,6 +1142,20 @@
 						</LabelDecoration>
 					</ChildItems>
 				</UsualGroup>
+				<Button name="ОбсужденияНастроитьИнтеграциюСВнешнимиСистемами" id="1939">
+					<Type>Hyperlink</Type>
+					<Height>2</Height>
+					<CommandName>Form.Command.ОбсужденияНастроитьИнтеграциюСВнешнимиСистемами</CommandName>
+					<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+					<ExtendedTooltip name="ОбсужденияНастроитьИнтеграциюСВнешнимиСистемамиРасширеннаяПодсказка" id="1940">
+						<Title formatted="false">
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Получать и отправлять сообщения в мессенджеры. Например в Telegram, VK.</v8:content>
+							</v8:item>
+						</Title>
+					</ExtendedTooltip>
+				</Button>
 			</ChildItems>
 		</UsualGroup>
 		<UsualGroup name="ГруппаИнтеграцияВызовОнлайнПоддержки" id="1694">
@@ -1721,7 +1737,7 @@
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>БИП Группа настройка коннект</v8:content>
+							<v8:content>БИП группа настройка коннект</v8:content>
 						</v8:item>
 					</Title>
 					<Representation>None</Representation>
@@ -1944,6 +1960,11 @@
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>
 		</Attribute>
+		<Attribute name="ОбсужденияПодключены" id="29">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
 	</Attributes>
 	<Commands>
 		<Command name="БИПВойтиИлиВыйти" id="1">
@@ -2072,12 +2093,6 @@
 					<v8:content>Настройка интеграции</v8:content>
 				</v8:item>
 			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>БИПНастройка интеграции с платежными системами</v8:content>
-				</v8:item>
-			</ToolTip>
 			<Action>БИПНастройкаИнтеграцииСПлатежнымиСистемами</Action>
 		</Command>
 		<Command name="НастройкаОнлайнПоддержки" id="11">
@@ -2099,10 +2114,26 @@
 			<ToolTip>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>БИПНастройка интеграции с коннект</v8:content>
+					<v8:content>Настройка интеграции с 1С-Коннект</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>БИПНастройкаИнтеграцииСКоннект</Action>
+		</Command>
+		<Command name="ОбсужденияНастроитьИнтеграциюСВнешнимиСистемами" id="13">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сообщения из других программ</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Настроить получение и отправку сообщений в другие мессенджеры. Например в Telegram, VK</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ОбсужденияНастроитьИнтеграциюСВнешнимиСистемами</Action>
+			<Representation>Text</Representation>
 		</Command>
 	</Commands>
 </Form>
